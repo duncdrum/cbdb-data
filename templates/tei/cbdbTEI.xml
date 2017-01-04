@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>CBDB in TEI</title>
+                <author>Duncan Paterson</author>
+            </titleStmt>
+            <publicationStmt>
+                <p>freely available</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Formalising known enitites from China Biographical Database version 20150202</p>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc>
+            <change when="2016-12-12" who="DP">intial draft of odd</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <schemaSpec ident="cbdbTEI" start="TEI">
+                <moduleRef key="header"/>
+                <moduleRef key="core"/>
+                <moduleRef key="tei"/>
+                <moduleRef key="textstructure"/>
+                <moduleRef key="gaiji"/>
+                <moduleRef key="certainty"/>
+                <moduleRef key="namesdates"/>
+                <elementSpec ident="idno" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="req" mode="change">
+                            <gloss>You must indicate the type of ID</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="TTS">
+                                    <gloss>old TTS idno</gloss>
+                                </valItem>
+                                <valItem ident="CBDB">
+                                    <gloss>CBDB c_personid</gloss>
+                                </valItem>
+                                <valItem ident="VIAF">
+                                    <gloss>VIAF ID</gloss>
+                                </valItem>
+                                <valItem ident="UUID">
+                                    <gloss>UUID (main ID of cbdb in TEI)</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="persName" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="req" mode="change">
+                            <gloss>You must indicate the type of of personal Names</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="original">
+                                    <gloss>the name as it appears in BIOG_MAIN</gloss>
+                                </valItem>
+                                <valItem ident="alias">
+                                    <gloss>alternative names, futher devided by subtypes</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="addName" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="req" mode="change">
+                            <gloss>You must indicate the type of addName</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList type="open" mode="replace">
+                                <valItem ident="choronym">
+                                    <gloss>the place+surname used to identify medieval clans</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+<!--  I should add the 15 altname types from ALTNAME_CODE as possible values for @subtype -->
+            </schemaSpec>
+        </body>
+    </text>
+</TEI>

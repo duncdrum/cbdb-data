@@ -1,0 +1,2068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="INTEGER">
+        <xs:annotation>
+            <xs:documentation>
+                The "INTEGER" type from the data base was mapped to "xs:integer" XML Schema type.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="2147483647"/>
+            <xs:minInclusive value="-2147483648"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VARCHAR_2000000000">
+        <xs:annotation>
+            <xs:documentation>
+                The "CHAR(255)" type from the data base was mapped to "xs:string" XML Schema type.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2000000000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FLOAT_2000000000">
+        <xs:annotation>
+            <xs:documentation>
+                The "FLOAT" type from the data base was mapped to "xs:float" XML Schema type.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+    <xs:element name="root"/>
+    <xs:complexType name="RowType_Catalog_Schema_ADDR_BELONGS_DATA">
+        <xs:sequence>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_belongs_to" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ADDR_BELONGS_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ADDR_BELONGS_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ADDR_CODES">
+        <xs:sequence>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_admin_type" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="x_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="y_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="CHGIS_PT_ID" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_alt_names" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ADDR_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ADDR_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ADDR_PLACE_DATA">
+        <xs:sequence>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_place_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ADDR_PLACE_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ADDR_PLACE_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ADDR_XY">
+        <xs:sequence>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="x_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="y_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source_reference" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ADDR_XY">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ADDR_XY" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ADDRESSES">
+        <xs:sequence>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_cbd" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_admin_type" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="x_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="y_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs1_ID" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs1_Name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs2_ID" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs2_Name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs3_ID" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs3_Name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs4_ID" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs4_Name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs5_ID" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="belongs5_Name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ADDRESSES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ADDRESSES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ALTNAME_CODES">
+        <xs:sequence>
+            <xs:element name="c_name_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ALTNAME_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ALTNAME_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ALTNAME_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_alt_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_alt_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_alt_name_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ALTNAME_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ALTNAME_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_APPOINTMENT_TYPE_CODES">
+        <xs:sequence>
+            <xs:element name="c_appt_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_appt_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_appt_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="check" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_APPOINTMENT_TYPE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_APPOINTMENT_TYPE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ASSOC_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="c_assoc_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_type_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ASSOC_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ASSOC_CODE_TYPE_REL" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ASSOC_CODES">
+        <xs:sequence>
+            <xs:element name="c_assoc_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_pair" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_pair2" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_role_type" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_example" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ASSOC_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ASSOC_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ASSOC_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_kin_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_kin_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_tertiary_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_count" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sequence" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_litgenre_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_occasion_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_topic_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_title" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_claimer_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_intercalary" type="INTEGER"/>
+            <xs:element name="c_assoc_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_day_gz" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ASSOC_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ASSOC_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ASSOC_TYPES">
+        <xs:sequence>
+            <xs:element name="c_assoc_type_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_type_parent_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_type_level" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_type_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_type_short_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ASSOC_TYPES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ASSOC_TYPES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ASSUME_OFFICE_CODES">
+        <xs:sequence>
+            <xs:element name="c_assume_office_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assume_office_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assume_office_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ASSUME_OFFICE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ASSUME_OFFICE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_BIOG_ADDR_CODES">
+        <xs:sequence>
+            <xs:element name="c_addr_type" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_note" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_BIOG_ADDR_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_BIOG_ADDR_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_BIOG_ADDR_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_type" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sequence" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_natal" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_intercalary" type="INTEGER"/>
+            <xs:element name="c_ly_intercalary" type="INTEGER"/>
+            <xs:element name="c_fy_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_day_gz" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_day_gz" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_delete" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_BIOG_ADDR_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_BIOG_ADDR_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_BIOG_INST_CODES">
+        <xs:sequence>
+            <xs:element name="c_bi_role_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_role_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_role_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_BIOG_INST_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_BIOG_INST_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_BIOG_INST_DATA">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_role_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_begin_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_by_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_by_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_by_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_end_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_ey_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_ey_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bi_ey_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_BIOG_INST_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_BIOG_INST_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_BIOG_MAIN">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_index_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_female" type="INTEGER"/>
+            <xs:element name="c_ethnicity_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_household_status_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_tribe" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_birthyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_deathyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_death_age" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_death_age_approx" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_earliest_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_ey_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_ey_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_ey_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_latest_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_ly_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_ly_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fl_ly_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_surname" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_surname_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_mingzi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_mingzi_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_choronym_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_intercalary" type="INTEGER"/>
+            <xs:element name="c_dy_intercalary" type="INTEGER"/>
+            <xs:element name="c_by_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_day_gz" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy_day_gz" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="TTSMQ_db_ID" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="MQWWLink" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="KyotoLink" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_surname_proper" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_mingzi_proper" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_proper" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_surname_rm" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_mingzi_rm" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_rm" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_self_bio" type="INTEGER"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_BIOG_MAIN">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_BIOG_MAIN" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_BIOG_SOURCE_DATA">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_textid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_main_source" type="INTEGER"/>
+            <xs:element name="c_self_bio" type="INTEGER"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_BIOG_SOURCE_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_BIOG_SOURCE_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_CHORONYM_CODES">
+        <xs:sequence>
+            <xs:element name="c_choronym_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_choronym_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_choronym_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_CHORONYM_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_CHORONYM_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_CopyMissingTables">
+        <xs:sequence>
+            <xs:element name="ID" type="INTEGER"/>
+            <xs:element name="TableName" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_CopyMissingTables">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_CopyMissingTables" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_CopyTables">
+        <xs:sequence>
+            <xs:element name="ID" type="INTEGER"/>
+            <xs:element name="TableName" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_CopyTables">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_CopyTables" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_COUNTRY_CODES">
+        <xs:sequence>
+            <xs:element name="c_country_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_country_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_country_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_COUNTRY_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_COUNTRY_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_DATABASE_LINK_CODES">
+        <xs:sequence>
+            <xs:element name="c_db_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_URL" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_name_trans_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_name_trans_eng" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_institution" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_institution_trans_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_institution_trans_eng" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_date_of_origin" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_contact_x0020_person" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_DB_URL_FIRST_STRING" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_DB_URL_SECOND_STRING" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_DATABASE_LINK_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_DATABASE_LINK_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_DATABASE_LINK_DATA">
+        <xs:sequence>
+            <xs:element name="c_person_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_db_sys_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_DATABASE_LINK_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_DATABASE_LINK_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_DYNASTIES">
+        <xs:sequence>
+            <xs:element name="c_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dynasty" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dynasty_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_start" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_end" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sort" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_DYNASTIES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_DYNASTIES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ENTRY_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="c_entry_code" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_type" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ENTRY_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ENTRY_CODE_TYPE_REL" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ENTRY_CODES">
+        <xs:sequence>
+            <xs:element name="c_entry_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ENTRY_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ENTRY_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ENTRY_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sequence" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_exam_rank" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assoc_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_age" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nianhao_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER"/>
+            <xs:element name="c_inst_name_code" type="INTEGER"/>
+            <xs:element name="c_exam_field" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_parental_status" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_attempt_count" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_posting_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ENTRY_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ENTRY_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ENTRY_TYPES">
+        <xs:sequence>
+            <xs:element name="c_entry_type" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_type_parent_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_type_level" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_entry_type_sortorder" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ENTRY_TYPES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ENTRY_TYPES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_ETHNICITY_TRIBE_CODES">
+        <xs:sequence>
+            <xs:element name="c_ethnicity_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_group_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_subgroup_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_altname_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ethno_legal_cat" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_romanized" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_surname" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="JiuTangShu" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="XinTangShu" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="JiuWudaiShi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="XinWudaiShi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="SongShi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="LiaoShi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="JinShi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="YuanShi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="MingShi" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="QingShiGao" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_ETHNICITY_TRIBE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_ETHNICITY_TRIBE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_EVENT_CODES">
+        <xs:sequence>
+            <xs:element name="c_event_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_event_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_event_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_yr" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_yr" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_yr" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_yr" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_intercalary" type="INTEGER"/>
+            <xs:element name="c_fy_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_intercalary" type="INTEGER"/>
+            <xs:element name="c_ly_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_event_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_EVENT_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_EVENT_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_EVENTS_ADDR">
+        <xs:sequence>
+            <xs:element name="c_event_record_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_yr_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_intercalary" type="INTEGER"/>
+            <xs:element name="c_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_day_ganzhi" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_EVENTS_ADDR">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_EVENTS_ADDR" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_EVENTS_DATA">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sequence" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_event_record_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_event_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_role" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_yr_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_intercalary" type="INTEGER"/>
+            <xs:element name="c_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_day_ganzhi" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_event" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_EVENTS_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_EVENTS_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_EXTANT_CODES">
+        <xs:sequence>
+            <xs:element name="c_extant_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_extant_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_extant_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_extant_code_hd" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_EXTANT_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_EXTANT_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_FIX_AUTHORS">
+        <xs:sequence>
+            <xs:element name="c_textid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastname" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstname" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_genre_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_female" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_floruit" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_birthyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_deathyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_death_age" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_FIX_AUTHORS">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_FIX_AUTHORS" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_FormLabels">
+        <xs:sequence>
+            <xs:element name="c_form" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_label_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_english" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_jianti" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fanti" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_FormLabels">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_FormLabels" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_GANZHI_CODES">
+        <xs:sequence>
+            <xs:element name="c_ganzhi_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ganzhi_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ganzhi_py" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_GANZHI_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_GANZHI_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_HOUSEHOLD_STATUS_CODES">
+        <xs:sequence>
+            <xs:element name="c_household_status_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_household_status_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_household_status_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_HOUSEHOLD_STATUS_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_HOUSEHOLD_STATUS_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_KIN_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_autogen_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_KIN_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_KIN_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_KIN_Mourning">
+        <xs:sequence>
+            <xs:element name="c_kinrel" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kinrel_alt" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kinrel_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_mourning" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_mourning_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kindist" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kintype" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kintype_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kintype_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_KIN_Mourning">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_KIN_Mourning" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_KIN_MOURNING_STEPS">
+        <xs:sequence>
+            <xs:element name="c_kinrel" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_upstep" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dwnstep" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_marstep" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_colstep" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_KIN_MOURNING_STEPS">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_KIN_MOURNING_STEPS" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_KINSHIP_CODES">
+        <xs:sequence>
+            <xs:element name="c_kincode" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_pair1" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_pair2" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kin_pair_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kinrel_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kinrel" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_kinrel_alt" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pick_sorting" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_upstep" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dwnstep" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_marstep" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_colstep" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_KINSHIP_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_KINSHIP_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_LITERARYGENRE_CODES">
+        <xs:sequence>
+            <xs:element name="c_lit_genre_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lit_genre_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lit_genre_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_LITERARYGENRE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_LITERARYGENRE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_MEASURE_CODES">
+        <xs:sequence>
+            <xs:element name="c_measure_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_measure_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_measure_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_MEASURE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_MEASURE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_NIAN_HAO">
+        <xs:sequence>
+            <xs:element name="c_nianhao_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dynasty_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nianhao_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nianhao_pin" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_NIAN_HAO">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_NIAN_HAO" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_OCCASION_CODES">
+        <xs:sequence>
+            <xs:element name="c_occasion_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_occasion_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_occasion_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_OCCASION_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_OCCASION_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_OFFICE_CATEGORIES">
+        <xs:sequence>
+            <xs:element name="c_office_category_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_category_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_category_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_OFFICE_CATEGORIES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_OFFICE_CATEGORIES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_OFFICE_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="c_office_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_type_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_tree_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_type_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_l1" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_l2" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_l3" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_l4" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_l5" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_OFFICE_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_OFFICE_CODE_TYPE_REL" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_OFFICE_CODES">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_pinyin" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_pinyin_alt" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_chn_alt" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_trans" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_trans_alt" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_category_1" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_category_2" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_category_3" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_category_4" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_id_old" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_OFFICE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_OFFICE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_OFFICE_CODES_CONVERSION">
+        <xs:sequence>
+            <xs:element name="c_office_id_backup" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_chn_backup" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_OFFICE_CODES_CONVERSION">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_OFFICE_CODES_CONVERSION" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_OFFICE_TYPE_TREE">
+        <xs:sequence>
+            <xs:element name="c_office_type_node_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_tts_node_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_parent_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_OFFICE_TYPE_TREE">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_OFFICE_TYPE_TREE" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_PARENTAL_STATUS_CODES">
+        <xs:sequence>
+            <xs:element name="c_parental_status_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_parental_status_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_parental_status_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_PARENTAL_STATUS_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_PARENTAL_STATUS_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_PLACE_CODES">
+        <xs:sequence>
+            <xs:element name="c_place_id" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_place_1990" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_name_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="x_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="y_coord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_PLACE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_PLACE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_POSSESSION_ACT_CODES">
+        <xs:sequence>
+            <xs:element name="c_possession_act_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_act_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_act_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_POSSESSION_ACT_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_POSSESSION_ACT_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_POSSESSION_ADDR">
+        <xs:sequence>
+            <xs:element name="c_possession_record_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_POSSESSION_ADDR">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_POSSESSION_ADDR" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_POSSESSION_DATA">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_record_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sequence" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_act_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_quantity" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_measure_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_yr" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_nh_yr" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_possession_yr_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_POSSESSION_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_POSSESSION_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_POSTED_TO_ADDR_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_posting_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_posting_id_old" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_POSTED_TO_ADDR_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_POSTED_TO_ADDR_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_POSTED_TO_OFFICE_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_posting_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_posting_id_old" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sequence" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_appt_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_assume_office_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_id_backup" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_office_category_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_intercalary" type="INTEGER"/>
+            <xs:element name="c_fy_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_intercalary" type="INTEGER"/>
+            <xs:element name="c_ly_month" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_day" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_day_gz" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_day_gz" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_POSTED_TO_OFFICE_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_POSTED_TO_OFFICE_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_POSTING_DATA">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_posting_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_posting_id_old" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_POSTING_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_POSTING_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SCHOLARLYTOPIC_CODES">
+        <xs:sequence>
+            <xs:element name="c_topic_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_topic_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_topic_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_topic_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_topic_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_topic_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SCHOLARLYTOPIC_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SCHOLARLYTOPIC_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR">
+        <xs:sequence>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_addr_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_addr_begin_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_addr_end_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_addr_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="inst_x005F_xcoord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="inst_ycoord" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR_TYPES">
+        <xs:sequence>
+            <xs:element name="c_inst_addr_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_addr_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_addr_type_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR_TYPES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR_TYPES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_CODES">
+        <xs:sequence>
+            <xs:element name="c_inst_altname_type" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_altname_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_altname_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_DATA">
+        <xs:sequence>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_altname_type" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_altname_hz" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_altname_py" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_CODES">
+        <xs:sequence>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_begin_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_nianhao_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_nianhao_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_by_year_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_begin_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_floruit_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_first_known_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_end_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ey_nianhao_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ey_nianhao_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ey_year_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_end_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_last_known_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_CODES_CONVERSION">
+        <xs:sequence>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_code_new" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_new_new_code" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_CODES_CONVERSION">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_CODES_CONVERSION" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_NAME_CODES">
+        <xs:sequence>
+            <xs:element name="c_inst_name_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_name_hz" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_name_py" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_NAME_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_NAME_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_SOCIAL_INSTITUTION_TYPES">
+        <xs:sequence>
+            <xs:element name="c_inst_type_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_type_py" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_inst_type_hz" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_SOCIAL_INSTITUTION_TYPES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_SOCIAL_INSTITUTION_TYPES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_STATUS_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="c_status_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_status_type_code" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_STATUS_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_STATUS_CODE_TYPE_REL" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_STATUS_CODES">
+        <xs:sequence>
+            <xs:element name="c_status_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_status_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_status_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_STATUS_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_STATUS_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_STATUS_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_sequence" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_status_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_firstyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_fy_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_lastyear" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_ly_range" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_supplement" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_STATUS_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_STATUS_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_STATUS_TYPES">
+        <xs:sequence>
+            <xs:element name="c_status_type_code" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_status_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_status_type_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_STATUS_TYPES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_STATUS_TYPES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TablesFields">
+        <xs:sequence>
+            <xs:element name="RowNum" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="DumpTblNm" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="DumpFldNm" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="AccessTblNm" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="AccessFldNm" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="IndexOnField" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="DataFormat" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="NULL_allowed" type="INTEGER"/>
+            <xs:element name="ForeignKey" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="ForeignKeyBaseField" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TablesFields">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TablesFields" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TablesFieldsChanges">
+        <xs:sequence>
+            <xs:element name="TableName" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="FieldName" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="Change" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="ChangeDate" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="ChangeNotes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TablesFieldsChanges">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TablesFieldsChanges" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_BIBLCAT_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="c_text_cat_code" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_BIBLCAT_CODE_TYPE_REL">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_BIBLCAT_CODE_TYPE_REL" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_BIBLCAT_CODES">
+        <xs:sequence>
+            <xs:element name="c_text_cat_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_pinyin" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_BIBLCAT_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_BIBLCAT_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_BIBLCAT_TYPES">
+        <xs:sequence>
+            <xs:element name="c_text_cat_type_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_parent_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_level" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_sortorder" type="FLOAT_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_BIBLCAT_TYPES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_BIBLCAT_TYPES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_BIBLCAT_TYPES_1">
+        <xs:sequence>
+            <xs:element name="c_text_cat_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_pinyin" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_BIBLCAT_TYPES_1">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_BIBLCAT_TYPES_1" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_BIBLCAT_TYPES_2">
+        <xs:sequence>
+            <xs:element name="c_text_cat_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_pinyin" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_cat_type_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_BIBLCAT_TYPES_2">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_BIBLCAT_TYPES_2" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_CODES">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_textid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_title_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_suffix_version" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_title" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_title_trans" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_type_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_range_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_period" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_bibl_cat_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_extant" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_country" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_country" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_dy" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_year" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_range_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_loc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_publisher" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pub_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_url_api" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_url_homepage" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_number" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_counter" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_title_alt_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_DATA">
+        <xs:sequence>
+            <xs:element name="tts_sysno" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_textid" type="INTEGER"/>
+            <xs:element name="c_personid" type="INTEGER"/>
+            <xs:element name="c_role_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nh_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_nh_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_range_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_source" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_pages" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_notes" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_created_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_by" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_modified_date" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_DATA">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_DATA" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_ROLE_CODES">
+        <xs:sequence>
+            <xs:element name="c_role_id" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_role_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_role_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_ROLE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_ROLE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_TEXT_TYPE">
+        <xs:sequence>
+            <xs:element name="c_text_type_code" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_type_desc" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_type_desc_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_type_parent_id" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_type_level" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_text_type_sortorder" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_TEXT_TYPE">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_TEXT_TYPE" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_tmpBM_NIY">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_index_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_rule" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_tmpBM_NIY">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_tmpBM_NIY" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_tmpBM_NIY_finished">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_index_year" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_rule" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_tmpBM_NIY_finished">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_tmpBM_NIY_finished" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_tmpIndexYear">
+        <xs:sequence>
+            <xs:element name="c_personid" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_index_year" type="INTEGER" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_tmpIndexYear">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_tmpIndexYear" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RowType_Catalog_Schema_YEAR_RANGE_CODES">
+        <xs:sequence>
+            <xs:element name="c_range_code" type="INTEGER" nillable="true" minOccurs="0"/>
+            <xs:element name="c_range" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_range_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_approx" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+            <xs:element name="c_approx_chn" type="VARCHAR_2000000000" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TableType_Catalog_Schema_YEAR_RANGE_CODES">
+        <xs:sequence>
+            <xs:element name="row" type="RowType_Catalog_Schema_YEAR_RANGE_CODES" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SchemaType_Catalog_Schema">
+        <xs:all>
+            <xs:element name="ADDR_BELONGS_DATA" type="TableType_Catalog_Schema_ADDR_BELONGS_DATA"/>
+            <xs:element name="ADDR_CODES" type="TableType_Catalog_Schema_ADDR_CODES"/>
+            <xs:element name="ADDR_PLACE_DATA" type="TableType_Catalog_Schema_ADDR_PLACE_DATA"/>
+            <xs:element name="ADDR_XY" type="TableType_Catalog_Schema_ADDR_XY"/>
+            <xs:element name="ADDRESSES" type="TableType_Catalog_Schema_ADDRESSES"/>
+            <xs:element name="ALTNAME_CODES" type="TableType_Catalog_Schema_ALTNAME_CODES"/>
+            <xs:element name="ALTNAME_DATA" type="TableType_Catalog_Schema_ALTNAME_DATA"/>
+            <xs:element name="APPOINTMENT_TYPE_CODES" type="TableType_Catalog_Schema_APPOINTMENT_TYPE_CODES"/>
+            <xs:element name="ASSOC_CODE_TYPE_REL" type="TableType_Catalog_Schema_ASSOC_CODE_TYPE_REL"/>
+            <xs:element name="ASSOC_CODES" type="TableType_Catalog_Schema_ASSOC_CODES"/>
+            <xs:element name="ASSOC_DATA" type="TableType_Catalog_Schema_ASSOC_DATA"/>
+            <xs:element name="ASSOC_TYPES" type="TableType_Catalog_Schema_ASSOC_TYPES"/>
+            <xs:element name="ASSUME_OFFICE_CODES" type="TableType_Catalog_Schema_ASSUME_OFFICE_CODES"/>
+            <xs:element name="BIOG_ADDR_CODES" type="TableType_Catalog_Schema_BIOG_ADDR_CODES"/>
+            <xs:element name="BIOG_ADDR_DATA" type="TableType_Catalog_Schema_BIOG_ADDR_DATA"/>
+            <xs:element name="BIOG_INST_CODES" type="TableType_Catalog_Schema_BIOG_INST_CODES"/>
+            <xs:element name="BIOG_INST_DATA" type="TableType_Catalog_Schema_BIOG_INST_DATA"/>
+            <xs:element name="BIOG_MAIN" type="TableType_Catalog_Schema_BIOG_MAIN"/>
+            <xs:element name="BIOG_SOURCE_DATA" type="TableType_Catalog_Schema_BIOG_SOURCE_DATA"/>
+            <xs:element name="CHORONYM_CODES" type="TableType_Catalog_Schema_CHORONYM_CODES"/>
+            <xs:element name="CopyMissingTables" type="TableType_Catalog_Schema_CopyMissingTables"/>
+            <xs:element name="CopyTables" type="TableType_Catalog_Schema_CopyTables"/>
+            <xs:element name="COUNTRY_CODES" type="TableType_Catalog_Schema_COUNTRY_CODES"/>
+            <xs:element name="DATABASE_LINK_CODES" type="TableType_Catalog_Schema_DATABASE_LINK_CODES"/>
+            <xs:element name="DATABASE_LINK_DATA" type="TableType_Catalog_Schema_DATABASE_LINK_DATA"/>
+            <xs:element name="DYNASTIES" type="TableType_Catalog_Schema_DYNASTIES"/>
+            <xs:element name="ENTRY_CODE_TYPE_REL" type="TableType_Catalog_Schema_ENTRY_CODE_TYPE_REL"/>
+            <xs:element name="ENTRY_CODES" type="TableType_Catalog_Schema_ENTRY_CODES"/>
+            <xs:element name="ENTRY_DATA" type="TableType_Catalog_Schema_ENTRY_DATA"/>
+            <xs:element name="ENTRY_TYPES" type="TableType_Catalog_Schema_ENTRY_TYPES"/>
+            <xs:element name="ETHNICITY_TRIBE_CODES" type="TableType_Catalog_Schema_ETHNICITY_TRIBE_CODES"/>
+            <xs:element name="EVENT_CODES" type="TableType_Catalog_Schema_EVENT_CODES"/>
+            <xs:element name="EVENTS_ADDR" type="TableType_Catalog_Schema_EVENTS_ADDR"/>
+            <xs:element name="EVENTS_DATA" type="TableType_Catalog_Schema_EVENTS_DATA"/>
+            <xs:element name="EXTANT_CODES" type="TableType_Catalog_Schema_EXTANT_CODES"/>
+            <xs:element name="FIX_AUTHORS" type="TableType_Catalog_Schema_FIX_AUTHORS"/>
+            <xs:element name="FormLabels" type="TableType_Catalog_Schema_FormLabels"/>
+            <xs:element name="GANZHI_CODES" type="TableType_Catalog_Schema_GANZHI_CODES"/>
+            <xs:element name="HOUSEHOLD_STATUS_CODES" type="TableType_Catalog_Schema_HOUSEHOLD_STATUS_CODES"/>
+            <xs:element name="KIN_DATA" type="TableType_Catalog_Schema_KIN_DATA"/>
+            <xs:element name="KIN_Mourning" type="TableType_Catalog_Schema_KIN_Mourning"/>
+            <xs:element name="KIN_MOURNING_STEPS" type="TableType_Catalog_Schema_KIN_MOURNING_STEPS"/>
+            <xs:element name="KINSHIP_CODES" type="TableType_Catalog_Schema_KINSHIP_CODES"/>
+            <xs:element name="LITERARYGENRE_CODES" type="TableType_Catalog_Schema_LITERARYGENRE_CODES"/>
+            <xs:element name="MEASURE_CODES" type="TableType_Catalog_Schema_MEASURE_CODES"/>
+            <xs:element name="NIAN_HAO" type="TableType_Catalog_Schema_NIAN_HAO"/>
+            <xs:element name="OCCASION_CODES" type="TableType_Catalog_Schema_OCCASION_CODES"/>
+            <xs:element name="OFFICE_CATEGORIES" type="TableType_Catalog_Schema_OFFICE_CATEGORIES"/>
+            <xs:element name="OFFICE_CODE_TYPE_REL" type="TableType_Catalog_Schema_OFFICE_CODE_TYPE_REL"/>
+            <xs:element name="OFFICE_CODES" type="TableType_Catalog_Schema_OFFICE_CODES"/>
+            <xs:element name="OFFICE_CODES_CONVERSION" type="TableType_Catalog_Schema_OFFICE_CODES_CONVERSION"/>
+            <xs:element name="OFFICE_TYPE_TREE" type="TableType_Catalog_Schema_OFFICE_TYPE_TREE"/>
+            <xs:element name="PARENTAL_STATUS_CODES" type="TableType_Catalog_Schema_PARENTAL_STATUS_CODES"/>
+            <xs:element name="PLACE_CODES" type="TableType_Catalog_Schema_PLACE_CODES"/>
+            <xs:element name="POSSESSION_ACT_CODES" type="TableType_Catalog_Schema_POSSESSION_ACT_CODES"/>
+            <xs:element name="POSSESSION_ADDR" type="TableType_Catalog_Schema_POSSESSION_ADDR"/>
+            <xs:element name="POSSESSION_DATA" type="TableType_Catalog_Schema_POSSESSION_DATA"/>
+            <xs:element name="POSTED_TO_ADDR_DATA" type="TableType_Catalog_Schema_POSTED_TO_ADDR_DATA"/>
+            <xs:element name="POSTED_TO_OFFICE_DATA" type="TableType_Catalog_Schema_POSTED_TO_OFFICE_DATA"/>
+            <xs:element name="POSTING_DATA" type="TableType_Catalog_Schema_POSTING_DATA"/>
+            <xs:element name="SCHOLARLYTOPIC_CODES" type="TableType_Catalog_Schema_SCHOLARLYTOPIC_CODES"/>
+            <xs:element name="SOCIAL_INSTITUTION_ADDR" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR"/>
+            <xs:element name="SOCIAL_INSTITUTION_ADDR_TYPES" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ADDR_TYPES"/>
+            <xs:element name="SOCIAL_INSTITUTION_ALTNAME_CODES" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_CODES"/>
+            <xs:element name="SOCIAL_INSTITUTION_ALTNAME_DATA" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_ALTNAME_DATA"/>
+            <xs:element name="SOCIAL_INSTITUTION_CODES" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_CODES"/>
+            <xs:element name="SOCIAL_INSTITUTION_CODES_CONVERSION" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_CODES_CONVERSION"/>
+            <xs:element name="SOCIAL_INSTITUTION_NAME_CODES" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_NAME_CODES"/>
+            <xs:element name="SOCIAL_INSTITUTION_TYPES" type="TableType_Catalog_Schema_SOCIAL_INSTITUTION_TYPES"/>
+            <xs:element name="STATUS_CODE_TYPE_REL" type="TableType_Catalog_Schema_STATUS_CODE_TYPE_REL"/>
+            <xs:element name="STATUS_CODES" type="TableType_Catalog_Schema_STATUS_CODES"/>
+            <xs:element name="STATUS_DATA" type="TableType_Catalog_Schema_STATUS_DATA"/>
+            <xs:element name="STATUS_TYPES" type="TableType_Catalog_Schema_STATUS_TYPES"/>
+            <xs:element name="TablesFields" type="TableType_Catalog_Schema_TablesFields"/>
+            <xs:element name="TablesFieldsChanges" type="TableType_Catalog_Schema_TablesFieldsChanges"/>
+            <xs:element name="TEXT_BIBLCAT_CODE_TYPE_REL" type="TableType_Catalog_Schema_TEXT_BIBLCAT_CODE_TYPE_REL"/>
+            <xs:element name="TEXT_BIBLCAT_CODES" type="TableType_Catalog_Schema_TEXT_BIBLCAT_CODES"/>
+            <xs:element name="TEXT_BIBLCAT_TYPES" type="TableType_Catalog_Schema_TEXT_BIBLCAT_TYPES"/>
+            <xs:element name="TEXT_BIBLCAT_TYPES_1" type="TableType_Catalog_Schema_TEXT_BIBLCAT_TYPES_1"/>
+            <xs:element name="TEXT_BIBLCAT_TYPES_2" type="TableType_Catalog_Schema_TEXT_BIBLCAT_TYPES_2"/>
+            <xs:element name="TEXT_CODES" type="TableType_Catalog_Schema_TEXT_CODES"/>
+            <xs:element name="TEXT_DATA" type="TableType_Catalog_Schema_TEXT_DATA"/>
+            <xs:element name="TEXT_ROLE_CODES" type="TableType_Catalog_Schema_TEXT_ROLE_CODES"/>
+            <xs:element name="TEXT_TYPE" type="TableType_Catalog_Schema_TEXT_TYPE"/>
+            <xs:element name="tmpBM_NIY" type="TableType_Catalog_Schema_tmpBM_NIY"/>
+            <xs:element name="tmpBM_NIY_finished" type="TableType_Catalog_Schema_tmpBM_NIY_finished"/>
+            <xs:element name="tmpIndexYear" type="TableType_Catalog_Schema_tmpIndexYear"/>
+            <xs:element name="YEAR_RANGE_CODES" type="TableType_Catalog_Schema_YEAR_RANGE_CODES"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="CatalogType_Catalog">
+        <xs:all>
+            <xs:element name="Schema" type="SchemaType_Catalog_Schema">
+                <xs:unique name="ADDR_BELONGS_DATA_sqlite_autoindex_ADDR_BELONGS_DATA_1">
+                    <xs:selector xpath="ADDR_BELONGS_DATA/row"/>
+                    <xs:field xpath="c_addr_id"/>
+                    <xs:field xpath="c_belongs_to"/>
+                    <xs:field xpath="c_firstyear"/>
+                    <xs:field xpath="c_lastyear"/>
+                </xs:unique>
+                <xs:key name="ADDR_CODES_PrimaryKey_0">
+                    <xs:selector xpath="ADDR_CODES/row"/>
+                    <xs:field xpath="c_addr_id"/>
+                </xs:key>
+                <xs:key name="ADDR_XY_PrimaryKey_0">
+                    <xs:selector xpath="ADDR_XY/row"/>
+                    <xs:field xpath="c_addr_id"/>
+                </xs:key>
+                <xs:key name="ALTNAME_CODES_PrimaryKey_0">
+                    <xs:selector xpath="ALTNAME_CODES/row"/>
+                    <xs:field xpath="c_name_type_code"/>
+                </xs:key>
+                <xs:unique name="ALTNAME_DATA_sqlite_autoindex_ALTNAME_DATA_1">
+                    <xs:selector xpath="ALTNAME_DATA/row"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_alt_name_chn"/>
+                    <xs:field xpath="c_alt_name_type_code"/>
+                </xs:unique>
+                <xs:key name="APPOINTMENT_TYPE_CODES_PrimaryKey_0">
+                    <xs:selector xpath="APPOINTMENT_TYPE_CODES/row"/>
+                    <xs:field xpath="c_appt_type_code"/>
+                </xs:key>
+                <xs:unique name="ASSOC_CODE_TYPE_REL_ASSOC_CODE_TYPE_REL_code_id">
+                    <xs:selector xpath="ASSOC_CODE_TYPE_REL/row"/>
+                    <xs:field xpath="c_assoc_code"/>
+                </xs:unique>
+                <xs:unique name="ASSOC_CODE_TYPE_REL_sqlite_autoindex_ASSOC_CODE_TYPE_REL_1">
+                    <xs:selector xpath="ASSOC_CODE_TYPE_REL/row"/>
+                    <xs:field xpath="c_assoc_code"/>
+                    <xs:field xpath="c_assoc_type_id"/>
+                </xs:unique>
+                <xs:key name="ASSOC_CODES_PrimaryKey_0">
+                    <xs:selector xpath="ASSOC_CODES/row"/>
+                    <xs:field xpath="c_assoc_code"/>
+                </xs:key>
+                <xs:key name="BIOG_INST_CODES_PrimaryKey_0">
+                    <xs:selector xpath="BIOG_INST_CODES/row"/>
+                    <xs:field xpath="c_bi_role_code"/>
+                </xs:key>
+                <xs:unique name="BIOG_INST_DATA_sqlite_autoindex_BIOG_INST_DATA_1">
+                    <xs:selector xpath="BIOG_INST_DATA/row"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_inst_name_code"/>
+                    <xs:field xpath="c_inst_code"/>
+                    <xs:field xpath="c_bi_role_code"/>
+                </xs:unique>
+                <xs:key name="BIOG_MAIN_PrimaryKey_0">
+                    <xs:selector xpath="BIOG_MAIN/row"/>
+                    <xs:field xpath="c_personid"/>
+                </xs:key>
+                <xs:unique name="BIOG_SOURCE_DATA_sqlite_autoindex_BIOG_SOURCE_DATA_1">
+                    <xs:selector xpath="BIOG_SOURCE_DATA/row"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_textid"/>
+                    <xs:field xpath="c_pages"/>
+                </xs:unique>
+                <xs:key name="CHORONYM_CODES_PrimaryKey_0">
+                    <xs:selector xpath="CHORONYM_CODES/row"/>
+                    <xs:field xpath="c_choronym_code"/>
+                </xs:key>
+                <xs:key name="COUNTRY_CODES_PrimaryKey_0">
+                    <xs:selector xpath="COUNTRY_CODES/row"/>
+                    <xs:field xpath="c_country_code"/>
+                </xs:key>
+                <xs:key name="DATABASE_LINK_CODES_PrimaryKey_0">
+                    <xs:selector xpath="DATABASE_LINK_CODES/row"/>
+                    <xs:field xpath="c_db_id"/>
+                </xs:key>
+                <xs:unique name="DATABASE_LINK_DATA_sqlite_autoindex_DATABASE_LINK_DATA_1">
+                    <xs:selector xpath="DATABASE_LINK_DATA/row"/>
+                    <xs:field xpath="c_person_id"/>
+                    <xs:field xpath="c_db_id"/>
+                    <xs:field xpath="c_db_sys_id"/>
+                </xs:unique>
+                <xs:key name="DYNASTIES_PrimaryKey_0">
+                    <xs:selector xpath="DYNASTIES/row"/>
+                    <xs:field xpath="c_dy"/>
+                </xs:key>
+                <xs:unique name="ENTRY_CODE_TYPE_REL_sqlite_autoindex_ENTRY_CODE_TYPE_REL_1">
+                    <xs:selector xpath="ENTRY_CODE_TYPE_REL/row"/>
+                    <xs:field xpath="c_entry_code"/>
+                    <xs:field xpath="c_entry_type"/>
+                </xs:unique>
+                <xs:key name="ENTRY_CODES_PrimaryKey_0">
+                    <xs:selector xpath="ENTRY_CODES/row"/>
+                    <xs:field xpath="c_entry_code"/>
+                </xs:key>
+                <xs:unique name="ENTRY_DATA_sqlite_autoindex_ENTRY_DATA_1">
+                    <xs:selector xpath="ENTRY_DATA/row"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_entry_code"/>
+                    <xs:field xpath="c_sequence"/>
+                    <xs:field xpath="c_kin_code"/>
+                    <xs:field xpath="c_kin_id"/>
+                    <xs:field xpath="c_assoc_code"/>
+                    <xs:field xpath="c_assoc_id"/>
+                    <xs:field xpath="c_year"/>
+                    <xs:field xpath="c_inst_code"/>
+                    <xs:field xpath="c_inst_name_code"/>
+                </xs:unique>
+                <xs:unique name="ENTRY_TYPES_sqlite_autoindex_ENTRY_TYPES_1">
+                    <xs:selector xpath="ENTRY_TYPES/row"/>
+                    <xs:field xpath="c_entry_type"/>
+                </xs:unique>
+                <xs:key name="ETHNICITY_TRIBE_CODES_PrimaryKey_0">
+                    <xs:selector xpath="ETHNICITY_TRIBE_CODES/row"/>
+                    <xs:field xpath="c_ethnicity_code"/>
+                </xs:key>
+                <xs:unique name="ETHNICITY_TRIBE_CODES_ETHNICITY_TRIBE_CODES_ethnicity_tree">
+                    <xs:selector xpath="ETHNICITY_TRIBE_CODES/row"/>
+                    <xs:field xpath="c_group_code"/>
+                    <xs:field xpath="c_subgroup_code"/>
+                    <xs:field xpath="c_altname_code"/>
+                </xs:unique>
+                <xs:key name="EVENT_CODES_PrimaryKey_0">
+                    <xs:selector xpath="EVENT_CODES/row"/>
+                    <xs:field xpath="c_event_code"/>
+                </xs:key>
+                <xs:unique name="EVENTS_ADDR_sqlite_autoindex_EVENTS_ADDR_1">
+                    <xs:selector xpath="EVENTS_ADDR/row"/>
+                    <xs:field xpath="c_event_record_id"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_addr_id"/>
+                </xs:unique>
+                <xs:key name="EXTANT_CODES_PrimaryKey_0">
+                    <xs:selector xpath="EXTANT_CODES/row"/>
+                    <xs:field xpath="c_extant_code"/>
+                </xs:key>
+                <xs:key name="FIX_AUTHORS_PrimaryKey_0">
+                    <xs:selector xpath="FIX_AUTHORS/row"/>
+                    <xs:field xpath="c_textid"/>
+                </xs:key>
+                <xs:unique name="FormLabels_sqlite_autoindex_FormLabels_1">
+                    <xs:selector xpath="FormLabels/row"/>
+                    <xs:field xpath="c_form"/>
+                    <xs:field xpath="c_label_id"/>
+                </xs:unique>
+                <xs:key name="GANZHI_CODES_PrimaryKey_0">
+                    <xs:selector xpath="GANZHI_CODES/row"/>
+                    <xs:field xpath="c_ganzhi_code"/>
+                </xs:key>
+                <xs:key name="HOUSEHOLD_STATUS_CODES_PrimaryKey_0">
+                    <xs:selector xpath="HOUSEHOLD_STATUS_CODES/row"/>
+                    <xs:field xpath="c_household_status_code"/>
+                </xs:key>
+                <xs:unique name="KIN_DATA_sqlite_autoindex_KIN_DATA_1">
+                    <xs:selector xpath="KIN_DATA/row"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_kin_id"/>
+                    <xs:field xpath="c_kin_code"/>
+                </xs:unique>
+                <xs:unique name="KIN_Mourning_sqlite_autoindex_KIN_Mourning_1">
+                    <xs:selector xpath="KIN_Mourning/row"/>
+                    <xs:field xpath="c_kinrel"/>
+                </xs:unique>
+                <xs:key name="KINSHIP_CODES_PrimaryKey_0">
+                    <xs:selector xpath="KINSHIP_CODES/row"/>
+                    <xs:field xpath="c_kincode"/>
+                </xs:key>
+                <xs:key name="LITERARYGENRE_CODES_PrimaryKey_0">
+                    <xs:selector xpath="LITERARYGENRE_CODES/row"/>
+                    <xs:field xpath="c_lit_genre_code"/>
+                </xs:key>
+                <xs:key name="MEASURE_CODES_PrimaryKey_0">
+                    <xs:selector xpath="MEASURE_CODES/row"/>
+                    <xs:field xpath="c_measure_code"/>
+                </xs:key>
+                <xs:key name="NIAN_HAO_PrimaryKey_0">
+                    <xs:selector xpath="NIAN_HAO/row"/>
+                    <xs:field xpath="c_nianhao_id"/>
+                </xs:key>
+                <xs:key name="OCCASION_CODES_PrimaryKey_0">
+                    <xs:selector xpath="OCCASION_CODES/row"/>
+                    <xs:field xpath="c_occasion_code"/>
+                </xs:key>
+                <xs:key name="OFFICE_CATEGORIES_PrimaryKey_0">
+                    <xs:selector xpath="OFFICE_CATEGORIES/row"/>
+                    <xs:field xpath="c_office_category_id"/>
+                </xs:key>
+                <xs:unique name="OFFICE_CODE_TYPE_REL_sqlite_autoindex_OFFICE_CODE_TYPE_REL_1">
+                    <xs:selector xpath="OFFICE_CODE_TYPE_REL/row"/>
+                    <xs:field xpath="c_office_id"/>
+                    <xs:field xpath="c_office_tree_id"/>
+                </xs:unique>
+                <xs:key name="OFFICE_CODES_PrimaryKey_0">
+                    <xs:selector xpath="OFFICE_CODES/row"/>
+                    <xs:field xpath="c_office_id"/>
+                </xs:key>
+                <xs:unique name="OFFICE_TYPE_TREE_sqlite_autoindex_OFFICE_TYPE_TREE_1">
+                    <xs:selector xpath="OFFICE_TYPE_TREE/row"/>
+                    <xs:field xpath="c_office_type_node_id"/>
+                </xs:unique>
+                <xs:key name="PARENTAL_STATUS_CODES_PrimaryKey_0">
+                    <xs:selector xpath="PARENTAL_STATUS_CODES/row"/>
+                    <xs:field xpath="c_parental_status_code"/>
+                </xs:key>
+                <xs:unique name="PLACE_CODES_sqlite_autoindex_PLACE_CODES_1">
+                    <xs:selector xpath="PLACE_CODES/row"/>
+                    <xs:field xpath="c_place_id"/>
+                </xs:unique>
+                <xs:key name="POSSESSION_ACT_CODES_PrimaryKey_0">
+                    <xs:selector xpath="POSSESSION_ACT_CODES/row"/>
+                    <xs:field xpath="c_possession_act_code"/>
+                </xs:key>
+                <xs:unique name="POSSESSION_ADDR_sqlite_autoindex_POSSESSION_ADDR_1">
+                    <xs:selector xpath="POSSESSION_ADDR/row"/>
+                    <xs:field xpath="c_possession_record_id"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_addr_id"/>
+                </xs:unique>
+                <xs:key name="POSSESSION_DATA_PrimaryKey_0">
+                    <xs:selector xpath="POSSESSION_DATA/row"/>
+                    <xs:field xpath="c_possession_record_id"/>
+                </xs:key>
+                <xs:unique name="POSTED_TO_ADDR_DATA_sqlite_autoindex_POSTED_TO_ADDR_DATA_1">
+                    <xs:selector xpath="POSTED_TO_ADDR_DATA/row"/>
+                    <xs:field xpath="c_posting_id"/>
+                    <xs:field xpath="c_addr_id"/>
+                    <xs:field xpath="c_office_id"/>
+                </xs:unique>
+                <xs:unique name="POSTED_TO_OFFICE_DATA_sqlite_autoindex_POSTED_TO_OFFICE_DATA_1">
+                    <xs:selector xpath="POSTED_TO_OFFICE_DATA/row"/>
+                    <xs:field xpath="c_office_id"/>
+                    <xs:field xpath="c_posting_id"/>
+                </xs:unique>
+                <xs:key name="POSTING_DATA_PrimaryKey_0">
+                    <xs:selector xpath="POSTING_DATA/row"/>
+                    <xs:field xpath="c_posting_id"/>
+                </xs:key>
+                <xs:key name="SCHOLARLYTOPIC_CODES_PrimaryKey_0">
+                    <xs:selector xpath="SCHOLARLYTOPIC_CODES/row"/>
+                    <xs:field xpath="c_topic_code"/>
+                </xs:key>
+                <xs:unique name="SOCIAL_INSTITUTION_ADDR_sqlite_autoindex_SOCIAL_INSTITUTION_ADDR_1">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_ADDR/row"/>
+                    <xs:field xpath="c_inst_name_code"/>
+                    <xs:field xpath="c_inst_code"/>
+                    <xs:field xpath="c_inst_addr_type_code"/>
+                    <xs:field xpath="inst_x005F_xcoord"/>
+                    <xs:field xpath="inst_ycoord"/>
+                    <xs:field xpath="c_inst_addr_id"/>
+                </xs:unique>
+                <xs:key name="SOCIAL_INSTITUTION_ADDR_TYPES_PrimaryKey_0">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_ADDR_TYPES/row"/>
+                    <xs:field xpath="c_inst_addr_type_code"/>
+                </xs:key>
+                <xs:key name="SOCIAL_INSTITUTION_ALTNAME_CODES_PrimaryKey_0">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_ALTNAME_CODES/row"/>
+                    <xs:field xpath="c_inst_altname_type"/>
+                </xs:key>
+                <xs:unique name="SOCIAL_INSTITUTION_ALTNAME_DATA_sqlite_autoindex_SOCIAL_INSTITUTION_ALTNAME_DATA_1">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_ALTNAME_DATA/row"/>
+                    <xs:field xpath="c_inst_name_code"/>
+                    <xs:field xpath="c_inst_code"/>
+                    <xs:field xpath="c_inst_altname_type"/>
+                    <xs:field xpath="c_inst_altname_hz"/>
+                </xs:unique>
+                <xs:unique name="SOCIAL_INSTITUTION_CODES_sqlite_autoindex_SOCIAL_INSTITUTION_CODES_1">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_CODES/row"/>
+                    <xs:field xpath="c_inst_name_code"/>
+                    <xs:field xpath="c_inst_code"/>
+                </xs:unique>
+                <xs:unique name="SOCIAL_INSTITUTION_CODES_CONVERSION_sqlite_autoindex_SOCIAL_INSTITUTION_CODES_CONVERSION_1">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_CODES_CONVERSION/row"/>
+                    <xs:field xpath="c_inst_name_code"/>
+                    <xs:field xpath="c_inst_code"/>
+                </xs:unique>
+                <xs:key name="SOCIAL_INSTITUTION_NAME_CODES_PrimaryKey_0">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_NAME_CODES/row"/>
+                    <xs:field xpath="c_inst_name_code"/>
+                </xs:key>
+                <xs:key name="SOCIAL_INSTITUTION_TYPES_PrimaryKey_0">
+                    <xs:selector xpath="SOCIAL_INSTITUTION_TYPES/row"/>
+                    <xs:field xpath="c_inst_type_code"/>
+                </xs:key>
+                <xs:unique name="STATUS_CODE_TYPE_REL_sqlite_autoindex_STATUS_CODE_TYPE_REL_1">
+                    <xs:selector xpath="STATUS_CODE_TYPE_REL/row"/>
+                    <xs:field xpath="c_status_code"/>
+                    <xs:field xpath="c_status_type_code"/>
+                </xs:unique>
+                <xs:key name="STATUS_CODES_PrimaryKey_0">
+                    <xs:selector xpath="STATUS_CODES/row"/>
+                    <xs:field xpath="c_status_code"/>
+                </xs:key>
+                <xs:unique name="STATUS_DATA_sqlite_autoindex_STATUS_DATA_1">
+                    <xs:selector xpath="STATUS_DATA/row"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_sequence"/>
+                    <xs:field xpath="c_status_code"/>
+                </xs:unique>
+                <xs:unique name="STATUS_TYPES_sqlite_autoindex_STATUS_TYPES_1">
+                    <xs:selector xpath="STATUS_TYPES/row"/>
+                    <xs:field xpath="c_status_type_code"/>
+                </xs:unique>
+                <xs:unique name="TablesFields_sqlite_autoindex_TablesFields_1">
+                    <xs:selector xpath="TablesFields/row"/>
+                    <xs:field xpath="AccessTblNm"/>
+                    <xs:field xpath="AccessFldNm"/>
+                </xs:unique>
+                <xs:unique name="TablesFieldsChanges_sqlite_autoindex_TablesFieldsChanges_1">
+                    <xs:selector xpath="TablesFieldsChanges/row"/>
+                    <xs:field xpath="TableName"/>
+                    <xs:field xpath="FieldName"/>
+                    <xs:field xpath="Change"/>
+                </xs:unique>
+                <xs:unique name="TEXT_BIBLCAT_CODE_TYPE_REL_sqlite_autoindex_TEXT_BIBLCAT_CODE_TYPE_REL_1">
+                    <xs:selector xpath="TEXT_BIBLCAT_CODE_TYPE_REL/row"/>
+                    <xs:field xpath="c_text_cat_code"/>
+                    <xs:field xpath="c_text_cat_type_id"/>
+                </xs:unique>
+                <xs:key name="TEXT_BIBLCAT_CODES_PrimaryKey_0">
+                    <xs:selector xpath="TEXT_BIBLCAT_CODES/row"/>
+                    <xs:field xpath="c_text_cat_code"/>
+                </xs:key>
+                <xs:unique name="TEXT_BIBLCAT_TYPES_sqlite_autoindex_TEXT_BIBLCAT_TYPES_1">
+                    <xs:selector xpath="TEXT_BIBLCAT_TYPES/row"/>
+                    <xs:field xpath="c_text_cat_type_id"/>
+                </xs:unique>
+                <xs:unique name="TEXT_BIBLCAT_TYPES_2_sqlite_autoindex_TEXT_BIBLCAT_TYPES_2_1">
+                    <xs:selector xpath="TEXT_BIBLCAT_TYPES_2/row"/>
+                    <xs:field xpath="c_text_cat_type_id"/>
+                </xs:unique>
+                <xs:key name="TEXT_CODES_PrimaryKey_0">
+                    <xs:selector xpath="TEXT_CODES/row"/>
+                    <xs:field xpath="c_textid"/>
+                </xs:key>
+                <xs:unique name="TEXT_DATA_sqlite_autoindex_TEXT_DATA_1">
+                    <xs:selector xpath="TEXT_DATA/row"/>
+                    <xs:field xpath="c_textid"/>
+                    <xs:field xpath="c_personid"/>
+                    <xs:field xpath="c_role_id"/>
+                </xs:unique>
+                <xs:key name="TEXT_ROLE_CODES_PrimaryKey_0">
+                    <xs:selector xpath="TEXT_ROLE_CODES/row"/>
+                    <xs:field xpath="c_role_id"/>
+                </xs:key>
+                <xs:unique name="TEXT_TYPE_sqlite_autoindex_TEXT_TYPE_1">
+                    <xs:selector xpath="TEXT_TYPE/row"/>
+                    <xs:field xpath="c_text_type_code"/>
+                </xs:unique>
+                <xs:key name="YEAR_RANGE_CODES_PrimaryKey_0">
+                    <xs:selector xpath="YEAR_RANGE_CODES/row"/>
+                    <xs:field xpath="c_range_code"/>
+                </xs:key>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:element name="Catalog" type="CatalogType_Catalog"/>
+</xs:schema>
