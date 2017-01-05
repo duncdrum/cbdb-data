@@ -770,6 +770,50 @@ return
 };
 
 declare function local:posting ($posting as node()*) as node()* {
+(:This function expects POSTING_DATA
+
+Here we collect the information about an individuals 
+particular post, the date of its tenure, the kind off appointment etc.
+:)
+
+(:
+ [tts_sysno] INTEGER,                           d
+ [c_personid] INTEGER,                          x
+ [c_office_id] INTEGER, 
+ [c_posting_id] INTEGER, 
+ [c_posting_id_old] INTEGER, 
+ [c_sequence] INTEGER, 
+ [c_firstyear] INTEGER, 
+ [c_fy_nh_code] INTEGER, 
+ [c_fy_nh_year] INTEGER, 
+ [c_fy_range] INTEGER, 
+ [c_lastyear] INTEGER, 
+ [c_ly_nh_code] INTEGER, 
+ [c_ly_nh_year] INTEGER, 
+ [c_ly_range] INTEGER, 
+ [c_appt_type_code] INTEGER, 
+ [c_assume_office_code] INTEGER, 
+ [c_inst_code] INTEGER, 
+ [c_inst_name_code] INTEGER, 
+ [c_source] INTEGER, 
+ [c_pages] CHAR(255), 
+ [c_notes] CHAR, 
+ [c_office_id_backup] INTEGER, 
+ [c_office_category_id] INTEGER, 
+ [c_fy_intercalary] BOOLEAN NOT NULL, 
+ [c_fy_month] INTEGER, 
+ [c_ly_intercalary] BOOLEAN NOT NULL, 
+ [c_ly_month] INTEGER, 
+ [c_fy_day] INTEGER, 
+ [c_ly_day] INTEGER, 
+ [c_fy_day_gz] INTEGER, 
+ [c_ly_day_gz] INTEGER, 
+ [c_dy] INTEGER, 
+ [c_created_by] CHAR(255), 
+ [c_created_date] CHAR(255), 
+ [c_modified_by] CHAR(255), 
+ [c_modified_date] CHAR(255), 
+:)
 
 for $post in $POSTED_TO_OFFICE_DATA//c_personid[. =$posting]/../c_posting_id
 
@@ -809,47 +853,15 @@ return
 
 declare function local:office_title ($offices as node()*) as node()* {
 
-(:This screams for its own taxonomy to be included via pointers as rolename via key ID
-dates are missing need rewrite
+(:The offices and their location in the bureaucratic hierarchy are in tei:taxonomy[xml:id ='office'].
+These are created by officeA.xql and officeB.xql. 
+This function expects a c_personid and returns the title of a given office as tei:roleName with  @ref
+pointing to the corresponding category in the header.
+  
+<socecStatus scheme="#office" code=""/>  
 :)
-(:
- [tts_sysno] INTEGER,                           d
- [c_personid] INTEGER,                          x
- [c_office_id] INTEGER, 
- [c_posting_id] INTEGER, 
- [c_posting_id_old] INTEGER, 
- [c_sequence] INTEGER, 
- [c_firstyear] INTEGER, 
- [c_fy_nh_code] INTEGER, 
- [c_fy_nh_year] INTEGER, 
- [c_fy_range] INTEGER, 
- [c_lastyear] INTEGER, 
- [c_ly_nh_code] INTEGER, 
- [c_ly_nh_year] INTEGER, 
- [c_ly_range] INTEGER, 
- [c_appt_type_code] INTEGER, 
- [c_assume_office_code] INTEGER, 
- [c_inst_code] INTEGER, 
- [c_inst_name_code] INTEGER, 
- [c_source] INTEGER, 
- [c_pages] CHAR(255), 
- [c_notes] CHAR, 
- [c_office_id_backup] INTEGER, 
- [c_office_category_id] INTEGER, 
- [c_fy_intercalary] BOOLEAN NOT NULL, 
- [c_fy_month] INTEGER, 
- [c_ly_intercalary] BOOLEAN NOT NULL, 
- [c_ly_month] INTEGER, 
- [c_fy_day] INTEGER, 
- [c_ly_day] INTEGER, 
- [c_fy_day_gz] INTEGER, 
- [c_ly_day_gz] INTEGER, 
- [c_dy] INTEGER, 
- [c_created_by] CHAR(255), 
- [c_created_date] CHAR(255), 
- [c_modified_by] CHAR(255), 
- [c_modified_date] CHAR(255), 
-:)
+
+
 
 for $ppl in $POSTED_TO_OFFICE_DATA//c_personid[. = $offices]/../c_office_id
 let $cat := $OFFICE_CATEGORIES//c_office_category_id[. = $ppl/../c_office_category_id]
@@ -964,6 +976,10 @@ declare function local:org-add ($person as node()*, $inst as node()*) as node()*
 
 (: and here again:)
 declare function local:biog ($persons as node()*) as node()* {
+
+(: TODO
+maybe put c_source as @source on person?
+:)
 
 (: 
 [tts_sysno] INTEGER,                            x

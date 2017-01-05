@@ -55,8 +55,6 @@ These are then inserted intointo the right postions in the office-tree via $OFFI
 (:Wow this is a mess. TODO
 - OFFICE_CATEGORIES is linked with POSTED_TO_OFFICE_DATA so either it becomes tei:event/@type, 
 or if gets its own taxonomy.
-- $OFFICE_CODES//c_category_1, _2, _3, _4 no clue what these are supposed to be, spot checks show them to be 
-    part of the tree id?
 - $OFFICE_CODE_TYPE_REl//c_office_type_type_code ... WTF?
 - clean up {A1D7} from $OFFICE_CODES//c_office_trans
 :)
@@ -85,9 +83,6 @@ for $office in $offices[. > 0]
 
 let $type-rel := $OFFICE_CODE_TYPE_REL//c_office_id[. = $office]
 let $type := $OFFICE_TYPE_TREE//c_office_type_node_id[. = $type-rel/../c_office_tree_id]
-
-
-
 
 return
     element category{ attribute xml:id {concat('OFF', $office/text())},
