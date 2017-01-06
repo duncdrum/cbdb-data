@@ -592,6 +592,8 @@ whats up with $assoc_codes//c_assoc_role_type ?:)
 
 (:STATUS /STATE:)
 declare function local:status ($achievers as node()*) as node()* {
+
+
 (:the following lines can be added ones status types are linked to status codes to add a label child element to the language specific desc elements
  : 
  : let $statt := doc("/db/apps/cbdb/source/CBDB/code/STATUS_TYPES.xml")
@@ -611,7 +613,8 @@ let $last := $status/../c_lastyear
 return 
     if ($status/../c_status_code[. < 1]) 
     then ()
-    else ( element state { if ($first/text() and $last/text() != 0)
+    else ( element state { attribute type {'status'},
+          if ($first/text() and $last/text() != 0)
           then ( attribute from {local:isodate($first/text())}, 
                 attribute to {local:isodate($last/text())})
           else if ($first/text() != 0)
@@ -671,6 +674,7 @@ use @role to "link to status of a place, or occupation of a person"!
 @sortKey = sequence 
 ? = attempts
 - @ana for s.th.
+- aprental status codes
 
 entries should become a nested taxonomy to be @ref'ed
 make sponsors into their own note element? @role?
@@ -700,11 +704,11 @@ let $type :=  $ENTRY_TYPES//c_entry_type[. = $type-rel/../c_entry_type]
  [c_nianhao_id] INTEGER,                       d
  [c_entry_nh_year] INTEGER,                    d
  [c_entry_range] INTEGER,                      d
- [c_inst_code] INTEGER NOT NULL,              !
- [c_inst_name_code] INTEGER NOT NULL,        !
+ [c_inst_code] INTEGER NOT NULL,              !!!
+ [c_inst_name_code] INTEGER NOT NULL,        !!!
  [c_exam_field] CHAR(255),                     x
  [c_addr_id] INTEGER,                           x
- [c_parental_status] INTEGER,                 !
+ [c_parental_status] INTEGER,                 !!!
  [c_attempt_count] INTEGER,                    x
  [c_source] INTEGER,                            x
  [c_pages] CHAR(255),                           d
@@ -769,38 +773,42 @@ return
     }               
 };
 
-declare function local:posting ($posting as node()*) as node()* {
-(:This function expects POSTING_DATA
+declare function local:new-post ($appointees as node()*) as node()* {
 
-Here we collect the information about an individuals 
-particular post, the date of its tenure, the kind off appointment etc.
+(: we need to ascertian a few things about dates and POST_DATA here:
+are there any instances where one conatins data that is not isodate or in POSTED_TO_OFFICE_DATA? :)
+
+(: TODO:
+- Turn postings into tei:event
+- c_office_category needs to go somewhere but where?
+- check zh and western dates to make sure no dates are missing
 :)
 
 (:
  [tts_sysno] INTEGER,                           d
  [c_personid] INTEGER,                          x
- [c_office_id] INTEGER, 
- [c_posting_id] INTEGER, 
- [c_posting_id_old] INTEGER, 
- [c_sequence] INTEGER, 
- [c_firstyear] INTEGER, 
+ [c_office_id] INTEGER,                         x
+ [c_posting_id] INTEGER,                        x
+ [c_posting_id_old] INTEGER,                   d
+ [c_sequence] INTEGER,                          x
+ [c_firstyear] INTEGER,                         x
  [c_fy_nh_code] INTEGER, 
  [c_fy_nh_year] INTEGER, 
  [c_fy_range] INTEGER, 
- [c_lastyear] INTEGER, 
+ [c_lastyear] INTEGER,                          x
  [c_ly_nh_code] INTEGER, 
  [c_ly_nh_year] INTEGER, 
  [c_ly_range] INTEGER, 
- [c_appt_type_code] INTEGER, 
- [c_assume_office_code] INTEGER, 
- [c_inst_code] INTEGER, 
- [c_inst_name_code] INTEGER, 
- [c_source] INTEGER, 
- [c_pages] CHAR(255), 
- [c_notes] CHAR, 
- [c_office_id_backup] INTEGER, 
- [c_office_category_id] INTEGER, 
- [c_fy_intercalary] BOOLEAN NOT NULL, 
+ [c_appt_type_code] INTEGER,                   x
+ [c_assume_office_code] INTEGER,              x
+ [c_inst_code] INTEGER,                         !
+ [c_inst_name_code] INTEGER,                    !
+ [c_source] INTEGER,                             x
+ [c_pages] CHAR(255),                            d
+ [c_notes] CHAR,                                  x
+ [c_office_id_backup] INTEGER,                  d
+ [c_office_category_id] INTEGER,               x
+ [c_fy_intercalary] BOOLEAN NOT NULL,           
  [c_fy_month] INTEGER, 
  [c_ly_intercalary] BOOLEAN NOT NULL, 
  [c_ly_month] INTEGER, 
@@ -809,100 +817,78 @@ particular post, the date of its tenure, the kind off appointment etc.
  [c_fy_day_gz] INTEGER, 
  [c_ly_day_gz] INTEGER, 
  [c_dy] INTEGER, 
- [c_created_by] CHAR(255), 
- [c_created_date] CHAR(255), 
- [c_modified_by] CHAR(255), 
- [c_modified_date] CHAR(255), 
+ [c_created_by] CHAR(255),                      d
+ [c_created_date] CHAR(255),                    d
+ [c_modified_by] CHAR(255),                     d
+ [c_modified_date] CHAR(255),                   d
 :)
 
-for $post in $POSTED_TO_OFFICE_DATA//c_personid[. =$posting]/../c_posting_id
 
+for $post in $POSTED_TO_OFFICE_DATA//c_personid[. = $appointees]/../c_posting_id
+let $addr := $POSTED_TO_ADDR_DATA//c_posting_id[. = $post]
+let $cat := $OFFICE_CATEGORIES//c_office_category_id[. = $post/../c_office_category_id]
+let $appt := $APPOINTMENT_TYPE_CODES//c_appt_type_code[. = $post/../c_appt_type_code]
+let $assu := $ASSUME_OFFICE_CODES//c_assume_office_code[. =$post/../c_assume_office_code]
+
+order by $post/../c_sequence
 return
-    <state notBefore = "{local:isodate($post/../c_firstyear/text())}" 
-            notAfter = "{local:isodate($post/../c_lastyear/text())}"
-            type = "posting" 
-            sortKey = "{$post/../c_sequence/text()}"
-            key ="{$post/../c_office_category_id/text()}">
-        <label>posting</label>
-        {
-        if ($post/../c_notes[. != '']) 
-        then (<note>{$post/../c_notes/text()}</note>)
-        else()
-        }
-        {
-        if ($post/../c_appt_type_code[. > -1] or $post/../c_assume_office_code[. > -1]) 
-        then (<desc>
-                <desc xml:lang ="en">{$APPOINTMENT_TYPE_CODES//c_appt_type_code[. = $post/../c_appt_type_code]/../c_appt_type_desc/text()}
-                <label>{$ASSUME_OFFICE_CODES//c_assume_office_code[. = $post/../c_assume_office_code]/../c_assume_office_desc/text()}</label>
-            </desc>
-            <desc xml:lang="zh-Hant">{$APPOINTMENT_TYPE_CODES//c_appt_type_code[. = $post/../c_appt_type_code]/../c_appt_type_desc_chn/text()}
-                <label>{$ASSUME_OFFICE_CODES//c_assume_office_code[. = $post/../c_assume_office_code]/../c_assume_office_desc_chn/text()}</label>
-            </desc>
-            </desc>)
-        else()
-        }
-        {if ($POSTED_TO_ADDR_DATA//c_posting_id[. = $post]/../c_addr_id[. < 1]) 
+    element socecStatus{ attribute scheme {'#office'}, 
+        attribute code {concat('#OFF', $post/../c_office_id)},
+        element state {
+            attribute type {'posting'},
+            attribute n {$post/text()},
+            if (empty($post/../c_sequence) or $post/../c_sequence = 0)
+            then ()
+            else (attribute key {$post/../c_sequence/text()}),        
+            if (empty($post/../c_firstyear) or $post/../c_firstyear = 0) 
+            then ()
+            else (attribute notBefore {local:isodate($post/../c_firstyear/text())}),
+            if (empty($post/../c_lastyear) or $post/../c_lastyear = 0) 
+            then ()
+            else (attribute notAfter {local:isodate($post/../c_lastyear/text())}),
+            if (empty($post/../c_source) or $post/../c_source = 0)
+            then ()
+            else (attribute source {concat('#BIB', $post/../c_source/text())}),        
+                           
+           if (empty($post/../c_appt_type_code))
+           then ()
+           else (element desc { element label {'appointment'},
+            element desc {attribute xml:lang {'zh-Hant'},
+                $appt/../c_appt_type_desc_chn/text()}, 
+            if (empty($appt/../c_appt_type_desc))
+            then ()
+            else (element desc {attribute xml:lang {'en'}, 
+                $appt/../c_appt_type_desc/text()})
+          }),
+          
+          if (empty($post/../c_assume_office_code))
+          then ()
+          else (element desc {element label {'assumes'},
+            element desc {attribute xml:lang {'zh-Hant'},
+                $assu/../c_assume_office_desc_chn/text()}, 
+            element desc {attribute xml:lang {'en'}, 
+                $assu/../c_assume_office_desc/text()}
+          }),
+          
+          if (empty($post/../c_notes))
+          then ()
+          else (element note {$post/../c_notes/text()})
+        },
+        if ($cat[. < 1])
         then ()
-        else (<placeName ref="{concat('#PL', $POSTED_TO_ADDR_DATA//c_posting_id[. = $post]/../c_addr_id/text())}"/>)
-        }    
-        {if ($POSTED_TO_OFFICE_DATA//c_personid[. = $nodes]/../c_inst_code[. <1]) then()
-        else(<state>{local:org-add($ppl, $POSTED_TO_OFFICE_DATA)}</state>)
-        }
-    </state>
-};
-
-declare function local:office_title ($offices as node()*) as node()* {
-
-(:The offices and their location in the bureaucratic hierarchy are in tei:taxonomy[xml:id ='office'].
-These are created by officeA.xql and officeB.xql. 
-This function expects a c_personid and returns the title of a given office as tei:roleName with  @ref
-pointing to the corresponding category in the header.
-  
-<socecStatus scheme="#office" code=""/>  
-:)
-
-
-
-for $ppl in $POSTED_TO_OFFICE_DATA//c_personid[. = $offices]/../c_office_id
-let $cat := $OFFICE_CATEGORIES//c_office_category_id[. = $ppl/../c_office_category_id]
-
-let $type := $OFFICE_TYPE_TREE//c_office_type_node_id[. = $OFFICE_CODE_TYPE_REL//c_office_id[. =$ppl]/../c_office_tree_id]
-let $code := $OFFICE_CODES//c_office_id[. = $ppl]
-
-return <roleName type ="office"> 
-        <roleName xml:lang="en" key="{$type/text()}">
-        {$code/../c_office_trans/text()}
-            <trait>
-                <desc>{$cat/../c_category_desc/text()}</desc>
-                <label>{$type/../c_office_type_desc/text()}</label>
-            </trait>
-        </roleName>
-        <roleName xml:lang="zh-alac97" key="{$type/text()}">
-        {$code/../c_office_pinyin/text()}
-            {if($code/../c_office_pinyin_alt[. !='']) 
-            then(<roleName type="alias">{$code/../c_office_pinyin_alt/text()}</roleName>)
-            else()
-            }
-        </roleName>            
-        <roleName xml:lang="zh-Hant" key="{$type/text()}">
-        {$code/../c_office_chn/text()}
-            <trait>
-                <desc>{$cat/../c_category_desc_chn/text()}</desc>
-                <label>{$type/../c_office_type_desc_chn/text()}</label>
-            </trait>
-                {if($code/../c_office_chn_alt[. != '']) 
-                then(<roleName type="alias">{$code/../c_office_chn_alt/text()}</roleName>)
-                else()
-                }
-        </roleName>
-    {if ($cat/../c_notes[.!= '']) 
-    then (<note>{$cat/../c_notes/text()}</note>)
-    else()
+        else (element state { attribute type {'office-type'},
+            attribute n {$cat/text()},
+            element desc {attribute xml:lang {'zh-Hant'},
+                $cat/../c_category_desc_chn/text()},
+            element desc {attribute xml:lang {'en'},
+                $cat/../c_category_desc/text()},
+                
+        if (empty($cat/../c_notes)) 
+        then ()
+        else(<note>{$cat/../c_notes/text()}</note>)        
+        })
     }
-    </roleName>
 };
-
-(:end here:)
 
 declare function local:posses ($possessions as node()*) as node()* {
 (:five entries (18332, 13550, 45279, 45518, 3874)  affair good to go:)
@@ -1223,19 +1209,19 @@ return
                      }
                   </affiliation>)
             }
-        {if (empty($status) and empty($post)) 
+        {if (empty($status)) 
         then ()
         else(<socecStatus>
             {if ($status) 
             then(local:status($person))
-            else()
-            }
-            {if ($post) 
-            then (local:office_title($person))
-            else()
-            }
-        </socecStatus>)
+            else()}
+            </socecStatus>)
+         }           
+        {if (empty($post))
+        then ()
+        else (local:new-post($person))                
         }
+        
         {if (empty($event) and empty($entry))
         then ()
         else (<listEvent>

@@ -56,7 +56,10 @@ return
         };
 
 
-declare function local:posting ($appointees as node()*) as node()* {
+declare function local:new-post ($appointees as node()*) as node()* {
+
+(: we need to ascertian a few things about dates and POST_DATA here:
+are there any instances where one conatins data that is not isodate or in POSTED_TO_OFFICE_DATA? :)
 
 (:
  [tts_sysno] INTEGER,                           d
