@@ -19,6 +19,8 @@ declare variable $TEXT_BIBLCAT_TYPES_2 := doc(concat($src, 'TEXT_BIBLCAT_TYPES_2
 declare variable $EXTANT_CODES := doc(concat($src, 'EXTANT_CODES.xml')); 
 declare variable $COUNTRY_CODES:= doc(concat($src, 'COUNTRY_CODES.xml')); 
 
+declare variable $SCHOLARLYTOPIC_CODES:= doc(concat($src, 'SCHOLARLYTOPIC_CODES.xml')); 
+
 declare variable $TEXT_CODES := doc(concat($src, 'TEXT_CODES.xml')); 
 declare variable $TEXT_DATA := doc(concat($src, 'TEXT_DATA.xml')); 
 declare variable $TEXT_ROLE_CODES := doc(concat($src, 'TEXT_ROLE_CODES.xml')); 

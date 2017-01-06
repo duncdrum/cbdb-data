@@ -54,7 +54,7 @@ declare function local:isodate ($string as xs:string?)  as xs:string* {
 declare function local:fix-admin-types($adminType as xs:string?)  as xs:string* {
 (:
 let $types := 
-    distinct-values(($ADDR_CODES//c_admin_type, $ADDRESSES//c_admin_type, $ADDR_CODES//c_admin_type))
+    distinct-values(($ADDR_CODES//c_admin_type, $ADDRESSES//c_admin_type))
     
 c_admin_type contains 225 (incl "unkown") distinct types which are not normalized.
 
