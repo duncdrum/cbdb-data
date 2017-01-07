@@ -34,6 +34,8 @@ declare function local:sqldate ($timestamp as xs:string?)  as xs:string* {
 concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
 };
 
+
+
 declare function local:create-mod-by ($created as node()*, $modified as node()*) as node()*{
 
 
@@ -146,8 +148,7 @@ return
         
         if (empty($org/../c_inst_begin_dy) and empty($org/../c_inst_end_dy) and empty($org/../c_inst_floruit_dy))
         then ()
-        else (element date { attribute calendar {'chinTrad'},
-            attribute period {'dynasty'},
+        else (element date { attribute datingMethod {'chinTrad'},            
             if (empty($org/../c_inst_begin_dy) or $org/../c_inst_begin_dy = 0)
             then ()
             else (attribute from-custom {concat('#D',$org/../c_inst_begin_dy/text())}),
@@ -161,7 +162,7 @@ return
         
         if (empty($org/../c_by_nianhao_code) and empty ($org/../c_ey_nianhao_code))
         then ()
-        else ( element date { attribute period {'reign'},
+        else ( element date { attribute datingMethod {'chinTrad'},
             if (empty($org/../c_by_nianhao_code) or $org/../c_by_nianhao_code = 0)
             then ()
             else (attribute from-custom {concat('#R',$org/../c_by_nianhao_code/text(), '-', 
