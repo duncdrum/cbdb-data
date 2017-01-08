@@ -157,7 +157,7 @@ return
             else (attribute to-custom {concat('#D',$org/../c_inst_end_dy/text())}),
             if (empty($org/../c_inst_floruit_dy) or $org/../c_inst_floruit_dy = 0)
             then ()
-            else (attribute datingPoint {concat('#D',$org/../c_inst_floruit_dy/text())})
+            else (attribute when-custom {concat('#D',$org/../c_inst_floruit_dy/text())})
         }),
         
         if (empty($org/../c_by_nianhao_code) and empty ($org/../c_ey_nianhao_code))
