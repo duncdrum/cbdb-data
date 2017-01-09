@@ -180,7 +180,7 @@ return
 
 declare function local:org ($institutions as node()*) as node()* {
 (:This function writes the org / orgName elements to be stored in listOrg.xml.
-altName tables are empty, ??
+altName tables, and address-type tables are empty!!
 :)
 
 (:TODO
@@ -204,7 +204,7 @@ altName tables are empty, ??
  [c_inst_end_year] INTEGER,                    x                  
  [c_ey_nianhao_code] INTEGER,                  x                 
  [c_ey_nianhao_year] INTEGER,                  x           
- [c_ey_year_range] INTEGER,                    d                  
+ [c_ey_year_range] INTEGER,                    x                  
  [c_inst_end_dy] INTEGER,                      x              
  [c_inst_last_known_year] INTEGER,           x
  [c_source] INTEGER,                           x
@@ -218,6 +218,9 @@ let $name := $SOCIAL_INSTITUTION_NAME_CODES//c_inst_name_code[. = $org/../c_inst
 let $type := $SOCIAL_INSTITUTION_TYPES//c_inst_type_code[. = $org/../c_inst_type_code]
 let $alt := $SOCIAL_INSTITUTION_ALTNAME_DATA//c_inst_code[. = $org]
 let $alt-type := $SOCIAL_INSTITUTION_ALTNAME_CODES//c_inst_altname_type[. = $alt/../c_inst_altname_type]
+
+let $addr := $SOCIAL_INSTITUTION_ADDR//c_inst_code[. = $org]
+let $addr-type := $SOCIAL_INSTITUTION_ADDR_TYPES//c_inst_addr_type[. = $addr/../c_inst_addr_type]
 
 return
     element org { attribute xml:id {concat('ORG', $org/text())},
@@ -292,7 +295,24 @@ return
                                     $DYNASTIES//c_dy[. = $org/../c_inst_floruit_dy/text()]/../c_dynasty_chn/text()})
                                 else ()    
 
-        },        
+        }, 
+        if (empty($addr) or $addr = 0)
+        then ()
+        else (element place {attribute sameAs {concat('#PL', $addr/text())}, 
+            if (empty($addr/../c_source) or $addr/../c_source = 0)
+            then ()
+            else (attribute source {concat('#BIB', $addr/../c_source/text())}), 
+            
+            if (empty($addr/../inst_xcoord) or $addr/../inst_xcoord = 0)
+            then ()
+            else (element location {
+                    element geo {concat($addr/../inst_xcoord/text(), ' ', $addr/../inst_ycoord/text())}
+                    }),            
+            
+            if (empty($addr/../c_notes) or $org/../c_notes/text() = $addr/../c_notes/text())
+            then ()
+            else (element note {$addr/../c_notes/text()})            
+            }),
         if (empty($org/../c_notes))
         then ()
         else (element note {$org/../c_notes/text()})   
@@ -304,6 +324,9 @@ let $test := $SOCIAL_INSTITUTION_CODES//c_inst_code[. > 0][. < 500]
 let $full := $SOCIAL_INSTITUTION_CODES//c_inst_code[. > 0]
 
 return
+(:    <listOrg>
+        {local:org($full)}
+    </listOrg> :)
 
 xmldb:store($target, 'listOrg.xml',
     <listOrg>
