@@ -20,6 +20,10 @@ declare variable $SOCIAL_INSTITUTION_CODES_CONVERSION:= doc(concat($src, 'SOCIAL
 declare variable $SOCIAL_INSTITUTION_NAME_CODES:= doc(concat($src, 'SOCIAL_INSTITUTION_NAME_CODES.xml')); 
 declare variable $SOCIAL_INSTITUTION_TYPES:= doc(concat($src, 'SOCIAL_INSTITUTION_TYPES.xml')); 
 
+declare variable $GANZHI_CODES:= doc(concat($src, 'GANZHI_CODES.xml')); 
+declare variable $NIAN_HAO:= doc(concat($src, 'NIAN_HAO.xml')); 
+declare variable $DYNASTIES:= doc(concat($src, 'DYNASTIES.xml')); 
+
 (:This function does what biographies does for persons for institutions.:)
 declare function local:isodate ($string as xs:string?)  as xs:string* {
 (:see calendar.xql:)
@@ -57,6 +61,122 @@ return
         
         };
 
+declare function local:custo-date-point (
+    $dynasty as node()*, 
+    $reign as node()*,
+    $year as xs:string*, 
+    $type as xs:string?) as node()*{
+
+(:This function takes chinese calendar date points ending in *_dy, *_gz, *_nh.
+It returns a single tei:date element using att.datable.custom. 
+
+The normalized format takes DYNASTY//c_sort which is specific to CBDB,  
+followed by the sequence of reigns determined by their position in cal_ZH.xml
+followed by the Year number.D(\d*)-R(\d*)-(\d*)
+:)
+
+(:TODO
+- getting to a somehwhat noramlized useful representation ofChinese Reign dates is tricky.
+    inconsinsten pinyin for Nianhao creates ambigous and ugly dates.
+- handle //c_dy[. = 0] stuff
+- add @period with #d42 #R123
+- find a way to prevent empty attributes more and better logic FTW
+- If only a dynasty is known lets hear it,
+the others are dropped since only a year or nianhao is of little information value. 
+:)
+
+let $cal-ZH := doc(concat($target, 'cal_ZH.xml'))
+let $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category
+
+let $dy := $DYNASTIES//c_dy[. = $dynasty/text()]
+let $motto := count($cal-path/tei:category[@xml:id = concat('R', $reign/text())]/preceding-sibling::tei:category) +1
+
+        
+let $date-norm := string-join((concat('D', $dy/../c_sort), concat('R',$motto), concat('Y', $year)),'-')
+        
+
+
+let $date-orig := string-join(($dy/../c_dynasty_chn, 
+                    $NIAN_HAO//c_nianhao_id[. = $reign/text()]/../c_nianhao_chn,
+                    concat($year, '年')),'-')
+
+
+(:$type has two basic values
+defaults to when
+S/E = start / end
+c/u for certain/uncertain
+:)
+
+           
+
+return 
+    element date { attribute datingMethod {'#chinTrad'}, 
+        attribute calendar {'#chinTrad'},
+        switch
+            ($type)
+                case 'uStart'return attribute notBefore-custom {$date-norm}
+                case 'uEnd' return attribute notAfter-custom {$date-norm}
+                case 'Start' return attribute from-custom {$date-norm}
+                case 'End' return attribute to-custom {$date-norm}
+                default return  attribute when-custom  {$date-norm},
+                $date-orig                  
+    }
+};
+
+declare function local:custo-date-range (
+    $dy-start as node()*, $dy-end as node()*,
+    $reg-start as node()*, $reg-end as node()*, 
+    $year-start as xs:string*, $year-end as xs:string*, 
+    $type as xs:string?) as node()*{
+
+(:this function takes chinese calendar date ranges ending in *_dy, *_gz, *_nh.
+It returns a single tei:date element using att.datable.custom. :)
+
+let $cal-ZH := doc(concat($target, 'cal_ZH.xml'))
+let $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category
+
+let $DS := $DYNASTIES//c_dy[. = $dy-start/text()]
+let $DE := $DYNASTIES//c_dy[. = $dy-end/text()]
+
+let $RS := count($cal-path/tei:category[@xml:id = concat('R',  $reg-start/text())]/preceding-sibling::tei:category) +1
+let $RE := count($cal-path/tei:category[@xml:id = concat('R',  $reg-end/text())]/preceding-sibling::tei:category) +1
+
+        
+let $start-norm := string-join((concat('D', $DS/../c_sort), concat('R',$RS), concat('Y', $year-start)),'-')
+let $end-norm := string-join((concat('D', $DE/../c_sort), concat('R',$RE), concat('Y', $year-end)),'-')       
+
+
+                  
+let $start-orig := string-join(($DS/../c_dynasty_chn, 
+                    $NIAN_HAO//c_nianhao_id[. = $reg-start/text()]/../c_nianhao_chn,
+                    concat($year-start, '年')),'-')  
+                    
+let $end-orig := string-join(($DE/../c_dynasty_chn, 
+                    $NIAN_HAO//c_nianhao_id[. = $reg-end/text()]/../c_nianhao_chn,
+                    concat($year-end, '年')),'-')                 
+                    
+(:$type 
+defaults to certain dates = from/when
+'uRange' returns uncertain date-ranges
+
+:)                    
+
+return     
+        switch
+            ($type)
+                case 'uRange'return element date { attribute datingMethod {'#chinTrad'}, 
+                                            attribute calendar {'#chinTrad'},
+                                            attribute notBefore-custom {$start-norm},
+                                       attribute notAfter-custom {$end-norm},
+                                       concat($start-orig, ' ',$end-orig)                 
+                                        }
+                default return element date { attribute datingMethod {'#chinTrad'}, 
+                                            attribute calendar {'#chinTrad'}, 
+                                        attribute from-custom {$start-norm}, 
+                                        attribute to-custom  {$end-norm},
+                                    concat($start-orig, ' ',$end-orig)                 
+                                    }
+};
 
 declare function local:org ($institutions as node()*) as node()* {
 (:This function writes the org / orgName elements to be stored in listOrg.xml.
@@ -140,40 +260,38 @@ return
         else (element date {
             if (empty($org/../c_inst_first_known_year))
             then ()
-            else (attribute from {local:isodate($org/../c_inst_first_known_year)}),
+            else (attribute notBefore {local:isodate($org/../c_inst_first_known_year)}),
             if (empty($org/../c_inst_last_known_year))
             then ()
-            else (attribute to {local:isodate($org/../c_inst_last_known_year)})       
-        }),
-        
-        if (empty($org/../c_inst_begin_dy) and empty($org/../c_inst_end_dy) and empty($org/../c_inst_floruit_dy))
-        then ()
-        else (element date { attribute datingMethod {'chinTrad'},            
-            if (empty($org/../c_inst_begin_dy) or $org/../c_inst_begin_dy = 0)
-            then ()
-            else (attribute from-custom {concat('#D',$org/../c_inst_begin_dy/text())}),
-            if (empty($org/../c_inst_end_dy) or $org/../c_inst_end_dy = 0)
-            then ()
-            else (attribute to-custom {concat('#D',$org/../c_inst_end_dy/text())}),
-            if (empty($org/../c_inst_floruit_dy) or $org/../c_inst_floruit_dy = 0)
-            then ()
-            else (attribute when-custom {concat('#D',$org/../c_inst_floruit_dy/text())})
-        }),
-        
-        if (empty($org/../c_by_nianhao_code) and empty ($org/../c_ey_nianhao_code))
-        then ()
-        else ( element date { attribute datingMethod {'chinTrad'},
-            if (empty($org/../c_by_nianhao_code) or $org/../c_by_nianhao_code = 0)
-            then ()
-            else (attribute from-custom {concat('#R',$org/../c_by_nianhao_code/text(), '-', 
-                                    $org/../c_by_nianhao_year/text(), '-',
-                                    '年')}), 
-            if (empty($org/../c_ey_nianhao_code) or $org/../c_ey_nianhao_code = 0)
-            then ()
-            else (attribute to-custom {concat('#R',$org/../c_ey_nianhao_code/text(), '-', 
-                                    $org/../c_ey_nianhao_year/text(), '-',
-                                    '年')})                    
-        })
+            else (attribute notAfter {local:isodate($org/../c_inst_last_known_year)})       
+        }), 
+        (: Full Chinese Range start and end ? :)
+        if ($org/../c_inst_begin_dy > 0 and $org/../c_by_nianhao_code > 0
+            and $org/../c_inst_end_dy > 0 and $org/../c_ey_nianhao_code > 0)
+        then (local:custo-date-range($org/../c_inst_begin_dy, $org/../c_inst_end_dy,
+                $org/../c_by_nianhao_code, $org/../c_ey_nianhao_code, 
+                $org/../c_by_nianhao_year,  $org/../c_ey_nianhao_year, 
+                'R'))
+        (:      Is there more then just a dynasty ?         :)
+        else if ($org/../c_inst_begin_dy > 0 and $org/../c_by_nianhao_code > 0) 
+              then (local:custo-date-point($org/../c_inst_begin_dy, $org/../c_by_nianhao_code, $org/../c_by_nianhao_year, 'Start'))
+              else if ($org/../c_inst_end_dy > 0 and $org/../c_ey_nianhao_code > 0)
+                then (local:custo-date-point($org/../c_inst_end_dy, $org/../c_ey_nianhao_code, $org/../c_ey_nianhao_year, 'End'))
+        (:        There is only a dynasty        :)
+                else if ($org/../c_inst_begin_dy > 0)
+                      then (element date { attribute calendar {'#chinTrad'},
+                                    attribute period {concat('#D',$org/../c_inst_begin_dy/text())},
+                                    $DYNASTIES//c_dy[. = $org/../c_inst_begin_dy/text()]/../c_dynasty_chn/text()})
+                      else if ($org/../c_inst_end_dy > 0)
+                            then (element date { attribute calendar {'#chinTrad'},
+                                    attribute period {concat('#D',$org/../c_inst_end_dy/text())},
+                                    $DYNASTIES//c_dy[. = $org/../c_inst_end_dy/text()]/../c_dynasty_chn/text()})
+                            else if ($org/../c_inst_floruit_dy > 0)
+                                then (element date { attribute calendar {'#chinTrad'},
+                                    attribute period {concat('#D', $org/../c_inst_floruit_dy/text())},
+                                    $DYNASTIES//c_dy[. = $org/../c_inst_floruit_dy/text()]/../c_dynasty_chn/text()})
+                                else ()    
+
         },        
         if (empty($org/../c_notes))
         then ()
@@ -186,6 +304,7 @@ let $test := $SOCIAL_INSTITUTION_CODES//c_inst_code[. > 0][. < 500]
 let $full := $SOCIAL_INSTITUTION_CODES//c_inst_code[. > 0]
 
 return
+
 xmldb:store($target, 'listOrg.xml',
     <listOrg>
         {local:org($full)}
