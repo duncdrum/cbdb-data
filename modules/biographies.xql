@@ -17,6 +17,15 @@ declare variable $target := '/db/apps/cbdb-data/target/';
 :)
 
 declare variable $BIOG_MAIN:= doc(concat($src, 'BIOG_MAIN.xml')); 
+
+declare variable $BIOG_SOURCE_DATA:= doc(concat($src, 'BIOG_SOURCE_DATA.xml'));
+declare variable $BIOG_ADDR_CODES:= doc(concat($src, 'BIOG_ADDR_CODES.xml')); 
+declare variable $BIOG_ADDR_DATA:= doc(concat($src, 'BIOG_ADDR_DATA.xml')); 
+declare variable $BIOG_INST_CODES:= doc(concat($src, 'BIOG_INST_CODES.xml')); 
+declare variable $BIOG_INST_DATA:= doc(concat($src, 'BIOG_INST_DATA.xml')); 
+
+declare variable $ADDR_CODES:= doc(concat($src, 'ADDR_CODES.xml')); 
+
 declare variable $ALTNAME_CODES:= doc(concat($src, 'ALTNAME_CODES.xml')); 
 declare variable $ALTNAME_DATA:= doc(concat($src, 'ALTNAME_DATA.xml'));
 declare variable $ASSOC_CODES:= doc(concat($src, 'ASSOC_CODES.xml')); 
@@ -26,12 +35,6 @@ declare variable $ASSOC_TYPES:= doc(concat($src, 'ASSOC_TYPES.xml'));
 
 declare variable $ASSUME_OFFICE_CODES:= doc(concat($src, 'ASSUME_OFFICE_CODES.xml')); 
 declare variable $APPOINTMENT_TYPE_CODES:= doc(concat($src, 'APPOINTMENT_TYPE_CODES.xml')); 
-
-declare variable $ADDR_CODES:= doc(concat($src, 'ADDR_CODES.xml')); 
-declare variable $BIOG_ADDR_CODES:= doc(concat($src, 'BIOG_ADDR_CODES.xml')); 
-declare variable $BIOG_ADDR_DATA:= doc(concat($src, 'BIOG_ADDR_DATA.xml')); 
-declare variable $BIOG_INST_CODES:= doc(concat($src, 'BIOG_INST_CODES.xml')); 
-declare variable $BIOG_INST_DATA:= doc(concat($src, 'BIOG_INST_DATA.xml')); 
 
 declare variable $CHORONYM_CODES:= doc(concat($src, 'CHORONYM_CODES.xml'));
 
@@ -88,7 +91,7 @@ declare variable $SOCIAL_INSTITUTION_TYPES:= doc(concat($src, 'SOCIAL_INSTITUTIO
 - split the biogmain transformation into two files one for biog main and aliases on fore event n stuff?
 - consider tei:occupation, tei:education, tei:faith to sort through the whole entry office posting mess
 - create a taxonony for offices
-- 
+- clean up variables prolog 
 
 :)
 
@@ -983,57 +986,139 @@ return
 (:following two need another pass and be made more siimilar:)
 
 declare function local:pers-add ($resident as node()*) as node()* {
+(:This function reads the BIOG_ADDR_DATA for a given c_personid and outputs tei:residence:)
 
-for $address in $BIOG_ADDR_DATA//c_personid[. = $resident]
+(: TODO
+- CODES c_note neds to go into ODD
+:)
+(:
+tts_sysno] INTEGER,                             d
+ [c_personid] INTEGER,                          x
+ [c_addr_id] INTEGER,                           x
+ [c_addr_type] INTEGER,                         x
+ [c_sequence] INTEGER,                          x
+ [c_firstyear] INTEGER,                         x
+ [c_lastyear] INTEGER,                          x
+ [c_source] INTEGER,                            x
+ [c_pages] CHAR(255),                           d
+ [c_notes] CHAR,                                 x
+ [c_fy_nh_code] INTEGER,                        x
+ [c_ly_nh_code] INTEGER,                        x
+ [c_fy_nh_year] INTEGER,                        x
+ [c_ly_nh_year] INTEGER,                        x
+ [c_fy_range] INTEGER,                          d
+ [c_ly_range] INTEGER,                          d
+ [c_natal] INTEGER,                             x
+ [c_fy_intercalary] BOOLEAN NOT NULL,        !
+ [c_ly_intercalary] BOOLEAN NOT NULL,        !   
+ [c_fy_month] INTEGER,                          x
+ [c_ly_month] INTEGER,                          x
+ [c_fy_day] INTEGER,                            x
+ [c_ly_day] INTEGER,                            x
+ [c_fy_day_gz] INTEGER,                        x
+ [c_ly_day_gz] INTEGER,                        x 
+ [c_created_by] CHAR(255),                      d
+ [c_created_date] CHAR(255),                    d
+ [c_modified_by] CHAR(255),                     d
+ [c_modified_date] CHAR(255),                   d
+ [c_delete] INTEGER)                             d
+:)
+
+
+for $address in $BIOG_ADDR_DATA//c_personid[. = $resident][. >0]
 let $code := $BIOG_ADDR_CODES//c_addr_type[. = $address/../c_addr_type]
-(:dummy :)
+order by $address/../c_sequence
+
 return 
- ()
+    element residence { 
+       attribute ref {concat('#PL', $address/../c_addr_id/text())},
+       
+       if ($code > 0)
+       then (attribute key {$code/text()})
+       else (),
+       
+       if (empty($address/../c_sequence) or $address/../c_sequence = 0)
+       then ()
+       else (attribute n {$address/../c_sequence/text()}), 
+       
+   (:   Dates ISO :)
+       if (empty($address/../c_firstyear) or $address/../c_firstyear = 0)
+       then ()
+       else if ($address/../c_firstyear != 0 and $address/../c_fy_month != 0 and $address/../c_fy_day != 0)
+            then (attribute from {
+             string-join((local:isodate($address/../c_firstyear),
+             functx:pad-integer-to-length($address/../c_fy_month, 2),
+             functx:pad-integer-to-length($address/../c_fy_day, 2)), '-')})
+            else if  ($address/../c_firstyear != 0 and $address/../c_fy_month != 0)
+                then (attribute from {string-join((local:isodate($address/../c_firstyear),
+                        functx:pad-integer-to-length($address/../c_fy_month, 2)), '-')})
+                else (attribute from {local:isodate($address/../c_firstyear)}),
+        
+       if (empty($address/../c_lastyear) or $address/../c_lastyear = 0)
+       then ()
+       else if ($address/../c_lastyear != 0 and $address/../c_ly_month != 0 and $address/../c_ly_day != 0)
+            then (attribute to {
+             string-join((local:isodate($address/../c_lastyear),
+             functx:pad-integer-to-length($address/../c_ly_month, 2),
+             functx:pad-integer-to-length($address/../c_ly_day, 2)), '-')})
+            else if  ($address/../c_lastyear != 0 and $address/../c_ly_month != 0)
+                then (attribute to {string-join((local:isodate($address/../c_lastyear),
+                        functx:pad-integer-to-length($address/../c_ly_month, 2)), '-')})
+                else (attribute to {local:isodate($address/../c_lastyear)}),        
+   (: Source   :)
+       if (empty($address/../c_source) or $address/../c_source = 0)
+       then ()
+       else (attribute source {concat('#BIB', $address/../c_source/text())}),
+       
+    (: Desc :)
+    
+       if ($code < 1)
+       then ()
+       else (element state {
+         if ($address/../c_natal = 0)
+         then ()
+         else (attribute type {'natal'}),
+         
+         element desc { attribute xml:lang {'zh-Hant'},
+         $code/../c_addr_desc_chn/text()},
+         element desc {attribute xml:lang {'en'},
+        $code/../c_addr_desc/text()}
+            }),
+        
+       (:     Date ZH     :)
+       if (empty($address/../c_fy_nh_code) or $address/../c_fy_nh_code = 0) 
+       then ()
+       else (element date { 
+                attribute calendar {'#chinTrad'},
+                attribute period {concat('#R', $address/../c_fy_nh_code/text())},
+                if ($address/../c_fy_nh_year > 0)
+                then (concat($address/../c_fy_nh_year/text(), '年'))
+                else (),
+                
+                if ($address/../c_fy_day_gz > 0)
+                then (concat('-', $address/../c_fy_day_gz/text(), '日'))
+                else ()
+                }),
+                
+       if (empty($address/../c_ly_nh_code) or $address/../c_ly_nh_code = 0) 
+       then ()
+       else (element date { attribute calendar {'#chinTrad'},
+                attribute period {concat('#R', $address/../c_ly_nh_code/text())},
+                if ($address/../c_ly_nh_year > 0)
+                then (concat($address/../c_ly_nh_year/text(), '年'))
+                else (),
+                
+                if ($address/../c_ly_day_gz > 0)
+                then (concat('-', $address/../c_ly_day_gz/text(), '日'))
+                else ()
+                }),
+                    
+       if (empty($address/../c_notes))
+       then ()
+       else (element note {$address/../c_notes/text()})
+    }
 };
 
-declare function local:org-add ($person as node()*, $inst as node()*) as node()* {
-(:- person is c_personid, $inst is data table that holds c_person_id AND c_inst_code  :)
-(:- This function returns the institution (orgName) that is linked to a certain posting, including its address. This is NOT necessarily the address of the posting itself.
- : Data on this aspect is still very sparse in 2014 
- : 
- : Switch to ZZZ query table here?
- : so far no end years in code table once they are added query needs a rewrite:) 
-
-
-    for $person in $inst//c_personid[. =$person]/../c_inst_code[. > 0]
-    
-    let $dates := $SOCIAL_INSTITUTION_CODES//c_inst_code[. =$person]
-    let $names := $SOCIAL_INSTITUTION_CODES//c_inst_name_code[. = $person/../c_inst_name_code]
-    let $place := $ADDR_CODES//c_addr_id[. =$SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]]
-    
-    return
-        <orgName>
-            {if ($dates/../c_inst_begin_year[. =0]) then ()
-                else (<date notBefore="{local:isodate($dates/../c_inst_begin_year)}"/>)
-            }
-                <orgName xml:lang="zh-alac97">{$names/../c_inst_name_py/text()}
-                    <state>{$SOCIAL_INSTITUTION_TYPES//c_inst_type_code[. = $SOCIAL_INSTITUTION_CODES//c_inst_code[. =$person]/../c_inst_type_code]/../c_inst_type_py/text()}</state>
-                </orgName>
-                <orgName xml:lang="zh-Hant">{$names/../c_inst_name_hz/text()}
-                    <state>{$SOCIAL_INSTITUTION_TYPES//c_inst_type_code[. = $SOCIAL_INSTITUTION_CODES//c_inst_code[. =$person]/../c_inst_type_code]/../c_inst_type_hz/text()}</state>
-                </orgName>
-            {if ($person/../c_posting_id[. > 0]) 
-            then (<placeName ref="{concat("#PL", $place/../c_inst_addr_id/text())}">                   
-                        <note>{$SOCIAL_INSTITUTION_ADDR_TYPES//c_inst_addr_type[. = $SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_inst_addr_type]/../c_inst_addr_type_desc/text()}</note>
-                        <note>{$SOCIAL_INSTITUTION_ADDR_TYPES//c_inst_addr_type[. = $SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_inst_addr_type]/../c_inst_addr_type_desc_chn/text()}</note>
-                    {if ($SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_notes[. != '']) 
-                    then (<note>{$SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_notes/text()}</note>)
-                    else()
-                    }
-                </placeName>)
-            else()
-            }
-            {if ($SOCIAL_INSTITUTION_CODES//c_inst_code[. = $person]/../c_notes[. !='']) then (
-            <note>{$SOCIAL_INSTITUTION_CODES//c_inst_code[. = $person]/../c_notes/text()}</note>)
-            else()
-            }
-    </orgName>
-};
 
 (: and here again:)
 declare function local:biog ($persons as node()*) as node()* {
@@ -1046,11 +1131,11 @@ maybe put c_source as @source on person?
 [tts_sysno] INTEGER,                            x
  [c_personid] INTEGER PRIMARY KEY,            x
  [c_name] CHAR(255),                            x
- [c_name_chn] CHAR(255),                        x
- [c_index_year] INTEGER,                        x
- [c_female] BOOLEAN NOT NULL,                   x
- [c_ethnicity_code] INTEGER,                    x
- [c_household_status_code] INTEGER,             x
+ [c_name_chn] CHAR(255),                       x
+ [c_index_year] INTEGER,                       x
+ [c_female] BOOLEAN NOT NULL,                  x
+ [c_ethnicity_code] INTEGER,                   x
+ [c_household_status_code] INTEGER,           x
  [c_tribe] CHAR(255),                           x
  [c_birthyear] INTEGER,                         x
  [c_by_nh_code] INTEGER,                        x
@@ -1061,44 +1146,44 @@ maybe put c_source as @source on person?
  [c_dy_nh_year] INTEGER,                        x
  [c_dy_range] INTEGER,                          d
  [c_death_age] INTEGER,                         x
- [c_death_age_approx] INTEGER,                  x
- [c_fl_earliest_year] INTEGER,                  x
- [c_fl_ey_nh_code] INTEGER,                     x
- [c_fl_ey_nh_year] INTEGER,                     x
+ [c_death_age_approx] INTEGER,                 x
+ [c_fl_earliest_year] INTEGER,                 x
+ [c_fl_ey_nh_code] INTEGER,                    x
+ [c_fl_ey_nh_year] INTEGER,                    x
  [c_fl_ey_notes] CHAR,                          x
- [c_fl_latest_year] INTEGER,                    x
- [c_fl_ly_nh_code] INTEGER,                     x
- [c_fl_ly_nh_year] INTEGER,                     x
+ [c_fl_latest_year] INTEGER,                   x
+ [c_fl_ly_nh_code] INTEGER,                    x
+ [c_fl_ly_nh_year] INTEGER,                    x
  [c_fl_ly_notes] CHAR,                          x
  [c_surname] CHAR(255),                         x
- [c_surname_chn] CHAR(255),                     x
+ [c_surname_chn] CHAR(255),                    x
  [c_mingzi] CHAR(255),                          x
- [c_mingzi_chn] CHAR(255),                      x
+ [c_mingzi_chn] CHAR(255),                     x
  [c_dy] INTEGER,                                 x
- [c_choronym_code] INTEGER,                     x
- [c_notes] CHAR,                                    x
- [c_by_intercalary] BOOLEAN NOT NULL,           x
- [c_dy_intercalary] BOOLEAN NOT NULL,           x
- [c_by_month] INTEGER,                            x
- [c_dy_month] INTEGER,                            x
- [c_by_day] INTEGER,                               x
- [c_dy_day] INTEGER,                                x
- [c_by_day_gz] INTEGER,                           x
- [c_dy_day_gz] INTEGER,                            x
- [TTSMQ_db_ID] CHAR(255),                           x
- [MQWWLink] CHAR(255),                              x
- [KyotoLink] CHAR(255),                         x
- [c_surname_proper] CHAR(255),                  x
- [c_mingzi_proper] CHAR(255),                   x
- [c_name_proper] CHAR(255),                     x
- [c_surname_rm] CHAR(255),                      x
- [c_mingzi_rm] CHAR(255),                       x
- [c_name_rm] CHAR(255),                         x
- [c_created_by] CHAR(255),                      x
- [c_created_date] CHAR(255),                    x
- [c_modified_by] CHAR(255),                     x
- [c_modified_date] CHAR(255),                   x
- [c_self_bio] BOOLEAN NOT NULL)                 x
+ [c_choronym_code] INTEGER,                    x
+ [c_notes] CHAR,                                 x
+ [c_by_intercalary] BOOLEAN NOT NULL,         x
+ [c_dy_intercalary] BOOLEAN NOT NULL,         x
+ [c_by_month] INTEGER,                          x
+ [c_dy_month] INTEGER,                          x
+ [c_by_day] INTEGER,                            x
+ [c_dy_day] INTEGER,                            x
+ [c_by_day_gz] INTEGER,                        x
+ [c_dy_day_gz] INTEGER,                        x
+ [TTSMQ_db_ID] CHAR(255),                      x
+ [MQWWLink] CHAR(255),                         x
+ [KyotoLink] CHAR(255),                        x
+ [c_surname_proper] CHAR(255),                x
+ [c_mingzi_proper] CHAR(255),                 x
+ [c_name_proper] CHAR(255),                   x
+ [c_surname_rm] CHAR(255),                    x
+ [c_mingzi_rm] CHAR(255),                     x
+ [c_name_rm] CHAR(255),                       x
+ [c_created_by] CHAR(255),                    x
+ [c_created_date] CHAR(255),                 x
+ [c_modified_by] CHAR(255),                  x
+ [c_modified_date] CHAR(255),                x
+ [c_self_bio] BOOLEAN NOT NULL)              d
  :)
 
 
@@ -1120,6 +1205,7 @@ let $entry := $ENTRY_DATA//c_personid[. = $person]
 
 let $bio-add := $BIOG_ADDR_DATA//c_personid[. = $person]
 let $bio-inst := $BIOG_INST_DATA//c_personid[. = $person]
+let $bio-src := $BIOG_SOURCE_DATA//c_personid[. = $person]
 
 
 return 
@@ -1153,7 +1239,7 @@ return
             <date>{$person/../c_birthyear/text()} {$person/../c_by_month/text()} {$person/../c_by_day/text()}</date>
             {if (empty($person/../c_dy) or $person/../c_dy[. < 1])
             then ()
-            else(<date calendar="chinTrad">
+            else(<date calendar="#chinTrad">
                     <date period="dynasty" sameAs="{concat('#D',$person/../c_dy/text())}"/>
                     {if  ($person/../c_by_nh_code[.  > 0])
                      then (<date period="reign" sameAs="{concat('#R',$person/../c_by_nh_code/text())}">
@@ -1174,7 +1260,7 @@ return
             <date>{$person/../c_deathyear/text()} {$person/../c_dy_month/text()} {$person/../c_dy_day/text()}</date>
             {if (empty($person/../c_dy) or $person/../c_dy[. < 1])
             then ()
-            else(<date calendar="chinTrad">
+            else(<date calendar="#chinTrad">
                     <date period="dynasty" sameAs="{concat('#D',$person/../c_dy/text())}"/>
                     {if  ($person/../c_dy_nh_code[.  > 0])
                      then (<date period="reign" sameAs="{concat('#R',$person/../c_dy_nh_code/text())}">
@@ -1314,7 +1400,7 @@ return
         then ()
         else(local:posses($person))
         }
-        {local:org-add($person, $bio-inst)}
+        
         {local:pers-add($person)}
         {if (empty($person/../TTSMQ_db_ID) and empty($person/../MQWWLink) and empty($person/../KyotoLink))
         then()
