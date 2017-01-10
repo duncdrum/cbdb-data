@@ -53,6 +53,8 @@ declare variable $KIN_DATA:= doc(concat($src, 'KIN_DATA.xml'));
 declare variable $KIN_MOURNING_STEPS:= doc(concat($src, 'KIN_MOURNING_STEPS.xml')); 
 declare variable $KIN_Mourning:= doc(concat($src, 'KIN_Mourning.xml'));
 
+declare variable $MEASURE_CODES:= doc(concat($src, 'MEASURE_CODES.xml'));
+
 declare variable $OFFICE_CATEGORIES:= doc(concat($src, 'OFFICE_CATEGORIES.xml')); 
 declare variable $OFFICE_CODES:= doc(concat($src, 'OFFICE_CODES.xml')); 
 declare variable $OFFICE_CODES_CONVERSION:= doc(concat($src, 'OFFICE_CODES_CONVERSION.xml')); 
@@ -62,6 +64,7 @@ declare variable $OFFICE_TYPE_TREE:= doc(concat($src, 'OFFICE_TYPE_TREE.xml'));
 declare variable $POSSESSION_ACT_CODES:= doc(concat($src, 'POSSESSION_ACT_CODES.xml')); 
 declare variable $POSSESSION_ADDR:= doc(concat($src, 'POSSESSION_ADDR.xml')); 
 declare variable $POSSESSION_DATA:= doc(concat($src, 'POSSESSION_DATA.xml')); 
+
 declare variable $POSTED_TO_ADDR_DATA:= doc(concat($src, 'POSTED_TO_ADDR_DATA.xml')); 
 declare variable $POSTED_TO_OFFICE_DATA:= doc(concat($src, 'POSTED_TO_OFFICE_DATA.xml')); 
 declare variable $POSTING_DATA:= doc(concat($src, 'POSTING_DATA.xml')); 
@@ -891,19 +894,91 @@ return
 };
 
 declare function local:posses ($possessions as node()*) as node()* {
-(:five entries (18332, 13550, 45279, 45518, 3874)  affair good to go:)
-for $stuff in $POSSESSION_DATA//c_personid[. = $possessions]
+(: This function reads possession data and creates a tei:state[@type = 'possession'] element
+
+So far there are only five entries (18332, 13550, 45279, 45518, 3874) in CBDB, with whole columns as NULL.
+
+:)
+
+(:[c_personid] INTEGER,                                 x
+ [c_possession_record_id] INTEGER PRIMARY KEY,       x
+ [c_sequence] INTEGER,                                  x                                      
+ [c_possession_act_code] INTEGER,                       x
+ [c_possession_desc] CHAR(50),                          x
+ [c_possession_desc_chn] CHAR(50),                      x
+ [c_quantity] CHAR(50),                                  x
+ [c_measure_code] INTEGER,                               x   
+ [c_possession_yr] INTEGER,                             x
+ [c_possession_nh_code] INTEGER,                        !
+ [c_possession_nh_yr] INTEGER,                          !
+ [c_possession_yr_range] INTEGER,                       !
+ [c_addr_id] INTEGER,                                     x
+ [c_source] INTEGER,                                      x      
+ [c_pages] CHAR(50),                                      d
+ [c_notes] CHAR,                                           x
+ [c_created_by] CHAR(255),                               d
+ [c_created_date] CHAR(255),                            d
+ [c_modified_by] CHAR(255),                             d
+ [c_modified_date] CHAR(255))                           d
+ 
+ :)
+
+for $stuff in $POSSESSION_DATA//c_personid[. = $possessions][. > 0]
 let $act := $POSSESSION_ACT_CODES//c_possession_act_code[ . = $stuff/../c_possession_act_code]
 let $where := $POSSESSION_ADDR//c_possession_row_id[. = $stuff/../c_possession_row_id]
+let $unit := $MEASURE_CODES//c_measure_code[. = $stuff/../c_measure_code]
 
 return 
-    if(empty($stuff))
-    then()
-    else( 
-        <state type="possession" subtype="{concat('POS', $act/text())}">
-            <label xml:lang="zh-Hant">{$stuff/../c_possession_desc_chn/text()}</label>                    
-            <label xml:lang="en">{$stuff/../c_possession_desc/text()}</label>
-        </state>)
+    element state{ 
+        attribute xml:id {concat('POS', $stuff/../c_possession_row_id/text())},
+        attribute type {'possession'}, 
+        switch ($act)
+            case '0' return ()
+            default return attribute subtype {$act/../c_possession_act_desc/text()},
+            
+(:     in the future the return for $units needs to be tokenized    :)
+        if (empty($stuff/../c_measure_code))
+        then ()
+        else ( attribute unit {$unit/../c_measure_desc/text()}),
+        
+        if (empty($stuff/../c_quantity))
+        then ()
+        else (attribute quantity {$stuff/../c_quantity/text()}), 
+        
+        if (empty($stuff/../c_sequence))
+        then ()
+        else (attribute n {$stuff/../c_sequence/text()}),
+        
+        if (empty($stuff/../c_possession_yr))
+        then ()
+        else (attribute when {local:isodate($stuff/../c_possession_yr)}),
+        
+        if (empty($stuff/../c_source))
+        then ()
+        else (attribute source {concat('#BIB',$stuff/../c_source/text())}),
+        
+(:      Back to normal  :)
+        element desc {
+            if (empty($stuff/../c_possession_desc_chn))
+            then ()
+            else (element desc {attribute xml:lang {'zh-Hant'},
+                            $stuff/../c_possession_desc_chn/text()}),
+                            
+            if (empty($stuff/../c_possession_desc))
+            then ()
+            else (element desc {attribute xml:lang {'en'},
+                            $stuff/../c_possession_desc/text()}),
+            
+            if (empty($stuff/../c_addr_id))
+            then ()
+            else (element placeName { 
+                attribute ref { concat('#PL', $stuff/../c_addr_id/text())}})
+                },
+        if (empty($stuff/../c_notes)) 
+        then ()
+        else (element note {$stuff/../c_notes/text()})
+        
+    }
 };
 (:following two need another pass and be made more siimilar:)
 
