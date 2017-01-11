@@ -786,8 +786,7 @@ are there any instances where one conatins data that is not isodate or in POSTED
 
 (: TODO:
 - Turn postings into tei:event
-- c_office_category needs to go somewhere but where?
-- check zh and western dates to make sure no dates are missing
+- check zh and western dates to make sure no dates are missing !!
 :)
 
 (:
@@ -983,7 +982,7 @@ return
         
     }
 };
-(:following two need another pass and be made more siimilar:)
+
 
 declare function local:pers-add ($resident as node()*) as node()* {
 (:This function reads the BIOG_ADDR_DATA for a given c_personid and outputs tei:residence:)
@@ -1401,7 +1400,12 @@ return
         else(local:posses($person))
         }
         
-        {local:pers-add($person)}
+        {if (empty($bio-add))
+        then ()
+        else(local:pers-add($person))
+        }
+        
+        
         {if (empty($person/../TTSMQ_db_ID) and empty($person/../MQWWLink) and empty($person/../KyotoLink))
         then()
         else (<linkGrp>
