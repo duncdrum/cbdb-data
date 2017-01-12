@@ -18,11 +18,11 @@ declare variable $target := '/db/apps/cbdb-data/target/';
 
 declare variable $BIOG_MAIN:= doc(concat($src, 'BIOG_MAIN.xml')); 
 
-declare variable $BIOG_SOURCE_DATA:= doc(concat($src, 'BIOG_SOURCE_DATA.xml'));
 declare variable $BIOG_ADDR_CODES:= doc(concat($src, 'BIOG_ADDR_CODES.xml')); 
 declare variable $BIOG_ADDR_DATA:= doc(concat($src, 'BIOG_ADDR_DATA.xml')); 
 declare variable $BIOG_INST_CODES:= doc(concat($src, 'BIOG_INST_CODES.xml')); 
 declare variable $BIOG_INST_DATA:= doc(concat($src, 'BIOG_INST_DATA.xml')); 
+declare variable $BIOG_SOURCE_DATA:= doc(concat($src, 'BIOG_SOURCE_DATA.xml'));
 
 declare variable $ADDR_CODES:= doc(concat($src, 'ADDR_CODES.xml')); 
 
@@ -786,8 +786,7 @@ are there any instances where one conatins data that is not isodate or in POSTED
 
 (: TODO:
 - Turn postings into tei:event
-- c_office_category needs to go somewhere but where?
-- check zh and western dates to make sure no dates are missing
+- check zh and western dates to make sure no dates are missing !!
 :)
 
 (:
@@ -983,7 +982,7 @@ return
         
     }
 };
-(:following two need another pass and be made more siimilar:)
+
 
 declare function local:pers-add ($resident as node()*) as node()* {
 (:This function reads the BIOG_ADDR_DATA for a given c_personid and outputs tei:residence:)
@@ -1119,8 +1118,115 @@ return
     }
 };
 
+declare function local:inst-add ($participant as node()*) as node()* {
+(:This function reads the BIOG_INST_DATA for a given c_personid and outputs tei:event.
+the location data for the event is inside @where, the time takes when-custorm format as in listOrg.xml
 
-(: and here again:)
+Currently there are no dates in this table?
+Desc contents come from $code
+:)
+
+(: TODO
+- 
+:)
+
+(:
+ [c_personid] INTEGER,                     x                   [c_bi_role_code] INTEGER PRIMARY KEY,        x                                                              
+ [c_inst_name_code] INTEGER,              d                   [c_bi_role_desc] CHAR(255),                    
+ [c_inst_code] INTEGER,                    x                   [c_bi_role_chn] CHAR(255),                                                                 
+ [c_bi_role_code] INTEGER,                x                   [c_notes] CHAR(255))
+ [c_bi_begin_year] INTEGER,               x
+ [c_bi_by_nh_code] INTEGER,               x
+ [c_bi_by_nh_year] INTEGER,               x
+ [c_bi_by_range] INTEGER,                 d
+ [c_bi_end_year] INTEGER,                 x
+ [c_bi_ey_nh_code] INTEGER,               x
+ [c_bi_ey_nh_year] INTEGER,               x
+ [c_bi_ey_range] INTEGER,                 d
+ [c_source] INTEGER,                       x
+ [c_pages] CHAR(255),                      d
+ [c_notes] CHAR,                            x
+ [c_created_by] CHAR(255),                d  
+ [c_created_date] CHAR(255),              d  
+ [c_modified_by] CHAR(255),               d  
+ [c_modified_date] CHAR(255),             d  
+:)
+
+
+for $address in $BIOG_INST_DATA//c_personid[. = $participant][. > 0]
+let $code := $BIOG_INST_CODES//c_bi_role_code[. = $address/../c_bi_role_code]
+
+let $cal-ZH := doc(concat($target, 'cal_ZH.xml'))
+let $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category
+
+
+let $dy_by := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $address/../c_bi_by_nh_code]/../c_dy]/../c_sort
+let $dy_ey := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $address/../c_bi_ey_nh_code]/../c_dy]/../c_sort
+
+let $re_by := count($cal-path/tei:category[@xml:id = concat('R', $address/../c_bi_by_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_ey := count($cal-path/tei:category[@xml:id = concat('R', $address/../c_bi_ey_nh_code/text())]/preceding-sibling::tei:category) +1
+
+return 
+    element event { 
+       attribute where {concat('#ORG', $address/../c_inst_code/text())},
+       
+       if ($code > 0)
+       then (attribute key {$code/text()})
+       else (),    
+       
+   (:   DATES-ISO :)
+       if (empty($address/../c_bi_begin_year) or $address/../c_bi_begin_year = 0)
+       then ()
+       else (attribute from {local:isodate($address/../c_firstyear)}),
+        
+       if (empty($address/../c_bi_end_year) or $address/../c_bi_end_year = 0)
+       then ()
+       else (attribute to {local:isodate($address/../c_lastyear)}),
+ 
+ (:     DATES zh  :)
+       if ((empty($address/../c_bi_by_nh_code) or $address/../c_bi_by_nh_code = 0)
+          and (empty($address/../c_bi_ey_nh_code) or $address/../c_bi_ey_nh_code = 0))
+       then ()
+       else (attribute datingMethod {'#chinTrad'}),       
+
+       if (empty($address/../c_bi_by_nh_code) or $address/../c_bi_by_nh_code = 0) 
+       then ()
+       else (attribute from-custom {
+                if ($address/../c_bi_by_nh_year > 0)
+                then (string-join(
+                        (concat('D', $dy_by), concat('R',$re_by), concat('Y', $address/../c_bi_by_nh_year)),'-')
+                      )
+                else (string-join((concat('D', $dy_by), concat('R',$re_by)),'-'))}),
+       
+       if (empty($address/../c_bi_ey_nh_code) or $address/../c_bi_ey_nh_code = 0) 
+       then ()
+       else (attribute to-custom {
+                if ($address/../c_bi_ey_nh_year > 0)
+                then (string-join(
+                        (concat('D', $dy_by), concat('R',$re_ey), concat('Y', $address/../c_bi_ey_nh_year)),'-')
+                      )
+                else (string-join((concat('D', $dy_by), concat('R',$re_ey)),'-'))}),
+       
+   (: Source   :)
+       if (empty($address/../c_source) or $address/../c_source = 0)
+       then ()
+       else (attribute source {concat('#BIB', $address/../c_source/text())}),
+       
+    (: Desc :)
+       if ($code > 0)
+       then (element desc { attribute xml:lang {'zh-Hant'},
+                $code/../c_bi_role_chn/text()},
+              element desc {attribute xml:lang {'en'},
+                $code/../c_bi_role_desc/text()})
+       else (),
+       
+                    
+       if (empty($address/../c_notes))
+       then ()
+       else (element note {$address/../c_notes/text()})
+    }
+};
+
 declare function local:biog ($persons as node()*) as node()* {
 
 (: TODO
@@ -1401,7 +1507,17 @@ return
         else(local:posses($person))
         }
         
-        {local:pers-add($person)}
+        {if (empty($bio-add))
+        then ()
+        else(local:pers-add($person))
+        }
+        
+        {if (empty($bio-inst))
+        then ()
+        else (local:inst-add($person))
+        }
+        
+        
         {if (empty($person/../TTSMQ_db_ID) and empty($person/../MQWWLink) and empty($person/../KyotoLink))
         then()
         else (<linkGrp>
