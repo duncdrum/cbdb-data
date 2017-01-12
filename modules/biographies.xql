@@ -86,6 +86,12 @@ declare variable $SOCIAL_INSTITUTION_CODES_CONVERSION:= doc(concat($src, 'SOCIAL
 declare variable $SOCIAL_INSTITUTION_NAME_CODES:= doc(concat($src, 'SOCIAL_INSTITUTION_NAME_CODES.xml')); 
 declare variable $SOCIAL_INSTITUTION_TYPES:= doc(concat($src, 'SOCIAL_INSTITUTION_TYPES.xml')); 
 
+declare variable $GANZHI_CODES:= doc(concat($src, 'GANZHI_CODES.xml')); 
+declare variable $NIAN_HAO:= doc(concat($src, 'NIAN_HAO.xml')); 
+declare variable $DYNASTIES:= doc(concat($src, 'DYNASTIES.xml')); 
+
+declare variable $cal-ZH := doc(concat($target, 'cal_ZH.xml'));
+declare variable $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category;
 
 (:TODO:
 - split the biogmain transformation into two files one for biog main and aliases on fore event n stuff?
@@ -666,7 +672,7 @@ let $event-add := $EVENTS_ADDR//c_event_record_id[. = $event/../c_event_record_i
              
 };
 
-(:exam related stuff:)
+(:exam and office related data:)
 declare function local:entry ($initiates as node()*) as node()* {
 (: local:entry expects persons from BIOG_MAIN and returns tei:event for entries into social institutions.
 the output of local:entry should match the structure of local:event's ouput
@@ -983,7 +989,7 @@ return
     }
 };
 
-
+(:PLACES:)
 declare function local:pers-add ($resident as node()*) as node()* {
 (:This function reads the BIOG_ADDR_DATA for a given c_personid and outputs tei:residence:)
 
@@ -1230,7 +1236,7 @@ return
 declare function local:biog ($persons as node()*) as node()* {
 
 (: TODO
-maybe put c_source as @source on person?
+c_self_bio from $source is dropped change to attribute when refactoring query syntax?
 :)
 
 (: 
@@ -1308,117 +1314,176 @@ let $posssession := $POSSESSION_DATA//c_personid[. = $person]
 let $event := $EVENTS_DATA//c_personid[. = $person]
 let $entry := $ENTRY_DATA//c_personid[. = $person]
 
+let $source := $BIOG_SOURCE_DATA//c_personid[. = $person]
+
 
 let $bio-add := $BIOG_ADDR_DATA//c_personid[. = $person]
 let $bio-inst := $BIOG_INST_DATA//c_personid[. = $person]
 let $bio-src := $BIOG_SOURCE_DATA//c_personid[. = $person]
 
+let $dy_by := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $person/../c_by_nh_code]/../c_dy]/../c_sort
+let $dy_dy := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $person/../c_dy_nh_code]/../c_dy]/../c_sort
+
+let $re_by := count($cal-path/tei:category[@xml:id = concat('R', $person/../c_by_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_dy := count($cal-path/tei:category[@xml:id = concat('R', $person/../c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
-    <person ana="historical" xml:id="{concat('BIO', $person/text())}">
-        <idno type="TTS">{$person/../tts_sysno/text()}</idno>
-        <persName type="main">
-            {if (empty($person/../c_name_chn))
+    element person { attribute ana {'historical'}, 
+        attribute xml:id {concat('BIO', $person/text())},
+        if (empty($source))
+        then ()
+        else (attribute source{concat('#BIB', $source[1]/../c_textid/text())}), 
+        if (empty($person/../c_self_bio) or $person/../c_self_bio = 0)
+        then ()
+        else (attribute resp {'selfbio'}),
+        element idno{attribute type {'TTS'}, 
+            $person/../tts_sysno/text()}, 
+(:      NAMES      :)
+        element persName {attribute type {'main'},
+            if (empty($person/../c_name_chn))
             then()
-            else (local:name($person, 'hz'))
-            }
-            {if (empty($person/../c_name))
+            else (local:name($person, 'hz')),
+            
+            if (empty($person/../c_name))
             then()
-            else (local:name($person, 'py'))
-            }
-        </persName>
-        {if (empty($person/../c_name_proper))
-         then()
-         else (local:name($person, 'proper'))
-         }
-         {if (empty($person/../c_name_rm))
-         then()
-         else (local:name($person, 'rm'))
-         }        
-        {local:alias($person)}
-        {if ($person/../c_female = 1) then (<sex value="2">f</sex>) 
-         else (<sex value ="1">m</sex>)
-       }
-        {if (empty($person/../c_birthyear) or $person/../c_birthyear[. = 0])
+            else (local:name($person, 'py'))                   
+        },
+(:      ALIAS  :)
+        if (empty($person/../c_name_proper))
         then()
-        else (<birth when="{local:isodate($person/../c_birthyear)}">
-            <date>{$person/../c_birthyear/text()} {$person/../c_by_month/text()} {$person/../c_by_day/text()}</date>
-            {if (empty($person/../c_dy) or $person/../c_dy[. < 1])
-            then ()
-            else(<date calendar="#chinTrad">
-                    <date period="dynasty" sameAs="{concat('#D',$person/../c_dy/text())}"/>
-                    {if  ($person/../c_by_nh_code[.  > 0])
-                     then (<date period="reign" sameAs="{concat('#R',$person/../c_by_nh_code/text())}">
-                            {$person/../c_by_nh_year/text()}</date>)
-                     else()
-                    }
-                    {if ($person/../c_by_intercalary[ . = 1])
-                    then (<note>intercalary</note>)
-                    else ()
-                    }
-            </date>)
-            }
-        </birth>)
-        }
-        {if (empty($person/../c_deathyear) or $person/../c_deathyear[. = 0])
+        else (local:name($person, 'proper')),
+        
+        if (empty($person/../c_name_rm))
         then()
-        else (<death when="{local:isodate($person/../c_deathyear)}">
-            <date>{$person/../c_deathyear/text()} {$person/../c_dy_month/text()} {$person/../c_dy_day/text()}</date>
-            {if (empty($person/../c_dy) or $person/../c_dy[. < 1])
-            then ()
-            else(<date calendar="#chinTrad">
-                    <date period="dynasty" sameAs="{concat('#D',$person/../c_dy/text())}"/>
-                    {if  ($person/../c_dy_nh_code[.  > 0])
-                     then (<date period="reign" sameAs="{concat('#R',$person/../c_dy_nh_code/text())}">
-                            {$person/../c_dy_nh_year/text()}</date>)
-                     else()
-                    }
-                    {if ($person/../c_dy_intercalary[ . = 1])
-                    then (<note>intercalary</note>)
-                    else ()
-                    }
-            </date>)
-            }
-        </death>)
-        }
-        {let $earliest := $person/../c_fl_earliest_year
-        let $latest := $person/../c_fl_latest_year
-        let $index := $person/../c_index_year
-        return
-            if ($earliest or $latest or $index > 0) 
-            then (element floruit { if ($earliest/text() and $latest/text() != 0) 
-                                    then ( attribute notBefore {local:isodate($earliest/text())}, 
-                                            attribute notAfter {local:isodate($latest/text())})
-                                    else if ($earliest/text() != 0)
-                                          then (attribute notBefore {local:isodate($earliest/text())})
-                                          else if ($latest/text() != 0)
-                                               then ( attribute notAfter {local:isodate($latest/text())})
-                                               else (' '),                              
-                                  if ($index != 0)
-                                  then (element date { attribute type {'index'},
-                                        local:isodate($index)}) 
-                                  else (''), 
-                                  if (empty($person/../c_fl_ey_notes) and empty($person/../c_fl_ly_notes))
-                                  then ()
-                                  else(element note {$person/../c_fl_ey_notes/text() , $person/../c_fl_ly_notes/text()})
-                                  }                      
-                   )
-           else()
-        }
-        {if ($person/../c_death_age_approx and $person/../c_death_age > 0)
-        then (<age precision="{$person/../c_death_age_approx/text()}">
-                {$person/../c_death_age/text()}</age>)
-        else (<age>{$person/../c_death_age/text()}</age>)        
-        }
-        {if ($person/../c_household_status_code > 0) 
-        then (<trait type="household">
+        else (local:name($person, 'rm')),
+        
+        local:alias($person),
+        
+        if ($person/../c_female = 1) 
+        then (<sex value="2">f</sex>) 
+        else (<sex value ="1">m</sex>),
+        
+(:      DATES  :)
+        if ((empty($person/../c_birthyear) or $person/../c_birthyear[. = 0]) 
+            and (empty($person/../c_by_nh_code) or $person/../c_by_nh_code[. = 0]))
+        then ()
+        else (element birth { 
+                if (empty($person/../c_birthyear) or $person/../c_birthyear[. = 0])
+                then ()
+                else (
+                attribute when {string-join((local:isodate($person/../c_birthyear),
+                    if ($person/../c_by_month [. > 0])
+                    then (functx:pad-integer-to-length($person/../c_by_month/text(), 2))
+                    else (),
+                    if ($person/../c_by_day[. > 0])
+                    then (functx:pad-integer-to-length($person/../c_by_day/text(), 2))
+                    else ()), '-')}
+                 ),
+                 if  ($person/../c_by_nh_code[.  > 0])
+                 then (attribute datingMethod {'#chinTrad'},
+                        attribute when-custom {
+                        if ($person/../c_by_nh_year[.  > 0])
+                        then (string-join(
+                                (concat('D', $dy_by), concat('R',$re_by), concat('Y', $person/../c_by_nh_year)),'-')
+                              )
+                        else (string-join(
+                                (concat('D', $dy_by), concat('R',$re_by)),'-')
+                              )
+                        })
+                 else (), 
+                 element date { attribute calendar {'#chinTrad'},
+                    attribute period{concat('#R',$person/../c_by_nh_code/text())},
+                 $dy_by/../c_dynasty_chn/text(), $NIAN_HAO//c_nianhao_id[. = $person/../c_by_nh_code]/../c_nianhao_chn/text(), 
+                 string-join(($person/../c_by_nh_year/text(), $person/../c_by_day_gz/text()), ':')
+                 }             
+            }),
+        if ((empty($person/../c_deathyear) or $person/../c_deathyear[. = 0]) 
+            and (empty($person/../c_dy_nh_code) or $person/../c_dy_nh_code[. = 0]))
+        then ()
+        else (element death { 
+                if (empty($person/../c_deathyear) or $person/../c_deathyear[. = 0])
+                then ()
+                else (
+                attribute when {string-join((local:isodate($person/../c_deathyear),
+                    if ($person/../c_dy_month [. > 0])
+                    then (functx:pad-integer-to-length($person/../c_dy_month/text(), 2))
+                    else (),
+                    if ($person/../c_dy_day[. > 0])
+                    then (functx:pad-integer-to-length($person/../c_dy_day/text(), 2))
+                    else ()), '-')}
+                 ),
+                 if  ($person/../c_dy_nh_code[.  > 0])
+                 then (attribute datingMethod {'#chinTrad'},
+                        attribute when-custom {
+                        if ($person/../c_dy_nh_year[.  > 0])
+                        then (string-join(
+                                (concat('D', $dy_dy), concat('R',$re_dy), concat('Y', $person/../c_dy_nh_year)),'-')
+                              )
+                        else (string-join(
+                                (concat('D', $dy_dy), concat('R',$re_dy)),'-')
+                              )
+                        })
+                 else (), 
+                 element date { attribute calendar {'#chinTrad'},
+                    attribute period{concat('#R',$person/../c_dy_nh_code/text())},
+                 $dy_dy/../c_dynasty_chn/text(), $NIAN_HAO//c_nianhao_id[. = $person/../c_dy_nh_code]/../c_nianhao_chn/text(), 
+                 string-join(($person/../c_dy_nh_year/text(), $person/../c_dy_day_gz/text()), ':')
+                 }             
+            }),
+            let $earliest := $person/../c_fl_earliest_year
+            let $latest := $person/../c_fl_latest_year
+            let $index := $person/../c_index_year
+            let $dy := $person/../c_dy
+            return
+                if ($earliest or $latest or $index or $dy > 0) 
+                then (element floruit 
+                            { if ($earliest/text() and $latest/text() != 0) 
+                              then ( attribute notBefore {local:isodate($earliest/text())}, 
+                                      attribute notAfter {local:isodate($latest/text())})
+                              else if ($earliest/text() != 0)
+                                    then (attribute notBefore {local:isodate($earliest/text())})
+                                    else if ($latest/text() != 0)
+                                          then ( attribute notAfter {local:isodate($latest/text())})
+                                          else (),     
+                                          
+                                    if ($index = 0 or $dy < 1)
+                                    then ()
+                                    else (element date {
+                                            if ($index != 0)
+                                            then (attribute when {local:isodate($index)}) 
+                                            else (),  
+                                    
+                                            if ($dy > 0)
+                                            then (attribute datingMethod {'#chinTrad'}, 
+                                                   attribute period {concat('#D', $dy/text())}, 
+                                                    $DYNASTIES//c_dy[. =$dy]/../c_dynasty_chn/text())
+                                            else ()
+                            }), 
+                            if (empty($person/../c_fl_ey_notes) and empty($person/../c_fl_ly_notes))
+                            then ()
+                            else (element note {$person/../c_fl_ey_notes/text() , $person/../c_fl_ly_notes/text()})                                
+                       })
+               else(),
+               
+            if ($person/../c_death_age_approx > 0)
+            then (<age cer="medium">
+                    {$person/../c_death_age_approx/text()}</age>)
+            else (), 
+            
+            if ($person/../c_death_age > 0)
+            then (<age>{$person/../c_death_age/text()}</age>)
+            else (), 
+            
+(:          Ethniciy, Tribe etc  :)
+            if ($person/../c_household_status_code > 0) 
+            then (<trait type="household">
                 <label xml:lang="en">{$household/../c_household_status_desc/text()}</label>
                 <label xml:lang="zh-Hant">{$household/../c_household_status_desc_chn/text()}</label>
             </trait>)
-            else()
-       }       
-        {if ($person/../c_ethnicity_code > 0) 
-        then (<trait type="ethnicity" key="{$ethnicity/../c_group_code/text()}">
+            else(), 
+            
+            if ($person/../c_ethnicity_code > 0) 
+            then (<trait type="ethnicity" key="{$ethnicity/../c_group_code/text()}">
                 <label>{$ethnicity/../c_ethno_legal_cat/text()}</label>
                         <desc xml:lang="en">{$ethnicity/../c_romanized/text()}</desc>
                         <desc xml:lang="zh-alac97">{$ethnicity/../c_name/text()}</desc>
@@ -1428,109 +1493,91 @@ return
                         else()
                         }
                </trait>)
-               else()
-        }
-        {if ($person/../c_tribe) 
-        then (<trait type="tribe">
-            <desc>{$person/../c_tribe/text()}</desc>
-        </trait>)
-        else()
-        }
-        {if ($person/../c_notes)
-        then (<note>{$person/../c_notes/text()}</note>)
-        else ()
-        }        
-        {if ($person/../c_source) 
-        then (<bibl>
-            <ref target="{concat('#BIB', $person/../c_source/text())}"/>
-                {
-                if (empty($person/../c_pages)) 
-                then ()
-                else(<biblScope unit="page">{$person/../c_pages/text()}</biblScope>)
-                }
-        </bibl>)
-        else ()
-        }
-        {if (empty($kin) and empty ($association))
-        then ()
-        else (<affiliation>
-                    {if (empty($kin))
+            else(), 
+            
+            if ($person/../c_tribe) 
+            then (<trait type="tribe">
+                <desc>{$person/../c_tribe/text()}</desc>
+            </trait>)
+            else(), 
+            
+            if ($person/../c_notes)
+            then (<note>{$person/../c_notes/text()}</note>)
+            else (), 
+            
+            if (empty($kin) and empty ($association))
+            then ()
+            else (element affiliation {
+                    if (empty($kin))
                     then ()
-                    else (<note>
-                                    <listPerson
-                                        type="kin">
-                                        <listRelation
-                                            type="kinship">{local:kin($person)}</listRelation>
-                                    </listPerson>
-                                </note>)
+                    else (element note {
+                            element listPerson { attribute type {'kin'}, 
+                                element listRelation { attribute type {'kinship'},
+                                    local:kin($person)}
+                                }
+                            }),
+                        
+                    if (empty($association))
+                    then ()
+                    else (element note {
+                            element listPerson { attribute type {'associates'}, 
+                                element listRelation { attribute type {'associations'},
+                                    local:asso($person)}
+                                }
+                            })
+                    }),
+            if (empty($status)) 
+            then ()
+            else(<socecStatus>
+                    {if ($status) 
+                    then(local:status($person))
+                    else()}
+                 </socecStatus>),
+            
+            if (empty($post))
+            then ()
+            else (local:new-post($person)),
+                        
+            if (empty($event) and empty($entry))
+            then ()
+            else (<listEvent>
+                    {if ($event)
+                    then (local:event($person))
+                    else ()
                     }
-                    {if (empty($association))
-                     then ()
-                     else (<note>
-                                    <listPerson
-                                        type="associates">
-                                        <listRelation
-                                            type="associations">{local:asso($person)}</listRelation>
-                                    </listPerson>
-                                </note>)
-                     }
-                  </affiliation>)
-            }
-        {if (empty($status)) 
-        then ()
-        else(<socecStatus>
-            {if ($status) 
-            then(local:status($person))
-            else()}
-            </socecStatus>)
-         }           
-        {if (empty($post))
-        then ()
-        else (local:new-post($person))                
-        }
-        
-        {if (empty($event) and empty($entry))
-        then ()
-        else (<listEvent>
-            {if ($event)
-            then (local:event($person))
-            else ()
-            }
-            {if ($entry)
-            then (local:entry($person))
-            else()
-            }                      
-        </listEvent>)
-        }        
-        {if (empty($posssession)) 
-        then ()
-        else(local:posses($person))
-        }
-        
-        {if (empty($bio-add))
-        then ()
-        else(local:pers-add($person))
-        }
-        
-        {if (empty($bio-inst))
-        then ()
-        else (local:inst-add($person))
-        }
-        
-        
-        {if (empty($person/../TTSMQ_db_ID) and empty($person/../MQWWLink) and empty($person/../KyotoLink))
-        then()
-        else (<linkGrp>
-            {let $links := ($person/../TTSMQ_db_ID, $person/../MQWWLink, $person/../KyotoLink)
-            for $link in $links[. != '']
-            return
-            <ptr target="{$link/text()}"/>}        
-        </linkGrp>)
-        }
-        {local:create-mod-by($person/../c_created_by, $person/../c_modified_by)}
-    </person> 
+                    {if ($entry)
+                    then (local:entry($person))
+                    else()
+                    }                      
+                </listEvent>),
+            
+            if (empty($posssession)) 
+            then ()
+            else (local:posses($person)), 
+            
+            if (empty($bio-add))
+            then ()
+            else(local:pers-add($person)), 
+            
+            if (empty($bio-inst))
+            then ()
+            else (local:inst-add($person)),
+            
+            if (empty($person/../TTSMQ_db_ID) and empty($person/../MQWWLink) and empty($person/../KyotoLink))
+            then ()
+            else (<linkGrp>
+                    {let $links := ($person/../TTSMQ_db_ID, $person/../MQWWLink, $person/../KyotoLink)
+                    for $link in $links[. != '']
+                    return
+                    <ptr target="{$link/text()}"/>}        
+                  </linkGrp>),
+                  
+           local:create-mod-by($person/../c_created_by, $person/../c_modified_by)       
+    }
+    
 };
-let $test := $BIOG_MAIN//c_personid[. > 0][. < 500]
+
+let $test := $BIOG_MAIN//c_personid[. > 0][. < 501]
 let $full := $BIOG_MAIN//c_personid[. > 0]
 
 return
@@ -1539,4 +1586,3 @@ xmldb:store($target, 'listPerson.xml',
         {local:biog($test)}
     </listPerson>    
 ) 
-

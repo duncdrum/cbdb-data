@@ -532,3 +532,60 @@ let $NH-py := map{
  '中大同' := 'zhongDatong',
  '中華民國' := 'zhonghuaMinguo'
  }
+ 
+ declare function local:org-add ($person as node()*, $inst as node()*) as node()* {
+(:- person is c_personid, $inst is data table that holds c_person_id AND c_inst_code  :)
+(:- This function returns the institution (orgName) that is linked to a certain posting, including its address. This is NOT necessarily the address of the posting itself.
+ : Data on this aspect is still very sparse in 2014 
+ : 
+ : Switch to ZZZ query table here?
+ : so far no end years in code table once they are added query needs a rewrite:) 
+
+
+    for $person in $inst//c_personid[. =$person]/../c_inst_code[. > 0]
+    
+    let $dates := $SOCIAL_INSTITUTION_CODES//c_inst_code[. =$person]
+    let $names := $SOCIAL_INSTITUTION_CODES//c_inst_name_code[. = $person/../c_inst_name_code]
+    let $place := $ADDR_CODES//c_addr_id[. =$SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]]
+    
+    return
+        <orgName>
+            {if ($dates/../c_inst_begin_year[. =0]) then ()
+                else (<date notBefore="{local:isodate($dates/../c_inst_begin_year)}"/>)
+            }
+                <orgName xml:lang="zh-alac97">{$names/../c_inst_name_py/text()}
+                    <state>{$SOCIAL_INSTITUTION_TYPES//c_inst_type_code[. = $SOCIAL_INSTITUTION_CODES//c_inst_code[. =$person]/../c_inst_type_code]/../c_inst_type_py/text()}</state>
+                </orgName>
+                <orgName xml:lang="zh-Hant">{$names/../c_inst_name_hz/text()}
+                    <state>{$SOCIAL_INSTITUTION_TYPES//c_inst_type_code[. = $SOCIAL_INSTITUTION_CODES//c_inst_code[. =$person]/../c_inst_type_code]/../c_inst_type_hz/text()}</state>
+                </orgName>
+            {if ($person/../c_posting_id[. > 0]) 
+            then (<placeName ref="{concat("#PL", $place/../c_inst_addr_id/text())}">                   
+                        <note>{$SOCIAL_INSTITUTION_ADDR_TYPES//c_inst_addr_type[. = $SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_inst_addr_type]/../c_inst_addr_type_desc/text()}</note>
+                        <note>{$SOCIAL_INSTITUTION_ADDR_TYPES//c_inst_addr_type[. = $SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_inst_addr_type]/../c_inst_addr_type_desc_chn/text()}</note>
+                    {if ($SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_notes[. != '']) 
+                    then (<note>{$SOCIAL_INSTITUTION_ADDR//c_inst_code[. =$person]/../c_notes/text()}</note>)
+                    else()
+                    }
+                </placeName>)
+            else()
+            }
+            {if ($SOCIAL_INSTITUTION_CODES//c_inst_code[. = $person]/../c_notes[. !='']) then (
+            <note>{$SOCIAL_INSTITUTION_CODES//c_inst_code[. = $person]/../c_notes/text()}</note>)
+            else()
+            }
+    </orgName>
+};
+
+(:Full source:)
+{ if ($source) 
+  then (<bibl>
+            <ref target="{concat('#BIB', $source/../c_textid/text())}"/>
+                {
+                if (empty($source/../c_pages)) 
+                then ()
+                else(<biblScope unit="page">{$source/../c_pages/text()}</biblScope>)
+                }
+        </bibl>)
+  else ()
+}
