@@ -54,6 +54,32 @@ declare function local:sqldate ($timestamp as xs:string?)  as xs:string* {
 concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
 };
 
+declare function local:create-mod-by ($created as node()*, $modified as node()*) as node()*{
+(:this function takes the standardized entries for creation and modification of cbdb entries 
+and translates them into tei:notes.
+
+It expects the c_created_by and c_modified_by as direct input.
+
+This data is distinct from the modifications of the TEI output recorded in the header.:)
+
+for $creator in $created
+return
+    if (empty($creator)) 
+    then ()
+    else (<note type="created" target="{concat('#',$creator/text())}">
+                <date when="{local:sqldate($creator/../c_created_date)}"/>
+           </note>),
+              
+for $modder in $modified
+return
+    if (empty($modder)) 
+    then ()
+    else (<note type="modified" target="{concat('#',$modder/text())}">
+                <date when="{local:sqldate($modder/../c_modified_date)}"/>
+          </note>)   
+        
+        };
+
 declare function local:bibl-dates($dates as node()*, $type as xs:string?) as node()* {
 (: There are two principle date references in TEXT_CODE. original (ori) and published (pub).
 This function resolves the relations of these dates expecting a valid c_textid.
@@ -289,7 +315,7 @@ return
         }
         {if (empty($text/../c_title_alt_chn))
         then ()
-        else (<title type="variant">{$text/../c_title_alt_chn/text()}</title>)        
+        else (<title type="alt">{$text/../c_title_alt_chn/text()}</title>)        
         }
         {if (empty($text/../c_title_trans))
         then ()
@@ -368,18 +394,7 @@ return
         then ()
         else(<note>{$text/../c_notes/text()}</note>)
         }
-        {if (empty($text/../c_created_by)) 
-        then ()
-        else (<note type="created" target="{concat('#',$text/../c_created_by/text())}">
-                <date when="{local:sqldate($text/../c_created_date)}"/>
-              </note>)
-        }
-        {if (empty($text/../c_modified_by)) 
-        then ()
-        else (<note type="modified" target="{concat('#',$text/../c_modified_by/text())}">
-                <date when="{local:sqldate($text/../c_modified_date)}"/>
-              </note>)
-        }
+        {local:create-mod-by($text/../c_created_by, $text/../c_modified_by)}
 </bibl>
 
 };
