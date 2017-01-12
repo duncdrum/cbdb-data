@@ -21,35 +21,37 @@ declare variable $TEXT_ROLE_CODES:= doc(concat($src, 'TEXT_ROLE_CODES.xml'));
 declare variable $TEXT_TYPE:= doc(concat($src, 'TEXT_TYPE.xml')); 
 
 
-declare function local:categories ($categories as node()*, $types as node()*)  as node()* {
+declare function local:categories ($types as node()*, $categories as node()*, $parent-id as xs:string?)  as node()* {
 
 (:This function transforms $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into a nested TEI <taxonomy>.
 To call types, genres, and biblcats a mess would be a compliment...another time.
 
 :)
 
-for $type in $TEXT_BIBLCAT_TYPES//c_text_cat_type_id[. = $types]
-let $code :=  $TEXT_BIBLCAT_CODE_TYPE_REL//c_text_cat_code[. = $categories]
-let $type-rel := $TEXT_BIBLCAT_TYPES//c_text_cat_type_id[. = $genre/../c_text_cat_type_id]
+for $type in $types
+let $code :=  $TEXT_BIBLCAT_CODE_TYPE_REL//c_text_cat_type_id[. = $type]/../c_text_cat_code[. = $categories]
+
+where $type/../c_text_cat_type_parent_id = $parent-id
 
 order by $type/../c_text_cat_type_sortorder
 return
-     element category { attribute xml:id {concat('biblCat', $type/text())},
+     element category { attribute xml:id {concat('biblType', $type/text())},
         attribute n {$type/../c_text_cat_type_level/text()},
             element catDesc {attribute xml:lang {'zh-Hant'},
                 $type/../c_text_cat_type_desc_chn/text()},           
             element catDesc {attribute xml:lang {'en'},
                 $type/../c_text_cat_type_desc/text()},
                 
-                for $cat in $code                 
-                let $parent-id := $type-rel/../c_text_cat_type_parent_id
-                let $type-lvl := $type-rel/../c_text_cat_type_level
+                for $cat in $TEXT_BIBLCAT_CODES//c_text_cat_code[. = $code]           
+                let $parent-id := $cat/../c_text_cat_type_parent_id
+                let $type-lvl := $cat/../c_text_cat_type_level
                 (:  $TEXT_BIBLCAT_TYPES_1   $TEXT_BIBLCAT_TYPES_2  :)
                 
                 order by $cat/../c_text_cat_sortorder
+                
                 return
                     element category { attribute xml:id {concat('biblCat', $cat/text())},
-                        attribute n {$type-rel/text()},
+                        attribute n {$code/text()},
                             element catDesc {attribute xml:lang {'zh-Hant'},
                                 $cat/../c_text_cat_desc_chn/text()},
                             element catDesc {attribute xml:lang {'zh-alac97'},
@@ -129,12 +131,11 @@ return
 
 };
 
-let $test := $TEXT_CODES//c_textid[. > 0][. <501]
+let $test := $TEXT_CODES//c_textid[. > 0][. < 501]
 let $full := $TEXT_CODES//c_textid[. > 0]
 
-let $tax := $TEXT_BIBLCAT_CODES//c_text_cat_code
 return 
-    local:categories($tax)
+    local:categories($TEXT_BIBLCAT_TYPES//c_text_cat_type_id, $TEXT_BIBLCAT_CODES//c_text_cat_code, '01')
 
 (:xmldb:store($target, 'biblCat.xml', 
     <taxonomy xml:id="biblCat">                
