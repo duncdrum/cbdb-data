@@ -21,27 +21,43 @@ declare variable $TEXT_ROLE_CODES:= doc(concat($src, 'TEXT_ROLE_CODES.xml'));
 declare variable $TEXT_TYPE:= doc(concat($src, 'TEXT_TYPE.xml')); 
 
 
-declare function local:categories ($categories as node()*)  as node()* {
+declare function local:categories ($categories as node()*, $types as node()*)  as node()* {
 
-(:This function transforms $TEXT_BIBLCAT_CODES into a  TEI <taxonomy>.
+(:This function transforms $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into a nested TEI <taxonomy>.
 To call types, genres, and biblcats a mess would be a compliment...another time.
 
 :)
 
-for $cat in $categories
-let $genre :=  $TEXT_BIBLCAT_CODE_TYPE_REL//c_text_cat_code[. = $cat]
-let $type := $TEXT_BIBLCAT_TYPES//c_text_cat_type_id[. = $genre/../c_text_cat_type_id]
-let $parent-id := $type/../c_text_cat_type_parent_id
-let $type-lvl := $type/../c_text_cat_type_level
-(:  $TEXT_BIBLCAT_TYPES_1   $TEXT_BIBLCAT_TYPES_2  :)
+for $type in $TEXT_BIBLCAT_TYPES//c_text_cat_type_id[. = $types]
+let $code :=  $TEXT_BIBLCAT_CODE_TYPE_REL//c_text_cat_code[. = $categories]
+let $type-rel := $TEXT_BIBLCAT_TYPES//c_text_cat_type_id[. = $genre/../c_text_cat_type_id]
 
+order by $type/../c_text_cat_type_sortorder
 return
-    switch($cat/text())
-        case '0' case '2' return <editor><ptr target="{concat('#BIO', $bio-id)}"/></editor>
-        case '1' return <author><ptr target="{concat('#BIO', $bio-id)}"/></author>
-        case '4' return <publisher><ptr target="{concat('#BIO', $bio-id)}"/></publisher>   
-        case '11' return <editor role="contributor"><ptr target="{concat('#BIO', $bio-id)}"/></editor>
-    default return <editor role="{$code/../c_role_desc}"><ptr target="{concat('#BIO', $bio-id)}"/></editor>
+     element category { attribute xml:id {concat('biblCat', $type/text())},
+        attribute n {$type/../c_text_cat_type_level/text()},
+            element catDesc {attribute xml:lang {'zh-Hant'},
+                $type/../c_text_cat_type_desc_chn/text()},           
+            element catDesc {attribute xml:lang {'en'},
+                $type/../c_text_cat_type_desc/text()},
+                
+                for $cat in $code                 
+                let $parent-id := $type-rel/../c_text_cat_type_parent_id
+                let $type-lvl := $type-rel/../c_text_cat_type_level
+                (:  $TEXT_BIBLCAT_TYPES_1   $TEXT_BIBLCAT_TYPES_2  :)
+                
+                order by $cat/../c_text_cat_sortorder
+                return
+                    element category { attribute xml:id {concat('biblCat', $cat/text())},
+                        attribute n {$type-rel/text()},
+                            element catDesc {attribute xml:lang {'zh-Hant'},
+                                $cat/../c_text_cat_desc_chn/text()},
+                            element catDesc {attribute xml:lang {'zh-alac97'},
+                                $cat/../c_text_cat_pinyin/text()},
+                            element catDesc {attribute xml:lang {'en'},
+                                $cat/../c_text_cat_desc/text()}    
+                    } 
+    }      
 };
 
 declare function local:bibliography ($texts as node()*) {
@@ -115,7 +131,17 @@ return
 
 let $test := $TEXT_CODES//c_textid[. > 0][. <501]
 let $full := $TEXT_CODES//c_textid[. > 0]
+
+let $tax := $TEXT_BIBLCAT_CODES//c_text_cat_code
 return 
-<listBibl>
-        {local:bibliography($test)}
-</listBibl>  
+    local:categories($tax)
+
+(:xmldb:store($target, 'biblCat.xml', 
+    <taxonomy xml:id="biblCat">                
+        {local:categories($tax)}
+    </taxonomy>
+):)
+
+(:<listBibl>
+        {local:bibliography($full)}
+</listBibl>:)  
