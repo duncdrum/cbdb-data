@@ -24,7 +24,7 @@ declare variable $GANZHI_CODES:= doc(concat($src, 'GANZHI_CODES.xml'));
 declare variable $NIAN_HAO:= doc(concat($src, 'NIAN_HAO.xml')); 
 declare variable $DYNASTIES:= doc(concat($src, 'DYNASTIES.xml')); 
 
-(:This function does what biographies does for persons for institutions.:)
+(:local:org does what biographies does for persons for institutions.:)
 declare function local:isodate ($string as xs:string?)  as xs:string* {
 (:see calendar.xql:)
      
@@ -37,8 +37,6 @@ declare function local:isodate ($string as xs:string?)  as xs:string* {
 declare function local:sqldate ($timestamp as xs:string?)  as xs:string* {
 concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
 };
-
-
 
 declare function local:create-mod-by ($created as node()*, $modified as node()*) as node()*{
 
