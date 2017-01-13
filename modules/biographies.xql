@@ -116,7 +116,7 @@ concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', subst
 };
 
 declare function local:create-mod-by ($created as node()*, $modified as node()*) as node()*{
-(:this function takes the standardized record sfor creation and modification of cbdb entries 
+(:this function takes the standardized entrioes for creation and modification of cbdb entries 
 and translates them into tei:notes.
 
 It expects the c_created_by and c_modified_by as direct input.
