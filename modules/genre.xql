@@ -1,0 +1,86 @@
+xquery version "3.0";
+
+import module namespace xmldb="http://exist-db.org/xquery/xmldb";
+import module namespace functx="http://www.functx.com";
+
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace output = "http://www.tei-c.org/ns/1.0";
+
+
+declare variable $src := '/db/apps/cbdb-data/src/xml/';
+declare variable $target := '/db/apps/cbdb-data/target/';
+
+declare variable $TEXT_BIBLCAT_CODES:= doc(concat($src, 'TEXT_BIBLCAT_CODES.xml')); 
+declare variable $TEXT_BIBLCAT_CODE_TYPE_REL:= doc(concat($src, 'TEXT_BIBLCAT_CODE_TYPE_REL.xml')); 
+declare variable $TEXT_BIBLCAT_TYPES:= doc(concat($src, 'TEXT_BIBLCAT_TYPES.xml')); 
+declare variable $TEXT_BIBLCAT_TYPES_1:= doc(concat($src, 'TEXT_BIBLCAT_TYPES_1.xml')); 
+declare variable $TEXT_BIBLCAT_TYPES_2:= doc(concat($src, 'TEXT_BIBLCAT_TYPES_2.xml')); 
+declare variable $TEXT_CODES:= doc(concat($src, 'TEXT_CODES.xml')); 
+declare variable $TEXT_DATA:= doc(concat($src, 'TEXT_DATA.xml')); 
+declare variable $TEXT_ROLE_CODES:= doc(concat($src, 'TEXT_ROLE_CODES.xml')); 
+declare variable $TEXT_TYPE:= doc(concat($src, 'TEXT_TYPE.xml')); 
+
+(:genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES inot a nested tei:taxonomy.
+the categories appear mostly listBibl.xml
+:)
+
+(:!!!Calling this function overwrites data!!!:)
+
+declare function local:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node())  as node()* {
+
+(:This function transforms $TEXT_BIBLCAT_TYPES inoto nested tei:categoreis.
+
+:)
+
+(:TODO
+- Q: Is there  any use for $TEXT_BIBLCAT_TYPES_1 and $TEXT_BIBLCAT_TYPES_2? A: NO!
+:)
+
+element category { attribute xml:id {concat('biblType',  $type-id/text())},        
+    element catDesc {attribute xml:lang {'zh-Hant'},
+        $zh/text()},           
+element catDesc {attribute xml:lang {'en'},
+    $en/text()},
+    
+    for $child in $types[c_text_cat_type_parent_id = $type-id]
+    return
+        local:nest-types($types, $child/c_text_cat_type_id, $child/c_text_cat_type_desc_chn, $child/c_text_cat_type_desc)               
+}      
+};
+
+
+let $types := $TEXT_BIBLCAT_TYPES//row
+let $typeTree := xmldb:store($target, 'biblCat.xml', 
+                    <taxonomy xml:id="biblCat">
+                        <category xml:id="biblType01">
+                            <catDesc xml:lang="zh-Hant">{$types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc_chn/text()}</catDesc>
+                            <catDesc xml:lang="en">{$types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc/text()}</catDesc>        
+                        {for $outer in $types[c_text_cat_type_parent_id = '01']
+                        order by $outer[c_text_cat_type_sortorder]
+                        return
+                            local:nest-types($types, $outer/c_text_cat_type_id ,$outer/c_text_cat_type_desc_chn, $outer/c_text_cat_type_desc)}
+                        </category>
+                    </taxonomy>)
+
+
+
+
+
+for $cat in $TEXT_BIBLCAT_CODES//c_text_cat_code
+
+let $type-id := $TEXT_BIBLCAT_CODE_TYPE_REL//c_text_cat_code[ . = $cat]/../c_text_cat_type_id
+let $type: = doc($typeTree)//category/@xml:id[. = concat('biblType', $type-id/text())]
+let $category := element category { attribute xml:id {concat('biblCat',  $cat/text())},        
+                    element catDesc {attribute xml:lang {'zh-Hant'},
+                        $cat/../c_text_cat_desc_chn/text()},
+                    element catDesc {attribute xml:lang {'zh-alalc97'},
+                        $cat/../c_text_cat_pinyin/text()},    
+                    element catDesc {attribute xml:lang {'en'},
+                        $cat/../c_text_cat_desc/text()}}
+
+return
+ update insert $category into $type/..
+ 
+
+
+
