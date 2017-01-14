@@ -1254,7 +1254,7 @@ return
                 then ()
                 else (
                 attribute when {string-join((cal:isodate($person/../c_birthyear),
-                    if ($person/../c_by_month [. > 0])
+                    if ($person/../c_by_month[. > 0])
                     then (functx:pad-integer-to-length($person/../c_by_month/text(), 2))
                     else (),
                     if ($person/../c_by_day[. > 0])
@@ -1272,12 +1272,14 @@ return
                                 (concat('D', $dy_by), concat('R',$re_by)),'-')
                               )
                         })
-                 else (), 
-                 element date { attribute calendar {'#chinTrad'},
+                 else (),
+                 if ($person/../c_by_nh_code > 0 or $person/../c_by_nh_year or $person/../c_by_day_gz > 0)
+                 then (element date { attribute calendar {'#chinTrad'},
                     attribute period{concat('#R',$person/../c_by_nh_code/text())},
                  $dy_by/../c_dynasty_chn/text(), $global:NIAN_HAO//c_nianhao_id[. = $person/../c_by_nh_code]/../c_nianhao_chn/text(), 
                  string-join(($person/../c_by_nh_year/text(), $person/../c_by_day_gz/text()), ':')
-                 }             
+                 })
+                 else ()
             }),
         if ((empty($person/../c_deathyear) or $person/../c_deathyear[. = 0]) 
             and (empty($person/../c_dy_nh_code) or $person/../c_dy_nh_code[. = 0]))
@@ -1306,11 +1308,14 @@ return
                               )
                         })
                  else (), 
+                 if ($person/../c_dy_nh_code > 0 or $person/../c_dy_nh_year or $person/../c_dy_day_gz > 0)
+                 then (
                  element date { attribute calendar {'#chinTrad'},
                     attribute period{concat('#R',$person/../c_dy_nh_code/text())},
                  $dy_dy/../c_dynasty_chn/text(), $global:NIAN_HAO//c_nianhao_id[. = $person/../c_dy_nh_code]/../c_nianhao_chn/text(), 
                  string-join(($person/../c_dy_nh_year/text(), $person/../c_dy_day_gz/text()), ':')
-                 }             
+                 })
+                 else ()
             }),
             let $earliest := $person/../c_fl_earliest_year
             let $latest := $person/../c_fl_latest_year
