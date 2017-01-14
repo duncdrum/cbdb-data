@@ -3,31 +3,13 @@ xquery version "3.0";
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace functx="http://www.functx.com";
 
+import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
+import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
+
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace pla="http://exist-db.org/apps/cbdb-data/place";
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 
-
-declare variable $src := '/db/apps/cbdb-data/src/xml/';
-declare variable $target := '/db/apps/cbdb-data/target/';
-
-declare variable $ADDRESSES:= doc(concat($src, 'ADDRESSES.xml')); 
-declare variable $ADDR_BELONGS_DATA:= doc(concat($src, 'ADDR_BELONGS_DATA.xml')); 
-declare variable $ADDR_CODES:= doc(concat($src, 'ADDR_CODES.xml')); 
-declare variable $ADDR_PLACE_DATA:= doc(concat($src, 'ADDR_PLACE_DATA.xml')); 
-declare variable $ADDR_XY:= doc(concat($src, 'ADDR_XY.xml')); 
-
-declare variable $ASSOC_DATA:= doc(concat($src, 'ASSOC_DATA.xml')); 
-declare variable $BIOG_ADDR_CODES:= doc(concat($src, 'BIOG_ADDR_CODES.xml')); 
-declare variable $BIOG_ADDR_DATA:= doc(concat($src, 'BIOG_ADDR_DATA.xml'));
-declare variable $BIOG_INST_DATA:= doc(concat($src, 'BIOG_INST_DATA.xml'));
-declare variable $EVENTS_ADDR:= doc(concat($src, 'EVENTS_ADDR.xml')); 
-declare variable $POSSESSION_ADDR:= doc(concat($src, 'POSSESSION_ADDR.xml')); 
-declare variable $POSTED_TO_ADDR_DATA:= doc(concat($src, 'POSTED_TO_ADDR_DATA.xml')); 
-declare variable $SOCIAL_INSTITUTION_ADDR:= doc(concat($src, 'SOCIAL_INSTITUTION_ADDR.xml')); 
-declare variable $SOCIAL_INSTITUTION_ADDR_TYPES:= doc(concat($src, 'SOCIAL_INSTITUTION_ADDR_TYPES.xml'));
-
-declare variable $PLACE_CODES:= doc(concat($src, 'PLACE_CODES.xml')); 
-declare variable $COUNTRY_CODES:= doc(concat($src, 'COUNTRY_CODES.xml')); 
 
 (:place.xql reads the various basic entities for location type information 
     and creates a listPlace element for inclusion in the body element via xi:xinclude.
@@ -42,16 +24,7 @@ declare variable $COUNTRY_CODES:= doc(concat($src, 'COUNTRY_CODES.xml'));
    
 :)
 
-declare function local:isodate ($string as xs:string?)  as xs:string* {
-(:see calendar.xql:)
-     
-    if (empty($string)) then ()
-    else if (number($string) eq 0) then ('-0001')
-    else if (starts-with($string, "-")) then (concat('-',(concat (string-join((for $i in (string-length(substring($string,2)) to 3) return '0'),'') , substring($string,2)))))
-    else (concat (string-join((for $i in (string-length($string) to 3) return '0'),'') , $string))
-};
-
-declare function local:fix-admin-types($adminType as xs:string?)  as xs:string* {
+declare function pla:fix-admin-types($adminType as xs:string?)  as xs:string* {
 (:
 let $types := 
     distinct-values(($ADDR_CODES//c_admin_type, $ADDRESSES//c_admin_type))
@@ -115,7 +88,7 @@ for $low in distinct-values($lower)
 
 };
 
-declare function local:address($addr as node()*) {
+declare function pla:address($addr as node()*) {
 
 (: This function translates the ADDRESSES entities into TEI.:)
 
@@ -132,16 +105,16 @@ count($ADDR_BELONGS_DATA//c_source[. > 0])
 
     for $place in $addr
     
-    let $code := $ADDR_CODES//c_addr_id[. = $place]
-    let $relation := $ADDR_BELONGS_DATA//c_addr_id[. = $place]    
+    let $code := $global:ADDR_CODES//c_addr_id[. = $place]
+    let $relation := $global:ADDR_BELONGS_DATA//c_addr_id[. = $place]    
     (:let $id-padding := string-length(string(max($ADDRESSES//c_addr_id))) +1  :)
     
     
     return  
         <place xml:id="{concat('PL', $place/../c_addr_id)}"
-            type ="{ if (empty(local:fix-admin-types($place/../c_admin_type)))
-            then(local:fix-admin-types($code/../c_admin_type))
-            else (local:fix-admin-types($place/../c_admin_type))
+            type ="{ if (empty(pla:fix-admin-types($place/../c_admin_type)))
+            then(pla:fix-admin-types($code/../c_admin_type))
+            else (pla:fix-admin-types($place/../c_admin_type))
             }">            
             <placeName xml:lang="zh-alac97">{$place/../c_name/text()}</placeName>         
             <placeName xml:lang="zh-Hant">{$place/../c_name_chn/text()}</placeName>
@@ -151,10 +124,10 @@ count($ADDR_BELONGS_DATA//c_source[. > 0])
                 else(<placeName type ="alias">{$code/../c_alt_names/text()}</placeName>)
                 }
             {
-            if (empty(local:isodate($place/../c_firstyear)))
+            if (empty(cal:isodate($place/../c_firstyear)))
             then()
-            else (<location from="{local:isodate($place/../c_firstyear)}"
-                        to="{local:isodate($place/../c_lastyear)}">
+            else (<location from="{cal:isodate($place/../c_firstyear)}"
+                        to="{cal:isodate($place/../c_lastyear)}">
                         {
                         if (empty($code/../x_coord) or $code/../x_coord = 0) 
                         then ()
@@ -186,14 +159,14 @@ count($ADDR_BELONGS_DATA//c_source[. > 0])
         </place>
 };
 
-let $address := xmldb:store($target, 'listPlace.xml',
+let $address := xmldb:store($global:target, $global:place,
     <listPlace>
-        {local:address($ADDRESSES//c_addr_id[. > 0])}
+        {pla:address($global:ADDRESSES//c_addr_id[. > 0])}
     </listPlace>) 
 
 for $nodes in doc($address)//place
 let $id := substring-after(data($nodes/@xml:id), 'PL')
-let $parent := $ADDR_BELONGS_DATA//c_addr_id[. = $id]/../c_belongs_to/text() 
+let $parent := $global:ADDR_BELONGS_DATA//c_addr_id[. = $id]/../c_belongs_to/text() 
 let $parent-id := concat('PL', $parent)
 
 where $parent > -1
@@ -206,4 +179,4 @@ else (update insert $nodes into doc('/db/apps/cbdb-data/target/listPlace.xml')//
 
 
 
-(:local:fix-admin-types('Dudufu'):)
+(:pla:fix-admin-types('Dudufu'):)
