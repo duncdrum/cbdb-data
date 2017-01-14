@@ -1,7 +1,7 @@
 xquery version "3.0";
 
 (:~
- : A set of helper functions and variables called by different xQueries.
+ : A set of helper functions and variables called by other modules.
  :)
 module namespace global="http://exist-db.org/apps/cbdb-data/global";
 
@@ -23,6 +23,7 @@ declare variable $global:bibliography := 'listBibl.xml';
 declare variable $global:institution := 'listOrg.xml';
 declare variable $global:place := 'listPlace.xml';
 declare variable $global:office := 'office.xml';
+declare variable $global:office-temp := 'officeA.xml';
 declare variable $global:header := 'cbdbTEI.xml';
 declare variable $global:person := 'listPerson';
 
