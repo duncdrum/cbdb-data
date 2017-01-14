@@ -1,26 +1,10 @@
 xquery version "3.0";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
+import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace output = "http://www.tei-c.org/ns/1.0";
-
-
-declare variable $src := '/db/apps/cbdb-data/src/xml/';
-declare variable $target := '/db/apps/cbdb-data/target/';
-
-declare variable $OFFICE_CATEGORIES:= doc(concat($src, 'OFFICE_CATEGORIES.xml')); 
-declare variable $OFFICE_CODES:= doc(concat($src, 'OFFICE_CODES.xml')); 
-declare variable $OFFICE_CODES_CONVERSION:= doc(concat($src, 'OFFICE_CODES_CONVERSION.xml')); 
-declare variable $OFFICE_CODE_TYPE_REL:= doc(concat($src, 'OFFICE_CODE_TYPE_REL.xml')); 
-declare variable $OFFICE_TYPE_TREE:= doc(concat($src, 'OFFICE_TYPE_TREE.xml')); 
-
-declare variable $POSTED_TO_OFFICE_DATA:= doc(concat($src, 'POSTED_TO_OFFICE_DATA.xml')); 
-
-
-declare variable $GANZHI_CODES:= doc(concat($src, 'GANZHI_CODES.xml')); 
-declare variable $NIAN_HAO:= doc(concat($src, 'NIAN_HAO.xml')); 
-declare variable $DYNASTIES:= doc(concat($src, 'DYNASTIES.xml')); 
 
 (:Generating the taxonomy for office titles requires two parts officeA.xql and officeB.xql. 
 This is due to a potential bug  with the new range index. 
@@ -31,20 +15,6 @@ officeA creates two files:
 officeB merges officeA.xml into office.xml.
     for this merge we require a category for missing data in the stored structure.
 :)
-
-declare function local:isodate ($string as xs:string?)  as xs:string* {
-(:see calendar.xql:)
-        
-    if (empty($string)) then ()
-    else if (number($string) eq 0) then ('-0001')
-    else if (starts-with($string, "-")) then (concat('-',(concat (string-join((for $i in (string-length(substring($string,2)) to 3) return '0'),'') , substring($string,2)))))
-    else (concat (string-join((for $i in (string-length($string) to 3) return '0'),'') , $string))
-};
-
-declare function local:sqldate ($timestamp as xs:string?)  as xs:string* {
-concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
-};
-
 
 declare function local:office ($offices as node()*) as node()* {
 
@@ -81,8 +51,8 @@ or if gets its own taxonomy.
 
 for $office in $offices[. > 0] 
 
-let $type-rel := $OFFICE_CODE_TYPE_REL//c_office_id[. = $office]
-let $type := $OFFICE_TYPE_TREE//c_office_type_node_id[. = $type-rel/../c_office_tree_id]
+let $type-rel := $global:OFFICE_CODE_TYPE_REL//c_office_id[. = $office]
+let $type := $global:OFFICE_TYPE_TREE//c_office_type_node_id[. = $type-rel/../c_office_tree_id]
 
 return
     element category{ attribute xml:id {concat('OFF', $office/text())},
@@ -163,11 +133,11 @@ tree of office types as tei:category.
 
 (: once maxCauseCount errors are fixed the following will suffice for the join:
 let $tree-id := $data/c_office_type_node_id
-let $code := $OFFICE_CODE_TYPE_REL//c_office_tree_id[. =  $tree-id/text()]/../c_office_id
+let $code := $globalOFFICE_CODE_TYPE_REL//c_office_tree_id[. =  $tree-id/text()]/../c_office_id
 :)
 
-let $data := $OFFICE_TYPE_TREE//row
-let $tree := xmldb:store($target, 'office.xml', 
+let $data := $global:OFFICE_TYPE_TREE//row
+let $tree := xmldb:store($global:target, $global:office, 
                     <taxonomy xml:id="office">
                         <category n="00">
                             <catDesc xml:lang="en">missing data</catDesc>
@@ -178,9 +148,9 @@ let $tree := xmldb:store($target, 'office.xml',
                             $outer/c_office_type_desc_chn, $outer/c_office_type_desc)}
                     </taxonomy>)
                     
-let $off := xmldb:store($target, 'officeA.xml', 
+let $off := xmldb:store($global:target, $global:office-temp, 
                      <taxonomy xml:id="officeA">                        
-                         {local:office($OFFICE_CODES//c_office_id)}                         
+                         {local:office($global:OFFICE_CODES//c_office_id)}                         
                      </taxonomy>)             
 
 

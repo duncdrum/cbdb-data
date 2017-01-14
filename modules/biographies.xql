@@ -3,95 +3,21 @@ xquery version "3.0";
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace functx="http://www.functx.com";
 
+import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
+import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
+
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace biog= "http://exist-db.org/apps/cbdb-data/biographies";
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 
 
-declare variable $src := '/db/apps/cbdb-data/src/xml/';
-declare variable $target := '/db/apps/cbdb-data/target/';
-
 (:This is the main Transformation of Biographical data from CBDB.
- local:biog strores person data as tei:persList.
+ biog:biog strores person data as tei:persList.
  
  The following variable declarations were auto-generated via gitify.xpl
 :)
 
-declare variable $BIOG_MAIN:= doc(concat($src, 'BIOG_MAIN.xml')); 
 
-declare variable $BIOG_ADDR_CODES:= doc(concat($src, 'BIOG_ADDR_CODES.xml')); 
-declare variable $BIOG_ADDR_DATA:= doc(concat($src, 'BIOG_ADDR_DATA.xml')); 
-declare variable $BIOG_INST_CODES:= doc(concat($src, 'BIOG_INST_CODES.xml')); 
-declare variable $BIOG_INST_DATA:= doc(concat($src, 'BIOG_INST_DATA.xml')); 
-declare variable $BIOG_SOURCE_DATA:= doc(concat($src, 'BIOG_SOURCE_DATA.xml'));
-
-declare variable $ADDR_CODES:= doc(concat($src, 'ADDR_CODES.xml')); 
-
-declare variable $ALTNAME_CODES:= doc(concat($src, 'ALTNAME_CODES.xml')); 
-declare variable $ALTNAME_DATA:= doc(concat($src, 'ALTNAME_DATA.xml'));
-declare variable $ASSOC_CODES:= doc(concat($src, 'ASSOC_CODES.xml')); 
-declare variable $ASSOC_CODE_TYPE_REL:= doc(concat($src, 'ASSOC_CODE_TYPE_REL.xml')); 
-declare variable $ASSOC_DATA:= doc(concat($src, 'ASSOC_DATA.xml')); 
-declare variable $ASSOC_TYPES:= doc(concat($src, 'ASSOC_TYPES.xml')); 
-
-declare variable $ASSUME_OFFICE_CODES:= doc(concat($src, 'ASSUME_OFFICE_CODES.xml')); 
-declare variable $APPOINTMENT_TYPE_CODES:= doc(concat($src, 'APPOINTMENT_TYPE_CODES.xml')); 
-
-declare variable $CHORONYM_CODES:= doc(concat($src, 'CHORONYM_CODES.xml'));
-
-declare variable $ENTRY_CODES:= doc(concat($src, 'ENTRY_CODES.xml')); 
-declare variable $ENTRY_CODE_TYPE_REL:= doc(concat($src, 'ENTRY_CODE_TYPE_REL.xml')); 
-declare variable $ENTRY_DATA:= doc(concat($src, 'ENTRY_DATA.xml')); 
-declare variable $ENTRY_TYPES:= doc(concat($src, 'ENTRY_TYPES.xml')); 
-
-declare variable $EVENTS_ADDR:= doc(concat($src, 'EVENTS_ADDR.xml')); 
-declare variable $EVENTS_DATA:= doc(concat($src, 'EVENTS_DATA.xml')); 
-declare variable $EVENT_CODES:= doc(concat($src, 'EVENT_CODES.xml')); 
-
-declare variable $ETHNICITY_TRIBE_CODES:= doc(concat($src, 'ETHNICITY_TRIBE_CODES.xml')); 
-
-declare variable $HOUSEHOLD_STATUS_CODES:= doc(concat($src, 'HOUSEHOLD_STATUS_CODES.xml')); 
-
-declare variable $KINSHIP_CODES:= doc(concat($src, 'KINSHIP_CODES.xml')); 
-declare variable $KIN_DATA:= doc(concat($src, 'KIN_DATA.xml')); 
-declare variable $KIN_MOURNING_STEPS:= doc(concat($src, 'KIN_MOURNING_STEPS.xml')); 
-declare variable $KIN_Mourning:= doc(concat($src, 'KIN_Mourning.xml'));
-
-declare variable $MEASURE_CODES:= doc(concat($src, 'MEASURE_CODES.xml'));
-
-declare variable $OFFICE_CATEGORIES:= doc(concat($src, 'OFFICE_CATEGORIES.xml')); 
-declare variable $OFFICE_CODES:= doc(concat($src, 'OFFICE_CODES.xml')); 
-declare variable $OFFICE_CODES_CONVERSION:= doc(concat($src, 'OFFICE_CODES_CONVERSION.xml')); 
-declare variable $OFFICE_CODE_TYPE_REL:= doc(concat($src, 'OFFICE_CODE_TYPE_REL.xml')); 
-declare variable $OFFICE_TYPE_TREE:= doc(concat($src, 'OFFICE_TYPE_TREE.xml'));
-
-declare variable $POSSESSION_ACT_CODES:= doc(concat($src, 'POSSESSION_ACT_CODES.xml')); 
-declare variable $POSSESSION_ADDR:= doc(concat($src, 'POSSESSION_ADDR.xml')); 
-declare variable $POSSESSION_DATA:= doc(concat($src, 'POSSESSION_DATA.xml')); 
-
-declare variable $POSTED_TO_ADDR_DATA:= doc(concat($src, 'POSTED_TO_ADDR_DATA.xml')); 
-declare variable $POSTED_TO_OFFICE_DATA:= doc(concat($src, 'POSTED_TO_OFFICE_DATA.xml')); 
-declare variable $POSTING_DATA:= doc(concat($src, 'POSTING_DATA.xml')); 
-
-declare variable $STATUS_CODES:= doc(concat($src, 'STATUS_CODES.xml')); 
-declare variable $STATUS_CODE_TYPE_REL:= doc(concat($src, 'STATUS_CODE_TYPE_REL.xml')); 
-declare variable $STATUS_DATA:= doc(concat($src, 'STATUS_DATA.xml')); 
-declare variable $STATUS_TYPES:= doc(concat($src, 'STATUS_TYPES.xml')); 
-
-declare variable $SOCIAL_INSTITUTION_ADDR:= doc(concat($src, 'SOCIAL_INSTITUTION_ADDR.xml')); 
-declare variable $SOCIAL_INSTITUTION_ADDR_TYPES:= doc(concat($src, 'SOCIAL_INSTITUTION_ADDR_TYPES.xml')); 
-declare variable $SOCIAL_INSTITUTION_ALTNAME_CODES:= doc(concat($src, 'SOCIAL_INSTITUTION_ALTNAME_CODES.xml')); 
-declare variable $SOCIAL_INSTITUTION_ALTNAME_DATA:= doc(concat($src, 'SOCIAL_INSTITUTION_ALTNAME_DATA.xml')); 
-declare variable $SOCIAL_INSTITUTION_CODES:= doc(concat($src, 'SOCIAL_INSTITUTION_CODES.xml')); 
-declare variable $SOCIAL_INSTITUTION_CODES_CONVERSION:= doc(concat($src, 'SOCIAL_INSTITUTION_CODES_CONVERSION.xml')); 
-declare variable $SOCIAL_INSTITUTION_NAME_CODES:= doc(concat($src, 'SOCIAL_INSTITUTION_NAME_CODES.xml')); 
-declare variable $SOCIAL_INSTITUTION_TYPES:= doc(concat($src, 'SOCIAL_INSTITUTION_TYPES.xml')); 
-
-declare variable $GANZHI_CODES:= doc(concat($src, 'GANZHI_CODES.xml')); 
-declare variable $NIAN_HAO:= doc(concat($src, 'NIAN_HAO.xml')); 
-declare variable $DYNASTIES:= doc(concat($src, 'DYNASTIES.xml')); 
-
-declare variable $cal-ZH := doc(concat($target, 'cal_ZH.xml'));
-declare variable $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category;
 
 (:TODO:
 - split the biogmain transformation into two files one for biog main and aliases on fore event n stuff?
@@ -101,48 +27,8 @@ declare variable $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category;
 
 :)
 
-(:AUX FUNCTIONS:)
-declare function local:isodate ($string as xs:string?)  as xs:string* {
-(:see calendar.xql:)
-     
-    if (empty($string)) then ()
-    else if (number($string) eq 0) then ('-0001')
-    else if (starts-with($string, "-")) then (concat('-',(concat (string-join((for $i in (string-length(substring($string,2)) to 3) return '0'),'') , substring($string,2)))))
-    else (concat (string-join((for $i in (string-length($string) to 3) return '0'),'') , $string))
-};
-
-declare function local:sqldate ($timestamp as xs:string?)  as xs:string* {
-concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
-};
-
-declare function local:create-mod-by ($created as node()*, $modified as node()*) as node()*{
-(:this function takes the standardized entrioes for creation and modification of cbdb entries 
-and translates them into tei:notes.
-
-It expects the c_created_by and c_modified_by as direct input.
-
-This data is distinct from the modifications of the TEI output recorded in the header.:)
-
-for $creator in $created
-return
-    if (empty($creator)) 
-    then ()
-    else (<note type="created" target="{concat('#',$creator/text())}">
-                <date when="{local:sqldate($creator/../c_created_date)}"/>
-           </note>),
-              
-for $modder in $modified
-return
-    if (empty($modder)) 
-    then ()
-    else (<note type="modified" target="{concat('#',$modder/text())}">
-                <date when="{local:sqldate($modder/../c_modified_date)}"/>
-          </note>)   
-        
-        };
-
 (:NAMES:)
-declare function local:name ($names as node()*, $lang as xs:string?) as node()* {
+declare function biog:name ($names as node()*, $lang as xs:string?) as node()* {
 (:This function checks the different name components and languages to retun persNames.
 It expects valid c_name, or c_cname_chn nodes, and 'py' or'hz' as arguments.
 :)
@@ -150,7 +36,7 @@ It expects valid c_name, or c_cname_chn nodes, and 'py' or'hz' as arguments.
 
 let $py :=
     for $name in $names/../c_name
-    let $choro := $CHORONYM_CODES//c_choronym_code[. = $name/../c_choronym_code]
+    let $choro := $global:CHORONYM_CODES//c_choronym_code[. = $name/../c_choronym_code]
     
     return
         if ($name/text() eq concat($name/../c_surname/text(), ' ', $name/../c_mingzi/text()))
@@ -172,7 +58,7 @@ let $py :=
 
 let $hz := 
     for $name in $names/../c_name_chn
-    let $choro := $CHORONYM_CODES//c_choronym_code[. = $name/../c_choronym_code]
+    let $choro := $global:CHORONYM_CODES//c_choronym_code[. = $name/../c_choronym_code]
     
     return
         if ($name/text() eq concat($name/../c_surname_chn/text(), $name/../c_mingzi_chn/text()))
@@ -225,7 +111,7 @@ return
         default return ()
 }; 
 
-declare function local:alias ($person as node()*) as node()* {
+declare function biog:alias ($person as node()*) as node()* {
 (:This function resolves aliases in zh and py.
 It checks ALTNAME_DATA for the c_personid and returns persName elements.
 :)
@@ -245,8 +131,8 @@ It checks ALTNAME_DATA for the c_personid and returns persName elements.
  [c_modified_date] CHAR(255),          x
 :)
 
-for $person in $ALTNAME_DATA//c_personid[. =$person]
-let $code := $ALTNAME_CODES//c_name_type_code[. = $person/../c_alt_name_type_code]
+for $person in $global:ALTNAME_DATA//c_personid[. =$person]
+let $code := $global:ALTNAME_CODES//c_name_type_code[. = $person/../c_alt_name_type_code]
 
 return 
     if (empty($person)) then ()
@@ -289,10 +175,10 @@ return
 };
 
 (:RELATIONS:)
-declare function local:kin ($self as node()*) as node()* {
+declare function biog:kin ($self as node()*) as node()* {
     
     (:This function takes persons via c_personid and returns a list kin group  relations.
-It's structure is tied to local:asso and changes should be made to both functions in concert.:)
+It's structure is tied to biog:asso and changes should be made to both functions in concert.:)
     
     (:
 [tts_sysno] INTEGER,                    x                [c_kincode] INTEGER PRIMARY KEY,   x
@@ -310,7 +196,7 @@ It's structure is tied to local:asso and changes should be made to both function
  :)
     
     (:9 basic categories of kinship Source: CBDB Manual p 13f
-none of these is symmetrical hence there is no need for mutuality checks as in local:asso
+none of these is symmetrical hence there is no need for mutuality checks as in biog:asso
 'e' Ego (the person whose kinship is being explored) 
 'F' Father
 'M' Mother
@@ -356,8 +242,8 @@ NOT Documented
     
     (:it would be nice to find valid xml expressions for kinrel so they can be added to tei:relation as @name:)
     
-    for $kin in $KIN_DATA//c_personid[. = $self]
-    let $tie := $KINSHIP_CODES//c_kincode[. = $kin/../c_kin_code]
+    for $kin in $global:KIN_DATA//c_personid[. = $self]
+    let $tie := $global:KINSHIP_CODES//c_kincode[. = $kin/../c_kin_code]
     
     (:let basic :=
  for $:)
@@ -406,12 +292,12 @@ NOT Documented
         }
 };
 
-declare function local:asso ($ego as node()*) as node()* {
+declare function biog:asso ($ego as node()*) as node()* {
     
 (: This function records association data in Tei. It expects a person as input, 
 to generate a list relations. 
 
-The structure of its output should match the output of local:kin
+The structure of its output should match the output of biog:kin
 
 ASSOC_CODES contains both symmetrical and assymetrical relations, 
 these are converted into tei:relation/@active || @passive  || @mutual
@@ -531,12 +417,12 @@ let $report :=
     (:count($ASSOC_DATA//c_assoc_id[. > 0][. < 500]) = 1726
 whats up with $assoc_codes//c_assoc_role_type ?:)
     
-    for $individual in $ASSOC_DATA//c_personid[. = $ego]
+    for $individual in $global:ASSOC_DATA//c_personid[. = $ego]
     let $friends := $individual/../c_assoc_id
     
-    let $code := $ASSOC_CODES//c_assoc_code[. = $individual/../c_assoc_code]
-    let $type-rel := $ASSOC_CODE_TYPE_REL//c_assoc_code[. = $individual/../c_assoc_code]
-    let $type := $ASSOC_TYPES//c_assoc_type_id[. = $type-rel/../c_assoc_type_id]
+    let $code := $global:ASSOC_CODES//c_assoc_code[. = $individual/../c_assoc_code]
+    let $type-rel := $global:ASSOC_CODE_TYPE_REL//c_assoc_code[. = $individual/../c_assoc_code]
+    let $type := $global:ASSOC_TYPES//c_assoc_type_id[. = $type-rel/../c_assoc_type_id]
     
     return        
         element relation {
@@ -603,7 +489,7 @@ whats up with $assoc_codes//c_assoc_role_type ?:)
 };
 
 (:STATUS /STATE:)
-declare function local:status ($achievers as node()*) as node()* {
+declare function biog:status ($achievers as node()*) as node()* {
 
 
 (:the following lines can be added ones status types are linked to status codes to add a label child element to the language specific desc elements
@@ -617,9 +503,9 @@ declare function local:status ($achievers as node()*) as node()* {
  : then (<label>$statt//c_status_type_code[. = $statctr//c_status_type_code[. = $code]]/../c_status_type_desc_chn/text()</label>) else()
  :)
 
-for $status in $STATUS_DATA//c_personid[. = $achievers]
+for $status in $global:STATUS_DATA//c_personid[. = $achievers]
 
-let $code := $STATUS_CODES//c_status_code[. = $status/../c_status_code]
+let $code := $global:STATUS_CODES//c_status_code[. = $status/../c_status_code]
 let $first := $status/../c_firstyear
 let $last := $status/../c_lastyear
 return 
@@ -627,12 +513,12 @@ return
     then ()
     else ( element state { attribute type {'status'},
           if ($first/text() and $last/text() != 0)
-          then ( attribute from {local:isodate($first/text())}, 
-                attribute to {local:isodate($last/text())})
+          then ( attribute from {cal:isodate($first/text())}, 
+                attribute to {cal:isodate($last/text())})
           else if ($first/text() != 0)
-               then (attribute from {local:isodate($first/text())})
+               then (attribute from {cal:isodate($first/text())})
                else if ($last/text() != 0)
-                    then ( attribute to {local:isodate($last/text())})
+                    then ( attribute to {cal:isodate($last/text())})
                     else (' '),
           element desc { attribute xml:lang {'en'}, $code/../c_status_desc/text()},
           element desc { attribute xml:lang {'zh-Hant'}, $code/../c_status_desc_chn/text()}
@@ -641,17 +527,17 @@ return
 };
 
 (:EVENTS:)
-declare function local:event ($participants as node()*) as node()* {
+declare function biog:event ($participants as node()*) as node()* {
 (: no py or en name for events:)
 
-for $event in $EVENTS_DATA//c_personid[. = $participants]
-let $code := $EVENT_CODES//c_event_code[. = $event/../c_event_code]
-let $event-add := $EVENTS_ADDR//c_event_record_id[. = $event/../c_event_record_id]
+for $event in $global:EVENTS_DATA//c_personid[. = $participants]
+let $code := $global:EVENT_CODES//c_event_code[. = $event/../c_event_code]
+let $event-add := $global:EVENTS_ADDR//c_event_record_id[. = $event/../c_event_record_id]
         return
              
                 element event { 
                     if ($event/../c_year != 0)
-                    then (attribute when {local:isodate($event/../c_year/text())})
+                    then (attribute when {cal:isodate($event/../c_year/text())})
                     else (),
                     if (empty($event-add))
                     then ()
@@ -673,9 +559,9 @@ let $event-add := $EVENTS_ADDR//c_event_record_id[. = $event/../c_event_record_i
 };
 
 (:exam and office related data:)
-declare function local:entry ($initiates as node()*) as node()* {
-(: local:entry expects persons from BIOG_MAIN and returns tei:event for entries into social institutions.
-the output of local:entry should match the structure of local:event's ouput
+declare function biog:entry ($initiates as node()*) as node()* {
+(: biog:entry expects persons from BIOG_MAIN and returns tei:event for entries into social institutions.
+the output of biog:entry should match the structure of biog:event's ouput
 :)
 
 (: TODO
@@ -691,15 +577,15 @@ use @role to "link to status of a place, or occupation of a person"!
 entries should become a nested taxonomy to be @ref'ed
 make sponsors into their own note element? @role?
 parental status code?
-institutional addressess via local:org-add
+institutional addressess via biog:org-add
 switch to tei:education | tei:faith for entry type data
 :)
 
-for $initiate in $ENTRY_DATA//c_personid[. =$initiates]
+for $initiate in $global:ENTRY_DATA//c_personid[. =$initiates]
 
-let $code := $ENTRY_CODES//c_entry_code[. = $initiate/../c_entry_code]
-let $type-rel := $ENTRY_CODE_TYPE_REL//c_entry_code[ . = $initiate/../c_entry_code]
-let $type :=  $ENTRY_TYPES//c_entry_type[. = $type-rel/../c_entry_type]
+let $code := $global:ENTRY_CODES//c_entry_code[. = $initiate/../c_entry_code]
+let $type-rel := $global:ENTRY_CODE_TYPE_REL//c_entry_code[ . = $initiate/../c_entry_code]
+let $type :=  $global:ENTRY_TYPES//c_entry_type[. = $type-rel/../c_entry_type]
 
 (:
 [tts_sysno] INTEGER, 
@@ -738,7 +624,7 @@ return
         attribute subtype {$code/text()}, 
         if ($initiate/../c_year[. = 0] or empty($initiate/../c_year)) 
         then ()
-        else (attribute when {local:isodate($initiate/../c_year/text())}),
+        else (attribute when {cal:isodate($initiate/../c_year/text())}),
         if ($initiate/../c_addr_id[. = 0] or empty($initiate/../c_addr_id))
         then ()
         else (attribute where {concat('#PL', $initiate/../c_addr_id/text())}),
@@ -785,7 +671,7 @@ return
     }               
 };
 
-declare function local:new-post ($appointees as node()*) as node()* {
+declare function biog:new-post ($appointees as node()*) as node()* {
 
 (: we need to ascertian a few things about dates and POST_DATA here:
 are there any instances where one conatins data that is not isodate or in POSTED_TO_OFFICE_DATA? :)
@@ -835,11 +721,11 @@ are there any instances where one conatins data that is not isodate or in POSTED
 :)
 
 
-for $post in $POSTED_TO_OFFICE_DATA//c_personid[. = $appointees]/../c_posting_id
-let $addr := $POSTED_TO_ADDR_DATA//c_posting_id[. = $post]
-let $cat := $OFFICE_CATEGORIES//c_office_category_id[. = $post/../c_office_category_id]
-let $appt := $APPOINTMENT_TYPE_CODES//c_appt_type_code[. = $post/../c_appt_type_code]
-let $assu := $ASSUME_OFFICE_CODES//c_assume_office_code[. =$post/../c_assume_office_code]
+for $post in $global:POSTED_TO_OFFICE_DATA//c_personid[. = $appointees]/../c_posting_id
+let $addr := $global:POSTED_TO_ADDR_DATA//c_posting_id[. = $post]
+let $cat := $global:OFFICE_CATEGORIES//c_office_category_id[. = $post/../c_office_category_id]
+let $appt := $global:APPOINTMENT_TYPE_CODES//c_appt_type_code[. = $post/../c_appt_type_code]
+let $assu := $global:ASSUME_OFFICE_CODES//c_assume_office_code[. =$post/../c_assume_office_code]
 
 order by $post/../c_sequence
 return
@@ -853,10 +739,10 @@ return
             else (attribute key {$post/../c_sequence/text()}),        
             if (empty($post/../c_firstyear) or $post/../c_firstyear = 0) 
             then ()
-            else (attribute notBefore {local:isodate($post/../c_firstyear/text())}),
+            else (attribute notBefore {cal:isodate($post/../c_firstyear/text())}),
             if (empty($post/../c_lastyear) or $post/../c_lastyear = 0) 
             then ()
-            else (attribute notAfter {local:isodate($post/../c_lastyear/text())}),
+            else (attribute notAfter {cal:isodate($post/../c_lastyear/text())}),
             if (empty($post/../c_source) or $post/../c_source = 0)
             then ()
             else (attribute source {concat('#BIB', $post/../c_source/text())}),        
@@ -901,7 +787,7 @@ return
     }
 };
 
-declare function local:posses ($possessions as node()*) as node()* {
+declare function biog:posses ($possessions as node()*) as node()* {
 (: This function reads possession data and creates a tei:state[@type = 'possession'] element
 
 So far there are only five entries (18332, 13550, 45279, 45518, 3874) in CBDB, with whole columns as NULL.
@@ -931,10 +817,10 @@ So far there are only five entries (18332, 13550, 45279, 45518, 3874) in CBDB, w
  
  :)
 
-for $stuff in $POSSESSION_DATA//c_personid[. = $possessions][. > 0]
-let $act := $POSSESSION_ACT_CODES//c_possession_act_code[ . = $stuff/../c_possession_act_code]
-let $where := $POSSESSION_ADDR//c_possession_row_id[. = $stuff/../c_possession_row_id]
-let $unit := $MEASURE_CODES//c_measure_code[. = $stuff/../c_measure_code]
+for $stuff in $global:POSSESSION_DATA//c_personid[. = $possessions][. > 0]
+let $act := $global:POSSESSION_ACT_CODES//c_possession_act_code[ . = $stuff/../c_possession_act_code]
+let $where := $global:POSSESSION_ADDR//c_possession_row_id[. = $stuff/../c_possession_row_id]
+let $unit := $global:MEASURE_CODES//c_measure_code[. = $stuff/../c_measure_code]
 
 return 
     element state{ 
@@ -959,7 +845,7 @@ return
         
         if (empty($stuff/../c_possession_yr))
         then ()
-        else (attribute when {local:isodate($stuff/../c_possession_yr)}),
+        else (attribute when {cal:isodate($stuff/../c_possession_yr)}),
         
         if (empty($stuff/../c_source))
         then ()
@@ -990,7 +876,7 @@ return
 };
 
 (:PLACES:)
-declare function local:pers-add ($resident as node()*) as node()* {
+declare function biog:pers-add ($resident as node()*) as node()* {
 (:This function reads the BIOG_ADDR_DATA for a given c_personid and outputs tei:residence:)
 
 (: TODO
@@ -1030,8 +916,8 @@ tts_sysno] INTEGER,                             d
 :)
 
 
-for $address in $BIOG_ADDR_DATA//c_personid[. = $resident][. >0]
-let $code := $BIOG_ADDR_CODES//c_addr_type[. = $address/../c_addr_type]
+for $address in $global:BIOG_ADDR_DATA//c_personid[. = $resident][. >0]
+let $code := $global:BIOG_ADDR_CODES//c_addr_type[. = $address/../c_addr_type]
 order by $address/../c_sequence
 
 return 
@@ -1051,25 +937,25 @@ return
        then ()
        else if ($address/../c_firstyear != 0 and $address/../c_fy_month != 0 and $address/../c_fy_day != 0)
             then (attribute from {
-             string-join((local:isodate($address/../c_firstyear),
+             string-join((cal:isodate($address/../c_firstyear),
              functx:pad-integer-to-length($address/../c_fy_month, 2),
              functx:pad-integer-to-length($address/../c_fy_day, 2)), '-')})
             else if  ($address/../c_firstyear != 0 and $address/../c_fy_month != 0)
-                then (attribute from {string-join((local:isodate($address/../c_firstyear),
+                then (attribute from {string-join((cal:isodate($address/../c_firstyear),
                         functx:pad-integer-to-length($address/../c_fy_month, 2)), '-')})
-                else (attribute from {local:isodate($address/../c_firstyear)}),
+                else (attribute from {cal:isodate($address/../c_firstyear)}),
         
        if (empty($address/../c_lastyear) or $address/../c_lastyear = 0)
        then ()
        else if ($address/../c_lastyear != 0 and $address/../c_ly_month != 0 and $address/../c_ly_day != 0)
             then (attribute to {
-             string-join((local:isodate($address/../c_lastyear),
+             string-join((cal:isodate($address/../c_lastyear),
              functx:pad-integer-to-length($address/../c_ly_month, 2),
              functx:pad-integer-to-length($address/../c_ly_day, 2)), '-')})
             else if  ($address/../c_lastyear != 0 and $address/../c_ly_month != 0)
-                then (attribute to {string-join((local:isodate($address/../c_lastyear),
+                then (attribute to {string-join((cal:isodate($address/../c_lastyear),
                         functx:pad-integer-to-length($address/../c_ly_month, 2)), '-')})
-                else (attribute to {local:isodate($address/../c_lastyear)}),        
+                else (attribute to {cal:isodate($address/../c_lastyear)}),        
    (: Source   :)
        if (empty($address/../c_source) or $address/../c_source = 0)
        then ()
@@ -1124,7 +1010,7 @@ return
     }
 };
 
-declare function local:inst-add ($participant as node()*) as node()* {
+declare function biog:inst-add ($participant as node()*) as node()* {
 (:This function reads the BIOG_INST_DATA for a given c_personid and outputs tei:event.
 the location data for the event is inside @where, the time takes when-custorm format as in listOrg.xml
 
@@ -1159,18 +1045,14 @@ Desc contents come from $code
 :)
 
 
-for $address in $BIOG_INST_DATA//c_personid[. = $participant][. > 0]
-let $code := $BIOG_INST_CODES//c_bi_role_code[. = $address/../c_bi_role_code]
+for $address in $global:BIOG_INST_DATA//c_personid[. = $participant][. > 0]
+let $code := $global:BIOG_INST_CODES//c_bi_role_code[. = $address/../c_bi_role_code]
 
-let $cal-ZH := doc(concat($target, 'cal_ZH.xml'))
-let $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category
+let $dy_by := $global:DYNASTIES//c_dy[. = $global:NIAN_HAO//c_nianhao_id[. = $address/../c_bi_by_nh_code]/../c_dy]/../c_sort
+let $dy_ey := $global:DYNASTIES//c_dy[. = $global:NIAN_HAO//c_nianhao_id[. = $address/../c_bi_ey_nh_code]/../c_dy]/../c_sort
 
-
-let $dy_by := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $address/../c_bi_by_nh_code]/../c_dy]/../c_sort
-let $dy_ey := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $address/../c_bi_ey_nh_code]/../c_dy]/../c_sort
-
-let $re_by := count($cal-path/tei:category[@xml:id = concat('R', $address/../c_bi_by_nh_code/text())]/preceding-sibling::tei:category) +1
-let $re_ey := count($cal-path/tei:category[@xml:id = concat('R', $address/../c_bi_ey_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_by := count($cal:path/tei:category[@xml:id = concat('R', $address/../c_bi_by_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_ey := count($cal:path/tei:category[@xml:id = concat('R', $address/../c_bi_ey_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
     element event { 
@@ -1183,11 +1065,11 @@ return
    (:   DATES-ISO :)
        if (empty($address/../c_bi_begin_year) or $address/../c_bi_begin_year = 0)
        then ()
-       else (attribute from {local:isodate($address/../c_firstyear)}),
+       else (attribute from {cal:isodate($address/../c_firstyear)}),
         
        if (empty($address/../c_bi_end_year) or $address/../c_bi_end_year = 0)
        then ()
-       else (attribute to {local:isodate($address/../c_lastyear)}),
+       else (attribute to {cal:isodate($address/../c_lastyear)}),
  
  (:     DATES zh  :)
        if ((empty($address/../c_bi_by_nh_code) or $address/../c_bi_by_nh_code = 0)
@@ -1233,7 +1115,7 @@ return
     }
 };
 
-declare function local:biog ($persons as node()*) as node()* {
+declare function biog:biog ($persons as node()*) as node()* {
 
 (: TODO
 c_self_bio from $source is dropped change to attribute when refactoring query syntax?
@@ -1301,31 +1183,31 @@ c_self_bio from $source is dropped change to attribute when refactoring query sy
 
 for $person in $persons
 
-let $choro := $CHORONYM_CODES//c_choronym_code[. = $person/../c_choronym_code]
-let $household := $HOUSEHOLD_STATUS_CODES//c_household_status_code[. = $person/../c_household_status_code]
-let $ethnicity := $ETHNICITY_TRIBE_CODES//c_ethnicity_code[. = $person/../c_ethnicity_code]
+let $choro := $global:CHORONYM_CODES//c_choronym_code[. = $person/../c_choronym_code]
+let $household := $global:HOUSEHOLD_STATUS_CODES//c_household_status_code[. = $person/../c_household_status_code]
+let $ethnicity := $global:ETHNICITY_TRIBE_CODES//c_ethnicity_code[. = $person/../c_ethnicity_code]
 
-let $association := $ASSOC_DATA//c_personid[. = $person]
-let $kin := $KIN_DATA//c_personid[. = $person]
-let $status := $STATUS_DATA//c_personid[. = $person]
-let $post := $POSTED_TO_OFFICE_DATA//c_personid[. = $person]
-let $posssession := $POSSESSION_DATA//c_personid[. = $person]
+let $association := $global:ASSOC_DATA//c_personid[. = $person]
+let $kin := $global:KIN_DATA//c_personid[. = $person]
+let $status := $global:STATUS_DATA//c_personid[. = $person]
+let $post := $global:POSTED_TO_OFFICE_DATA//c_personid[. = $person]
+let $posssession := $global:POSSESSION_DATA//c_personid[. = $person]
 
-let $event := $EVENTS_DATA//c_personid[. = $person]
-let $entry := $ENTRY_DATA//c_personid[. = $person]
+let $event := $global:EVENTS_DATA//c_personid[. = $person]
+let $entry := $global:ENTRY_DATA//c_personid[. = $person]
 
-let $source := $BIOG_SOURCE_DATA//c_personid[. = $person]
+let $source := $global:BIOG_SOURCE_DATA//c_personid[. = $person]
 
 
-let $bio-add := $BIOG_ADDR_DATA//c_personid[. = $person]
-let $bio-inst := $BIOG_INST_DATA//c_personid[. = $person]
-let $bio-src := $BIOG_SOURCE_DATA//c_personid[. = $person]
+let $bio-add := $global:BIOG_ADDR_DATA//c_personid[. = $person]
+let $bio-inst := $global:BIOG_INST_DATA//c_personid[. = $person]
+let $bio-src := $global:BIOG_SOURCE_DATA//c_personid[. = $person]
 
-let $dy_by := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $person/../c_by_nh_code]/../c_dy]/../c_sort
-let $dy_dy := $DYNASTIES//c_dy[. = $NIAN_HAO//c_nianhao_id[. = $person/../c_dy_nh_code]/../c_dy]/../c_sort
+let $dy_by := $global:DYNASTIES//c_dy[. = $global:NIAN_HAO//c_nianhao_id[. = $person/../c_by_nh_code]/../c_dy]/../c_sort
+let $dy_dy := $global:DYNASTIES//c_dy[. = $global:NIAN_HAO//c_nianhao_id[. = $person/../c_dy_nh_code]/../c_dy]/../c_sort
 
-let $re_by := count($cal-path/tei:category[@xml:id = concat('R', $person/../c_by_nh_code/text())]/preceding-sibling::tei:category) +1
-let $re_dy := count($cal-path/tei:category[@xml:id = concat('R', $person/../c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_by := count($cal:path/tei:category[@xml:id = concat('R', $person/../c_by_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_dy := count($cal:path/tei:category[@xml:id = concat('R', $person/../c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
     element person { attribute ana {'historical'}, 
@@ -1342,22 +1224,22 @@ return
         element persName {attribute type {'main'},
             if (empty($person/../c_name_chn))
             then()
-            else (local:name($person, 'hz')),
+            else (biog:name($person, 'hz')),
             
             if (empty($person/../c_name))
             then()
-            else (local:name($person, 'py'))                   
+            else (biog:name($person, 'py'))                   
         },
 (:      ALIAS  :)
         if (empty($person/../c_name_proper))
         then()
-        else (local:name($person, 'proper')),
+        else (biog:name($person, 'proper')),
         
         if (empty($person/../c_name_rm))
-        then()
-        else (local:name($person, 'rm')),
+        then ()
+        else (biog:name($person, 'rm')),
         
-        local:alias($person),
+        biog:alias($person),
         
         if ($person/../c_female = 1) 
         then (<sex value="2">f</sex>) 
@@ -1371,7 +1253,7 @@ return
                 if (empty($person/../c_birthyear) or $person/../c_birthyear[. = 0])
                 then ()
                 else (
-                attribute when {string-join((local:isodate($person/../c_birthyear),
+                attribute when {string-join((cal:isodate($person/../c_birthyear),
                     if ($person/../c_by_month [. > 0])
                     then (functx:pad-integer-to-length($person/../c_by_month/text(), 2))
                     else (),
@@ -1393,7 +1275,7 @@ return
                  else (), 
                  element date { attribute calendar {'#chinTrad'},
                     attribute period{concat('#R',$person/../c_by_nh_code/text())},
-                 $dy_by/../c_dynasty_chn/text(), $NIAN_HAO//c_nianhao_id[. = $person/../c_by_nh_code]/../c_nianhao_chn/text(), 
+                 $dy_by/../c_dynasty_chn/text(), $global:NIAN_HAO//c_nianhao_id[. = $person/../c_by_nh_code]/../c_nianhao_chn/text(), 
                  string-join(($person/../c_by_nh_year/text(), $person/../c_by_day_gz/text()), ':')
                  }             
             }),
@@ -1404,7 +1286,7 @@ return
                 if (empty($person/../c_deathyear) or $person/../c_deathyear[. = 0])
                 then ()
                 else (
-                attribute when {string-join((local:isodate($person/../c_deathyear),
+                attribute when {string-join((cal:isodate($person/../c_deathyear),
                     if ($person/../c_dy_month [. > 0])
                     then (functx:pad-integer-to-length($person/../c_dy_month/text(), 2))
                     else (),
@@ -1426,7 +1308,7 @@ return
                  else (), 
                  element date { attribute calendar {'#chinTrad'},
                     attribute period{concat('#R',$person/../c_dy_nh_code/text())},
-                 $dy_dy/../c_dynasty_chn/text(), $NIAN_HAO//c_nianhao_id[. = $person/../c_dy_nh_code]/../c_nianhao_chn/text(), 
+                 $dy_dy/../c_dynasty_chn/text(), $global:NIAN_HAO//c_nianhao_id[. = $person/../c_dy_nh_code]/../c_nianhao_chn/text(), 
                  string-join(($person/../c_dy_nh_year/text(), $person/../c_dy_day_gz/text()), ':')
                  }             
             }),
@@ -1438,25 +1320,25 @@ return
                 if ($earliest or $latest or $index or $dy > 0) 
                 then (element floruit 
                             { if ($earliest/text() and $latest/text() != 0) 
-                              then ( attribute notBefore {local:isodate($earliest/text())}, 
-                                      attribute notAfter {local:isodate($latest/text())})
+                              then ( attribute notBefore {cal:isodate($earliest/text())}, 
+                                      attribute notAfter {cal:isodate($latest/text())})
                               else if ($earliest/text() != 0)
-                                    then (attribute notBefore {local:isodate($earliest/text())})
+                                    then (attribute notBefore {cal:isodate($earliest/text())})
                                     else if ($latest/text() != 0)
-                                          then ( attribute notAfter {local:isodate($latest/text())})
+                                          then ( attribute notAfter {cal:isodate($latest/text())})
                                           else (),     
                                           
                                     if ($index = 0 or $dy < 1)
                                     then ()
                                     else (element date {
                                             if ($index != 0)
-                                            then (attribute when {local:isodate($index)}) 
+                                            then (attribute when {cal:isodate($index)}) 
                                             else (),  
                                     
                                             if ($dy > 0)
                                             then (attribute datingMethod {'#chinTrad'}, 
                                                    attribute period {concat('#D', $dy/text())}, 
-                                                    $DYNASTIES//c_dy[. =$dy]/../c_dynasty_chn/text())
+                                                    $global:DYNASTIES//c_dy[. =$dy]/../c_dynasty_chn/text())
                                             else ()
                             }), 
                             if (empty($person/../c_fl_ey_notes) and empty($person/../c_fl_ly_notes))
@@ -1513,7 +1395,7 @@ return
                     else (element note {
                             element listPerson { attribute type {'kin'}, 
                                 element listRelation { attribute type {'kinship'},
-                                    local:kin($person)}
+                                    biog:kin($person)}
                                 }
                             }),
                         
@@ -1522,7 +1404,7 @@ return
                     else (element note {
                             element listPerson { attribute type {'associates'}, 
                                 element listRelation { attribute type {'associations'},
-                                    local:asso($person)}
+                                    biog:asso($person)}
                                 }
                             })
                     }),
@@ -1530,38 +1412,38 @@ return
             then ()
             else(<socecStatus>
                     {if ($status) 
-                    then(local:status($person))
+                    then(biog:status($person))
                     else()}
                  </socecStatus>),
             
             if (empty($post))
             then ()
-            else (local:new-post($person)),
+            else (biog:new-post($person)),
                         
             if (empty($event) and empty($entry))
             then ()
             else (<listEvent>
                     {if ($event)
-                    then (local:event($person))
+                    then (biog:event($person))
                     else ()
                     }
                     {if ($entry)
-                    then (local:entry($person))
+                    then (biog:entry($person))
                     else()
                     }                      
                 </listEvent>),
             
             if (empty($posssession)) 
             then ()
-            else (local:posses($person)), 
+            else (biog:posses($person)), 
             
             if (empty($bio-add))
             then ()
-            else(local:pers-add($person)), 
+            else(biog:pers-add($person)), 
             
             if (empty($bio-inst))
             then ()
-            else (local:inst-add($person)),
+            else (biog:inst-add($person)),
             
             if (empty($person/../TTSMQ_db_ID) and empty($person/../MQWWLink) and empty($person/../KyotoLink))
             then ()
@@ -1572,17 +1454,17 @@ return
                     <ptr target="{$link/text()}"/>}        
                   </linkGrp>),
                   
-           local:create-mod-by($person/../c_created_by, $person/../c_modified_by)       
+           global:create-mod-by($person/../c_created_by, $person/../c_modified_by)       
     }
     
 };
 
-let $test := $BIOG_MAIN//c_personid[. > 0][. < 501]
-let $full := $BIOG_MAIN//c_personid[. > 0]
+let $test := $global:BIOG_MAIN//c_personid[. > 0][. < 501]
+let $full := $global:BIOG_MAIN//c_personid[. > 0]
 
 return
-xmldb:store($target, 'listPerson.xml',
+xmldb:store($global:target, $global:person,
     <listPerson>
-        {local:biog($test)}
+        {biog:biog($test)}
     </listPerson>    
 ) 

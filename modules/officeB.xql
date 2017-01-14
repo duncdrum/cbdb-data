@@ -1,13 +1,11 @@
 xquery version "3.0";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
+import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 
-
-declare variable $src := '/db/apps/cbdb-data/src/xml/';
-declare variable $target := '/db/apps/cbdb-data/target/';
 
 (:officeB joins the nodes from the two intermediary files written by officeA.
 it also cleans up after itself.
@@ -36,14 +34,14 @@ return
 
 
 
-let $tree := doc('/db/apps/cbdb-data/target/office.xml')
-let $off := doc('/db/apps/cbdb-data/target/officeA.xml')
+let $tree := doc(concat($global:target, $global:office))
+let $off := doc(concat($global:target, $global:office-temp))
 
 
 
 return
     local:merge-officeTree($tree//category, $off//category) ,
-    xmldb:remove($target, 'officeA.xml')
+    xmldb:remove($global:target, $global:office-temp)
     
 
 
