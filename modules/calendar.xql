@@ -9,6 +9,9 @@ declare namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
 
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 
+declare variable $cal:ZH := doc(concat($global:target, $global:calendar));
+declare variable $cal:path := $cal:ZH/tei:taxonomy/tei:taxonomy/tei:category;
+
 
 (:calendar.xql reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
     and creates a taxonomy element for inculsion in the teiHeader via xi:xinclude.
@@ -74,11 +77,8 @@ followed by the Year number.D(\d*)-R(\d*)-(\d*)
 the others are dropped since only a year or nianhao is of little information value. 
 :)
 
-let $cal-ZH := doc(concat($global:target, $global:calendar))
-let $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category
-
 let $dy := $global:DYNASTIES//c_dy[. = $dynasty/text()]
-let $motto := count($cal-path/tei:category[@xml:id = concat('R', $reign/text())]/preceding-sibling::tei:category) +1
+let $motto := count($cal:path/tei:category[@xml:id = concat('R', $reign/text())]/preceding-sibling::tei:category) +1
 
         
 let $date-norm := string-join((concat('D', $dy/../c_sort), concat('R',$motto), concat('Y', $year)),'-')
@@ -121,14 +121,11 @@ declare function cal:custo-date-range (
 (:This function takes chinese calendar date ranges ending in *_dy, *_gz, *_nh.
 It returns a single tei:date element using att.datable.custom. :)
 
-let $cal-ZH := doc(concat($global:target, $global:calendar))
-let $cal-path := $cal-ZH/tei:taxonomy/tei:taxonomy/tei:category
-
 let $DS := $global:DYNASTIES//c_dy[. = $dy-start/text()]
 let $DE := $global:DYNASTIES//c_dy[. = $dy-end/text()]
 
-let $RS := count($cal-path/tei:category[@xml:id = concat('R',  $reg-start/text())]/preceding-sibling::tei:category) +1
-let $RE := count($cal-path/tei:category[@xml:id = concat('R',  $reg-end/text())]/preceding-sibling::tei:category) +1
+let $RS := count($cal:path/tei:category[@xml:id = concat('R',  $reg-start/text())]/preceding-sibling::tei:category) +1
+let $RE := count($cal:path/tei:category[@xml:id = concat('R',  $reg-end/text())]/preceding-sibling::tei:category) +1
 
         
 let $start-norm := string-join((concat('D', $DS/../c_sort), concat('R',$RS), concat('Y', $year-start)),'-')
