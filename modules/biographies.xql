@@ -1398,7 +1398,8 @@ return
                     if (empty($kin))
                     then ()
                     else (element note {
-                            element listPerson { attribute type {'kin'}, 
+                            element listPerson {
+                                element personGrp { attribute role {'kin'}},
                                 element listRelation { attribute type {'kinship'},
                                     biog:kin($person)}
                                 }
@@ -1407,7 +1408,8 @@ return
                     if (empty($association))
                     then ()
                     else (element note {
-                            element listPerson { attribute type {'associates'}, 
+                            element listPerson { 
+                                element personGrp { attribute role {'associates'}},
                                 element listRelation { attribute type {'associations'},
                                     biog:asso($person)}
                                 }
@@ -1464,12 +1466,12 @@ return
     
 };
 
-let $test := $global:BIOG_MAIN//c_personid[. > 0][. < 501]
+let $test := $global:BIOG_MAIN//c_personid[. > 0][. < 501][. = 1]
 let $full := $global:BIOG_MAIN//c_personid[. > 0]
 
 return
-xmldb:store($global:target, $global:person,
+(:xmldb:store($global:target, $global:person,:)
     <listPerson>
         {biog:biog($test)}
     </listPerson>    
-) 
+(:) :)
