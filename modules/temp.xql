@@ -13,6 +13,8 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace temp="http://exist-db.org/apps/cbdb-data/";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
+declare namespace output ="http://www.tei-c.org/ns/1.0";
+
 (:for $place in $global:ADDRESSES//c_addr_id
 
 where count($global:ADDRESSES//c_addr_id[. = $place]) > 1
@@ -80,9 +82,9 @@ These blocks contain a single listPerson.xml file on the same level as the
 let $data := $global:BIOG_MAIN//c_personid[. > 0][. < 214]
 let $count := count($data)
 
-let $chunk-size := 100
-let $block-size := ($chunk-size idiv 10)
-let $record-size := 10
+let $chunk-size := 150
+let $block-size := ($chunk-size idiv 15)
+let $record-size := 2
 
 for $c in 1 to $count idiv $chunk-size + 1 
 let $chunk := xmldb:create-collection("/db/apps/cbdb-data/target/test", concat('chunk-', $c))
@@ -90,7 +92,7 @@ let $chunk := xmldb:create-collection("/db/apps/cbdb-data/target/test", concat('
 for $i in subsequence($data, ($c - 1) * $block-size, $block-size)
 let $collection := xmldb:create-collection($chunk, concat('block-', functx:pad-integer-to-length($i, 4)))
 
-for $individual in subsequence($data, ($i - 1) * $block-size, $block-size)
+for $individual in subsequence($data, ($i - 1) * $record-size, $record-size)
 let $person := biog:biog($individual)
 let $file-name := concat('cbdb-', functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
 
