@@ -63,9 +63,12 @@ deep-equal($test//place[4], $test//place[5]):)
 
 (:Because of the large number (>370k) of individuals
 the write operatoin of biographies.xql is slighlty more complex. 
-Instead of putting its data into a single file or collection, collections. 
+Instead of putting its data into a single file or collection, 
+it creates a tree of collections (chunks) and subcollections (blocks). 
+In additions to the person records themselves it also creates a plistPerosn file 
+at each level. 
 
-bdbTEI.xml includes links to 37 listPerson files covering chunks of 10k persons each.  
+As a rsult: cbdbTEI.xml includes links to 37 listPerson files covering chunks of 10k persons each.  
 
 "block" collections contain a single listPerson.xml file and further subcollectoins. 
 This files contains xi:include statments to 10 further listPerson.xml files 
@@ -76,22 +79,19 @@ Subcollections contain a single listPerson.xml file on the same level as the
 let $data := $global:BIOG_MAIN//c_personid[. > 0][. < 214]
 let $count := count($data)
 let $chunk-size := 100
+let $block-size := ($chunk-size idiv 10)
 
-for $i in 1 to $count idiv $chunk-size + 1
-let $collection := xmldb:create-collection("/db/apps/cbdb-data/target/test", concat('block', functx:pad-integer-to-length($i, 3)))
+for $c in 1 to $count idiv $chunk-size + 1 
+let $chunk := xmldb:create-collection("/db/apps/cbdb-data/target/test", concat('chunk-', $c))
 
-for $individual in subsequence($data, ($i - 1) * $chunk-size, $chunk-size)
+for $i in subsequence($data, ($c - 1) * $block-size, $block-size)
+let $collection := xmldb:create-collection($chunk, concat('block-', functx:pad-integer-to-length($i, 4)))
+
+for $individual in subsequence($data, ($i - 1) * $block-size, $block-size)
 let $person := biog:biog($individual)
 let $file-name := concat('cbdb-', functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
 
-(:let $listBlock := xmldb:store($collection, 'listPerson.xml', <tei:listPerson>
-                        {for $files in collection($collection)
-                        let $n := functx:substring-after-last(base-uri($files), '/')
-                        where $n != 'listPerson.xml'
-                        order by $n
-                         return 
-                            <xi:include href="{$n}" parse="xml"/>}
-                        </tei:listPerson>):)
+
 
 return (xmldb:store($collection, $file-name, $person), 
          xmldb:store($collection, 'listPerson.xml', 
@@ -102,7 +102,15 @@ return (xmldb:store($collection, $file-name, $person),
                 order by $n
                 return 
                     <xi:include href="{$n}" parse="xml"/>}
-            </tei:listPerson>))
+            </tei:listPerson>), 
+        xmldb:store($chunk, concat('list-', $c, '.xml'), 
+            <tei:listPerson>
+                {for $lists in collection($chunk)
+                where functx:substring-after-last(base-uri($lists), '/')  = 'listPerson.xml'
+                order by $lists
+                return
+                <xi:include href="{substring-after(base-uri($lists), concat('/chunk-', $c))}" parse="xml"/>}
+            </tei:listPerson>)    )
 
  
 
