@@ -11,6 +11,7 @@ import module namespace biog= "http://exist-db.org/apps/cbdb-data/biographies" a
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace temp="http://exist-db.org/apps/cbdb-data/";
+declare namespace xi="http://www.w3.org/2001/XInclude";
 
 (:for $place in $global:ADDRESSES//c_addr_id
 
@@ -60,22 +61,36 @@ where count($place/@xml:id) :)
 (:return
 deep-equal($test//place[4], $test//place[5]):)
 
-let $data := $global:BIOG_MAIN//c_personid[. > 0][. < 501]
+(:Because of the large number (>370k) of individuals
+the write operatoin of biographies.xql is slighlty more complex. 
+Instead of putting its data into a single file or collection, collections. 
+
+bdbTEI.xml includes links to 37 listPerson files covering chunks of 10k persons each.  
+
+"block" collections contain a single listPerson.xml file and further subcollectoins. 
+This files contains xi:include statments to 10 further listPerson.xml files 
+within its subcollections. 
+Subcollections contain a single listPerson.xml file on the same level as the 
+1k person records records.
+:)
+let $data := $global:BIOG_MAIN//c_personid[. > 0][. < 314]
 let $count := count($data)
 let $chunk-size := 100
 
 for $i in 1 to $count idiv $chunk-size + 1
-let $collection := xmldb:create-collection("/db/apps/cbdb-data/target/test", concat('CBDB-ID', functx:pad-integer-to-length($i, 3)))
+let $collection := xmldb:create-collection("/db/apps/cbdb-data/target/test", concat('block', functx:pad-integer-to-length($i, 3)))
 
-for $individual in subsequence($data, $count -1 , $chunk-size)
+for $individual in subsequence($data, ($i - 1) * $chunk-size, $chunk-size)
 let $person := biog:biog($individual)
-let $file-name := concat('CBDB', functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
+let $file-name := concat('cbdb-', functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
+
+let $listBlock := xmldb:store($collection, 'listPerson.xml', <listPerson ana="del">
+                        {for $n in $file-name
+                         return 
+                            <xi:include href="{$n}" parse="xml"/>}
+                        </listPerson>)
 
 return xmldb:store($collection, $file-name, $person)
 
-
-    
- (:xmldb:store ('/db/apps/cbdb-data/target/listPerson', $name, 
- biog:biog($ppl)):)
  
 
