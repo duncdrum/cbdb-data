@@ -60,11 +60,22 @@ where count($place/@xml:id) :)
 (:return
 deep-equal($test//place[4], $test//place[5]):)
 
-for $ppl in $global:BIOG_MAIN//c_personid[. > 0]
+let $data := $global:BIOG_MAIN//c_personid[. > 0][. < 501]
+let $count := count($data)
+let $chunk-size := 100
 
-let $name := concat('CBDB', functx:pad-integer-to-length($ppl/text(), 7), '.xml')
-return 
- xmldb:store ('/db/apps/cbdb-data/target/listPerson', $name, 
- biog:biog($ppl))
+for $i in 1 to $count idiv $chunk-size + 1
+let $collection := xmldb:create-collection("/db/apps/cbdb-data/target/test", concat('CBDB-ID', functx:pad-integer-to-length($i, 3)))
+
+for $individual in subsequence($data, $count -1 , $chunk-size)
+let $person := biog:biog($individual)
+let $file-name := concat('CBDB', functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
+
+return xmldb:store($collection, $file-name, $person)
+
+
+    
+ (:xmldb:store ('/db/apps/cbdb-data/target/listPerson', $name, 
+ biog:biog($ppl)):)
  
 
