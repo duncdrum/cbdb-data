@@ -589,3 +589,62 @@ let $NH-py := map{
         </bibl>)
   else ()
 }
+
+(: let $count := count($global:BIOG_MAIN[c_personid])
+ let $test := $global:BIOG_MAIN//c_personid
+
+ for $i in 1 to $count idiv 1000 + 1
+ let $collection := xmldb:create-collection("/db/apps/cbdb-data/target", concat('CBDB', $i))
+ 
+ for $test in subsequence($count -1 *1000, )
+ let $person := biog:biog($test)
+ let $documentname := concat('CBDB', functx:pad-integer-to-length($test/text(), 7), '.xml')
+ 
+ return xmldb:store($collection, $documentname, $person):)
+ 
+(: 
+let $persons := $data//listPerson/*
+let $notes := $persons//note
+
+(:Get the sum (and index positions) of all notes:)
+let $seq := 1 to count($notes)
+
+
+
+(:Set this variable to the desired number of note elements in each chunk:)
+let $chunksize := 2
+let $chunks :=
+        (: map  positional index of note elements to chunks of desired size eg.
+        for blocks with 50 notes
+        $chunks(1) -> 1
+        $chunks(50) -> 1
+        $chunks(51) -> 2
+        $chunks(2339) -> 47:)
+        map:new (
+                for $i at $count in $seq 
+                return 
+                    map:entry ($seq[$i],  round($count div $chunksize)), "?strength=primary"
+                )
+
+(:Determine if a node at the beginning of a chunk has siblings from the same person parent:)
+let $firsts := for $i in $chunks[$i]
+    return if (exists($notes[$i]/preceding-sibling::note)) then ($i= $i - 1)
+    else($i)
+    
+let $last :=
+
+
+(:Get the different starting positions for each block, make sure that it doesn't split the parent person element:)
+for $i in $seq
+let $start := $chunks($i) mod $chunksize =0 
+(:select all notes from $start to $end:)
+for $n at $count in subsequence($notes, $i, $chunksize)
+group by $blocks := $chunks($count)
+
+   return <listPerson n="{count($blocks)}-{count($count)}">
+        {$n/ancestor-or-self::person}
+        {count($n)}
+    </listPerson>
+
+
+:)

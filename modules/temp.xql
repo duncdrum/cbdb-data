@@ -1,10 +1,13 @@
 xquery version "3.0";
-import module namespace functx="http://www.functx.com";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
+import module namespace functx="http://www.functx.com";
+
+
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 import module namespace pla="http://exist-db.org/apps/cbdb-data/place" at "place.xql";
+import module namespace biog= "http://exist-db.org/apps/cbdb-data/biographies" at "biographies.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace temp="http://exist-db.org/apps/cbdb-data/";
@@ -54,6 +57,14 @@ let $test :=
     
 (:for $place in $test//place
 where count($place/@xml:id) :)
-return
-deep-equal($test//place[4], $test//place[5])
+(:return
+deep-equal($test//place[4], $test//place[5]):)
+
+for $ppl in $global:BIOG_MAIN//c_personid[. > 0]
+
+let $name := concat('CBDB', functx:pad-integer-to-length($ppl/text(), 7), '.xml')
+return 
+ xmldb:store ('/db/apps/cbdb-data/target/listPerson', $name, 
+ biog:biog($ppl))
+ 
 
