@@ -73,7 +73,7 @@ within its subcollections.
 Subcollections contain a single listPerson.xml file on the same level as the 
 1k person records records.
 :)
-let $data := $global:BIOG_MAIN//c_personid[. > 0][. < 314]
+let $data := $global:BIOG_MAIN//c_personid[. > 0][. < 214]
 let $count := count($data)
 let $chunk-size := 100
 
@@ -84,13 +84,25 @@ for $individual in subsequence($data, ($i - 1) * $chunk-size, $chunk-size)
 let $person := biog:biog($individual)
 let $file-name := concat('cbdb-', functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
 
-let $listBlock := xmldb:store($collection, 'listPerson.xml', <listPerson ana="del">
-                        {for $n in $file-name
+(:let $listBlock := xmldb:store($collection, 'listPerson.xml', <tei:listPerson>
+                        {for $files in collection($collection)
+                        let $n := functx:substring-after-last(base-uri($files), '/')
+                        where $n != 'listPerson.xml'
+                        order by $n
                          return 
                             <xi:include href="{$n}" parse="xml"/>}
-                        </listPerson>)
+                        </tei:listPerson>):)
 
-return xmldb:store($collection, $file-name, $person)
+return (xmldb:store($collection, $file-name, $person), 
+         xmldb:store($collection, 'listPerson.xml', 
+            <tei:listPerson>
+                {for $files in collection($collection)
+                let $n := functx:substring-after-last(base-uri($files), '/')
+                where $n != 'listPerson.xml'
+                order by $n
+                return 
+                    <xi:include href="{$n}" parse="xml"/>}
+            </tei:listPerson>))
 
  
 
