@@ -7,6 +7,7 @@ import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "g
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace xi="http://www.w3.org/2001/XInclude";
 declare namespace biog= "http://exist-db.org/apps/cbdb-data/biographies";
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 
@@ -1466,12 +1467,70 @@ return
     
 };
 
-let $test := $global:BIOG_MAIN//c_personid[. > 0][. < 501][. = 1]
+(:Because of the large number (>370k) of individuals
+the write operatoin of biographies.xql is slighlty more complex. 
+Instead of putting its data into a single file or collection, 
+it creates a tree of collections (chunks) and subcollections (blocks).
+
+In additions to the person records themselves it also creates a plistPerson file 
+at each level. 
+
+As a result cbdbTEI.xml includes links to 37 listPerson files 
+covering chunks of $chunk-size persons each (10k).  
+
+"chunk" collections contain a single list-\n.xml file and $block-size (50) subcollectoins. 
+This file contains xi:include statments to 1 listPerson.xml file per "block" subcollection.
+Each block contains a single listPerson.xml file on the same level as the 
+200 person records .
+:)
+
+let $test := $global:BIOG_MAIN//c_personid[. > 0][. < 501]
 let $full := $global:BIOG_MAIN//c_personid[. > 0]
 
-return
-(:xmldb:store($global:target, $global:person,:)
-    <listPerson>
-        {biog:biog($test)}
-    </listPerson>    
-(:) :)
+
+let $count := count($full)
+
+let $chunk-size := 10000
+let $block-size := 50
+let $ppl-per-block := 200
+
+for $i in 1 to $count idiv $chunk-size + 1 
+let $chunk := xmldb:create-collection("/db/apps/cbdb-data/target/listPerson", 
+    concat('chunk-', functx:pad-integer-to-length($i, 2)))
+
+  
+
+for $j in subsequence($full, ($i - 1) * $block-size, $block-size)
+let $collection := xmldb:create-collection($chunk, concat('block-', 
+    functx:pad-integer-to-length($j, 4)))
+    
+    
+
+for $individual in subsequence($full, ($j - 1) * $ppl-per-block, $ppl-per-block)
+let $person := biog:biog($individual)
+let $file-name := concat('cbdb-', 
+    functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
+
+return (xmldb:store($collection, $file-name, $person), 
+
+         xmldb:store($collection, 'listPerson.xml', 
+            <tei:listPerson>
+                    {for $files in collection($collection)
+                    let $n := functx:substring-after-last(base-uri($files), '/')
+                    where $n != 'listPerson.xml'
+                    order by $n
+                    return 
+                        <xi:include href="{$n}" parse="xml"/>}
+                    </tei:listPerson>), 
+            
+        xmldb:store($chunk, concat('list-', $i, '.xml'), 
+            <tei:listPerson>
+                    {for $lists in collection($chunk)
+                    let $m := functx:substring-after-last(base-uri($lists), '/') 
+                    where $m  = 'listPerson.xml'
+                    order by base-uri($lists)
+                    return
+                        <xi:include href="{substring-after(base-uri($lists), concat('/chunk-', functx:pad-integer-to-length($i, 2), '/'))}" parse="xml"/>}
+                    </tei:listPerson>))
+
+
