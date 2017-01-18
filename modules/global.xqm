@@ -24,7 +24,7 @@ declare variable $global:institution := 'listOrg.xml';
 declare variable $global:place := 'listPlace.xml';
 declare variable $global:office := 'office.xml';
 declare variable $global:office-temp := 'officeA.xml';
-declare variable $global:header := 'cbdbTEI.xml';
+declare variable $global:main := 'cbdbTEI.xml';
 declare variable $global:person := 'listPerson';
 
 
