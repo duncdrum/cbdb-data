@@ -1509,9 +1509,10 @@ let $collection := xmldb:create-collection($chunk, concat('block-',
 for $individual in subsequence($full, ($j - 1) * $ppl-per-block, $ppl-per-block)
 let $person := biog:biog($individual)
 let $file-name := concat('cbdb-', 
-    functx:pad-integer-to-length(substring-after(data($person//@xml:id), 'BIO'), 7), '.xml')
+    functx:pad-integer-to-length(substring-after(data($person/@xml:id), 'BIO'), 7), '.xml')
 
-return (xmldb:store($collection, $file-name, $person), 
+return 
+    try {(xmldb:store($collection, $file-name, $person), 
 
          xmldb:store($collection, 'listPerson.xml', 
             <tei:listPerson>
@@ -1530,7 +1531,10 @@ return (xmldb:store($collection, $file-name, $person),
                     where $m  = 'listPerson.xml'
                     order by base-uri($lists)
                     return
-                        <xi:include href="{substring-after(base-uri($lists), concat('/chunk-', functx:pad-integer-to-length($i, 2), '/'))}" parse="xml"/>}
-                    </tei:listPerson>))
+                        <xi:include href="{substring-after(base-uri($lists), 
+                            concat('/chunk-', functx:pad-integer-to-length($i, 2), '/'))}" parse="xml"/>}
+                    </tei:listPerson>))}
+    catch * {xmldb:store($collection, 'error.xml', 
+             <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}
 
 
