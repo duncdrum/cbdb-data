@@ -519,8 +519,8 @@ return
                else if ($last/text() != 0)
                     then ( attribute to {cal:isodate($last/text())})
                     else (' '),
-          element desc { attribute xml:lang {'en'}, $code/../c_status_desc/text()},
-          element desc { attribute xml:lang {'zh-Hant'}, $code/../c_status_desc_chn/text()}
+          element desc { attribute xml:lang {'zh-Hant'}, $code/../c_status_desc_chn/text()},          
+          element desc { attribute xml:lang {'en'}, $code/../c_status_desc/text()}          
           }
           )
 };
@@ -1392,18 +1392,18 @@ return
             
 (:          Ethniciy, Tribe etc  :)
             if ($person/../c_household_status_code > 0) 
-            then (<trait type="household">
-                <label xml:lang="en">{$household/../c_household_status_desc/text()}</label>
+            then (<trait type="household">                
                 <label xml:lang="zh-Hant">{$household/../c_household_status_desc_chn/text()}</label>
+                <label xml:lang="en">{$household/../c_household_status_desc/text()}</label>
             </trait>)
             else(), 
             
             if ($person/../c_ethnicity_code > 0) 
             then (<trait type="ethnicity" key="{$ethnicity/../c_group_code/text()}">
                 <label>{$ethnicity/../c_ethno_legal_cat/text()}</label>
-                        <desc xml:lang="en">{$ethnicity/../c_romanized/text()}</desc>
-                        <desc xml:lang="zh-alac97">{$ethnicity/../c_name/text()}</desc>
                         <desc xml:lang="zh-Hant">{$ethnicity/../c_name_chn/text()}</desc>
+                        <desc xml:lang="zh-alac97">{$ethnicity/../c_name/text()}</desc>
+                        <desc xml:lang="en">{$ethnicity/../c_romanized/text()}</desc>
                         {if ($ethnicity/../c_notes) 
                         then (<note>{$ethnicity/../c_notes/text()}</note>)
                         else()

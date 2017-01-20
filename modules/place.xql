@@ -115,9 +115,9 @@ count($ADDR_BELONGS_DATA//c_source[. > 0])
             type ="{ if (empty(pla:fix-admin-types($place/../c_admin_type)))
             then(pla:fix-admin-types($code/../c_admin_type))
             else (pla:fix-admin-types($place/../c_admin_type))
-            }">            
-            <placeName xml:lang="zh-alac97">{$place/../c_name/text()}</placeName>         
-            <placeName xml:lang="zh-Hant">{$place/../c_name_chn/text()}</placeName>
+            }">
+            <placeName xml:lang="zh-Hant">{$place/../c_name_chn/text()}</placeName>            
+            <placeName xml:lang="zh-alac97">{$place/../c_name/text()}</placeName>            
                 {
                 if (empty($code/../c_alt_names)) 
                 then ()

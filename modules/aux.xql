@@ -41,3 +41,58 @@ return
 };
 
 (:local:write-chunk-includes(37):)
+
+
+declare function local:fix-place-dupes ($places as node()*) as item()*{
+
+let $dupes := xmldb:store($global:target, 'place-lookup.xml',
+    <listPlace>
+        {for $place in $global:ADDRESSES//c_addr_id
+         where count($global:ADDRESSES//c_addr_id[. = $place]) > 1
+         return
+            pla:address($place)}
+    </listPlace>)
+    
+let $dedupes :=  <listPlace>
+                        {for $dupe in $dupes/listPlace/place
+                        let $id := data($dupe/@xml:id)                 
+                        return
+                            <place xml:id="{data($dupe/@xml:id)}">
+                                {functx:distinct-deep($dupes//place[@xml:id = $id]/*)}
+                            </place>}
+                     </listPlace>
+
+return
+    xmldb:store($global:target, 'place-dupe.xml',
+    <listPLace>{functx:distinct-deep($dedupes//place)}</listPLace>)
+};
+
+    
+
+let $listPlace := doc(concat($global:target, $global:place))
+let $dedupe := doc(concat($global:target, 'place-dedupe.xml'))
+
+(:id(data($n/@xml:id), $n) this works so keep working on it:)
+
+(:
+http://stackoverflow.com/questions/3875560/xquery-finding-duplciate-ids?rq=1
+to find dupes:
+
+let $vSeq := /object/secondary/@identifier
+  return
+    $vSeq[index-of($vSeq,.)[2]] 
+:)
+
+(:outtake
+
+[index-of($listPlace//tei:place/tei:placeName, placeName)[1]]
+:)
+
+(:
+if dimitris solutions plays nicely, then run the below as update replace in the return
+:)
+
+for $n in $listPlace//tei:place[@xml:id = data($dedupe//tei:place/@xml:id)]
+
+return
+    $n
