@@ -119,15 +119,15 @@ return
                 else if ($org/../c_inst_begin_dy > 0)
                       then (element date { attribute calendar {'#chinTrad'},
                                     attribute period {concat('#D',$org/../c_inst_begin_dy/text())},
-                                    $DYNASTIES//c_dy[. = $org/../c_inst_begin_dy/text()]/../c_dynasty_chn/text()})
+                                    $global:DYNASTIES//c_dy[. = $org/../c_inst_begin_dy/text()]/../c_dynasty_chn/text()})
                       else if ($org/../c_inst_end_dy > 0)
                             then (element date { attribute calendar {'#chinTrad'},
                                     attribute period {concat('#D',$org/../c_inst_end_dy/text())},
-                                    $DYNASTIES//c_dy[. = $org/../c_inst_end_dy/text()]/../c_dynasty_chn/text()})
+                                    $global:DYNASTIES//c_dy[. = $org/../c_inst_end_dy/text()]/../c_dynasty_chn/text()})
                             else if ($org/../c_inst_floruit_dy > 0)
                                 then (element date { attribute calendar {'#chinTrad'},
                                     attribute period {concat('#D', $org/../c_inst_floruit_dy/text())},
-                                    $DYNASTIES//c_dy[. = $org/../c_inst_floruit_dy/text()]/../c_dynasty_chn/text()})
+                                    $global:DYNASTIES//c_dy[. = $org/../c_inst_floruit_dy/text()]/../c_dynasty_chn/text()})
                                 else ()    
 
         }, 
