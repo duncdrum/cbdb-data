@@ -13,7 +13,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace temp="http://exist-db.org/apps/cbdb-data/";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
-declare function local:nest-places($data as node()*, $id as node()?, $zh as node()?, $py as node()?) as node()*{
+declare function local:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?) as node()*{
 
 (: This function takes the $global:ADDRESSES//row  and tranlsates them into tei:place.
 This function is recursive to create a nested tree of place hierarchies via belongs1_ID.
@@ -55,7 +55,7 @@ each duplicate instance.
 [y_coord] FLOAT, 
 :)
 
-(: Based on these tests certain columns don't require aconditional checks for empty() 
+(: Based on these tests certain columns don't require conditional checks for empty() 
 count(empty($ADDRESSES//c_admin_type)) 
  = count(empty($ADDRESSES//c_firstyear)) 
  = count(empty($ADDRESSES//c_lastyear))
@@ -87,13 +87,11 @@ it could NOT be merged as <location from ="1368' to="1622"/>
 
 (:TODO
 
-- check how many $ids belongto 0, -1, or NULL
-- types need if empty check use code if not in address
-- from to not alwayse a pair need separate checks 
-- names also need empty check
+- check how many $ids belongto 0, -1, or NULL A: ca. 600
+
 
 :)
-    
+
     
     let $code := $global:ADDR_CODES//c_addr_id[. = $id]
     let $relation := $global:ADDR_BELONGS_DATA//c_addr_id[. = $id]   
@@ -107,54 +105,63 @@ it could NOT be merged as <location from ="1368' to="1622"/>
     
     
     return  
-        
         element place { attribute xml:id {concat('PL', $id/text())},
-            attribute type {pla:fix-admin-types($id/../c_admin_type)},    
+            if (empty(pla:fix-admin-types($id/../c_admin_type)))
+            then ( attribute type {pla:fix-admin-types($code/../c_admin_type)})
+            else ( attribute type {pla:fix-admin-types($id/../c_admin_type)}),    
                         
             if (empty($relation/../c_source) or $relation/../c_source = 0) 
             then ()
-            else (attribute source {concat('#BIB', $relation/../c_source/text())}), 
+            else ( attribute source {concat('#BIB', $relation/../c_source/text())}), 
             
-            element placeName { attribute xml:lang {'zh-Hant'},
-                $zh/text()},
-            element placeName { attribute xml:lang {'zh-alalc97'},
-                $py/text()}, 
+            if (empty($zh))
+            then ()
+            else ( element placeName { attribute xml:lang {'zh-Hant'},
+                    $zh/text()}),
+            if (empty($py))
+            then ()
+            else ( element placeName { attribute xml:lang {'zh-alalc97'},
+                    $py/text()}), 
             
             if (empty($code/../c_alt_names)) 
             then ()
-            else (element placeName { attribute type {'alias'}, 
+            else ( element placeName { attribute type {'alias'}, 
                 $code/../c_alt_names/text()}),
             
-            if (empty($id/../c_firstyear) and empty($id/../c_lastyear))
+            if (empty($id/../c_firstyear) and empty($id/../c_lastyear) and empty ($id/../x_coord))
             then ()
-            else (element location {
-                    attribute from {cal:isodate($id/../c_firstyear)},
-                    attribute to {cal:isodate($id/../c_lastyear)},
+            else ( element location {
+                if (empty($id/../c_firstyear))
+                then ()
+                else ( attribute from {cal:isodate($id/../c_firstyear)}),
+                
+                if (empty($id/../c_lastyear))
+                then ()
+                else ( attribute to {cal:isodate($id/../c_lastyear)}),
                     
                 if (empty($id/../x_coord) or $id/../x_coord[. = 0])
                 then ()
-                else (element geo {concat($id/../x_coord/text(), ' ', $id/../y_coord/text())})            
-                                        }
-            ),        
+                else ( element geo {concat($id/../x_coord/text(), ' ', $id/../y_coord/text())})            
+                }),        
             
             if (empty($code/../CHGIS_PT_ID)) 
             then ()
-            else (element idno { attribute type {'CHGIS'},
+            else ( element idno { attribute type {'CHGIS'},
                         $code/../CHGIS_PT_ID/text()}),
                         
             if (empty($code/../c_notes)) 
             then ()
-            else (element note {$code/../c_notes/text()}),
+            else ( element note {$code/../c_notes/text()}),
                        
             if (empty($relation/../c_notes)) 
             then ()
-            else (element note {$relation/../c_notes/text()}),             
+            else ( element note {$relation/../c_notes/text()}),             
             
             if (exists($data[belongs1_ID = $id/text()]))
             then (for $child in $data[belongs1_ID = $id/text()]
                     return 
                        local:nest-places($data, $child/c_addr_id, $child/c_name_chn, $child/c_name))
-            else ()     
+            else ()    
         
         }          
        
@@ -162,14 +169,15 @@ it could NOT be merged as <location from ="1368' to="1622"/>
 
 let $data := $global:ADDRESSES//row
 
-(:let $ns as QName := 'http://www.tei-c.org/ns/1.0':)
+(:let $ns as xs:QName := 'http://www.tei-c.org/ns/1.0':)
 (:let $test := $data/c_addr_id[. > 0][. < 50]:)
 
 return
+xmldb:store($global:target, 'newPlace.xml',
 
 <listPlace>
     {for $place in $data//c_addr_id[. > 0]
     where empty($place/../belongs1_ID)
     return
         local:nest-places($data, $place, $place/../c_name_chn, $place/../c_name)}
-</listPlace>
+</listPlace>)
