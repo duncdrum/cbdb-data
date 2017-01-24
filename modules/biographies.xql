@@ -796,14 +796,22 @@ return
           then ()
           else (element note {$post/../c_notes/text()})
         },
-        if ($cat[. < 1])
+        
+        if ($cat[. < 1] or empty($cat))
         then ()
         else (element state { attribute type {'office-type'},
-            attribute n {$cat/text()},
-            element desc {attribute xml:lang {'zh-Hant'},
-                $cat/../c_category_desc_chn/text()},
-            element desc {attribute xml:lang {'en'},
-                $cat/../c_category_desc/text()},
+            if (empty($cat))
+            then ()
+            else (attribute n {$cat/text()}),
+            
+            if (empty($cat/../c_category_desc_chn))
+            then ()
+            else ( element desc {attribute xml:lang {'zh-Hant'},
+                $cat/../c_category_desc_chn/text()}),
+            if (empty($cat/../c_category_desc))
+            then ()
+            else ( element desc {attribute xml:lang {'en'},
+                $cat/../c_category_desc/text()}),
                 
         if (empty($cat/../c_notes)) 
         then ()
