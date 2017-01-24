@@ -1402,7 +1402,7 @@ return
             then (<trait type="ethnicity" key="{$ethnicity/../c_group_code/text()}">
                 <label>{$ethnicity/../c_ethno_legal_cat/text()}</label>
                         <desc xml:lang="zh-Hant">{$ethnicity/../c_name_chn/text()}</desc>
-                        <desc xml:lang="zh-alac97">{$ethnicity/../c_name/text()}</desc>
+                        <desc xml:lang="zh-alalc97">{$ethnicity/../c_name/text()}</desc>
                         <desc xml:lang="en">{$ethnicity/../c_romanized/text()}</desc>
                         {if ($ethnicity/../c_notes) 
                         then (<note>{$ethnicity/../c_notes/text()}</note>)

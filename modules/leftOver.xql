@@ -553,7 +553,7 @@ let $NH-py := map{
             {if ($dates/../c_inst_begin_year[. =0]) then ()
                 else (<date notBefore="{local:isodate($dates/../c_inst_begin_year)}"/>)
             }
-                <orgName xml:lang="zh-alac97">{$names/../c_inst_name_py/text()}
+                <orgName xml:lang="zh-alalc97">{$names/../c_inst_name_py/text()}
                     <state>{$SOCIAL_INSTITUTION_TYPES//c_inst_type_code[. = $SOCIAL_INSTITUTION_CODES//c_inst_code[. =$person]/../c_inst_type_code]/../c_inst_type_py/text()}</state>
                 </orgName>
                 <orgName xml:lang="zh-Hant">{$names/../c_inst_name_hz/text()}
