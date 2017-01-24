@@ -1,7 +1,7 @@
 xquery version "3.0";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
-import module namespace functx="http://www.functx.com";
+(:import module namespace functx="http://www.functx.com";:)
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace gen="http://exist-db.org/apps/cbdb-data/genre";

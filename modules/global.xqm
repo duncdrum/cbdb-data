@@ -6,7 +6,7 @@ xquery version "3.0";
 module namespace global="http://exist-db.org/apps/cbdb-data/global";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
-import module namespace functx="http://www.functx.com";
+(:import module namespace functx="http://www.functx.com";:)
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -24,7 +24,7 @@ declare variable $global:institution := 'listOrg.xml';
 declare variable $global:place := 'listPlace.xml';
 declare variable $global:office := 'office.xml';
 declare variable $global:office-temp := 'officeA.xml';
-declare variable $global:header := 'cbdbTEI.xml';
+declare variable $global:main := 'cbdbTEI.xml';
 declare variable $global:person := 'listPerson';
 
 
