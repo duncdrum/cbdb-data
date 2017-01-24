@@ -1,7 +1,7 @@
 xquery version "3.0";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
-import module namespace functx="http://www.functx.com";
+(:import module namespace functx="http://www.functx.com";:)
 
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
