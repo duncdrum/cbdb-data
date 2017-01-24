@@ -15,10 +15,11 @@ declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare function local:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?) as node()*{
 
-(: This function takes the $global:ADDRESSES//row  and tranlsates them into tei:place.
-This function is recursive to create a nested tree of place hierarchies via belongs1_ID.
-It also needs to filter for duplicate c_addr_id's without loosing the distinct node values of
-each duplicate instance. 
+(: This function takes the $global:ADDR_CODES//rows plus the first $global:ADDR_BELONGS_DATA parent  
+and tranlates them into tei:place.
+This function is recursive to create a nested tree of place hierarchies via c_belongs_to.
+This was neccessar to filter duplicates from $global:ADDRESSES, where multiple c_addr_id's 
+are present. 
 
 :)
 
@@ -92,27 +93,18 @@ it could NOT be merged as <location from ="1368' to="1622"/>
 
 :)
 
-    
-    let $code := $global:ADDR_CODES//c_addr_id[. = $id]
-    let $relation := $global:ADDR_BELONGS_DATA//c_addr_id[. = $id]   
-(:    let $match := $data[c_addr_id = $id]/belongs1_ID:)
-    
-(:    let $place-dupe := if (count($global:ADDRESSES//c_addr_id[. = $place]) > 1)
-                          then (<row>{functx:distinct-deep($global:ADDRESSES//c_addr_id[. = $place]/../*)}</row>)  
-                          else ($place):)
-    
-    (:let $id-padding := string-length(string(max($ADDRESSES//c_addr_id))) +1  :)
-    
+    let $belong := $global:ADDR_BELONGS_DATA//c_addr_id[. = $id]   
+ 
     
     return  
         element place { attribute xml:id {concat('PL', $id/text())},
             if (empty(pla:fix-admin-types($id/../c_admin_type)))
-            then ( attribute type {pla:fix-admin-types($code/../c_admin_type)})
+            then ()
             else ( attribute type {pla:fix-admin-types($id/../c_admin_type)}),    
                         
-            if (empty($relation/../c_source) or $relation/../c_source = 0) 
+            if (empty($belong/../c_source) or $belong/../c_source = 0) 
             then ()
-            else ( attribute source {concat('#BIB', $relation/../c_source/text())}), 
+            else ( attribute source {concat('#BIB', $belong/../c_source/text())}), 
             
             if (empty($zh))
             then ()
@@ -123,10 +115,10 @@ it could NOT be merged as <location from ="1368' to="1622"/>
             else ( element placeName { attribute xml:lang {'zh-alalc97'},
                     $py/text()}), 
             
-            if (empty($code/../c_alt_names)) 
+            if (empty($id/../c_alt_names)) 
             then ()
             else ( element placeName { attribute type {'alias'}, 
-                $code/../c_alt_names/text()}),
+                $id/../c_alt_names/text()}),
             
             if (empty($id/../c_firstyear) and empty($id/../c_lastyear) and empty ($id/../x_coord))
             then ()
@@ -144,40 +136,70 @@ it could NOT be merged as <location from ="1368' to="1622"/>
                 else ( element geo {concat($id/../x_coord/text(), ' ', $id/../y_coord/text())})            
                 }),        
             
-            if (empty($code/../CHGIS_PT_ID)) 
+            if (empty($id/../CHGIS_PT_ID)) 
             then ()
             else ( element idno { attribute type {'CHGIS'},
-                        $code/../CHGIS_PT_ID/text()}),
+                        $id/../CHGIS_PT_ID/text()}),
                         
-            if (empty($code/../c_notes)) 
+            if (empty($id/../c_notes)) 
             then ()
-            else ( element note {$code/../c_notes/text()}),
+            else ( element note {$id/../c_notes/text()}),
                        
-            if (empty($relation/../c_notes)) 
+            if (empty($belong/../c_notes)) 
             then ()
-            else ( element note {$relation/../c_notes/text()}),             
+            else ( element note {$belong/../c_notes/text()}),             
             
-            if (exists($data[belongs1_ID = $id/text()]))
-            then (for $child in $data[belongs1_ID = $id/text()]
+            if (exists($data//c_belongs_to[. = $id/text()]))
+            then ( for $child in $data//c_belongs_to[. = $id/text()]
                     return 
-                       local:nest-places($data, $child/c_addr_id, $child/c_name_chn, $child/c_name))
+                       local:nest-places($data, $child/../c_addr_id, $child/../c_name_chn, $child/../c_name))
             else ()    
         
         }          
        
 };
 
-let $data := $global:ADDRESSES//row
 
-(:let $ns as xs:QName := 'http://www.tei-c.org/ns/1.0':)
-(:let $test := $data/c_addr_id[. > 0][. < 50]:)
+declare function local:patch-missing-addr($data as node()*) as node()*{
+    
+(: This function adds tei:places that are present in $global:ADDRESSES but not $global:ADDR_CODES.  
+It expects $global:ADDRESSES//row s and insert either empty place elements with a matching @corresp attribute, 
+or complete tei:place elements from pla:nest-places for elements not captured in the intial write operation.
 
-return
-xmldb:store($global:target, 'newPlace.xml',
+We need to do this to make sure that every c_addr_id element present in CBDB can be found in listPlace.xml. 
+:)
+    for $n in $data
+    let $corresp := min(data($global:ADDR_CODES//c_name_chn[. = $n/c_name_chn]/../c_addr_id))
+    let $branch := if ($global:ADDR_CODES//c_addr_id[. = $n/belongs1_ID])
+                     then (concat('PL', $n/belongs1_ID))
+                     else if ($global:ADDR_CODES//c_addr_id[. = $n/belongs2_ID])
+                           then (concat('PL', $n/belongs2_ID)) 
+                           else if ($global:ADDR_CODES//c_addr_id[. = $n/belongs3_ID])
+                                then (concat('PL', $n/belongs3_ID))
+                                else if ($global:ADDR_CODES//c_addr_id[. = $n/belongs4_ID])
+                                      then (concat('PL', $n/belongs4_ID))
+                                      else if ($global:ADDR_CODES//c_addr_id[. = $n/belongs5_ID])
+                                            then (concat('PL', $n/belongs5_ID))
+                                            else (concat('PL', $corresp))
+                                            
+    let $listPlace := doc(concat($global:target, $global:place))
+    
+    where empty($global:ADDR_CODES//c_addr_id[. = $n/c_addr_id])
+    order by $n/c_addr_id/number()
+    
+    return 
+        if (empty($corresp))
+        then (local:nest-places($n, $n/c_addr_id, $n/c_name_chn, $n/c_name) 
+                       , <branch>{$branch}</branch>)
+        else (element place { attribute xml:id {concat('PL', $n/c_addr_id/text())}, 
+                                attribute corresp{concat('#PL',$corresp)}, 
+                                attribute branch{$branch}}
+                       )
+                
+};  
 
-<listPlace>
-    {for $place in $data//c_addr_id[. > 0]
-    where empty($place/../belongs1_ID)
-    return
-        local:nest-places($data, $place, $place/../c_name_chn, $place/../c_name)}
-</listPlace>)
+
+
+    local:patch-missing-addr($global:ADDRESSES//row)
+
+
