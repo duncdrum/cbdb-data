@@ -253,43 +253,48 @@ NOT Documented
         element relation {
             attribute active {concat('#BIO', $kin/../c_personid/text())},
             attribute passive {concat('#BIO', $kin/../c_kin_id/text())},
-            if (empty($tie/../c_kincode))
-            then ()
-            else (attribute key {$tie/../c_kincode/text()}),
             
-            if (empty($tie/../c_pick_sorting))
-            then ()
-            else (attribute sortKey {$tie/../c_pick_sorting/text()}),
-            
-            if (empty($tie/../c_kinrel))
-            then ()
-            else (attribute name {
-                    if (contains($tie/../c_kinrel/text(), ' ('))
-                    then (substring-before($tie/../c_kinrel/text(), ' ('))
-                    else if (contains($tie/../c_kinrel/text(), 'male)'))
-                        then (replace(replace($tie/../c_kinrel/text(), '\(male\)', '♂'), '\(female\)', '♀'))
-                        else(translate($tie/../c_kinrel/text(), '#', '№'))}),
+            if (empty($tie/../c_kincode) and empty($tie/../c_kinrel))
+            then (attribute name {'unkown'}
+            else (
+                if (empty($tie/../c_kincode))
+                then ()
+                else (attribute key {$tie/../c_kincode/text()}),
+                
+                if (empty($tie/../c_pick_sorting))
+                then ()
+                else (attribute sortKey {$tie/../c_pick_sorting/text()}),
+                
+                if (empty($tie/../c_kinrel))
+                then ()
+                else (attribute name {
+                        if (contains($tie/../c_kinrel/text(), ' ('))
+                        then (substring-before($tie/../c_kinrel/text(), ' ('))
+                        else if (contains($tie/../c_kinrel/text(), 'male)'))
+                            then (replace(replace($tie/../c_kinrel/text(), '\(male\)', '♂'), '\(female\)', '♀'))
+                            else(translate($tie/../c_kinrel/text(), '#', '№'))}),
+                            
+                if ($kin/../c_source[. > 0])
+                then (attribute source {concat('#BIB', $kin/../c_source/text())})
+                else (),
+                
+                if (empty($kin/../c_autogen_notes))
+                then ()
+                else (attribute type {'auto-generated'}),
+                
+                if (empty($tie/../c_kinrel_chn) and empty ($tie/../c_kinrel_alt))
+                then ()
+                else (element desc {
+                        if ($kin/../c_notes)
+                        then (element label {$kin/../c_notes/text()})
+                        else (),
                         
-            if ($kin/../c_source[. > 0])
-            then (attribute source {concat('#BIB', $kin/../c_source/text())})
-            else (),
-            
-            if (empty($kin/../c_autogen_notes))
-            then ()
-            else (attribute type {'auto-generated'}),
-            
-            if (empty($tie/../c_kinrel_chn) and empty ($tie/../c_kinrel_alt))
-            then ()
-            else (element desc {
-                    if ($kin/../c_notes)
-                    then (element label {$kin/../c_notes/text()})
-                    else (),
-                    
-                    element desc { attribute xml:lang {"zh-Hant"},
-                        $tie/../c_kinrel_chn/text()},    
-                    element desc {attribute xml:lang {"en"},
-                        $tie/../c_kinrel_alt/text()}
-                })
+                        element desc { attribute xml:lang {"zh-Hant"},
+                            $tie/../c_kinrel_chn/text()},    
+                        element desc {attribute xml:lang {"en"},
+                            $tie/../c_kinrel_alt/text()}
+                    })
+                )
         }
 };
 
@@ -626,10 +631,12 @@ return
         if (count($type) > 1)
         then (attribute type {$type[. < 90]/text()})
         else if (empty($type))
-              then ()
+              then (attribute type {'00'})
               else (attribute type {$type/text()}),
         
-        attribute subtype {$code/text()}, 
+        if (empty($code/text()))
+        then ()
+        else(attribute subtype {$code/text()}), 
         
         if ($initiate/../c_year[. = 0] or empty($initiate/../c_year)) 
         then ()
