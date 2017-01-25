@@ -41,7 +41,7 @@ let $py :=
     
     return
         if ($name/text() eq concat($name/../c_surname/text(), ' ', $name/../c_mingzi/text()))
-        then (<persName xml:lang="zh-alalc97">
+        then (<persName xml:lang="zh-Latn-alalc97">
                     <surname>{$name/../c_surname/text()}</surname>
                     <forename>{$name/../c_mingzi/text()}</forename>
                     {if (empty($choro) or $choro[. < 1])
@@ -49,7 +49,7 @@ let $py :=
                     else (<addName type="choronym">{$choro/../c_choronym_desc/text()}</addName>)
                     }
                 </persName>)
-        else (<persName xml:lang="zh-alalc97">
+        else (<persName xml:lang="zh-Latn-alalc97">
                 {$name/text()}
                 {if (empty($choro) or $choro[. < 1])
                     then ()
@@ -145,7 +145,7 @@ return
                      then (<term>{$code/../c_name_type_desc_chn/text()}</term>)
                      else()
                      }                
-                    <addName xml:lang="zh-alalc97">{$person/../c_alt_name/text()}</addName>
+                    <addName xml:lang="zh-Latn-alalc97">{$person/../c_alt_name/text()}</addName>
                     {if ($code[. > 1]) 
                      then (<term>{$code/../c_name_type_desc/text()}</term>)
                      else()
@@ -163,7 +163,7 @@ return
                  then (<term>{$code/../c_name_type_desc_chn/text()}</term>)
                  else()
                  }                
-                <addName xml:lang="zh-alalc97">{$person/../c_alt_name/text()}</addName>
+                <addName xml:lang="zh-Latn-alalc97">{$person/../c_alt_name/text()}</addName>
                 {if ($code[. > 1]) 
                  then (<term>{$code/../c_name_type_desc/text()}</term>)
                  else()
@@ -1262,7 +1262,7 @@ return
         if (empty($person/../c_self_bio) or $person/../c_self_bio = 0)
         then ()
         else (attribute resp {'selfbio'}),
-        element idno{attribute type {'TTS'}, 
+        element idno { attribute type {'TTS'}, 
             $person/../tts_sysno/text()}, 
 (:      NAMES      :)
         element persName {attribute type {'main'},
@@ -1417,7 +1417,7 @@ return
             then (<trait type="ethnicity" key="{$ethnicity/../c_group_code/text()}">
                 <label>{$ethnicity/../c_ethno_legal_cat/text()}</label>
                         <desc xml:lang="zh-Hant">{$ethnicity/../c_name_chn/text()}</desc>
-                        <desc xml:lang="zh-alalc97">{$ethnicity/../c_name/text()}</desc>
+                        <desc xml:lang="zh-Latn-alalc97">{$ethnicity/../c_name/text()}</desc>
                         <desc xml:lang="en">{$ethnicity/../c_romanized/text()}</desc>
                         {if ($ethnicity/../c_notes) 
                         then (<note>{$ethnicity/../c_notes/text()}</note>)

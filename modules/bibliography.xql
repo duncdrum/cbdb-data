@@ -231,7 +231,7 @@ return
         
         <title type="main">
                 <title xml:lang="zh-Hant">{$text/../c_title_chn/text()}</title>
-                <title xml:lang="zh-alalc97">{$text/../c_title/text()}</title>
+                <title xml:lang="zh-Latn-alalc97">{$text/../c_title/text()}</title>
         </title>,
         
         if (empty($text/../c_title_alt_chn))

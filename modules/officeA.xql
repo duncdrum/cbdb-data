@@ -73,7 +73,7 @@ return
                     $office/../c_office_chn/text()},
                     if (empty($office/../c_office_pinyin))
                     then ()
-                    else (element roleName { attribute xml:lang {'zh-alalc97'},
+                    else (element roleName { attribute xml:lang {'zh-Latn-alalc97'},
                     $office/../c_office_pinyin/text()}),
                 if (empty($office/../c_office_trans) or $office/../c_office_trans/text() = '[Not Yet Translated]')
                 then ()
@@ -93,7 +93,7 @@ return
                     if ($office/../c_office_chn_alt)
                     then (element roleName { attribute xml:lang {'zh-Hant'},
                             $office/../c_office_chn_alt/text()},
-                        element roleName { attribute xml:lang {'zh-alalc97'},
+                        element roleName { attribute xml:lang {'zh-Latn-alalc97'},
                             $office/../c_office_pinyin_alt/text()})
                     else(),
                     if ($office/../c_office_trans_alt)

@@ -71,14 +71,14 @@ return
         element orgName { attribute type {'main'},
             element orgName {attribute xml:lang {'zh-Hant'},
                 $name/../c_inst_name_hz/text()},
-            element orgName {attribute xml:lang {'zh-alalc97'},
+            element orgName {attribute xml:lang {'zh-Latn-alalc97'},
                 $name/../c_inst_name_py/text()},
             if (empty($alt-type))    
             then ()
             else ( element orgName { attribute type {'alias'},
                  element orgName {attribute xml:lang {'zh-Hant'},
                     $alt-type/../c_inst_altname_chn/text()},
-                 element orgName {attribute xml:lang {'zh-alalc97'},
+                 element orgName {attribute xml:lang {'zh-Latn-alalc97'},
                     $alt-type/../c_inst_altname_desc/text()}
             }),
             

@@ -257,7 +257,7 @@ for $gz in $ganzhi
 return         
     <category xml:id="{concat('S', $gz/c_ganzhi_code/text())}">
         <catDesc xml:lang="zh-Hant">{$gz/c_ganzhi_chn/text()}</catDesc>
-        <catDesc xml:lang="zh-alalc97">{$gz/c_ganzhi_py/text()}</catDesc>
+        <catDesc xml:lang="zh-Latn-alalc97">{$gz/c_ganzhi_py/text()}</catDesc>
     </category>
             }
 </taxonomy>
@@ -286,7 +286,7 @@ declare function cal:dynasties ($dynasties as node()*) as node() {
                             <date from="{cal:isodate($nh/c_firstyear)}" to="{cal:isodate($nh/c_lastyear)}"/>
                         </catDesc>
                         <catDesc xml:lang="zh-Hant">{$nh/c_nianhao_chn/text()}</catDesc>
-                        <catDesc xml:lang="zh-alalc97">{$nh/c_nianhao_pin/text()}</catDesc>
+                        <catDesc xml:lang="zh-Latn-alalc97">{$nh/c_nianhao_pin/text()}</catDesc>
                    </category>) 
             else (<category xml:id="{concat('R' , $nh/c_nianhao_id/text())}">
                         <catDesc>

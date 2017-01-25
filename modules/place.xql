@@ -192,7 +192,7 @@ it could NOT be merged as <location from ="1368' to="1622"/>
                     $zh/text()}),
             if (empty($py))
             then ()
-            else ( element placeName { attribute xml:lang {'zh-alalc97'},
+            else ( element placeName { attribute xml:lang {'zh-Latn-alalc97'},
                     $py/text()}), 
             
             if (empty($id/../c_alt_names)) 

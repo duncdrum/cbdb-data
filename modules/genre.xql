@@ -65,7 +65,7 @@ let $type: = doc($typeTree)//category/@xml:id[. = concat('biblType', $type-id/te
 let $category := element category { attribute xml:id {concat('biblCat',  $cat/text())},        
                     element catDesc {attribute xml:lang {'zh-Hant'},
                         $cat/../c_text_cat_desc_chn/text()},
-                    element catDesc {attribute xml:lang {'zh-alalc97'},
+                    element catDesc {attribute xml:lang {'zh-Latn-alalc97'},
                         $cat/../c_text_cat_pinyin/text()},    
                     element catDesc {attribute xml:lang {'en'},
                         $cat/../c_text_cat_desc/text()}}
