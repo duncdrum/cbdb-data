@@ -43,16 +43,21 @@ element catDesc {attribute xml:lang {'en'},
 
 let $types := $global:TEXT_BIBLCAT_TYPES//row
 let $typeTree := xmldb:store($global:target, $global:genre, 
-                    <taxonomy xml:id="biblCat">
-                        <category xml:id="biblType01">
-                            <catDesc xml:lang="zh-Hant">{$types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc_chn/text()}</catDesc>
-                            <catDesc xml:lang="en">{$types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc/text()}</catDesc>        
-                        {for $outer in $types[c_text_cat_type_parent_id = '01']
+                    element taxonomy { namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+                        attribute xml:id {"biblCat"},
+                        element category {
+                            attribute xml:id {'biblType01'},
+                            element catDesc { attribute xml:lang {'zh-Hant'},
+                                $types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc_chn/text()},
+                            element catDesc { attribute xml:lang {'en'},    
+                                $types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc/text()},        
+                        for $outer in $types[c_text_cat_type_parent_id = '01']
                         order by $outer[c_text_cat_type_sortorder]
                         return
-                            gen:nest-types($types, $outer/c_text_cat_type_id ,$outer/c_text_cat_type_desc_chn, $outer/c_text_cat_type_desc)}
-                        </category>
-                    </taxonomy>)
+                            gen:nest-types($types, $outer/c_text_cat_type_id ,$outer/c_text_cat_type_desc_chn, $outer/c_text_cat_type_desc)
+                            }
+                        }
+                    )
 
 
 

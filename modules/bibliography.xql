@@ -312,9 +312,9 @@ return
 };
 
 xmldb:store($global:target, $global:bibliography,
-<listBibl>
-        {bib:bibliography($global:TEXT_CODES//c_textid[. > 0])}
-</listBibl>        
+
+ element listBibl {namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+        bib:bibliography($global:TEXT_CODES//c_textid[. > 0])}    
 ) 
 
 

@@ -138,20 +138,24 @@ let $code := $globalOFFICE_CODE_TYPE_REL//c_office_tree_id[. =  $tree-id/text()]
 
 let $data := $global:OFFICE_TYPE_TREE//row
 let $tree := xmldb:store($global:target, $global:office, 
-                    <taxonomy xml:id="office">
-                        <category n="00">
-                            <catDesc xml:lang="en">missing data</catDesc>
-                         </category>
-                    {for $outer in $data[c_parent_id = 0]
+                    element taxonomy {namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+                        attribute xml:id {'office'},
+                        element category {
+                            attribute n {'00'},
+                            element catDesc { attribute xml:lang {'en'},
+                            'missing data'}
+                        },                        
+                    for $outer in $data[c_parent_id = 0]
                       return 
                         local:nest-children($data, $outer/c_office_type_node_id, 
-                            $outer/c_office_type_desc_chn, $outer/c_office_type_desc)}
-                    </taxonomy>)
+                            $outer/c_office_type_desc_chn, $outer/c_office_type_desc)
+                    })
                     
 let $off := xmldb:store($global:target, $global:office-temp, 
-                     <taxonomy xml:id="officeA">                        
-                         {local:office($global:OFFICE_CODES//c_office_id)}                         
-                     </taxonomy>)             
+                     element taxonomy {namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+                        attribute xml:id {'officeA'},                       
+                         local:office($global:OFFICE_CODES//c_office_id)                         
+                     })             
 
 
 

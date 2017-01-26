@@ -1258,7 +1258,8 @@ let $re_by := count($cal:path/tei:category[@xml:id = concat('R', $person/../c_by
 let $re_dy := count($cal:path/tei:category[@xml:id = concat('R', $person/../c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
-    element person { attribute ana {'historical'}, 
+    element person { namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+        attribute ana {'historical'}, 
         attribute xml:id {concat('BIO', $person/text())},
         if (empty($source))
         then ()
@@ -1565,25 +1566,28 @@ return
     try {(xmldb:store($collection, $file-name, $person), 
 
          xmldb:store($collection, 'listPerson.xml', 
-            <tei:listPerson>
-                    {for $files in collection($collection)
+            element listPerson {
+                namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+                    for $files in collection($collection)
                     let $n := functx:substring-after-last(base-uri($files), '/')
                     where $n != 'listPerson.xml'
                     order by $n
                     return 
                         <xi:include href="{$n}" parse="xml"/>}
-                    </tei:listPerson>), 
+                    ), 
             
         xmldb:store($chunk, concat('list-', $i, '.xml'), 
-            <tei:listPerson>
-                    {for $lists in collection($chunk)
+            element listPerson {
+                namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+                    for $lists in collection($chunk)
                     let $m := functx:substring-after-last(base-uri($lists), '/') 
                     where $m  = 'listPerson.xml'
                     order by base-uri($lists)
                     return
                         <xi:include href="{substring-after(base-uri($lists), 
                             concat('/chunk-', functx:pad-integer-to-length($i, 2), '/'))}" parse="xml"/>}
-                    </tei:listPerson>))}
+                    ))}
+                    
     catch * {xmldb:store($collection, 'error.xml', 
              <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}
 

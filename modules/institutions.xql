@@ -161,7 +161,7 @@ let $full := $global:SOCIAL_INSTITUTION_CODES//c_inst_code[. > 0]
 return
 
 xmldb:store($global:target, $global:institution,
-    <listOrg>
-        {org:org($full)}
-    </listOrg>    
+    element listOrg {namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+        org:org($full)
+    }   
 ) 

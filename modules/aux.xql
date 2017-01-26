@@ -10,6 +10,7 @@ import module namespace biog= "http://exist-db.org/apps/cbdb-data/biographies" a
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace xi="http://www.w3.org/2001/XInclude";
+(:declare default function namespace "http://www.tei-c.org/ns/1.0";:)
 
 (:Aux.xql contains hyelper functions mostly for cleaning data and constructing functions.:)
 
@@ -25,7 +26,6 @@ return
      'declare variable' || ' $' || string($n) || ' := doc(concat($src, ' || "'" ||string($n) || "'));"
 };
 
-
 declare function local:write-chunk-includes($num as xs:integer?) as item()*{
 (:This function inserts xinclude statemtns into the main TEI file for each chunk's list.xml file. 
 As such $ipad, $num, and the return string depend on the main write operation in biographies.xql.
@@ -39,63 +39,56 @@ return
         <xi:include href="{concat('listPerson/chunk-', $ipad, '/list-', $i, '.xml')}" parse="xml"/>
     into doc(concat($global:target, $global:main))//tei:body
 };
-
 (:local:write-chunk-includes(37):)
 
+declare function local:upgrade-contents($nodes as node()*) as node()* {
 
-declare function pla:merge-place-dupes ($places as node()*) as item()*{
-(:this function takes the place nodes to be merged and writes them into an aux file:)
-let $dupes := xmldb:store($global:target, 'place-lookup.xml',
-    <listPlace>
-        {for $place in $global:ADDRESSES//c_addr_id
-         where count($global:ADDRESSES//c_addr_id[. = $place]) > 1
-         return
-            pla:address($place)}
-    </listPlace>)
-    
-let $dedupes :=  <listPlace>
-                        {for $dupe in $dupes/listPlace/place
-                        let $id := data($dupe/@xml:id)                 
-                        return
-                            <place xml:id="{data($dupe/@xml:id)}">
-                                {functx:distinct-deep($dupes//place[@xml:id = $id]/*)}
-                            </place>}
-                     </listPlace>
+(: !!! WARNING !!! Handle with monumental care !!!!
 
+This function performs an inplace update off all person records. 
+It expects $global:BIOG_MAIN//c_personid s. 
+It is handy for patching large number of records. 
+Using the structural index in the return clause is crucial for performance.
+:)
+
+for $n in $nodes
 return
-    xmldb:store($global:target, 'place-dupe.xml',
-    <tei:listPLace>{functx:distinct-deep($dedupes//place)}</tei:listPLace>)
+ update value collection(concat($global:target, 'listPerson/'))//person[id(concat('BIO', $n))] 
+ with biog:biog($n)/*
+
+(:update value doc('/db/apps/cbdb-data/samples/test.xml')//listPlace with biog:biog($n)/*:)
+
+};
+(:local:upgrade-contents($global:BIOG_MAIN//c_personid[. > 0][. < 2]):)
+
+
+declare function local:validate-fragment($frag as node()*, $loc as xs:string) as node()* {
+
+(: This function validates $frag by inserting it into a minimal TEI template. 
+
+This function cannot guarante that the final document is valid, 
+but it can catch validation errors produced by other function early on.
+This way we can minimize the number of validations necessary to catch errors.  
+
+Especially usefull when combined with try-catch clauses. 
+:)
+()
+
 };
 
-declare function pla:update-listPlace (){    
 
-let $listPlace := doc(concat($global:target, $global:place))
-let $dedupe := doc(concat($global:target, 'place-dedupe.xml'))
 
-(:
 
-dimitri's solution 
-http://stackoverflow.com/questions/3875560/xquery-finding-duplciate-ids?rq=1
 
-delete all dupes but the first
-
-let $vSeq := $listPlace//tei:place[@xml:id = data($dedupe//tei:place/@xml:id)]
-return
-    update delete $vSeq[position() = index-of($vSeq, .)[. > 1]] 
+    xmldb:store('/db/apps/cbdb-data/samples', 'testNS.xml', 
     
-    :)
+    element root 
+    { namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+    for $n in $global:BIOG_MAIN//c_personid[. =1]
     
-let $vSeq := $listPlace//tei:place[@xml:id = data($dedupe//tei:place/@xml:id)]
-
-for $n in $vSeq
-let $m := $dedupe//tei:place[@xml:id = data($n/@xml:id)]
-
-
-
-return
-    (update delete $vSeq[position() = index-of($vSeq, .)[. > 1]] ), (update replace $n with $m)
-    };
+    return
+        <person>{$n}</person>
+    }
+    )
     
-    for $i in 1 to 10
-    return 
-    $i
+
