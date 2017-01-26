@@ -255,7 +255,7 @@ NOT Documented
             attribute passive {concat('#BIO', $kin/../c_kin_id/text())},
             
             if (empty($tie/../c_kincode) and empty($tie/../c_kinrel))
-            then (attribute name {'unkown'}
+            then (attribute name {'unkown'})
             else (
                 if (empty($tie/../c_kincode))
                 then ()
@@ -449,7 +449,11 @@ whats up with $assoc_codes//c_assoc_role_type ?:)
                 else (attribute active {concat('#BIO', $friends/text())},
                        attribute passive {concat('#BIO', $individual/text())})
                 ),
-                       
+            
+            if (empty($type-rel/../c_assoc_type_id) and empty($type/../c_assoc_type_short_desc))
+            then (attribute name {'unkown'})
+            else (
+            
             if (empty($type-rel/../c_assoc_type_id))
             then ()
             else (attribute key {$type-rel/../c_assoc_type_id/text()}),
@@ -468,26 +472,26 @@ whats up with $assoc_codes//c_assoc_role_type ?:)
             
             if (empty($code/../c_assoc_role_type))
             then ()
-            else (
-            element desc {
-                if ($code/../c_assoc_role_type/text())
-                then (attribute type {$code/../c_assoc_role_type/text()})
-                else (),
-                
-                if ($individual/../c_notes)
-                then (element label {$individual/../c_notes/text()})
-                else (),
-                                              
-                element desc { attribute xml:lang {"zh-Hant"},
-                    $code/../c_assoc_desc_chn/text(),
-                    element label {$type/../c_assoc_type_desc_chn/text()}
-                },
-                
-                 element desc { attribute xml:lang {"en"},
-                    $code/../c_assoc_desc/text(),
-                    element label {$type/../c_assoc_type_desc/text()}
-                }
-            })
+            else (element desc {
+                 if ($code/../c_assoc_role_type/text())
+                 then (attribute type {$code/../c_assoc_role_type/text()})
+                 else (),
+                 
+                 if ($individual/../c_notes)
+                 then (element label {$individual/../c_notes/text()})
+                 else (),
+                                               
+                 element desc { attribute xml:lang {"zh-Hant"},
+                     $code/../c_assoc_desc_chn/text(),
+                     element label {$type/../c_assoc_type_desc_chn/text()}
+                 },
+                 
+                  element desc { attribute xml:lang {"en"},
+                     $code/../c_assoc_desc/text(),
+                     element label {$type/../c_assoc_type_desc/text()}
+                 }
+             })
+             )
         }
 
 };
