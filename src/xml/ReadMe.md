@@ -7,5 +7,6 @@ You can download the SQLite file used to generate the export [here](https://hu-m
 
 The root element of each file is ```<no:root xmlns="nowhere">```, each table-row is wrapped inside a ```<row>``` element. 
 
-The xml files are without namespace, and are named after the original tables, e.g.:
+The files are in a dummy namespace for easier processing.
+Each file is named after the original table, e.g.:
 ```BIOG_MAIN``` becomes ```BIOG_MAIN.xml``` etc. 

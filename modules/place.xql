@@ -299,13 +299,13 @@ let $data := <root>{
 return
 xmldb:store($global:target, $global:place,
 
-element listPlace {namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},                        
+<listPlace xmlns="http://www.tei-c.org/ns/1.0">{                        
     for $place in $data//no:c_addr_id[. > 0]
     
     where $place/../no:c_belongs_to = 0
     return
-        pla:nest-places($data, $place, $place/../no:c_name_chn, $place/../no:c_name)
-})
+        pla:nest-places($data, $place, $place/../no:c_name_chn, $place/../no:c_name)}
+</listPlace>)
 
 
 

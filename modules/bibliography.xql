@@ -314,8 +314,8 @@ return
 
 xmldb:store($global:target, $global:bibliography,
 
- element listBibl {namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
-        bib:bibliography($global:TEXT_CODES//no:c_textid[. > 0])}    
+ <listBibl xmlns="http://www.tei-c.org/ns/1.0">{
+        bib:bibliography($global:TEXT_CODES//no:c_textid[. > 0])}</listBibl>    
 ) 
 
 

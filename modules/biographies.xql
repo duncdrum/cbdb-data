@@ -1565,19 +1565,17 @@ return
     try {(xmldb:store($collection, $file-name, $person), 
 
          xmldb:store($collection, 'listPerson.xml', 
-            element listPerson {
-                namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+            <listPerson xmlns="http://www.tei-c.org/ns/1.0">{
                     for $files in collection($collection)
                     let $n := functx:substring-after-last(base-uri($files), '/')
                     where $n != 'listPerson.xml'
                     order by $n
                     return 
                         <xi:include href="{$n}" parse="xml"/>}
-                    ), 
+                    </listPerson>), 
             
         xmldb:store($chunk, concat('list-', $i, '.xml'), 
-            element listPerson {
-                namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+            <listPerson xmlns="http://www.tei-c.org/ns/1.0">{                
                     for $lists in collection($chunk)
                     let $m := functx:substring-after-last(base-uri($lists), '/') 
                     where $m  = 'listPerson.xml'
@@ -1585,7 +1583,7 @@ return
                     return
                         <xi:include href="{substring-after(base-uri($lists), 
                             concat('/chunk-', functx:pad-integer-to-length($i, 2), '/'))}" parse="xml"/>}
-                    ))}
+                    </listPerson>))}
                     
     catch * {xmldb:store($collection, 'error.xml', 
              <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}

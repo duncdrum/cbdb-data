@@ -126,6 +126,6 @@ return
     validation:jing-report($mini, doc('../templates/tei/tei_all.rng'))
 };
 
-(:local:validate-fragment(bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031]), 'bibl'):)
+local:validate-fragment(bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031]), 'bibl')
     
 

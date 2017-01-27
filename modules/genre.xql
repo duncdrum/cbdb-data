@@ -44,24 +44,16 @@ element catDesc {attribute xml:lang {'en'},
 
 let $types := $global:TEXT_BIBLCAT_TYPES//row
 let $typeTree := xmldb:store($global:target, $global:genre, 
-                    element taxonomy { namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
-                        attribute xml:id {"biblCat"},
-                        element category {
-                            attribute xml:id {'biblType01'},
-                            element catDesc { attribute xml:lang {'zh-Hant'},
-                                $types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc_chn/text()},
-                            element catDesc { attribute xml:lang {'en'},    
-                                $types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc/text()},        
-                        for $outer in $types[c_text_cat_type_parent_id = '01']
-                        order by $outer[c_text_cat_type_sortorder]
-                        return
-                            gen:nest-types($types, $outer/no:c_text_cat_type_id ,$outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc)
-                            }
-                        }
-                    )
-
-
-
+                    <taxonomy xml:id="biblCat">
+                        <category xml:id="biblType01">
+                            <catDesc xml:lang="zh-Hant">{$types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc_chn/text()}</catDesc>
+                            <catDesc xml:lang="en">{$types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc/text()}</catDesc>       
+                            {for $outer in $types[c_text_cat_type_parent_id = '01']
+                            order by $outer[c_text_cat_type_sortorder]
+                            return
+                                gen:nest-types($types, $outer/no:c_text_cat_type_id ,$outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc)}
+                        </category>
+                    </taxonomy>)
 
 
 for $cat in $global:TEXT_BIBLCAT_CODES//no:c_text_cat_code

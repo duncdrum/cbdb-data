@@ -302,11 +302,11 @@ declare function cal:dynasties ($dynasties as node()*) as node() {
 };
 
 xmldb:store($global:target, $global:calendar, 
-    element taxonomy{ namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
-    attribute xml:id {'cal_ZH'}>                
-        cal:sexagenary($global:GANZHI_CODES//row),
-        cal:dynasties($global:DYNASTIES//row)}
-)
+    <taxonomy xmlns="http://www.tei-c.org/ns/1.0"
+        xml:id="cal_ZH">{                
+            cal:sexagenary($global:GANZHI_CODES//row),
+            cal:dynasties($global:DYNASTIES//row)}
+    </taxonomy>)
 
             
 
