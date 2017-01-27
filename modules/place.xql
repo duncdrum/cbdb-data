@@ -214,9 +214,9 @@ it could NOT be merged as <location from ="1368' to="1622"/>
                 then ()
                 else ( attribute to {cal:isodate($id/../no:c_lastyear)}),
                     
-                if (empty($id/../x_coord) or $id/../x_coord[. = 0])
+                if (empty($id/../no:x_coord) or $id/../no:x_coord[. = 0])
                 then ()
-                else ( element geo {concat($id/../x_coord/text(), ' ', $id/../y_coord/text())})            
+                else ( element geo {concat($id/../no:x_coord/text(), ' ', $id/../no:y_coord/text())})            
                 }),        
             
             if (empty($id/../CHGIS_PT_ID)) 

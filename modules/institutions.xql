@@ -141,10 +141,10 @@ return
             then ()
             else (attribute source {concat('#BIB', $addr/../no:c_source/text())}), 
             
-            if (empty($addr/../inst_xcoord) or $addr/../inst_xcoord = 0)
+            if (empty($addr/../no:inst_xcoord) or $addr/../no:inst_xcoord = 0)
             then ()
             else (element location {
-                    element geo {concat($addr/../inst_xcoord/text(), ' ', $addr/../inst_ycoord/text())}
+                    element geo {concat($addr/../no:inst_xcoord/text(), ' ', $addr/../no:inst_ycoord/text())}
                     }),            
             
             if (empty($addr/../no:c_notes) or $org/../no:c_notes/text() = $addr/../no:c_notes/text())
