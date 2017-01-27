@@ -8,8 +8,11 @@ import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "ca
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
+
 declare namespace bib="http://exist-db.org/apps/cbdb-data/bibliography";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+
+declare default element namespace "http://www.tei-c.org/ns/1.0";
+
 
 (:bibliography.xql reads the various basic entities for bibliographic information
     and creates a listBibl element for inclusion in the body element via xi:xinclude.  
@@ -226,9 +229,9 @@ return
                 then (attribute type {concat("#biblCat", $cat/text())})
                 else (), 
     
-        if (empty($text/../tts_sysno))
+        if (empty($text/../no:tts_sysno))
         then ()
-        else(<idno type="TTS">{$text/../tts_sysno/text()}</idno>),
+        else(<idno type="TTS">{$text/../no:tts_sysno/text()}</idno>),
         
         <title type="main">
                 <title xml:lang="zh-Hant">{$text/../no:c_title_chn/text()}</title>
@@ -314,7 +317,7 @@ return
 
 xmldb:store($global:target, $global:bibliography,
 
- <listBibl xmlns="http://www.tei-c.org/ns/1.0">{
+ <listBibl>{
         bib:bibliography($global:TEXT_CODES//no:c_textid[. > 0])}</listBibl>    
 ) 
 

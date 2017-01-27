@@ -13,6 +13,8 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
 declare namespace global="http://exist-db.org/apps/cbdb-data/global";
 
+declare default element namespace "http://www.tei-c.org/ns/1.0";
+
 declare variable $global:src := '/db/apps/cbdb-data/src/xml/';
 declare variable $global:target := '/db/apps/cbdb-data/target/';
 
@@ -132,7 +134,7 @@ return
     if (empty($creator)) 
     then ()
     else (<note type="created" target="{concat('#',$creator/text())}">
-                <date when="{cal:sqldate($creator/../c_created_date)}"/>
+                <date when="{cal:sqldate($creator/../no:c_created_date)}"/>
            </note>),
               
 for $modder in $modified
@@ -140,7 +142,7 @@ return
     if (empty($modder)) 
     then ()
     else (<note type="modified" target="{concat('#',$modder/text())}">
-                <date when="{cal:sqldate($modder/../c_modified_date)}"/>
+                <date when="{cal:sqldate($modder/../no:c_modified_date)}"/>
           </note>)   
         
         };

@@ -9,8 +9,10 @@ import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "ca
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
 declare namespace xi="http://www.w3.org/2001/XInclude";
+
 declare namespace biog= "http://exist-db.org/apps/cbdb-data/biographies";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
 (:This is the main Transformation of Biographical data from CBDB.
@@ -334,13 +336,13 @@ yet unused mediated relations , tei handles this quite easily use @role?
 
 (: REPORT
 let $symmetry :=
-    for $symmetric in $ASSOC_CODES//row
+    for $symmetric in $ASSOC_CODES//no:row
     where $symmetric/no:c_assoc_code = $symmetric/no:c_assoc_pair
     return
         $symmetric
     
 let $assymetry := 
-    for $assymetric in $ASSOC_CODES//row
+    for $assymetric in $ASSOC_CODES//no:row
     where $assymetric/no:c_assoc_code != $assymetric/no:c_assoc_pair
     return
         $assymetric
@@ -367,11 +369,11 @@ let $to :=
     
 let $report := 
     <report>
-        <total>{count(//row)}</total>
-        <unaccounted>{count(//row) - (count($assymetry) + count($symmetry))}</unaccounted>
+        <total>{count(//no:row)}</total>
+        <unaccounted>{count(//no:row) - (count($assymetry) + count($symmetry))}</unaccounted>
         <symmetric>
             <sym_sum>{count($symmetry)}</sym_sum>
-            <rest>{count(//row) - count($symmetry)}</rest>
+            <rest>{count(//no:row) - count($symmetry)}</rest>
         </symmetric>
         <assymetric>
             <assy_sum>{count($assymetry)}</assy_sum>
@@ -1259,7 +1261,7 @@ let $re_by := count($cal:path/tei:category[@xml:id = concat('R', $person/../no:c
 let $re_dy := count($cal:path/tei:category[@xml:id = concat('R', $person/../no:c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
-    element person { namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
+    element person {
         attribute ana {'historical'}, 
         attribute xml:id {concat('BIO', $person/text())},
         if (empty($source))
@@ -1565,7 +1567,7 @@ return
     try {(xmldb:store($collection, $file-name, $person), 
 
          xmldb:store($collection, 'listPerson.xml', 
-            <listPerson xmlns="http://www.tei-c.org/ns/1.0">{
+            <listPerson>{
                     for $files in collection($collection)
                     let $n := functx:substring-after-last(base-uri($files), '/')
                     where $n != 'listPerson.xml'
@@ -1575,7 +1577,7 @@ return
                     </listPerson>), 
             
         xmldb:store($chunk, concat('list-', $i, '.xml'), 
-            <listPerson xmlns="http://www.tei-c.org/ns/1.0">{                
+            <listPerson>{                
                     for $lists in collection($chunk)
                     let $m := functx:substring-after-last(base-uri($lists), '/') 
                     where $m  = 'listPerson.xml'

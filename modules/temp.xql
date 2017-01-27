@@ -16,7 +16,7 @@ declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare function local:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?) as node()*{
 
-(: This function takes the $global:ADDR_CODES//rows plus the first $global:ADDR_BELONGS_DATA parent  
+(: This function takes the $global:ADDR_CODES//no:rows plus the first $global:ADDR_BELONGS_DATA parent  
 and tranlates them into tei:place.
 This function is recursive to create a nested tree of place hierarchies via c_belongs_to.
 This was neccessar to filter duplicates from $global:ADDRESSES, where multiple c_addr_id's 
@@ -164,7 +164,7 @@ it could NOT be merged as <location from ="1368' to="1622"/>
 declare function local:patch-missing-addr($data as node()*) as node()*{
     
 (: This function adds tei:places that are present in $global:ADDRESSES but not $global:ADDR_CODES.  
-It expects $global:ADDRESSES//row s and insert either empty place elements with a matching @corresp attribute, 
+It expects $global:ADDRESSES//no:row s and insert either empty place elements with a matching @corresp attribute, 
 or complete tei:place elements from pla:nest-places for elements not captured in the intial write operation.
 
 We need to do this to make sure that every c_addr_id element present in CBDB can be found in listPlace.xml. 
@@ -201,6 +201,6 @@ We need to do this to make sure that every c_addr_id element present in CBDB can
 
 
 
-    local:patch-missing-addr($global:ADDRESSES//row)
+    local:patch-missing-addr($global:ADDRESSES//no:row)
 
 

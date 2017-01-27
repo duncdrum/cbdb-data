@@ -8,7 +8,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
 declare namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
 
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 declare variable $cal:ZH := doc(concat($global:target, $global:calendar));
 declare variable $cal:path := $cal:ZH/tei:taxonomy/tei:taxonomy/tei:category;
@@ -79,7 +79,7 @@ the others are dropped since only a year or nianhao is of little information val
 :)
 
 let $dy := $global:DYNASTIES//no:c_dy[. = $dynasty/text()]
-let $motto := count($cal:path/tei:category[@xml:id = concat('R', $reign/text())]/preceding-sibling::tei:category) +1
+let $motto := count($cal:path/category[@xml:id = concat('R', $reign/text())]/preceding-sibling::category) +1
 
         
 let $date-norm := string-join((concat('D', $dy/../no:c_sort), concat('R',$motto), concat('Y', $year)),'-')
@@ -125,8 +125,8 @@ It returns a single tei:date element using att.datable.custom. :)
 let $DS := $global:DYNASTIES//no:c_dy[. = $dy-start/text()]
 let $DE := $global:DYNASTIES//no:c_dy[. = $dy-end/text()]
 
-let $RS := count($cal:path/tei:category[@xml:id = concat('R',  $reg-start/text())]/preceding-sibling::tei:category) +1
-let $RE := count($cal:path/tei:category[@xml:id = concat('R',  $reg-end/text())]/preceding-sibling::tei:category) +1
+let $RS := count($cal:path/category[@xml:id = concat('R',  $reg-start/text())]/preceding-sibling::category) +1
+let $RE := count($cal:path/category[@xml:id = concat('R',  $reg-end/text())]/preceding-sibling::category) +1
 
         
 let $start-norm := string-join((concat('D', $DS/../no:c_sort), concat('R',$RS), concat('Y', $year-start)),'-')
@@ -278,7 +278,7 @@ declare function cal:dynasties ($dynasties as node()*) as node() {
         <catDesc xml:lang="zh-Hant">{$dy/no:c_dynasty_chn/text()}</catDesc>
         <catDesc xml:lang="en">{$dy/no:c_dynasty/text()}</catDesc>
         {
-        for $nh in $global:NIAN_HAO//row 
+        for $nh in $global:NIAN_HAO//no:row 
         where $nh/no:c_dy = $dy_id
         return
             if ($nh/no:c_nianhao_pin != '')
@@ -302,10 +302,9 @@ declare function cal:dynasties ($dynasties as node()*) as node() {
 };
 
 xmldb:store($global:target, $global:calendar, 
-    <taxonomy xmlns="http://www.tei-c.org/ns/1.0"
-        xml:id="cal_ZH">{                
-            cal:sexagenary($global:GANZHI_CODES//row),
-            cal:dynasties($global:DYNASTIES//row)}
+    <taxonomy xml:id="cal_ZH">{                
+            cal:sexagenary($global:GANZHI_CODES//no:row),
+            cal:dynasties($global:DYNASTIES//no:row)}
     </taxonomy>)
 
             

@@ -8,8 +8,10 @@ import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "ca
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
+
 declare namespace org = "http://exist-db.org/apps/cbdb-data/institutions";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
 (:local:org does what biographies does for persons for institutions.:)
@@ -162,6 +164,6 @@ let $full := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0]
 return
 
 xmldb:store($global:target, $global:institution,
-    <listOrg xmlns="http://www.tei-c.org/ns/1.0">
+    <listOrg>
         {org:org($full)}
     </listOrg>) 

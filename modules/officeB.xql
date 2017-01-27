@@ -5,7 +5,8 @@ import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "g
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
 (:officeB joins the nodes from the two intermediary files written by officeA.

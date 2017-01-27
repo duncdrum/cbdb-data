@@ -11,6 +11,7 @@ declare namespace output = "http://www.tei-c.org/ns/1.0";
 
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES inot a nested tei:taxonomy.
 the categories appear mostly listBibl.xml
@@ -35,14 +36,14 @@ element category { attribute xml:id {concat('biblType',  $type-id/text())},
 element catDesc {attribute xml:lang {'en'},
     $en/text()},
     
-    for $child in $types[c_text_cat_type_parent_id = $type-id]
+    for $child in $types[no:c_text_cat_type_parent_id = $type-id]
     return
         gen:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)               
 }      
 };
 
 
-let $types := $global:TEXT_BIBLCAT_TYPES//row
+let $types := $global:TEXT_BIBLCAT_TYPES//no:row
 let $typeTree := xmldb:store($global:target, $global:genre, 
                     <taxonomy xml:id="biblCat">
                         <category xml:id="biblType01">

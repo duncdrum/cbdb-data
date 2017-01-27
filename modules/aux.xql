@@ -14,9 +14,7 @@ import module namespace bib="http://exist-db.org/apps/cbdb-data/bibliography" at
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
-declare namespace output = "http://www.tei-c.org/ns/1.0";
-
-(:declare default element namespace "http://www.tei-c.org/ns/1.0";:)
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:Aux.xql contains helper functions mostly for cleaning data and constructing functions.:)
 
@@ -126,6 +124,36 @@ return
     validation:jing-report($mini, doc('../templates/tei/tei_all.rng'))
 };
 
-local:validate-fragment(bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031]), 'bibl')
+(:local:validate-fragment(bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031]), 'bibl'):)
     
+let $test :=
+<no:root xmlns="nowhere">
+    <row>
+        <tts_sysno>2</tts_sysno>
+        <c_textid>2031</c_textid>
+        <c_title_chn>愛日齋叢鈔</c_title_chn>
+        <c_title>ai ri zhai cong chao</c_title>
+        <c_text_year>1279</c_text_year>
+        <c_text_nh_code>0</c_text_nh_code>
+        <c_period>Song</c_period>
+        <c_bibl_cat_code>147</c_bibl_cat_code>
+        <c_extant>1</c_extant>
+        <c_text_country>1</c_text_country>
+        <c_text_dy>15</c_text_dy>
+        <c_pub_year>0</c_pub_year>
+        <c_pub_nh_code>0</c_pub_nh_code>
+        <c_publisher>(CSJC).</c_publisher>
+        <c_pub_notes>-1</c_pub_notes>
+        <c_source>7596</c_source>
+        <c_pages>17782</c_pages>
+        <c_created_by>TTS</c_created_by>
+        <c_created_date>20070417</c_created_date>
+        <c_modified_by>HUWHS</c_modified_by>
+        <c_modified_date>20131216</c_modified_date>
+    </row>
+</no:root>
 
+return
+    local:validate-fragment(bib:bibliography($test//no:c_textid), 'bibl')
+
+(:bib:bibliography($test//no:c_textid):)

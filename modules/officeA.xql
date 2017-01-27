@@ -5,7 +5,7 @@ import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "g
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:Generating the taxonomy for office titles requires two parts officeA.xql and officeB.xql. 
 This is due to a potential bug  with the new range index. 
@@ -124,9 +124,9 @@ tree of office types as tei:category.
     $zh/text()},
     if (empty($en) or $en/text() = '[not yet translated]')
     then ()
-    else (element catDesc { attribute xml:lang {'en'},
+    else (element catDesc {attribute xml:lang {'en'},
     $en/text()}),
-      for $child in $data[c_parent_id = $id]
+      for $child in $data[no:c_parent_id = $id]
       return local:nest-children($data, $child/no:c_office_type_node_id, 
         $child/no:c_office_type_desc_chn, $child/no:c_office_type_desc)    
   }
@@ -137,22 +137,20 @@ let $tree-id := $data/no:c_office_type_node_id
 let $code := $globalOFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id
 :)
 
-let $data := $global:OFFICE_TYPE_TREE//row
+let $data := $global:OFFICE_TYPE_TREE//no:row
 let $tree := xmldb:store($global:target, $global:office, 
-                    <taxonomy xmlns="http://www.tei-c.org/ns/1.0"
-                        xml:id="office">
+                    <taxonomy xml:id="office">
                         <category n="00">
                             <catDesc xml:lang="en">missing data</catDesc>
                          </category>{                        
-                        for $outer in $data[c_parent_id = 0]
+                        for $outer in $data[no:c_parent_id = 0]
                           return 
                             local:nest-children($data, $outer/no:c_office_type_node_id, 
                                 $outer/no:c_office_type_desc_chn, $outer/no:c_office_type_desc)}
                     </taxonomy>)
                     
 let $off := xmldb:store($global:target, $global:office-temp, 
-                    <taxonomy xmlns="http://www.tei-c.org/ns/1.0"
-                         xml:id="officeA">                       
+                    <taxonomy xml:id="officeA">                       
                          {local:office($global:OFFICE_CODES//no:c_office_id)}                        
                      </taxonomy>)             
 

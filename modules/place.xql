@@ -8,8 +8,10 @@ import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "ca
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="nowhere";
+
 declare namespace pla="http://exist-db.org/apps/cbdb-data/place";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
 (:place.xql reads the various basic entities for location type information 
@@ -92,7 +94,7 @@ for $low in distinct-values($lower)
 
 declare function pla:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?) as node()*{
 
-(: This function takes the $global:ADDR_CODES//rows plus the first $global:ADDR_BELONGS_DATA parent  
+(: This function takes the $global:ADDR_CODES//no:rows plus the first $global:ADDR_BELONGS_DATA parent  
 and tranlates them into tei:place.
 This function is recursive to create a nested tree of place hierarchies via c_belongs_to.
 This was neccessar because of duplicates in $global:ADDRESSES.
@@ -243,23 +245,23 @@ it could NOT be merged as <location from ="1368' to="1622"/>
 declare function pla:patch-missing-addr($data as node()*) as node()*{
     
 (: This function adds tei:places that are present in $global:ADDRESSES but not $global:ADDR_CODES.  
-It expects $global:ADDRESSES//row s and insert either empty place elements with a matching @corresp attribute, 
+It expects $global:ADDRESSES//no:row s and insert either empty place elements with a matching @corresp attribute, 
 or complete tei:place elements from pla:nest-places for elements not captured in the intial write operation.
 
 We need to do this to make sure that every c_addr_id element present in CBDB can be found in listPlace.xml. 
 :)
     for $n in $data
     let $corresp := min(data($global:ADDR_CODES//no:c_name_chn[. = $n/no:c_name_chn]/../no:c_addr_id))
-    let $branch := if ($global:ADDR_CODES//no:c_addr_id[. = $n/belongs1_ID])
-                     then (concat('PL', $n/belongs1_ID))
-                     else if ($global:ADDR_CODES//no:c_addr_id[. = $n/belongs2_ID])
-                           then (concat('PL', $n/belongs2_ID)) 
-                           else if ($global:ADDR_CODES//no:c_addr_id[. = $n/belongs3_ID])
-                                then (concat('PL', $n/belongs3_ID))
-                                else if ($global:ADDR_CODES//no:c_addr_id[. = $n/belongs4_ID])
-                                      then (concat('PL', $n/belongs4_ID))
-                                      else if ($global:ADDR_CODES//no:c_addr_id[. = $n/belongs5_ID])
-                                            then (concat('PL', $n/belongs5_ID))
+    let $branch := if ($global:ADDR_CODES//no:c_addr_id[. = $n/no:belongs1_ID])
+                     then (concat('PL', $n/no:belongs1_ID))
+                     else if ($global:ADDR_CODES//no:c_addr_id[. = $n/no:belongs2_ID])
+                           then (concat('PL', $n/no:belongs2_ID)) 
+                           else if ($global:ADDR_CODES//no:c_addr_id[. = $n/no:belongs3_ID])
+                                then (concat('PL', $n/no:belongs3_ID))
+                                else if ($global:ADDR_CODES//no:c_addr_id[. = $n/no:belongs4_ID])
+                                      then (concat('PL', $n/no:belongs4_ID))
+                                      else if ($global:ADDR_CODES//no:c_addr_id[. = $n/no:belongs5_ID])
+                                            then (concat('PL', $n/no:belongs5_ID))
                                             else (concat('PL', $corresp))
                                             
     let $listPlace := doc(concat($global:target, $global:place))
@@ -278,7 +280,7 @@ We need to do this to make sure that every c_addr_id element present in CBDB can
 }; 
 
 let $data := <root>{
-    for $n in $global:ADDR_CODES//row
+    for $n in $global:ADDR_CODES//no:row
      
     return 
     
@@ -310,4 +312,4 @@ xmldb:store($global:target, $global:place,
 
 
 (:pla:fix-admin-types('Dudufu'):)
-(:local:patch-missing-addr($global:ADDRESSES//row):)
+(:local:patch-missing-addr($global:ADDRESSES//no:row):)
