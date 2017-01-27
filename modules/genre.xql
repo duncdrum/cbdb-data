@@ -4,6 +4,7 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 (:import module namespace functx="http://www.functx.com";:)
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace no="nowhere";
 declare namespace gen="http://exist-db.org/apps/cbdb-data/genre";
 
 declare namespace output = "http://www.tei-c.org/ns/1.0";
@@ -36,7 +37,7 @@ element catDesc {attribute xml:lang {'en'},
     
     for $child in $types[c_text_cat_type_parent_id = $type-id]
     return
-        gen:nest-types($types, $child/c_text_cat_type_id, $child/c_text_cat_type_desc_chn, $child/c_text_cat_type_desc)               
+        gen:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)               
 }      
 };
 
@@ -48,13 +49,13 @@ let $typeTree := xmldb:store($global:target, $global:genre,
                         element category {
                             attribute xml:id {'biblType01'},
                             element catDesc { attribute xml:lang {'zh-Hant'},
-                                $types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc_chn/text()},
+                                $types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc_chn/text()},
                             element catDesc { attribute xml:lang {'en'},    
-                                $types/c_text_cat_type_id[. = '01']/../c_text_cat_type_desc/text()},        
+                                $types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc/text()},        
                         for $outer in $types[c_text_cat_type_parent_id = '01']
                         order by $outer[c_text_cat_type_sortorder]
                         return
-                            gen:nest-types($types, $outer/c_text_cat_type_id ,$outer/c_text_cat_type_desc_chn, $outer/c_text_cat_type_desc)
+                            gen:nest-types($types, $outer/no:c_text_cat_type_id ,$outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc)
                             }
                         }
                     )
@@ -63,17 +64,17 @@ let $typeTree := xmldb:store($global:target, $global:genre,
 
 
 
-for $cat in $global:TEXT_BIBLCAT_CODES//c_text_cat_code
+for $cat in $global:TEXT_BIBLCAT_CODES//no:c_text_cat_code
 
-let $type-id := $global:TEXT_BIBLCAT_CODE_TYPE_REL//c_text_cat_code[ . = $cat]/../c_text_cat_type_id
+let $type-id := $global:TEXT_BIBLCAT_CODE_TYPE_REL//no:c_text_cat_code[ . = $cat]/../no:c_text_cat_type_id
 let $type: = doc($typeTree)//category/@xml:id[. = concat('biblType', $type-id/text())]
 let $category := element category { attribute xml:id {concat('biblCat',  $cat/text())},        
                     element catDesc {attribute xml:lang {'zh-Hant'},
-                        $cat/../c_text_cat_desc_chn/text()},
+                        $cat/../no:c_text_cat_desc_chn/text()},
                     element catDesc {attribute xml:lang {'zh-Latn-alalc97'},
-                        $cat/../c_text_cat_pinyin/text()},    
+                        $cat/../no:c_text_cat_pinyin/text()},    
                     element catDesc {attribute xml:lang {'en'},
-                        $cat/../c_text_cat_desc/text()}}
+                        $cat/../no:c_text_cat_desc/text()}}
 
 return
  update insert $category into $type/..

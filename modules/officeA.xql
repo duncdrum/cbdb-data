@@ -4,6 +4,7 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace no="nowhere";
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 
 (:Generating the taxonomy for office titles requires two parts officeA.xql and officeB.xql. 
@@ -25,8 +26,8 @@ These are then inserted intointo the right postions in the office-tree via $OFFI
 (:Wow this is a mess. TODO
 - OFFICE_CATEGORIES is linked with POSTED_TO_OFFICE_DATA so either it becomes tei:event/@type, 
 or if gets its own taxonomy.
-- $OFFICE_CODE_TYPE_REl//c_office_type_type_code ... WTF?
-- clean up {A1D7} from $OFFICE_CODES//c_office_trans
+- $OFFICE_CODE_TYPE_REl//no:c_office_type_type_code ... WTF?
+- clean up {A1D7} from $OFFICE_CODES//no:c_office_trans
 :)
 
 (:
@@ -51,54 +52,54 @@ or if gets its own taxonomy.
 
 for $office in $offices[. > 0] 
 
-let $type-rel := $global:OFFICE_CODE_TYPE_REL//c_office_id[. = $office]
-let $type := $global:OFFICE_TYPE_TREE//c_office_type_node_id[. = $type-rel/../c_office_tree_id]
+let $type-rel := $global:OFFICE_CODE_TYPE_REL//no:c_office_id[. = $office]
+let $type := $global:OFFICE_TYPE_TREE//no:c_office_type_node_id[. = $type-rel/../no:c_office_tree_id]
 
 return
     element category{ attribute xml:id {concat('OFF', $office/text())},
-        if (empty($type-rel/../c_office_tree_id) and empty($office/../c_dy))
+        if (empty($type-rel/../no:c_office_tree_id) and empty($office/../no:c_dy))
         then (attribute n {'00'})
-        else if (empty($type-rel/../c_office_tree_id))
-            then (attribute n {$office/../c_dy/text()})
-        else (attribute n {$type-rel/../c_office_tree_id/text()}),
-    if (empty($office/../c_source) or $office/../c_source[. < 1])
+        else if (empty($type-rel/../no:c_office_tree_id))
+            then (attribute n {$office/../no:c_dy/text()})
+        else (attribute n {$type-rel/../no:c_office_tree_id/text()}),
+    if (empty($office/../no:c_source) or $office/../no:c_source[. < 1])
     then ()
-    else (attribute source {concat('#BIB', $office/../c_source/text())}),
+    else (attribute source {concat('#BIB', $office/../no:c_source/text())}),
         element catDesc {
-            if (empty($office/../c_dy))
+            if (empty($office/../no:c_dy))
             then ()
-            else (element date{ attribute sameAs {concat('#D', $office/../c_dy/text())}}),
+            else (element date{ attribute sameAs {concat('#D', $office/../no:c_dy/text())}}),
             element roleName { attribute type {'main'},
                 element roleName { attribute xml:lang {'zh-Hant'},
-                    $office/../c_office_chn/text()},
-                    if (empty($office/../c_office_pinyin))
+                    $office/../no:c_office_chn/text()},
+                    if (empty($office/../no:c_office_pinyin))
                     then ()
                     else (element roleName { attribute xml:lang {'zh-Latn-alalc97'},
-                    $office/../c_office_pinyin/text()}),
-                if (empty($office/../c_office_trans) or $office/../c_office_trans/text() = '[Not Yet Translated]')
+                    $office/../no:c_office_pinyin/text()}),
+                if (empty($office/../no:c_office_trans) or $office/../no:c_office_trans/text() = '[Not Yet Translated]')
                 then ()
-                else if (contains($office/../c_office_trans/text(), '(Hucker)'))
+                else if (contains($office/../no:c_office_trans/text(), '(Hucker)'))
                     then (element roleName {attribute xml:lang {'en'},
                                 attribute resp {'Hucker'},
-                            substring-before($office/../c_office_trans/text(), ' (Hucker)')})
+                            substring-before($office/../no:c_office_trans/text(), ' (Hucker)')})
                     else (element roleName { attribute xml:lang {'en'}, 
-                $office/../c_office_trans/text()}), 
-            if (empty($office/../c_notes))
+                $office/../no:c_office_trans/text()}), 
+            if (empty($office/../no:c_notes))
             then ()
-            else (element note {$office/../c_notes/text()})
+            else (element note {$office/../no:c_notes/text()})
             },
-            if (empty($office/../c_office_chn_alt) and empty($office/../c_office_trans_alt))
+            if (empty($office/../no:c_office_chn_alt) and empty($office/../no:c_office_trans_alt))
             then ()
             else (element roleName { attribute type {'alt'},
-                    if ($office/../c_office_chn_alt)
+                    if ($office/../no:c_office_chn_alt)
                     then (element roleName { attribute xml:lang {'zh-Hant'},
-                            $office/../c_office_chn_alt/text()},
+                            $office/../no:c_office_chn_alt/text()},
                         element roleName { attribute xml:lang {'zh-Latn-alalc97'},
-                            $office/../c_office_pinyin_alt/text()})
+                            $office/../no:c_office_pinyin_alt/text()})
                     else(),
-                    if ($office/../c_office_trans_alt)
+                    if ($office/../no:c_office_trans_alt)
                     then (element roleName { attribute xml:lang {'en'}, 
-                        $office/../c_office_trans_alt/text()})
+                        $office/../no:c_office_trans_alt/text()})
                     else ()}
                   )
         }
@@ -126,14 +127,14 @@ tree of office types as tei:category.
     else (element catDesc { attribute xml:lang {'en'},
     $en/text()}),
       for $child in $data[c_parent_id = $id]
-      return local:nest-children($data, $child/c_office_type_node_id, 
-        $child/c_office_type_desc_chn, $child/c_office_type_desc)    
+      return local:nest-children($data, $child/no:c_office_type_node_id, 
+        $child/no:c_office_type_desc_chn, $child/no:c_office_type_desc)    
   }
 };
 
 (: once maxCauseCount errors are fixed the following will suffice for the join:
-let $tree-id := $data/c_office_type_node_id
-let $code := $globalOFFICE_CODE_TYPE_REL//c_office_tree_id[. =  $tree-id/text()]/../c_office_id
+let $tree-id := $data/no:c_office_type_node_id
+let $code := $globalOFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id
 :)
 
 let $data := $global:OFFICE_TYPE_TREE//row
@@ -147,14 +148,14 @@ let $tree := xmldb:store($global:target, $global:office,
                         },                        
                     for $outer in $data[c_parent_id = 0]
                       return 
-                        local:nest-children($data, $outer/c_office_type_node_id, 
-                            $outer/c_office_type_desc_chn, $outer/c_office_type_desc)
+                        local:nest-children($data, $outer/no:c_office_type_node_id, 
+                            $outer/no:c_office_type_desc_chn, $outer/no:c_office_type_desc)
                     })
                     
 let $off := xmldb:store($global:target, $global:office-temp, 
                      element taxonomy {namespace {"tei"} {"http://www.tei-c.org/ns/1.0"},
                         attribute xml:id {'officeA'},                       
-                         local:office($global:OFFICE_CODES//c_office_id)                         
+                         local:office($global:OFFICE_CODES//no:c_office_id)                         
                      })             
 
 
