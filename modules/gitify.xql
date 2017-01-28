@@ -3,7 +3,7 @@ xquery version "3.0";
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace no="nowhere";
+declare namespace no="http://none";
 
 declare variable $src := '/db/apps/cbdb-data/src/xml/';
 declare variable $target := '/db/apps/cbdb-data/target/';

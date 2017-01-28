@@ -10,7 +10,7 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace no="nowhere";
+declare namespace no="http://none";
 declare namespace global="http://exist-db.org/apps/cbdb-data/global";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";

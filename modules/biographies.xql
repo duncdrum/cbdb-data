@@ -7,7 +7,7 @@ import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "g
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace no="nowhere";
+declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare namespace biog= "http://exist-db.org/apps/cbdb-data/biographies";
@@ -1102,8 +1102,8 @@ let $code := $global:BIOG_INST_CODES//no:c_bi_role_code[. = $address/../no:c_bi_
 let $dy_by := $global:DYNASTIES//no:c_dy[. = $global:NIAN_HAO//no:c_nianhao_id[. = $address/../no:c_bi_by_nh_code]/../no:c_dy]/../no:c_sort
 let $dy_ey := $global:DYNASTIES//no:c_dy[. = $global:NIAN_HAO//no:c_nianhao_id[. = $address/../no:c_bi_ey_nh_code]/../no:c_dy]/../no:c_sort
 
-let $re_by := count($cal:path/tei:category[@xml:id = concat('R', $address/../no:c_bi_by_nh_code/text())]/preceding-sibling::tei:category) +1
-let $re_ey := count($cal:path/tei:category[@xml:id = concat('R', $address/../no:c_bi_ey_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_by := count($cal:path/category[@xml:id = concat('R', $address/../no:c_bi_by_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_ey := count($cal:path/category[@xml:id = concat('R', $address/../no:c_bi_ey_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
     element event { 
@@ -1257,8 +1257,8 @@ let $bio-src := $global:BIOG_SOURCE_DATA//no:c_personid[. = $person]
 let $dy_by := $global:DYNASTIES//no:c_dy[. = $global:NIAN_HAO//no:c_nianhao_id[. = $person/../no:c_by_nh_code]/../no:c_dy]/../no:c_sort
 let $dy_dy := $global:DYNASTIES//no:c_dy[. = $global:NIAN_HAO//no:c_nianhao_id[. = $person/../no:c_dy_nh_code]/../no:c_dy]/../no:c_sort
 
-let $re_by := count($cal:path/tei:category[@xml:id = concat('R', $person/../no:c_by_nh_code/text())]/preceding-sibling::tei:category) +1
-let $re_dy := count($cal:path/tei:category[@xml:id = concat('R', $person/../no:c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_by := count($cal:path/category[@xml:id = concat('R', $person/../no:c_by_nh_code/text())]/preceding-sibling::tei:category) +1
+let $re_dy := count($cal:path/category[@xml:id = concat('R', $person/../no:c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
     element person {
@@ -1271,7 +1271,7 @@ return
         then ()
         else (attribute resp {'selfbio'}),
         element idno { attribute type {'TTS'}, 
-            $person/../tts_sysno/text()}, 
+            $person/../no:tts_sysno/text()}, 
 (:      NAMES      :)
         element persName {attribute type {'main'},
             if (empty($person/../no:c_name_chn))
@@ -1507,7 +1507,7 @@ return
             if (empty($person/../no:TTSMQ_db_ID) and empty($person/../no:MQWWLink) and empty($person/../no:KyotoLink))
             then ()
             else (<linkGrp>
-                    {let $links := ($person/../TTSMQ_db_ID, $person/../MQWWLink, $person/../KyotoLink)
+                    {let $links := ($person/../no:TTSMQ_db_ID, $person/../no:MQWWLink, $person/../no:KyotoLink)
                     for $link in $links[. != '']
                     return
                     <ptr target="{$link/text()}"/>}        
@@ -1523,13 +1523,13 @@ the write operation of biographies.xql is slighlty more complex.
 Instead of putting its data into a single file or collection, 
 it creates a tree of collections (chunks) and subcollections (blocks).
 
-In additions to the person records themselves it also creates a plistPerson file 
+In additions to the person records themselves it also creates a listPerson file 
 at each level. 
 
 As a result cbdbTEI.xml includes links to 37 listPerson files 
 covering chunks of $chunk-size persons each (10k).  
 
-"chunk" collections contain a single list-\n.xml file and $block-size (50) subcollectoins. 
+"chunk" collections contain a single list.xml file and $block-size (50) subcollectoins. 
 This file contains xi:include statments to 1 listPerson.xml file per "block" subcollection.
 Each block contains a single listPerson.xml file on the same level as the individual
 $ppl-per-block (200) person records .
@@ -1537,10 +1537,6 @@ $ppl-per-block (200) person records .
 
 let $test := $global:BIOG_MAIN//no:c_personid[. = 914]
 let $full := $global:BIOG_MAIN//no:c_personid[. > 0]
-
-
-(:return
-biog:biog($test):)
 
 let $count := count($full)
 

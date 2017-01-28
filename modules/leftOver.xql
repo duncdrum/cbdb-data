@@ -670,7 +670,7 @@ let $dedupes :=  <listPlace>
 
 return
     xmldb:store($global:target, 'place-dupe.xml',
-    <tei:listPLace>{functx:distinct-deep($dedupes//place)}</tei:listPLace>)
+    <tei:listPLace>{functx:distinct-deep($dedupes//place)}</listPLace>)
 };
 
 declare function pla:update-listPlace (){    
@@ -685,16 +685,16 @@ http://stackoverflow.com/questions/3875560/xquery-finding-duplciate-ids?rq=1
 
 delete all dupes but the first
 
-let $vSeq := $listPlace//tei:place[@xml:id = data($dedupe//tei:place/@xml:id)]
+let $vSeq := $listPlace//place[@xml:id = data($dedupe//place/@xml:id)]
 return
     update delete $vSeq[position() = index-of($vSeq, .)[. > 1]] 
     
     :)
     
-let $vSeq := $listPlace//tei:place[@xml:id = data($dedupe//tei:place/@xml:id)]
+let $vSeq := $listPlace//place[@xml:id = data($dedupe//place/@xml:id)]
 
 for $n in $vSeq
-let $m := $dedupe//tei:place[@xml:id = data($n/@xml:id)]
+let $m := $dedupe//place[@xml:id = data($n/@xml:id)]
 
 
 

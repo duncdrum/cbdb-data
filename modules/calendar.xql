@@ -5,13 +5,13 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace no="nowhere";
+declare namespace no="http://none";
 declare namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 declare variable $cal:ZH := doc(concat($global:target, $global:calendar));
-declare variable $cal:path := $cal:ZH/tei:taxonomy/tei:taxonomy/tei:category;
+declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 
 
 (:calendar.xql reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 

@@ -1,7 +1,6 @@
 xquery version "3.0";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
-declare namespace no="nowhere";
 import module namespace functx="http://www.functx.com";
 
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
@@ -12,6 +11,7 @@ import module namespace bib="http://exist-db.org/apps/cbdb-data/bibliography" at
 
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
@@ -41,7 +41,7 @@ let $ipad := functx:pad-integer-to-length($i, 2)
 return
     update insert
         <xi:include href="{concat('listPerson/chunk-', $ipad, '/list-', $i, '.xml')}" parse="xml"/>
-    into doc(concat($global:target, $global:main))//tei:body
+    into doc(concat($global:target, $global:main))//body
 };
 (:local:write-chunk-includes(37):)
 
@@ -72,13 +72,20 @@ declare function local:validate-fragment($frag as node()*, $loc as xs:string?) a
 
 This function cannot guarante that the final document is valid, 
 but it can catch validation errors produced by other function early on.
-This way we can minimize the number of validations necessary to catch errors.  
+This minimizes the number of validations necessary to produce the final output. 
 
-Especially usefull when combined with try-catch clauses:
-Test expr:
+Currently, $loc accepts the name of the root element rturned by the function producing the $frag.
+For $loc use:
+- category
+- charDecl
+- person
+- org
+- bibl
+- place
 
-biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908])
-bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031])
+For $frag use:
+- biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908])
+- bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031])
 
 :)
 let $mini := 
@@ -124,36 +131,8 @@ return
     validation:jing-report($mini, doc('../templates/tei/tei_all.rng'))
 };
 
-(:local:validate-fragment(bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031]), 'bibl'):)
-    
-let $test :=
-<no:root xmlns="nowhere">
-    <row>
-        <tts_sysno>2</tts_sysno>
-        <c_textid>2031</c_textid>
-        <c_title_chn>愛日齋叢鈔</c_title_chn>
-        <c_title>ai ri zhai cong chao</c_title>
-        <c_text_year>1279</c_text_year>
-        <c_text_nh_code>0</c_text_nh_code>
-        <c_period>Song</c_period>
-        <c_bibl_cat_code>147</c_bibl_cat_code>
-        <c_extant>1</c_extant>
-        <c_text_country>1</c_text_country>
-        <c_text_dy>15</c_text_dy>
-        <c_pub_year>0</c_pub_year>
-        <c_pub_nh_code>0</c_pub_nh_code>
-        <c_publisher>(CSJC).</c_publisher>
-        <c_pub_notes>-1</c_pub_notes>
-        <c_source>7596</c_source>
-        <c_pages>17782</c_pages>
-        <c_created_by>TTS</c_created_by>
-        <c_created_date>20070417</c_created_date>
-        <c_modified_by>HUWHS</c_modified_by>
-        <c_modified_date>20131216</c_modified_date>
-    </row>
-</no:root>
+(:local:validate-fragment(bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031]), 'bibl'):)   
 
-return
-    local:validate-fragment(bib:bibliography($test//no:c_textid), 'bibl')
+(:    local:validate-fragment(biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908]), 'person'):)
 
-(:bib:bibliography($test//no:c_textid):)
+biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908])
