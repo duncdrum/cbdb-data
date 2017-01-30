@@ -66,7 +66,7 @@ return
 (:local:upgrade-contents($global:BIOG_MAIN//no:c_personid[. > 0][. < 2]):)
 
 
-declare function local:validate-fragment($frag as node()*, $loc as xs:string?) as node() {
+declare function local:validate-fragment($frag as node()*, $loc as xs:string?) as item()* {
 
 (: This function validates $frag by inserting it into a minimal TEI template. 
 
@@ -88,6 +88,8 @@ For $frag use:
 - bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031])
 
 :)
+
+let $id := data($frag/@xml:id)
 let $mini := 
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -128,11 +130,32 @@ let $mini :=
 </TEI>
 
 return 
-    validation:jing-report($mini, doc('../templates/tei/tei_all.rng'))
+    if (validation:jing($mini, doc('../templates/tei/tei_all.rng')) = true())
+    then ($frag)
+    else (($frag, 
+          xmldb:store($global:report,  concat('report-',$id,'.xml'),
+          validation:jing-report($mini, doc('../templates/tei/tei_all.rng')))))
 };
 
 (:local:validate-fragment(bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031]), 'bibl'):)   
+let $id := 12908
+let $test := $global:BIOG_MAIN//no:c_personid[. > 12900][. < 12911]
 
-(:    local:validate-fragment(biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908]), 'person'):)
+for $n in $test
+return
+xmldb:store($global:samples, concat('cbdb-', data($n), '.xml'),
+local:validate-fragment(biog:biog($global:BIOG_MAIN//no:c_personid[. = $n]), 'person')[1])
 
-biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908])
+(:  xmldb:store($global:report, 'report.xml',
+  local:validate-fragment(biog:biog($global:BIOG_MAIN//no:c_personid[. = $id]), 'person')):)
+
+(:count($global:BIOG_MAIN//no:row):)
+
+(:
+12908
+
+/*[1][. = "invalid"])
+then (xmldb:store($global:report, concat('report-',$id,'.xml'),
+  local:validate-fragment(biog:biog($global:BIOG_MAIN//no:c_personid[. = $id]), 'person')))
+else (biog:biog($global:BIOG_MAIN//no:c_personid[. = $id]))  
+    :)

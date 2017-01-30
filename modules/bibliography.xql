@@ -219,6 +219,7 @@ let $txtcountry :=  $global:COUNTRY_CODES//no:c_country_code[. = $text/../no:c_t
 
 
 return
+    global:validate-fragment(
     element bibl { attribute xml:id{concat("BIB", $text/text())},
     if ($type > 0 and $cat > 0)
     then (attribute type {concat("#biblType", $type/text())}, 
@@ -312,13 +313,16 @@ return
         else(<note>{$text/../no:c_notes/text()}</note>),
         
         global:create-mod-by($text/../no:c_created_by, $text/../no:c_modified_by)
-        }
+        },'bibl')
 };
+
+(:2188.5s:)
 
 xmldb:store($global:target, $global:bibliography,
 
  <listBibl>{
-        bib:bibliography($global:TEXT_CODES//no:c_textid[. > 0])}</listBibl>    
+        bib:bibliography($global:TEXT_CODES//no:c_textid[. > 0])
+ }</listBibl>    
 ) 
 
 
