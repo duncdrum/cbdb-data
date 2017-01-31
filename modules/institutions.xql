@@ -16,7 +16,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:local:org does what biographies does for persons for institutions.:)
 
-declare function org:org ($institutions as node()*) as node()* {
+declare function org:org ($institutions as node()*) as item()* {
 (:This function writes the org / orgName elements to be stored in listOrg.xml.
 altName tables, and address-type tables are empty!!
 :)

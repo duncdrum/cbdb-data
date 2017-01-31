@@ -252,7 +252,7 @@ cal:ganzhi(-0247, 'zh') -> 乙卯 = 246BC founding of Qing
             
 };
 
-declare function cal:sexagenary ($ganzhi as node()*) as node() {
+declare function cal:sexagenary ($ganzhi as node()*) as item()* {
 <taxonomy xml:id="sexagenary"> 
 { 
 for $gz in $ganzhi
@@ -265,7 +265,7 @@ return
 </taxonomy>
 };
 
-declare function cal:dynasties ($dynasties as node()*) as node() {
+declare function cal:dynasties ($dynasties as node()*) as item()* {
 <taxonomy xml:id="reign">
     {
     for $dy in $dynasties

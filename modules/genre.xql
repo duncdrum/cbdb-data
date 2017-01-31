@@ -19,7 +19,7 @@ the categories appear mostly listBibl.xml
 
 (:!!!Calling this function overwrites data!!!:)
 
-declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node())  as node()* {
+declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node())  as item()* {
 
 (:This function transforms $TEXT_BIBLCAT_TYPES inoto nested tei:categoreis.
 

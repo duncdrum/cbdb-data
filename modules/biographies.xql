@@ -184,15 +184,15 @@ declare function biog:kin ($self as node()*) as node()* {
     (:This function takes persons via c_personid and returns a list kin group  relations.
 It's structure is tied to biog:asso and changes should be made to both functions in concert.:)
     
-    (:
+    (: KIN_DATA                                            KINSHIP_CODES 
 [tts_sysno] INTEGER,                    x                [c_kincode] INTEGER PRIMARY KEY,   x
  [c_personid] INTEGER,                  x                [c_kin_pair1] INTEGER,              d
  [c_kin_id] INTEGER,                    x                [c_kin_pair2] INTEGER,              d
  [c_kin_code] INTEGER,                  x                [c_kin_pair_notes] CHAR(50),       d
- [c_source] INTEGER,                   x                  [c_kinrel_chn] CHAR(255),         x
- [c_pages] CHAR(255),                   d                 [c_kinrel] CHAR(255),             x
- [c_notes] CHAR,                        x                 [c_kinrel_alt] CHAR(255),         x
- [c_autogen_notes] CHAR,                  x               [c_pick_sorting] INTEGER,         x
+ [c_source] INTEGER,                    x                [c_kinrel_chn] CHAR(255),           x
+ [c_pages] CHAR(255),                   d                [c_kinrel] CHAR(255),               x
+ [c_notes] CHAR,                         x                [c_kinrel_alt] CHAR(255),          x
+ [c_autogen_notes] CHAR,                x               [c_pick_sorting] INTEGER,           x
  [c_created_by] CHAR(255),              d               [c_upstep] INTEGER,                 d
  [c_created_date] CHAR(255),            d               [c_dwnstep] INTEGER,                d
  [c_modified_by] CHAR(255),             d               [c_marstep] INTEGER,                d
@@ -244,13 +244,12 @@ NOT Documented
 
 :)
     
-    (:it would be nice to find valid xml expressions for kinrel so they can be added to tei:relation as @name:)
     
     for $kin in $global:KIN_DATA//no:c_personid[. = $self]
     let $tie := $global:KINSHIP_CODES//no:c_kincode[. = $kin/../no:c_kin_code]
+    let $mourning := $global:KIN_Mourning//no:c_kinrel[. = $tie/../no:c_kinrel]
     
-    (:let basic :=
- for $:)
+
     
     return
         element relation {
@@ -287,7 +286,8 @@ NOT Documented
                 
                 if (empty($tie/../no:c_kinrel_chn) and empty ($tie/../no:c_kinrel_alt))
                 then ()
-                else (element desc {
+                else (element desc { attribute type {'kin-tie'}, 
+                
                         if ($kin/../no:c_notes)
                         then (element label {$kin/../no:c_notes/text()})
                         else (),
@@ -295,7 +295,19 @@ NOT Documented
                         element desc { attribute xml:lang {"zh-Hant"},
                             $tie/../no:c_kinrel_chn/text()},    
                         element desc {attribute xml:lang {"en"},
-                            $tie/../no:c_kinrel_alt/text()}
+                            $tie/../no:c_kinrel_alt/text()},                     
+                        
+                        if (empty($mourning))
+                        then ()
+                        else (element trait{ attribute type {'mourning'},
+                               attribute subtype {$mourning/../no:c_kintype/text()},
+                               element label { attribute xml:lang {"zh-Hant"},
+                               $mourning/../no:c_mourning_chn/text()}, 
+                               element desc { attribute xml:lang {"zh-Hant"},
+                                    $mourning/../no:c_kintype_desc_chn/text()},
+                               element desc {attribute xml:lang {"en"},
+                                    $mourning/../no:c_kintype_desc/text()}
+                               })     
                     })
                 )
         }
@@ -499,7 +511,7 @@ whats up with $assoc_codes//no:c_assoc_role_type ?:)
 
 };
 
-(:STATUS /STATE:)
+(:STATUS / STATE:)
 declare function biog:status ($achievers as node()*) as node()* {
 
 
@@ -579,20 +591,11 @@ count($types) > 1 below.
 :)
 
 (: TODO
-what does c_exam_field point to nothing its a string zh-Hant only
-use @role to "link to status of a place, or occupation of a person"!
-@type = $type (99) -> label
-@subtype = $code (>200) -> desc
-@sortKey = sequence 
-? = attempts
-- @ana for s.th.
-- $global:PARENTAL_STATUS_CODES
+- what does c_exam_field point to A: nothing its a string zh-Hant only
 - see c_personid 914 for dual @type entries
+- c_inst_code only points to '0' no links to org to be written
 
-entries should become a nested taxonomy to be @ref'ed
-make sponsors into their own note element? @role?
-parental status code?
-institutional addressess via biog:org-add
+institutional addressess via biog:inst-add
 switch to tei:education | tei:faith for entry type data
 :)
 
@@ -601,6 +604,7 @@ for $initiate in $global:ENTRY_DATA//no:c_personid[. =$initiates]
 let $code := $global:ENTRY_CODES//no:c_entry_code[. = $initiate/../no:c_entry_code]
 let $type-rel := $global:ENTRY_CODE_TYPE_REL//no:c_entry_code[ . = $initiate/../no:c_entry_code]
 let $type :=  $global:ENTRY_TYPES//no:c_entry_type[. = $type-rel/../no:c_entry_type]
+let $parent-stat := $global:PARENTAL_STATUS_CODES//no:c_parental_status_code[. = $initiate/../no:c_parental_status/text()]
 
 (:
 [tts_sysno] INTEGER, 
@@ -617,11 +621,11 @@ let $type :=  $global:ENTRY_TYPES//no:c_entry_type[. = $type-rel/../no:c_entry_t
  [c_nianhao_id] INTEGER,                       d
  [c_entry_nh_year] INTEGER,                    d
  [c_entry_range] INTEGER,                      d
- [c_inst_code] INTEGER NOT NULL,              !!!
- [c_inst_name_code] INTEGER NOT NULL,        !!!
+ [c_inst_code] INTEGER NOT NULL,             x
+ [c_inst_name_code] INTEGER NOT NULL,        d
  [c_exam_field] CHAR(255),                     x
  [c_addr_id] INTEGER,                           x
- [c_parental_status] INTEGER,                 !!!
+ [c_parental_status] INTEGER,                 x
  [c_attempt_count] INTEGER,                    x
  [c_source] INTEGER,                            x
  [c_pages] CHAR(255),                           d
@@ -644,6 +648,10 @@ return
         if (empty($code/text()))
         then ()
         else(attribute subtype {$code/text()}), 
+        
+        if ($initiate/../no:c_inst_code > 0)
+        then (attribute ref {concat('#ORG', $initiate/../no:c_inst_code)})
+        else(),
         
         if ($initiate/../no:c_year[. = 0] or empty($initiate/../no:c_year)) 
         then ()
@@ -702,7 +710,19 @@ return
             if ($initiate/../no:c_exam_rank[. != '0']) 
             then (element note{ attribute type{'rank'},
                 $initiate/../no:c_exam_rank/text()})
-            else (),    
+            else (),  
+            
+            if ($initiate/../no:c_parental_status > 0)
+            then (element note { attribute type {'parental-status'}, 
+                    element trait { attribute type {'parental-status'},
+                        attribute key {$parent-stat/text()},
+                    element label {attribute xml:lang {'zh-Hant'},
+                        $parent-stat/../no:c_parental_status_desc_chn/text()}, 
+                    element label { attribute xml:lang {'zh-Latn-alalc97'},
+                        $parent-stat/../no:c_parental_status_desc/text()}
+                    }
+                  })
+            else (),        
             
             if ($initiate/../no:c_notes)
             then (element note {$initiate/../no:c_notes/text()})
@@ -928,6 +948,7 @@ declare function biog:pers-add ($resident as node()*) as node()* {
 
 (: TODO
 - CODES c_note neds to go into ODD
+
 :)
 (:
 tts_sysno] INTEGER,                             d
@@ -1166,7 +1187,7 @@ return
     }
 };
 
-declare function biog:biog ($persons as node()*) as node()* {
+declare function biog:biog ($persons as node()*) as item()* {
 
 (: TODO
 c_self_bio from $source is dropped change to attribute when refactoring query syntax?

@@ -92,7 +92,7 @@ for $low in distinct-values($lower)
 };
 
 
-declare function pla:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?) as node()*{
+declare function pla:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?) as item()*{
 
 (: This function takes the $global:ADDR_CODES//no:rows plus the first $global:ADDR_BELONGS_DATA parent  
 and tranlates them into tei:place.

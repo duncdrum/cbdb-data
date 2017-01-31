@@ -17,7 +17,7 @@ officeB merges officeA.xml into office.xml.
     for this merge we require a category for missing data in the stored structure.
 :)
 
-declare function local:office ($offices as node()*) as node()* {
+declare function local:office ($offices as node()*) as item()* {
 
 (:This function transforms OFFICE_CODE data into  tei:categories via  c_office_id. 
 These are then inserted intointo the right postions in the office-tree via $OFFICE_CODE_TYPE_REL by officeB.xql
