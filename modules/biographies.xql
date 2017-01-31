@@ -1261,7 +1261,7 @@ let $re_by := count($cal:path/category[@xml:id = concat('R', $person/../no:c_by_
 let $re_dy := count($cal:path/category[@xml:id = concat('R', $person/../no:c_dy_nh_code/text())]/preceding-sibling::tei:category) +1
 
 return 
-    element person {
+    global:validate-fragment(element person {
         attribute ana {'historical'}, 
         attribute xml:id {concat('BIO', $person/text())},
         if (empty($source))
@@ -1514,7 +1514,7 @@ return
                   </linkGrp>),
                   
            global:create-mod-by($person/../no:c_created_by, $person/../no:c_modified_by)       
-    }
+    }, 'person')
     
 };
 

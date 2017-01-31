@@ -17,8 +17,8 @@ declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 (:calendar.xql reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
     and creates a taxonomy element for inculsion in the teiHeader via xi:xinclude.
     The taxonomy consists of two elements one for the sexagenarycycle, 
-    and one nested taxonomy for reign-titles and dynsties.
-    we are dropping the c_sort value for dynasties since sequential sorting
+    and one nested taxonomy for reign-titles and dynasties.
+    We are dropping the c_sort value for dynasties since sequential sorting
     is implicit in the data structure
 :)
 
@@ -28,6 +28,7 @@ declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
  - DYNASTIES contains both translations and transliterations:
      e.g. 'NanBei Chao' but 'Later Shu (10 states)'  
    more normalization *yay*
+ - make 10states a @type ?  
 :)
 
 
@@ -256,10 +257,10 @@ declare function cal:sexagenary ($ganzhi as node()*) as node() {
 { 
 for $gz in $ganzhi
 return         
-    <category xml:id="{concat('S', $gz/no:c_ganzhi_code/text())}">
+    global:validate-fragment(<category xml:id="{concat('S', $gz/no:c_ganzhi_code/text())}">
         <catDesc xml:lang="zh-Hant">{$gz/no:c_ganzhi_chn/text()}</catDesc>
         <catDesc xml:lang="zh-Latn-alalc97">{$gz/no:c_ganzhi_py/text()}</catDesc>
-    </category>
+    </category>, 'category')
             }
 </taxonomy>
 };
@@ -271,7 +272,7 @@ declare function cal:dynasties ($dynasties as node()*) as node() {
     let $dy_id := $dy/no:c_dy
     where $dy/no:c_dy > '0'
     return                
-        <category xml:id="{concat('D', $dy/no:c_dy/text())}">
+        global:validate-fragment(<category xml:id="{concat('D', $dy_id/text())}">
             <catDesc>
                 <date from="{cal:isodate($dy/no:c_start)}" to="{cal:isodate($dy/no:c_end)}"/>
         </catDesc>
@@ -296,7 +297,7 @@ declare function cal:dynasties ($dynasties as node()*) as node() {
                         <catDesc xml:lang="zh-Hant">{$nh/no:c_nianhao_chn/text()}</catDesc>
                     </category>)                           
         }
-        </category>
+        </category>, 'category')
     }
 </taxonomy>
 };

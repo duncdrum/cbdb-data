@@ -180,7 +180,7 @@ it could NOT be merged as <location from ="1368' to="1622"/>
  
     
     return  
-        element place { attribute xml:id {concat('PL', $id/text())},
+        global:validate-fragment(element place { attribute xml:id {concat('PL', $id/text())},
             if (empty(pla:fix-admin-types($id/../no:c_admin_type)))
             then ()
             else ( attribute type {pla:fix-admin-types($id/../no:c_admin_type)}),    
@@ -238,7 +238,7 @@ it could NOT be merged as <location from ="1368' to="1622"/>
                        pla:nest-places($data, $child/../no:c_addr_id, $child/../no:c_name_chn, $child/../no:c_name))
             else ()    
         
-        }          
+        }, 'place')          
        
 };
 
@@ -279,20 +279,20 @@ We need to do this to make sure that every c_addr_id element present in CBDB can
                 
 }; 
 
-let $data := <root>{
+let $data := <no:root>{
     for $n in $global:ADDR_CODES//no:row
      
     return 
     
     if (count($global:ADDR_BELONGS_DATA//no:c_addr_id[. = $n/no:c_addr_id]) > 1)
-    then (<row>
+    then (<no:row>
             {$n/*}
             <no:c_belongs_to>{min(data($global:ADDR_BELONGS_DATA//no:c_addr_id[. = $n/no:c_addr_id]/../no:c_belongs_to))}</no:c_belongs_to>
-           </row>)
-    else (<row>
+           </no:row>)
+    else (<no:row>
             {($n/*, $global:ADDR_BELONGS_DATA//no:c_addr_id[. = $n/no:c_addr_id]/../no:c_belongs_to)}
-           </row>)}
-</root>  
+           </no:row>)}
+</no:root>  
 
 
 

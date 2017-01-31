@@ -61,7 +61,7 @@ let $addr := $global:SOCIAL_INSTITUTION_ADDR//no:c_inst_code[. = $org]
 let $addr-type := $global:SOCIAL_INSTITUTION_ADDR_TYPES//no:c_inst_addr_type[. = $addr/../no:c_inst_addr_type]
 
 return
-    element org { attribute xml:id {concat('ORG', $org/text())},
+    global:validate-fragment(element org { attribute xml:id {concat('ORG', $org/text())},
         attribute ana {'historical'},
         switch ($type)
             case '1' return attribute role {'academy'}
@@ -154,8 +154,7 @@ return
         if (empty($org/../no:c_notes))
         then ()
         else (element note {$org/../no:c_notes/text()})   
-    }
-
+    }, 'org')
 };
 
 let $test := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]

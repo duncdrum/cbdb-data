@@ -56,7 +56,7 @@ let $type-rel := $global:OFFICE_CODE_TYPE_REL//no:c_office_id[. = $office]
 let $type := $global:OFFICE_TYPE_TREE//no:c_office_type_node_id[. = $type-rel/../no:c_office_tree_id]
 
 return
-    element category{ attribute xml:id {concat('OFF', $office/text())},
+    global:validate-fragment(element category{ attribute xml:id {concat('OFF', $office/text())},
         if (empty($type-rel/../no:c_office_tree_id) and empty($office/../no:c_dy))
         then (attribute n {'00'})
         else if (empty($type-rel/../no:c_office_tree_id))
@@ -103,7 +103,7 @@ return
                     else ()}
                   )
         }
-    }
+    }, 'category')
 };
 
 declare function local:nest-children($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*{

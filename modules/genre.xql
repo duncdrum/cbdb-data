@@ -29,7 +29,7 @@ declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as n
 -  Q: Is there  any use for $TEXT_BIBLCAT_TYPES_1 and $TEXT_BIBLCAT_TYPES_2? 
    A: NO!
 :)
-
+global:validate-fragment(
 element category { attribute xml:id {concat('biblType',  $type-id/text())},        
     element catDesc {attribute xml:lang {'zh-Hant'},
         $zh/text()},           
@@ -39,7 +39,7 @@ element catDesc {attribute xml:lang {'en'},
     for $child in $types[no:c_text_cat_type_parent_id = $type-id]
     return
         gen:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)               
-}      
+}, 'category')      
 };
 
 
