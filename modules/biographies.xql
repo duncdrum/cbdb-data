@@ -339,10 +339,7 @@ let $active :=  ('Knew','Tried and found guilty'
        ,'Relied on book by','Refused affinal relation offered by'
        ,'Requested Funerary stele be written by','Requested Tomb stone (mubiao) be written by'
        ,'opposed assertion of emperorship by')
-.
 
-TODO
-yet unused mediated relations , tei handles this quite easily use @role?
 
 :)
 
@@ -399,42 +396,48 @@ let $report :=
 :)
 
 (:
-[tts_sysno] INTEGER,                                d
- [c_assoc_code] INTEGER,                            x
- [c_personid] INTEGER,                              x
- [c_kin_code] INTEGER,                              
- [c_kin_id] INTEGER,                    
- [c_assoc_id] INTEGER,                              x
- [c_assoc_kin_code] INTEGER,                    
- [c_assoc_kin_id] INTEGER, 
- [c_tertiary_personid] INTEGER, 
- [c_assoc_count] INTEGER, 
- [c_sequence] INTEGER, 
- [c_assoc_year] INTEGER, 
- [c_source] INTEGER,                                x
- [c_pages] CHAR(255),                               d
- [c_notes] CHAR,                                     x
+ [tts_sysno] INTEGER,                             d
+ [c_assoc_code] INTEGER,                          x
+ [c_personid] INTEGER,                            x
+ [c_kin_code] INTEGER,                            d
+ [c_kin_id] INTEGER,                              x
+ [c_assoc_id] INTEGER,                            x
+ [c_assoc_kin_code] INTEGER,                     d 
+ [c_assoc_kin_id] INTEGER,                       x  
+ [c_tertiary_personid] INTEGER,                 x 
+ [c_assoc_count] INTEGER,                        d  
+ [c_sequence] INTEGER,                            x 
+ [c_assoc_year] INTEGER,                          x 
+ [c_source] INTEGER,                              x
+ [c_pages] CHAR(255),                             d
+ [c_notes] CHAR,                                   x
  [c_assoc_nh_code] INTEGER,                         
- [c_assoc_nh_year] INTEGER, 
- [c_assoc_range] INTEGER, 
- [c_addr_id] INTEGER, 
- [c_litgenre_code] INTEGER, 
- [c_occasion_code] INTEGER, 
- [c_topic_code] INTEGER, 
- [c_inst_code] INTEGER, 
- [c_inst_name_code] INTEGER, 
- [c_text_title] CHAR(255), 
- [c_assoc_claimer_id] INTEGER, 
- [c_assoc_intercalary] BOOLEAN NOT NULL, 
- [c_assoc_month] INTEGER, 
- [c_assoc_day] INTEGER, 
- [c_assoc_day_gz] INTEGER, 
- [c_created_by] CHAR(255),                          
- [c_created_date] CHAR(255), 
- [c_modified_by] CHAR(255), 
- [c_modified_date] CHAR(255))
+ [c_assoc_nh_year] INTEGER,                        
+ [c_assoc_range] INTEGER,                        !!!
+ [c_addr_id] INTEGER,                             x
+ [c_litgenre_code] INTEGER,                      x
+ [c_occasion_code] INTEGER,                      x
+ [c_topic_code] INTEGER,                          x                    
+ [c_inst_code] INTEGER,                           x
+ [c_inst_name_code] INTEGER,                     d 
+ [c_text_title] CHAR(255),                          
+ [c_assoc_claimer_id] INTEGER,                      
+ [c_assoc_intercalary] BOOLEAN NOT NULL,         
+ [c_assoc_month] INTEGER,                           
+ [c_assoc_day] INTEGER,                             
+ [c_assoc_day_gz] INTEGER,                          
+ [c_created_by] CHAR(255),                       d
+ [c_created_date] CHAR(255),                     d
+ [c_modified_by] CHAR(255),                      d
+ [c_modified_date] CHAR(255))                    d
 :)
-    
+
+(:TO DO 
+- consider chal-ZH dates for state
+- c assoc claimer could get a @role somewhere around state
+- litgenre codes are empty?
+:)
+
     (:count($ASSOC_DATA//no:c_assoc_id[. > 0][. < 500]) = 1726
 whats up with $assoc_codes//no:c_assoc_role_type ?:)
     
@@ -444,6 +447,10 @@ whats up with $assoc_codes//no:c_assoc_role_type ?:)
     let $code := $global:ASSOC_CODES//no:c_assoc_code[. = $individual/../no:c_assoc_code]
     let $type-rel := $global:ASSOC_CODE_TYPE_REL//no:c_assoc_code[. = $individual/../no:c_assoc_code]
     let $type := $global:ASSOC_TYPES//no:c_assoc_type_id[. = $type-rel/../no:c_assoc_type_id]
+    
+    let $scholarly := $global:SCHOLARLYTOPIC_CODES//no:c_topic_code[. = $individual/../no:c_topic_code]
+    let $occcasion := $global:OCCASION_CODES//no:c_occasion_code[. = $individual/../no:c_occasion_code]
+    let $genre := $global:LITERARYGENRE_CODES//no:c_lit_genre_code[. = $individual/../no:c_litgenre_code/text()]
     
     return        
         element relation {
@@ -467,48 +474,126 @@ whats up with $assoc_codes//no:c_assoc_role_type ?:)
             
             if (empty($type-rel/../no:c_assoc_type_id) and empty($type/../no:c_assoc_type_short_desc))
             then (attribute name {'unkown'})
-            else (
-            
-            if (empty($type-rel/../no:c_assoc_type_id))
-            then ()
-            else (attribute key {$type-rel/../no:c_assoc_type_id/text()}),
-            
-            if (empty($type/../no:c_assoc_type_sortorder))
-            then ()
-            else (attribute sortKey {$type/../no:c_assoc_type_sortorder/text()}),
-            
-            if (empty($type/../no:c_assoc_type_short_desc))
-            then ()
-            else (attribute name {lower-case(translate($type/../no:c_assoc_type_short_desc/text(), ' ', '-'))}),         
-           
-            if ($individual/../no:c_source[. > 0])
-            then (attribute source {concat('#BIB', $individual/../no:c_source/text())})
-            else (),
-            
-            if (empty($code/../no:c_assoc_role_type))
-            then ()
-            else (element desc {
-                 if ($code/../no:c_assoc_role_type/text())
-                 then (attribute type {$code/../no:c_assoc_role_type/text()})
-                 else (),
-                 
-                 if ($individual/../no:c_notes)
-                 then (element label {$individual/../no:c_notes/text()})
-                 else (),
-                                               
-                 element desc { attribute xml:lang {"zh-Hant"},
-                     $code/../no:c_assoc_desc_chn/text(),
-                     element label {$type/../no:c_assoc_type_desc_chn/text()}
-                 },
-                 
-                  element desc { attribute xml:lang {"en"},
-                     $code/../no:c_assoc_desc/text(),
-                     element label {$type/../no:c_assoc_type_desc/text()}
-                 }
-             })
+            else (            
+                if (empty($type-rel/../no:c_assoc_type_id))
+                then ()
+                else (attribute key {$type-rel/../no:c_assoc_type_id/text()}),
+                
+                if ($individual/../no:c_sequence > 0)
+                then (attribute sortKey {$individual/../no:c_sequence/text()})
+                else (),
+                
+                if (empty($type/../no:c_assoc_type_short_desc))
+                then ()
+                else (attribute name {lower-case(translate($type/../no:c_assoc_type_short_desc/text(), ' ', '-'))}),         
+               
+                if ($individual/../no:c_source[. > 0])
+                then (attribute source {concat('#BIB', $individual/../no:c_source/text())})
+                else (),
+        (:     DESC           :)
+                if (empty($code/../no:c_assoc_role_type))
+                then ()
+                else (element desc {
+                     if ($code/../no:c_assoc_role_type/text())
+                     then (attribute type {$code/../no:c_assoc_role_type/text()})
+                     else (),
+                     
+                     if (empty($type/../no:c_assoc_type_sortorder))
+                     then ()
+                     else (attribute n {$type/../no:c_assoc_type_sortorder/text()}),
+                     
+                     if ($individual/../no:c_notes)
+                     then (element label {$individual/../no:c_notes/text()})
+                     else (),
+                                                   
+                     element desc { attribute xml:lang {"zh-Hant"},
+                         $code/../no:c_assoc_desc_chn/text(),
+                         element label {$type/../no:c_assoc_type_desc_chn/text()}
+                     },
+                     
+                      element desc { attribute xml:lang {"en"},
+                         $code/../no:c_assoc_desc/text(),
+                         element label {$type/../no:c_assoc_type_desc/text()}
+                     },
+                    
+            (:      STATE         :)
+                     if ($individual/../no:c_addr_id[. > 0] or $individual/../no:c_inst_code[. > 0]
+                        or exists($individual/../no:c_assoc_year) or $individual/../no:c_occasion_code[. > 0]
+                        or $individual/../no:c_topic_code[. > 0] or $individual/../no:c_litgenre_code[. > 0]
+                        or $individual/../no:c_tertiary_personid[. > 0] or $individual/../no:c_kin_id[. > 0]
+                        or $individual/../no:c_assoc_kin_id[. > 0])
+                     then (   
+                     element state {              
+                     
+                     for $add in $individual/../no:c_addr_id[. > 0] 
+                     for $org in  $individual/../no:c_inst_code[. > 0]                               
+                     return
+                        attribute ref {concat('#PL', $add/text()), concat('#ORG', $org/text())},
+                     
+                     if (empty($individual/../no:c_assoc_year))
+                     then ()
+                     else (attribute when {cal:isodate($individual/../no:c_assoc_year)}),
+                     
+                     if ($individual/../no:c_occasion_code > 0)
+                     then (attribute ana {$individual/../no:c_occasion_code/text()})
+                     else (),
+                     
+                     if ($individual/../no:c_topic_code > 0)
+                     then (attribute type {$individual/../no:c_topic_code/text()})
+                     else (),
+                     
+                     if ($individual/../no:c_litgenre_code > 0)
+                     then (attribute subtype {$individual/../no:c_litgenre_code/text()})
+                     else (),
+                     
+                     if (empty($occcasion) or $occcasion[. = 0])
+                     then ()
+                     else (element label { attribute xml:lang {'zh-Hant'},
+                                $occcasion/../no:c_occasion_desc_chn/text()},
+                            element label { attribute xml:lang {'zh-Latn-alalc97'},
+                                $occcasion/../no:c_occasion_desc/text()}),
+                    (:   desc and desc_chn are reversed in source for type [sic.]   :)
+                     if (empty($scholarly) or $scholarly[. = 0])
+                     then ()
+                     else (element desc {attribute ana {'topic'},
+                                attribute type {$scholarly/../no:c_topic_type_code/text()},
+                                element desc {attribute xml:lang {'zh-Hant'},
+                                    $scholarly/../no:c_topic_desc_chn/text(),
+                                    element label {$scholarly/../no:c_topic_type_desc/text()}},
+                                element desc { attribute xml:lang {'en'},
+                                    $scholarly/../no:c_topic_desc/text(),
+                                    element label {$scholarly/../no:c_topic_type_desc_chn/text()}
+                                    }
+                            }),
+                            
+                     if (empty($genre) or $genre[. = 0])
+                     then ()
+                     else (element desc {attribute ana {'genre'},                                
+                                element label {attribute xml:lang {'zh-Hant'},
+                                $genre/../no:c_lit_genre_desc_chn/text()}, 
+                                element label { attribute xml:lang {'en'}, 
+                                $genre/../no:c_lit_genre_desc/text()}
+                            }),
+                     
+                     let $third := $individual/../no:c_tertiary_personid[. > 0]
+                     let $own-kin := $individual/../no:c_kin_id[. > 0]
+                     let $assoc-kin := $individual/../no:c_assoc_kin_id[. > 0]
+                     
+                     return 
+                        if (empty($third) and empty($own-kin) and empty($assoc-kin))
+                        then ()
+                        else (element desc{
+                                for $n in ($third, $own-kin, $assoc-kin)
+                                return
+                                    element persName { attribute role {'mediator'},
+                                        attribute ref {concat('#BIO', $n/text())}
+                                    }
+                        })
+                     })
+                     else()
+                 })
              )
         }
-
 };
 
 (:STATUS / STATE:)
