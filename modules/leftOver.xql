@@ -701,3 +701,40 @@ let $m := $dedupe//place[@xml:id = data($n/@xml:id)]
 return
     (update delete $vSeq[position() = index-of($vSeq, .)[. > 1]] ), (update replace $n with $m)
     };
+    
+declare function local:new-isodate ($string as xs:string?, $range as node()?)  as item() {
+
+(:This function takes a date (mostly years) as $string input,
+and the matching $range property from within the same table row.
+
+Alas, range doesn't work that way so screw it. 
+
+The attribute name is based on $global:YEAR_RANGE_CODES
+
+It returns proper xs:gYear values for $string, inside $range attributes
+ie.:
+
+"0000", 4 digits, with leading "-" for BCE dates
+   <a>-1234</a>    ----------> <gYear>-1234</gYear>
+   <b/>    ------------------> <gYear/>
+   <c>1911</c> --------------> <gYear>1911</gYear>
+   <d>786</d>  --------------> <gYear>0786</gYear>
+   
+   according to <ref target="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html"/>
+   "0000" should be "-0001" in TEI.   
+:)
+let $date := for $n in $string  
+    return
+         if (empty($string)) then ()
+            else if (number($string) eq 0) then ('-0001')
+                else if (starts-with($string, "-")) then (concat('-',(concat (string-join((for $i in (string-length(substring($string,2)) to 3) return '0'),'') , substring($string,2)))))
+                    else (concat (string-join((for $i in (string-length($string) to 3) return '0'),'') , $string))
+return
+    switch ($range)
+        case ('-1') return attribute notAfter {$date}
+        case ('1') return attribute notBefore {$date}
+        case ('2') return (attribute when {$date}, attribute cert {'medium'})
+        case ('300') return (attribute from {'0960'}, attribute to {'1082'})
+        case ('301') return (attribute from {'1082'}, attribute to {'1279'})
+        default return attribute when {$date}   
+};

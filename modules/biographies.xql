@@ -1614,10 +1614,15 @@ return
             then ()
             else (<linkGrp>
                     {let $links := ($person/../no:TTSMQ_db_ID, $person/../no:MQWWLink, $person/../no:KyotoLink)
-                    for $link in $links[. != '']
-                    return
-                    <ptr target="{$link/text()}"/>}        
-                  </linkGrp>),
+                     for $n in $links
+                     return
+                        typeswitch ($n)
+                            case element (no:TTSMQ_db_ID) return <ptr target="{concat('ttsmq:', $n/text())}"/>
+                            case element (no:MQWWLink) return <ptr target="{concat('mqww:', $n/text())}"/>
+                            case element (no:KyotoLink) return <ptr target="{concat('idtf:', $n/text())}"/>
+                            default return ()
+                     }        
+                 </linkGrp>),
                   
            global:create-mod-by($person/../no:c_created_by, $person/../no:c_modified_by)       
     }, 'person')
