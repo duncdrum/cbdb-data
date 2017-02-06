@@ -41,9 +41,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO259" passive="#BIO13986" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,60 +58,61 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO7064" passive="#BIO259" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO7064" passive="#BIO259" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8043" passive="#BIO259" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO8043" passive="#BIO259" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1036"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO259" passive="#BIO968" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO259" passive="#BIO968" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="A" n="15">
                             <label>汝陰人 淳化中主榷酤於大名之屬邑 後從雷有終討王均於蜀 以功擢閤門祇候 累官乾州刺史</label>
-                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8043" passive="#BIO259" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO8043" passive="#BIO259" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">神道碑由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8064" passive="#BIO259" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO8064" passive="#BIO259" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">建築物得到Y的題詠、記、命名<label>記詠文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO7064" passive="#BIO259" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">祠記由Y所作<label>記詠文字</label>
+                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8043" passive="#BIO259" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO7064" passive="#BIO259" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
+                            <desc xml:lang="zh-Hant">祠記由Y所作<label>記詠文字</label>
+                            </desc>
                             <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO8043" passive="#BIO259" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">祠記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -116,8 +122,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">
@@ -286,11 +292,11 @@
     <listEvent>
         <event type="09" subtype="77" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">military merit: military service or distinction in battle</label>
             <label xml:lang="zh-Hant">軍員轉補</label>
+            <label xml:lang="en">military merit: military service or distinction in battle</label>
             <desc type="0" subtype="10">
-                <desc xml:lang="en">Military Merit</desc>
                 <desc xml:lang="zh-Hant">軍功補授門</desc>
+                <desc xml:lang="en">Military Merit</desc>
             </desc>
         </event>
     </listEvent>

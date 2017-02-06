@@ -37,9 +37,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO380" passive="#BIO25772" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,21 +54,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO8008" passive="#BIO380" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO8008" passive="#BIO380" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="P" n="15">
                             <label>太宗六世孫 紹興中為江東轉運判官 秦檜忌四川宣撫使鄭剛中 以不棄能制之 除四川宣撫使總領官</label>
-                            <desc xml:lang="en">superior was<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">上司為Y<label>官場關係（下屬）</label>
+                            </desc>
+                            <desc xml:lang="en">superior was<label>Connection via office (subordinate)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO14034" passive="#BIO380" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO14034" passive="#BIO380" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="A" n="16">
                             <label>太宗六世孫 紹興中為江東轉運判官 秦檜忌四川宣撫使鄭剛中 以不棄能制之 除四川宣撫使總領官</label>
-                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">下屬為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -73,12 +78,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">imperial prince</desc>
             <desc xml:lang="zh-Hant">宗子</desc>
+            <desc xml:lang="en">imperial prince</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF739">

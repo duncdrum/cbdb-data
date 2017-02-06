@@ -24,39 +24,54 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO7369" passive="#BIO5128" key="341" sortKey="200" name="W%" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">W%  Betrothed maiden</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">未婚妻</desc>
+                            <desc xml:lang="en">W%  Betrothed maiden</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO7369" passive="#BIO5129" key="135" sortKey="0" name="W" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO7369" passive="#BIO7363" key="88" sortKey="21" name="W2F">
-                        <desc>
-                            <desc xml:lang="en">W2F</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">第二任妻父</desc>
+                            <desc xml:lang="en">W2F</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO7369" passive="#BIO7364" key="137" sortKey="17" name="WB+" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">WB+</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻兄</desc>
+                            <desc xml:lang="en">WB+</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO7369" passive="#BIO19852" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO7369" passive="#BIO22000" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -66,20 +81,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO7364" passive="#BIO7369" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO7364" passive="#BIO7369" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7364" passive="#BIO7369" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO7364" passive="#BIO7369" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1088"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -88,8 +104,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF209">

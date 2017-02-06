@@ -41,17 +41,27 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO1180" passive="#BIO120094" key="180" sortKey="5" name="S" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2098</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1180" passive="#BIO120095" key="75" sortKey="-1" name="F" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2098</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -61,20 +71,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO1169 #BIO1180" key="0405" sortKey="17" name="political-support">
-                        <desc type="M">
-                            <desc xml:lang="en">Coalition associate of<label>Supportive political association</label>
-                            </desc>
+                    <relation mutual="#BIO1169 #BIO1180" key="0405" name="political-support">
+                        <desc type="M" n="17">
                             <desc xml:lang="zh-Hant">與Y結黨<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Coalition associate of<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO1768 #BIO1180" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO1768 #BIO1180" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="M" n="17">
                             <label>五鬼</label>
-                            <desc xml:lang="en">Coalition associate of<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">與Y結黨<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Coalition associate of<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -84,24 +94,24 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">army officer</desc>
             <desc xml:lang="zh-Hant">武將</desc>
+            <desc xml:lang="en">army officer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">Confucian learning</desc>
             <desc xml:lang="zh-Hant">儒學</desc>
+            <desc xml:lang="en">Confucian learning</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">eunuch</desc>
             <desc xml:lang="zh-Hant">宦官</desc>
+            <desc xml:lang="en">eunuch</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">scholar of Classics (Classics of Rites)</desc>
             <desc xml:lang="zh-Hant">經學家—禮經</desc>
+            <desc xml:lang="en">scholar of Classics (Classics of Rites)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF1119">

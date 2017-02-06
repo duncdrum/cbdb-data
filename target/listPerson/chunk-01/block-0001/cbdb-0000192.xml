@@ -22,21 +22,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO192" passive="#BIO226" key="119" sortKey="9999" name="FBS">
-                        <desc>
-                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄弟;堂兄弟</desc>
+                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO192" passive="#BIO1389" key="66" sortKey="-7" name="MF">
-                        <desc>
-                            <desc xml:lang="en">MF Mother's father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">外祖父</desc>
+                            <desc xml:lang="en">MF Mother's father</desc>
+                            <trait type="mourning" subtype="M">
+                                <label xml:lang="zh-Hant">小功</label>
+                                <desc xml:lang="zh-Hant">外服</desc>
+                                <desc xml:lang="en">Matrilateral Kin</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO192" passive="#BIO7149" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -45,8 +60,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF1004">

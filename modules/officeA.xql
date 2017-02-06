@@ -103,7 +103,7 @@ return
                     else ()}
                   )
         }
-    }, 'category')
+    }, 'category')[1]
 };
 
 declare function local:nest-children($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*{

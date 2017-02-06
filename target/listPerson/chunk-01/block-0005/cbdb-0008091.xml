@@ -33,29 +33,44 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO8091" passive="#BIO18391" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO8091" passive="#BIO18392" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO8091" passive="#BIO52462" key="244" sortKey="8" name="SDH" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#538</label>
-                            <desc xml:lang="en">SDH</desc>
                             <desc xml:lang="zh-Hant">孫女婿</desc>
+                            <desc xml:lang="en">SDH</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO8091" passive="#BIO120197" key="62" sortKey="-4" name="FF" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳285</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -65,12 +80,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO51228" passive="#BIO8091" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO51228" passive="#BIO8091" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="A" n="16">
                             <label>嘗知文州 開寶七年知成都 劉熙古延置門下掌書奏 以孫女妻之</label>
-                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">下屬為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -80,28 +95,28 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">yinyang expert</desc>
             <desc xml:lang="zh-Hant">陰陽家</desc>
+            <desc xml:lang="en">yinyang expert</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">historian</desc>
             <desc xml:lang="zh-Hant">史學家</desc>
+            <desc xml:lang="en">historian</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">philologist</desc>
             <desc xml:lang="zh-Hant">小學家</desc>
+            <desc xml:lang="en">philologist</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">erudite</desc>
             <desc xml:lang="zh-Hant">博學之人</desc>
+            <desc xml:lang="en">erudite</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">diviner</desc>
             <desc xml:lang="zh-Hant">卜筮者（太乙、軌革、六壬、遁甲等）</desc>
+            <desc xml:lang="en">diviner</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF37">
@@ -224,11 +239,11 @@
     <listEvent>
         <event type="0401" subtype="48" when="0932" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: various subjects(zhuke) (mingjing, mingfa excluded)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名諸科(不含明經、明法)</label>
+            <label xml:lang="en">examination: various subjects(zhuke) (mingjing, mingfa excluded)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

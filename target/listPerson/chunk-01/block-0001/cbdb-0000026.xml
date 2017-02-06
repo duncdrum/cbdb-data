@@ -30,9 +30,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO26" passive="#BIO14328" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -42,45 +47,47 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO26" passive="#BIO7081" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO26" passive="#BIO7081" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1158"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO26" passive="#BIO7081" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO26" passive="#BIO7081" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>往往出人意表 累官知信州 以劾秦檜妻黨王仲山坐廢 檜死 起知楚州</label>
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8008" passive="#BIO26" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO8008" passive="#BIO26" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">遭Y排擠<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO26" passive="#BIO8008" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO26" passive="#BIO8008" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">為Y之門客<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
+                            </desc>
+                            <state when="1158"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO26" passive="#BIO8008" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO26" passive="#BIO8008" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>往往出人意表 累官知信州 以劾秦檜妻黨王仲山坐廢 檜死 起知楚州</label>
-                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">反對/不支持Y的政策<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -90,12 +97,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF174">

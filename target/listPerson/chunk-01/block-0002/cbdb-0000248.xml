@@ -39,15 +39,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO248" passive="#BIO275" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO248" passive="#BIO13732" key="125" sortKey="2" name="B+" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -57,37 +62,37 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO41743" passive="#BIO248" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO41743" passive="#BIO248" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">被Y彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7026" passive="#BIO248" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO7026" passive="#BIO248" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1649" passive="#BIO248" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO1649" passive="#BIO248" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="P" n="17">
                             <label>皆有惠政 累官知樞密院事 康國始因蔡京進 及得志 寖為崖異</label>
-                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">得到Y的支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3676" passive="#BIO248" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO3676" passive="#BIO248" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -97,16 +102,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">honest official</desc>
             <desc xml:lang="zh-Hant">良吏;循吏</desc>
+            <desc xml:lang="en">honest official</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF170">
@@ -197,11 +202,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1079" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

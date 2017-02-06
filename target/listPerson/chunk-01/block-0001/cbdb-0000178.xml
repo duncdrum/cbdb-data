@@ -31,9 +31,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO178" passive="#BIO13773" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -43,12 +48,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11447" passive="#BIO178" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO11447" passive="#BIO178" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="A" n="16">
                             <label>若餘財盡籍戶部 則州之歲計必斂於民 即白府帥張澄 乞以利害奏於朝 自計口外</label>
-                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">下屬為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -58,8 +63,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF163">

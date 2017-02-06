@@ -30,42 +30,67 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO664" passive="#BIO636" key="79" sortKey="9999" name="FB" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#712</label>
-                            <desc xml:lang="en">FB Father's brother</desc>
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO664" passive="#BIO1314" key="117" sortKey="150" name="A">
-                        <desc>
-                            <desc xml:lang="en">Affinal kin</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">姻親</desc>
+                            <desc xml:lang="en">Affinal kin</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO664" passive="#BIO8049" key="62" sortKey="-4" name="FF" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#712</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO664" passive="#BIO8051" key="79" sortKey="9999" name="FB" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#712</label>
-                            <desc xml:lang="en">FB Father's brother</desc>
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO664" passive="#BIO8165" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO664" passive="#BIO16869" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -75,38 +100,39 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1762" passive="#BIO664" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO1762" passive="#BIO664" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1080"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1384" passive="#BIO664" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO1384" passive="#BIO664" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1384" passive="#BIO664" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO1384" passive="#BIO664" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=2)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7104" passive="#BIO664" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO7104" passive="#BIO664" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=2)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -116,8 +142,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF43">
@@ -192,29 +218,29 @@
     <listEvent>
         <event type="0401" subtype="36" when="1042" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="06" subtype="118" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
         <event type="06" subtype="118" when="1042" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
     </listEvent>

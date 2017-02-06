@@ -37,27 +37,42 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO581" passive="#BIO580" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO581" passive="#BIO3273" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO581" passive="#BIO16754" key="184" sortKey="5" name="S3" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S3</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">三子</desc>
+                            <desc xml:lang="en">S3</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO581" passive="#BIO16917" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -67,12 +82,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO7364" passive="#BIO581" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO7364" passive="#BIO581" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1063"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -81,8 +97,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">
@@ -224,11 +240,11 @@
     <listEvent>
         <event type="0401" subtype="165" when="1030" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

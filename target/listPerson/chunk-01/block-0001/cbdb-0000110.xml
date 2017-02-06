@@ -28,9 +28,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO110" passive="#BIO109" key="118" sortKey="1" name="B">
-                        <desc>
-                            <desc xml:lang="en">B Brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄弟</desc>
+                            <desc xml:lang="en">B Brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,20 +45,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO9999" passive="#BIO110" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO110" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1127"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO49332" passive="#BIO110" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO49332" passive="#BIO110" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="A" n="32">
                             <label>徙知鼎州 兼鼎澧鎮撫使 時湖賊楊么來攻 昌寓以蔡兵禦之 後人為立廟</label>
-                            <desc xml:lang="en">opposed militarily<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">軍事對抗Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">opposed militarily<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -63,8 +69,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF169">

@@ -28,15 +28,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO891" passive="#BIO46456" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO891" passive="#BIO46457" key="111" sortKey="-3" name="M" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,20 +56,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO9999" passive="#BIO891" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO891" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1129"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1310" passive="#BIO891" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO1310" passive="#BIO891" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -69,8 +80,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF257">
@@ -163,11 +174,11 @@
     <listEvent>
         <event type="0501" subtype="50" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">school: degree granted to top Upper Hall students</label>
             <label xml:lang="zh-Hant">學校: 上舍及第</label>
+            <label xml:lang="en">school: degree granted to top Upper Hall students</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
         </event>
     </listEvent>

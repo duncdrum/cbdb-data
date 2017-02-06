@@ -22,9 +22,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO453" passive="#BIO16052" key="177" sortKey="9999" name="BS">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -34,20 +39,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO453" passive="#BIO641" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO453" passive="#BIO641" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1020"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO453" passive="#BIO641" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO453" passive="#BIO641" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="A" n="18">
                             <label>為荊湖北路提點刑獄、屯田員外郎 歷知宣州、饒州 嘗薦舉韓璩 能知人</label>
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
+                            </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
                             </desc>
                         </desc>
                     </relation>
@@ -57,8 +63,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF716">
@@ -155,11 +161,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="0985" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

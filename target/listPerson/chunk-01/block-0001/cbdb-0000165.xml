@@ -32,27 +32,42 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO165" passive="#BIO3044" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO165" passive="#BIO13615" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO165" passive="#BIO13616" key="177" sortKey="9999" name="BS" source="#BIB27124">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO165" passive="#BIO13616" key="186" sortKey="5" name="S*" source="#BIB27124">
-                        <desc>
-                            <desc xml:lang="en">S* Son, adopted as heir</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">過繼的嗣子</desc>
+                            <desc xml:lang="en">S* Son, adopted as heir</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,117 +77,127 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO165" passive="#BIO1310" key="0405" sortKey="17" name="political-support">
-                        <desc type="P">
-                            <desc xml:lang="en">Coalition member of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO165" passive="#BIO1310" key="0405" name="political-support">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">黨羽為Y<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Coalition member of<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8143" passive="#BIO165" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO8143" passive="#BIO165" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO165" passive="#BIO8078" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO165" passive="#BIO8078" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO165" passive="#BIO24506" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
                             <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
-                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO165" passive="#BIO24506" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO165" passive="#BIO24506" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
+                            <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1133"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO165" passive="#BIO24506" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>為東平府鈐轄 與一宗女私通 知州權邦彥欲按之 彥舟率眾走南京 授蘄黃鎮撫使</label>
-                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO491" passive="#BIO165" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
-                            <desc xml:lang="en">Menren was<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO491" passive="#BIO165" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
                             <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO1143" passive="#BIO165" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
                             <desc xml:lang="en">Menren was<label>Teacher-Student</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
-                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1313" passive="#BIO165" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
+                    <relation active="#BIO1143" passive="#BIO165" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
+                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
+                            </desc>
                             <desc xml:lang="en">Menren was<label>Teacher-Student</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
-                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1388" passive="#BIO165" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
+                    <relation active="#BIO1313" passive="#BIO165" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
+                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
+                            </desc>
                             <desc xml:lang="en">Menren was<label>Teacher-Student</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
-                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO8094" passive="#BIO165" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
+                    <relation active="#BIO1388" passive="#BIO165" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
+                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
+                            </desc>
                             <desc xml:lang="en">Menren was<label>Teacher-Student</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
-                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO1310 #BIO165" key="0405" sortKey="17" name="political-support">
-                        <desc type="M">
-                            <desc xml:lang="en">Coalition associate of<label>Supportive political association</label>
+                    <relation active="#BIO8094" passive="#BIO165" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
+                            <desc xml:lang="zh-Hant">門人為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Menren was<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1133"/>
+                        </desc>
+                    </relation>
+                    <relation mutual="#BIO1310 #BIO165" key="0405" name="political-support">
+                        <desc type="M" n="17">
                             <desc xml:lang="zh-Hant">與Y結黨<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Coalition associate of<label>Supportive political association</label>
+                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO165" passive="#BIO1310" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO165" passive="#BIO1310" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <label>與政一年 碌碌無所建明 又助呂頤浩攻李綱 君子少之 三年卒</label>
-                            <desc xml:lang="en">Supported<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10566" passive="#BIO165" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO10566" passive="#BIO165" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO7197" passive="#BIO165" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO7197" passive="#BIO165" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -182,12 +207,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF25">
@@ -337,11 +362,11 @@
     <listEvent>
         <event type="0501" subtype="50" when="1105" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">school: degree granted to top Upper Hall students</label>
             <label xml:lang="zh-Hant">學校: 上舍及第</label>
+            <label xml:lang="en">school: degree granted to top Upper Hall students</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
         </event>
     </listEvent>

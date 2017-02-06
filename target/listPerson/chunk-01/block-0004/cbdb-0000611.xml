@@ -37,9 +37,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO611" passive="#BIO25230" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,29 +54,30 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO611" passive="#BIO51707" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO611" passive="#BIO51707" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>為太學生 負氣節 建炎中苗劉作亂 張浚遣康國諭以禍福 辭氣不屈</label>
-                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO211" passive="#BIO611" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO211" passive="#BIO611" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">為Y所辟<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
+                            </desc>
+                            <state when="1142"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO211" passive="#BIO611" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO211" passive="#BIO611" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -81,8 +87,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF950">
@@ -154,20 +160,20 @@
     <listEvent>
         <event type="07" subtype="14" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
         <event type="08" subtype="101" when="1128" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">recommendation</label>
             <label xml:lang="zh-Hant">薦舉 (保任)</label>
+            <label xml:lang="en">recommendation</label>
             <desc type="0" subtype="9">
-                <desc xml:lang="en">Recommendation</desc>
                 <desc xml:lang="zh-Hant">薦舉門</desc>
+                <desc xml:lang="en">Recommendation</desc>
             </desc>
         </event>
     </listEvent>

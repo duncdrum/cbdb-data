@@ -40,28 +40,38 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO830" passive="#BIO832" key="125" sortKey="2" name="B+" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#727</label>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO830" passive="#BIO833" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO830" passive="#BIO7255" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO830" passive="#BIO8064" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -71,56 +81,57 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO830" passive="#BIO157" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
+                    <relation active="#BIO830" passive="#BIO157" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <label>胡宗回為熙河帥，轉運判官秦希甫議棄湟鄯，宗回持不可。會徽宗棄鄯州，奪宗回職知蘄州。</label>
-                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">反對/不支持Y的政策<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO43503" passive="#BIO830" key="0603" sortKey="32" name="military-opposition">
-                        <desc type="A">
+                    <relation active="#BIO43503" passive="#BIO830" key="0603" name="military-opposition">
+                        <desc type="A" n="32">
                             <label>胡宗回為熙河帥，屬羌郎阿章叛，宗回遣將討之，皆敗死。</label>
-                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">抵禦或討平叛軍Y<label>軍事對抗</label>
                             </desc>
+                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO830" passive="#BIO833" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
+                    <relation active="#BIO830" passive="#BIO833" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <label>兄宗愈入黨籍，宗回亦罷郡。</label>
-                            <desc xml:lang="en">Purged for association with<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">因與Y的交往受牽連<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Purged for association with<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO9999" passive="#BIO830" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO830" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1095"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO3888" passive="#BIO830" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO3888" passive="#BIO830" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO43494" passive="#BIO830" key="0502" sortKey="21" name="commemorative">
-                        <desc type="P">
+                    <relation active="#BIO43494" passive="#BIO830" key="0502" name="commemorative">
+                        <desc type="P" n="21">
                             <label>蒙亭倡和長句序(宋詩紀事23/9下)</label>
-                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">建築物得到Y的題詠、記、命名<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -130,12 +141,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">society member</desc>
             <desc xml:lang="zh-Hant">結社</desc>
+            <desc xml:lang="en">society member</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF0">
@@ -539,11 +550,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1065" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>用蔭登第為編修。</note>
         </event>

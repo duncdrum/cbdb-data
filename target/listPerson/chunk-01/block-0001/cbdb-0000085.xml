@@ -27,27 +27,47 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO85" passive="#BIO98" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO85" passive="#BIO99" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO85" passive="#BIO14209" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO85" passive="#BIO14211" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -57,11 +77,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1488" passive="#BIO85" key="0401" sortKey="13" name="politics" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">was memorialized about by<label>Politics (General)</label>
-                            </desc>
+                    <relation active="#BIO1488" passive="#BIO85" key="0401" name="politics" source="#BIB7596">
+                        <desc type="P" n="13">
                             <desc xml:lang="zh-Hant">被Y奏論<label>政治關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">was memorialized about by<label>Politics (General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -133,11 +153,11 @@
     <listEvent>
         <event type="13" subtype="54" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination or school: degree granted by grace</label>
             <label xml:lang="zh-Hant">科舉學校: 恩賜出身、特賜出身等</label>
+            <label xml:lang="en">examination or school: degree granted by grace</label>
             <desc type="0" subtype="14">
-                <desc xml:lang="en">Decree of Special Grace</desc>
                 <desc xml:lang="zh-Hant">特旨門</desc>
+                <desc xml:lang="en">Decree of Special Grace</desc>
             </desc>
         </event>
     </listEvent>

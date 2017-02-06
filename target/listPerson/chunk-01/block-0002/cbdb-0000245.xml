@@ -28,33 +28,53 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO245" passive="#BIO202" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO245" passive="#BIO203" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO245" passive="#BIO3150" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO245" passive="#BIO13711" key="2" sortKey="50" name="G-n">
-                        <desc>
-                            <desc xml:lang="en">G-n, lineal ancestor, generation unknown</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">直系祖先</desc>
+                            <desc xml:lang="en">G-n, lineal ancestor, generation unknown</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO245" passive="#BIO13716" key="255" sortKey="9" name="SSS">
-                        <desc>
-                            <desc xml:lang="en">SSS</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾孫; 重孫</desc>
+                            <desc xml:lang="en">SSS</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -64,27 +84,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO279" passive="#BIO245" key="0405" sortKey="17" name="political-support">
-                        <desc type="P">
-                            <desc xml:lang="en">Patron was (= Client of)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO279" passive="#BIO245" key="0405" name="political-support">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">恩主是Y<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Patron was (= Client of)<label>Supportive political association</label>
+                            </desc>
+                            <state when="1030"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1762" passive="#BIO245" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO1762" passive="#BIO245" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1030"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO7064" passive="#BIO245" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO7064" passive="#BIO245" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">建築物得到Y的題詠、記、命名<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -94,8 +116,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF28">
@@ -375,11 +397,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="0992" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

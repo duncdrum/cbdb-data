@@ -313,7 +313,7 @@ return
         else(<note>{$text/../no:c_notes/text()}</note>),
         
         global:create-mod-by($text/../no:c_created_by, $text/../no:c_modified_by)
-        },'bibl')
+        },'bibl')[1]
 };
 
 (:2188.5s:)

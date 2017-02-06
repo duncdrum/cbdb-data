@@ -27,33 +27,58 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO509" passive="#BIO16551" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO509" passive="#BIO40450" key="111" sortKey="-3" name="M" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO509" passive="#BIO42540" key="111" sortKey="-3" name="M" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO509" passive="#BIO42542" key="135" sortKey="0" name="W" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO509" passive="#BIO42545" key="135" sortKey="0" name="W" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -63,28 +88,28 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO509" passive="#BIO51994" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO509" passive="#BIO51994" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="A" n="18">
                             <label>終不屈 紹興中 宣諭使周聿薦之於朝 詔赴行在 而樓炤言長孺老病</label>
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3624" passive="#BIO509" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3624" passive="#BIO509" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3624" passive="#BIO509" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
-                            <desc xml:lang="en">Calligraphy inscribed by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3624" passive="#BIO509" key="0504" name="prefaces">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">其書帖由Y作題<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Calligraphy inscribed by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -94,8 +119,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF632">
@@ -237,11 +262,11 @@
     <listEvent>
         <event type="0403" subtype="28" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: decree exams (general)</label>
             <label xml:lang="zh-Hant">科舉: 制舉 (籠統)</label>
+            <label xml:lang="en">examination: decree exams (general)</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
     </listEvent>

@@ -28,27 +28,47 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO169" passive="#BIO13351" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO169" passive="#BIO16618" key="63" sortKey="22" name="WFF">
-                        <desc>
-                            <desc xml:lang="en">WFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之祖父</desc>
+                            <desc xml:lang="en">WFF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO169" passive="#BIO49886" key="135" sortKey="0" name="W" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO169" passive="#BIO49887" key="135" sortKey="0" name="W" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -58,29 +78,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO43687 #BIO169" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO43687 #BIO169" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="M" n="19">
                             <label>以課最 加直龍圖閣 度嘗與郭藥師同知燕山府 藥師欲居度右 度告於朝</label>
-                            <desc xml:lang="en">Disagreed with views of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">不合<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Disagreed with views of<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO34908 #BIO169" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO34908 #BIO169" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>宣和四年知河間府 五年與詹度相易知燕山府 後陷於金</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO11625" passive="#BIO169" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Inscription for Daoist institution written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO11625" passive="#BIO169" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">道觀記由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Inscription for Daoist institution written by<label>Ritual Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -90,8 +110,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">

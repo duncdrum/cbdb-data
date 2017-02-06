@@ -66,16 +66,10 @@ return
 
 
 (:from biog:biog:)
-let $test := $global:BIOG_MAIN//no:c_personid[. > 0][. = 54050]
+let $test := $global:BIOG_MAIN//no:c_personid[. > 0][. = 927]
+let $seq := ('a', 2)
 
-for $person in $test
+for $person in $seq
 return
 
-if (empty($person/../no:TTSMQ_db_ID) and empty($person/../no:MQWWLink) and empty($person/../no:KyotoLink))
-then ()
-else (<linkGrp>
-        {let $links := ($person/../no:TTSMQ_db_ID, $person/../no:MQWWLink, $person/../no:KyotoLink)
-         for $link in $links[. != '']
-         return
-            <ptr target="{$link/text()}"/>}        
-     </linkGrp>)
+concat($person[1], '-b')

@@ -21,12 +21,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO9999" passive="#BIO841" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO841" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1162"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -35,8 +36,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF94">
@@ -69,12 +70,6 @@
             <note>Hartwell defined the office as Jinghu Nan yunpan (荊湖南運判)</note>
         </state>
     </socecStatus>
-    <residence ref="#PL0" key="1">
-        <state>
-            <desc xml:lang="zh-Hant">籍貫(基本地址)</desc>
-            <desc xml:lang="en">Basic Affiliation</desc>
-        </state>
-    </residence>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>
     </note>

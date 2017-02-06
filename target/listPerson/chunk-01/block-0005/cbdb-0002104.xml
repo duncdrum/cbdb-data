@@ -23,15 +23,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO2104" passive="#BIO15075" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO2104" passive="#BIO15077" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -41,12 +41,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO9999" passive="#BIO2104" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO2104" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1139"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,8 +56,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF2318">
@@ -86,20 +87,20 @@
     <listEvent>
         <event type="0401" subtype="130" when="1128" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: literary exams</label>
             <label xml:lang="zh-Hant">科舉: 詞科</label>
+            <label xml:lang="en">examination: literary exams</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0401" subtype="165" when="1109" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

@@ -154,7 +154,7 @@ return
         if (empty($org/../no:c_notes))
         then ()
         else (element note {$org/../no:c_notes/text()})   
-    }, 'org')
+    }, 'org')[1]
 };
 
 let $test := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]

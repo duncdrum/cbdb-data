@@ -698,9 +698,9 @@ let $parent-stat := $global:PARENTAL_STATUS_CODES//no:c_parental_status_code[. =
  [c_sequence] INTEGER,                          x
  [c_exam_rank] CHAR(255),                       x                       
  [c_kin_code] INTEGER,                          x
- [c_kin_id] INTEGER,                            !
+ [c_kin_id] INTEGER,                            x
  [c_assoc_code] INTEGER,                        x
- [c_assoc_id] INTEGER,                          !
+ [c_assoc_id] INTEGER,                          x
  [c_year] INTEGER,                              x
  [c_age] INTEGER,                               !
  [c_nianhao_id] INTEGER,                       d
@@ -757,15 +757,17 @@ return
         if ($initiate/../no:c_source[. = 0] or empty($initiate/../no:c_source))
         then ()
         else (attribute source{concat('#BIB', $initiate/../no:c_source/text())}),
-            element head {'entry'}, 
+        (: HEAD :)
+            element head {'entry'},
+        (: LABEL :)
             if ($code[. < 1])
-            then ()
+            then (element label {'unkown'})
             else(
                 element label {attribute xml:lang {'zh-Hant'},
                     $code/../no:c_entry_desc_chn/text()},
                 element label {attribute xml:lang{'en'},
                     $code/../no:c_entry_desc/text()}),   
-                    
+         (: DESC :)         
             if ($type[. < 1] or empty($type) )
             then ()
             else if (count($type) > 1) 
@@ -1625,7 +1627,7 @@ return
                  </linkGrp>),
                   
            global:create-mod-by($person/../no:c_created_by, $person/../no:c_modified_by)       
-    }, 'person')
+    }, 'person')[1]
     
 };
 
@@ -1646,9 +1648,8 @@ Each block contains a single listPerson.xml file on the same level as the indivi
 $ppl-per-block (200) person records .
 :)
 
-let $test := $global:BIOG_MAIN//no:c_personid[. = 914]
+let $test := $global:BIOG_MAIN//no:c_personid[. = 927]
 let $full := $global:BIOG_MAIN//no:c_personid[. > 0]
-
 let $count := count($full)
 
 let $chunk-size := 10000
@@ -1666,7 +1667,7 @@ let $collection := xmldb:create-collection($chunk, concat('block-',
     
 
 for $individual in subsequence($full, ($j - 1) * $ppl-per-block, $ppl-per-block)
-let $person := biog:biog($individual)
+let $person := biog:biog($individual) 
 let $file-name := concat('cbdb-', 
     functx:pad-integer-to-length(substring-after(data($person/@xml:id), 'BIO'), 7), '.xml')
 

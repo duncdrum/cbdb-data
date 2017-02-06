@@ -31,15 +31,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO595" passive="#BIO11412" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO595" passive="#BIO11424" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,44 +59,47 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO333" passive="#BIO595" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO333" passive="#BIO595" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO1647" passive="#BIO595" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
                             <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
-                            </desc>
+                            <state when="1103"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1649" passive="#BIO595" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
+                    <relation active="#BIO1647" passive="#BIO595" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
+                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
+                            </desc>
                             <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
-                            </desc>
+                            <state when="1103"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO595" passive="#BIO3105" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO1649" passive="#BIO595" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
+                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
+                            </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1103"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO595" passive="#BIO3105" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <label>宙力請外補 得京西提舉常平 奏乞給還程頤舊田 范鎮子百揆在謫籍中 皆為論奏</label>
-                            <desc xml:lang="en">Supported<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3595" passive="#BIO595" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3595" passive="#BIO595" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -96,8 +109,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF700">
@@ -150,11 +163,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1073" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

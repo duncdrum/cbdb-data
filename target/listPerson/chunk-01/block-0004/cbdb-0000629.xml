@@ -29,9 +29,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO629" passive="#BIO3312" key="48" sortKey="-5" name="FFF">
-                        <desc>
-                            <desc xml:lang="en">FFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -41,12 +46,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO629" passive="#BIO3767" key="0207" sortKey="10" name="artistic-affil." source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO629" passive="#BIO3767" key="0207" name="artistic-affil." source="#BIB7596">
+                        <desc type="A" n="10">
                             <label>終始不渝 名所居曰知止堂 倣蘇軾書能逼真 尤善柳葉篆</label>
-                            <desc xml:lang="en">painted in style of<label>Literary and Artistic Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">畫風師法Y<label>文學藝術交往</label>
+                            </desc>
+                            <desc xml:lang="en">painted in style of<label>Literary and Artistic Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -56,8 +61,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">
@@ -150,11 +155,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1124" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

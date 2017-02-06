@@ -28,21 +28,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO28" passive="#BIO96" key="118" sortKey="1" name="B">
-                        <desc>
-                            <desc xml:lang="en">B Brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄弟</desc>
+                            <desc xml:lang="en">B Brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO28" passive="#BIO3091" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO28" passive="#BIO14347" key="183" sortKey="5" name="S2">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -51,8 +56,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF689">
@@ -145,20 +150,20 @@
     <listEvent>
         <event type="0401" subtype="36" when="1000" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0403" subtype="248" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">Decree examination: xian liang fang zheng ke</label>
             <label xml:lang="zh-Hant">科舉制舉: 賢良方正科</label>
+            <label xml:lang="en">Decree examination: xian liang fang zheng ke</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
     </listEvent>

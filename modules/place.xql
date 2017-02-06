@@ -238,7 +238,7 @@ it could NOT be merged as <location from ="1368' to="1622"/>
                        pla:nest-places($data, $child/../no:c_addr_id, $child/../no:c_name_chn, $child/../no:c_name))
             else ()    
         
-        }, 'place')          
+        }, 'place')[1]          
        
 };
 

@@ -260,7 +260,7 @@ return
     global:validate-fragment(<category xml:id="{concat('S', $gz/no:c_ganzhi_code/text())}">
         <catDesc xml:lang="zh-Hant">{$gz/no:c_ganzhi_chn/text()}</catDesc>
         <catDesc xml:lang="zh-Latn-alalc97">{$gz/no:c_ganzhi_py/text()}</catDesc>
-    </category>, 'category')
+    </category>, 'category')[1]
             }
 </taxonomy>
 };
@@ -297,7 +297,7 @@ declare function cal:dynasties ($dynasties as node()*) as item()* {
                         <catDesc xml:lang="zh-Hant">{$nh/no:c_nianhao_chn/text()}</catDesc>
                     </category>)                           
         }
-        </category>, 'category')
+        </category>, 'category')[1]
     }
 </taxonomy>
 };
