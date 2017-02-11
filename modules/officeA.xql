@@ -108,7 +108,7 @@ return
 
 declare function local:nest-children($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*{
 (: This function expects rows from $OFFICE_TYPE_TREE and returns a nested
-tree of office types as tei:category.
+tree of office types as category.
 :)
 
 (:

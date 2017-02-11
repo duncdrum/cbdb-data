@@ -57,19 +57,57 @@ Using the structural index in the return clause is crucial for performance.
 for $n in $nodes
 return
  update value collection(concat($global:target, 'listPerson/'))//person[id(concat('BIO', $n))] 
- with biog:biog($n)/*
+ with biog:biog($n, '')/*
 
-(:update value doc('/db/apps/cbdb-data/samples/test.xml')//listPlace with biog:biog($n)/*:)
+(:update value doc('/db/apps/cbdb-data/samples/test.xml')//listPlace with biog:biog($n, '')/*:)
 
 };
 (:local:upgrade-contents($global:BIOG_MAIN//no:c_personid[. > 0][. < 2]):)
 
 
 (:from biog:biog:)
-let $test := $global:BIOG_MAIN//no:c_personid[. > 0][. = 927]
-let $seq := ('a', 2)
+let $test := $global:BIOG_MAIN//no:c_personid[. = 139680]
+let $errors := (11786, 20888, 43665, 12353, 22175, 44821, 12908, 23652, 44891, 139017, 24130,
+44894, 139018, 24915, 45204, 139042, 25089, 45221, 139446, 27474, 45399, 139447,
+37934, 45409, 139503, 38061, 45641, 139680, 38248, 49513, 17236, 38450, 50730,
+18663, 38594, 8001, 2074, 38825)
+ 
 
-for $person in $seq
+(:return
+ $test/..:)
+ 
+for $person in $errors
+return
+biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], 'v')
+
+(:$global:BIOG_ADDR_DATA//no:c_personid[. = 139680]:)
+
+(:for $person in $test
+return:)
+(:update  value $person/../no:c_fy_day with 28:)
+
+(:biog:biog($person, 'v'):)
+
+(:let $birth-test :=
+
+
+for $person in $birth-test//no:c_personid[. = 24130]
 return
 
-concat($person[1], '-b')
+element birth { 
+    if (empty($person/../no:c_deathyear) or $person/../no:c_deathyear[. = 0])
+    then ()
+    else (
+        attribute when {string-join((cal:isodate($person/../no:c_deathyear),
+            if ($person/../no:c_dy_month[. > 0])
+            then (functx:pad-integer-to-length($person/../no:c_dy_month/text(), 2),
+                if (empty($person/../no:c_dy_day) or $person/../no:c_dy_day = 0)
+                then ()
+                else (functx:pad-integer-to-length($person/../no:c_dy_day/text(), 2))
+            )            
+            else ()), '-')}
+            ) 
+            }:)
+            
+            
+            

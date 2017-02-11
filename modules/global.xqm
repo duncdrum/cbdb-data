@@ -157,7 +157,7 @@ This function cannot guarante that the final document is valid,
 but it can catch validation errors produced by other function early on.
 This minimizes the number of validations necessary to produce the final output. 
 
-Currently, $loc accepts the name of the root element rturned by the function producing the $frag.
+Currently, $loc accepts the name of the root element returned by the function producing the $frag.
 For $loc use:
 - category
 - charDecl
@@ -167,7 +167,7 @@ For $loc use:
 - place
 
 For $frag use:
-- biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908])
+- biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908], '')
 - bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031])
 
 :)
