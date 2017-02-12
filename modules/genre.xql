@@ -19,7 +19,7 @@ the categories appear mostly listBibl.xml
 
 (:!!!Calling this function overwrites data!!!:)
 
-declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node())  as item()* {
+declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?)  as item()* {
 
 (:This function transforms $TEXT_BIBLCAT_TYPES inoto nested tei:categoreis.
 
@@ -29,7 +29,7 @@ declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as n
 -  Q: Is there  any use for $TEXT_BIBLCAT_TYPES_1 and $TEXT_BIBLCAT_TYPES_2? 
    A: NO!
 :)
-global:validate-fragment(
+let $output := 
 element category { attribute xml:id {concat('biblType',  $type-id/text())},        
     element catDesc {attribute xml:lang {'zh-Hant'},
         $zh/text()},           
@@ -38,8 +38,13 @@ element catDesc {attribute xml:lang {'en'},
     
     for $child in $types[no:c_text_cat_type_parent_id = $type-id]
     return
-        gen:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)               
-}, 'category')[1]      
+        gen:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc, '')               
+}
+return 
+    switch($mode)
+        case 'v' return global:validate-fragment($output, 'category')
+        case 'd' return global:validate-fragment($output, 'category')[1]
+    default return $output       
 };
 
 
@@ -52,7 +57,7 @@ let $typeTree := xmldb:store($global:target, $global:genre,
                             {for $outer in $types[c_text_cat_type_parent_id = '01']
                             order by $outer[c_text_cat_type_sortorder]
                             return
-                                gen:nest-types($types, $outer/no:c_text_cat_type_id ,$outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc)}
+                                gen:nest-types($types, $outer/no:c_text_cat_type_id ,$outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc, '')}
                         </category>
                     </taxonomy>)
 
