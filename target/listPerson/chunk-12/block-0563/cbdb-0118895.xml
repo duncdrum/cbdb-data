@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO118895" source="#BIB9601">
     <idno type="TTS">112501</idno>
     <persName type="main">
@@ -37,9 +36,9 @@
     <age>69</age>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-Latn-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>《（雍正）浙江通志》卷一百三十九：黄汝亨，仁和人，（萬厯）戊戌（1598）進士。（清）錢保塘《歷代名人生卒録》卷八：黄汝亨，天啓六年卒，年六十九。</note>
     <affiliation>
@@ -48,15 +47,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO118895" passive="#BIO121004" key="176" sortKey="6" name="D" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO118895" passive="#BIO121008" key="347" sortKey="9999" name="SSD" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">SSD</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾孫女</desc>
+                            <desc xml:lang="en">SSD</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -66,19 +75,19 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO118895" passive="#BIO120510" key="0503" sortKey="22" name="epitaphs" source="#BIB9601">
-                        <desc type="A">
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO118895" passive="#BIO120510" key="0503" name="epitaphs" source="#BIB9601">
+                        <desc type="A" n="22">
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO118895" passive="#BIO120510" key="0504" sortKey="23" name="prefaces" source="#BIB9601">
-                        <desc type="A">
-                            <desc xml:lang="en">wrote preface for the literary works of<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO118895" passive="#BIO120510" key="0504" name="prefaces" source="#BIB9601">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所作詩文作序<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">wrote preface for the literary works of<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>

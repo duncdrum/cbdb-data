@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13539" source="#BIB7596" resp="selfbio">
     <idno type="TTS">7832</idno>
     <persName type="main">
@@ -30,15 +29,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13539" passive="#BIO3023" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13539" passive="#BIO3029" key="325" sortKey="9999" name="K♂">
-                        <desc>
-                            <desc xml:lang="en">Lineage cousin</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">族兄弟</desc>
+                            <desc xml:lang="en">Lineage cousin</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,27 +52,27 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO3029" passive="#BIO13539" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3029" passive="#BIO13539" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO3029" passive="#BIO13539" key="0507" sortKey="26" name="text-discourse">
-                        <desc type="P">
-                            <desc xml:lang="en">Explanation of capping name (zixu or zishuo) composed by<label>Explanatory Texts</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">字說、名述由Y所作<label>論說文字</label>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3029" passive="#BIO13539" key="0507" sortKey="26" name="text-discourse" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO3029" passive="#BIO13539" key="0507" name="text-discourse">
+                        <desc type="P" n="26">
+                            <desc xml:lang="zh-Hant">字說、名述由Y所作<label>論說文字</label>
+                            </desc>
                             <desc xml:lang="en">Explanation of capping name (zixu or zishuo) composed by<label>Explanatory Texts</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO3029" passive="#BIO13539" key="0507" name="text-discourse" source="#BIB7596">
+                        <desc type="P" n="26">
                             <desc xml:lang="zh-Hant">字說、名述由Y所作<label>論說文字</label>
+                            </desc>
+                            <desc xml:lang="en">Explanation of capping name (zixu or zishuo) composed by<label>Explanatory Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -78,8 +82,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <residence ref="#PL11263" key="1">

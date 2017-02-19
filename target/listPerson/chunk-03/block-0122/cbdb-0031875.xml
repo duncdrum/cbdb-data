@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO31875">
     <idno type="TTS">26130</idno>
     <persName type="main">
@@ -24,9 +23,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO31875" passive="#BIO31874" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -36,12 +40,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO31875" passive="#BIO12253" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Official in the administration of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO31875" passive="#BIO12253" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">在Y的主政期出仕 [暫時保留，待刪除]<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Official in the administration of<label>Supportive political association</label>
+                            </desc>
+                            <state when="0493"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -50,8 +55,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <residence ref="#PL15501" key="1">

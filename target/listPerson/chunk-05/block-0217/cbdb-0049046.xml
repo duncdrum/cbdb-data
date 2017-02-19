@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO49046" source="#BIB7596">
     <idno type="TTS">43105</idno>
     <persName type="main">
@@ -33,9 +32,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO49046" passive="#BIO49041" key="243" sortKey="8" name="SS" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -45,47 +49,47 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO49046" passive="#BIO504" key="0204" sortKey="7" name="scholarly-topic" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation active="#BIO49046" passive="#BIO504" key="0204" name="scholarly-topic" source="#BIB7596">
+                        <desc type="P" n="7">
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
                             </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO49046" passive="#BIO504" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="A">
+                    <relation active="#BIO49046" passive="#BIO504" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="A" n="28">
                             <label>(Assoc count=4)</label>
-                            <desc xml:lang="en">Sent letter to<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">致書Y<label>書札文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO504" passive="#BIO49046" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
-                            <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            <desc xml:lang="en">Sent letter to<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO504" passive="#BIO49046" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO504" passive="#BIO49046" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3105" passive="#BIO49046" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO504" passive="#BIO49046" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
+                            <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
                             <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO3105" passive="#BIO49046" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
+                            <label>(Assoc count=1)</label>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -95,8 +99,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">scholar</desc>
             <desc xml:lang="zh-Hant">學者</desc>
+            <desc xml:lang="en">scholar</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF950">
@@ -116,11 +120,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

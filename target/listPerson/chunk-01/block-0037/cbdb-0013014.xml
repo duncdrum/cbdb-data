@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13014" source="#BIB7596" resp="selfbio">
     <idno type="TTS">7310</idno>
     <persName type="main">
@@ -29,9 +28,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13014" passive="#BIO7041" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -41,12 +45,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO10296 #BIO13014" key="0205" sortKey="8" name="scholarly-member" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO10296 #BIO13014" key="0205" name="scholarly-member" source="#BIB7596">
+                        <desc type="M" n="8">
                             <label>隆興府新建人 治詩賦 嘉定七年袁甫榜進士 十七年以宗正少卿兼國史院編修官實錄院檢討官</label>
-                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同年友<label>同為……之成員</label>
+                            </desc>
+                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
                             </desc>
                         </desc>
                     </relation>
@@ -56,12 +60,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">rhapsody writer</desc>
             <desc xml:lang="zh-Hant">工於作賦</desc>
+            <desc xml:lang="en">rhapsody writer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF1014">
@@ -109,11 +113,11 @@
     <listEvent>
         <event type="0401" subtype="165" when="1214" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

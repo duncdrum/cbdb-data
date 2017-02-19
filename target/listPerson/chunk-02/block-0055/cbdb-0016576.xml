@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO16576">
     <idno type="TTS">10862</idno>
     <persName type="main">
@@ -24,9 +23,9 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO16576" passive="#BIO16575" key="303" sortKey="50" name="G+n">
-                        <desc>
-                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">直系後裔</desc>
+                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -36,12 +35,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO9999" passive="#BIO16576" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO16576" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="0009"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -50,18 +50,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="90" subtype="21" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">enfeoffment</label>
             <label xml:lang="zh-Hant">封土建藩(始封)</label>
+            <label xml:lang="en">enfeoffment</label>
             <desc type="0" subtype="18">
-                <desc xml:lang="en">Other Method of Entry</desc>
                 <desc xml:lang="zh-Hant">其他入仕途徑</desc>
+                <desc xml:lang="en">Other Method of Entry</desc>
             </desc>
         </event>
     </listEvent>

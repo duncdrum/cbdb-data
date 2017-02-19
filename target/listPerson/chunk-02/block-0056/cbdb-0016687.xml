@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO16687" source="#BIB7596" resp="selfbio">
     <idno type="TTS">10973</idno>
     <persName type="main">
@@ -31,21 +30,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO16687" passive="#BIO16686" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO16687" passive="#BIO16689" key="182" sortKey="5" name="S1" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO16687" passive="#BIO16694" key="177" sortKey="9999" name="BS">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,19 +64,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11625" passive="#BIO16687" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO11625" passive="#BIO16687" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1090"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO11625" passive="#BIO16687" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO11625" passive="#BIO16687" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -77,8 +87,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF170">
@@ -98,11 +108,11 @@
     <listEvent>
         <event type="15" subtype="33" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: failed jinshi or zhuke exams</label>
             <label xml:lang="zh-Hant">科舉: 舉進士、諸科不第</label>
+            <label xml:lang="en">examination: failed jinshi or zhuke exams</label>
             <desc type="0" subtype="16">
-                <desc xml:lang="en">Failed Pursuit of Office</desc>
                 <desc xml:lang="zh-Hant">求官不得門</desc>
+                <desc xml:lang="en">Failed Pursuit of Office</desc>
             </desc>
         </event>
     </listEvent>

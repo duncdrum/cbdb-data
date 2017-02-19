@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO23628" source="#BIB7596" resp="selfbio">
     <idno type="TTS">17897</idno>
     <persName type="main">
@@ -33,15 +32,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO23628" passive="#BIO17768" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO23628" passive="#BIO23629" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -51,20 +55,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1450" passive="#BIO23628" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO1450" passive="#BIO23628" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO11328" passive="#BIO23628" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO11328" passive="#BIO23628" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -74,12 +78,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">army officer</desc>
             <desc xml:lang="zh-Hant">武將</desc>
+            <desc xml:lang="en">army officer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF896">
@@ -144,11 +148,11 @@
     <listEvent>
         <event type="02" subtype="74" when="1034" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">grace given to imperial clan</label>
             <label xml:lang="zh-Hant">宗子該恩</label>
+            <label xml:lang="en">grace given to imperial clan</label>
             <desc type="0" subtype="3">
-                <desc xml:lang="en">Kinship</desc>
                 <desc xml:lang="zh-Hant">血親門</desc>
+                <desc xml:lang="en">Kinship</desc>
             </desc>
         </event>
     </listEvent>

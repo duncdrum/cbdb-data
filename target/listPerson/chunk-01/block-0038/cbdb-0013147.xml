@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13147" source="#BIB7596" resp="selfbio">
     <idno type="TTS">7440</idno>
     <persName type="main">
@@ -34,28 +33,33 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13147" passive="#BIO3394" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13147" passive="#BIO3402" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO13147" passive="#BIO7252" key="125" sortKey="2" name="B+" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1612</label>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO13147" passive="#BIO18861" key="183" sortKey="5" name="S2" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -65,28 +69,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO8008" passive="#BIO13147" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO8008" passive="#BIO13147" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">遭Y排擠<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13147" passive="#BIO8008" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO13147" passive="#BIO8008" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">為Y之門客<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
+                            </desc>
+                            <state when="1165"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO13147" passive="#BIO8008" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO13147" passive="#BIO8008" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>以蔭補官 召試館職 及兄寅與秦檜忤 乃出為夔州路安撫司參議官 知澧州</label>
-                            <desc xml:lang="en">insulted<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">得罪Y<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">insulted<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -96,8 +101,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF950">
@@ -138,11 +143,11 @@
         </event>
         <event type="06" subtype="118" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
             <note>以蔭補官，召試館職。</note>
         </event>

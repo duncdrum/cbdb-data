@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO66512" source="#BIB9602">
     <idno type="TTS">60337</idno>
     <persName type="main">
@@ -42,15 +41,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO66512" passive="#BIO118762" key="327" sortKey="6" name="D1" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">D1 Daughter, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長女</desc>
+                            <desc xml:lang="en">D1 Daughter, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO66512" passive="#BIO118763" key="230" sortKey="6" name="D2" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">D2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">二女</desc>
+                            <desc xml:lang="en">D2</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -60,19 +59,19 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO67131" passive="#BIO66512" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO67131" passive="#BIO66512" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO56535" passive="#BIO66512" key="0502" sortKey="21" name="commemorative" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Posthumous name essay written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO56535" passive="#BIO66512" key="0502" name="commemorative" source="#BIB27147">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">諡議由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Posthumous name essay written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -83,11 +82,11 @@
     <listEvent>
         <event type="0502" subtype="110" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">Imperial Academy student: general</label>
             <label xml:lang="zh-Hant">監生(籠統)</label>
+            <label xml:lang="en">Imperial Academy student: general</label>
             <desc type="1" subtype="29">
-                <desc xml:lang="en">Imperial Academy Students</desc>
                 <desc xml:lang="zh-Hant">監生門</desc>
+                <desc xml:lang="en">Imperial Academy Students</desc>
             </desc>
             <note>洪武?年國子監生</note>
         </event>
@@ -107,7 +106,7 @@
         <note>河南行省-南陽府-鄧州(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="10086"/>
+        <ptr target="ttsmq:10086"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

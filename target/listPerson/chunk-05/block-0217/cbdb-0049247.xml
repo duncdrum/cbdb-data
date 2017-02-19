@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO49247" source="#BIB7596">
     <idno type="TTS">43304</idno>
     <persName type="main">
@@ -21,9 +20,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO49247" passive="#BIO49248" key="177" sortKey="9999" name="BS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -33,11 +37,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO4001" passive="#BIO49247" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO49247" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -47,8 +51,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">ci lyric writer</desc>
             <desc xml:lang="zh-Hant">詞人</desc>
+            <desc xml:lang="en">ci lyric writer</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF762">
@@ -106,11 +110,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

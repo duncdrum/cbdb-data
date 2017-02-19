@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO68996" source="#BIB9602">
     <idno type="TTS">62810</idno>
     <persName type="main">
@@ -42,21 +41,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO68996" passive="#BIO54996" key="75" sortKey="-1" name="F" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO68996" passive="#BIO56275" key="135" sortKey="0" name="W" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO68996" passive="#BIO56279" key="125" sortKey="2" name="B+" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -71,7 +80,7 @@
         <note>安徽省-安慶府-桐城縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="12688"/>
+        <ptr target="ttsmq:12688"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

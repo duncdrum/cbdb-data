@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO22053" source="#BIB7596" resp="selfbio">
     <idno type="TTS">16323</idno>
     <persName type="main">
@@ -25,9 +24,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO22053" passive="#BIO8155" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -37,13 +41,14 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO22053" passive="#BIO37711" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
+                    <relation active="#BIO22053" passive="#BIO37711" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <label>建炎四年，家三百口俱死於賊馬進之難。</label>
-                            <desc xml:lang="en">Killed by followers of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y（或追隨者）殺害<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Killed by followers of<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1130"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -52,8 +57,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF1009">

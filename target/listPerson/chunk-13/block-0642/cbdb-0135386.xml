@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO135386" source="#BIB9601">
     <idno type="TTS">128215</idno>
     <persName type="main">
@@ -18,9 +17,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO135386" passive="#BIO135385" key="111" sortKey="-3" name="M" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -30,11 +34,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO135386" passive="#BIO92865" key="0407" sortKey="19" name="political-opposition" source="#BIB9601">
-                        <desc type="A">
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO135386" passive="#BIO92865" key="0407" name="political-opposition" source="#BIB9601">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>

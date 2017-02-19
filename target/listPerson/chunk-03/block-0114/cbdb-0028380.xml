@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO28380">
     <idno type="TTS">22639</idno>
     <persName type="main">
@@ -28,9 +27,9 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO28380" passive="#BIO28379" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,28 +39,30 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28380" passive="#BIO28377" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Menren of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO28380" passive="#BIO28377" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之門人<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Menren of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1410"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO28380" passive="#BIO28381" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO28380" passive="#BIO28381" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
+                            </desc>
+                            <state when="1410"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO28380" passive="#BIO28381" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28380" passive="#BIO28381" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="A" n="25">
                             <label>石光霽，石門先生行狀（石門集卷首）</label>
-                            <desc xml:lang="en">Wrote Biographical sketch (xingzhuang) for<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作行狀<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Biographical sketch (xingzhuang) for<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -71,18 +72,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="07" subtype="14" when="1380" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

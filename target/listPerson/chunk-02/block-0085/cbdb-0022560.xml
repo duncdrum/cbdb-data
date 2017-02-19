@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO22560" source="#BIB24309">
     <idno type="TTS">16830</idno>
     <persName type="main">
@@ -40,27 +39,37 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO22560" passive="#BIO22504" key="194" sortKey="9999" name="S6">
-                        <desc>
-                            <desc xml:lang="en">S6</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">六子</desc>
+                            <desc xml:lang="en">S6</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO22560" passive="#BIO22558" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO22560" passive="#BIO22561" key="126" sortKey="3" name="B-" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">B– Brother, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">弟</desc>
+                            <desc xml:lang="en">B– Brother, younger</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO22560" passive="#BIO93159" key="243" sortKey="8" name="SS" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,12 +78,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF11113">
@@ -240,20 +249,20 @@
     <listEvent>
         <event type="0401" subtype="36" when="0810" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0403" subtype="226" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">Decree examination: Erudite and Literary</label>
             <label xml:lang="zh-Hant">科舉制舉: 博學鴻詞/博學宏詞科</label>
+            <label xml:lang="en">Decree examination: Erudite and Literary</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -271,7 +280,7 @@
         <note>虢州/弘農(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1533"/>
+        <ptr target="idtf:1533"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

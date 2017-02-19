@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO12071" source="#BIB7596" resp="selfbio">
     <idno type="TTS">6371</idno>
     <persName type="main">
@@ -28,15 +27,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO12071" passive="#BIO12058" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO12071" passive="#BIO20427" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,37 +55,37 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO12071" passive="#BIO45235" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO12071" passive="#BIO45235" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO42846 #BIO12071" key="0602" sortKey="31" name="military-support">
-                        <desc type="M">
-                            <desc xml:lang="en">Fought together<label>Supportive military association</label>
-                            </desc>
+                    <relation mutual="#BIO42846 #BIO12071" key="0602" name="military-support">
+                        <desc type="M" n="31">
                             <desc xml:lang="zh-Hant">戰友<label>軍事支持</label>
                             </desc>
+                            <desc xml:lang="en">Fought together<label>Supportive military association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO42846" passive="#BIO12071" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO42846" passive="#BIO12071" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="P" n="31">
                             <label>祥興元年 與湖南提刑劉應龍共起兵 為元將阿里海涯所破 被執</label>
-                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">受Y之軍事支持<label>軍事支持</label>
+                            </desc>
+                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO47200" passive="#BIO12071" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO47200" passive="#BIO12071" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="P" n="31">
                             <label>為湖南制置使 與提刑劉應龍起兵應厓山 為元兵所破 烈良舉家及餘兵奔思州烏羅洞</label>
-                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">受Y之軍事支持<label>軍事支持</label>
+                            </desc>
+                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -86,8 +95,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF39">
@@ -254,11 +263,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1238" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

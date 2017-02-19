@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO107822" source="#BIB9599" resp="selfbio">
     <idno type="TTS">101439</idno>
     <persName type="main">
@@ -31,10 +30,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO107822" passive="#BIO107773" key="62" sortKey="-4" name="FF" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>守敬祖</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -44,21 +48,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10726" passive="#BIO107822" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10726" passive="#BIO107822" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="P" n="25">
                             <label>擬元列傳二首（王忠文公集11/12下）</label>
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO110780" passive="#BIO107822" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO110780" passive="#BIO107822" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="P" n="25">
                             <label>齊履謙，知太史院事郭公行狀（國朝文類50/1）</label>
-                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">行狀由Y所作<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -68,8 +72,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">water management expert</desc>
             <desc xml:lang="zh-Hant">水利專家</desc>
+            <desc xml:lang="en">water management expert</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF65235">
@@ -165,11 +169,11 @@
     <listEvent>
         <event type="08" subtype="101" when="1262" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">recommendation</label>
             <label xml:lang="zh-Hant">薦舉 (保任)</label>
+            <label xml:lang="en">recommendation</label>
             <desc type="0" subtype="9">
-                <desc xml:lang="en">Recommendation</desc>
                 <desc xml:lang="zh-Hant">薦舉門</desc>
+                <desc xml:lang="en">Recommendation</desc>
             </desc>
         </event>
     </listEvent>

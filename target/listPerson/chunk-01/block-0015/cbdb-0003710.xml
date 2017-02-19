@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO3710">
     <idno type="TTS">2821</idno>
     <persName type="main">
@@ -22,16 +21,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO3710" passive="#BIO1426" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3710" passive="#BIO12856" key="181" sortKey="7" name="DH" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#323</label>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -41,20 +50,22 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO3710" passive="#BIO1221" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Patron of (= Client was)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO3710" passive="#BIO1221" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">是Y的恩主<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Patron of (= Client was)<label>Supportive political association</label>
+                            </desc>
+                            <state when="0945"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO21837 #BIO3710" key="0402" sortKey="14" name="office-equal">
-                        <desc type="M">
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation mutual="#BIO21837 #BIO3710" key="0402" name="office-equal">
+                        <desc type="M" n="14">
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="0945"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -63,8 +74,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: chief councilor</desc>
             <desc xml:lang="zh-Hant">[宰相]</desc>
+            <desc xml:lang="en">office: chief councilor</desc>
         </state>
     </socecStatus>
     <residence ref="#PL14693" key="1">

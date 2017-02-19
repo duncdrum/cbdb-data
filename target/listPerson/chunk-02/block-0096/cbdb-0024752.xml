@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO24752" source="#BIB7596" resp="selfbio">
     <idno type="TTS">19019</idno>
     <persName type="main">
@@ -29,15 +28,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO24752" passive="#BIO24748" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24752" passive="#BIO24750" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,85 +51,93 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO24752" passive="#BIO3326" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO24752" passive="#BIO3326" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1235"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO51460" passive="#BIO24752" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO51460" passive="#BIO24752" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="P" n="17">
                             <label>語侵侂冑 安置韶州 太學生楊宏中以救汝愚坐編管 驛皆封還錄黃 不草制</label>
-                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">得到Y的支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24752" passive="#BIO3200" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Supported<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO24752" passive="#BIO3200" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported<label>Supportive political association</label>
+                            </desc>
+                            <state when="1235"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO24746 #BIO24752" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
-                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
-                            </desc>
+                    <relation mutual="#BIO24746 #BIO24752" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
                             <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation mutual="#BIO24757 #BIO24752" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
                             <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
-                            </desc>
+                            <state when="1235"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO24758 #BIO24752" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
+                    <relation mutual="#BIO24757 #BIO24752" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
+                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
+                            </desc>
                             <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
-                            </desc>
+                            <state when="1235"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO24763 #BIO24752" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
+                    <relation mutual="#BIO24758 #BIO24752" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
+                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
+                            </desc>
                             <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
-                            </desc>
+                            <state when="1235"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO24764 #BIO24752" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
+                    <relation mutual="#BIO24763 #BIO24752" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
+                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
+                            </desc>
                             <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
-                            </desc>
+                            <state when="1235"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO9999" passive="#BIO24752" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Qingyuan coalition member<label>Supportive political association</label>
+                    <relation mutual="#BIO24764 #BIO24752" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
+                            <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
                             </desc>
+                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
+                            </desc>
+                            <state when="1235"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO9999" passive="#BIO24752" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">慶元被禁的「僞學」人士<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Qingyuan coalition member<label>Supportive political association</label>
+                            </desc>
+                            <state when="1235"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO24752" passive="#BIO3200" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO24752" passive="#BIO3200" key="0301" name="friend" source="#BIB7596">
+                        <desc type="A" n="12">
                             <label>寧宗立 韓侂冑竊弄國柄 趙汝愚竄永州 宏中與諸生林仲麟、徐範、張衜、蔣傅、周端朝五人上書不報 繳副封於臺諫</label>
-                            <desc xml:lang="en">aided<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">幫助Y<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">aided<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -135,8 +147,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF2917">
@@ -169,11 +181,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1205" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO10709" source="#BIB7596" resp="selfbio">
     <idno type="TTS">5014</idno>
     <persName type="main">
@@ -50,9 +49,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO10709" passive="#BIO10706" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,59 +66,63 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10706" passive="#BIO10709" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO10706" passive="#BIO10709" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10706" passive="#BIO10709" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO10706" passive="#BIO10709" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10706" passive="#BIO10709" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
                             <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10731" passive="#BIO10709" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10706" passive="#BIO10709" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
+                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
                             <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10731" passive="#BIO10709" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10731" passive="#BIO10709" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
+                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
                             <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10731" passive="#BIO10709" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10709" passive="#BIO10706" key="0510" sortKey="29" name="text-occasional" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
+                    <relation active="#BIO10709" passive="#BIO10706" key="0510" name="text-occasional" source="#BIB7596">
+                        <desc type="P" n="29">
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10709" passive="#BIO10706" key="0510" sortKey="29" name="text-occasional" source="#BIB7596">
-                        <desc type="P">
                             <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
                             </desc>
+                            <state ana="6">
+                                <label xml:lang="zh-Hant">離別</label>
+                                <label xml:lang="zh-Latn-alalc97">departure</label>
+                            </state>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10709" passive="#BIO10706" key="0510" name="text-occasional" source="#BIB7596">
+                        <desc type="P" n="29">
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -124,12 +132,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <residence ref="#PL12785" key="1" source="#BIB7596">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO93144" source="#BIB24309">
     <idno type="TTS">86817</idno>
     <persName type="main">
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO93144" passive="#BIO93181" key="180" sortKey="5" name="S" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -170,11 +174,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -186,7 +190,7 @@
         <note>同州/馮翊(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1477"/>
+        <ptr target="idtf:1477"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-10-14"/>

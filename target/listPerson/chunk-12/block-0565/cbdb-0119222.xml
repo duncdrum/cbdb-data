@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO119222" source="#BIB9601">
     <idno type="TTS">112828</idno>
     <persName type="main">
@@ -23,9 +22,9 @@
     </floruit>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-Latn-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>【明】郭春震：《（嘉靖）潮州府志》卷七載，洪武十六年以茂才舉任大理評事。</note>
     <affiliation>
@@ -34,27 +33,37 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO119222" passive="#BIO119215" key="75" sortKey="-1" name="F" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO119222" passive="#BIO119218" key="111" sortKey="-3" name="M" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO119222" passive="#BIO119219" key="165" sortKey="2" name="B1" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">B1 Brother, eldest</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長兄</desc>
+                            <desc xml:lang="en">B1 Brother, eldest</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO119222" passive="#BIO119221" key="125" sortKey="2" name="B+" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,7 +71,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="3266"/>
+        <ptr target="mqww:3266"/>
     </linkGrp>
     <note type="created" target="#BDCL">
         <date when="2011-07-01"/>

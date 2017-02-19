@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO34461" source="#BIB9602">
     <idno type="TTS">28714</idno>
     <persName type="main">
@@ -45,15 +44,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO34461" passive="#BIO27948" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO34461" passive="#BIO34462" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -63,11 +72,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO27948" passive="#BIO34461" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO27948" passive="#BIO34461" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -77,22 +86,22 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">not serving due to illness</desc>
             <desc xml:lang="zh-Hant">以疾廢</desc>
+            <desc xml:lang="en">not serving due to illness</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="07" subtype="14" when="1390" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>
@@ -104,7 +113,7 @@
         <note>[浙江分省]-[處州府]-青田縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="9790"/>
+        <ptr target="ttsmq:9790"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

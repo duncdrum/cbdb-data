@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO54203" source="#BIB9601" resp="selfbio">
     <idno type="TTS">48247</idno>
     <persName type="main">
@@ -38,9 +37,9 @@
     <age>25</age>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-Latn-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>《清代人物生卒年表》定其生卒年為？~光緒25年。 【參考《清代人物生卒年表》#10968.】</note>
     <affiliation>
@@ -49,22 +48,37 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO54203" passive="#BIO54202" key="134" sortKey="0" name="H" source="#BIB9601" type="auto-generated">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>林旭被害后其妻仰藥死</label>
-                            <desc xml:lang="en">H Husband</desc>
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO54203" passive="#BIO54210" key="62" sortKey="-4" name="FF" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO54203" passive="#BIO54212" key="75" sortKey="-1" name="F" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -78,7 +92,7 @@
         </state>
     </residence>
     <linkGrp>
-        <ptr target="258"/>
+        <ptr target="mqww:258"/>
     </linkGrp>
     <note type="created" target="#BDDY">
         <date when="2009-06-15"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO11519" source="#BIB7596" resp="selfbio">
     <idno type="TTS">5822</idno>
     <persName type="main">
@@ -34,21 +33,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO11519" passive="#BIO11514" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO11519" passive="#BIO16955" key="119" sortKey="9999" name="FBS">
-                        <desc>
-                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄弟;堂兄弟</desc>
+                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO11519" passive="#BIO16956" key="119" sortKey="9999" name="FBS">
-                        <desc>
-                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄弟;堂兄弟</desc>
+                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -58,12 +72,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11519" passive="#BIO3404" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO11519" passive="#BIO3404" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1072"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -72,8 +87,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <residence ref="#PL100352" key="1" source="#BIB7596">

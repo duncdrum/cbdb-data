@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO22524" source="#BIB7596" resp="selfbio">
     <idno type="TTS">16794</idno>
     <persName type="main">
@@ -37,15 +36,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO22524" passive="#BIO22520" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO22524" passive="#BIO22523" key="177" sortKey="9999" name="BS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,80 +64,83 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO22524" passive="#BIO3257" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO22524" passive="#BIO3257" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>號悅堂 長溪人 與楊方、楊簡俱師事朱熹為高弟 時號三楊 登淳熙五年進士</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO22524" passive="#BIO3257" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO22524" passive="#BIO3257" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之弟子<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1208"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO15072 #BIO22524" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
-                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
-                            </desc>
+                    <relation mutual="#BIO15072 #BIO22524" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
                             <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
                             </desc>
+                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
+                            </desc>
+                            <state when="1208"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO15072 #BIO22524" key="0205" sortKey="8" name="scholarly-member" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO15072 #BIO22524" key="0205" name="scholarly-member" source="#BIB7596">
+                        <desc type="M" n="8">
                             <label>號悅堂 長溪人 與楊方、楊簡俱師事朱熹為高弟 時號三楊 登淳熙五年進士</label>
-                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
+                            </desc>
+                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO22487 #BIO22524" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
-                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
-                            </desc>
+                    <relation mutual="#BIO22487 #BIO22524" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
                             <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
                             </desc>
+                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
+                            </desc>
+                            <state when="1208"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO11134" passive="#BIO22524" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO11134" passive="#BIO22524" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO22524" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO3257" passive="#BIO22524" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO11134" passive="#BIO22524" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO11134" passive="#BIO22524" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO11134" passive="#BIO22524" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO11134" passive="#BIO22524" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=4)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -138,12 +150,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
             <desc xml:lang="zh-Hant">理學家</desc>
+            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF702">
@@ -242,11 +254,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1178" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

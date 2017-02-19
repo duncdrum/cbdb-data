@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO33515" source="#BIB9602">
     <idno type="TTS">27769</idno>
     <persName type="main">
@@ -110,9 +109,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO33515" passive="#BIO33516" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -122,12 +126,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO33498" passive="#BIO33515" key="0506" sortKey="25" name="text-biography">
-                        <desc type="P">
-                            <desc xml:lang="en">Nianpu composed by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO33498" passive="#BIO33515" key="0506" name="text-biography">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">年譜由Y所作<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Nianpu composed by<label>Biographical Texts</label>
+                            </desc>
+                            <state when="1694"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -136,18 +141,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="0501" subtype="173" when="1653" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">county school student</label>
             <label xml:lang="zh-Hant">縣學生員</label>
+            <label xml:lang="en">county school student</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
             <note>順治10年補蠡縣學生(諸生)</note>
         </event>
@@ -173,7 +178,7 @@
         <note>直隸·博野(清代人物生卒年表)。</note>
     </residence>
     <linkGrp>
-        <ptr target="9460"/>
+        <ptr target="ttsmq:9460"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

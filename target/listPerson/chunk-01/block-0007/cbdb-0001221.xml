@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO1221" source="#BIB7596" resp="selfbio">
     <idno type="TTS">1219</idno>
     <persName type="main">
@@ -31,28 +30,48 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO1221" passive="#BIO20347" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1221" passive="#BIO20348" key="243" sortKey="8" name="SS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1221" passive="#BIO20428" key="243" sortKey="8" name="SS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1221" passive="#BIO120106" key="180" sortKey="5" name="S" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#397</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,20 +81,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO3710" passive="#BIO1221" key="0405" sortKey="17" name="political-support">
-                        <desc type="P">
-                            <desc xml:lang="en">Patron was (= Client of)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO3710" passive="#BIO1221" key="0405" name="political-support">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">恩主是Y<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Patron was (= Client of)<label>Supportive political association</label>
+                            </desc>
+                            <state when="0985"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO8134 #BIO1221" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO8134 #BIO1221" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>雍熙二年為御史中丞 廉謹有守 三年命曹彬等征幽州 保勳以本官知幽州行府事 會王師不利</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -85,20 +105,20 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">historian</desc>
             <desc xml:lang="zh-Hant">史學家</desc>
+            <desc xml:lang="en">historian</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">excelled in horseriding and archery</desc>
             <desc xml:lang="zh-Hant">精於騎射</desc>
+            <desc xml:lang="en">excelled in horseriding and archery</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF28">
@@ -214,11 +234,11 @@
     <listEvent>
         <event type="09" subtype="77" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">military merit: military service or distinction in battle</label>
             <label xml:lang="zh-Hant">軍員轉補</label>
+            <label xml:lang="en">military merit: military service or distinction in battle</label>
             <desc type="0" subtype="10">
-                <desc xml:lang="en">Military Merit</desc>
                 <desc xml:lang="zh-Hant">軍功補授門</desc>
+                <desc xml:lang="en">Military Merit</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO16766" source="#BIB7596" resp="selfbio">
     <idno type="TTS">11052</idno>
     <persName type="main">
@@ -28,15 +27,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO16766" passive="#BIO3043" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO16766" passive="#BIO7026" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,21 +55,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO16766" passive="#BIO7111" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO16766" passive="#BIO7111" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>祖禹次子 秦觀之婿 學詩於黃庭堅 有潛溪詩眼</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO16766" passive="#BIO7111" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="P">
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation active="#BIO16766" passive="#BIO7111" key="0204" name="scholarly-topic">
+                        <desc type="P" n="7">
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
                             </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
+                            </desc>
+                            <state when="1172" type="7">
+                                <desc ana="topic" type="1">
+                                    <desc xml:lang="zh-Hant">詩<label>學科</label>
+                                    </desc>
+                                    <desc xml:lang="en">Poetry<label>Disciplines</label>
+                                    </desc>
+                                </desc>
+                            </state>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,22 +86,22 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="0401" subtype="36" when="1142" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

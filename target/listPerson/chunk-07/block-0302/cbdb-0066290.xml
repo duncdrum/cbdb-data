@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO66290" source="#BIB9602">
     <idno type="TTS">60116</idno>
     <persName type="main">
@@ -59,9 +58,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO66290" passive="#BIO122384" key="176" sortKey="6" name="D" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -71,11 +75,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO34717" passive="#BIO66290" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Family history (jiazhuan) composed by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO34717" passive="#BIO66290" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">家傳為Y所作<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Family history (jiazhuan) composed by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -91,7 +95,7 @@
         <note>河南行省-安豐路-濠州(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="9844"/>
+        <ptr target="ttsmq:9844"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

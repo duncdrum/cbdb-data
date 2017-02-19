@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO26531">
     <idno type="TTS">20795</idno>
     <persName type="main">
@@ -23,21 +22,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO26531" passive="#BIO1137" key="80" sortKey="9999" name="WFB">
-                        <desc>
-                            <desc xml:lang="en">WFB</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之叔伯</desc>
+                            <desc xml:lang="en">WFB</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO26531" passive="#BIO26530" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO26531" passive="#BIO26532" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,12 +56,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO559" passive="#BIO26531" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO559" passive="#BIO26531" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1075"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -61,18 +71,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="06" subtype="118" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20939">
     <idno type="TTS">15211</idno>
     <persName type="main">
@@ -36,27 +35,42 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20939" passive="#BIO20937" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO20939" passive="#BIO20940" key="177" sortKey="9999" name="BS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO20939" passive="#BIO20945" key="130" sortKey="9999" name="FBS-" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從弟</desc>
+                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO20939" passive="#BIO20946" key="253" sortKey="9999" name="BSSS">
-                        <desc>
-                            <desc xml:lang="en">BSSS BG+3</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾姪孫;從曾孫</desc>
+                            <desc xml:lang="en">BSSS BG+3</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -66,27 +80,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO20939" passive="#BIO3102" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO20939" passive="#BIO3102" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1127"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO20939" passive="#BIO3105" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO20939" passive="#BIO3105" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1127"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO20939" passive="#BIO20960" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO20939" passive="#BIO20960" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
@@ -96,12 +112,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">local literatus / gentry</desc>
             <desc xml:lang="zh-Hant">地方士人/鄉紳</desc>
+            <desc xml:lang="en">local literatus / gentry</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">chose not to participate in exams</desc>
             <desc xml:lang="zh-Hant">主動放棄科舉</desc>
+            <desc xml:lang="en">chose not to participate in exams</desc>
         </state>
     </socecStatus>
     <residence ref="#PL12782" key="1">

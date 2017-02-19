@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO109930" source="#BIB9599" resp="selfbio">
     <idno type="TTS">103547</idno>
     <persName type="main">
@@ -42,16 +41,21 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO109930" passive="#BIO109932" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>泰子</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO109930" passive="#BIO109933" key="125" sortKey="2" name="B+" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -61,21 +65,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO34469" passive="#BIO109930" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO34469" passive="#BIO109930" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="P" n="25">
                             <label>淵靜先生小傳（文毅集11/11下）</label>
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO34469" passive="#BIO109930" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO34469" passive="#BIO109930" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="P" n="25">
                             <label>淵靜先生季通行狀（文毅集11/30）</label>
-                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">行狀由Y所作<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>

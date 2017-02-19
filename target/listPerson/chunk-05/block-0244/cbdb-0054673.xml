@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO54673" source="#BIB9602">
     <idno type="TTS">48701</idno>
     <persName type="main">
@@ -110,9 +109,9 @@
     <age>77</age>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-Latn-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>【參考資料: MQWW PoetID #162, HuWenKai #538.】 《清代人物生卒年表》定其生卒年為康熙47年~乾隆49年。 【參考《清代人物生卒年表》#21157.】</note>
     <affiliation>
@@ -121,15 +120,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO54673" passive="#BIO54671" key="251" sortKey="8" name="SD" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">SD Son's daughter</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫女</desc>
+                            <desc xml:lang="en">SD Son's daughter</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO54673" passive="#BIO54675" key="75" sortKey="-1" name="F" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -144,7 +153,7 @@
         <note>江西省-南昌府-新建縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1800"/>
+        <ptr target="ttsmq:1800"/>
     </linkGrp>
     <note type="created" target="#BDLYW">
         <date when="2009-06-23"/>

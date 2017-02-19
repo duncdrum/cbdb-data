@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO47872" source="#BIB7596">
     <idno type="TTS">41933</idno>
     <persName type="main">
@@ -26,10 +25,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO47872" passive="#BIO120185" key="243" sortKey="8" name="SS" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳257</label>
-                            <desc xml:lang="en">SS Son's son</desc>
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -38,12 +42,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">army officer</desc>
             <desc xml:lang="zh-Hant">武將</desc>
+            <desc xml:lang="en">army officer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">militia leader</desc>
             <desc xml:lang="zh-Hant">義軍首領</desc>
+            <desc xml:lang="en">militia leader</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF447">
@@ -91,13 +95,6 @@
             </desc>
         </state>
     </socecStatus>
-    <residence ref="#PL0" key="1" n="1" source="#BIB7596">
-        <state type="natal">
-            <desc xml:lang="zh-Hant">籍貫(基本地址)</desc>
-            <desc xml:lang="en">Basic Affiliation</desc>
-        </state>
-        <note>江表人(宋人傳記資料索引(電子版))。</note>
-    </residence>
     <note type="created" target="#load">
         <date when="2009-02-26"/>
     </note>

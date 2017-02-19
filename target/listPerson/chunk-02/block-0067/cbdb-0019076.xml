@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO19076" source="#BIB7596" resp="selfbio">
     <idno type="TTS">13357</idno>
     <persName type="main">
@@ -41,40 +40,65 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO19076" passive="#BIO19074" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO19076" passive="#BIO19075" key="79" sortKey="9999" name="FB" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#928</label>
-                            <desc xml:lang="en">FB Father's brother</desc>
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO19076" passive="#BIO19077" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO19076" passive="#BIO19078" key="263" sortKey="9999" name="SSSS" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">SSSS</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">玄孫;四世孫</desc>
+                            <desc xml:lang="en">SSSS</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO19076" passive="#BIO19086" key="182" sortKey="5" name="S1" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO19076" passive="#BIO19087" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -84,87 +108,80 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO1598 #BIO19076" key="0101" sortKey="1" name="association">
-                        <desc>
-                            <label>上任德翁序(眉山唐先生集27/8下)</label>
-                            <desc xml:lang="en">[Undefined]<label>Associations (General)</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">未詳<label>社會關係（籠統）</label>
-                            </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO9999" passive="#BIO19076" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Listed in Yuanyou coalition register (元祐黨)<label>Supportive political association</label>
-                            </desc>
+                    <relation mutual="#BIO1598 #BIO19076" key="0101" name="association"/>
+                    <relation active="#BIO9999" passive="#BIO19076" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">入元祐黨籍者<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Listed in Yuanyou coalition register (元祐黨)<label>Supportive political association</label>
+                            </desc>
+                            <state when="1112"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO42373" passive="#BIO19076" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO42373" passive="#BIO19076" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1598" passive="#BIO19076" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO1598" passive="#BIO19076" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3640" passive="#BIO19076" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3640" passive="#BIO19076" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3640" passive="#BIO19076" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
+                    <relation active="#BIO3640" passive="#BIO19076" key="0504" name="prefaces">
+                        <desc type="P" n="23">
                             <label>跋任德翁乘桴集(渭南文集29/8)</label>
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO4001" passive="#BIO19076" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO19076" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO4001" passive="#BIO19076" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
+                    <relation active="#BIO4001" passive="#BIO19076" key="0504" name="prefaces">
+                        <desc type="P" n="23">
                             <label>跋任諫議伯雨帖(鶴山大全集60/5；南宋文範61/21)</label>
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1707" passive="#BIO19076" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Disliked or hated by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO1707" passive="#BIO19076" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">為Y所忌/惡<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Disliked or hated by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3767" passive="#BIO19076" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO3767" passive="#BIO19076" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>任伯雨。(Assoc count=2)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -174,12 +191,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">society member</desc>
             <desc xml:lang="zh-Hant">結社</desc>
+            <desc xml:lang="en">society member</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF326">
@@ -246,11 +263,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1082" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

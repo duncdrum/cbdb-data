@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO10622" source="#BIB7596">
     <idno type="TTS">4927</idno>
     <persName type="main">
@@ -39,9 +38,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO10622" passive="#BIO10621" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -51,37 +55,39 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10622" passive="#BIO1200" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Coalition leader of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO10622" passive="#BIO1200" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">黨魁為Y<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Coalition leader of<label>Supportive political association</label>
+                            </desc>
+                            <state when="1086"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1200" passive="#BIO10622" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO1200" passive="#BIO10622" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="P" n="18">
                             <label>恥為詞賦 不肯舉進士 都轉運使劉庠舉遺逸 召試第一 知湖陽縣</label>
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1200" passive="#BIO10622" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended for decree exam by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO1200" passive="#BIO10622" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦參加制科考試<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended for decree exam by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1079"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1488" passive="#BIO10622" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO1488" passive="#BIO10622" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -91,12 +97,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">rhapsody writer</desc>
             <desc xml:lang="zh-Hant">工於作賦</desc>
+            <desc xml:lang="en">rhapsody writer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF946">
@@ -111,11 +117,11 @@
     <listEvent>
         <event type="0401" subtype="165" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

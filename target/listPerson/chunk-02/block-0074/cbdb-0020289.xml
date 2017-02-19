@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20289">
     <idno type="TTS">14563</idno>
     <persName type="main">
@@ -24,15 +23,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20289" passive="#BIO11382" key="97" sortKey="9999" name="K-1♂">
-                        <desc>
-                            <desc xml:lang="en">Lineage uncle</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">族父</desc>
+                            <desc xml:lang="en">Lineage uncle</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO20289" passive="#BIO20290" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -42,12 +46,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10912" passive="#BIO20289" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO10912" passive="#BIO20289" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="A" n="23">
                             <label>心史序 / 鐵函心史</label>
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -57,8 +61,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">local literatus / gentry</desc>
             <desc xml:lang="zh-Hant">地方士人/鄉紳</desc>
+            <desc xml:lang="en">local literatus / gentry</desc>
         </state>
     </socecStatus>
     <residence ref="#PL100531" key="1">

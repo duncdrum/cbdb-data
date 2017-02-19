@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29702" source="#BIB9602">
     <idno type="TTS">23959</idno>
     <persName type="main">
@@ -39,27 +38,37 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29702" passive="#BIO29653" key="82" sortKey="-2" name="F*" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">F* Father, adopting heir</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">嗣父</desc>
+                            <desc xml:lang="en">F* Father, adopting heir</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO29702" passive="#BIO29653" key="97" sortKey="9999" name="K-1♂" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">Lineage uncle</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">族父</desc>
+                            <desc xml:lang="en">Lineage uncle</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO29702" passive="#BIO29703" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO29702" passive="#BIO118015" key="135" sortKey="0" name="W" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,12 +78,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO29702" passive="#BIO29703" key="0206" sortKey="9" name="scholarly-patronage">
-                        <desc type="A">
+                    <relation active="#BIO29702" passive="#BIO29703" key="0206" name="scholarly-patronage">
+                        <desc type="A" n="9">
                             <label>http://baike.baidu.com/view/213244.htm 嘉庆十一年（1806）阮常生刻《刘端临先生遗书》。嘉庆十三年(1808)，阮常生刻《刘端临先生遗书》续刊本。</label>
-                            <desc xml:lang="en">printed the writings of<label>Academic Patronage</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">刊刻Y之著述<label>學術襄助</label>
+                            </desc>
+                            <desc xml:lang="en">printed the writings of<label>Academic Patronage</label>
                             </desc>
                         </desc>
                     </relation>
@@ -85,11 +94,11 @@
     <listEvent>
         <event type="0502" subtype="157" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">Imperial Academy student: by yin privilege</label>
             <label xml:lang="zh-Hant">監生: 蔭監(含明代官生、恩生，或清代恩廕s生、難廕生)</label>
+            <label xml:lang="en">Imperial Academy student: by yin privilege</label>
             <desc type="1" subtype="29">
-                <desc xml:lang="en">Imperial Academy Students</desc>
                 <desc xml:lang="zh-Hant">監生門</desc>
+                <desc xml:lang="en">Imperial Academy Students</desc>
             </desc>
             <note>廕生</note>
         </event>
@@ -108,7 +117,7 @@
         <note>江蘇省-揚州府-儀徵縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="8767"/>
+        <ptr target="ttsmq:8767"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

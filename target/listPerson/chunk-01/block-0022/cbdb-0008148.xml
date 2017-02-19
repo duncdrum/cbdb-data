@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO8148" source="#BIB7596" resp="selfbio">
     <idno type="TTS">4256</idno>
     <persName type="main">
@@ -23,9 +22,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO8148" passive="#BIO145" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -35,20 +39,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO1271 #BIO8148" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO1271 #BIO8148" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>靖康元年正月自翰林學士承旨除中書侍郎 二月罷 建炎三年起與尚書左丞盧益並奉使金國 旋罷 提舉嵩山崇福宮</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8148" passive="#BIO1271" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Vice-envoy in embassy of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO8148" passive="#BIO1271" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">副Y出使<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Vice-envoy in embassy of<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -58,8 +62,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF229">

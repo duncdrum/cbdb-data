@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13848" source="#BIB7596" resp="selfbio">
     <idno type="TTS">8136</idno>
     <persName type="main">
@@ -28,40 +27,65 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13848" passive="#BIO4001" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13848" passive="#BIO13843" key="75" sortKey="-1" name="F" source="#BIB9158" type="auto-generated">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>本名高斯立，後更名高斯謀。高載共生三子一女，女早卒。</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13848" passive="#BIO13844" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13848" passive="#BIO13844" key="82" sortKey="-2" name="F*" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F* Father, adopting heir</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">嗣父</desc>
+                            <desc xml:lang="en">F* Father, adopting heir</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO13848" passive="#BIO27559" key="76" sortKey="21" name="WF" source="#BIB2286" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13848" passive="#BIO43804" key="111" sortKey="-3" name="M">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -71,19 +95,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO4001" passive="#BIO13848" key="0502" sortKey="21" name="commemorative">
-                        <desc type="P">
-                            <desc xml:lang="en">Ancestral stele or records written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO13848" key="0502" name="commemorative">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">世系碑記由Y所作<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Ancestral stele or records written by<label>Commemorative Texts</label>
+                            </desc>
+                            <state when="1260"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO4001" passive="#BIO13848" key="0508" sortKey="27" name="text-motto" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Study motto (zhaiming) by<label>Mottos</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO13848" key="0508" name="text-motto" source="#BIB7596">
+                        <desc type="P" n="27">
                             <desc xml:lang="zh-Hant">齋、堂銘由Y所作<label>箴銘文字</label>
+                            </desc>
+                            <desc xml:lang="en">Study motto (zhaiming) by<label>Mottos</label>
                             </desc>
                         </desc>
                     </relation>
@@ -93,8 +118,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF598">

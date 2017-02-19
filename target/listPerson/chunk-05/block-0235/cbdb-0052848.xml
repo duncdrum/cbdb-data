@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO52848" source="#BIB7596">
     <idno type="TTS">46900</idno>
     <persName type="main">
@@ -33,9 +32,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO52848" passive="#BIO52833" key="177" sortKey="9999" name="BS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -45,12 +49,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO19123" passive="#BIO52848" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO19123" passive="#BIO52848" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>為袁州教授 江上兵起 文天祥辟知永豐 後軍潰 元兵追及空坑</label>
-                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y所辟<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -79,11 +83,11 @@
     <listEvent>
         <event type="07" subtype="14" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

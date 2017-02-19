@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO108774" source="#BIB9599" resp="selfbio">
     <idno type="TTS">102391</idno>
     <persName type="main">
@@ -28,10 +27,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO108774" passive="#BIO108756" key="243" sortKey="8" name="SS" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>隆孫</label>
-                            <desc xml:lang="en">SS Son's son</desc>
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -41,12 +45,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28431" passive="#BIO108774" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28431" passive="#BIO108774" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>干文傳，徽州路休寧縣尉程君墓表（新安文獻志85/16下）</label>
-                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓表由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -67,11 +71,11 @@
     <listEvent>
         <event type="07" subtype="14" when="1280" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29480" source="#BIB9599" resp="selfbio">
     <idno type="TTS">23738</idno>
     <persName type="main">
@@ -35,15 +34,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29480" passive="#BIO29452" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO29480" passive="#BIO29481" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,39 +62,40 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10803" passive="#BIO29480" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10803" passive="#BIO29480" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>故朝散大夫同知饒州路總管府事史公墓銘（巴西集下/55下）</label>
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28617" passive="#BIO29480" key="0505" sortKey="24" name="text-ritual" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28617" passive="#BIO29480" key="0505" name="text-ritual" source="#BIB9599">
+                        <desc type="P" n="24">
                             <label>故江漢大都督河間路總管兼府尹史公祭文（秋澗大全集64/1下）</label>
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1282"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO28617" passive="#BIO29480" key="0505" sortKey="24" name="text-ritual" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28617" passive="#BIO29480" key="0505" name="text-ritual" source="#BIB9599">
+                        <desc type="P" n="24">
                             <label>哀大都督史公（秋澗大全集16/16）</label>
-                            <desc xml:lang="en">Lamentation prayer written by<label>Ritual Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">哀辭由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Lamentation prayer written by<label>Ritual Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28617" passive="#BIO29480" key="0103" sortKey="3" name="social-interaction" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28617" passive="#BIO29480" key="0103" name="social-interaction" source="#BIB9599">
+                        <desc type="P" n="3">
                             <label>史都督讓總管表（秋澗大全集68/12下）</label>
-                            <desc xml:lang="en">writing in his stead done by<label>Social Interactions</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">由Y代作文<label>社會交際</label>
+                            </desc>
+                            <desc xml:lang="en">writing in his stead done by<label>Social Interactions</label>
                             </desc>
                         </desc>
                     </relation>
@@ -95,12 +105,12 @@
     </affiliation>
     <socecStatus>
         <state type="status" from="1282" to="1282">
-            <desc xml:lang="en">wealth</desc>
             <desc xml:lang="zh-Hant">富豪</desc>
+            <desc xml:lang="en">wealth</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF62911">
@@ -136,11 +146,11 @@
     <listEvent>
         <event type="07" subtype="14" when="1252" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

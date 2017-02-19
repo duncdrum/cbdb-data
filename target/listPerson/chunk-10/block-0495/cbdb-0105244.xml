@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO105244" source="#BIB9599" resp="selfbio">
     <idno type="TTS">98861</idno>
     <persName type="main">
@@ -30,9 +29,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO105244" passive="#BIO105235" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -42,21 +46,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10084" passive="#BIO105244" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10084" passive="#BIO105244" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>元將仕佐郎贛州路同知會昌州事夏侯墓誌銘（吳文正集74/8下）</label>
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10084" passive="#BIO105244" key="0505" sortKey="24" name="text-ritual" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10084" passive="#BIO105244" key="0505" name="text-ritual" source="#BIB9599">
+                        <desc type="P" n="24">
                             <label>祭夏幼安文（吳文正集89/10）</label>
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -77,11 +81,11 @@
     <listEvent>
         <event type="08" subtype="101" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">recommendation</label>
             <label xml:lang="zh-Hant">薦舉 (保任)</label>
+            <label xml:lang="en">recommendation</label>
             <desc type="0" subtype="9">
-                <desc xml:lang="en">Recommendation</desc>
                 <desc xml:lang="zh-Hant">薦舉門</desc>
+                <desc xml:lang="en">Recommendation</desc>
             </desc>
         </event>
     </listEvent>

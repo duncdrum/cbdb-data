@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO33884" source="#BIB9602">
     <idno type="TTS">28137</idno>
     <persName type="main">
@@ -31,15 +30,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO33884" passive="#BIO33885" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO33884" passive="#BIO33886" key="177" sortKey="9999" name="BS">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,28 +58,30 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO30148" passive="#BIO33884" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO30148" passive="#BIO33884" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">為Y所辟<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
+                            </desc>
+                            <state when="1382"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO338522" passive="#BIO33884" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO338522" passive="#BIO33884" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO33884" passive="#BIO28669" key="0603" sortKey="32" name="military-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Surrendered to<label>Oppositional military association</label>
-                            </desc>
+                    <relation active="#BIO33884" passive="#BIO28669" key="0603" name="military-opposition">
+                        <desc type="A" n="32">
                             <desc xml:lang="zh-Hant">降於<label>軍事對抗</label>
                             </desc>
+                            <desc xml:lang="en">Surrendered to<label>Oppositional military association</label>
+                            </desc>
+                            <state when="1382"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -79,12 +90,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">militia leader</desc>
             <desc xml:lang="zh-Hant">義軍首領</desc>
+            <desc xml:lang="en">militia leader</desc>
         </state>
     </socecStatus>
     <residence ref="#PL5049" key="1" source="#BIB9602">
@@ -95,7 +106,7 @@
         <note>河南行省-歸德府-夏邑縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="9954"/>
+        <ptr target="ttsmq:9954"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

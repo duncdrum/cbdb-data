@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO22616" source="#BIB7596" resp="selfbio">
     <idno type="TTS">16886</idno>
     <persName type="main">
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO22616" passive="#BIO11063" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,20 +44,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO27727" passive="#BIO22616" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO27727" passive="#BIO22616" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO22616" passive="#BIO7164" key="0207" sortKey="10" name="artistic-affil." source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO22616" passive="#BIO7164" key="0207" name="artistic-affil." source="#BIB7596">
+                        <desc type="A" n="10">
                             <label>嘗官大理寺丞典郡 著有河洛言敬 與張栻類聚言仁之書相表裏</label>
-                            <desc xml:lang="en">Followed literary style of<label>Literary and Artistic Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">文風效法Y<label>文學藝術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Followed literary style of<label>Literary and Artistic Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -63,8 +67,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF209">

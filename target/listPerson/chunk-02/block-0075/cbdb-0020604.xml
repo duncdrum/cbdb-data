@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20604" source="#BIB7596">
     <idno type="TTS">14878</idno>
     <persName type="main">
@@ -35,15 +34,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20604" passive="#BIO20598" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO20604" passive="#BIO20603" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,20 +57,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO2114" passive="#BIO20604" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO2114" passive="#BIO20604" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
+                            </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1384" passive="#BIO20604" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO1384" passive="#BIO20604" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1023"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -75,16 +80,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF3089">
@@ -211,20 +216,20 @@
     <listEvent>
         <event type="15" subtype="33" when="0998" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: failed jinshi or zhuke exams</label>
             <label xml:lang="zh-Hant">科舉: 舉進士、諸科不第</label>
+            <label xml:lang="en">examination: failed jinshi or zhuke exams</label>
             <desc type="0" subtype="16">
-                <desc xml:lang="en">Failed Pursuit of Office</desc>
                 <desc xml:lang="zh-Hant">求官不得門</desc>
+                <desc xml:lang="en">Failed Pursuit of Office</desc>
             </desc>
         </event>
         <event type="16" subtype="96" when="0998" sortKey="2">
             <head>entry</head>
-            <label xml:lang="en">7 specials: presentation of writings to the throne</label>
             <label xml:lang="zh-Hant">上書獻頌</label>
+            <label xml:lang="en">7 specials: presentation of writings to the throne</label>
             <desc type="0" subtype="17">
-                <desc xml:lang="en">Seven SpecialsOther Method of Entry</desc>
-                <desc xml:lang="zh-Hant">七色補官門其他入仕途徑</desc>
+                <desc xml:lang="zh-Hant">七色補官門</desc>
+                <desc xml:lang="en">Seven Specials</desc>
             </desc>
         </event>
     </listEvent>

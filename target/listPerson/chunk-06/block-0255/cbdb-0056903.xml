@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO56903" source="#BIB9602">
     <idno type="TTS">50835</idno>
     <persName type="main">
@@ -40,9 +39,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO56903" passive="#BIO100180" key="251" sortKey="8" name="SD" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">SD Son's daughter</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫女</desc>
+                            <desc xml:lang="en">SD Son's daughter</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -52,11 +56,11 @@
     <listEvent>
         <event type="0501" subtype="47" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">school: licentiate</label>
             <label xml:lang="zh-Hant">學校: 生員(庠生)</label>
+            <label xml:lang="en">school: licentiate</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
             <note>生員</note>
         </event>
@@ -69,7 +73,7 @@
         <note>浙江省-嘉興府-嘉善縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="109"/>
+        <ptr target="ttsmq:109"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

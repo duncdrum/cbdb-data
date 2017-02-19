@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO17029" source="#BIB24309">
     <idno type="TTS">11315</idno>
     <persName type="main">
@@ -55,39 +54,49 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO17029" passive="#BIO16933" key="2" sortKey="50" name="G-n">
-                        <desc>
-                            <desc xml:lang="en">G-n, lineal ancestor, generation unknown</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">直系祖先</desc>
+                            <desc xml:lang="en">G-n, lineal ancestor, generation unknown</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO17029" passive="#BIO17030" key="277" sortKey="9999" name="G+7">
-                        <desc>
-                            <desc xml:lang="en">G+7</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">七世孫;仍孫</desc>
+                            <desc xml:lang="en">G+7</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO17029" passive="#BIO17034" key="303" sortKey="50" name="G+n">
-                        <desc>
-                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">直系後裔</desc>
+                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO17029" passive="#BIO26103" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO17029" passive="#BIO100535" key="303" sortKey="50" name="G+n" source="#BIB27911" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">直系後裔</desc>
+                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO17029" passive="#BIO134213" key="243" sortKey="8" name="SS" source="#BIB27911" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -96,12 +105,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF0">
@@ -117,20 +126,20 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="13" subtype="54" sortKey="2">
             <head>entry</head>
-            <label xml:lang="en">examination or school: degree granted by grace</label>
             <label xml:lang="zh-Hant">科舉學校: 恩賜出身、特賜出身等</label>
+            <label xml:lang="en">examination or school: degree granted by grace</label>
             <desc type="0" subtype="14">
-                <desc xml:lang="en">Decree of Special Grace</desc>
                 <desc xml:lang="zh-Hant">特旨門</desc>
+                <desc xml:lang="en">Decree of Special Grace</desc>
             </desc>
         </event>
     </listEvent>
@@ -148,7 +157,7 @@
         <note>睦州/清溪(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="429"/>
+        <ptr target="idtf:429"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29256">
     <idno type="TTS">23515</idno>
     <persName type="main">
@@ -17,9 +16,9 @@
     </floruit>
     <trait type="ethnicity" key="131">
         <label>Mongol</label>
-        <desc xml:lang="en">Tübe'en</desc>
-        <desc xml:lang="zh-Latn-alalc97">tu bie yan</desc>
         <desc xml:lang="zh-Hant">土別燕</desc>
+        <desc xml:lang="zh-Latn-alalc97">tu bie yan</desc>
+        <desc xml:lang="en">Tübe'en</desc>
         <note>"C. Atwood note:Tübe'en, surname among the Kereyid; ethno-legal category is Mongol"</note>
     </trait>
     <note>Maige [29256] WDY, 4, 2453.</note>
@@ -29,21 +28,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29256" passive="#BIO29251" key="181" sortKey="7" name="DH">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO29256" passive="#BIO29254" key="62" sortKey="-4" name="FF" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO29256" passive="#BIO29255" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -52,8 +66,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF65677">

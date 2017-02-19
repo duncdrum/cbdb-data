@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO1556" source="#BIB7596" resp="selfbio">
     <idno type="TTS">1554</idno>
     <persName type="main">
@@ -28,15 +27,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO1556" passive="#BIO1571" key="131" sortKey="9999" name="FBS+">
-                        <desc>
-                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄</desc>
+                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO1556" passive="#BIO1575" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,21 +50,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10540" passive="#BIO1556" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10540" passive="#BIO1556" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>宗文曾孫 熙寧七年為西京左藏庫副使 副宋昌言使遼 八年為文思副使 元豐中</label>
-                            <desc xml:lang="en">Chief envoy of vice-envoy<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為使團副使Y的正使<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Chief envoy of vice-envoy<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1556" passive="#BIO1488" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO1556" passive="#BIO1488" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="A" n="15">
                             <label>昌言建議障使東流 或沮之 朝廷遣司馬光往視 如其策 不兩月決口塞</label>
-                            <desc xml:lang="en">offered strategic plans to<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">獻策於Y<label>官場關係（下屬）</label>
+                            </desc>
+                            <desc xml:lang="en">offered strategic plans to<label>Connection via office (subordinate)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -70,8 +74,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF693">
@@ -170,11 +174,11 @@
     <listEvent>
         <event type="06" subtype="118" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
     </listEvent>

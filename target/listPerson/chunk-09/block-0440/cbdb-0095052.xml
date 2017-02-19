@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO95052" source="#BIB24309">
     <idno type="TTS">88724</idno>
     <persName type="main">
@@ -36,24 +35,39 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO95052" passive="#BIO180677" key="75" sortKey="-1" name="F" source="#BIB32033">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>(Tackett) subjectid=141777,targetid=141774,relation=S,Order=3,pageitem=R 13053</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO95052" passive="#BIO180679" key="180" sortKey="5" name="S" source="#BIB32033">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>(Tackett) subjectid=141778,targetid=141777,relation=S,Order=1,pageitem=R 13054</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO95052" passive="#BIO180680" key="180" sortKey="5" name="S" source="#BIB32033">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>(Tackett) subjectid=141779,targetid=141777,relation=S,Order=2,pageitem=R 13055</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,8 +76,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF10307">
@@ -238,7 +252,7 @@
         <note>蘇州</note>
     </residence>
     <linkGrp>
-        <ptr target="3695"/>
+        <ptr target="idtf:3695"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-10-14"/>

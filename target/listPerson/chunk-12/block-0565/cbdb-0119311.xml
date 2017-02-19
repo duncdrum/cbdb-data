@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO119311" source="#BIB9601" resp="selfbio">
     <idno type="TTS">112916</idno>
     <persName type="main">
@@ -25,9 +24,9 @@
     </floruit>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-Latn-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <affiliation>
         <note>
@@ -35,21 +34,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO119311" passive="#BIO54694" key="163" sortKey="16" name="W2" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">W2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">第二任妻</desc>
+                            <desc xml:lang="en">W2</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO119311" passive="#BIO54695" key="76" sortKey="21" name="WF" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO119311" passive="#BIO120339" key="169" sortKey="4" name="Z-" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">Z–</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妹</desc>
+                            <desc xml:lang="en">Z–</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,11 +63,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO54694" passive="#BIO119311" key="0504" sortKey="23" name="prefaces" source="#BIB9601">
-                        <desc type="A">
-                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO54694" passive="#BIO119311" key="0504" name="prefaces" source="#BIB9601">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -72,7 +76,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="3625"/>
+        <ptr target="mqww:3625"/>
     </linkGrp>
     <note type="created" target="#BDSXH">
         <date when="2011-07-06"/>

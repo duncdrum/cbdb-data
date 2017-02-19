@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO8137" source="#BIB7596" resp="selfbio">
     <idno type="TTS">4245</idno>
     <persName type="main">
@@ -31,24 +30,24 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO8137" passive="#BIO119832" key="183" sortKey="5" name="S2" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2172</label>
-                            <desc xml:lang="en">S2</desc>
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO8137" passive="#BIO119833" key="182" sortKey="5" name="S1" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2172</label>
-                            <desc xml:lang="en">S1, Son, first</desc>
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO8137" passive="#BIO119834" key="184" sortKey="5" name="S3" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2172</label>
-                            <desc xml:lang="en">S3</desc>
                             <desc xml:lang="zh-Hant">三子</desc>
+                            <desc xml:lang="en">S3</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -58,45 +57,46 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO8137" passive="#BIO1396" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO8137" passive="#BIO1396" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1131"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO38818" passive="#BIO8137" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO38818" passive="#BIO8137" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO42354" passive="#BIO8137" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO42354" passive="#BIO8137" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>與丁立並以舟師擾楚泗間 杜充招之 以青為水軍統制 眾至數萬</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO42354" passive="#BIO8137" key="0603" sortKey="32" name="military-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
-                            </desc>
+                    <relation active="#BIO42354" passive="#BIO8137" key="0603" name="military-opposition">
+                        <desc type="A" n="32">
                             <desc xml:lang="zh-Hant">抵禦或討平叛軍Y<label>軍事對抗</label>
                             </desc>
+                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO46625 #BIO8137" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO46625 #BIO8137" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="M" n="31">
                             <label>與濮州王善合軍 皆受宗澤招安 杜充惡用強悍 恐難制 令馬臯李寶陰襲之</label>
-                            <desc xml:lang="en">Fought together<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">戰友<label>軍事支持</label>
+                            </desc>
+                            <desc xml:lang="en">Fought together<label>Supportive military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -106,8 +106,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF107">
@@ -252,11 +252,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1097" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

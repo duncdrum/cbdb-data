@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO118360" source="#BIB9601">
     <idno type="TTS">111972</idno>
     <persName type="main">
@@ -21,9 +20,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO118360" passive="#BIO118361" key="134" sortKey="0" name="H" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -33,11 +37,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO118360" passive="#BIO30148" key="0103" sortKey="3" name="social-interaction" source="#BIB9601">
-                        <desc type="A">
-                            <desc xml:lang="en">Recognized the virtue of<label>Social Interactions</label>
-                            </desc>
+                    <relation active="#BIO118360" passive="#BIO30148" key="0103" name="social-interaction" source="#BIB9601">
+                        <desc type="A" n="3">
                             <desc xml:lang="zh-Hant">節行為Y所稱道<label>社會交際</label>
+                            </desc>
+                            <desc xml:lang="en">Recognized the virtue of<label>Social Interactions</label>
                             </desc>
                         </desc>
                     </relation>
@@ -46,7 +50,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="2467"/>
+        <ptr target="mqww:2467"/>
     </linkGrp>
     <note type="created" target="#BDSXH">
         <date when="2011-05-28"/>

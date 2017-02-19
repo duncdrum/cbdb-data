@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO94354" source="#BIB24309">
     <idno type="TTS">88026</idno>
     <persName type="main">
@@ -52,9 +51,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO94354" passive="#BIO94361" key="75" sortKey="-1" name="F" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -63,8 +67,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF11099">
@@ -210,11 +214,11 @@
     <listEvent>
         <event type="0403" subtype="286" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">Decree examination: you dao ke</label>
             <label xml:lang="zh-Hant">科舉制舉: 有道科</label>
+            <label xml:lang="en">Decree examination: you dao ke</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -226,7 +230,7 @@
         <note>渤海/蓨(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="2886"/>
+        <ptr target="idtf:2886"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-10-14"/>

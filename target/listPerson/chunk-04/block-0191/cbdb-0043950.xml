@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO43950" source="#BIB7596">
     <idno type="TTS">38056</idno>
     <persName type="main">
@@ -29,10 +28,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO43950" passive="#BIO119435" key="135" sortKey="0" name="W" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1761</label>
-                            <desc xml:lang="en">W Wife</desc>
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -42,11 +46,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO43951" passive="#BIO43950" key="0603" sortKey="32" name="military-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
-                            </desc>
+                    <relation active="#BIO43951" passive="#BIO43950" key="0603" name="military-opposition">
+                        <desc type="A" n="32">
                             <desc xml:lang="zh-Hant">抵禦或討平叛軍Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -56,12 +60,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">dynastic martyr</desc>
             <desc xml:lang="zh-Hant">死國難</desc>
+            <desc xml:lang="en">dynastic martyr</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">soldier</desc>
             <desc xml:lang="zh-Hant">軍卒</desc>
+            <desc xml:lang="en">soldier</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF1261">

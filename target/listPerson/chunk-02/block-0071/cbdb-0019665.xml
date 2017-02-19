@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO19665" source="#BIB7596" resp="selfbio">
     <idno type="TTS">13945</idno>
     <persName type="main">
@@ -37,27 +36,37 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO19665" passive="#BIO1038" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO19665" passive="#BIO3658" key="332" sortKey="7" name="D1H">
-                        <desc>
-                            <desc xml:lang="en">D1H First daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長女婿</desc>
+                            <desc xml:lang="en">D1H First daughter's husband</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO19665" passive="#BIO19666" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO19665" passive="#BIO37191" key="333" sortKey="7" name="D2H">
-                        <desc>
-                            <desc xml:lang="en">D2H</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">二女婿</desc>
+                            <desc xml:lang="en">D2H</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -67,20 +76,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO10865 #BIO19665" key="0510" sortKey="29" name="text-occasional">
-                        <desc type="M">
-                            <desc xml:lang="en">Poems composed with<label>Occasional Texts</label>
-                            </desc>
+                    <relation mutual="#BIO10865 #BIO19665" key="0510" name="text-occasional">
+                        <desc type="M" n="29">
                             <desc xml:lang="zh-Hant">相唱和<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Poems composed with<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1175"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO10865 #BIO19665" key="0510" sortKey="29" name="text-occasional" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO10865 #BIO19665" key="0510" name="text-occasional" source="#BIB7596">
+                        <desc type="M" n="29">
                             <label>累遷迪功郎淮西安撫使準備差遣 工詞章 與蕭之敏唱和</label>
-                            <desc xml:lang="en">Poems composed with<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">相唱和<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Poems composed with<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -90,12 +100,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">ci lyric writer</desc>
             <desc xml:lang="zh-Hant">詞人</desc>
+            <desc xml:lang="en">ci lyric writer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF134">

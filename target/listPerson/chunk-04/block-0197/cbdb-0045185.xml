@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO45185" source="#BIB7596">
     <idno type="TTS">39264</idno>
     <persName type="main">
@@ -29,10 +28,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO45185" passive="#BIO119480" key="75" sortKey="-1" name="F" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1755</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -42,28 +46,28 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO3257" passive="#BIO45185" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3257" passive="#BIO45185" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO19462 #BIO45185" key="0402" sortKey="14" name="office-equal">
-                        <desc type="M">
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation mutual="#BIO19462 #BIO45185" key="0402" name="office-equal">
+                        <desc type="M" n="14">
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO19462" passive="#BIO45185" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO19462" passive="#BIO45185" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>入太學 魁上舍 建炎初以右武大夫副魏行可金 至虜廷 上書酋帥</label>
-                            <desc xml:lang="en">Chief envoy of vice-envoy<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為使團副使Y的正使<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Chief envoy of vice-envoy<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>

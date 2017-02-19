@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO28090">
     <idno type="TTS">22349</idno>
     <persName type="main">
@@ -30,15 +29,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO28090" passive="#BIO9002" key="24" sortKey="9999" name="G-12">
-                        <desc>
-                            <desc xml:lang="en">G-12</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">十二世祖</desc>
+                            <desc xml:lang="en">G-12</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO28090" passive="#BIO28061" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,20 +52,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28090" passive="#BIO10122" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO28090" passive="#BIO10122" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1370"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35558" passive="#BIO28090" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35558" passive="#BIO28090" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>金匱衍義跋（儀顧堂集17/12下）（作：趙良）</label>
-                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">詩文跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -71,18 +76,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">physician</desc>
             <desc xml:lang="zh-Hant">行醫</desc>
+            <desc xml:lang="en">physician</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="90" subtype="5" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">promotion from clerical positions</label>
             <label xml:lang="zh-Hant">胥吏出職</label>
+            <label xml:lang="en">promotion from clerical positions</label>
             <desc type="0" subtype="18">
-                <desc xml:lang="en">Other Method of Entry</desc>
                 <desc xml:lang="zh-Hant">其他入仕途徑</desc>
+                <desc xml:lang="en">Other Method of Entry</desc>
             </desc>
         </event>
     </listEvent>

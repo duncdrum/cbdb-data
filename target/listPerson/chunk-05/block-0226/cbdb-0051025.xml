@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO51025" source="#BIB7596">
     <idno type="TTS">45078</idno>
     <persName type="main">
@@ -21,35 +20,50 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO51025" passive="#BIO11844" key="243" sortKey="8" name="SS" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1783</label>
-                            <desc xml:lang="en">SS Son's son</desc>
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO51025" passive="#BIO15763" key="28" sortKey="9999" name="G-9" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">G-9</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">九世祖;太高曾祖</desc>
+                            <desc xml:lang="en">G-9</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO51025" passive="#BIO50737" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO51025" passive="#BIO51020" key="126" sortKey="3" name="B-" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">B– Brother, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">弟</desc>
+                            <desc xml:lang="en">B– Brother, younger</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO51025" passive="#BIO119815" key="77" sortKey="9999" name="MB" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1781</label>
-                            <desc xml:lang="en">MB Mother's brother</desc>
                             <desc xml:lang="zh-Hant">母舅</desc>
+                            <desc xml:lang="en">MB Mother's brother</desc>
+                            <trait type="mourning" subtype="M">
+                                <label xml:lang="zh-Hant">小功</label>
+                                <desc xml:lang="zh-Hant">外服</desc>
+                                <desc xml:lang="en">Matrilateral Kin</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,12 +73,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO37839 #BIO51025" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO37839 #BIO51025" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="M" n="32">
                             <label>元兵逼浙東 乃命與檡出瑞安 與守臣方洪共任備禦 事敗 與檡等率眾巷戰</label>
-                            <desc xml:lang="en">in offering assistance went together with<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">與Y共赴難<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">in offering assistance went together with<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -94,11 +108,11 @@
     <listEvent>
         <event type="02" subtype="64" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">rank or office by inheritance</label>
             <label xml:lang="zh-Hant">世襲</label>
+            <label xml:lang="en">rank or office by inheritance</label>
             <desc type="0" subtype="3">
-                <desc xml:lang="en">Kinship</desc>
                 <desc xml:lang="zh-Hant">血親門</desc>
+                <desc xml:lang="en">Kinship</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO39836" source="#BIB7596">
     <idno type="TTS">34041</idno>
     <persName type="main">
@@ -40,9 +39,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO39836" passive="#BIO39841" key="177" sortKey="9999" name="BS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -52,45 +56,45 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO39836" passive="#BIO19123" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Supported<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO39836" passive="#BIO19123" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39836" passive="#BIO21148" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO39836" passive="#BIO21148" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="A" n="15">
                             <label>應文天祥義檄 與侄天與聚義兵勤王 浙東提刑杜淵辟為部將 天與副之 德祐二年元兵下台州</label>
-                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39843" passive="#BIO39836" key="0506" sortKey="25" name="text-biography" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO39843" passive="#BIO39836" key="0506" name="text-biography" source="#BIB7596">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39836" passive="#BIO39844" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">wrote inscription for tomb of<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO39836" passive="#BIO39844" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="A" n="22">
                             <desc xml:lang="zh-Hant">題Y之墓<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">wrote inscription for tomb of<label>Epitaphs</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39836" passive="#BIO19123" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO39836" passive="#BIO19123" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="A" n="31">
                             <label>黃巖人 驍勇絕倫 應文天祥義檄 與侄天與聚義兵勤王 浙東提刑杜淵辟為部將</label>
-                            <desc xml:lang="en">gave miitary support to/surrendered to<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">軍事支持Y<label>軍事支持</label>
+                            </desc>
+                            <desc xml:lang="en">gave miitary support to/surrendered to<label>Supportive military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -100,8 +104,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">dynastic martyr</desc>
             <desc xml:lang="zh-Hant">死國難</desc>
+            <desc xml:lang="en">dynastic martyr</desc>
         </state>
     </socecStatus>
     <listEvent>
@@ -110,11 +114,11 @@
         </event>
         <event type="07" subtype="14" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

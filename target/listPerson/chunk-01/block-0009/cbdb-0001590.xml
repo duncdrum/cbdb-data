@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO1590" source="#BIB7596" resp="selfbio">
     <idno type="TTS">1588</idno>
     <persName type="main">
@@ -39,33 +38,58 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO1590" passive="#BIO1134" key="63" sortKey="22" name="WFF">
-                        <desc>
-                            <desc xml:lang="en">WFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之祖父</desc>
+                            <desc xml:lang="en">WFF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1590" passive="#BIO3820" key="243" sortKey="8" name="SS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1590" passive="#BIO11845" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1590" passive="#BIO11846" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO1590" passive="#BIO11847" key="243" sortKey="8" name="SS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -75,81 +99,83 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1590" passive="#BIO1163" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO1590" passive="#BIO1163" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO2049" passive="#BIO1590" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO2049" passive="#BIO1590" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>輒發常平米賑饑 擢殿中侍御史 時樞密湯鵬舉植黨置臺諫 義問累章劾罷鵬舉及其黨周方崇等 遷吏部侍郎</label>
-                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1590" passive="#BIO3410" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO1590" passive="#BIO3410" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1158"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO19089" passive="#BIO1590" key="0405" sortKey="17" name="political-support">
-                        <desc type="P">
+                    <relation active="#BIO19089" passive="#BIO1590" key="0405" name="political-support">
+                        <desc type="P" n="17">
                             <label>秦檜死，朝廷召湯鵬舉為臺官，盡言投啟賀之</label>
-                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">得到Y的支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1590" passive="#BIO3521" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO1590" passive="#BIO3521" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <label>召鵬舉為殿中侍御史 請黜檜姻黨 而釋趙鼎子汾及李孟堅、王之奇等 累官御史中丞 知樞密院事</label>
-                            <desc xml:lang="en">Supported<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">支持<label>政治奧援</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO1590" passive="#BIO13756" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
-                            <label>召鵬舉為殿中侍御史 請黜檜姻黨 而釋趙鼎子汾及李孟堅、王之奇等 累官御史中丞 知樞密院事</label>
                             <desc xml:lang="en">Supported<label>Supportive political association</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO1590" passive="#BIO13756" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
+                            <label>召鵬舉為殿中侍御史 請黜檜姻黨 而釋趙鼎子汾及李孟堅、王之奇等 累官御史中丞 知樞密院事</label>
                             <desc xml:lang="zh-Hant">支持<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Supported<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1590" passive="#BIO8008" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO1590" passive="#BIO8008" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>擢知當塗 累官轉運副使 秦檜死 朝廷懲言路壅塞之弊 召鵬舉為殿中侍御史</label>
-                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">反對/不支持Y的政策<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1787" passive="#BIO1590" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO1787" passive="#BIO1590" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1158"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1590" passive="#BIO19089" key="0510" sortKey="29" name="text-occasional" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO1590" passive="#BIO19089" key="0510" name="text-occasional" source="#BIB7596">
+                        <desc type="P" n="29">
                             <label>論事慷慨 秦檜死 朝廷召湯鵬舉為臺官 盡言投啟賀之云：「每愧朱雲之請劍 未聞林甫之斵棺</label>
-                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y處收到賀詞 (occasion)<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -159,12 +185,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF123">
@@ -320,11 +346,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1118" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

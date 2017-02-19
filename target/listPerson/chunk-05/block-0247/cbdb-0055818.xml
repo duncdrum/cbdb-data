@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO55818" source="#BIB9601" resp="selfbio">
     <idno type="TTS">49788</idno>
     <persName type="main">
@@ -35,15 +34,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO55818" passive="#BIO29653" key="62" sortKey="-4" name="FF" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO55818" passive="#BIO55810" key="169" sortKey="4" name="Z-" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">Z–</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妹</desc>
+                            <desc xml:lang="en">Z–</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,11 +57,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO55818" passive="#BIO55810" key="0506" sortKey="25" name="text-biography" source="#BIB9601">
-                        <desc type="A">
-                            <desc xml:lang="en">Biographer of<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO55818" passive="#BIO55810" key="0506" name="text-biography" source="#BIB9601">
+                        <desc type="A" n="25">
                             <desc xml:lang="zh-Hant">為Y作傳<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biographer of<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -66,7 +70,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="4676"/>
+        <ptr target="mqww:4676"/>
     </linkGrp>
     <note type="created" target="#BDLYW">
         <date when="2009-11-13"/>

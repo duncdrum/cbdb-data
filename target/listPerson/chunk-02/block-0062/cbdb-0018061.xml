@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO18061">
     <idno type="TTS">12343</idno>
     <persName type="main">
@@ -24,28 +23,43 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO18061" passive="#BIO5018" key="327" sortKey="6" name="D1" source="#BIB7596">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>賀景思</label>
-                            <desc xml:lang="en">D1 Daughter, first</desc>
                             <desc xml:lang="zh-Hant">長女</desc>
+                            <desc xml:lang="en">D1 Daughter, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO18061" passive="#BIO9001" key="181" sortKey="7" name="DH">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO18061" passive="#BIO18062" key="418" sortKey="10000" name="BSSD">
-                        <desc>
-                            <desc xml:lang="en">BSSD</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾姪孫女</desc>
+                            <desc xml:lang="en">BSSD</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">在室緦麻 出嫁無服</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO18061" passive="#BIO18063" key="253" sortKey="9999" name="BSSS">
-                        <desc>
-                            <desc xml:lang="en">BSSS BG+3</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾姪孫;從曾孫</desc>
+                            <desc xml:lang="en">BSSS BG+3</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -54,8 +68,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <residence ref="#PL14748" key="1">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO40455" source="#BIB9426">
     <idno type="TTS">34646</idno>
     <persName type="main">
@@ -37,15 +36,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO40455" passive="#BIO137119" key="138" sortKey="16" name="W1" source="#BIB9426">
-                        <desc>
-                            <desc xml:lang="en">W1 Wife, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">第一任妻</desc>
+                            <desc xml:lang="en">W1 Wife, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO40455" passive="#BIO138647" key="111" sortKey="-3" name="M" source="#BIB9426">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,27 +59,27 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO40457 #BIO40455" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO40457 #BIO40455" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO40460 #BIO40455" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO40460 #BIO40455" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO40462 #BIO40455" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO40462 #BIO40455" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -85,8 +89,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF3388">
@@ -106,14 +110,20 @@
     <listEvent>
         <event type="0401" subtype="165" when="1256" sortKey="1" source="#BIB9426">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="field">詩</note>
             <note type="rank">第五甲第一百四十八人</note>
+            <note type="parental-status">
+                <trait type="parental-status" key="3">
+                    <label xml:lang="zh-Hant">偏侍</label>
+                    <label xml:lang="zh-Latn-alalc97">Only one is alive</label>
+                </trait>
+            </note>
             <note>Household: 祖為戶; from the 寶祐四年登科錄</note>
         </event>
     </listEvent>

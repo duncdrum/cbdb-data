@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO12944" source="#BIB7596" resp="selfbio">
     <idno type="TTS">7241</idno>
     <persName type="main">
@@ -30,15 +29,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO12944" passive="#BIO7097" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO12944" passive="#BIO12947" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,29 +52,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO40721" passive="#BIO12944" key="0103" sortKey="3" name="social-interaction">
-                        <desc type="P">
-                            <desc xml:lang="en">Virtue recognized by<label>Social Interactions</label>
-                            </desc>
+                    <relation active="#BIO40721" passive="#BIO12944" key="0103" name="social-interaction">
+                        <desc type="P" n="3">
                             <desc xml:lang="zh-Hant">稱道Y之節行<label>社會交際</label>
                             </desc>
+                            <desc xml:lang="en">Virtue recognized by<label>Social Interactions</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7211" passive="#BIO12944" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO7211" passive="#BIO12944" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="P" n="6">
                             <label>又作姑蘇百題 每題箋釋其事 范成大修志多采之 慶歷中官至尚書虞部員外郎 分司南京</label>
-                            <desc xml:lang="en">Book relied on by<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">著述為Y所採<label>學術交往</label>
                             </desc>
+                            <desc xml:lang="en">Book relied on by<label>Intellectual Affiliations</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO12944" passive="#BIO40721" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO12944" passive="#BIO40721" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="A" n="22">
                             <label>刺血為書 刻於墓下 郎中楊備表之</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -80,8 +84,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">
@@ -139,11 +143,11 @@
     <listEvent>
         <event type="06" subtype="118" sortKey="1" role="#BIO12944">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
     </listEvent>

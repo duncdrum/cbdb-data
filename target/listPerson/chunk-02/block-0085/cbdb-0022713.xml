@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO22713" source="#BIB7596" resp="selfbio">
     <idno type="TTS">16982</idno>
     <persName type="main">
@@ -22,9 +21,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO22713" passive="#BIO2058" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -34,20 +38,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10566" passive="#BIO22713" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
+                    <relation active="#BIO10566" passive="#BIO22713" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <label>列名於楊萬里淳熙十二年《薦士錄》</label>
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1200"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO11391" passive="#BIO22713" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">School stele written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO11391" passive="#BIO22713" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">學記（書院記）由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">School stele written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -57,8 +62,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF3148">

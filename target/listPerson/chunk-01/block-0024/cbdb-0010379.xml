@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO10379" source="#BIB7596" resp="selfbio">
     <idno type="TTS">4685</idno>
     <persName type="main">
@@ -32,51 +31,61 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO10379" passive="#BIO8113" key="243" sortKey="8" name="SS" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO10379" passive="#BIO8114" key="183" sortKey="5" name="S2">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO10379" passive="#BIO10378" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO10379" passive="#BIO10380" key="184" sortKey="5" name="S3">
-                        <desc>
-                            <desc xml:lang="en">S3</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">三子</desc>
+                            <desc xml:lang="en">S3</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO10379" passive="#BIO10381" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO10379" passive="#BIO18092" key="185" sortKey="5" name="S4">
-                        <desc>
-                            <desc xml:lang="en">S4</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">四子</desc>
+                            <desc xml:lang="en">S4</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO10379" passive="#BIO18133" key="191" sortKey="5" name="S5">
-                        <desc>
-                            <desc xml:lang="en">S5</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">五子</desc>
+                            <desc xml:lang="en">S5</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO10379" passive="#BIO26752" key="244" sortKey="8" name="SDH">
-                        <desc>
-                            <desc xml:lang="en">SDH</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫女婿</desc>
+                            <desc xml:lang="en">SDH</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -86,12 +95,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10379" passive="#BIO3623" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Menren of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO10379" passive="#BIO3623" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之門人<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Menren of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1120"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -100,8 +110,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">filial son/daughter</desc>
             <desc xml:lang="zh-Hant">孝子/孝女</desc>
+            <desc xml:lang="en">filial son/daughter</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF287">

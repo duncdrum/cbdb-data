@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO131649" source="#BIB27147" resp="selfbio">
     <idno type="TTS">124522</idno>
     <persName type="main">
@@ -48,10 +47,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO131649" passive="#BIO131631" key="180" sortKey="5" name="S" source="#BIB32078" type="auto-generated">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>source uses the 字 of father (養之)</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -61,44 +65,35 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO127987" passive="#BIO131649" key="0503" sortKey="22" name="epitaphs" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO127987" passive="#BIO131649" key="0503" name="epitaphs" source="#BIB27147">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓表由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO131631" passive="#BIO131649" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO131631" passive="#BIO131649" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">行狀由Y所作<label>傳記文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO131631" passive="#BIO131649" source="#BIB27147">
-                        <desc>
-                            <desc xml:lang="en">
-                                <label/>
-                            </desc>
-                            <desc xml:lang="zh-Hant">
-                                <label/>
+                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
+                    <relation active="#BIO131631" passive="#BIO131649" name="unkown"/>
                 </listRelation>
             </listPerson>
         </note>
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">academy (shuyuan) director</desc>
             <desc xml:lang="zh-Hant">書院山長</desc>
+            <desc xml:lang="en">academy (shuyuan) director</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian scholar (Wang Yangming school)</desc>
             <desc xml:lang="zh-Hant">理學家 — 陽明學派</desc>
+            <desc xml:lang="en">Neo-Confucian scholar (Wang Yangming school)</desc>
         </state>
     </socecStatus>
     <residence ref="#PL5375" key="1" n="1" source="#BIB27147">

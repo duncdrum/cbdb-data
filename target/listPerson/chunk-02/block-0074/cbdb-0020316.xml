@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20316" source="#BIB7596" resp="selfbio">
     <idno type="TTS">14590</idno>
     <persName type="main">
@@ -46,9 +45,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20316" passive="#BIO14974" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -58,37 +62,53 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11825" passive="#BIO20316" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO11825" passive="#BIO20316" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>翰墨全書序（勿軒集1/8）</label>
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO11825 #BIO20316" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="M">
-                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation mutual="#BIO11825 #BIO20316" key="0204" name="scholarly-topic">
+                        <desc type="M" n="7">
                             <desc xml:lang="zh-Hant">論學<label>學術主題相近</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation mutual="#BIO21919 #BIO20316" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="M">
                             <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">論學<label>學術主題相近</label>
-                            </desc>
+                            <state when="1304" type="2">
+                                <desc ana="topic" type="1">
+                                    <desc xml:lang="zh-Hant">道<label>學科</label>
+                                    </desc>
+                                    <desc xml:lang="en">The Way (dao)<label>Disciplines</label>
+                                    </desc>
+                                </desc>
+                            </state>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO21919 #BIO20316" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO21919 #BIO20316" key="0204" name="scholarly-topic">
+                        <desc type="M" n="7">
+                            <desc xml:lang="zh-Hant">論學<label>學術主題相近</label>
+                            </desc>
+                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
+                            </desc>
+                            <state when="1304" type="2">
+                                <desc ana="topic" type="1">
+                                    <desc xml:lang="zh-Hant">道<label>學科</label>
+                                    </desc>
+                                    <desc xml:lang="en">The Way (dao)<label>Disciplines</label>
+                                    </desc>
+                                </desc>
+                            </state>
+                        </desc>
+                    </relation>
+                    <relation mutual="#BIO21919 #BIO20316" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="M" n="6">
                             <label>授建陽主簿 宋亡不仕 退與熊禾、胡一桂講道於洪源山 建化龍書院於莒潭 聚徒講授</label>
-                            <desc xml:lang="en">Shared "same way" with<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同道<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Shared "same way" with<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -98,12 +118,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">yinju (or yinde)</desc>
             <desc xml:lang="zh-Hant">[隱居（有隱德）]</desc>
+            <desc xml:lang="en">yinju (or yinde)</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF989">
@@ -128,11 +148,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1274" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13963" source="#BIB7596" resp="selfbio">
     <idno type="TTS">8251</idno>
     <persName type="main">
@@ -30,33 +29,48 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13963" passive="#BIO321" key="125" sortKey="2" name="B+" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO13963" passive="#BIO3153" key="176" sortKey="6" name="D" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13963" passive="#BIO9004" key="181" sortKey="7" name="DH" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13963" passive="#BIO45486" key="63" sortKey="22" name="WFF" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">WFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之祖父</desc>
+                            <desc xml:lang="en">WFF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13963" passive="#BIO45488" key="49" sortKey="23" name="WFFF" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">WFFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之曾祖</desc>
+                            <desc xml:lang="en">WFFF</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -66,12 +80,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO13963" passive="#BIO7019" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO13963" passive="#BIO7019" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>年五十五 穎有風節 張堯封嘗從穎學文 後其女入禁中甚被寵 求編次其父稿</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
@@ -81,16 +95,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">filial son/daughter</desc>
             <desc xml:lang="zh-Hant">孝子/孝女</desc>
+            <desc xml:lang="en">filial son/daughter</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">fond of learning</desc>
             <desc xml:lang="zh-Hant">好學</desc>
+            <desc xml:lang="en">fond of learning</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF27">
@@ -155,11 +169,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

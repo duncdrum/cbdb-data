@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20691" source="#BIB7596" resp="selfbio">
     <idno type="TTS">14965</idno>
     <persName type="main">
@@ -34,9 +33,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20691" passive="#BIO20690" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,28 +50,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1762" passive="#BIO20691" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO1762" passive="#BIO20691" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1046"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO20691" passive="#BIO1762" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="P">
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation active="#BIO20691" passive="#BIO1762" key="0204" name="scholarly-topic">
+                        <desc type="P" n="7">
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
                             </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1762" passive="#BIO20691" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO1762" passive="#BIO20691" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>入學齒諸生 為人喜酒色 王安石以禮法開之 大悟 因從安石學作進士</label>
-                            <desc xml:lang="en">Criticized by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y批評<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Criticized by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -77,18 +82,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">died before taking office</desc>
             <desc xml:lang="zh-Hant">未仕而卒</desc>
+            <desc xml:lang="en">died before taking office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="0401" subtype="26" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: general</label>
             <label xml:lang="zh-Hant">科舉 (籠統)</label>
+            <label xml:lang="en">examination: general</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>慶曆六年，從安石入京師待進士舉，旋病卒，年三十。</note>
         </event>

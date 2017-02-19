@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO52542" source="#BIB7596">
     <idno type="TTS">46595</idno>
     <persName type="main">
@@ -27,10 +26,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO52542" passive="#BIO121611" key="75" sortKey="-1" name="F" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳2176</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,12 +44,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11689" passive="#BIO52542" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO11689" passive="#BIO52542" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>累官檢校太尉兼侍中 出為山南節度使 王全斌平興元 擒保正驛送闕下 太祖升殿勞問</label>
-                            <desc xml:lang="en">Arrested by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y逮捕<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Arrested by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -55,8 +59,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">army officer</desc>
             <desc xml:lang="zh-Hant">武將</desc>
+            <desc xml:lang="en">army officer</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF197">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO12262" source="#BIB24309">
     <idno type="TTS">6562</idno>
     <persName type="main">
@@ -28,21 +27,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO12262" passive="#BIO12261" key="75" sortKey="-1" name="F" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO12262" passive="#BIO33111" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO12262" passive="#BIO33112" key="183" sortKey="5" name="S2">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -51,12 +55,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: chief councilor</desc>
             <desc xml:lang="zh-Hant">[宰相]</desc>
+            <desc xml:lang="en">office: chief councilor</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF10847">
@@ -263,7 +267,7 @@
         <note>江州(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="3006"/>
+        <ptr target="idtf:3006"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

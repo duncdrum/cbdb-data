@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO114909" source="#BIB9599" resp="selfbio">
     <idno type="TTS">108526</idno>
     <persName type="main">
@@ -22,9 +21,9 @@
     </floruit>
     <trait type="ethnicity" key="172">
         <label>Semuren</label>
-        <desc xml:lang="en">Önggüd</desc>
-        <desc xml:lang="zh-Latn-alalc97">wang gu</desc>
         <desc xml:lang="zh-Hant">汪古</desc>
+        <desc xml:lang="zh-Latn-alalc97">wang gu</desc>
+        <desc xml:lang="en">Önggüd</desc>
         <note>"C. Atwood note:Önggüd(~Öng'üt in the Uyghur reading), also know as the ""White Tatars"" 白達達; descendants of the Shatuo 沙陀; Turco-Sogdian in origin from Central Inner Mongolia; ethno-legal category Semuren."</note>
     </trait>
     <affiliation>
@@ -33,30 +32,45 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO114909" passive="#BIO113856" key="135" sortKey="0" name="W" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>闊里吉思</label>
-                            <desc xml:lang="en">W Wife</desc>
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO114909" passive="#BIO114691" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO114909" passive="#BIO115113" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>闊里古思子</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO114909" passive="#BIO115124" key="126" sortKey="3" name="B-" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>闊里吉思弟</label>
-                            <desc xml:lang="en">B– Brother, younger</desc>
                             <desc xml:lang="zh-Hant">弟</desc>
+                            <desc xml:lang="en">B– Brother, younger</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -66,12 +80,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO29061" passive="#BIO114909" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO29061" passive="#BIO114909" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>閻復，駙馬高唐忠獻王碑（國朝文類23/20）</label>
-                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">神道碑由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>

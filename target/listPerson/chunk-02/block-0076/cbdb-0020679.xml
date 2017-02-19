@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20679" source="#BIB24309">
     <idno type="TTS">14953</idno>
     <persName type="main">
@@ -38,15 +37,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20679" passive="#BIO20678" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO20679" passive="#BIO20680" key="303" sortKey="50" name="G+n">
-                        <desc>
-                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">直系後裔</desc>
+                            <desc xml:lang="en">G+n, lineal descendant, generation undefined</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,12 +59,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: chief councilor</desc>
             <desc xml:lang="zh-Hant">[宰相]</desc>
+            <desc xml:lang="en">office: chief councilor</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF11442">
@@ -217,7 +221,7 @@
         <note>清河/茌平(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="79"/>
+        <ptr target="idtf:79"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

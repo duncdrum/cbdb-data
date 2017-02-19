@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO24932" source="#BIB7596" resp="selfbio">
     <idno type="TTS">19198</idno>
     <persName type="main">
@@ -23,9 +22,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO24932" passive="#BIO24443" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -35,20 +39,22 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO0" passive="#BIO24932" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Listed in Yuanyou coalition register (元祐黨)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO0" passive="#BIO24932" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">入元祐黨籍者<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Listed in Yuanyou coalition register (元祐黨)<label>Supportive political association</label>
+                            </desc>
+                            <state when="1104"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO9999" passive="#BIO24932" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Yuanfu coalition member (元符黨)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO24932" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">元符上書入籍者<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Yuanfu coalition member (元符黨)<label>Supportive political association</label>
+                            </desc>
+                            <state when="1102"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -57,12 +63,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">society member</desc>
             <desc xml:lang="zh-Hant">結社</desc>
+            <desc xml:lang="en">society member</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF209">
