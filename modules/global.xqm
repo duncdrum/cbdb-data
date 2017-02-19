@@ -18,7 +18,9 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 declare variable $global:src := '/db/apps/cbdb-data/src/xml/';
 declare variable $global:target := '/db/apps/cbdb-data/target/';
 declare variable $global:report := '/db/apps/cbdb-data/reports/';
+declare variable $global:patch := '/db/apps/cbdb-data/reports/patch';
 declare variable $global:samples := '/db/apps/cbdb-data/samples/';
+
 
 (:THE TEI FILES IN TARGET:)
 declare variable $global:genre := 'biblCat.xml';
@@ -157,7 +159,7 @@ This function cannot guarante that the final document is valid,
 but it can catch validation errors produced by other function early on.
 This minimizes the number of validations necessary to produce the final output. 
 
-Currently, $loc accepts the name of the root element rturned by the function producing the $frag.
+Currently, $loc accepts the name of the root element returned by the function producing the $frag.
 For $loc use:
 - category
 - charDecl
@@ -167,7 +169,7 @@ For $loc use:
 - place
 
 For $frag use:
-- biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908])
+- biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908], '')
 - bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031])
 
 :)

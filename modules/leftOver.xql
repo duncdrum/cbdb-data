@@ -597,7 +597,7 @@ let $NH-py := map{
  let $collection := xmldb:create-collection("/db/apps/cbdb-data/target", concat('CBDB', $i))
  
  for $test in subsequence($count -1 *1000, )
- let $person := biog:biog($test)
+ let $person := biog:biog($test, '')
  let $documentname := concat('CBDB', functx:pad-integer-to-length($test/text(), 7), '.xml')
  
  return xmldb:store($collection, $documentname, $person):)

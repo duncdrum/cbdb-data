@@ -92,7 +92,7 @@ for $low in distinct-values($lower)
 };
 
 
-declare function pla:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?) as item()*{
+declare function pla:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?, $mode as xs:string?) as item()*{
 
 (: This function takes the $global:ADDR_CODES//no:rows plus the first $global:ADDR_BELONGS_DATA parent  
 and tranlates them into tei:place.
@@ -177,10 +177,8 @@ it could NOT be merged as <location from ="1368' to="1622"/>
 :)
 
     let $belong := $global:ADDR_BELONGS_DATA//no:c_addr_id[. = $id]   
- 
-    
-    return  
-        global:validate-fragment(element place { attribute xml:id {concat('PL', $id/text())},
+    let $output :=   
+        element place { attribute xml:id {concat('PL', $id/text())},
             if (empty(pla:fix-admin-types($id/../no:c_admin_type)))
             then ()
             else ( attribute type {pla:fix-admin-types($id/../no:c_admin_type)}),    
@@ -235,10 +233,14 @@ it could NOT be merged as <location from ="1368' to="1622"/>
             if (exists($data//no:c_belongs_to[. = $id/text()]))
             then ( for $child in $data//no:c_belongs_to[. = $id/text()]
                     return 
-                       pla:nest-places($data, $child/../no:c_addr_id, $child/../no:c_name_chn, $child/../no:c_name))
-            else ()    
-        
-        }, 'place')[1]          
+                       pla:nest-places($data, $child/../no:c_addr_id, $child/../no:c_name_chn, $child/../no:c_name, ''))
+            else ()            
+        }
+return 
+    switch($mode)
+        case 'v' return global:validate-fragment($output, 'place')
+        case 'd' return global:validate-fragment($output, 'place')[1]
+    default return $output       
        
 };
 
@@ -271,7 +273,7 @@ We need to do this to make sure that every c_addr_id element present in CBDB can
     
     return 
         if (empty($corresp))
-        then (update insert pla:nest-places($n, $n/no:c_addr_id, $n/no:c_name_chn, $n/no:c_name) 
+        then (update insert pla:nest-places($n, $n/no:c_addr_id, $n/no:c_name_chn, $n/no:c_name, '') 
                        into $listPlace//*[@xml:id = $branch])
         else (update insert element place { attribute xml:id {concat('PL', $n/no:c_addr_id/text())}, 
                                 attribute corresp{concat('#PL',$corresp)}}
@@ -306,7 +308,7 @@ xmldb:store($global:target, $global:place,
     
     where $place/../no:c_belongs_to = 0
     return
-        pla:nest-places($data, $place, $place/../no:c_name_chn, $place/../no:c_name)}
+        pla:nest-places($data, $place, $place/../no:c_name_chn, $place/../no:c_name, '')}
 </listPlace>)
 
 

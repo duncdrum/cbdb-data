@@ -161,159 +161,165 @@ return
 
 };
 
-declare function bib:bibliography ($texts as node()*) {
+declare function bib:bibliography ($texts as node()*, $mode as xs:string?) as item()*{
 
 (:This function reads the entities in TEXT_CODES [sic] and generates corresponding tei:bibl elements:)
 
-for $text in $texts
+let $output := 
 
-let $role := $global:TEXT_DATA//no:c_textid[ . = $text]/../no:c_role_id
-
-let $cat  := $global:TEXT_BIBLCAT_CODES//no:c_text_cat_code[. =  $text/../no:c_bibl_cat_code/text()]
-let $type := $global:TEXT_TYPE//no:c_text_type_code[. =$text/../no:c_text_type_id/text()]
-
-let $extant := $global:EXTANT_CODES//no:c_extant_code[. = $text/../no:c_extant/text()]
-let $country := $global:COUNTRY_CODES//no:c_country_code[. = $text/../no:c_pub_country/text()]
-let $txtcountry :=  $global:COUNTRY_CODES//no:c_country_code[. = $text/../no:c_text_country]
-
-
-(: d= drop
-[tts_sysno] INTEGER,                     x
- [no:c_textid] INTEGER PRIMARY KEY,       x
- [no:c_title_chn] CHAR(255),               x
- [no:c_suffix_version] CHAR(255),         x
- [no:c_title] CHAR(255),                    x
- [no:c_title_trans] CHAR(255),             x
- [no:c_text_type_id] INTEGER,              x        
- [no:c_text_year] INTEGER,                 x
- [no:c_text_nh_code] INTEGER,              x
- [no:c_text_nh_year] INTEGER,              x
- [no:c_text_range_code] INTEGER,          x
- [no:c_period] CHAR(255),                  x
- [no:c_bibl_cat_code] INTEGER,            x     
- [no:c_extant] INTEGER,                    x
- [no:c_text_country] INTEGER,             x 
- [no:c_text_dy] INTEGER,                   x
- [no:c_pub_country] INTEGER,              x
- [no:c_pub_dy] INTEGER,                    x
- [no:c_pub_year] CHAR(50),                 x
- [no:c_pub_nh_code] INTEGER,               x   
- [no:c_pub_nh_year] INTEGER,               x
- [no:c_pub_range_code] INTEGER,            x
- [no:c_pub_loc] CHAR(255),                  x
- [no:c_publisher] CHAR(255),               x
- [no:c_pub_notes] CHAR(255),               x
- [no:c_source] INTEGER,                     x
- [no:c_pages] CHAR(255),                    x
- [no:c_url_api] CHAR(255),                  x
- [no:c_url_homepage] CHAR(255),            x
- [no:c_notes] CHAR,                          x
- [no:c_number] CHAR(255),                   x
- [no:c_counter] CHAR(255),                  x
- [no:c_title_alt_chn] CHAR(255),           x
- [no:c_created_by] CHAR(255),              x
- [no:c_created_date] CHAR(255),            x
- [no:c_modified_by] CHAR(255),             x
- [no:c_modified_date] CHAR(255))           x
- :)
-
-
-return
-    global:validate-fragment(
-    element bibl { attribute xml:id{concat("BIB", $text/text())},
-    if ($type > 0 and $cat > 0)
-    then (attribute type {concat("#biblType", $type/text())}, 
-           attribute subtype {concat("#biblCat", $cat/text())})
-    else if ($type > 0)
-          then (attribute type {concat("#biblType", $cat/text())})
-          else if ($cat > 0)
-                then (attribute type {concat("#biblCat", $cat/text())})
-                else (), 
+    for $text in $texts
     
-        if (empty($text/../no:tts_sysno))
-        then ()
-        else(<idno type="TTS">{$text/../no:tts_sysno/text()}</idno>),
+    let $role := $global:TEXT_DATA//no:c_textid[ . = $text]/../no:c_role_id
+    
+    let $cat  := $global:TEXT_BIBLCAT_CODES//no:c_text_cat_code[. =  $text/../no:c_bibl_cat_code/text()]
+    let $type := $global:TEXT_TYPE//no:c_text_type_code[. =$text/../no:c_text_type_id/text()]
+    
+    let $extant := $global:EXTANT_CODES//no:c_extant_code[. = $text/../no:c_extant/text()]
+    let $country := $global:COUNTRY_CODES//no:c_country_code[. = $text/../no:c_pub_country/text()]
+    let $txtcountry :=  $global:COUNTRY_CODES//no:c_country_code[. = $text/../no:c_text_country]
+    
+    
+    (: d= drop
+    [tts_sysno] INTEGER,                     x
+     [no:c_textid] INTEGER PRIMARY KEY,       x
+     [no:c_title_chn] CHAR(255),               x
+     [no:c_suffix_version] CHAR(255),         x
+     [no:c_title] CHAR(255),                    x
+     [no:c_title_trans] CHAR(255),             x
+     [no:c_text_type_id] INTEGER,              x        
+     [no:c_text_year] INTEGER,                 x
+     [no:c_text_nh_code] INTEGER,              x
+     [no:c_text_nh_year] INTEGER,              x
+     [no:c_text_range_code] INTEGER,          x
+     [no:c_period] CHAR(255),                  x
+     [no:c_bibl_cat_code] INTEGER,            x     
+     [no:c_extant] INTEGER,                    x
+     [no:c_text_country] INTEGER,             x 
+     [no:c_text_dy] INTEGER,                   x
+     [no:c_pub_country] INTEGER,              x
+     [no:c_pub_dy] INTEGER,                    x
+     [no:c_pub_year] CHAR(50),                 x
+     [no:c_pub_nh_code] INTEGER,               x   
+     [no:c_pub_nh_year] INTEGER,               x
+     [no:c_pub_range_code] INTEGER,            x
+     [no:c_pub_loc] CHAR(255),                  x
+     [no:c_publisher] CHAR(255),               x
+     [no:c_pub_notes] CHAR(255),               x
+     [no:c_source] INTEGER,                     x
+     [no:c_pages] CHAR(255),                    x
+     [no:c_url_api] CHAR(255),                  x
+     [no:c_url_homepage] CHAR(255),            x
+     [no:c_notes] CHAR,                          x
+     [no:c_number] CHAR(255),                   x
+     [no:c_counter] CHAR(255),                  x
+     [no:c_title_alt_chn] CHAR(255),           x
+     [no:c_created_by] CHAR(255),              x
+     [no:c_created_date] CHAR(255),            x
+     [no:c_modified_by] CHAR(255),             x
+     [no:c_modified_date] CHAR(255))           x
+     :)
+    
+    
+    return    
+        element bibl { attribute xml:id{concat("BIB", $text/text())},
+        if ($type > 0 and $cat > 0)
+        then (attribute type {concat("#biblType", $type/text())}, 
+               attribute subtype {concat("#biblCat", $cat/text())})
+        else if ($type > 0)
+              then (attribute type {concat("#biblType", $cat/text())})
+              else if ($cat > 0)
+                    then (attribute type {concat("#biblCat", $cat/text())})
+                    else (), 
         
-        <title type="main">
-                <title xml:lang="zh-Hant">{$text/../no:c_title_chn/text()}</title>
-                <title xml:lang="zh-Latn-alalc97">{$text/../no:c_title/text()}</title>
-        </title>,
-        
-        if (empty($text/../no:c_title_alt_chn))
-        then ()
-        else (<title type="alt">{$text/../no:c_title_alt_chn/text()}</title>),        
-        
-        if (empty($text/../no:c_title_trans))
-        then ()
-        else (<title xml:lang="en" type="translation">{$text/../no:c_title_trans/text()}</title>),        
-        
-        if (empty($text/../no:c_text_year))
-        then ()
-        else (bib:bibl-dates($text, 'ori')),        
-        
-        if (empty($text/../no:c_text_country) or $text/../no:c_text_country[. = 0]) 
-        then ()
-        else ( <country xml:lang="zh-Hant">{$txtcountry/../no:c_country_desc_chn/text()}</country>,
-                <country xml:lang="en">{$txtcountry/../no:c_country_desc/text()}</country>), 
-        
-        if (empty($text/../no:c_suffix_version))
-        then ()
-        else (<edition>{$text/../no:c_suffix_version/text()}</edition>),
-        
-        if (empty($text/../no:c_publisher))
-        then ()
-        else (<publisher>{$text/../no:c_publisher/text()}</publisher>), 
-        
-        if (empty($text/../no:c_pub_loc))
-        then ()
-        else (<pubPlace>{$text/../no:c_pub_loc/text()}</pubPlace>), 
-        
-        if (empty($country) or $country[. = 0])
-        then ()
-        else (<pubPlace><country>{$country/../no:c_country_desc/text()}</country></pubPlace>),
-        
-        if (empty($text/../no:c_pub_year))
-        then ()
-        else (bib:bibl-dates($text, 'pub')),        
-        
-        if (empty($text/../no:c_extant))
-        then ()
-        else (<state><ab>{$extant/../no:c_extant_desc/text()}</ab></state>),        
-        
-        if (empty($text/../no:c_pub_notes) or $text/../no:c_pub_notes[. = '-1'])
-        then ()
-        else (<note>{$text/../no:c_pub_notes/text()}</note>), 
-        
-        if (empty($text/../no:c_source) or $text/../no:c_source[. < 1])
-        then ()
-        else (<bibl>
-                <ref target="{concat('#BIB', $text/../no:c_source/text())}"/>
-                {
-                if (empty($text/../no:c_pages)) then ()
-                else(<biblScope unit="page">{$text/../no:c_pages/text()}</biblScope>)
-                }
-                {
-                if (empty($text/../no:c_number)) then () 
-                else (<biblScope>{$text/../no:c_number/text()} {$text/../no:c_counter/text()}</biblScope>)
-                }                
-              </bibl>), 
-        
-        if (empty($role))
-        then()
-        else (bib:roles($role)),
-        
-        if (empty($text/../no:c_url_api))
-        then ()
-        else (<ref target="{$text/../no:c_url_api/text()}">
-            {$text/../no:c_url_homepage/text()}
-            </ref>),       
-        
-        if (empty($text/../no:c_notes))
-        then ()
-        else(<note>{$text/../no:c_notes/text()}</note>),
-        
-        global:create-mod-by($text/../no:c_created_by, $text/../no:c_modified_by)
-        },'bibl')[1]
+            if (empty($text/../no:tts_sysno))
+            then ()
+            else(<idno type="TTS">{$text/../no:tts_sysno/text()}</idno>),
+            
+            <title type="main">
+                    <title xml:lang="zh-Hant">{$text/../no:c_title_chn/text()}</title>
+                    <title xml:lang="zh-Latn-alalc97">{$text/../no:c_title/text()}</title>
+            </title>,
+            
+            if (empty($text/../no:c_title_alt_chn))
+            then ()
+            else (<title type="alt">{$text/../no:c_title_alt_chn/text()}</title>),        
+            
+            if (empty($text/../no:c_title_trans))
+            then ()
+            else (<title xml:lang="en" type="translation">{$text/../no:c_title_trans/text()}</title>),        
+            
+            if (empty($text/../no:c_text_year))
+            then ()
+            else (bib:bibl-dates($text, 'ori')),        
+            
+            if (empty($text/../no:c_text_country) or $text/../no:c_text_country[. = 0]) 
+            then ()
+            else ( <country xml:lang="zh-Hant">{$txtcountry/../no:c_country_desc_chn/text()}</country>,
+                    <country xml:lang="en">{$txtcountry/../no:c_country_desc/text()}</country>), 
+            
+            if (empty($text/../no:c_suffix_version))
+            then ()
+            else (<edition>{$text/../no:c_suffix_version/text()}</edition>),
+            
+            if (empty($text/../no:c_publisher))
+            then ()
+            else (<publisher>{$text/../no:c_publisher/text()}</publisher>), 
+            
+            if (empty($text/../no:c_pub_loc))
+            then ()
+            else (<pubPlace>{$text/../no:c_pub_loc/text()}</pubPlace>), 
+            
+            if (empty($country) or $country[. = 0])
+            then ()
+            else (<pubPlace><country>{$country/../no:c_country_desc/text()}</country></pubPlace>),
+            
+            if (empty($text/../no:c_pub_year))
+            then ()
+            else (bib:bibl-dates($text, 'pub')),        
+            
+            if (empty($text/../no:c_extant))
+            then ()
+            else (<state><ab>{$extant/../no:c_extant_desc/text()}</ab></state>),        
+            
+            if (empty($text/../no:c_pub_notes) or $text/../no:c_pub_notes[. = '-1'])
+            then ()
+            else (<note>{$text/../no:c_pub_notes/text()}</note>), 
+            
+            if (empty($text/../no:c_source) or $text/../no:c_source[. < 1])
+            then ()
+            else (<bibl>
+                    <ref target="{concat('#BIB', $text/../no:c_source/text())}"/>
+                    {
+                    if (empty($text/../no:c_pages)) then ()
+                    else(<biblScope unit="page">{$text/../no:c_pages/text()}</biblScope>)
+                    }
+                    {
+                    if (empty($text/../no:c_number)) then () 
+                    else (<biblScope>{$text/../no:c_number/text()} {$text/../no:c_counter/text()}</biblScope>)
+                    }                
+                  </bibl>), 
+            
+            if (empty($role))
+            then()
+            else (bib:roles($role)),
+            
+            if (empty($text/../no:c_url_api))
+            then ()
+            else (<ref target="{$text/../no:c_url_api/text()}">
+                {$text/../no:c_url_homepage/text()}
+                </ref>),       
+            
+            if (empty($text/../no:c_notes))
+            then ()
+            else(<note>{$text/../no:c_notes/text()}</note>),
+            
+            global:create-mod-by($text/../no:c_created_by, $text/../no:c_modified_by)
+            }
+return 
+    switch($mode)
+        case 'v' return global:validate-fragment($output, 'bibl')
+        case 'd' return global:validate-fragment($output, 'bibl')[1]
+    default return $output
 };
 
 (:2188.5s:)
@@ -321,7 +327,7 @@ return
 xmldb:store($global:target, $global:bibliography,
 
  <listBibl>{
-        bib:bibliography($global:TEXT_CODES//no:c_textid[. > 0])
+        bib:bibliography($global:TEXT_CODES//no:c_textid[. > 0], 'v')
  }</listBibl>    
 ) 
 
