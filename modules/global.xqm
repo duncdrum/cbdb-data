@@ -18,7 +18,9 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 declare variable $global:src := '/db/apps/cbdb-data/src/xml/';
 declare variable $global:target := '/db/apps/cbdb-data/target/';
 declare variable $global:report := '/db/apps/cbdb-data/reports/';
+declare variable $global:patch := '/db/apps/cbdb-data/reports/patch';
 declare variable $global:samples := '/db/apps/cbdb-data/samples/';
+
 
 (:THE TEI FILES IN TARGET:)
 declare variable $global:genre := 'biblCat.xml';

@@ -66,48 +66,57 @@ return
 
 
 (:from biog:biog:)
-let $test := $global:BIOG_MAIN//no:c_personid[. = 139680]
-let $errors := (11786, 20888, 43665, 12353, 22175, 44821, 12908, 23652, 44891, 139017, 24130,
-44894, 139018, 24915, 45204, 139042, 25089, 45221, 139446, 27474, 45399, 139447,
-37934, 45409, 139503, 38061, 45641, 139680, 38248, 49513, 17236, 38450, 50730,
-18663, 38594, 8001, 2074, 38825)
+let $test := $global:BIOG_MAIN//no:c_personid[. = 198040]
+(:The following records contained validation errors on 2nd run 
+<ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>:)
+let $errors := (2074, 8001, 11786, 12353, 12908, 17236, 18663, 20888, 22175, 
+23652, 24130, 24915, 25089, 27474, 37934, 38061, 38248, 38450, 38594, 38825, 
+43665, 44821, 44891, 44894, 45204, 45221, 45399, 45409, 45641, 49513, 50730, 
+139017, 139018, 139042, 139446, 139447, 139503, 139680, 198040, 198892, 
+199880, 200696, 201124, 201125, 201321, 202090, 202224, 202650, 203229, 
+203454, 203625, 203845, 203989, 204202, 204270, 204798, 205142, 205345, 
+205770, 206011, 206050, 206715, 206933, 206972, 207151, 207543, 207576, 
+207881)
+
  
 
 (:return
  $test/..:)
- 
+
+
+
 for $person in $errors
+let $file-name := concat('cbdb-', 
+    functx:pad-integer-to-length($person, 7), '.xml')
 return
-biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], 'v')
-
-(:$global:BIOG_ADDR_DATA//no:c_personid[. = 139680]:)
-
-(:for $person in $test
-return:)
-(:update  value $person/../no:c_fy_day with 28:)
-
-(:biog:biog($person, 'v'):)
-
-(:let $birth-test :=
+xmldb:store($global:patch, $file-name, 
+biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 
 
-for $person in $birth-test//no:c_personid[. = 24130]
+(:for $person in $global:BIOG_MAIN//no:c_personid[. = 207881]
+return
+update  value $person/../no:c_by_day with 28:)
+
+(:biog:biog($person, ''):)
+
+
+(:for $person in $global:BIOG_MAIN//no:c_personid[. = 371243]
+let $ethnicity := $global:ETHNICITY_TRIBE_CODES//no:c_ethnicity_code[. = $person/../no:c_ethnicity_code]
 return
 
-element birth { 
-    if (empty($person/../no:c_deathyear) or $person/../no:c_deathyear[. = 0])
-    then ()
-    else (
-        attribute when {string-join((cal:isodate($person/../no:c_deathyear),
-            if ($person/../no:c_dy_month[. > 0])
-            then (functx:pad-integer-to-length($person/../no:c_dy_month/text(), 2),
-                if (empty($person/../no:c_dy_day) or $person/../no:c_dy_day = 0)
-                then ()
-                else (functx:pad-integer-to-length($person/../no:c_dy_day/text(), 2))
-            )            
-            else ()), '-')}
-            ) 
-            }:)
+if ($person/../no:c_ethnicity_code > 0) 
+then (<trait type="ethnicity" key="{$ethnicity/../no:c_group_code/text()}">
+        {for $n in $ethnicity/../*
+        return
+         typeswitch ($n)
+             case element (no:c_ethno_legal_cat) return element label {$n/text()}
+             case element (no:c_name_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
+             case element (no:c_name) return element desc { attribute xml:lang {'zh-Latn-alalc97'}, $n/text()}
+             case element (no:c_romanized) return element desc { attribute xml:lang {'en'}, $n/text()}
+             case element (no:c_notes) return element note {$n/text()}
+         default return ()}
+       </trait>)
+else():)
             
             
             
