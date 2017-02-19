@@ -1596,15 +1596,16 @@ let $output :=
                 
                 if ($person/../no:c_ethnicity_code > 0) 
                 then (<trait type="ethnicity" key="{$ethnicity/../no:c_group_code/text()}">
-                    <label>{$ethnicity/../no:c_ethno_legal_cat/text()}</label>
-                            <desc xml:lang="zh-Hant">{$ethnicity/../no:c_name_chn/text()}</desc>
-                            <desc xml:lang="zh-Latn-alalc97">{$ethnicity/../no:c_name/text()}</desc>
-                            <desc xml:lang="en">{$ethnicity/../no:c_romanized/text()}</desc>
-                            {if ($ethnicity/../no:c_notes) 
-                            then (<note>{$ethnicity/../no:c_notes/text()}</note>)
-                            else()
-                            }
-                   </trait>)
+                        {for $n in $ethnicity/../*
+                        return
+                         typeswitch ($n)
+                             case element (no:c_ethno_legal_cat) return element label {$n/text()}
+                             case element (no:c_name_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
+                             case element (no:c_name) return element desc { attribute xml:lang {'zh-Latn-alalc97'}, $n/text()}
+                             case element (no:c_romanized) return element desc { attribute xml:lang {'en'}, $n/text()}
+                             case element (no:c_notes) return element note {$n/text()}
+                         default return ()}
+                       </trait>)
                 else(), 
                 
                 if ($person/../no:c_tribe) 
