@@ -65,11 +65,99 @@ return
 (:local:upgrade-contents($global:BIOG_MAIN//no:c_personid[. > 0][. < 2]):)
 
 
-(:from biog:biog:)
-let $test := $global:BIOG_MAIN//no:c_personid[. = 198040]
-(:The following records contained validation errors on 2nd run 
-<ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>:)
-let $errors := (2074, 8001, 11786, 12353, 12908, 17236, 18663, 20888, 22175, 
+
+declare function local:kin ($self as node()*) as node()* {
+    
+(:~ biog:kin  constructs an egocentric network of kinship relations from KING_DATA, KING_CODES< and Kin_Mourning.
+the output's structure should match biog:asso's
+
+@param $self is a c_personid 
+@returns relation :)
+    
+for $kin in $global:KIN_DATA//no:c_personid[. = $self]
+let $tie := $global:KINSHIP_CODES//no:c_kincode[. = $kin/../no:c_kin_code]
+let $mourning := $global:KIN_Mourning//no:c_kinrel[. = $tie/../no:c_kinrel]
+
+return
+    element relation {
+            attribute active {concat('#BIO', $kin/../no:c_personid/text())},
+            attribute passive {concat('#BIO', $kin/../no:c_kin_id/text())},
+            
+            if (empty($tie/../no:c_kincode) and empty($tie/../no:c_kinrel))
+            then (attribute name {'unkown'})
+            else (
+                for $n in $tie/../*[. != '0']
+                order by local-name($n)
+                return 
+                    typeswitch ($n)
+                        case element (no:c_kincode) return attribute key {$n/text()}
+                        case element (no:c_pick_sorting) return attribute sortKey{$n/text()}
+                        case element (no:c_kinrel) return attribute name {
+                            if (contains($n/text(), ' ('))
+                            then (substring-before($n/text(), ' ('))
+                            else if (contains($n/text(), 'male)'))
+                                then (replace(replace($n/text(), '\(male\)', '♂'), '\(female\)', '♀'))
+                                else (translate($n/text(), '#', '№'))}
+                        case element (no:c_source) return attribute source {$n/text()}
+                        case element (no:c_autogen_notes) return attribute type {'auto-generated'}
+                      default return (),
+                
+                if (empty($tie/../no:c_kinrel_chn) and empty ($tie/../no:c_kinrel_alt))
+                then ()
+                else (element desc { attribute type {'kin-tie'}, 
+                        
+                        (: jing doesn like note here during validation :)
+                        if ($kin/../no:c_notes)
+                        then (element label {$kin/../no:c_notes/text()})
+                        else (), 
+                        
+                        for $x in $tie/../*
+                        order by local-name($x) descending
+                        return 
+                            typeswitch($x)
+                                case element (no:c_kinrel_chn) return element desc { attribute xml:lang {'zh-Hant'},
+                                    $x/text()}
+                                case element (no:c_kinrel_alt) return element desc { attribute xml:lang {'en'},
+                                    $x/text()}
+                            default return (),                               
+                        
+                        if (empty($mourning))
+                        then ()
+                        else (element trait {
+                                    attribute type {'mourning'},
+                                    attribute subtype {$mourning/../no:c_kintype/text()},
+                                    
+                            for $y in $mourning/../*
+                            order by local-name($y) descending
+                            return
+                                typeswitch($y)
+                                    case element (no:c_mourning_chn) 
+                                        return element label { attribute xml:lang {"zh-Hant"},
+                                            $y/text()}
+                                    case element (no:c_kintype_desc_chn) 
+                                        return element desc { attribute xml:lang {"zh-Hant"},
+                                            $y/text()}        
+                                    case element (no:c_kintype_desc)
+                                        return element desc {attribute xml:lang {"en"},
+                                            $y/text()}
+                                    default return ()                             
+                               })     
+                    })
+                )
+        }
+};
+
+let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
+(:The ids in $erors contained validation errors on 2nd run 
+<ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>
+
+This fixes those errors (mostly in the source files)
+impossiblke dates in the source files were set via
+
+update  value $person/../no:c_by_day with 28
+:)
+
+(:let $errors := (2074, 8001, 11786, 12353, 12908, 17236, 18663, 20888, 22175, 
 23652, 24130, 24915, 25089, 27474, 37934, 38061, 38248, 38450, 38594, 38825, 
 43665, 44821, 44891, 44894, 45204, 45221, 45399, 45409, 45641, 49513, 50730, 
 139017, 139018, 139042, 139446, 139447, 139503, 139680, 198040, 198892, 
@@ -77,12 +165,6 @@ let $errors := (2074, 8001, 11786, 12353, 12908, 17236, 18663, 20888, 22175,
 203454, 203625, 203845, 203989, 204202, 204270, 204798, 205142, 205345, 
 205770, 206011, 206050, 206715, 206933, 206972, 207151, 207543, 207576, 
 207881)
-
- 
-
-(:return
- $test/..:)
-
 
 
 for $person in $errors
@@ -92,31 +174,23 @@ return
 xmldb:store($global:patch, $file-name, 
 biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 
+:)
 
-(:for $person in $global:BIOG_MAIN//no:c_personid[. = 207881]
+
+for $person in $test
 return
-update  value $person/../no:c_by_day with 28:)
-
-(:biog:biog($person, ''):)
+local:kin($person)
 
 
-(:for $person in $global:BIOG_MAIN//no:c_personid[. = 371243]
-let $ethnicity := $global:ETHNICITY_TRIBE_CODES//no:c_ethnicity_code[. = $person/../no:c_ethnicity_code]
+(:for $status in $global:STATUS_DATA//no:c_personid[. = 51]
+let $code := $global:STATUSlCODES//no:c_status_code[. = $status/../no:c_status_code]
 return
+<full>
+{$status/..},
+{$code/..}
+</full>:)
 
-if ($person/../no:c_ethnicity_code > 0) 
-then (<trait type="ethnicity" key="{$ethnicity/../no:c_group_code/text()}">
-        {for $n in $ethnicity/../*
-        return
-         typeswitch ($n)
-             case element (no:c_ethno_legal_cat) return element label {$n/text()}
-             case element (no:c_name_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
-             case element (no:c_name) return element desc { attribute xml:lang {'zh-Latn-alalc97'}, $n/text()}
-             case element (no:c_romanized) return element desc { attribute xml:lang {'en'}, $n/text()}
-             case element (no:c_notes) return element note {$n/text()}
-         default return ()}
-       </trait>)
-else():)
-            
-            
+
+(:return
+    $global:BIOG_MAIN//no:c_choronym_code[. = 1]/..[1]:)
             

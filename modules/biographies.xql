@@ -15,33 +15,35 @@ declare namespace biog= "http://exist-db.org/apps/cbdb-data/biographies";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
-(:This is the main Transformation of Biographical data from CBDB.
- biog:biog stores person data as tei:persList.
+(:~
+ The biographies module transforms biographical data from CBDB. 
+ It creates a nested tree of collections (chunks) and subcollections (blocks), 
+ in which to store the individual person records. 
  
- The following variable declarations were auto-generated via gitify.xpl
+ @author Duncan Paterson
+ @version 0.5
+ @
+ 
 :)
 
-
-
-(:TODO:
-- split the biogmain transformation into two files one for biog main and aliases on fore event n stuff?
-- consider tei:occupation, tei:education, tei:faith to sort through the whole entry office posting mess
-- create a taxonony for offices
-- clean up variables prolog 
-
-:)
 
 (:NAMES:)
 declare function biog:name ($names as node()*, $lang as xs:string?) as node()* {
-(:This function checks the different name components and languages to retun persNames.
-It expects valid c_name, or c_cname_chn nodes, and 'py' or'hz' as arguments.
+(:~
+biog:name transforms extended name parts into annotated @returns tei:persName elements.
+To avoid duplication biog:name checks if sure-/forname components can be fully identified,
+and returns the resepoctive elements, otherwise a single persName takes a single string value. 
+
+@param $names variations of no:c_name from different tables. 
+@param $lang either:
+    'py' for pinyin, 'hz' for hanzi, 
+    'proper' or 'rm' for names other then Chinese .
 :)
 
+let $choro := $global:CHORONYM_CODES//no:c_choronym_code[. = $names/../no:c_choronym_code]
 
 let $py :=
-    for $name in $names/../no:c_name
-    let $choro := $global:CHORONYM_CODES//no:c_choronym_code[. = $name/../no:c_choronym_code]
-    
+    for $name in $names/../no:c_name    
     return
         if ($name/text() eq concat($name/../no:c_surname/text(), ' ', $name/../no:c_mingzi/text()))
         then (<persName xml:lang="zh-Latn-alalc97">
@@ -61,9 +63,7 @@ let $py :=
                 </persName>)
 
 let $hz := 
-    for $name in $names/../no:c_name_chn
-    let $choro := $global:CHORONYM_CODES//no:c_choronym_code[. = $name/../no:c_choronym_code]
-    
+    for $name in $names/../no:c_name_chn    
     return
         if ($name/text() eq concat($name/../no:c_surname_chn/text(), $name/../no:c_mingzi_chn/text()))
         then (<persName xml:lang="zh-Hant">
@@ -73,16 +73,14 @@ let $hz :=
                     then ()
                     else (<addName type="choronym">{$choro/../no:c_choronym_chn/text()}</addName>)
                     }
-                </persName>
-                )
+                </persName>)
         else (<persName xml:lang="zh-Hant">
                 {$name/text()}
                 {if (empty($choro) or $choro[. < 1])
                     then ()
                     else (<addName type="choronym">{$choro/../no:c_choronym_chn/text()}</addName>)
                     }
-                </persName>
-                )
+                </persName>)
 
 let $proper :=
     for $name in $names/../no:c_name_proper
@@ -92,7 +90,7 @@ let $proper :=
                     <surname>{xmldb:decode($name/../no:c_surname_proper/string())}</surname>
                     <forename>{xmldb:decode($name/../no:c_mingzi_proper/string())}</forename>
                </persName>)
-        else(<persName type="original">{xmldb:decode($name/string())}</persName>)
+        else (<persName type="original">{xmldb:decode($name/string())}</persName>)
         
 let $rm :=
     for $name in $names/../no:c_name_rm
@@ -102,7 +100,7 @@ let $rm :=
                     <surname>{xmldb:decode($name/../no:c_surname_rm/string())}</surname>
                     <forename>{xmldb:decode($name/../no:c_mingzi_rm/string())}</forename>
                </persName>)
-        else(<persName type="original">{xmldb:decode($name/string())}</persName>)
+        else (<persName type="original">{xmldb:decode($name/string())}</persName>)
         
                 
 
@@ -116,197 +114,125 @@ return
 }; 
 
 declare function biog:alias ($person as node()*) as node()* {
-(:This function resolves aliases in zh and py.
-It checks ALTNAME_DATA for the c_personid and returns persName elements.
-:)
-
-(: d= drop                                  
-[tts_sysno] INTEGER,                    d
- [c_personid] INTEGER,                  x
- [c_alt_name] CHAR(255),               x
- [c_alt_name_chn] CHAR(255),           x
- [c_alt_name_type_code] INTEGER,      x
- [c_source] INTEGER,                    x
- [c_pages] CHAR(255),                   d
- [c_notes] CHAR,                         x
- [c_created_by] CHAR(255),             x
- [c_created_date] CHAR(255),           x
- [c_modified_by] CHAR(255),            x
- [c_modified_date] CHAR(255),          x
+(:~ biog:alias outputs aliases, such as pen-names, reign titles, etc. 
+@param $person is a c_personid
+@returns persName
 :)
 
 for $person in $global:ALTNAME_DATA//no:c_personid[. =$person]
 let $code := $global:ALTNAME_CODES//no:c_name_type_code[. = $person/../no:c_alt_name_type_code]
 
 return 
-    if (empty($person)) then ()
-    else if (empty($person/../no:c_source)) 
-        then (<persName type = "alias" 
-                  key="{concat('AKA', $code/text())}">
-                    <addName>{$person/../no:c_alt_name_chn/text()}</addName>
-                    {if ($code[. > 1]) 
-                     then (<term>{$code/../no:c_name_type_desc_chn/text()}</term>)
-                     else()
-                     }                
-                    <addName xml:lang="zh-Latn-alalc97">{$person/../no:c_alt_name/text()}</addName>
-                    {if ($code[. > 1]) 
-                     then (<term>{$code/../no:c_name_type_desc/text()}</term>)
-                     else()
-                    }                
-                {if (empty($person/../no:c_notes)) 
-                then ()
-                else (<note>{$person/../no:c_notes/text()}</note>)                
-                }                
-            </persName>)
-    else (<persName type = "alias" 
-            key="{concat('AKA', $code/text())}"
-            source="{concat('#BIB', $person/../no:c_source/text())}">
-                <addName xml:lang="zh-Hant">{$person/../no:c_alt_name_chn/text()}</addName>
-                {if ($code[. > 1]) 
-                 then (<term>{$code/../no:c_name_type_desc_chn/text()}</term>)
-                 else()
-                 }                
-                <addName xml:lang="zh-Latn-alalc97">{$person/../no:c_alt_name/text()}</addName>
-                {if ($code[. > 1]) 
-                 then (<term>{$code/../no:c_name_type_desc/text()}</term>)
-                 else()
-                }                
-                {if (empty($person/../no:c_notes)) 
-                then ()
-                else (<note>{$person/../no:c_notes/text()}</note>)                
-                }      
-            </persName>)            
+    if (empty($person)) 
+    then ()
+    else (element persName { attribute type {'alias'},          
+    
+    for $n in $person/../*[. != '0']
+    order by local-name($n) 
+        return 
+            typeswitch ($n)
+                case element (no:c_alt_name_type_code) return attribute key {concat('AKA', $n/text())}
+                case element (no:c_source) return attribute source {concat('#BIB', $n/text())}
+                default return (),
+            for $n in $person/../* 
+            order by local-name($n) descending
+            return     
+                typeswitch ($n)
+                    case element (no:c_alt_name_chn) return 
+                        if ($code[. > 1])
+                        then (element addName {attribute xml:lang {'zh-Hant'},
+                            $n/text()},
+                            element term {$code/../no:c_name_type_desc_chn/text()})
+                        else (element addName {attribute xml:lang {'zh-Hant'},
+                            $n/text()})    
+                    case element (no:c_alt_name) return 
+                        if ($code[. > 1]) 
+                        then (element addName {attribute xml:lang {'zh-Latn-alalc97'},                        
+                            $n/text()},
+                            element term {$code/../no:c_name_type_desc/text()})
+                        else (element addName {attribute xml:lang {'zh-Latn-alalc97'},                        
+                            $n/text()})
+                   case element (no:c_notes) return element note {$n/text()}
+                 default return ()
+                })       
 };
 
 (:RELATIONS:)
 declare function biog:kin ($self as node()*) as node()* {
-    
-    (:This function takes persons via c_personid and returns a list kin group  relations.
-It's structure is tied to biog:asso and changes should be made to both functions in concert.:)
-    
-    (: KIN_DATA                                            KINSHIP_CODES 
-[tts_sysno] INTEGER,                    x                [c_kincode] INTEGER PRIMARY KEY,   x
- [c_personid] INTEGER,                  x                [c_kin_pair1] INTEGER,              d
- [c_kin_id] INTEGER,                    x                [c_kin_pair2] INTEGER,              d
- [c_kin_code] INTEGER,                  x                [c_kin_pair_notes] CHAR(50),       d
- [c_source] INTEGER,                    x                [c_kinrel_chn] CHAR(255),           x
- [c_pages] CHAR(255),                   d                [c_kinrel] CHAR(255),               x
- [c_notes] CHAR,                         x                [c_kinrel_alt] CHAR(255),          x
- [c_autogen_notes] CHAR,                x               [c_pick_sorting] INTEGER,           x
- [c_created_by] CHAR(255),              d               [c_upstep] INTEGER,                 d
- [c_created_date] CHAR(255),            d               [c_dwnstep] INTEGER,                d
- [c_modified_by] CHAR(255),             d               [c_marstep] INTEGER,                d
- [c_modified_date] CHAR(255),           d               [c_colstep] INTEGER)                d
- :)
-    
-    (:9 basic categories of kinship Source: CBDB Manual p 13f
-none of these is symmetrical hence there is no need for mutuality checks as in biog:asso
-'e' Ego (the person whose kinship is being explored) 
-'F' Father
-'M' Mother
-'B' Brother
-'Z' Sister
-'S' Son
-'D' Daughter
-'H' Husband
-'W' Wife
-'C' Concubine
+(:~ biog:kin  constructs an egocentric network of kinship relations from KING_DATA, KING_CODES< and Kin_Mourning.
+the output's structure should match biog:asso's
 
-'+' Older (e.g. older brother B+, 兄)
-'-' Younger (e.g. younger sister 妹)
-'*' Adopted heir ( as in S*, adopted son)
-'°' Adopted
-'!' Bastard
-'^' Step- (as in S^ step-son)
-'½'  half- (as in Z½ , half-sister)
-'~' Nominal (as in M~ , legitimate wife as nominal mother to children of concubine)
-'%' Promised husband or wife (marriage not completed at time of record)
-'y' Youngest (e.g., Sy is the youngest known son)
-'1' Numbers distinguish sequence (e.g., S1, S2 for first and second sons; W1, W2 for the first and the successor wives)
-'n' precise generation unknown
-'G-#', 'G+#' lineal ancestor (–) or descendant (+) of # generation №
-'G-n', 'G+n', 'Gn' lineal kin of an unknown earlier generation (G-n), or unknown later generation (G+n), or unknown generation (Gn)
-'G-#B', 'BG+#' a brother of a lineal ancestor of # generation; a brother’s lineal descendant of # generation
-'K', 'K-#', 'K+#', 'Kn' Lineage kin, of the same, earlier (–), later (+) or unknown (n) generation. CBDB uses “lineage kin” for cases where kinship is attested but the exact relationship is not known. Lineage kin are presumably not lineal (direct descent) kin.
-'K–', 'K+' Lineage kin of the same generation, younger (-) or elder (+).
-'P', 'P-#', 'P+#', 'Pn' Kin related via father’s sisters or mother’s siblings, of the same, earlier (–), later (+) or unknown (n) generation. Signified by the term biao (表) in Chinese. (CBDB uses these codes only when the exact relationship is not known). 
-'P–', 'P+' Kin related via father's sisters or mother's siblings, of the same generation, younger (-) or elder (+).
-'A' Affine/Affinal kin, kin by marriage
-
-NOT Documented
-'(male)' -> ♂
-'(female)' -> ♀
-'©' -> of concubine
-' (claimed)' -> 
-' (eldest surviving son)' -> 
-' (only ...)'
-' (apical)'
-
+@param $self is a c_personid 
+@returns relation
 :)
     
-    
-    for $kin in $global:KIN_DATA//no:c_personid[. = $self]
-    let $tie := $global:KINSHIP_CODES//no:c_kincode[. = $kin/../no:c_kin_code]
-    let $mourning := $global:KIN_Mourning//no:c_kinrel[. = $tie/../no:c_kinrel]
-    
+for $kin in $global:KIN_DATA//no:c_personid[. = $self]
+let $tie := $global:KINSHIP_CODES//no:c_kincode[. = $kin/../no:c_kin_code]
+let $mourning := $global:KIN_Mourning//no:c_kinrel[. = $tie/../no:c_kinrel]
 
-    
-    return
-        element relation {
+return
+    element relation {
             attribute active {concat('#BIO', $kin/../no:c_personid/text())},
             attribute passive {concat('#BIO', $kin/../no:c_kin_id/text())},
             
             if (empty($tie/../no:c_kincode) and empty($tie/../no:c_kinrel))
             then (attribute name {'unkown'})
             else (
-                if (empty($tie/../no:c_kincode))
-                then ()
-                else (attribute key {$tie/../no:c_kincode/text()}),
-                
-                if (empty($tie/../no:c_pick_sorting))
-                then ()
-                else (attribute sortKey {$tie/../no:c_pick_sorting/text()}),
-                
-                if (empty($tie/../no:c_kinrel))
-                then ()
-                else (attribute name {
-                        if (contains($tie/../no:c_kinrel/text(), ' ('))
-                        then (substring-before($tie/../no:c_kinrel/text(), ' ('))
-                        else if (contains($tie/../no:c_kinrel/text(), 'male)'))
-                            then (replace(replace($tie/../no:c_kinrel/text(), '\(male\)', '♂'), '\(female\)', '♀'))
-                            else(translate($tie/../no:c_kinrel/text(), '#', '№'))}),
-                            
-                if ($kin/../no:c_source[. > 0])
-                then (attribute source {concat('#BIB', $kin/../no:c_source/text())})
-                else (),
-                
-                if (empty($kin/../no:c_autogen_notes))
-                then ()
-                else (attribute type {'auto-generated'}),
+                for $n in $tie/../*[. != '0']
+                order by local-name($n)
+                return 
+                    typeswitch ($n)
+                        case element (no:c_kincode) return attribute key {$n/text()}
+                        case element (no:c_pick_sorting) return attribute sortKey{$n/text()}
+                        case element (no:c_kinrel) return attribute name {
+                            if (contains($n/text(), ' ('))
+                            then (substring-before($n/text(), ' ('))
+                            else if (contains($n/text(), 'male)'))
+                                then (replace(replace($n/text(), '\(male\)', '♂'), '\(female\)', '♀'))
+                                else (translate($n/text(), '#', '№'))}
+                        case element (no:c_source) return attribute source {$n/text()}
+                        case element (no:c_autogen_notes) return attribute type {'auto-generated'}
+                      default return (),
                 
                 if (empty($tie/../no:c_kinrel_chn) and empty ($tie/../no:c_kinrel_alt))
                 then ()
                 else (element desc { attribute type {'kin-tie'}, 
-                
+                        
+                        (: jing doesn like note here during validation :)
                         if ($kin/../no:c_notes)
                         then (element label {$kin/../no:c_notes/text()})
-                        else (),
+                        else (), 
                         
-                        element desc { attribute xml:lang {"zh-Hant"},
-                            $tie/../no:c_kinrel_chn/text()},    
-                        element desc {attribute xml:lang {"en"},
-                            $tie/../no:c_kinrel_alt/text()},                     
+                        for $x in $tie/../*
+                        order by local-name($x) descending
+                        return 
+                            typeswitch($x)
+                                case element (no:c_kinrel_chn) return element desc { attribute xml:lang {'zh-Hant'},
+                                    $x/text()}
+                                case element (no:c_kinrel_alt) return element desc { attribute xml:lang {'en'},
+                                    $x/text()}
+                            default return (),                               
                         
                         if (empty($mourning))
                         then ()
-                        else (element trait{ attribute type {'mourning'},
-                               attribute subtype {$mourning/../no:c_kintype/text()},
-                               element label { attribute xml:lang {"zh-Hant"},
-                               $mourning/../no:c_mourning_chn/text()}, 
-                               element desc { attribute xml:lang {"zh-Hant"},
-                                    $mourning/../no:c_kintype_desc_chn/text()},
-                               element desc {attribute xml:lang {"en"},
-                                    $mourning/../no:c_kintype_desc/text()}
+                        else (element trait {
+                                    attribute type {'mourning'},
+                                    attribute subtype {$mourning/../no:c_kintype/text()},
+                                    
+                            for $y in $mourning/../*
+                            order by local-name($y) descending
+                            return
+                                typeswitch($y)
+                                    case element (no:c_mourning_chn) 
+                                        return element label { attribute xml:lang {"zh-Hant"},
+                                            $y/text()}
+                                    case element (no:c_kintype_desc_chn) 
+                                        return element desc { attribute xml:lang {"zh-Hant"},
+                                            $y/text()}        
+                                    case element (no:c_kintype_desc)
+                                        return element desc {attribute xml:lang {"en"},
+                                            $y/text()}
+                                    default return ()                             
                                })     
                     })
                 )
@@ -600,38 +526,46 @@ whats up with $assoc_codes//no:c_assoc_role_type ?:)
 declare function biog:status ($achievers as node()*) as node()* {
 
 
-(:the following lines can be added ones status types are linked to status codes to add a label child element to the language specific desc elements
+(:the following lines can be added to the return clause of the $x variable, 
+ : once status types are linked to status codes. 
+ : This will add label elements which need to be wrapped inside a general desc element.
  : 
- : let $statt := doc("/db/apps/cbdb/source/CBDB/code/STATUS_TYPES.xml")
- : let $statctr := doc("/db/apps/cbdb/source/CBDB/relations/STATUS_CODE_TYPE_REL.xml")
+ : let $type := $global:STATUS_TYPES//no:c_status_type_code[. =$type-rel/../no:c_status_type_code]
+ : let $type-rel := $global:STATUS_CODE_TYPE_REL//no:c_status_code[. = $status/../no:c_status_code]
  : 
- : if ($statt//no:c_status_type_code[. = $statctr//no:c_status_type_code[. = $code]]) 
- : then (<label>$statt//no:c_status_type_code[. = $statctr//no:c_status_type_code[. = $code]]/../no:c_status_type_desc/text()</label>) else()    
- : if ($statt//no:c_status_type_code[. = $statctr//no:c_status_type_code[. = $code]]) 
- : then (<label>$statt//no:c_status_type_code[. = $statctr//no:c_status_type_code[. = $code]]/../no:c_status_type_desc_chn/text()</label>) else()
+ : case element (no:c_status_type_desc_chn) return element label {attribute xml:lang {'zh-Hant'}, $x/text()}
+ : case element (no:c_status_type_desc) return element label {attribute xml:lang {'en'}, $x/text()}
  :)
 
 for $status in $global:STATUS_DATA//no:c_personid[. = $achievers]
 
 let $code := $global:STATUS_CODES//no:c_status_code[. = $status/../no:c_status_code]
-let $first := $status/../no:c_firstyear
-let $last := $status/../no:c_lastyear
+
 return 
-    if ($status/../no:c_status_code[. < 1]) 
-    then ()
-    else ( element state { attribute type {'status'},
-          if ($first/text() and $last/text() != 0)
-          then ( attribute from {cal:isodate($first/text())}, 
-                attribute to {cal:isodate($last/text())})
-          else if ($first/text() != 0)
-               then (attribute from {cal:isodate($first/text())})
-               else if ($last/text() != 0)
-                    then ( attribute to {cal:isodate($last/text())})
-                    else (' '),
-          element desc { attribute xml:lang {'zh-Hant'}, $code/../no:c_status_desc_chn/text()},          
-          element desc { attribute xml:lang {'en'}, $code/../no:c_status_desc/text()}          
-          }
-          )
+    if ($status/../no:c_status_code[. > 0]) 
+    then (element state { attribute type {'status'},
+          for $n in $status/../*[. != '0']
+          order by local-name($n)
+          return 
+            typeswitch ($n)
+            case element (no:c_status_code) return attribute subtype {$n/text()}
+                case element (no:c_firstyear) return attribute from {cal:isodate($n/text())}
+                case element (no:c_lastyear) return attribute to {cal:isodate($n/text())}
+                case element (no:c_sequence) return attribute n {$n/text()}
+                case element (no:source) return attribute source {concat('#BIB', $n/text())}                
+            default return (),
+            
+          for $x in $code/../*
+          order by local-name($x) descending
+          return
+            typeswitch ($x)
+                case element (no:c_status_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, 
+                (:  filter '[', ']' from description but return without trailing whitespace  :)
+                    normalize-space(string-join(tokenize($x/text(), '\W+')))}
+                case element (no:c_status_desc) return element desc { attribute xml:lang {'en'}, $x/text()}
+            default return ()     
+          })
+    else ()
 };
 
 (:EVENTS:)
