@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO118902" source="#BIB9601">
     <idno type="TTS">112508</idno>
     <persName type="main">
         <persName xml:lang="zh-Hant">權氏(朱棣妾)</persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Quan</surname>
             <forename>Shi(Concubine of Zhu Di)</forename>
         </persName>
@@ -11,7 +10,7 @@
     <persName type="alias" key="AKA6" source="#BIB9601">
         <addName xml:lang="zh-Hant">恭獻</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Gongxian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Gongxian</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="2">f</sex>
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO118902" passive="#BIO30151" key="134" sortKey="0" name="H" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,7 +51,7 @@
         </state>
     </socecStatus>
     <linkGrp>
-        <ptr target="2983"/>
+        <ptr target="mqww:2983"/>
     </linkGrp>
     <note type="created" target="#BDCL">
         <date when="2011-06-27"/>

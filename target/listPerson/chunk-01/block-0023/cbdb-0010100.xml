@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO10100">
     <idno type="TTS">4406</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>龐</surname>
             <forename>之慶</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Pang</surname>
             <forename>Zhiqing</forename>
         </persName>
@@ -22,9 +21,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO10100" passive="#BIO10101" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -34,12 +38,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10101" passive="#BIO10100" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO10101" passive="#BIO10100" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
+                            </desc>
+                            <state when="0960"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,8 +53,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">physician</desc>
             <desc xml:lang="zh-Hant">行醫</desc>
+            <desc xml:lang="en">physician</desc>
         </state>
     </socecStatus>
     <residence ref="#PL100542" key="1">

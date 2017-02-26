@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20052" source="#BIB7596" resp="selfbio">
     <idno type="TTS">14326</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>梁</surname>
             <forename>惠</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Liang</surname>
             <forename>Hui</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">民懷</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Minhuai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Minhuai</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,15 +27,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20052" passive="#BIO20048" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO20052" passive="#BIO20053" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,20 +55,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO669" passive="#BIO20052" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO669" passive="#BIO20052" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">祠記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3298" passive="#BIO20052" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO3298" passive="#BIO20052" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="A" n="32">
                             <label>馳聲學校間 尤知書識戰鬥 方臘亂起 與諸兄募鄉勇共守衛 賊不能下</label>
-                            <desc xml:lang="en">opposed militarily<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">軍事對抗Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">opposed militarily<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -69,18 +78,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="09" subtype="91" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">military merit: organizing a militia and other merits</label>
             <label xml:lang="zh-Hant">軍功補官</label>
+            <label xml:lang="en">military merit: organizing a militia and other merits</label>
             <desc type="0" subtype="10">
-                <desc xml:lang="en">Military Merit</desc>
                 <desc xml:lang="zh-Hant">軍功補授門</desc>
+                <desc xml:lang="en">Military Merit</desc>
             </desc>
         </event>
     </listEvent>

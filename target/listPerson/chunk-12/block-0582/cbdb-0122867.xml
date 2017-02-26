@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO122867" source="#BIB9601">
     <idno type="TTS">116229</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>于</surname>
             <forename>鑾</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Yu</surname>
             <forename>Luan</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB31989">
         <addName xml:lang="zh-Hant">御君</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yujun</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yujun</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -23,9 +22,9 @@
     </floruit>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <affiliation>
         <note>
@@ -33,15 +32,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO122867" passive="#BIO122861" key="135" sortKey="0" name="W" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO122867" passive="#BIO133263" key="76" sortKey="21" name="WF" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,7 +58,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="3427"/>
+        <ptr target="mqww:3427"/>
     </linkGrp>
     <note type="created" target="#BDLXY">
         <date when="2011-12-27"/>

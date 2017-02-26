@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO43257" source="#BIB7596">
     <idno type="TTS">37374</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>林</surname>
             <forename>師仲</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Lin</surname>
             <forename>Shizhong</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>質夫</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhifu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhifu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO43257" passive="#BIO42428" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,11 +44,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO7111 #BIO43257" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO7111 #BIO43257" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -54,29 +58,22 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">teacher at family school</desc>
             <desc xml:lang="zh-Hant">家塾師</desc>
+            <desc xml:lang="en">teacher at family school</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">local literatus / gentry</desc>
             <desc xml:lang="zh-Hant">地方士人/鄉紳</desc>
+            <desc xml:lang="en">local literatus / gentry</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">teacher</desc>
             <desc xml:lang="zh-Hant">收徒講學</desc>
+            <desc xml:lang="en">teacher</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">fond of learning</desc>
             <desc xml:lang="zh-Hant">好學</desc>
+            <desc xml:lang="en">fond of learning</desc>
         </state>
     </socecStatus>
-    <residence ref="#PL0" key="14" n="1" source="#BIB7596">
-        <state type="natal">
-            <desc xml:lang="zh-Hant">另一籍貫(基本地址)</desc>
-            <desc xml:lang="en">alternate basic affiliation</desc>
-        </state>
-        <note>南梅人(宋人傳記資料索引(電子版)</note>
-    </residence>
     <residence ref="#PL100065" key="1" n="1">
         <state type="natal">
             <desc xml:lang="zh-Hant">籍貫(基本地址)</desc>

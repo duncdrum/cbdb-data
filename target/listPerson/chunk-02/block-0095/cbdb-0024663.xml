@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO24663" source="#BIB9601">
     <idno type="TTS">18930</idno>
     <persName type="main">
         <persName xml:lang="zh-Hant">馬氏(劉莊妻)<addName type="choronym">扶風</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">Ma Shi(wife of Liu Zhuang)<addName type="choronym">Fufeng</addName>
+        <persName xml:lang="zh-Latn-alalc97">Ma Shi(wife of Liu Zhuang)<addName type="choronym">Fufeng</addName>
         </persName>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9601">
         <addName xml:lang="zh-Hant">明德馬皇后</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Mingde Ma huang hou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Mingde Ma huang hou</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="2">f</sex>
@@ -25,33 +24,53 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO24663" passive="#BIO3671" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24663" passive="#BIO24662" key="134" sortKey="0" name="H">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24663" passive="#BIO24680" key="125" sortKey="2" name="B+" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO24663" passive="#BIO24681" key="118" sortKey="1" name="B" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">B Brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄弟</desc>
+                            <desc xml:lang="en">B Brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24663" passive="#BIO24682" key="118" sortKey="1" name="B" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">B Brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄弟</desc>
+                            <desc xml:lang="en">B Brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -60,18 +79,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">empress</desc>
             <desc xml:lang="zh-Hant">[皇后]</desc>
+            <desc xml:lang="en">empress</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="01" subtype="69" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">investiture as empress</label>
             <label xml:lang="zh-Hant">冊封爲皇后</label>
+            <label xml:lang="en">investiture as empress</label>
             <desc type="0" subtype="2">
-                <desc xml:lang="en">Palace</desc>
                 <desc xml:lang="zh-Hant">宮廷門</desc>
+                <desc xml:lang="en">Palace</desc>
             </desc>
         </event>
     </listEvent>
@@ -82,7 +101,7 @@
         </state>
     </residence>
     <linkGrp>
-        <ptr target="2702"/>
+        <ptr target="mqww:2702"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO109401" source="#BIB9599" resp="selfbio">
     <idno type="TTS">103018</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>楊</surname>
             <forename>湜</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Yang</surname>
             <forename>Shi</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">彥清</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yanqing</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yanqing</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,10 +27,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO109401" passive="#BIO109554" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>湜子</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -41,12 +45,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28617" passive="#BIO109401" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28617" passive="#BIO109401" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="P" n="25">
                             <label>中堂事記（秋澗大全集80/3下）</label>
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -97,11 +101,11 @@
     <listEvent>
         <event type="07" subtype="14" when="1260" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

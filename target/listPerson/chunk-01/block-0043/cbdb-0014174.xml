@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO14174" source="#BIB7596" resp="selfbio">
     <idno type="TTS">8462</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>李</surname>
             <forename>楠</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Li</surname>
             <forename>Nan</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>和伯</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Hebo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Hebo</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,21 +34,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO14174" passive="#BIO14175" key="126" sortKey="3" name="B-" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">B– Brother, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">弟</desc>
+                            <desc xml:lang="en">B– Brother, younger</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO14174" passive="#BIO19779" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO14174" passive="#BIO20116" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,37 +68,40 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO14174" passive="#BIO10703" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO14174" passive="#BIO10703" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之弟子<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1147"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO14174" passive="#BIO14129" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">followed<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO14174" passive="#BIO14129" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">從Y遊<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">followed<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1147"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO14174" passive="#BIO14129" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO14174" passive="#BIO14129" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>尤刻意學問 歸閩後 李楠、林之奇、李樗輩皆從之游 士大夫狀其學行 乞為本州添差教授</label>
-                            <desc xml:lang="en">followed<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y遊<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">followed<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1156" passive="#BIO14174" key="0506" sortKey="25" name="text-biography" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO1156" passive="#BIO14174" key="0506" name="text-biography" source="#BIB7596">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">行狀由Y所作<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
+                            </desc>
+                            <state when="1147"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -98,12 +110,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">student: xianggong jinshi</desc>
             <desc xml:lang="zh-Hant">[鄉貢進士]</desc>
+            <desc xml:lang="en">student: xianggong jinshi</desc>
         </state>
     </socecStatus>
     <residence ref="#PL13870" key="1" source="#BIB7596">

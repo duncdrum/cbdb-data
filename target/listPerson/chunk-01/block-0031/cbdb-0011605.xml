@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO11605" source="#BIB24309">
     <idno type="TTS">5908</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>頲</forename>
             <addName type="choronym">扶風</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Su</surname>
             <forename>Ting</forename>
             <addName type="choronym">Fufeng</addName>
@@ -16,19 +15,19 @@
     <persName type="alias" key="AKA6" source="#BIB24309">
         <addName xml:lang="zh-Hant">文憲</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenxian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenxian</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB24309">
         <addName xml:lang="zh-Hant">廷碩</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Tingshuo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tingshuo</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB24309">
         <addName xml:lang="zh-Hant">蘇五</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Su Wu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Su Wu</addName>
         <term>Birth-order name</term>
     </persName>
     <sex value="1">m</sex>
@@ -50,21 +49,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO11605" passive="#BIO11604" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO11605" passive="#BIO19228" key="255" sortKey="9" name="SSS">
-                        <desc>
-                            <desc xml:lang="en">SSS</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾孫; 重孫</desc>
+                            <desc xml:lang="en">SSS</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO11605" passive="#BIO92832" key="75" sortKey="-1" name="F" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -74,12 +88,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11605" passive="#BIO31100" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO11605" passive="#BIO31100" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
+                            </desc>
+                            <state when="0727"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -88,12 +103,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: chief councilor</desc>
             <desc xml:lang="zh-Hant">[宰相]</desc>
+            <desc xml:lang="en">office: chief councilor</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF11099">
@@ -279,11 +294,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -301,7 +316,7 @@
         <note>京兆/武功(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1089"/>
+        <ptr target="idtf:1089"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

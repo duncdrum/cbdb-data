@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO5125" source="#BIB7596" resp="selfbio">
     <idno type="TTS">3430</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>德儀</forename>
             <addName type="choronym">穎川</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Chao</surname>
             <forename>Deyi</forename>
             <addName type="choronym">Yingchuan</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA4">
         <addName>文柔</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Wenrou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenrou</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA8">
         <addName>宜興縣君</addName>
         <term>封爵</term>
-        <addName xml:lang="zh-alalc97">Yixing Xianjun</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yixing Xianjun</addName>
         <term>Enfeoffment Title</term>
     </persName>
     <sex value="2">f</sex>
@@ -41,15 +40,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO5125" passive="#BIO7121" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO5125" passive="#BIO7364" key="134" sortKey="0" name="H" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,11 +68,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO7364" passive="#BIO5125" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO7364" passive="#BIO5125" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -73,22 +82,22 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">wife</desc>
             <desc xml:lang="zh-Hant">[妻]</desc>
+            <desc xml:lang="en">wife</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">mother</desc>
             <desc xml:lang="zh-Hant">[母]</desc>
+            <desc xml:lang="en">mother</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="13" subtype="94" when="1054" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">honorific title based on merit of relative</label>
             <label xml:lang="zh-Hant">封贈</label>
+            <label xml:lang="en">honorific title based on merit of relative</label>
             <desc type="0" subtype="14">
-                <desc xml:lang="en">Decree of Special Grace</desc>
                 <desc xml:lang="zh-Hant">特旨門</desc>
+                <desc xml:lang="en">Decree of Special Grace</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO139492" source="#BIB32038" resp="selfbio">
     <idno type="TTS">132237</idno>
     <persName type="main">
         <persName xml:lang="zh-Hant">某士端</persName>
-        <persName xml:lang="zh-alalc97">Mou Shiduan</persName>
+        <persName xml:lang="zh-Latn-alalc97">Mou Shiduan</persName>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB32038">
         <addName xml:lang="zh-Hant">公直</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Gongzhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Gongzhi</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -25,24 +24,39 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO139492" passive="#BIO148148" key="135" sortKey="0" name="W" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=702</label>
-                            <desc xml:lang="en">W Wife</desc>
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO139492" passive="#BIO148149" key="62" sortKey="-4" name="FF" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=702</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO139492" passive="#BIO148150" key="75" sortKey="-1" name="F" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=702</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>

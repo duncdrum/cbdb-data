@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO104526" source="#BIB9599" resp="selfbio">
     <idno type="TTS">98143</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>俞</surname>
             <forename>遠</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Yu</surname>
             <forename>Yuan</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">之近</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhijin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhijin</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9599">
         <addName xml:lang="zh-Hant">空谷</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Konggu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Konggu</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -36,10 +35,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO104526" passive="#BIO104544" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>遠父</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,21 +53,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO34381" passive="#BIO104526" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO34381" passive="#BIO104526" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>空谷先生墓磚記（滄螺集3/6）（卒年作七十三）</label>
-                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓表由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28410" passive="#BIO104526" key="0505" sortKey="24" name="text-ritual" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28410" passive="#BIO104526" key="0505" name="text-ritual" source="#BIB9599">
+                        <desc type="P" n="24">
                             <label>故空谷俞先生挽詞（梧溪集3/6下）</label>
-                            <desc xml:lang="en">Elegy written by<label>Ritual Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">挽詩、詞由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Elegy written by<label>Ritual Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -73,8 +77,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">teaching in reclusion</desc>
             <desc xml:lang="zh-Hant">隱居授徒</desc>
+            <desc xml:lang="en">teaching in reclusion</desc>
         </state>
     </socecStatus>
     <residence ref="#PL18234" key="1" n="1" source="#BIB9599">

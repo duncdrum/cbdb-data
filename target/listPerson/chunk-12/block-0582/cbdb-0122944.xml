@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO122944" source="#BIB9601">
     <idno type="TTS">116305</idno>
     <persName type="main">
         <persName xml:lang="zh-Hant">蔣氏(朱祐杬妻)</persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Jiang</surname>
             <forename>Shi(Wife of Zhu Youyuan)</forename>
         </persName>
@@ -11,14 +10,14 @@
     <persName type="alias" key="AKA6" source="#BIB13150">
         <addName xml:lang="zh-Hant">慈孝貞順仁敬誠一安天誕聖獻皇后</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Cixiaozhenshunrenjingchengyiantiandanshengxianhuanghou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Cixiaozhenshunrenjingchengyiantiandanshengxianhuanghou</addName>
         <term>Posthumous Name</term>
         <note>申時行《大明會典》卷八十六禮部四十四《廟號》</note>
     </persName>
     <persName type="alias" key="AKA15">
         <addName>興國太后</addName>
         <term>尊號</term>
-        <addName xml:lang="zh-alalc97">Xingguotaihou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xingguotaihou</addName>
         <term>Honorific name</term>
         <note>陳建《皇明通紀集要》卷二十八《世宗肅皇帝》</note>
     </persName>
@@ -36,23 +35,33 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO122944" passive="#BIO30159" key="134" sortKey="0" name="H" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO122944" passive="#BIO132572" key="126" sortKey="3" name="B-">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>鄧元錫《皇明書》卷一〇</label>
-                            <desc xml:lang="en">B– Brother, younger</desc>
                             <desc xml:lang="zh-Hant">弟</desc>
+                            <desc xml:lang="en">B– Brother, younger</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO122944" passive="#BIO338267" key="75" sortKey="-1" name="F" source="#BIB2186" type="auto-generated">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>張廷玉《明史》卷一百十五列傳第三《睿宗興獻皇帝傳》</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,11 +71,11 @@
     <listEvent>
         <event type="01" subtype="24" when="1492" sortKey="1" source="#BIB9601">
             <head>entry</head>
-            <label xml:lang="en">investiture as imperial concubine</label>
             <label xml:lang="zh-Hant">冊封爲妃嬪</label>
+            <label xml:lang="en">investiture as imperial concubine</label>
             <desc type="0" subtype="2">
-                <desc xml:lang="en">Palace</desc>
                 <desc xml:lang="zh-Hant">宮廷門</desc>
+                <desc xml:lang="en">Palace</desc>
             </desc>
         </event>
     </listEvent>
@@ -91,7 +100,7 @@
         </state>
     </residence>
     <linkGrp>
-        <ptr target="5382"/>
+        <ptr target="mqww:5382"/>
     </linkGrp>
     <note type="created" target="#BDJLG">
         <date when="2011-12-27"/>

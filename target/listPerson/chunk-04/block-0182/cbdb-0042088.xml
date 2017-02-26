@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO42088" source="#BIB7596">
     <idno type="TTS">36231</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>余</surname>
             <forename>季芳</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Yu</surname>
             <forename>Jifang</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4">
         <addName>子初</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zichu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zichu</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5">
         <addName>桃谷</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Taogu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Taogu</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -34,9 +33,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO42088" passive="#BIO41966" key="180" sortKey="5" name="S" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,21 +50,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO42088" passive="#BIO3257" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO42088" passive="#BIO3257" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="A" n="6">
                             <label>既歸 講道授徒 昌明朱熹之緒 有桃谷尚書義、桃谷集</label>
-                            <desc xml:lang="en">Transmitted the scholarship of<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">傳Y之學<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Transmitted the scholarship of<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO42088" key="0203" sortKey="6" name="intellectual-affil.">
-                        <desc type="A">
+                    <relation active="#BIO3257" passive="#BIO42088" key="0203" name="intellectual-affil.">
+                        <desc type="A" n="6">
                             <label>講道授徒，昌明朱熹之緒。</label>
-                            <desc xml:lang="en">Ancestral source of learning was<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">宗Y之學<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral source of learning was<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -70,16 +74,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">teacher</desc>
             <desc xml:lang="zh-Hant">收徒講學</desc>
+            <desc xml:lang="en">teacher</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
             <desc xml:lang="zh-Hant">理學家</desc>
+            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF685">
@@ -109,11 +113,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1247" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

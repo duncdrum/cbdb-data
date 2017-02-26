@@ -1,20 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO119050" source="#BIB9601" resp="selfbio">
     <idno type="TTS">112656</idno>
     <persName type="main">
         <persName xml:lang="zh-Hant">任氏(任高長女)</persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ren</surname>
             <forename>shi ( the eldest daughter of Ren Gao )</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9601">
         <addName xml:lang="zh-Hant">李氏三烈</addName>
-        <addName xml:lang="zh-alalc97">Li shi san lie</addName>
+        <addName xml:lang="zh-Latn-alalc97">Li shi san lie</addName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB31991">
         <addName xml:lang="zh-Hant">幺哥</addName>
-        <addName xml:lang="zh-alalc97">Yaoge</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yaoge</addName>
     </persName>
     <sex value="2">f</sex>
     <floruit>
@@ -22,9 +21,9 @@
     </floruit>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <affiliation>
         <note>
@@ -32,15 +31,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO119050" passive="#BIO119048" key="111" sortKey="-3" name="M" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO119050" passive="#BIO119049" key="75" sortKey="-1" name="F" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,7 +57,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="3129"/>
+        <ptr target="mqww:3129"/>
     </linkGrp>
     <note type="created" target="#BDSXH">
         <date when="2011-06-29"/>

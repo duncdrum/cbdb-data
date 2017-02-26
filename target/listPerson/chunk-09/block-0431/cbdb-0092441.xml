@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO92441" source="#BIB24309">
     <idno type="TTS">86114</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>馮</surname>
             <forename>道</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Feng</surname>
             <forename>Dao</forename>
         </persName>
@@ -14,18 +13,18 @@
     <persName type="alias" key="AKA6" source="#BIB24309">
         <addName xml:lang="zh-Hant">文懿</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenyi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenyi</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB24309">
         <addName xml:lang="zh-Hant">可道</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Kedao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Kedao</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24309">
         <addName xml:lang="zh-Hant">長樂老</addName>
-        <addName xml:lang="zh-alalc97">Changlelao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Changlelao</addName>
     </persName>
     <sex value="1">m</sex>
     <birth when="0882" datingMethod="#chinTrad" when-custom="D42-R48-Y2">
@@ -43,9 +42,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO92441" passive="#BIO48286" key="180" sortKey="5" name="S" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -54,8 +58,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF10476">
@@ -356,7 +360,7 @@
         <note>瀛州/景城(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="656"/>
+        <ptr target="idtf:656"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-10-14"/>

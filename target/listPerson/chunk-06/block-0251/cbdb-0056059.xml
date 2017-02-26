@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO56059" source="#BIB9601">
     <idno type="TTS">50019</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>張</surname>
             <forename>成珠</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhang</surname>
             <forename>Chengzhu</forename>
         </persName>
@@ -17,9 +16,9 @@
     </floruit>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <affiliation>
         <note>
@@ -27,33 +26,48 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO56059" passive="#BIO56052" key="164" sortKey="4" name="Z+">
-                        <desc>
-                            <desc xml:lang="en">Z+</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">姊</desc>
+                            <desc xml:lang="en">Z+</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO56059" passive="#BIO56054" key="111" sortKey="-3" name="M">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO56059" passive="#BIO56056" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO56059" passive="#BIO56058" key="164" sortKey="4" name="Z+">
-                        <desc>
-                            <desc xml:lang="en">Z+</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">姊</desc>
+                            <desc xml:lang="en">Z+</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO56059" passive="#BIO56063" key="134" sortKey="0" name="H" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -67,7 +81,7 @@
         </state>
     </residence>
     <linkGrp>
-        <ptr target="3953"/>
+        <ptr target="mqww:3953"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2009-12-11"/>

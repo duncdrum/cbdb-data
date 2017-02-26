@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO42467" source="#BIB7596">
     <idno type="TTS">36603</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>邵</surname>
             <forename>景之</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shao</surname>
             <forename>Jingzhi</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">秀山</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xiushan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xiushan</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA4">
         <addName>季山</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Jishan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jishan</addName>
         <term>Courtesy name</term>
         <note>又作秀山。</note>
     </persName>
@@ -35,15 +34,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO42467" passive="#BIO42390" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO42467" passive="#BIO42466" key="131" sortKey="9999" name="FBS+" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄</desc>
+                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,20 +57,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO42467" passive="#BIO11872" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO42467" passive="#BIO11872" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>第乾道八年進士 攝教建寧 受業於胡憲 官止莆田令 有玉坡集</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO42467" passive="#BIO11872" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="P">
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation active="#BIO42467" passive="#BIO11872" key="0204" name="scholarly-topic">
+                        <desc type="P" n="7">
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
+                            </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
                             </desc>
                         </desc>
                     </relation>
@@ -101,11 +105,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1172" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

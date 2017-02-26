@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO33345" source="#BIB7596" resp="selfbio">
     <idno type="TTS">27599</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>林</surname>
             <forename>師蒧</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Lin</surname>
             <forename>Shidian</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA5">
         <addName>竹村</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Zhucun</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhucun</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA3" source="#BIB7596">
         <addName xml:lang="zh-Hant">林師點</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Lin Shidian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Lin Shidian</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA4">
         <addName>詠道</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yongdao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yongdao</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -41,9 +40,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO33345" passive="#BIO29944" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,35 +57,37 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO3951 #BIO33345" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO3951 #BIO33345" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation mutual="#BIO18170 #BIO33345" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
                             <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
+                            <state when="1206"/>
+                        </desc>
+                    </relation>
+                    <relation mutual="#BIO18170 #BIO33345" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
+                            <state when="1206"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO29944" passive="#BIO33345" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO29944" passive="#BIO33345" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓表由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO29944" passive="#BIO33345" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO29944" passive="#BIO33345" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓表由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -91,12 +97,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">scholar of textual criticism (jiaokan)</desc>
             <desc xml:lang="zh-Hant">校堪學家</desc>
+            <desc xml:lang="en">scholar of textual criticism (jiaokan)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">local literatus / gentry</desc>
             <desc xml:lang="zh-Hant">地方士人/鄉紳</desc>
+            <desc xml:lang="en">local literatus / gentry</desc>
         </state>
     </socecStatus>
     <residence ref="#PL12793" key="1" source="#BIB7596">

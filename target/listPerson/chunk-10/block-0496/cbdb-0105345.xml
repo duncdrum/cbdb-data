@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO105345" source="#BIB9599" resp="selfbio">
     <idno type="TTS">98962</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>孫</surname>
             <forename>天正</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Sun</surname>
             <forename>Tianzheng</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">惠肅</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Huisu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Huisu</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">夢符</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Mengfu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Mengfu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -37,10 +36,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO105345" passive="#BIO105376" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>天正父</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -50,21 +54,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO27993" passive="#BIO105345" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO27993" passive="#BIO105345" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="P" n="21">
                             <label>沂州三皇廟記（歸田類稿4/3下）</label>
-                            <desc xml:lang="en">Temple stele(miaobei) written by<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">廟碑記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Temple stele(miaobei) written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28543" passive="#BIO105345" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28543" passive="#BIO105345" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>贈中大夫……諡惠肅孫公神道碑銘（至正集51/1）</label>
-                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">神道碑由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>

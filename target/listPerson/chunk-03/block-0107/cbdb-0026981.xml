@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO26981" source="#BIB7596" resp="selfbio">
     <idno type="TTS">21244</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>釋</surname>
             <forename>處嚴</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shi</surname>
             <forename>Chuyan</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">伯威</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Bowei</addName>
+        <addName xml:lang="zh-Latn-alalc97">Bowei</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">潛澗</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Qianjian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Qianjian</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -39,9 +38,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO26981" passive="#BIO26980" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -51,36 +55,39 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10598" passive="#BIO26981" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO10598" passive="#BIO26981" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1112"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10598" passive="#BIO26981" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO10598" passive="#BIO26981" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1112"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO3767 #BIO26981" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO3767 #BIO26981" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">與Y遊<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
+                            </desc>
+                            <state when="1112"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO3767 #BIO26981" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO3767 #BIO26981" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
                             <label>西遊帝都 周族江淮 與名儒蘇軾等交遊 還歸永嘉寓淨光、大雲、開元諸寺 政和二年正月卒</label>
-                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">與Y遊<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -90,18 +97,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">buddhist monk</desc>
             <desc xml:lang="zh-Hant">僧人</desc>
+            <desc xml:lang="en">buddhist monk</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="14" subtype="90" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">religion: ordination as monk</label>
             <label xml:lang="zh-Hant">得度</label>
+            <label xml:lang="en">religion: ordination as monk</label>
             <desc type="0" subtype="15">
-                <desc xml:lang="en">Religion</desc>
                 <desc xml:lang="zh-Hant">宗教門</desc>
+                <desc xml:lang="en">Religion</desc>
             </desc>
         </event>
     </listEvent>

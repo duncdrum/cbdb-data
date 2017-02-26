@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO7391" source="#BIB7596" resp="selfbio">
     <idno type="TTS">4092</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>及甫</forename>
             <addName type="choronym">平陽</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wen</surname>
             <forename>Jifu</forename>
             <addName type="choronym">Pingyang</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA3">
         <addName>文及</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Wen(2) Ji</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wen(2) Ji</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA4">
         <addName>周翰</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhouhan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhouhan</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -36,21 +35,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO7391" passive="#BIO1952" key="118" sortKey="1" name="B">
-                        <desc>
-                            <desc xml:lang="en">B Brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄弟</desc>
+                            <desc xml:lang="en">B Brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO7391" passive="#BIO1953" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO7391" passive="#BIO1960" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -60,72 +74,73 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO0" passive="#BIO7391" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Listed in Yuanyou coalition register (元祐黨)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO0" passive="#BIO7391" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">入元祐黨籍者<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Listed in Yuanyou coalition register (元祐黨)<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3583" passive="#BIO7391" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO3583" passive="#BIO7391" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>以跂請 摯得歸葬 跂又訴文及甫之誣 遂貶及甫等 跂能文章</label>
-                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">遭到Y的反對/攻訐<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO7106 #BIO7391" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO7106 #BIO7391" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>初為大理評事 遷直史館 與邢恕同為館職 進吏部員外郎 除直龍圖閣知同州</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO7106 #BIO7391" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO7106 #BIO7391" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>與邢恕同為館職。</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO9999" passive="#BIO7391" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO7391" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1072"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO7391" passive="#BIO7106" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="A">
+                    <relation active="#BIO7391" passive="#BIO7106" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="A" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Sent letter to<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">致書Y<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Sent letter to<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1417" passive="#BIO7391" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO1417" passive="#BIO7391" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=4)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO481" passive="#BIO7391" key="0101" sortKey="1" name="association">
-                        <desc type="P">
-                            <desc xml:lang="en">justice for achieved by<label>Associations (General)</label>
-                            </desc>
+                    <relation active="#BIO481" passive="#BIO7391" key="0101" name="association">
+                        <desc type="P" n="1">
                             <desc xml:lang="zh-Hant">其冤因Y得明<label>社會關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">justice for achieved by<label>Associations (General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -135,12 +150,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">historian</desc>
             <desc xml:lang="zh-Hant">史學家</desc>
+            <desc xml:lang="en">historian</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF28">

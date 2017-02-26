@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO31082" source="#BIB24309">
     <idno type="TTS">25337</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>嗣立</forename>
             <addName type="choronym">京兆</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wei</surname>
             <forename>Sili</forename>
             <addName type="choronym">Jingzhao</addName>
@@ -16,19 +15,19 @@
     <persName type="alias" key="AKA6" source="#BIB24309">
         <addName xml:lang="zh-Hant">孝</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Xiao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xiao</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB24309">
         <addName xml:lang="zh-Hant">延構</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yangou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yangou</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB24309">
         <addName xml:lang="zh-Hant">韋二</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Wei Er</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wei Er</addName>
         <term>Birth-order name</term>
     </persName>
     <sex value="1">m</sex>
@@ -50,33 +49,38 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO31082" passive="#BIO31080" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO31082" passive="#BIO31081" key="125" sortKey="2" name="B+" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO31082" passive="#BIO31086" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO31082" passive="#BIO31087" key="183" sortKey="5" name="S2">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO31082" passive="#BIO31088" key="184" sortKey="5" name="S3">
-                        <desc>
-                            <desc xml:lang="en">S3</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">三子</desc>
+                            <desc xml:lang="en">S3</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -86,12 +90,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO31407" passive="#BIO31082" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO31407" passive="#BIO31082" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="0719"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -100,12 +105,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: chief councilor</desc>
             <desc xml:lang="zh-Hant">[宰相]</desc>
+            <desc xml:lang="en">office: chief councilor</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF11097">
@@ -371,11 +376,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -393,7 +398,7 @@
         <note>京兆/杜陵(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="349"/>
+        <ptr target="idtf:349"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

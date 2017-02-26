@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO24422" source="#BIB7596" resp="selfbio">
     <idno type="TTS">18690</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>李</surname>
             <forename>全</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Li</surname>
             <forename>Quan</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">李鐵槍</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Litieqiang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Litieqiang</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -29,42 +28,67 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO24422" passive="#BIO24419" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24422" passive="#BIO29379" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24422" passive="#BIO40654" key="135" sortKey="0" name="W">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24422" passive="#BIO119400" key="135" sortKey="0" name="W" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2174</label>
-                            <desc xml:lang="en">W Wife</desc>
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24422" passive="#BIO119850" key="125" sortKey="2" name="B+" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2174</label>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO24422" passive="#BIO119882" key="180" sortKey="5" name="S" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2174</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -74,340 +98,344 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO13810" passive="#BIO24422" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO13810" passive="#BIO24422" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>登紹熙元年進士 歷官國子監丞 上疏極言李全必反 且獻取全之策 累遷禮部侍郎致仕</label>
-                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO15218" passive="#BIO24422" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO15218" passive="#BIO24422" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>累遷直徽猷閣、知揚州 兼淮東安撫副使 其後力主詩李全 籌畫甚備 議皆不行</label>
-                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">遭到Y的反對/攻訐<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO21455" passive="#BIO24422" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO21455" passive="#BIO24422" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>邊疆州郡 關於朝政者知無不言 李全據淮安 反狀益急 宰相不能決</label>
-                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">遭到Y的反對/攻訐<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24274" passive="#BIO24422" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO24274" passive="#BIO24422" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">遭到Y的反對/攻訐<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO45154" passive="#BIO24422" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO45154" passive="#BIO24422" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">遭到Y的反對/攻訐<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Opposed by or attacked by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24422" passive="#BIO24418" key="0403" sortKey="15" name="office-subordinate">
-                        <desc type="A">
-                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
-                            </desc>
+                    <relation active="#BIO24422" passive="#BIO24418" key="0403" name="office-subordinate">
+                        <desc type="A" n="15">
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO24422" passive="#BIO40661" key="0403" sortKey="15" name="office-subordinate">
-                        <desc type="A">
                             <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
                             </desc>
+                            <state when="1244"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO24422" passive="#BIO40661" key="0403" name="office-subordinate">
+                        <desc type="A" n="15">
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24421" passive="#BIO24422" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO24421" passive="#BIO24422" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
+                            </desc>
+                            <state when="1244"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO24421" passive="#BIO24422" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO24421" passive="#BIO24422" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>以全為帥 及安兒敗 遂歸李全 李全歸朝 乃請於朝以全為總管駐揚州</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO38182" passive="#BIO24422" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO38182" passive="#BIO24422" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>為李全部將 開禧間曾攻克密州 有戰功</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO38597" passive="#BIO24422" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO38597" passive="#BIO24422" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>劉二祖起兵，霍儀繼之，石珪等附之。霍儀敗，歸李全。</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO38597" passive="#BIO24422" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO38597" passive="#BIO24422" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>霍儀繼之 石珪等附之 霍儀敗歸李全 官至統帥 後降於元</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO45186" passive="#BIO24422" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO45186" passive="#BIO24422" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO48977" passive="#BIO24422" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO48977" passive="#BIO24422" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>義斌等附之 及霍儀敗 遂歸李全統制 全歸朝 為京東總管</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO12671" passive="#BIO24422" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Staff member was<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO12671" passive="#BIO24422" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">幕僚為Y<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Staff member was<label>Connection via office (superior)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13810" passive="#BIO24422" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Execution recommended by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO13810" passive="#BIO24422" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">其處決係由Y建議<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Execution recommended by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO14978" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO14978" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>知江寧縣 辟制置司幕官 以收李全功 歷知常州、衡州 移南劍州</label>
-                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">叛軍遭到Y的抵禦或討平<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO18239" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO18239" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>以祖澤為太府寺簿 紹定初知江陰軍 李全之亂 江陰當要害 雋之下車踰月</label>
-                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">叛軍遭到Y的抵禦或討平<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO19405" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO19405" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>歷煥章閣直學士 知紹興府 紹定中李全犯淮東 善湘以江淮制置使屢建討逆功 封天水郡公</label>
-                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">叛軍遭到Y的抵禦或討平<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24736" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition">
-                        <desc type="P">
+                    <relation active="#BIO24736" passive="#BIO24422" key="0603" name="military-opposition">
+                        <desc type="P" n="32">
+                            <desc xml:lang="zh-Hant">叛軍遭到Y的抵禦或討平<label>軍事對抗</label>
+                            </desc>
                             <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
                             </desc>
+                            <state when="1244"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO43174" passive="#BIO24422" key="0603" name="military-opposition">
+                        <desc type="P" n="32">
                             <desc xml:lang="zh-Hant">叛軍遭到Y的抵禦或討平<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO43174" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">叛軍遭到Y的抵禦或討平<label>軍事對抗</label>
-                            </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO48186" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO48186" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>故群盜 後隸軍籍；初從趙葵收李全力功 又累從陳韡捕賊 積功至刺史</label>
-                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">叛軍遭到Y的抵禦或討平<label>軍事對抗</label>
                             </desc>
+                            <desc xml:lang="en">Fought (as rebel) by loyalist<label>Oppositional military association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24422" passive="#BIO40667" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Followers killed<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO24422" passive="#BIO40667" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">其（或追隨者）殺害Y<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Followers killed<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24422" passive="#BIO44062" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO24422" passive="#BIO44062" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>二年除著作佐郎 後為泰州教授 李全寇泰州 不屈死節</label>
-                            <desc xml:lang="en">Followers killed<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">其（或追隨者）殺害Y<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Followers killed<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24422" passive="#BIO45649" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Followers killed<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO24422" passive="#BIO45649" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">其（或追隨者）殺害Y<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Followers killed<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO15219" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Defeated in battle by<label>Oppositional military association</label>
-                            </desc>
+                    <relation active="#BIO15219" passive="#BIO24422" key="0603" name="military-opposition">
+                        <desc type="P" n="32">
                             <desc xml:lang="zh-Hant">敗於<label>軍事對抗</label>
                             </desc>
+                            <desc xml:lang="en">Defeated in battle by<label>Oppositional military association</label>
+                            </desc>
+                            <state when="1244"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO15219" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO15219" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>人服其機警 其後敗金人 破李全 功最多 進兵部侍郎</label>
-                            <desc xml:lang="en">Defeated in battle by<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">敗於<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Defeated in battle by<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24422" passive="#BIO18614" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO24422" passive="#BIO18614" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <label>倅楚州 守海州 甚得李全歡心 寶慶元年授淮東制置使知楚州</label>
-                            <desc xml:lang="en">Liked<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">喜爱<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Liked<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24422" passive="#BIO45521" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO24422" passive="#BIO45521" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>定海下 粹中孫 其父死李全之難 絕葷酒婚宦 刻志問學</label>
-                            <desc xml:lang="en">did harm to<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">陷害Y<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">did harm to<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO25867" passive="#BIO24422" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO25867" passive="#BIO24422" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="A" n="16">
                             <label>興宗以門蔭補官 調泉州節度推官 李全降 命興宗為淮安州法曹 遷淮安令</label>
-                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">下屬為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO38182" passive="#BIO24422" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO38182" passive="#BIO24422" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="A" n="16">
                             <desc xml:lang="zh-Hant">下屬為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO44535" passive="#BIO24422" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO44535" passive="#BIO24422" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="P" n="31">
                             <label>民苦橫斂 思為亂 李全、劉二祖、霍儀相繼起兵 夏全、石珪、裴淵等附之</label>
-                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">受Y之軍事支持<label>軍事支持</label>
+                            </desc>
+                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO45186" passive="#BIO24422" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO45186" passive="#BIO24422" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="P" n="31">
                             <label>民苦橫歛 思為亂 李全、劉仁祖等相繼起兵 楊安兒亦繼起 以舅劉全為帥</label>
-                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">受Y之軍事支持<label>軍事支持</label>
+                            </desc>
+                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO52078" passive="#BIO24422" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO52078" passive="#BIO24422" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="P" n="31">
                             <label>李全與仲兄福起兵 慶福等附之 及全歸朝</label>
-                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">受Y之軍事支持<label>軍事支持</label>
                             </desc>
+                            <desc xml:lang="en">was supported militarily/surrendered to by<label>Supportive military association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO40143" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO40143" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>泰興人 紹定中 李全犯城邑 邑令王爚募之以守 與賊戰死難</label>
-                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y軍事對抗Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO40172" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO40172" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>紹定中李全犯揚州 遊騎薄泰興城下 邑人孫益與顧緒及珣俱戰死</label>
-                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y軍事對抗Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO41914" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO41914" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>即有投筆之志 紹定間 李全攻城 郡守募良家子禦 駿發與其黨應之</label>
-                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y軍事對抗Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO45136" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO45136" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>揚州泰興人 少豪俠 紹定中李全犯揚州 游騎薄泰興城下 縣令王爚募人守禦</label>
-                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y軍事對抗Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO46240" passive="#BIO24422" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO46240" passive="#BIO24422" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="P" n="32">
                             <label>勵以講學 得聞性理之要 紹定中李全亂淮楚 霆從趙善湘軍幕 端平初奉幣北使</label>
-                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y軍事對抗Y<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">was opposed militarily by<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -417,16 +445,16 @@
     </affiliation>
     <socecStatus>
         <state type="status" from="1244" to="1244">
-            <desc xml:lang="en">farmer</desc>
             <desc xml:lang="zh-Hant">農民</desc>
+            <desc xml:lang="en">farmer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">excelled in horseriding and archery</desc>
             <desc xml:lang="zh-Hant">精於騎射</desc>
+            <desc xml:lang="en">excelled in horseriding and archery</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">militia leader</desc>
             <desc xml:lang="zh-Hant">義軍首領</desc>
+            <desc xml:lang="en">militia leader</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF447">
@@ -502,11 +530,11 @@
     <listEvent>
         <event type="07" subtype="15" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">direct recruitment into military service</label>
             <label xml:lang="zh-Hant">募入軍伍</label>
+            <label xml:lang="en">direct recruitment into military service</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

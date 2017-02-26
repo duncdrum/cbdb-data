@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO55836" source="#BIB9602">
     <idno type="TTS">49805</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>裘</surname>
             <forename>曰修</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Qiu</surname>
             <forename>Yuexiu</forename>
         </persName>
@@ -14,40 +13,40 @@
     <persName type="alias" key="AKA6" source="#BIB9602">
         <addName xml:lang="zh-Hant">文達</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenda</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenda</addName>
         <term>Posthumous Name</term>
         <note>參見《清國史館傳稿》。</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">好春軒</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Haochunxuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Haochunxuan</addName>
         <term>Studio name, Style name</term>
         <note>參見《廣清碑傳集》頁542.</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB24308">
         <addName xml:lang="zh-Hant">叔度</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Shudu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shudu</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">漫士</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Manshi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Manshi</addName>
         <term>Studio name, Style name</term>
         <note>參見《碑傳集》頁166.</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">諾皋</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Nuogao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Nuogao</addName>
         <term>Courtesy name</term>
         <note>參見《清秘述聞三種》頁180.</note>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9602">
         <addName xml:lang="zh-Hant">灌亭</addName>
-        <addName xml:lang="zh-alalc97">Guanting</addName>
+        <addName xml:lang="zh-Latn-alalc97">Guanting</addName>
         <note>參見《清人室名別稱字號索引》頁1583.</note>
     </persName>
     <sex value="1">m</sex>
@@ -68,15 +67,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO55836" passive="#BIO57329" key="180" sortKey="5" name="S" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO55836" passive="#BIO69843" key="111" sortKey="-3" name="M" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -86,28 +95,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO30080 #BIO55836" key="0301" sortKey="12" name="friend" source="#BIB27925">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO30080 #BIO55836" key="0301" name="friend" source="#BIB27925">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO55836" passive="#BIO55833" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO55836" passive="#BIO55833" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO55836" passive="#BIO30080" key="0202" sortKey="5" name="teacher-student" source="#BIB27925">
-                        <desc type="A">
-                            <desc xml:lang="en">Examiner of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO55836" passive="#BIO30080" key="0202" name="teacher-student" source="#BIB27925">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之考官<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Examiner of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1747"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -117,40 +127,40 @@
     <listEvent>
         <event type="0401" subtype="36" when="1739" sortKey="1" source="#BIB9601">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0401" subtype="39" when="1736" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <label xml:lang="zh-Hant">科舉: 鄉貢舉人</label>
+            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>乾隆1年順天鄉試舉人</note>
         </event>
         <event type="0401" subtype="165" when="1739" sortKey="1" source="#BIB38286">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="rank">第2甲第7名</note>
         </event>
         <event type="0503" subtype="182" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">Tribute Student by Purchase, First Class</label>
             <label xml:lang="zh-Hant">廩貢生</label>
+            <label xml:lang="en">Tribute Student by Purchase, First Class</label>
             <desc type="1" subtype="27">
-                <desc xml:lang="en">Tribute Students</desc>
                 <desc xml:lang="zh-Hant">貢生門</desc>
+                <desc xml:lang="en">Tribute Students</desc>
             </desc>
             <note>廩貢生</note>
         </event>
@@ -163,7 +173,7 @@
         <note>江西省-南昌府-新建縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="397"/>
+        <ptr target="ttsmq:397"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2009-11-14"/>

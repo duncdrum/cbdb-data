@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO21148" source="#BIB7596" resp="selfbio">
     <idno type="TTS">15419</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>淵</forename>
             <addName type="choronym">襄陽</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Du</surname>
             <forename>Yuan</forename>
             <addName type="choronym">Xiangyang</addName>
@@ -24,9 +23,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO21148" passive="#BIO40774" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -36,29 +40,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10363" passive="#BIO21148" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO10363" passive="#BIO21148" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">遭Y排擠<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO10363 #BIO21148" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO10363 #BIO21148" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="M" n="19">
                             <label>能世其家法 父卒 鄭清之再相 以私憾損其恩數大半 淵兄弟食貧七年</label>
-                            <desc xml:lang="en">Disagreed with views of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">不合<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Disagreed with views of<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39836" passive="#BIO21148" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO39836" passive="#BIO21148" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>應文天祥義檄 與侄天與聚義兵勤王 浙東提刑杜淵辟為部將 天與副之 德祐二年元兵下台州</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -68,8 +72,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF762">

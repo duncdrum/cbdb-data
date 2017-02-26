@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO24320" source="#BIB7596" resp="selfbio">
     <idno type="TTS">18588</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>劉</surname>
             <forename>錡</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Liu</surname>
             <forename>Yi(10)</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">武忠</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wuzhong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wuzhong</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">武穆</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wumu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wumu</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">信叔</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xinshu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xinshu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -45,21 +44,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO24320" passive="#BIO24319" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO24320" passive="#BIO51847" key="138" sortKey="16" name="W1" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">W1 Wife, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">第一任妻</desc>
+                            <desc xml:lang="en">W1 Wife, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO24320" passive="#BIO53943" key="163" sortKey="16" name="W2" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">W2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">第二任妻</desc>
+                            <desc xml:lang="en">W2</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,115 +73,119 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO13913" passive="#BIO24320" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO13913" passive="#BIO24320" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="A" n="16">
                             <label>以恩補將仕郎 旋授迪功郎 劉錡帥荊南辟為松滋縣令 秩滿以績最聞 徙知江寧</label>
-                            <desc xml:lang="en">Directly recruited (bi, zoubi, etc)<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">辟<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Directly recruited (bi, zoubi, etc)<label>Connection via office (superior)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO11872" passive="#BIO24320" key="0405" sortKey="17" name="political-support">
-                        <desc type="P">
-                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO11872" passive="#BIO24320" key="0405" name="political-support">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">得到Y的支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO20765" passive="#BIO24320" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO20765" passive="#BIO24320" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24320" passive="#BIO11872" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO24320" passive="#BIO11872" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="A" n="15">
                             <label>晚年召為秘書正字 疏言金人必敗盟 宿將惟張浚、劉錡在 願亟起之 疏入</label>
-                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39249" passive="#BIO24320" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Staff member was<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO39249" passive="#BIO24320" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">幕僚為Y<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Staff member was<label>Connection via office (superior)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39249" passive="#BIO24320" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO39249" passive="#BIO24320" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>奐造賊寨 諭降之 後入荊南帥劉錡幕 諫殺降因 分隸諸軍</label>
-                            <desc xml:lang="en">Staff member was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">幕僚為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Staff member was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO8170 #BIO24320" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO8170 #BIO24320" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>遂督兵戰 大敗之 劉錡執其手曰：朝廷養兵三十年 今日大功乃出儒者 孝宗時拜左丞相</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO11580 #BIO24320" key="0602" sortKey="31" name="military-support" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO11580 #BIO24320" key="0602" name="military-support" source="#BIB7596">
+                        <desc type="M" n="31">
                             <label>知順昌府 金兵薄城 規與劉錡巡城督戰 屢挫敵鋒 兀朮自將鐵浮屠軍來援</label>
-                            <desc xml:lang="en">Fought together<label>Supportive military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">戰友<label>軍事支持</label>
                             </desc>
+                            <desc xml:lang="en">Fought together<label>Supportive military association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3640" passive="#BIO24320" key="0505" sortKey="24" name="text-ritual" source="#BIB27863">
-                        <desc type="P">
-                            <desc xml:lang="en">Elegy written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO3640" passive="#BIO24320" key="0505" name="text-ritual" source="#BIB27863">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">挽詩、詞由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Elegy written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1162" ana="8">
+                                <label xml:lang="zh-Hant">祭奠</label>
+                                <label xml:lang="zh-Latn-alalc97">sacrifice</label>
+                            </state>
                         </desc>
                     </relation>
-                    <relation active="#BIO10840" passive="#BIO24320" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Portrait eulogy written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO10840" passive="#BIO24320" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">畫贊(畫像記)由Y所作<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Portrait eulogy written by<label>Commemorative Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1144" passive="#BIO24320" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO1144" passive="#BIO24320" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7252" passive="#BIO24320" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO7252" passive="#BIO24320" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=5)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO44113" passive="#BIO24320" key="0404" sortKey="16" name="office-superior">
-                        <desc type="A">
+                    <relation active="#BIO44113" passive="#BIO24320" key="0404" name="office-superior">
+                        <desc type="A" n="16">
                             <label>嘗從劉忠武軍。</label>
-                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">下屬為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -187,12 +195,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">excelled in horseriding and archery</desc>
             <desc xml:lang="zh-Hant">精於騎射</desc>
+            <desc xml:lang="en">excelled in horseriding and archery</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF257">
@@ -287,7 +295,7 @@
             <desc>
                 <label>appointment</label>
                 <desc xml:lang="zh-Hant">權發遣</desc>
-                <desc xml:lang="en">Temporary Appontment</desc>
+                <desc xml:lang="en">Temporary Appointment</desc>
             </desc>
             <note>LZLMasterFileLineID 7857</note>
         </state>
@@ -403,11 +411,11 @@
     <listEvent>
         <event type="06" subtype="118" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
     </listEvent>

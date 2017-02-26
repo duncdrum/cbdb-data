@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO42266" source="#BIB7596">
     <idno type="TTS">36408</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>幸</surname>
             <forename>元龍</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Xing</surname>
             <forename>Yuanlong</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA5">
         <addName>松垣</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Songyuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Songyuan</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA6">
         <addName>清節</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Qingjie</addName>
+        <addName xml:lang="zh-Latn-alalc97">Qingjie</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4">
         <addName>震甫</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhenfu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhenfu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -40,9 +39,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO42266" passive="#BIO42279" key="180" sortKey="5" name="S" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -52,35 +56,35 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO42266" passive="#BIO3727" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO42266" passive="#BIO3727" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO49233" passive="#BIO42266" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO49233" passive="#BIO42266" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO42266" passive="#BIO49236" key="0506" sortKey="25" name="text-biography" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Wrote Biographical sketch (xingzhuang) for<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO42266" passive="#BIO49236" key="0506" name="text-biography" source="#BIB7596">
+                        <desc type="A" n="25">
                             <desc xml:lang="zh-Hant">為Y作行狀<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Wrote Biographical sketch (xingzhuang) for<label>Biographical Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO42266" passive="#BIO3727" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">insulted<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO42266" passive="#BIO3727" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">得罪Y<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">insulted<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -90,8 +94,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF158">
@@ -145,11 +149,11 @@
     <listEvent>
         <event type="0401" subtype="48" when="1200" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: various subjects(zhuke) (mingjing, mingfa excluded)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名諸科(不含明經、明法)</label>
+            <label xml:lang="en">examination: various subjects(zhuke) (mingjing, mingfa excluded)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

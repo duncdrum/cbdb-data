@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO35396" source="#BIB9599" resp="selfbio">
     <idno type="TTS">29649</idno>
     <persName type="main">
@@ -6,18 +5,18 @@
             <surname>呂</surname>
             <forename>思誠</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">Lv Sicheng</persName>
+        <persName xml:lang="zh-Latn-alalc97">Lv Sicheng</persName>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">仲實</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhongshi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongshi</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">忠肅</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Zhongsu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongsu</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,10 +34,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO35396" passive="#BIO102519" key="176" sortKey="6" name="D" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>思誠 孫女</label>
-                            <desc xml:lang="en">D</desc>
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,143 +52,149 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28614" passive="#BIO35396" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28614" passive="#BIO35396" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>省部政典舉要序（安雅堂集6/12下）</label>
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35398" passive="#BIO35396" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO35398" passive="#BIO35396" key="0504" name="prefaces">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1352"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35398" passive="#BIO35396" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35398" passive="#BIO35396" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>張起巖、歐陽玄、蘇天爵、呂思誠等，漢泉漫稿序（漢泉漫稿卷首；蘇序亦見滋溪文稿5/2下）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10097" passive="#BIO35396" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO10097" passive="#BIO35396" key="0504" name="prefaces">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO28615" passive="#BIO35396" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
+                            <state when="1352"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO34385" passive="#BIO35396" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
+                    <relation active="#BIO28615" passive="#BIO35396" key="0504" name="prefaces">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
+                            <state when="1352"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35396" passive="#BIO27957" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO34385" passive="#BIO35396" key="0504" name="prefaces">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1352"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO35396" passive="#BIO27957" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>送崔生序（吳正傳文集15/436）</label>
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1352"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35396" passive="#BIO27998" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35396" passive="#BIO27998" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>送呂仲實僉憲廣西（燕石集7/6下）</label>
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1352"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35396" passive="#BIO27988" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35396" passive="#BIO27988" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>桂林喜呂仲實僉憲至（傅與礪詩集5/23）</label>
-                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的贈詩、文<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35396" passive="#BIO28410" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35396" passive="#BIO28410" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>夢左丞呂公仲實（梧溪集4下/45）</label>
-                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的贈詩、文<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35396" passive="#BIO28460" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35396" passive="#BIO28460" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>柬呂仲實左丞（玩齋集4/19下）</label>
-                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的贈詩、文<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35396" passive="#BIO28695" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35396" passive="#BIO28695" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>寄呂仲實侍御（近光集2/17下）</label>
-                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的贈詩、文<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10097" passive="#BIO35396" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10097" passive="#BIO35396" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>題呂仲實詩後（宋文憲公全集45/14下）</label>
-                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">詩文跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28615" passive="#BIO35396" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28615" passive="#BIO35396" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>題呂仲實嶺南詩稿（伊濱集10/8下）</label>
-                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">詩文跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO34385" passive="#BIO35396" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO34385" passive="#BIO35396" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>跋呂忠肅與魏太常唱和詩後（高太史鳧藻集4/18下）</label>
-                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">詩文跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO107379" passive="#BIO35396" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO107379" passive="#BIO35396" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="P" n="21">
                             <label>曹元用，董子祠堂記（國朝文類29/14）</label>
-                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">祠記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -194,8 +204,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF61125">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO109417" source="#BIB9599" resp="selfbio">
     <idno type="TTS">103034</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>楊</surname>
             <forename>煥</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Yang</surname>
             <forename>Huan</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">文伯</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Wenbo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenbo</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -31,9 +30,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO109417" passive="#BIO109631" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -43,12 +47,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28543" passive="#BIO109417" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28543" passive="#BIO109417" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>故正議大夫兵部尚書致仕楊公墓志銘（至正集62/8下）</label>
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>

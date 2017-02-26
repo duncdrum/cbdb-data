@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO54822" source="#BIB9601" resp="selfbio">
     <idno type="TTS">48847</idno>
     <persName type="main">
@@ -6,14 +5,14 @@
             <surname>楊</surname>
             <forename>素書</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Yang</surname>
             <forename>Sushu</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">韻芬</addName>
-        <addName xml:lang="zh-alalc97">Yunfen</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yunfen</addName>
     </persName>
     <sex value="2">f</sex>
     <birth when="1741" datingMethod="#chinTrad" when-custom="D69-R7-Y6">
@@ -33,21 +32,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO54822" passive="#BIO54817" key="176" sortKey="6" name="D" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO54822" passive="#BIO54820" key="134" sortKey="0" name="H" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO54822" passive="#BIO54825" key="180" sortKey="5" name="S" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,7 +76,7 @@
         <note>浙江·錢塘(清代人物生卒年表)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1611"/>
+        <ptr target="mqww:1611"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2009-06-25"/>

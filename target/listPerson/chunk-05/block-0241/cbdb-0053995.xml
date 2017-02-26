@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO53995" source="#BIB9602">
     <idno type="TTS">48045</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>許</surname>
             <forename>祐身</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Xu</surname>
             <forename>Youshen</forename>
         </persName>
@@ -14,12 +13,12 @@
     <persName type="alias" key="AKA4" source="#BIB24308">
         <addName xml:lang="zh-Hant">子原</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Ziyuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Ziyuan</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">芷沅</addName>
-        <addName xml:lang="zh-alalc97">Zhiyuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhiyuan</addName>
     </persName>
     <sex value="1">m</sex>
     <birth when="1850" datingMethod="#chinTrad" when-custom="D69-R9-Y30">
@@ -34,9 +33,9 @@
     <age>59</age>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>【參考資料: MQWW PoetID #374.】 《清代人物生卒年表》定其生卒年為道光30年~？。 【參考《清代人物生卒年表》#6303.】</note>
     <affiliation>
@@ -45,21 +44,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO53995" passive="#BIO53994" key="135" sortKey="0" name="W">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO53995" passive="#BIO54032" key="169" sortKey="4" name="Z-" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">Z–</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妹</desc>
+                            <desc xml:lang="en">Z–</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO53995" passive="#BIO54034" key="176" sortKey="6" name="D" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,11 +78,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO53989" passive="#BIO53995" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO53989" passive="#BIO53995" key="0504" name="prefaces">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -84,20 +93,20 @@
     <listEvent>
         <event type="0401" subtype="39" when="1873" sortKey="1" source="#BIB9601">
             <head>entry</head>
-            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <label xml:lang="zh-Hant">科舉: 鄉貢舉人</label>
+            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0503" subtype="109" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">tribute student: general</label>
             <label xml:lang="zh-Hant">貢生 = 貢監生(籠統)</label>
+            <label xml:lang="en">tribute student: general</label>
             <desc type="1" subtype="27">
-                <desc xml:lang="en">Tribute Students</desc>
                 <desc xml:lang="zh-Hant">貢生門</desc>
+                <desc xml:lang="en">Tribute Students</desc>
             </desc>
             <note>貢生</note>
         </event>
@@ -110,7 +119,7 @@
         <note>浙江省-仁和縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="5354"/>
+        <ptr target="ttsmq:5354"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2009-04-18"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20646" source="#BIB7596" resp="selfbio">
     <idno type="TTS">14920</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>呂</surname>
             <forename>聲之</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Lv</surname>
             <forename>Shengzhi</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>大亨</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Daheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Daheng</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -29,15 +28,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20646" passive="#BIO20644" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO20646" passive="#BIO20647" key="130" sortKey="9999" name="FBS-" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從弟</desc>
+                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,37 +51,39 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO10589 #BIO20646" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO10589 #BIO20646" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation mutual="#BIO10589 #BIO20646" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
-                            <label>琰子 以能詩名 師陳傅良而友蔡幼學 同升太學 壁記題名</label>
                             <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
+                            <state when="1205"/>
+                        </desc>
+                    </relation>
+                    <relation mutual="#BIO10589 #BIO20646" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
+                            <label>琰子 以能詩名 師陳傅良而友蔡幼學 同升太學 壁記題名</label>
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO20646" passive="#BIO10585" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO20646" passive="#BIO10585" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1205"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO20646" passive="#BIO10585" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO20646" passive="#BIO10585" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>琰子 以能詩名 師陳傅良而友蔡幼學 同升太學 壁記題名</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
@@ -87,16 +93,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">failed exams literatus</desc>
             <desc xml:lang="zh-Hant">落第士人</desc>
+            <desc xml:lang="en">failed exams literatus</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF1107">
@@ -111,11 +117,11 @@
     <listEvent>
         <event type="0401" subtype="29" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi or zhuke (facilitated degree)</label>
             <label xml:lang="zh-Hant">科舉: 特奏名進士、特奏名諸科 、大挑</label>
+            <label xml:lang="en">examination: jinshi or zhuke (facilitated degree)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

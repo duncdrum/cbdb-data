@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO23631" source="#BIB7596" resp="selfbio">
     <idno type="TTS">17900</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>公懋</forename>
             <addName type="choronym">魏王</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhao</surname>
             <forename>Gongmao(3)</forename>
             <addName type="choronym">Weiwang</addName>
@@ -16,25 +15,25 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">元功</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yuangong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yuangong</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB2506">
         <addName xml:lang="zh-Hant">第一</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Diyi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Diyi</addName>
         <term>Birth-order name</term>
     </persName>
     <persName type="alias" key="AKA10" source="#BIB2506">
         <addName xml:lang="zh-Hant">寧郎</addName>
         <term>小字</term>
-        <addName xml:lang="zh-alalc97">Ninglang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Ninglang</addName>
         <term>Childhood Courtesy Name</term>
     </persName>
     <persName type="alias" key="AKA9" source="#BIB2506">
         <addName xml:lang="zh-Hant">寧哥</addName>
         <term>小名</term>
-        <addName xml:lang="zh-alalc97">Ningge</addName>
+        <addName xml:lang="zh-Latn-alalc97">Ningge</addName>
         <term>Childhood Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -51,39 +50,59 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO23631" passive="#BIO3211" key="36" sortKey="9999" name="G-6" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">G-6</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">六世祖;太祖</desc>
+                            <desc xml:lang="en">G-6</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO23631" passive="#BIO21465" key="243" sortKey="8" name="SS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO23631" passive="#BIO23630" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO23631" passive="#BIO25578" key="183" sortKey="5" name="S2">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO23631" passive="#BIO135905" key="111" sortKey="-3" name="M" source="#BIB2506" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO23631" passive="#BIO135906" key="135" sortKey="0" name="W" source="#BIB2506" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -92,8 +111,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">
@@ -126,14 +145,20 @@
     <listEvent>
         <event type="0401" subtype="36" when="1148" sortKey="1" source="#BIB2506">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="attempts">1</note>
             <note type="rank">4甲第112</note>
+            <note type="parental-status">
+                <trait type="parental-status" key="2">
+                    <label xml:lang="zh-Hant">永感</label>
+                    <label xml:lang="zh-Latn-alalc97">Both parent died</label>
+                </trait>
+            </note>
         </event>
     </listEvent>
     <residence ref="#PL12757" key="1">

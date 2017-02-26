@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO1368" source="#BIB7596" resp="selfbio">
     <idno type="TTS">1366</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>明</surname>
             <forename>鎬</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ming</surname>
             <forename>Hao</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4">
         <addName>化基</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Huaji</addName>
+        <addName xml:lang="zh-Latn-alalc97">Huaji</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA6">
         <addName>文烈</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenlie</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenlie</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -40,53 +39,58 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1368" passive="#BIO22275" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO1368" passive="#BIO22275" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO2087" passive="#BIO1368" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO2087" passive="#BIO1368" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1368" passive="#BIO1953" key="0403" sortKey="15" name="office-subordinate">
-                        <desc type="A">
+                    <relation active="#BIO1368" passive="#BIO1953" key="0403" name="office-subordinate">
+                        <desc type="A" n="15">
                             <label>副文彥博討平王則於貝州。</label>
-                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
+                            </desc>
+                            <state when="1048"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1368" passive="#BIO38746" key="0510" sortKey="29" name="text-occasional">
-                        <desc type="P">
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
+                    <relation active="#BIO1368" passive="#BIO38746" key="0510" name="text-occasional">
+                        <desc type="P" n="29">
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1037" ana="6">
+                                <label xml:lang="zh-Hant">離別</label>
+                                <label xml:lang="zh-Latn-alalc97">departure</label>
+                            </state>
                         </desc>
                     </relation>
-                    <relation active="#BIO13591" passive="#BIO1368" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO13591" passive="#BIO1368" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="A" n="32">
                             <label>仁宗朝歷京東益州陜西河東轉運使 入知開封府 副文彥博討平王則於貝州 慶曆八年自端明殿學士拜參知政事 執政逾兩月</label>
-                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">抵禦或討平叛軍Y<label>軍事對抗</label>
                             </desc>
+                            <desc xml:lang="en">Fought against the rebel<label>Oppositional military association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13591" passive="#BIO1368" key="0603" sortKey="32" name="military-opposition" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Defeated in battle<label>Oppositional military association</label>
-                            </desc>
+                    <relation active="#BIO13591" passive="#BIO1368" key="0603" name="military-opposition" source="#BIB7596">
+                        <desc type="A" n="32">
                             <desc xml:lang="zh-Hant">戰勝<label>軍事對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Defeated in battle<label>Oppositional military association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -96,12 +100,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF478">
@@ -338,11 +342,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1012" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

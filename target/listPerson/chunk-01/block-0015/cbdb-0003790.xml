@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO3790" source="#BIB7596" resp="selfbio">
     <idno type="TTS">2896</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>喬年</forename>
             <addName type="choronym">廣平</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Song</surname>
             <forename>Qiaonian</forename>
             <addName type="choronym">Guangping</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA4">
         <addName>仙民</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xianmin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xianmin</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA6">
         <addName>忠文</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Zhongwen</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongwen</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -43,40 +42,65 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO3790" passive="#BIO1649" key="117" sortKey="150" name="A" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">Affinal kin</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">姻親</desc>
+                            <desc xml:lang="en">Affinal kin</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO3790" passive="#BIO3792" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3790" passive="#BIO3801" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3790" passive="#BIO5122" key="176" sortKey="6" name="D">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3790" passive="#BIO8026" key="181" sortKey="7" name="DH">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3790" passive="#BIO119987" key="180" sortKey="5" name="S" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1070</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -86,37 +110,38 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO3790" passive="#BIO1985" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO3790" passive="#BIO1985" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1112"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1649" passive="#BIO3790" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO1649" passive="#BIO3790" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="P" n="17">
                             <label>以父蔭監市易 坐事失官 以女嫁蔡京子 使依附蔡氏 崇寧中以龍圖閣學士知河南府</label>
-                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">得到Y的支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7111" passive="#BIO3790" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO7111" passive="#BIO3790" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO43182" passive="#BIO3790" key="0301" sortKey="12" name="friend">
-                        <desc type="P">
-                            <desc xml:lang="en">was aided by<label>Friendship(General)</label>
-                            </desc>
+                    <relation active="#BIO43182" passive="#BIO3790" key="0301" name="friend">
+                        <desc type="P" n="12">
                             <desc xml:lang="zh-Hant">得到Y之幫助<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">was aided by<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -126,8 +151,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF451">
@@ -262,11 +287,11 @@
     <listEvent>
         <event type="06" subtype="118" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO55019" source="#BIB9602">
     <idno type="TTS">49034</idno>
     <persName type="main">
@@ -6,18 +5,18 @@
             <surname>翁</surname>
             <forename>同爵</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Weng</surname>
             <forename>Tongjue</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">玉甫</addName>
-        <addName xml:lang="zh-alalc97">Yufu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yufu</addName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">俠君</addName>
-        <addName xml:lang="zh-alalc97">Xiajun</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xiajun</addName>
     </persName>
     <sex value="1">m</sex>
     <birth when="1814" datingMethod="#chinTrad" when-custom="D69-R8-Y19">
@@ -37,9 +36,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO55019" passive="#BIO55008" key="75" sortKey="-1" name="F" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,21 +53,21 @@
     <listEvent>
         <event type="0502" subtype="157" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">Imperial Academy student: by yin privilege</label>
             <label xml:lang="zh-Hant">監生: 蔭監(含明代官生、恩生，或清代恩廕s生、難廕生)</label>
+            <label xml:lang="en">Imperial Academy student: by yin privilege</label>
             <desc type="1" subtype="29">
-                <desc xml:lang="en">Imperial Academy Students</desc>
                 <desc xml:lang="zh-Hant">監生門</desc>
+                <desc xml:lang="en">Imperial Academy Students</desc>
             </desc>
             <note>廕生</note>
         </event>
         <event type="0501" subtype="184" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">Supplementary Student</label>
             <label xml:lang="zh-Hant">附生</label>
+            <label xml:lang="en">Supplementary Student</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
             <note>附生</note>
         </event>
@@ -76,7 +80,7 @@
         <note>江蘇省-蘇州府-常熟縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="990"/>
+        <ptr target="ttsmq:990"/>
     </linkGrp>
     <note type="created" target="#BDLYW">
         <date when="2009-06-29"/>

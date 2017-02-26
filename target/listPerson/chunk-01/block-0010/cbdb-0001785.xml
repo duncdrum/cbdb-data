@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO1785" source="#BIB7596" resp="selfbio">
     <idno type="TTS">1783</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>陟臣</forename>
             <addName type="choronym">太原</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wang</surname>
             <forename>Zhichen</forename>
             <addName type="choronym">Taiyuan</addName>
@@ -16,7 +15,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">希叔</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xishu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xishu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -31,15 +30,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO1785" passive="#BIO1919" key="131" sortKey="9999" name="FBS+" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄</desc>
+                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO1785" passive="#BIO3941" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,12 +53,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO9999" passive="#BIO1785" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO1785" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1082"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -63,8 +68,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF716">

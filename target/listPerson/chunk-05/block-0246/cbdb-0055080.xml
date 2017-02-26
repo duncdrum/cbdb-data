@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO55080" source="#BIB9602">
     <idno type="TTS">49092</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>完顏</surname>
             <forename>留保</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wanyan</surname>
             <forename>Liubao</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">松裔</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Songyi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Songyi</addName>
         <term>Courtesy name</term>
         <note>參見《清史稿校註》頁8839.</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9601">
         <addName xml:lang="zh-Hant">松齋</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Songzhai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Songzhai</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">恤緯</addName>
-        <addName xml:lang="zh-alalc97">Xuwei</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xuwei</addName>
     </persName>
     <sex value="1">m</sex>
     <birth when="1686" datingMethod="#chinTrad" when-custom="D69-R5-Y25">
@@ -41,9 +40,9 @@
     <age>77</age>
     <trait type="ethnicity" key="169">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">man zu</desc>
         <desc xml:lang="zh-Hant">滿族</desc>
+        <desc xml:lang="zh-Latn-alalc97">man zu</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>【參考資料: MQWW PoetID #494, HuWenKai #815.】 《清代人物生卒年表》定其生卒年為康熙25年~乾隆27年。 【參考《清代人物生卒年表》#19626.】</note>
     <affiliation>
@@ -52,15 +51,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO55080" passive="#BIO55077" key="400" sortKey="10000" name="FBW" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">FBW Father's brother's wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">伯叔母</desc>
+                            <desc xml:lang="en">FBW Father's brother's wife</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO55080" passive="#BIO55083" key="79" sortKey="9999" name="FB" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,18 +78,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Plain White Banner</desc>
             <desc xml:lang="zh-Hant">[正白旗]</desc>
+            <desc xml:lang="en">Plain White Banner</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="0401" subtype="39" when="1714" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <label xml:lang="zh-Hant">科舉: 鄉貢舉人</label>
+            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>康熙53年舉人</note>
         </event>
@@ -93,7 +102,7 @@
         <note>滿洲正黃旗/代考滿洲正白旗(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="4448"/>
+        <ptr target="ttsmq:4448"/>
     </linkGrp>
     <note type="created" target="#BDDY">
         <date when="2009-06-30"/>

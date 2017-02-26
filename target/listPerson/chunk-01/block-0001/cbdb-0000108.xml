@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO108" source="#BIB7596" resp="selfbio">
     <idno type="TTS">107</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>陳</surname>
             <forename>越</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Chen</surname>
             <forename>Yue</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">損之</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Sunzhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Sunzhi</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -33,34 +32,49 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO108" passive="#BIO10884" key="62" sortKey="-4" name="FF" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1658</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO108" passive="#BIO15040" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO108" passive="#BIO15041" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO108" passive="#BIO26311" key="177" sortKey="9999" name="BS" source="#BIB27124">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO108" passive="#BIO26311" key="186" sortKey="5" name="S*" source="#BIB27124">
-                        <desc>
-                            <desc xml:lang="en">S* Son, adopted as heir</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">過繼的嗣子</desc>
+                            <desc xml:lang="en">S* Son, adopted as heir</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -70,29 +84,30 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO943" passive="#BIO108" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO943" passive="#BIO108" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1012"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO0 #BIO108" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO0 #BIO108" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>直史館 預修冊府元龜 與陳從易、劉筠尤為勤職 擢右正言 性耿概任氣</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO10623 #BIO108" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO10623 #BIO108" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>直史館 預修冊府元龜 與陳從易、劉筠尤為勤職 擢右正言 性耿概任氣</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -102,20 +117,20 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">historian</desc>
             <desc xml:lang="zh-Hant">史學家</desc>
+            <desc xml:lang="en">historian</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">scholar of Classics (Book of Change)</desc>
             <desc xml:lang="zh-Hant">經學家—易經</desc>
+            <desc xml:lang="en">scholar of Classics (Book of Change)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">fond of learning</desc>
             <desc xml:lang="zh-Hant">好學</desc>
+            <desc xml:lang="en">fond of learning</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF906">
@@ -188,11 +203,11 @@
     <listEvent>
         <event type="0403" subtype="248" when="1000" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">Decree examination: xian liang fang zheng ke</label>
             <label xml:lang="zh-Hant">科舉制舉: 賢良方正科</label>
+            <label xml:lang="en">Decree examination: xian liang fang zheng ke</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
     </listEvent>

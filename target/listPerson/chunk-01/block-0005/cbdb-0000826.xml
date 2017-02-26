@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO826" source="#BIB7596" resp="selfbio">
     <idno type="TTS">825</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>胡</surname>
             <forename>松年</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Hu</surname>
             <forename>Songnian</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>茂老</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Maolao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Maolao</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,21 +34,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO826" passive="#BIO43034" key="75" sortKey="-1" name="F" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO826" passive="#BIO43036" key="111" sortKey="-3" name="M" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO826" passive="#BIO43037" key="420" sortKey="10000" name="M~" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">M~ Mother, nominal; legitimate wife as nominal mother to children of concubine</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">嫡母</desc>
+                            <desc xml:lang="en">M~ Mother, nominal; legitimate wife as nominal mother to children of concubine</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,46 +68,47 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO7343 #BIO826" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
+                    <relation mutual="#BIO7343 #BIO826" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <label>貓相乳記(鴻慶居士文集21/9下)</label>
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO826" passive="#BIO8175" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO826" passive="#BIO8175" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="A" n="15">
                             <label>使金還 拜吏部尚書兼侍講 岳飛收復襄漢 令松年籌度守禦事 松年條戰艦四制</label>
-                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO826" passive="#BIO8008" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO826" passive="#BIO8008" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>喜賓客 所舉皆一時聞人 秦檜秉政 士大夫無不曲意阿附 松年獨鄙之</label>
-                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">反對/不支持Y的政策<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Attacked or not support policies of<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO9999" passive="#BIO826" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO826" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1146"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO7343" passive="#BIO826" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO7343" passive="#BIO826" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">建築物得到Y的題詠、記、命名<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -108,16 +118,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">society member</desc>
             <desc xml:lang="zh-Hant">結社</desc>
+            <desc xml:lang="en">society member</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF149">
@@ -358,11 +368,11 @@
     <listEvent>
         <event type="0501" subtype="50" when="1112" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">school: degree granted to top Upper Hall students</label>
             <label xml:lang="zh-Hant">學校: 上舍及第</label>
+            <label xml:lang="en">school: degree granted to top Upper Hall students</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29246" source="#BIB9599" resp="selfbio">
     <idno type="TTS">23505</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>述律哥圖</forename>
             <addName type="choronym">蒙古族</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">su lü ge tu<addName type="choronym">Mongol Tribe</addName>
+        <persName xml:lang="zh-Latn-alalc97">su lü ge tu<addName type="choronym">Mongol Tribe</addName>
         </persName>
     </persName>
     <persName type="original">述律哥圖</persName>
@@ -15,7 +14,7 @@
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">武定</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wuding</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wuding</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -25,9 +24,9 @@
     </floruit>
     <trait type="ethnicity" key="131">
         <label>Mongol</label>
-        <desc xml:lang="en">Ba'arin</desc>
-        <desc xml:lang="zh-alalc97">ba lin</desc>
         <desc xml:lang="zh-Hant">八鄰</desc>
+        <desc xml:lang="zh-Latn-alalc97">ba lin</desc>
+        <desc xml:lang="en">Ba'arin</desc>
         <note>C. Atwood note:Ba'arin (apostrophe signals a -gh- that is not pronounced); ethno-legal category Mongol</note>
     </trait>
     <note>Suigetu [29246] WDY, 4, p. 2630.</note>
@@ -37,15 +36,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29246" passive="#BIO29247" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO29246" passive="#BIO29249" key="255" sortKey="9" name="SSS" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">SSS</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾孫; 重孫</desc>
+                            <desc xml:lang="en">SSS</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,12 +64,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO29246" passive="#BIO29239" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO29246" passive="#BIO29239" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">為Y之門客<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
+                            </desc>
+                            <state when="1229"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,8 +79,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF64869">
@@ -86,11 +96,11 @@
     <listEvent>
         <event type="11" subtype="114" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">surrender when dynasty changes</label>
             <label xml:lang="zh-Hant">易代變節</label>
+            <label xml:lang="en">surrender when dynasty changes</label>
             <desc type="0" subtype="12">
-                <desc xml:lang="en">Surrender</desc>
                 <desc xml:lang="zh-Hant">歸降門</desc>
+                <desc xml:lang="en">Surrender</desc>
             </desc>
         </event>
     </listEvent>

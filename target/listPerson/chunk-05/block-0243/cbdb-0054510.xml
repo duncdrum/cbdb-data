@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO54510" source="#BIB9602">
     <idno type="TTS">48546</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>完顏</surname>
             <forename>崇實</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wanyan</surname>
             <forename>Chongshi</forename>
         </persName>
@@ -14,32 +13,32 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">子華</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zihua</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zihua</addName>
         <term>Courtesy name</term>
         <note>參見《清代名人傳略》頁272.</note>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB9602">
         <addName xml:lang="zh-Hant">文勤</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenqin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenqin</addName>
         <term>Posthumous Name</term>
         <note>參見《清國史館傳包》。</note>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">惕盦</addName>
-        <addName xml:lang="zh-alalc97">Tian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tian</addName>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">惕盫</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Tian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tian</addName>
         <term>Studio name, Style name</term>
         <note>參見《清代名人傳略》頁272.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">樸山</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Pushan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Pushan</addName>
         <term>Studio name, Style name</term>
         <note>參見《清代名人傳略》頁272.</note>
     </persName>
@@ -56,9 +55,9 @@
     <age>57</age>
     <trait type="ethnicity" key="169">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">man zu</desc>
         <desc xml:lang="zh-Hant">滿族</desc>
+        <desc xml:lang="zh-Latn-alalc97">man zu</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>【參考資料: MQWW PoetID #299, HuWenKai #643.】 《清代人物生卒年表》定其生卒年為嘉慶25年~光緒2年。 【參考《清代人物生卒年表》#21520.】</note>
     <affiliation>
@@ -67,15 +66,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO54510" passive="#BIO54304" key="75" sortKey="-1" name="F" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO54510" passive="#BIO54313" key="111" sortKey="-3" name="M" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -90,7 +99,7 @@
         <note>滿洲鑲黃旗(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="2760"/>
+        <ptr target="ttsmq:2760"/>
     </linkGrp>
     <note type="created" target="#BDDY">
         <date when="2009-06-19"/>

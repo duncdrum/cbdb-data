@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO11888" source="#BIB7596" resp="selfbio">
     <idno type="TTS">6189</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>游</surname>
             <forename>開</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>You</surname>
             <forename>Kai</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">子蒙</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zimeng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zimeng</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9521">
         <addName xml:lang="zh-Hant">塘林</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Tanglin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tanglin</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -34,9 +33,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO11888" passive="#BIO11887" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,12 +50,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11888" passive="#BIO3257" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO11888" passive="#BIO3257" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之弟子<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1181"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -60,12 +65,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
             <desc xml:lang="zh-Hant">理學家</desc>
+            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <residence ref="#PL13890" key="1">

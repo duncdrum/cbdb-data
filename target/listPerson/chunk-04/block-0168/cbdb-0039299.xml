@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO39299" source="#BIB7596" resp="selfbio">
     <idno type="TTS">33516</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>江</surname>
             <forename>愷</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Jiang</surname>
             <forename>Kai</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA3" source="#BIB7596">
         <addName xml:lang="zh-Hant">江凱</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Jiangkai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jiangkai</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">伯幾</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Boji</addName>
+        <addName xml:lang="zh-Latn-alalc97">Boji</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">雪矼</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Xuegang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xuegang</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -37,9 +36,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO39299" passive="#BIO33263" key="76" sortKey="21" name="WF" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,12 +53,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO33263" passive="#BIO39299" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO33263" passive="#BIO39299" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="P" n="17">
                             <label>號雪矼 婺源人 客許月卿家 月卿愛之 妻以女</label>
-                            <desc xml:lang="en">Liked by<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">得到Y的喜爱<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Liked by<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -64,8 +68,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">recluse</desc>
             <desc xml:lang="zh-Hant">[隱士]</desc>
+            <desc xml:lang="en">recluse</desc>
         </state>
     </socecStatus>
     <residence ref="#PL12855" key="1" source="#BIB7596">

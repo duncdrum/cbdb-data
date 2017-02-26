@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO3878" source="#BIB7596" resp="selfbio">
     <idno type="TTS">2980</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>曹</surname>
             <forename>詩</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Cao</surname>
             <forename>Shi</forename>
         </persName>
@@ -22,27 +21,47 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO3878" passive="#BIO9004" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3878" passive="#BIO16844" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3878" passive="#BIO45546" key="111" sortKey="-3" name="M" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3878" passive="#BIO46586" key="135" sortKey="0" name="W" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -52,12 +71,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO26964" passive="#BIO3878" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
-                            <desc xml:lang="en">followed by<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO26964" passive="#BIO3878" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
                             <desc xml:lang="zh-Hant">從遊者為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">followed by<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1085"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -66,16 +86,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">army officer</desc>
             <desc xml:lang="zh-Hant">武將</desc>
+            <desc xml:lang="en">army officer</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">consort family</desc>
             <desc xml:lang="zh-Hant">外戚</desc>
+            <desc xml:lang="en">consort family</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF624">
@@ -165,11 +185,11 @@
     <listEvent>
         <event type="09" subtype="77" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">military merit: military service or distinction in battle</label>
             <label xml:lang="zh-Hant">軍員轉補</label>
+            <label xml:lang="en">military merit: military service or distinction in battle</label>
             <desc type="0" subtype="10">
-                <desc xml:lang="en">Military Merit</desc>
                 <desc xml:lang="zh-Hant">軍功補授門</desc>
+                <desc xml:lang="en">Military Merit</desc>
             </desc>
         </event>
     </listEvent>

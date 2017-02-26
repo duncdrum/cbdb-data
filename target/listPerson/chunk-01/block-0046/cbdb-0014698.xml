@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO14698" source="#BIB7596" resp="selfbio">
     <idno type="TTS">8986</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>惟濬</forename>
             <addName type="choronym">吳興</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Qian</surname>
             <forename>Weijun</forename>
             <addName type="choronym">Wuxing</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">安僖</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Anxi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Anxi</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">禹川</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yuchuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yuchuan</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -41,21 +40,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO14698" passive="#BIO3037" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO14698" passive="#BIO16243" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO14698" passive="#BIO16244" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -64,8 +78,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF287">
@@ -98,11 +112,11 @@
     <listEvent>
         <event type="07" subtype="15" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">direct recruitment into military service</label>
             <label xml:lang="zh-Hant">募入軍伍</label>
+            <label xml:lang="en">direct recruitment into military service</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO32361" source="#BIB24309">
     <idno type="TTS">26616</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>大素</forename>
             <addName type="choronym">魏郡</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhang</surname>
             <forename>Dasu</forename>
             <addName type="choronym">Weijun</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA3" source="#BIB24309">
         <addName xml:lang="zh-Hant">張大素</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Zhang Dasu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhang Dasu</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA3" source="#BIB24309">
         <addName xml:lang="zh-Hant">張太素</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Zhang Taisu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhang Taisu</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -37,15 +36,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO32361" passive="#BIO13751" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO32361" passive="#BIO13752" key="126" sortKey="3" name="B-" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">B– Brother, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">弟</desc>
+                            <desc xml:lang="en">B– Brother, younger</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -54,8 +58,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF10180">
@@ -101,11 +105,11 @@
     <listEvent>
         <event type="07" subtype="14" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>
@@ -117,7 +121,7 @@
         <note>魏州/繁水(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1755"/>
+        <ptr target="idtf:1755"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

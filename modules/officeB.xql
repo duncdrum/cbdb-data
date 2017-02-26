@@ -4,7 +4,9 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+declare namespace no="http://none";
+
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
 (:officeB joins the nodes from the two intermediary files written by officeA.

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO49581" source="#BIB7596">
     <idno type="TTS">43637</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>楊</surname>
             <forename>昭儉</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Yang</surname>
             <forename>Zhaojian</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB24309">
         <addName xml:lang="zh-Hant">仲寶</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhongbao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongbao</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -36,17 +35,27 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO49581" passive="#BIO4055" key="62" sortKey="-4" name="FF" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#321</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO49581" passive="#BIO119801" key="75" sortKey="-1" name="F" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#321</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,8 +64,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF27">
@@ -292,7 +301,7 @@
         <note>長安人(宋人傳記資料索引(電子版))。</note>
     </residence>
     <linkGrp>
-        <ptr target="1512"/>
+        <ptr target="idtf:1512"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2009-02-26"/>

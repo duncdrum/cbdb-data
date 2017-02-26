@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO1341" source="#BIB7596" resp="selfbio">
     <idno type="TTS">1339</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>馬</surname>
             <forename>純</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ma</surname>
             <forename>Chun</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4">
         <addName>子約</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Ziyue</addName>
+        <addName xml:lang="zh-Latn-alalc97">Ziyue</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">樸樕翁</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Pusuweng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Pusuweng</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,9 +34,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO1341" passive="#BIO1350" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,12 +51,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1341" passive="#BIO10157" key="0207" sortKey="10" name="artistic-affil." source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO1341" passive="#BIO10157" key="0207" name="artistic-affil." source="#BIB7596">
+                        <desc type="A" n="10">
                             <label>著陶朱新錄 大抵涉於怪異者十之七八 為洪邁夷堅志之流</label>
-                            <desc xml:lang="en">Followed literary style of<label>Literary and Artistic Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">文風效法Y<label>文學藝術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Followed literary style of<label>Literary and Artistic Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -62,8 +66,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF737">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO21234" source="#BIB7596" resp="selfbio">
     <idno type="TTS">15504</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>子巳</forename>
             <addName type="choronym">河內</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Sima</surname>
             <forename>Zisi</forename>
             <addName type="choronym">Henei</addName>
@@ -16,7 +15,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">叔原</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Shuyuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shuyuan</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -30,15 +29,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO21234" passive="#BIO1488" key="31" sortKey="9999" name="G-7">
-                        <desc>
-                            <desc xml:lang="en">G-7</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">七世祖;太曾祖</desc>
+                            <desc xml:lang="en">G-7</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO21234" passive="#BIO21235" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,19 +52,19 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO4001" passive="#BIO21234" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO21234" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO4001" passive="#BIO21234" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO21234" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -70,24 +74,24 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
             <desc xml:lang="zh-Hant">理學家</desc>
+            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">chose not to participate in exams</desc>
             <desc xml:lang="zh-Hant">主動放棄科舉</desc>
+            <desc xml:lang="en">chose not to participate in exams</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">holder of minor office</desc>
             <desc xml:lang="zh-Hant">[低級官僚]</desc>
+            <desc xml:lang="en">holder of minor office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF688">
@@ -107,11 +111,11 @@
     <listEvent>
         <event type="13" subtype="137" sortKey="0" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">office (not degree) granted by special grace</label>
             <label xml:lang="zh-Hant">特賜補官、准赦文除授等</label>
+            <label xml:lang="en">office (not degree) granted by special grace</label>
             <desc type="0" subtype="14">
-                <desc xml:lang="en">Decree of Special Grace</desc>
                 <desc xml:lang="zh-Hant">特旨門</desc>
+                <desc xml:lang="en">Decree of Special Grace</desc>
             </desc>
             <note>通理學，不事科舉，以清白世其家。召補嘉定司戶參軍。</note>
         </event>

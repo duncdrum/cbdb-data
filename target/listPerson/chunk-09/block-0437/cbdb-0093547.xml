@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO93547" source="#BIB24309">
     <idno type="TTS">87220</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>張</surname>
             <forename>濬</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhang</surname>
             <forename>Jun</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB24309">
         <addName xml:lang="zh-Hant">禹川</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yuchuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yuchuan</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB24309">
         <addName xml:lang="zh-Hant">張三十四</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Zhang Sanshisi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhang Sanshisi</addName>
         <term>Birth-order name</term>
     </persName>
     <sex value="1">m</sex>
@@ -38,15 +37,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO93547" passive="#BIO93405" key="62" sortKey="-4" name="FF" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO93547" passive="#BIO93482" key="180" sortKey="5" name="S" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -256,11 +265,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -272,7 +281,7 @@
         <note>河閒(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1948"/>
+        <ptr target="idtf:1948"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-10-14"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO68265" source="#BIB9602">
     <idno type="TTS">62086</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>冀</surname>
             <forename>元亨</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ji</surname>
             <forename>Yuanheng</forename>
         </persName>
@@ -14,14 +13,14 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">惟乾</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Weiqian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Weiqian</addName>
         <term>Courtesy name</term>
         <note>參見《漢籍電子文獻資料庫-明史.列傳》頁5169.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">闇齋</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Anzhai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Anzhai</addName>
         <term>Studio name, Style name</term>
         <note>參見《明儒學案》頁665.</note>
     </persName>
@@ -42,9 +41,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO68265" passive="#BIO118480" key="135" sortKey="0" name="W" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -54,27 +58,27 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO30374" passive="#BIO68265" key="0405" sortKey="17" name="political-support" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO30374" passive="#BIO68265" key="0405" name="political-support" source="#BIB27147">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">得到Y的支持<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Supported by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO132554" passive="#BIO68265" key="0505" sortKey="24" name="text-ritual" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO132554" passive="#BIO68265" key="0505" name="text-ritual" source="#BIB27147">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO132554" passive="#BIO68265" key="0503" sortKey="22" name="epitaphs" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO132554" passive="#BIO68265" key="0503" name="epitaphs" source="#BIB27147">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓表由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -84,18 +88,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian scholar (Wang Yangming school)</desc>
             <desc xml:lang="zh-Hant">理學家 — 陽明學派</desc>
+            <desc xml:lang="en">Neo-Confucian scholar (Wang Yangming school)</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="0401" subtype="39" when="1516" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <label xml:lang="zh-Hant">科舉: 鄉貢舉人</label>
+            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>正德11年舉人</note>
         </event>
@@ -108,7 +112,7 @@
         <note>湖廣承宣布政使司-常德府-武陵縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="11928"/>
+        <ptr target="ttsmq:11928"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

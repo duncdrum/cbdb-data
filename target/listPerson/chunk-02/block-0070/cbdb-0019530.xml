@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO19530" source="#BIB7596" resp="selfbio">
     <idno type="TTS">13810</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>雷</surname>
             <forename>孝友</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Lei</surname>
             <forename>Xiaoyou</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">季仲</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Jizhong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jizhong</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO19530" passive="#BIO20817" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,38 +44,40 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO11053 #BIO19530" key="0205" sortKey="8" name="scholarly-member" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO11053 #BIO19530" key="0205" name="scholarly-member" source="#BIB7596">
+                        <desc type="M" n="8">
                             <label>字季仲 筠州新昌人 乾道五年鄭僑榜進士 歷太學博士 累遷權吏部侍郎</label>
-                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同年友<label>同為……之成員</label>
                             </desc>
+                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO19530" passive="#BIO10749" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO19530" passive="#BIO10749" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>適屢以審慎為言 開禧三年侂冑誅 中丞雷孝友劾適附侂冑 遂奪職 杜門著述</label>
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO11959" passive="#BIO19530" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO12066" passive="#BIO19530" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO11959" passive="#BIO19530" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1209"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO12066" passive="#BIO19530" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
+                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1209"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -80,12 +86,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">historian</desc>
             <desc xml:lang="zh-Hant">史學家</desc>
+            <desc xml:lang="en">historian</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF123">
@@ -199,11 +205,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1169" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

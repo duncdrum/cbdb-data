@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO38300" source="#BIB7596" resp="selfbio">
     <idno type="TTS">32536</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>上官</surname>
             <forename>謐</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shangguan</surname>
             <forename>Mi</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">安國</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Anguo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Anguo</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO38300" passive="#BIO1431" key="62" sortKey="-4" name="FF" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,20 +44,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO38300" passive="#BIO3257" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO38300" passive="#BIO3257" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>悟孫 為學務求義理 從朱熹學 益加涵養 任永州推官</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO38300" passive="#BIO3257" key="0204" sortKey="7" name="scholarly-topic" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation active="#BIO38300" passive="#BIO3257" key="0204" name="scholarly-topic" source="#BIB7596">
+                        <desc type="P" n="7">
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
+                            </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
                             </desc>
                         </desc>
                     </relation>
@@ -63,8 +67,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
             <desc xml:lang="zh-Hant">理學家</desc>
+            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF808">

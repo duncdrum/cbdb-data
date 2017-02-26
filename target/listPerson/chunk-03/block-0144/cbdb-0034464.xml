@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO34464">
     <idno type="TTS">28717</idno>
     <persName type="main">
@@ -6,50 +5,50 @@
             <surname>龔</surname>
             <forename>詡</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Gong</surname>
             <forename>Xu</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>大章</addName>
-        <addName xml:lang="zh-alalc97">Dazhang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Dazhang</addName>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB27147">
         <addName xml:lang="zh-Hant">大章</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Dazhang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Dazhang</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>文節</addName>
-        <addName xml:lang="zh-alalc97">Wenjie</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenjie</addName>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB27147">
         <addName xml:lang="zh-Hant">安節先生</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">anjie Xiansheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">anjie Xiansheng</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB27147">
         <addName xml:lang="zh-Hant">純菴</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Chunan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Chunan</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA3" source="#BIB27147">
         <addName xml:lang="zh-Hant">翊</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Yi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yi</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>鈍庵</addName>
-        <addName xml:lang="zh-alalc97">Dunan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Dunan</addName>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>龔翊</addName>
-        <addName xml:lang="zh-alalc97">Gong(2) Yi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Gong(2) Yi</addName>
     </persName>
     <sex value="1">m</sex>
     <birth when="1382"/>
@@ -65,9 +64,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO34464" passive="#BIO34463" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -77,35 +81,28 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO65614 #BIO34464" key="0101" sortKey="1" name="association" source="#BIB27147">
-                        <desc>
-                            <desc xml:lang="en">[Undefined]<label>Associations (General)</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">未詳<label>社會關係（籠統）</label>
-                            </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO127624" passive="#BIO34464" key="0503" sortKey="22" name="epitaphs" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation mutual="#BIO65614 #BIO34464" key="0101" name="association" source="#BIB27147"/>
+                    <relation active="#BIO127624" passive="#BIO34464" key="0503" name="epitaphs" source="#BIB27147">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO130318" passive="#BIO34464" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO130318" passive="#BIO34464" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO133713" passive="#BIO34464" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Nianpu composed by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO133713" passive="#BIO34464" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">年譜由Y所作<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Nianpu composed by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -115,12 +112,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">yinju (or yinde)</desc>
             <desc xml:lang="zh-Hant">[隱居（有隱德）]</desc>
+            <desc xml:lang="en">yinju (or yinde)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">teaching in reclusion</desc>
             <desc xml:lang="zh-Hant">隱居授徒</desc>
+            <desc xml:lang="en">teaching in reclusion</desc>
         </state>
     </socecStatus>
     <residence ref="#PL4596" key="1">

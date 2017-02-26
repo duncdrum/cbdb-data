@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO22926" source="#BIB7596" resp="selfbio">
     <idno type="TTS">17195</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>劉</surname>
             <forename>鎮</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Liu</surname>
             <forename>Zhen(3)</forename>
         </persName>
@@ -14,37 +13,37 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">子山</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zishan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zishan</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">方叔</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Fangshu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Fangshu</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">可升</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Kesheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Kesheng</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA9" source="#BIB2506">
         <addName xml:lang="zh-Hant">阿崧</addName>
         <term>小名</term>
-        <addName xml:lang="zh-alalc97">Asong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Asong</addName>
         <term>Childhood Name</term>
     </persName>
     <persName type="alias" key="AKA10" source="#BIB2506">
         <addName xml:lang="zh-Hant">崧郎</addName>
         <term>小字</term>
-        <addName xml:lang="zh-alalc97">Songlang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Songlang</addName>
         <term>Childhood Courtesy Name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB2506">
         <addName xml:lang="zh-Hant">第五十四</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Diwushisi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Diwushisi</addName>
         <term>Birth-order name</term>
     </persName>
     <sex value="1">m</sex>
@@ -61,33 +60,48 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO22926" passive="#BIO22924" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO22926" passive="#BIO22927" key="126" sortKey="3" name="B-">
-                        <desc>
-                            <desc xml:lang="en">B– Brother, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">弟</desc>
+                            <desc xml:lang="en">B– Brother, younger</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO22926" passive="#BIO22928" key="131" sortKey="9999" name="FBS+" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄</desc>
+                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO22926" passive="#BIO135763" key="111" sortKey="-3" name="M" source="#BIB2506" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO22926" passive="#BIO135764" key="135" sortKey="0" name="W" source="#BIB2506" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -97,12 +111,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO22926" passive="#BIO7343" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">followed<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO22926" passive="#BIO7343" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">從Y遊<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">followed<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1173"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -111,8 +126,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF685">
@@ -154,14 +169,20 @@
     <listEvent>
         <event type="0401" subtype="36" when="1148" sortKey="1" source="#BIB2506">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="attempts">1</note>
             <note type="rank">2甲第6</note>
+            <note type="parental-status">
+                <trait type="parental-status" key="3">
+                    <label xml:lang="zh-Hant">偏侍</label>
+                    <label xml:lang="zh-Latn-alalc97">Only one is alive</label>
+                </trait>
+            </note>
             <note>兄為户</note>
         </event>
     </listEvent>

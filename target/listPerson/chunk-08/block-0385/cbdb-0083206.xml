@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO83206" source="#BIB9601">
     <idno type="TTS">76912</idno>
     <persName type="main">
@@ -6,18 +5,18 @@
             <surname>周</surname>
             <forename>綺</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhou</surname>
             <forename>Qi</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">琴娘</addName>
-        <addName xml:lang="zh-alalc97">Qinniang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Qinniang</addName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">綠君</addName>
-        <addName xml:lang="zh-alalc97">Lvjun</addName>
+        <addName xml:lang="zh-Latn-alalc97">Lvjun</addName>
     </persName>
     <sex value="2">f</sex>
     <birth when="1814" datingMethod="#chinTrad" when-custom="D69-R8-Y19">
@@ -32,9 +31,9 @@
     <age>48</age>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>《清代人物生卒年表》定其生卒年為嘉慶19年~咸豐11年。 【參考《清代人物生卒年表》#14941.】</note>
     <affiliation>
@@ -43,9 +42,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO83206" passive="#BIO120662" key="134" sortKey="0" name="H" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -60,7 +64,7 @@
         <note>江蘇·常熟(清代人物生卒年表)。</note>
     </residence>
     <linkGrp>
-        <ptr target="3681"/>
+        <ptr target="mqww:3681"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-10-14"/>

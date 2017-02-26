@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO92748" source="#BIB24309">
     <idno type="TTS">86421</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>許</surname>
             <forename>圉師</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Xu</surname>
             <forename>Yushi</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA6" source="#BIB24309">
         <addName xml:lang="zh-Hant">簡</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Jian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jian</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -32,15 +31,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO92748" passive="#BIO32540" key="244" sortKey="8" name="SDH" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">SDH</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫女婿</desc>
+                            <desc xml:lang="en">SDH</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO92748" passive="#BIO92743" key="243" sortKey="8" name="SS" source="#BIB24309">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -49,8 +53,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF10845">
@@ -196,11 +200,11 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -212,7 +216,7 @@
         <note>安州/安陸(唐代人物知識ベース)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1000"/>
+        <ptr target="idtf:1000"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-10-14"/>

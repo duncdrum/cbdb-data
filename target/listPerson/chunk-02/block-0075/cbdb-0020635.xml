@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO20635" source="#BIB7596" resp="selfbio">
     <idno type="TTS">14909</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>丁</surname>
             <forename>端祖</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ding</surname>
             <forename>Duanzu</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>夢閒</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Mengxian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Mengxian</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -29,9 +28,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO20635" passive="#BIO20617" key="50" sortKey="9999" name="FFFB">
-                        <desc>
-                            <desc xml:lang="en">FFFB</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾伯叔祖;從曾祖</desc>
+                            <desc xml:lang="en">FFFB</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -41,29 +45,30 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO3075 #BIO20635" key="0205" sortKey="8" name="scholarly-member" source="#BIB7596">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
-                            </desc>
+                    <relation mutual="#BIO3075 #BIO20635" key="0205" name="scholarly-member" source="#BIB7596">
+                        <desc type="M" n="8">
                             <desc xml:lang="zh-Hant">同年友<label>同為……之成員</label>
+                            </desc>
+                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO3075 #BIO20635" key="0205" sortKey="8" name="scholarly-member" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO3075 #BIO20635" key="0205" name="scholarly-member" source="#BIB7596">
+                        <desc type="M" n="8">
                             <label>湖州烏程人 治易 紹熙四年陳亮榜進士出身 累官秘書丞 嘉定四年進著作郎</label>
-                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同年友<label>同為……之成員</label>
+                            </desc>
+                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO20635" passive="#BIO3632" key="0502" sortKey="21" name="commemorative">
-                        <desc type="A">
-                            <desc xml:lang="en">Posthumous name essay written for<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO20635" passive="#BIO3632" key="0502" name="commemorative">
+                        <desc type="A" n="21">
                             <desc xml:lang="zh-Hant">為Y作諡議<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Posthumous name essay written for<label>Commemorative Texts</label>
+                            </desc>
+                            <state when="1223"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -72,12 +77,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">scholar of Classics (Book of Change)</desc>
             <desc xml:lang="zh-Hant">經學家—易經</desc>
+            <desc xml:lang="en">scholar of Classics (Book of Change)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF546">
@@ -129,11 +134,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1193" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

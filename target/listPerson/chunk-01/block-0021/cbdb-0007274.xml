@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO7274" source="#BIB7596" resp="selfbio">
     <idno type="TTS">3981</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>黎</surname>
             <forename>確</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Li</surname>
             <forename>Que</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">介然</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Jieran</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jieran</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,15 +27,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO7274" passive="#BIO8118" key="63" sortKey="22" name="WFF">
-                        <desc>
-                            <desc xml:lang="en">WFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之祖父</desc>
+                            <desc xml:lang="en">WFF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO7274" passive="#BIO24831" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,54 +55,58 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO7274" passive="#BIO7052" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO7274" passive="#BIO7052" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1130"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO24830 #BIO7274" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
-                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
-                            </desc>
+                    <relation mutual="#BIO24830 #BIO7274" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
                             <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation mutual="#BIO24832 #BIO7274" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="M">
                             <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
                             </desc>
+                            <state when="1130"/>
+                        </desc>
+                    </relation>
+                    <relation mutual="#BIO24832 #BIO7274" key="0205" name="scholarly-member">
+                        <desc type="M" n="8">
                             <desc xml:lang="zh-Hant">同學、同門<label>同為……之成員</label>
                             </desc>
+                            <desc xml:lang="en">Tongxue was<label>Association through common membership</label>
+                            </desc>
+                            <state when="1130"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO24830 #BIO7274" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO24830 #BIO7274" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
                             <label>字介然 邵武人 崇寧間與汪革、饒節遊宿州 呂希哲在焉 偕往受學</label>
-                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">與Y遊<label>朋友關係（籠統）</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation mutual="#BIO24832 #BIO7274" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
-                            <label>字介然 邵武人 崇寧間與汪革、饒節遊宿州 呂希哲在焉 偕往受學</label>
                             <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation mutual="#BIO24832 #BIO7274" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
+                            <label>字介然 邵武人 崇寧間與汪革、饒節遊宿州 呂希哲在焉 偕往受學</label>
                             <desc xml:lang="zh-Hant">與Y遊<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO9999" passive="#BIO7274" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO7274" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1130"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -102,8 +115,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF520">

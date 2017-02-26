@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO57609" source="#BIB9602">
     <idno type="TTS">51527</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>瓜爾佳</surname>
             <forename>桂良</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Guaerjia</surname>
             <forename>Guiliang</forename>
         </persName>
@@ -15,14 +14,14 @@
     <persName type="alias" key="AKA6" source="#BIB9602">
         <addName xml:lang="zh-Hant">文端</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenduan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenduan</addName>
         <term>Posthumous Name</term>
         <note>參見《清國史館傳包》。</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">燕山</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yanshan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yanshan</addName>
         <term>Courtesy name</term>
         <note>參見《清史館傳稿》。</note>
     </persName>
@@ -44,9 +43,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO57609" passive="#BIO54241" key="180" sortKey="5" name="S" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -56,11 +60,11 @@
     <listEvent>
         <event type="0503" subtype="109" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">tribute student: general</label>
             <label xml:lang="zh-Hant">貢生 = 貢監生(籠統)</label>
+            <label xml:lang="en">tribute student: general</label>
             <desc type="1" subtype="27">
-                <desc xml:lang="en">Tribute Students</desc>
                 <desc xml:lang="zh-Hant">貢生門</desc>
+                <desc xml:lang="en">Tribute Students</desc>
             </desc>
             <note>貢生</note>
         </event>
@@ -73,7 +77,7 @@
         <note>滿洲正紅旗(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="839"/>
+        <ptr target="ttsmq:839"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO55450" source="#BIB9601" resp="selfbio">
     <idno type="TTS">49443</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>龐</surname>
             <forename>蕙纕</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Pang</surname>
             <forename>Huixiang</forename>
         </persName>
@@ -14,31 +13,31 @@
     <persName type="alias" key="AKA5" source="#BIB9601">
         <addName xml:lang="zh-Hant">小宛</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Xiaowan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xiaowan</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9601">
         <addName xml:lang="zh-Hant">小畹</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Xiaowan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xiaowan</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9601">
         <addName xml:lang="zh-Hant">紉芳</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Renfang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Renfang</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA3" source="#BIB9601">
         <addName xml:lang="zh-Hant">龐畹</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Pang Wan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Pang Wan</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA3" source="#BIB9601">
         <addName xml:lang="zh-Hant">龐蕙孃</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Pang Huiniang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Pang Huiniang</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <sex value="2">f</sex>
@@ -51,21 +50,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO55450" passive="#BIO55455" key="75" sortKey="-1" name="F" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO55450" passive="#BIO55456" key="134" sortKey="0" name="H" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO55450" passive="#BIO55457" key="125" sortKey="2" name="B+" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -75,11 +84,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO55712" passive="#BIO55450" key="0504" sortKey="23" name="prefaces" source="#BIB9601">
-                        <desc type="A">
-                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO55712" passive="#BIO55450" key="0504" name="prefaces" source="#BIB9601">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -88,7 +97,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="618"/>
+        <ptr target="mqww:618"/>
     </linkGrp>
     <note type="created" target="#BDDY">
         <date when="2009-09-25"/>

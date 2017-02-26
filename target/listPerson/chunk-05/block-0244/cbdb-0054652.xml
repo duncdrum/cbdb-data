@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO54652" source="#BIB9601" resp="selfbio">
     <idno type="TTS">48682</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>吳</surname>
             <forename>世仁</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wu</surname>
             <forename>Shiren</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB9601">
         <addName xml:lang="zh-Hant">浣素</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Huansu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Huansu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="2">f</sex>
@@ -26,9 +25,9 @@
     </floruit>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <note>卒年依據王力堅《沈善寶的早年行跡及文學交游》，收入《中國文學與文化的傳統及變革》一書。</note>
     <affiliation>
@@ -37,15 +36,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO54652" passive="#BIO54649" key="176" sortKey="6" name="D" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO54652" passive="#BIO54650" key="134" sortKey="0" name="H" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,7 +62,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="3991"/>
+        <ptr target="mqww:3991"/>
     </linkGrp>
     <note type="created" target="#BDLYW">
         <date when="2009-06-22"/>

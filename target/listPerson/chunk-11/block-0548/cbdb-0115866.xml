@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO115866" source="#BIB9599" resp="selfbio">
     <idno type="TTS">109483</idno>
     <persName type="main">
@@ -6,13 +5,13 @@
             <surname/>
             <forename>烏馬兒</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">Wumaer</persName>
+        <persName xml:lang="zh-Latn-alalc97">Wumaer</persName>
     </persName>
     <persName type="original">Omar</persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">希說</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xishuo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xishuo</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,24 +27,39 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO115866" passive="#BIO113762" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>烏馬兒父</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO115866" passive="#BIO113796" key="48" sortKey="-5" name="FFF" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>烏馬兒曾祖</label>
-                            <desc xml:lang="en">FFF</desc>
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO115866" passive="#BIO115561" key="62" sortKey="-4" name="FF" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>烏馬兒祖</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,12 +69,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO115866" passive="#BIO28615" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO115866" passive="#BIO28615" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>送烏希說編修之會稽降香（伊濱集8/7）</label>
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -101,11 +115,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1333" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

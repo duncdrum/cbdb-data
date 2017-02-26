@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO14270" source="#BIB7596" resp="selfbio">
     <idno type="TTS">8558</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>胡</surname>
             <forename>百能</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Hu</surname>
             <forename>Baineng</forename>
         </persName>
@@ -14,25 +13,25 @@
     <persName type="alias" key="AKA4">
         <addName>少明</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Shaoming</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shaoming</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA9">
         <addName>同老</addName>
         <term>小名</term>
-        <addName xml:lang="zh-alalc97">Tonglao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tonglao</addName>
         <term>Childhood Name</term>
     </persName>
     <persName type="alias" key="AKA10">
         <addName>祖壽</addName>
         <term>小字</term>
-        <addName xml:lang="zh-alalc97">Zushou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zushou</addName>
         <term>Childhood Courtesy Name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB2506">
         <addName xml:lang="zh-Hant">第二十一</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Diershiyi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Diershiyi</addName>
         <term>Birth-order name</term>
     </persName>
     <sex value="1">m</sex>
@@ -53,27 +52,47 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO14270" passive="#BIO7253" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO14270" passive="#BIO18867" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO14270" passive="#BIO135903" key="111" sortKey="-3" name="M" source="#BIB2506" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO14270" passive="#BIO135904" key="135" sortKey="0" name="W" source="#BIB2506" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -83,20 +102,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO14270" passive="#BIO3050" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO14270" passive="#BIO3050" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
+                            </desc>
+                            <state when="1174"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO14270" passive="#BIO3050" key="0506" sortKey="25" name="text-biography" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO14270" passive="#BIO3050" key="0506" name="text-biography" source="#BIB7596">
+                        <desc type="A" n="25">
                             <label>陳唯室先生行狀 / 唯室集</label>
-                            <desc xml:lang="en">Wrote Biographical sketch (xingzhuang) for<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作行狀<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Biographical sketch (xingzhuang) for<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -106,8 +126,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF631">
@@ -150,14 +170,20 @@
     <listEvent>
         <event type="0401" subtype="165" when="1148" sortKey="1" source="#BIB2506">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="attempts">6</note>
             <note type="rank">4甲第51</note>
+            <note type="parental-status">
+                <trait type="parental-status" key="2">
+                    <label xml:lang="zh-Hant">永感</label>
+                    <label xml:lang="zh-Latn-alalc97">Both parent died</label>
+                </trait>
+            </note>
             <note>祖為户</note>
         </event>
     </listEvent>

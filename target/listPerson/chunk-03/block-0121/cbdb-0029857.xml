@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29857">
     <idno type="TTS">24114</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>陶</surname>
             <forename>宗婉</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Tao</surname>
             <forename>Zongyuan</forename>
         </persName>
@@ -25,15 +24,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29857" passive="#BIO29847" key="62" sortKey="-4" name="FF">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO29857" passive="#BIO29858" key="164" sortKey="4" name="Z+" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">Z+</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">姊</desc>
+                            <desc xml:lang="en">Z+</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -43,21 +47,22 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO12087" passive="#BIO29857" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO12087" passive="#BIO29857" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="P" n="25">
                             <label>陶氏三節傳（東維子文集28/14下）</label>
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
+                            </desc>
+                            <state when="1367"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10097" passive="#BIO29857" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10097" passive="#BIO29857" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>題天台三節婦傳後（宋文憲公全集8/17下）</label>
-                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">詩文跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -67,12 +72,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">died before taking office</desc>
             <desc xml:lang="zh-Hant">未仕而卒</desc>
+            <desc xml:lang="en">died before taking office</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">died before exams</desc>
             <desc xml:lang="zh-Hant">未參加科舉而卒</desc>
+            <desc xml:lang="en">died before exams</desc>
         </state>
     </socecStatus>
     <residence ref="#PL18370" key="1" source="#BIB9599">

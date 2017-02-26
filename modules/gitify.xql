@@ -3,6 +3,7 @@ xquery version "3.0";
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace no="http://none";
 
 declare variable $src := '/db/apps/cbdb-data/src/xml/';
 declare variable $target := '/db/apps/cbdb-data/target/';
@@ -97,7 +98,7 @@ else  ($n)
 };
 
 (: Variables for c_personid use all for up to 376041, test for the first 100 persons :)
-let $all := 1 to max((($BIOG_MAIN//c_personid)))
+let $all := 1 to max((($BIOG_MAIN//no:c_personid)))
 let $test := 1 to 100
 
 return 

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO1055" source="#BIB7596" resp="selfbio">
     <idno type="TTS">1053</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>公懋</forename>
             <addName type="choronym">隴西</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Li</surname>
             <forename>Gongmao</forename>
             <addName type="choronym">Longxi</addName>
@@ -16,7 +15,7 @@
     <persName type="alias" key="AKA4">
         <addName>子勉</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zimian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zimian</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -31,9 +30,9 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO1055" passive="#BIO13068" key="47" sortKey="9999" name="K-5">
-                        <desc>
-                            <desc xml:lang="en">Lineage kin, 5 generations earlier</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">同族五世祖</desc>
+                            <desc xml:lang="en">Lineage kin, 5 generations earlier</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -43,36 +42,39 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1055" passive="#BIO8008" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO1055" passive="#BIO8008" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1158"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1055" passive="#BIO7381" key="0510" sortKey="29" name="text-occasional" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
+                    <relation active="#BIO1055" passive="#BIO7381" key="0510" name="text-occasional" source="#BIB7596">
+                        <desc type="P" n="29">
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1158"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO9999" passive="#BIO1055" key="0402" sortKey="14" name="office-equal">
-                        <desc type="A">
-                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO1055" key="0402" name="office-equal">
+                        <desc type="A" n="14">
                             <desc xml:lang="zh-Hant">(暫時保留，待刪除：吏部供職)<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Personnel administration (CJ)<label>Connection via office (equal)</label>
+                            </desc>
+                            <state when="1158"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO3309" passive="#BIO1055" key="0103" sortKey="3" name="social-interaction" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO3309" passive="#BIO1055" key="0103" name="social-interaction" source="#BIB7596">
+                        <desc type="A" n="3">
                             <label>用蔭補承務郎 為福建提點刑獄司幹辦公事 使者李公懋剛介 好面折僚吏 獨屈意待自得</label>
-                            <desc xml:lang="en">Treated with respect<label>Social Interactions</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">禮待<label>社會交際</label>
+                            </desc>
+                            <desc xml:lang="en">Treated with respect<label>Social Interactions</label>
                             </desc>
                         </desc>
                     </relation>
@@ -82,8 +84,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF332">
@@ -171,11 +173,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1128" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

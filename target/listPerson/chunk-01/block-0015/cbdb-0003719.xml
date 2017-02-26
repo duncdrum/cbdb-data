@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO3719" source="#BIB7596" resp="selfbio">
     <idno type="TTS">2830</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>古</forename>
             <addName type="choronym">平原</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shi</surname>
             <forename>Gu</forename>
             <addName type="choronym">Pingyuan</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">彥立</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yanli</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yanli</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">義學</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Yixue</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yixue</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -36,22 +35,27 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO3719" passive="#BIO3773" key="181" sortKey="7" name="DH" source="#BIB2286" type="auto-generated">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>孫仲卿墓誌銘(鶴山大全集79/10下): 「取李氏中大夫昕之女、熈寧侍御史堯言之孫；繼种氏太尉師道之裔孫，並贈孺人；繼師氏，迪功郎古之女。」</label>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO3719" passive="#BIO7330" key="147" name="Kn" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">Lineage kin, generation unknown</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">族人(輩分不詳)</desc>
+                            <desc xml:lang="en">Lineage kin, generation unknown</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO3719" passive="#BIO13897" key="2" sortKey="50" name="G-n">
-                        <desc>
-                            <desc xml:lang="en">G-n, lineal ancestor, generation unknown</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">直系祖先</desc>
+                            <desc xml:lang="en">G-n, lineal ancestor, generation unknown</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -61,21 +65,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO39811 #BIO3719" key="0205" sortKey="8" name="scholarly-member" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO39811 #BIO3719" key="0205" name="scholarly-member" source="#BIB7596">
+                        <desc type="M" n="8">
                             <label>字師古 眉山人 紹興二十四年張孝祥榜同進士出身</label>
-                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同年友<label>同為……之成員</label>
+                            </desc>
+                            <desc xml:lang="en">Friend in the same graduating class<label>Association through common membership</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO41643" passive="#BIO3719" key="0206" sortKey="9" name="scholarly-patronage" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO41643" passive="#BIO3719" key="0206" name="scholarly-patronage" source="#BIB7596">
+                        <desc type="P" n="9">
                             <label>時樞密編修胡銓抗疏論之 坐貶 師古鋟木傳其疏 金人募其書千金 為人所訐</label>
-                            <desc xml:lang="en">writings printed by<label>Academic Patronage</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">著述由Y刊刻<label>學術襄助</label>
+                            </desc>
+                            <desc xml:lang="en">writings printed by<label>Academic Patronage</label>
                             </desc>
                         </desc>
                     </relation>
@@ -85,8 +89,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF223">

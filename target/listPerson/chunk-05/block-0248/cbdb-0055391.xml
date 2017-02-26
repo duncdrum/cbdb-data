@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO55391" source="#BIB9601" resp="selfbio">
     <idno type="TTS">49391</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>陳</surname>
             <forename>穀</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Chen</surname>
             <forename>Gu</forename>
         </persName>
@@ -21,9 +20,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO55391" passive="#BIO55394" key="134" sortKey="0" name="H" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -33,11 +37,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO55400" passive="#BIO55391" key="0504" sortKey="23" name="prefaces" source="#BIB9601">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO55400" passive="#BIO55391" key="0504" name="prefaces" source="#BIB9601">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -46,7 +50,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="577"/>
+        <ptr target="mqww:577"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2009-09-19"/>

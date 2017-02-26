@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO60537" source="#BIB9602">
     <idno type="TTS">54418</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>蔣</surname>
             <forename>詩</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Jiang</surname>
             <forename>Shi</forename>
         </persName>
@@ -14,28 +13,28 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">泉伯</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Quanbo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Quanbo</addName>
         <term>Courtesy name</term>
         <note>參見《清人室名別稱字號索引》頁1673.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">秋吟</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Qiuyin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Qiuyin</addName>
         <term>Studio name, Style name</term>
         <note>參見《清人室名別稱字號索引》頁1673.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">致艮堂</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Zhigentang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhigentang</addName>
         <term>Studio name, Style name</term>
         <note>參見《清人室名別稱字號索引》頁1673.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">榆西仙館</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Yuxixianguan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yuxixianguan</addName>
         <term>Studio name, Style name</term>
         <note>參見《清人室名別稱字號索引》頁1673.</note>
     </persName>
@@ -57,9 +56,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO60537" passive="#BIO89613" key="75" sortKey="-1" name="F" source="#BIB27864">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -69,19 +73,19 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO126218 #BIO60537" key="0301" sortKey="12" name="friend" source="#BIB27864">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO126218 #BIO60537" key="0301" name="friend" source="#BIB27864">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO30080" passive="#BIO60537" key="0504" sortKey="23" name="prefaces" source="#BIB27864">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO30080" passive="#BIO60537" key="0504" name="prefaces" source="#BIB27864">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -92,11 +96,11 @@
     <listEvent>
         <event type="0401" subtype="165" when="1805" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>嘉慶10年進士</note>
         </event>
@@ -109,7 +113,7 @@
         <note>浙江省-杭州府-仁和縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="3853"/>
+        <ptr target="ttsmq:3853"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

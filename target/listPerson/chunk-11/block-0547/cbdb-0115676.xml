@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO115676" source="#BIB9599" resp="selfbio">
     <idno type="TTS">109293</idno>
     <persName type="main">
@@ -6,13 +5,13 @@
             <surname/>
             <forename>納速剌丁</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">Nasulading</persName>
+        <persName xml:lang="zh-Latn-alalc97">Nasulading</persName>
     </persName>
     <persName type="original">Nasürudin</persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">士瞻</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Shizhan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shizhan</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -26,17 +25,27 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO115676" passive="#BIO113991" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>納速剌丁子</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO115676" passive="#BIO115409" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>納速剌丁父</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -56,20 +65,20 @@
     <listEvent>
         <event type="07" subtype="14" when="1355" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
         <event type="0401" subtype="39" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <label xml:lang="zh-Hant">科舉: 鄉貢舉人</label>
+            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

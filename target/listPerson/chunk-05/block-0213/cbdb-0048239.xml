@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO48239" source="#BIB9599" resp="selfbio">
     <idno type="TTS">42300</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>婁</surname>
             <forename>文輔</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Lou</surname>
             <forename>Wenfu</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">道輿</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Daoyu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Daoyu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -32,23 +31,33 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO48239" passive="#BIO48240" key="125" sortKey="2" name="B+" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO48239" passive="#BIO106355" key="177" sortKey="9999" name="BS" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>文輔姪</label>
-                            <desc xml:lang="en">BS Brother's son</desc>
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO48239" passive="#BIO106356" key="177" sortKey="9999" name="BS" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>文輔姪</label>
-                            <desc xml:lang="en">BS Brother's son</desc>
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -58,12 +67,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO27853" passive="#BIO48239" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO27853" passive="#BIO48239" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>婁道輿墓誌銘（雪樓集18/11下）</label>
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -73,12 +82,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">academy (shuyuan) director</desc>
             <desc xml:lang="zh-Hant">書院山長</desc>
+            <desc xml:lang="en">academy (shuyuan) director</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">academy (shuyuan) director</desc>
             <desc xml:lang="zh-Hant">書院山長</desc>
+            <desc xml:lang="en">academy (shuyuan) director</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF3341">
@@ -103,11 +112,11 @@
     <listEvent>
         <event type="08" subtype="101" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">recommendation</label>
             <label xml:lang="zh-Hant">薦舉 (保任)</label>
+            <label xml:lang="en">recommendation</label>
             <desc type="0" subtype="9">
-                <desc xml:lang="en">Recommendation</desc>
                 <desc xml:lang="zh-Hant">薦舉門</desc>
+                <desc xml:lang="en">Recommendation</desc>
             </desc>
         </event>
     </listEvent>

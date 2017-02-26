@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO16282" source="#BIB7596" resp="selfbio">
     <idno type="TTS">10568</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>節</forename>
             <addName type="choronym">吳興</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Qian</surname>
             <forename>Jie(2)</forename>
             <addName type="choronym">Wuxing</addName>
@@ -24,15 +23,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO16282" passive="#BIO3037" key="4" sortKey="50" name="K-n" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">Lineage ancestor,  generation undefined</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">同族長輩</desc>
+                            <desc xml:lang="en">Lineage ancestor,  generation undefined</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO16282" passive="#BIO16283" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -42,28 +46,30 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO3043 #BIO16282" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO3043 #BIO16282" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
+                            <state when="1108"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO16282" passive="#BIO3043" key="0510" sortKey="29" name="text-occasional" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
+                    <relation active="#BIO16282" passive="#BIO3043" key="0510" name="text-occasional" source="#BIB7596">
+                        <desc type="P" n="29">
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1108"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO3043 #BIO16282" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO3043 #BIO16282" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
                             <label>居上虞 俶後 與秦觀詩酒相遊從 後補官嘉禾</label>
-                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">與Y遊<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -73,8 +79,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <residence ref="#PL12672" key="3" source="#BIB7596">

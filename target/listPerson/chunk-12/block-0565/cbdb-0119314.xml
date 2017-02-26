@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO119314" source="#BIB9601" resp="selfbio">
     <idno type="TTS">112919</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>金氏</surname>
             <forename>(李柱官妻)</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Jin shi</surname>
             <forename>(Wife of Li Zhuguan)</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA3" source="#BIB9601">
         <addName xml:lang="zh-Hant">月雅</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Yueya</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yueya</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
         <note>《閩川閨秀詩話續編》言其名為月雅</note>
     </persName>
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO119314" passive="#BIO120396" key="134" sortKey="0" name="H" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -38,7 +42,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="2280"/>
+        <ptr target="mqww:2280"/>
     </linkGrp>
     <note type="created" target="#BDZJ">
         <date when="2011-07-06"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO58703" source="#BIB9602">
     <idno type="TTS">52608</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>劉</surname>
             <forename>秉權</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Liu</surname>
             <forename>Bingquan</forename>
         </persName>
@@ -14,14 +13,14 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">持平</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Chiping</addName>
+        <addName xml:lang="zh-Latn-alalc97">Chiping</addName>
         <term>Courtesy name</term>
         <note>參見《清國史館傳稿》。</note>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB9602">
         <addName xml:lang="zh-Hant">端勤</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Duanqin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Duanqin</addName>
         <term>Posthumous Name</term>
         <note>參見《清國史館傳稿》。</note>
     </persName>
@@ -39,9 +38,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO58703" passive="#BIO70055" key="135" sortKey="0" name="W" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -63,7 +67,7 @@
         <note>漢軍·鑲黃旗(清代人物生卒年表)。</note>
     </residence>
     <linkGrp>
-        <ptr target="1968"/>
+        <ptr target="ttsmq:1968"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

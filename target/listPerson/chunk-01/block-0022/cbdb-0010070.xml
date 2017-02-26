@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO10070" source="#BIB7596" resp="selfbio">
     <idno type="TTS">4376</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>葛</surname>
             <forename>天民</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ge</surname>
             <forename>Tianmin</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">朴翁</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Puweng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Puweng</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">無懷</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Wuhuai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wuhuai</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA3" source="#BIB27863">
         <addName xml:lang="zh-Hant">義铦</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">yi kuo</addName>
+        <addName xml:lang="zh-Latn-alalc97">yi kuo</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -40,15 +39,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO10070" passive="#BIO19355" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO10070" passive="#BIO19356" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -58,27 +67,27 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO33233" passive="#BIO10070" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO33233" passive="#BIO10070" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO42614 #BIO10070" key="0510" sortKey="29" name="text-occasional">
-                        <desc type="M">
-                            <desc xml:lang="en">Poems composed with<label>Occasional Texts</label>
-                            </desc>
+                    <relation mutual="#BIO42614 #BIO10070" key="0510" name="text-occasional">
+                        <desc type="M" n="29">
                             <desc xml:lang="zh-Hant">相唱和<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Poems composed with<label>Occasional Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO33233" passive="#BIO10070" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO33233" passive="#BIO10070" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -88,12 +97,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">buddhist monk</desc>
             <desc xml:lang="zh-Hant">僧人</desc>
+            <desc xml:lang="en">buddhist monk</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">commoner (buyi)</desc>
             <desc xml:lang="zh-Hant">布衣</desc>
+            <desc xml:lang="en">commoner (buyi)</desc>
         </state>
     </socecStatus>
     <residence ref="#PL12756" key="3" source="#BIB7596">

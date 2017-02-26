@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO136120" source="#BIB25572" resp="selfbio">
     <idno type="TTS">128942</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>玄</forename>
             <addName type="choronym">陳留</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Xie</surname>
             <forename>Xuan</forename>
             <addName type="choronym">Chenliu</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA4" source="#BIB25572">
         <addName xml:lang="zh-Hant">幼度</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Youdu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Youdu</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB25572">
         <addName xml:lang="zh-Hant">獻武</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Xianwu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xianwu</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -38,9 +37,9 @@
     <age>46</age>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <affiliation>
         <note>
@@ -48,21 +47,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO136120" passive="#BIO3365" key="517" sortKey="-4" name="FB–" source="#BIB25572">
-                        <desc>
-                            <desc xml:lang="en">a younger brother of father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">叔;叔父</desc>
+                            <desc xml:lang="en">a younger brother of father</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO136120" passive="#BIO69869" key="75" sortKey="-1" name="F" source="#BIB25572">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO136120" passive="#BIO134836" key="164" sortKey="4" name="Z+" source="#BIB25572">
-                        <desc>
-                            <desc xml:lang="en">Z+</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">姊</desc>
+                            <desc xml:lang="en">Z+</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -72,22 +76,24 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO136117 #BIO136120" key="0301" sortKey="12" name="friend" source="#BIB25572">
-                        <desc type="M">
+                    <relation mutual="#BIO136117 #BIO136120" key="0301" name="friend" source="#BIB25572">
+                        <desc type="M" n="12">
                             <label>與謝玄被時人稱為南北二玄。</label>
-                            <desc xml:lang="en">Knew<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">相識<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Knew<label>Friendship(General)</label>
+                            </desc>
+                            <state when="0387"/>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO136120 #BIO136120" key="0301" sortKey="12" name="friend" source="#BIB25572">
-                        <desc type="M">
+                    <relation mutual="#BIO136120 #BIO136120" key="0301" name="friend" source="#BIB25572">
+                        <desc type="M" n="12">
                             <label>《晋書》載，時吳興太守、晉寧侯張玄之，亦以才學顯，自吏部尚書與玄同年之郡，而玄之名亞於玄，時人稱為南北二玄，論者美之。</label>
-                            <desc xml:lang="en">Knew<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">相識<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Knew<label>Friendship(General)</label>
+                            </desc>
+                            <state when="0387"/>
                         </desc>
                     </relation>
                 </listRelation>

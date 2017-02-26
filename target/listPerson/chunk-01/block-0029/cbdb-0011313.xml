@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO11313" source="#BIB7596" resp="selfbio">
     <idno type="TTS">5617</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>裴</surname>
             <forename>愈</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Pei</surname>
             <forename>Yu</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">益之</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yizhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yizhi</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO11313" passive="#BIO51121" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,12 +44,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11313" passive="#BIO11314" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO11313" passive="#BIO11314" key="0406" name="sponsorship">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="0998"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -54,20 +59,14 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">eunuch</desc>
             <desc xml:lang="zh-Hant">宦官</desc>
+            <desc xml:lang="en">eunuch</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
-    <residence ref="#PL0" key="1">
-        <state>
-            <desc xml:lang="zh-Hant">籍貫(基本地址)</desc>
-            <desc xml:lang="en">Basic Affiliation</desc>
-        </state>
-    </residence>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>
     </note>

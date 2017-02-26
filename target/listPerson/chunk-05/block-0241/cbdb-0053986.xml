@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO53986" source="#BIB9601" resp="selfbio">
     <idno type="TTS">48036</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>任</surname>
             <forename>凱</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ren</surname>
             <forename>Kai</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>捷三</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Jiesan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jiesan</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -31,9 +30,9 @@
     <age>58</age>
     <trait type="ethnicity" key="1">
         <label/>
-        <desc xml:lang="en"/>
-        <desc xml:lang="zh-alalc97">Han</desc>
         <desc xml:lang="zh-Hant">漢</desc>
+        <desc xml:lang="zh-Latn-alalc97">Han</desc>
+        <desc xml:lang="en"/>
     </trait>
     <affiliation>
         <note>
@@ -41,9 +40,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO53986" passive="#BIO53980" key="400" sortKey="10000" name="FBW">
-                        <desc>
-                            <desc xml:lang="en">FBW Father's brother's wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">伯叔母</desc>
+                            <desc xml:lang="en">FBW Father's brother's wife</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,12 +57,17 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO53980" passive="#BIO53986" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
-                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO53980" passive="#BIO53986" key="0504" name="prefaces">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state>
+                                <desc>
+                                    <persName role="mediator" ref="#BIO53980"/>
+                                </desc>
+                            </state>
                         </desc>
                     </relation>
                 </listRelation>
@@ -68,16 +77,16 @@
     <listEvent>
         <event type="0401" subtype="39" sortKey="1" source="#BIB9601">
             <head>entry</head>
-            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <label xml:lang="zh-Hant">科舉: 鄉貢舉人</label>
+            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>
     <linkGrp>
-        <ptr target="363"/>
+        <ptr target="mqww:363"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2009-04-18"/>

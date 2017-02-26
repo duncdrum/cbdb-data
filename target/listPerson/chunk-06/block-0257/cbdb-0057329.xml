@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO57329" source="#BIB9602">
     <idno type="TTS">51250</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>裘</surname>
             <forename>行簡</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Qiu</surname>
             <forename>Xingjian</forename>
         </persName>
@@ -14,28 +13,28 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">可亭</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Keting</addName>
+        <addName xml:lang="zh-Latn-alalc97">Keting</addName>
         <term>Courtesy name</term>
         <note>參見《樞垣記略》。</note>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB9602">
         <addName xml:lang="zh-Hant">恭勤</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Gongqin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Gongqin</addName>
         <term>Posthumous Name</term>
         <note>參見《清國史館傳稿》。</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">敬之</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Jingzhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jingzhi</addName>
         <term>Courtesy name</term>
         <note>參見《清史館傳稿》。</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">靜宜室</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Jingyishi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jingyishi</addName>
         <term>Studio name, Style name</term>
         <note>參見《清人室名別稱字號索引》頁1583.</note>
     </persName>
@@ -57,15 +56,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO57329" passive="#BIO55836" key="75" sortKey="-1" name="F" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO57329" passive="#BIO69843" key="370" sortKey="-4" name="FM" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">FM</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖母</desc>
+                            <desc xml:lang="en">FM</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -73,14 +82,10 @@
         </note>
     </affiliation>
     <listEvent>
-        <event type="" subtype="185" when="1775" sortKey="1" source="#BIB9602">
+        <event type="00" subtype="185" when="1775" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">Provincial Graduate by Imperial Grace</label>
             <label xml:lang="zh-Hant">欽賜舉人</label>
-            <desc type="" subtype="">
-                <desc xml:lang="en"/>
-                <desc xml:lang="zh-Hant"/>
-            </desc>
+            <label xml:lang="en">Provincial Graduate by Imperial Grace</label>
             <note>乾隆40年欽賜舉人</note>
         </event>
     </listEvent>
@@ -92,7 +97,7 @@
         <note>江西省-南昌府-新建縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="551"/>
+        <ptr target="ttsmq:551"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

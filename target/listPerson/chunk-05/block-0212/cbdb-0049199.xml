@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO49199" source="#BIB9426">
     <idno type="TTS">43257</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>程</surname>
             <forename>應甲</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Cheng</surname>
             <forename>Yingjia</forename>
         </persName>
@@ -14,25 +13,25 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">仲敬</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhongjing</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongjing</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA10" source="#BIB9426">
         <addName xml:lang="zh-Hant">堅三</addName>
         <term>小字</term>
-        <addName xml:lang="zh-alalc97">Jiansan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jiansan</addName>
         <term>Childhood Courtesy Name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB9426">
         <addName xml:lang="zh-Hant">第三</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Disan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Disan</addName>
         <term>Birth-order name</term>
     </persName>
     <persName type="alias" key="AKA9" source="#BIB9426">
         <addName xml:lang="zh-Hant">應祥</addName>
         <term>小名</term>
-        <addName xml:lang="zh-alalc97">Yingxiang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yingxiang</addName>
         <term>Childhood Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -49,15 +48,20 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO49199" passive="#BIO137072" key="138" sortKey="16" name="W1" source="#BIB9426">
-                        <desc>
-                            <desc xml:lang="en">W1 Wife, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">第一任妻</desc>
+                            <desc xml:lang="en">W1 Wife, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO49199" passive="#BIO138595" key="111" sortKey="-3" name="M" source="#BIB9426">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -67,14 +71,20 @@
     <listEvent>
         <event type="0401" subtype="165" when="1256" sortKey="1" source="#BIB9426">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="field">賦</note>
             <note type="rank">第五甲第六十四人</note>
+            <note type="parental-status">
+                <trait type="parental-status" key="2">
+                    <label xml:lang="zh-Hant">永感</label>
+                    <label xml:lang="zh-Latn-alalc97">Both parent died</label>
+                </trait>
+            </note>
             <note>Household: 祖為戶; from the 寶祐四年登科錄</note>
         </event>
     </listEvent>

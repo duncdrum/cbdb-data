@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO11520">
     <idno type="TTS">5823</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>王</surname>
             <forename>審知</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wang</surname>
             <forename>Shenzhi</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB32033">
         <addName xml:lang="zh-Hant">信通</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xintong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xintong</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,34 +27,49 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO11520" passive="#BIO3937" key="125" sortKey="2" name="B+">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO11520" passive="#BIO11521" key="183" sortKey="5" name="S2">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO11520" passive="#BIO11533" key="181" sortKey="7" name="DH">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO11520" passive="#BIO22150" key="177" sortKey="9999" name="BS">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO11520" passive="#BIO194931" key="75" sortKey="-1" name="F" source="#BIB32033">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>(Tackett) subjectid=6107,targetid=160773,relation=S,pageitem=R 35571</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -65,35 +79,35 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO25240" passive="#BIO11520" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Offer of office refused by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO25240" passive="#BIO11520" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">拒絕在Y的主政期出仕<label>政治對抗</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO44237" passive="#BIO11520" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
                             <desc xml:lang="en">Offer of office refused by<label>Oppositional political association</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO44237" passive="#BIO11520" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">拒絕在Y的主政期出仕<label>政治對抗</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO93612" passive="#BIO11520" key="0404" sortKey="16" name="office-superior" source="#BIB3886">
-                        <desc type="P">
-                            <desc xml:lang="en">Served as lady-in-waiting by<label>Connection via office (superior)</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">以Y為侍女<label>官場關係（上司）</label>
+                            <desc xml:lang="en">Offer of office refused by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO135265" passive="#BIO11520" key="0404" sortKey="16" name="office-superior" source="#BIB2477">
-                        <desc type="P">
+                    <relation active="#BIO93612" passive="#BIO11520" key="0404" name="office-superior" source="#BIB3886">
+                        <desc type="P" n="16">
+                            <desc xml:lang="zh-Hant">以Y為侍女<label>官場關係（上司）</label>
+                            </desc>
                             <desc xml:lang="en">Served as lady-in-waiting by<label>Connection via office (superior)</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO135265" passive="#BIO11520" key="0404" name="office-superior" source="#BIB2477">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">以Y為侍女<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Served as lady-in-waiting by<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -103,8 +117,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">ruler</desc>
             <desc xml:lang="zh-Hant">統治者</desc>
+            <desc xml:lang="en">ruler</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF10306">
@@ -120,11 +134,11 @@
     <listEvent>
         <event type="01" subtype="112" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">succession</label>
             <label xml:lang="zh-Hant">繼位</label>
+            <label xml:lang="en">succession</label>
             <desc type="0" subtype="2">
-                <desc xml:lang="en">Palace</desc>
                 <desc xml:lang="zh-Hant">宮廷門</desc>
+                <desc xml:lang="en">Palace</desc>
             </desc>
         </event>
     </listEvent>
@@ -144,18 +158,6 @@
         <state>
             <desc xml:lang="zh-Hant">遷住地</desc>
             <desc xml:lang="en">Moved to</desc>
-        </state>
-    </residence>
-    <residence ref="#PL0" key="9" n="1" from="0926" source="#BIB32033">
-        <state type="natal">
-            <desc xml:lang="zh-Hant">葬地</desc>
-            <desc xml:lang="en">Burial Address</desc>
-        </state>
-    </residence>
-    <residence ref="#PL0" key="10" n="2" from="0925" source="#BIB32033">
-        <state type="natal">
-            <desc xml:lang="zh-Hant">死所</desc>
-            <desc xml:lang="en">Death Address</desc>
         </state>
     </residence>
     <note type="created" target="#TTS">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13417" source="#BIB7596" resp="selfbio">
     <idno type="TTS">7710</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>公弼</forename>
             <addName type="choronym">武威</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shi</surname>
             <forename>Gongbi</forename>
             <addName type="choronym">Wuwei</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA3" source="#BIB7596">
         <addName xml:lang="zh-Hant">石公輔</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Shi Gongfu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shi Gongfu</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">國佐</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Guozuo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Guozuo</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -37,15 +36,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13417" passive="#BIO7331" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13417" passive="#BIO13354" key="39" sortKey="-6" name="FFFF" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FFFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">高祖;四世祖</desc>
+                            <desc xml:lang="en">FFFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰三月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,63 +64,65 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO13597 #BIO13417" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO13597 #BIO13417" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
+                            <state when="1121"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO13417" passive="#BIO1649" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO13417" passive="#BIO1649" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1121"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO13417" passive="#BIO1649" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO13417" passive="#BIO1649" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>大觀中 累官御史中丞 劾蔡京罪惡 章數十上 始罷京</label>
-                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">彈劾<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Impeached<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1649" passive="#BIO13417" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO1649" passive="#BIO13417" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">遭Y排擠<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Purged by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO50402" passive="#BIO13417" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO50402" passive="#BIO13417" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>黃巖人 志尚超卓 與石公弼、李光為內外兄 二人既貴 占龜無一字相通</label>
-                            <desc xml:lang="en">Audience invitation refused by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">會面的邀請被Y拒絕<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Audience invitation refused by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO13597 #BIO13417" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO13597 #BIO13417" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>遷殿中侍御史 蔡京再相 克公與石公弼論其罪 京罷 累遷右諫議大夫</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
                             </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO17479 #BIO13417" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO17479 #BIO13417" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="M" n="17">
                             <label>安上抗章直言其罪數十條 未報 又與中丞石公弼率同列廷劾之 京以太一宮使罷相 遂致仕</label>
-                            <desc xml:lang="en">Agreed with views of<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">政見趨同<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Agreed with views of<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -121,8 +132,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">
@@ -220,11 +231,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1091" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

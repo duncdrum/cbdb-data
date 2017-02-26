@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO22253" source="#BIB7596" resp="selfbio">
     <idno type="TTS">16523</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>王</surname>
             <forename>廉清</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wang</surname>
             <forename>Lianqing</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">仲信</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhongxin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongxin</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,9 +27,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO22253" passive="#BIO7372" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -40,28 +44,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO22253" passive="#BIO8007" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO22253" passive="#BIO8007" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>汝陰人 銍長子 秦熺倚其父勢 移書于郡 將欲取其先世藏書</label>
-                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">反對/攻訐<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Opposed or attacked<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO22253" passive="#BIO8007" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Refused office in administration of<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO22253" passive="#BIO8007" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">拒絕在Y主政的政府中任職<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Refused office in administration of<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1176"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO3640" passive="#BIO22253" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Portrait eulogy written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO3640" passive="#BIO22253" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">畫贊(畫像記)由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Portrait eulogy written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -71,16 +76,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">holder of a private library</desc>
             <desc xml:lang="zh-Hant">藏書家</desc>
+            <desc xml:lang="en">holder of a private library</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">refused office</desc>
             <desc xml:lang="zh-Hant">拒絕出仕</desc>
+            <desc xml:lang="en">refused office</desc>
         </state>
     </socecStatus>
     <residence ref="#PL100393" key="1" source="#BIB7596">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO45316" source="#BIB9599" resp="selfbio">
     <idno type="TTS">39394</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>許</surname>
             <forename>嗣</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Xu</surname>
             <forename>Si</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">得靜山人</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Dejing shanren</addName>
+        <addName xml:lang="zh-Latn-alalc97">Dejing shanren</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">繼可</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Jike</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jike</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -37,16 +36,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO45316" passive="#BIO107693" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO45316" passive="#BIO107697" key="177" sortKey="9999" name="BS" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>嗣從子</label>
-                            <desc xml:lang="en">BS Brother's son</desc>
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -56,20 +65,20 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO10740" passive="#BIO45316" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10740" passive="#BIO45316" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>贈文林郎……許公墓誌銘（金華黃先生文集36/1）</label>
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO0" passive="#BIO45316" key="0207" sortKey="10" name="artistic-affil.">
-                        <desc type="P">
-                            <desc xml:lang="en">Literary style praised by<label>Literary and Artistic Affiliations</label>
-                            </desc>
+                    <relation active="#BIO0" passive="#BIO45316" key="0207" name="artistic-affil.">
+                        <desc type="P" n="10">
                             <desc xml:lang="zh-Hant">文風為Y所稱道<label>文學藝術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Literary style praised by<label>Literary and Artistic Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -79,12 +88,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">dynastic martyr</desc>
             <desc xml:lang="zh-Hant">死國難</desc>
+            <desc xml:lang="en">dynastic martyr</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">recluse who refused office</desc>
             <desc xml:lang="zh-Hant">隱居不仕</desc>
+            <desc xml:lang="en">recluse who refused office</desc>
         </state>
     </socecStatus>
     <residence ref="#PL12796" key="1" n="1" source="#BIB7596">

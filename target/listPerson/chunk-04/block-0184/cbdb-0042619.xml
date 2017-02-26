@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO42619" source="#BIB9426">
     <idno type="TTS">36752</idno>
     <persName type="main">
@@ -6,37 +5,37 @@
             <surname>邵</surname>
             <forename>煥有</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shao</surname>
             <forename>Huanyou</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>大兒</addName>
-        <addName xml:lang="zh-alalc97">Da'er</addName>
+        <addName xml:lang="zh-Latn-alalc97">Da'er</addName>
     </persName>
     <persName type="alias" key="AKA10" source="#BIB7596">
         <addName xml:lang="zh-Hant">大兒</addName>
         <term>小字</term>
-        <addName xml:lang="zh-alalc97">Da'er</addName>
+        <addName xml:lang="zh-Latn-alalc97">Da'er</addName>
         <term>Childhood Courtesy Name</term>
     </persName>
     <persName type="alias" key="AKA9">
         <addName>衍木</addName>
         <term>小名</term>
-        <addName xml:lang="zh-alalc97">Yanmu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yanmu</addName>
         <term>Childhood Name</term>
     </persName>
     <persName type="alias" key="AKA7" source="#BIB9426">
         <addName xml:lang="zh-Hant">第德三</addName>
         <term>行第</term>
-        <addName xml:lang="zh-alalc97">Didesan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Didesan</addName>
         <term>Birth-order name</term>
     </persName>
     <persName type="alias" key="AKA4">
         <addName>堯章</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yaozhang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yaozhang</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -53,9 +52,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO42619" passive="#BIO138171" key="48" sortKey="-5" name="FFF" source="#BIB9426">
-                        <desc>
-                            <desc xml:lang="en">FFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -65,14 +69,20 @@
     <listEvent>
         <event type="0401" subtype="165" when="1256" sortKey="1" source="#BIB9426">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="field">賦</note>
             <note type="rank">第五甲第一百二十八人</note>
+            <note type="parental-status">
+                <trait type="parental-status" key="1">
+                    <label xml:lang="zh-Hant">具慶;雙侍;重侍</label>
+                    <label xml:lang="zh-Latn-alalc97">Both parent alive</label>
+                </trait>
+            </note>
             <note>Household: NA; from the 寶祐四年登科錄</note>
         </event>
     </listEvent>

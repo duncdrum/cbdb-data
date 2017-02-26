@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO56559" source="#BIB9601" resp="selfbio">
     <idno type="TTS">50506</idno>
     <persName type="main">
@@ -6,14 +5,14 @@
             <surname>吳</surname>
             <forename>湘</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wu</surname>
             <forename>Xiang</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9601">
         <addName xml:lang="zh-Hant">吳緗</addName>
-        <addName xml:lang="zh-alalc97">Wu Xiang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wu Xiang</addName>
         <note>小黛軒論詩詩作吳緗。</note>
     </persName>
     <sex value="2">f</sex>
@@ -26,9 +25,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO56559" passive="#BIO56560" key="134" sortKey="0" name="H" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -38,11 +42,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO56561" passive="#BIO56559" key="0504" sortKey="23" name="prefaces" source="#BIB9601">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO56561" passive="#BIO56559" key="0504" name="prefaces" source="#BIB9601">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
@@ -51,7 +55,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="991"/>
+        <ptr target="mqww:991"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2010-01-15"/>

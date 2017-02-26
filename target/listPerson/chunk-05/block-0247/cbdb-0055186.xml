@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO55186" source="#BIB9601" resp="selfbio">
     <idno type="TTS">49195</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>徐</surname>
             <forename>淑秀</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Xu</surname>
             <forename>Shuxiu</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA5">
         <addName>昭陽遺孑</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Zhaoyangyijie</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhaoyangyijie</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="2">f</sex>
@@ -35,16 +34,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO55186" passive="#BIO55184" key="176" sortKey="6" name="D" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO55186" passive="#BIO55190" key="134" sortKey="0" name="H" type="auto-generated">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>然脂集又云淑秀為陳氏婦﹐以被掠流落﹐重嫁為邵氏妾。</label>
-                            <desc xml:lang="en">H Husband</desc>
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -54,11 +63,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO55188" passive="#BIO55186" key="0405" sortKey="17" name="political-support" source="#BIB9601">
-                        <desc type="P">
-                            <desc xml:lang="en">Patron was (= Client of)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO55188" passive="#BIO55186" key="0405" name="political-support" source="#BIB9601">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">恩主是Y<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Patron was (= Client of)<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -67,7 +76,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="3362"/>
+        <ptr target="mqww:3362"/>
     </linkGrp>
     <note type="created" target="#BDHK">
         <date when="2009-07-01"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO135411" source="#BIB9601">
     <idno type="TTS">128240</idno>
     <persName type="main">
@@ -6,14 +5,14 @@
             <surname>程</surname>
             <forename>姬</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Cheng</surname>
             <forename>Ji</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9601">
         <addName xml:lang="zh-Hant">魯太后</addName>
-        <addName xml:lang="zh-alalc97">Lu tai hou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Lu tai hou</addName>
     </persName>
     <sex value="2">f</sex>
     <floruit>
@@ -25,9 +24,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO135411" passive="#BIO16625" key="134" sortKey="0" name="H" source="#BIB2776">
-                        <desc>
-                            <desc xml:lang="en">H Husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">丈夫</desc>
+                            <desc xml:lang="en">H Husband</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -35,7 +39,7 @@
         </note>
     </affiliation>
     <linkGrp>
-        <ptr target="2709"/>
+        <ptr target="mqww:2709"/>
     </linkGrp>
     <note type="created" target="#BDCX">
         <date when="2013-01-09"/>

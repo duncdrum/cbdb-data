@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13084" source="#BIB7596" resp="selfbio">
     <idno type="TTS">7380</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>雍</forename>
             <addName type="choronym">鉅鹿</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Guo</surname>
             <forename>Yong</forename>
             <addName type="choronym">Julu</addName>
@@ -16,19 +15,19 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">子和</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zihe</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zihe</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">白雲先生</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Baiyun xiansheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Baiyun xiansheng</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA11" source="#BIB7596">
         <addName xml:lang="zh-Hant">沖晦處士</addName>
         <term>賜號</term>
-        <addName xml:lang="zh-alalc97">Chonghui chushi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Chonghui chushi</addName>
         <term>Bestowed name or title</term>
     </persName>
     <sex value="1">m</sex>
@@ -47,9 +46,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13084" passive="#BIO7036" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,45 +63,47 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO21691" passive="#BIO13084" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO21691" passive="#BIO13084" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>字獻之 溫陵人 從學于郭雍 累官知舒州 有大易粹言七十卷、總論三卷</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13077" passive="#BIO13084" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="P">
-                            <desc xml:lang="en">Member of his school was<label>Association through common membership</label>
-                            </desc>
+                    <relation active="#BIO13077" passive="#BIO13084" key="0205" name="scholarly-member">
+                        <desc type="P" n="8">
                             <desc xml:lang="zh-Hant">該學派的成員為Y<label>同為……之成員</label>
                             </desc>
+                            <desc xml:lang="en">Member of his school was<label>Association through common membership</label>
+                            </desc>
+                            <state when="1150"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO3640" passive="#BIO13084" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3640" passive="#BIO13084" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13084" passive="#BIO7036" key="0203" sortKey="6" name="intellectual-affil.">
-                        <desc type="A">
-                            <desc xml:lang="en">Transmitted the scholarship of<label>Intellectual Affiliations</label>
-                            </desc>
+                    <relation active="#BIO13084" passive="#BIO7036" key="0203" name="intellectual-affil.">
+                        <desc type="A" n="6">
                             <desc xml:lang="zh-Hant">傳Y之學<label>學術交往</label>
                             </desc>
+                            <desc xml:lang="en">Transmitted the scholarship of<label>Intellectual Affiliations</label>
+                            </desc>
+                            <state when="1150"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO50966" passive="#BIO13084" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO50966" passive="#BIO13084" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="P" n="6">
                             <label>識者惜之 生平多著述 郭雍、朱熹喜取其易說</label>
-                            <desc xml:lang="en">Scholarship praised by<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">讚揚Y之學<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Scholarship praised by<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -107,16 +113,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">filial son/daughter</desc>
             <desc xml:lang="zh-Hant">孝子/孝女</desc>
+            <desc xml:lang="en">filial son/daughter</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">refused office</desc>
             <desc xml:lang="zh-Hant">拒絕出仕</desc>
+            <desc xml:lang="en">refused office</desc>
         </state>
     </socecStatus>
     <residence ref="#PL100109" key="1">

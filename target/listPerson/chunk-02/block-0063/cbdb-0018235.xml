@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO18235">
     <idno type="TTS">12516</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>史</surname>
             <forename>守之</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shi</surname>
             <forename>Shouzhi</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4">
         <addName>子仁</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Ziren</addName>
+        <addName xml:lang="zh-Latn-alalc97">Ziren</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">碧沚</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Bizhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Bizhi</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -34,21 +33,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO18235" passive="#BIO3727" key="79" sortKey="9999" name="FB" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO18235" passive="#BIO8113" key="62" sortKey="-4" name="FF" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO18235" passive="#BIO10247" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -58,29 +72,31 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO18235" passive="#BIO3632" key="0203" sortKey="6" name="intellectual-affil.">
-                        <desc type="A">
-                            <desc xml:lang="en">Adopted the learning of<label>Intellectual Affiliations</label>
-                            </desc>
+                    <relation active="#BIO18235" passive="#BIO3632" key="0203" name="intellectual-affil.">
+                        <desc type="A" n="6">
                             <desc xml:lang="zh-Hant">私淑Y之學<label>學術交往</label>
                             </desc>
+                            <desc xml:lang="en">Adopted the learning of<label>Intellectual Affiliations</label>
+                            </desc>
+                            <state when="1220"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO18235" passive="#BIO3632" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO18235" passive="#BIO3632" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="A" n="6">
                             <label>鄞縣人 浩孫 私淑陸九淵 仲父彌遠當國 心弗善之</label>
-                            <desc xml:lang="en">Adopted the learning of<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">私淑Y之學<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Adopted the learning of<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO18235" passive="#BIO3727" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Critic of<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO18235" passive="#BIO3727" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">批評<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Critic of<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1220"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -89,8 +105,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <residence ref="#PL100584" key="1" source="#BIB7596">

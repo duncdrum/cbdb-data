@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO13239" source="#BIB7596" resp="selfbio">
     <idno type="TTS">7532</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>清之</forename>
             <addName type="choronym">彭城</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Liu</surname>
             <forename>Qingzhi</forename>
             <addName type="choronym">Pengcheng</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">子澄</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zicheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zicheng</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">靜春先生</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Jingchun xiansheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jingchun xiansheng</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -41,29 +40,49 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO13239" passive="#BIO13238" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13239" passive="#BIO24198" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13239" passive="#BIO120074" key="79" sortKey="9999" name="FB" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1617</label>
-                            <desc xml:lang="en">FB Father's brother</desc>
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO13239" passive="#BIO120090" key="79" sortKey="9999" name="FB" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#1617</label>
-                            <desc xml:lang="en">FB Father's brother</desc>
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -73,448 +92,463 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO7055 #BIO13239" key="0301" sortKey="12" name="friend" source="#BIB9414">
-                        <desc type="M">
+                    <relation mutual="#BIO7055 #BIO13239" key="0301" name="friend" source="#BIB9414">
+                        <desc type="M" n="12">
                             <label>Visits Lv Zuqian together with Lu JiulingVisits again 1074.1</label>
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
+                            <state when="1173"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO3860" passive="#BIO13239" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO3860" passive="#BIO13239" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO7197" passive="#BIO13239" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
                             <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
-                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10566" passive="#BIO13239" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
+                    <relation active="#BIO7197" passive="#BIO13239" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
+                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
+                            </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1190"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10566" passive="#BIO13239" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <label>列名於楊萬里淳熙十二年《薦士錄》</label>
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO13250" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO13250" passive="#BIO13239" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>臨江軍清江人 龜年子 初從族人劉清之學 又學於陸九淵 嘗以書勸朱熹弗為講學之爭</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO17781" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO17781" passive="#BIO13239" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO17785" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO17785" passive="#BIO13239" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>徙越 冠卿從子 與父宜卿俱從劉清之遊 隱居講學 風節高峻</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO21515" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO21515" passive="#BIO13239" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>字子卓 零陵人 從劉清之學 受近思錄 學益進</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO25932" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="P">
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO25932" passive="#BIO13239" key="0202" name="teacher-student">
+                        <desc type="P" n="5">
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO40001" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO40001" passive="#BIO13239" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>仙遊人 朱熹門人 亦嘗學於劉清之 清之與之書 言當看切己文字</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO48536" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO48536" passive="#BIO13239" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>一字擇之 廬陵人 劉清之門人 嘗師陸九淵 後又考朱熹之學</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO49924" passive="#BIO13239" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO49924" passive="#BIO13239" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>吉水人 谷從足 受業於劉清之 傳其性命義理之學 齊賢傳於從弟龍翔</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
+                            </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10801" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO10801" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13250" passive="#BIO13239" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="P">
-                            <desc xml:lang="en">Member of his school was<label>Association through common membership</label>
-                            </desc>
+                    <relation active="#BIO13250" passive="#BIO13239" key="0205" name="scholarly-member">
+                        <desc type="P" n="8">
                             <desc xml:lang="zh-Hant">該學派的成員為Y<label>同為……之成員</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO21515" passive="#BIO13239" key="0205" sortKey="8" name="scholarly-member">
-                        <desc type="P">
                             <desc xml:lang="en">Member of his school was<label>Association through common membership</label>
                             </desc>
+                            <state when="1190"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO21515" passive="#BIO13239" key="0205" name="scholarly-member">
+                        <desc type="P" n="8">
                             <desc xml:lang="zh-Hant">該學派的成員為Y<label>同為……之成員</label>
                             </desc>
+                            <desc xml:lang="en">Member of his school was<label>Association through common membership</label>
+                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO3257" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO3257" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO4001" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO3257" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO4001" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO4001" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7197" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO4001" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7197" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO7197" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10258" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO7197" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10258" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10258" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10801" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10258" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10801" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10801" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13847" passive="#BIO13239" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10801" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
+                            <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO13847" passive="#BIO13239" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO3257 #BIO13239" key="0204" sortKey="7" name="scholarly-topic" source="#BIB9521">
-                        <desc type="M">
-                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation mutual="#BIO3257 #BIO13239" key="0204" name="scholarly-topic" source="#BIB9521">
+                        <desc type="M" n="7">
                             <desc xml:lang="zh-Hant">論學<label>學術主題相近</label>
                             </desc>
+                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3322" passive="#BIO13239" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO3322" passive="#BIO13239" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="P" n="6">
                             <label>與從兄燮齊名 稱二仲 亦傳劉清之之學 官至直史館秘閣</label>
-                            <desc xml:lang="en">Scholarship transmitted by<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">其學由Y所傳<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Scholarship transmitted by<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO17785" passive="#BIO13239" key="0203" sortKey="6" name="intellectual-affil.">
-                        <desc type="P">
-                            <desc xml:lang="en">Scholarship transmitted by<label>Intellectual Affiliations</label>
-                            </desc>
+                    <relation active="#BIO17785" passive="#BIO13239" key="0203" name="intellectual-affil.">
+                        <desc type="P" n="6">
                             <desc xml:lang="zh-Hant">其學由Y所傳<label>學術交往</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO17786" passive="#BIO13239" key="0203" sortKey="6" name="intellectual-affil.">
-                        <desc type="P">
                             <desc xml:lang="en">Scholarship transmitted by<label>Intellectual Affiliations</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">其學由Y所傳<label>學術交往</label>
-                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO49917" passive="#BIO13239" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO17786" passive="#BIO13239" key="0203" name="intellectual-affil.">
+                        <desc type="P" n="6">
+                            <desc xml:lang="zh-Hant">其學由Y所傳<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Scholarship transmitted by<label>Intellectual Affiliations</label>
+                            </desc>
+                            <state when="1190"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO49917" passive="#BIO13239" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="P" n="6">
                             <label>號生春 吉水人 傳劉清之之學 淳祐九年舉江西漕司 明年南省試及弟</label>
-                            <desc xml:lang="en">Scholarship transmitted by<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">其學由Y所傳<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Scholarship transmitted by<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13239" passive="#BIO27759" key="0506" sortKey="25" name="text-biography" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO13239" passive="#BIO27759" key="0506" name="text-biography" source="#BIB7596">
+                        <desc type="A" n="25">
                             <label>穆參軍遺事 / 河南穆公集</label>
-                            <desc xml:lang="en">Biographer of<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作傳<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Biographer of<label>Biographical Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13239" passive="#BIO7055" key="0505" sortKey="24" name="text-ritual" source="#BIB9389">
-                        <desc type="A">
-                            <desc xml:lang="en">Sacrificial prayer written for<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO13239" passive="#BIO7055" key="0505" name="text-ritual" source="#BIB9389">
+                        <desc type="A" n="24">
                             <desc xml:lang="zh-Hant">為Y作祭文<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written for<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1181"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO3257" passive="#BIO13239" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10585" passive="#BIO13239" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
                             <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
-                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO11134" passive="#BIO13239" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO10585" passive="#BIO13239" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
+                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
                             <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
-                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO14833" passive="#BIO13239" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO11134" passive="#BIO13239" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
+                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
                             <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
-                            </desc>
+                            <state when="1190"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO13239" passive="#BIO40001" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="A">
-                            <desc xml:lang="en">Taught to<label>Association by Scholarly Topic</label>
+                    <relation active="#BIO14833" passive="#BIO13239" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
+                            <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
+                            </desc>
+                            <state when="1190"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO13239" passive="#BIO40001" key="0204" name="scholarly-topic">
+                        <desc type="A" n="7">
                             <desc xml:lang="zh-Hant">教授Y<label>學術主題相近</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO13239" passive="#BIO41181" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="A">
                             <desc xml:lang="en">Taught to<label>Association by Scholarly Topic</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO13239" passive="#BIO41181" key="0204" name="scholarly-topic">
+                        <desc type="A" n="7">
                             <desc xml:lang="zh-Hant">教授Y<label>學術主題相近</label>
+                            </desc>
+                            <desc xml:lang="en">Taught to<label>Association by Scholarly Topic</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13239" passive="#BIO3257" key="0204" sortKey="7" name="scholarly-topic" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO13239" passive="#BIO3257" key="0204" name="scholarly-topic" source="#BIB7596">
+                        <desc type="P" n="7">
                             <label>年五十七 初清之欲應博學宏詞科 及見朱熹 盡取所習焚之 慨然有志於義理之學</label>
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
                             </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13239" passive="#BIO41320" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO13239" passive="#BIO41320" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>高安人 少時嘗與其宗人交訟於官 劉清之為說易之訟家人二卦 伯敏瞿然 即以訟費貲市程傳歸</label>
-                            <desc xml:lang="en">Critic of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">批評<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Critic of<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO13239" passive="#BIO3257" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="A">
+                    <relation active="#BIO13239" passive="#BIO3257" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="A" n="28">
                             <label>(Assoc count=3)</label>
-                            <desc xml:lang="en">Sent letter to<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">致書Y<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Sent letter to<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO3257" passive="#BIO13239" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=11)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO3257" passive="#BIO13239" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7055" passive="#BIO13239" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO7055" passive="#BIO13239" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=5)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7197" passive="#BIO13239" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO7197" passive="#BIO13239" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=2)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10585" passive="#BIO13239" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO10585" passive="#BIO13239" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=3)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO3257" passive="#BIO13239" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=9)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10565" passive="#BIO13239" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO10565" passive="#BIO13239" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO3257" passive="#BIO13239" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO3257" passive="#BIO13239" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">建築物得到Y的題詠、記、命名<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Building inscription composed by<label>Commemorative Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7055" passive="#BIO13239" key="0103" sortKey="3" name="social-interaction" source="#BIB9291">
-                        <desc type="P">
-                            <desc xml:lang="en">writing in his stead done by<label>Social Interactions</label>
-                            </desc>
+                    <relation active="#BIO7055" passive="#BIO13239" key="0103" name="social-interaction" source="#BIB9291">
+                        <desc type="P" n="3">
                             <desc xml:lang="zh-Hant">由Y代作文<label>社會交際</label>
                             </desc>
+                            <desc xml:lang="en">writing in his stead done by<label>Social Interactions</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO21912" passive="#BIO13239" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO21912" passive="#BIO13239" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">祠記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -524,12 +558,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
             <desc xml:lang="zh-Hant">理學家</desc>
+            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF158">
@@ -654,20 +688,20 @@
     <listEvent>
         <event type="0401" subtype="36" when="1157" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0403" subtype="226" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">Decree examination: Erudite and Literary</label>
             <label xml:lang="zh-Hant">科舉制舉: 博學鴻詞/博學宏詞科</label>
+            <label xml:lang="en">Decree examination: Erudite and Literary</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
     </listEvent>

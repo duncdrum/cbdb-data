@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO141690" source="#BIB32038" resp="selfbio">
     <idno type="TTS">134426</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>裴</surname>
             <forename>阿八</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Pei</surname>
             <forename>Aba</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA5" source="#BIB32038">
         <addName xml:lang="zh-Hant">阿八</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Aba</addName>
+        <addName xml:lang="zh-Latn-alalc97">Aba</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="2">f</sex>
@@ -31,17 +30,27 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO141690" passive="#BIO157142" key="75" sortKey="-1" name="F" source="#BIB32033">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>(Tackett) subjectid=7327,targetid=9198,relation=D,pageitem=R 895</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO141690" passive="#BIO158212" key="111" sortKey="-3" name="M" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=3009</label>
-                            <desc xml:lang="en">M Mother</desc>
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO34234" source="#BIB9602">
     <idno type="TTS">28487</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>臧</surname>
             <forename>庸</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zang</surname>
             <forename>Yong</forename>
         </persName>
@@ -14,46 +13,46 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">用中</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yongzhong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yongzhong</addName>
         <term>Courtesy name</term>
         <note>參見《清代名人傳略》頁448.</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB24308">
         <addName xml:lang="zh-Hant">在東</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zaidong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zaidong</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">西成</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xicheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xicheng</addName>
         <term>Courtesy name</term>
         <note>參見《清代名人傳略》頁448.</note>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>西城</addName>
-        <addName xml:lang="zh-alalc97">Xicheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xicheng</addName>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>邦經</addName>
-        <addName xml:lang="zh-alalc97">Bangjing</addName>
+        <addName xml:lang="zh-Latn-alalc97">Bangjing</addName>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">東序</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Dongxu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Dongxu</addName>
         <term>Courtesy name</term>
         <note>參見《清代名人傳略》頁448.</note>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB24308">
         <addName xml:lang="zh-Hant">拜經</addName>
-        <addName xml:lang="zh-alalc97">Baijing</addName>
+        <addName xml:lang="zh-Latn-alalc97">Baijing</addName>
     </persName>
     <persName type="alias" key="AKA3" source="#BIB9602">
         <addName xml:lang="zh-Hant">臧鏞堂</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">Zang Yongtang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zang Yongtang</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
         <note>參見《清史列傳》頁63.</note>
     </persName>
@@ -75,9 +74,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO34234" passive="#BIO34235" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -87,44 +91,48 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO29876" passive="#BIO34234" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO29876" passive="#BIO34234" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO33556" passive="#BIO34234" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
                             <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
-                            </desc>
+                            <state when="1811"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO34234" passive="#BIO33851" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                    <relation active="#BIO33556" passive="#BIO34234" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
+                            <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1811"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO34234" passive="#BIO33851" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1811"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO34233" passive="#BIO34234" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO34233" passive="#BIO34234" key="0504" name="prefaces">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO29653" passive="#BIO34234" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO29653" passive="#BIO34234" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1811"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -133,22 +141,22 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">scholar</desc>
             <desc xml:lang="zh-Hant">學者</desc>
+            <desc xml:lang="en">scholar</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="08" subtype="101" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">recommendation</label>
             <label xml:lang="zh-Hant">薦舉 (保任)</label>
+            <label xml:lang="en">recommendation</label>
             <desc type="0" subtype="9">
-                <desc xml:lang="en">Recommendation</desc>
                 <desc xml:lang="zh-Hant">薦舉門</desc>
+                <desc xml:lang="en">Recommendation</desc>
             </desc>
         </event>
     </listEvent>
@@ -160,7 +168,7 @@
         <note>江蘇省-常州府-武進縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="9049"/>
+        <ptr target="ttsmq:9049"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

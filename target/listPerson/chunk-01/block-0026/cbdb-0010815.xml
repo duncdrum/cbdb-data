@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO10815" source="#BIB9599" resp="selfbio">
     <idno type="TTS">5120</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>玄</forename>
             <addName type="choronym">長沙</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ouyang</surname>
             <forename>Xuan</forename>
             <addName type="choronym">Changsha</addName>
@@ -16,19 +15,19 @@
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">文</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wen</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wen</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9599">
         <addName xml:lang="zh-Hant">圭齋</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Guizhai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Guizhai</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">原功</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yuangong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yuangong</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -46,21 +45,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO10815" passive="#BIO10814" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO10815" passive="#BIO10816" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO10815" passive="#BIO20766" key="130" sortKey="9999" name="FBS-" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從弟</desc>
+                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -70,1107 +79,1136 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO28205 #BIO10815" key="0301" sortKey="12" name="friend" source="#BIB27911">
-                        <desc type="M">
+                    <relation mutual="#BIO28205 #BIO10815" key="0301" name="friend" source="#BIB27911">
+                        <desc type="M" n="12">
                             <label>而翰林侍講學士豫章揭公傒斯、翰林學士承旨瀏陽歐陽公玄、太子右諭德東文李公好文、司農少卿臨川危公素，尤與君為文墨交而無間者也。</label>
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28142" key="0405" sortKey="17" name="political-support" source="#BIB27911">
-                        <desc type="A">
-                            <desc xml:lang="en">Praised or admired<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO28142" key="0405" name="political-support" source="#BIB27911">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">欣賞/器重<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Praised or admired<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO133955" passive="#BIO10815" key="0404" sortKey="16" name="office-superior" source="#BIB27911">
-                        <desc type="A">
+                    <relation active="#BIO133955" passive="#BIO10815" key="0404" name="office-superior" source="#BIB27911">
+                        <desc type="A" n="16">
                             <label>尋用常額提舉杭之四務</label>
-                            <desc xml:lang="en">Directly recruited (bi, zoubi, etc)<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">辟<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Directly recruited (bi, zoubi, etc)<label>Connection via office (superior)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10097" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10097" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>歐陽文公文集序（宋文憲公全集44/3下；圭齋文集卷首）</label>
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO27954" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO27954" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>揭傒斯，歐陽先生集序（圭齋文集卷首）</label>
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO27998" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
-                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO27998" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO28792" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
                             <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35269" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO28792" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="A" n="23">
+                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35398" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
+                    <relation active="#BIO35269" passive="#BIO10815" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="A" n="23">
+                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35407" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
+                    <relation active="#BIO35398" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="A" n="23">
+                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO35488" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
+                    <relation active="#BIO35407" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="A" n="23">
+                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10097" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35488" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="A" n="23">
+                            <desc xml:lang="zh-Hant">為Y所著書作序<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Prefaced book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1342"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10097" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>潛溪後集序（圭齋文集7/12下）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10792" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10792" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>國朝名臣事略序（圭齋文集7/5；國朝文類36/13）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10801" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10801" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>歐陽玄，雍虞公文序（道園類稿卷首；道園學古錄卷首；珊瑚木難2/140）（案：此序本屬道園類稿，明刊道園學古錄誤取以冠集。）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO27853" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO27853" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>熊釗、歐陽玄、彭從吉、李好文等，雪樓集序（雪樓集卷首）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO27905" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO27905" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>劉桂隱先生文集序（圭齋文集8/5下；桂隱文集卷首）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO27954" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO27954" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO27998" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO27998" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>歐陽玄、蘇天爵、許有壬等，燕石集序（燕石集卷首；蘇序亦見滋溪文稿6/5；許序亦見圭塘小稿5/24下或至正集35/6）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35269" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35269" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>梅邊先生吾汶稿序（圭齋文集7/15；吾汶稿卷首）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35398" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35398" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>張起巖、歐陽玄、蘇天爵、呂思誠等，漢泉漫稿序（漢泉漫稿卷首；蘇序亦見滋溪文稿5/2下）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35407" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35407" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>袁桷、陳旅、歐陽玄等，此山詩集序（此山詩集卷首；袁序亦見清容居士集49/9；陳序亦見安雅堂集4/16）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO35488" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO35488" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>歐陽玄、李好文等，金臺集敍（金臺集卷首）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO108736" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO108736" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>虞集、揭傒斯、歐陽玄等，法書考序（法書考卷首）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO111460" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO111460" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>歐陽玄，虞雍公文序（道園學古錄卷首；珊瑚木難2/140所收另附一函）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO111937" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO111937" passive="#BIO10815" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>鄭以道文集序（圭齋文集8/4下）</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10097" passive="#BIO10815" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10097" passive="#BIO10815" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>跋段氏墓誌銘後（宋文憲公全集22/12下）</label>
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28022" passive="#BIO10815" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO28022" passive="#BIO10815" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10801" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO10801" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO27954" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO27954" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元翰林侍講學士……豫章揭公墓誌銘（圭齋文集10/26）</label>
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10815" passive="#BIO28002" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
                             <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28003" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28002" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
+                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
                             <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28005" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28003" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
+                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
                             <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28006" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28005" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
+                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
                             <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28204" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28006" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
+                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
                             <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28476" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28204" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
+                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
+                            </desc>
+                            <state when="1342"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10815" passive="#BIO28476" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>歐陽玄，積齋程君端學墓誌銘（新安文獻志71/9下）</label>
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10815" passive="#BIO28586" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
                             <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO29356" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28586" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
+                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
                             <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
-                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO108606" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO29356" key="0503" name="epitaphs">
+                        <desc type="A" n="22">
+                            <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
+                            </desc>
+                            <state when="1342"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10815" passive="#BIO108606" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>曾秀才墓誌銘（圭齋文集10/37；國朝文類54/21下）</label>
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111373" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111373" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故承務郎建德路淳安縣尹眉陽劉公墓誌銘（圭齋文集10/32下）</label>
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111388" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111388" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元處士劉公梅國先生墓銘（圭齋文集10/24下）</label>
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111527" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111527" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>歐陽奇翁先生墓誌銘（圭齋文集10/39）</label>
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO112828" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO112828" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故將仕郎臨江路錄事羅君墓誌銘（圭齋文集10/35下）</label>
-                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓誌銘<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10097" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
-                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO10097" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書跋由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postface of book written by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1384" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO1384" passive="#BIO10815" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO12158" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="A">
                             <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28695" passive="#BIO10815" key="0504" sortKey="23" name="prefaces">
-                        <desc type="A">
+                    <relation active="#BIO12158" passive="#BIO10815" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="A" n="23">
+                            <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
+                            </desc>
                             <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO41857" passive="#BIO10815" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO28695" passive="#BIO10815" key="0504" name="prefaces">
+                        <desc type="A" n="23">
+                            <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1342"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO41857" passive="#BIO10815" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="A" n="23">
                             <label>澗谷遺集跋 / 澗谷遺集</label>
-                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y所著書作跋<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postface written for book by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO27954" key="0505" sortKey="24" name="text-ritual" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO27954" key="0505" name="text-ritual" source="#BIB9599">
+                        <desc type="A" n="24">
                             <label>翰林國史院祭揭侍講文（圭齋文集15/15下）</label>
-                            <desc xml:lang="en">Sacrificial prayer written for<label>Ritual Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作祭文<label>禮儀文字</label>
                             </desc>
+                            <desc xml:lang="en">Sacrificial prayer written for<label>Ritual Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO12158" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO12158" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="A" n="23">
                             <desc xml:lang="zh-Hant">為Y之書、畫作跋<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28192" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28192" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>白麟溪三大字後（圭齋文集14/4）</label>
-                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之書、畫作跋<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28205" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28205" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>眉壽二大字跋（圭齋文集14/7下）</label>
-                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之書、畫作跋<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111528" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111528" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>跋先公與南谷先生書（圭齋文集14/10下）</label>
-                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之書、畫作跋<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Postscripted calligraphy or painting of<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10097" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO10097" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>歐陽玄，石刻世系記（宋文憲公全集卷首）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28002" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28002" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>追封齊郡公張公先世碑（圭齋文集9/44）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28003" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28003" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>追封齊郡公張公先世碑（圭齋文集9/44）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28004" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28004" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>追封齊郡公張公先世碑（圭齋文集9/44）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28005" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28005" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>追封齊郡公張公先世碑（圭齋文集9/44）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28006" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28006" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>追封齊郡公張公先世碑（圭齋文集9/44）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO101133" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO101133" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>歐陽玄，王氏世德碑（陝西金石志26/1）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO106326" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO106326" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO106327" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO106327" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO106328" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO106328" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO106332" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO106332" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO106333" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO106333" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO106336" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO106336" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO113669" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO113669" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>江陵王新廟碑（圭齋文集9/37下）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO114166" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO114166" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）（作：仳俚伽帖穆爾）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO115781" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO115781" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO115997" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO115997" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO116508" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO116508" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO117300" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO117300" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO117436" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO117436" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>高昌偰氏家傳（圭齋文集11/3）</label>
-                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作世系碑記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10798" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO10798" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="A" n="29">
                             <label>送虞德修序（圭齋文集8/7下）</label>
-                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作臨別贈言(送別詩、序)<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO27853" key="0510" sortKey="29" name="text-occasional">
-                        <desc type="A">
-                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO27853" key="0510" name="text-occasional">
+                        <desc type="A" n="29">
                             <desc xml:lang="zh-Hant">為Y作臨別贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO27988" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO27988" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="A" n="29">
                             <label>歐陽玄，送傅與礪佐使安南（安南志略18/9下）</label>
-                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作臨別贈言(送別詩、序)<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28690" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28690" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="A" n="29">
                             <label>送翰林應奉李一初南歸序（圭齋文集8/9下）</label>
-                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作臨別贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO112721" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO112721" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="A" n="29">
                             <label>送聶以道之官武昌（圭齋文集4/5下）</label>
-                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作臨別贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note sent to<label>Occasional Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10801" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10815" passive="#BIO10801" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>送歐陽元功謁告還瀏陽（道園學古錄3/15下）</label>
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO33224" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10815" passive="#BIO33224" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>吳全節，送原功大監南歸（元音7/28下）</label>
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1342"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO29356" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO29356" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>歐陽玄，大元勑賜故資政大夫御史中丞……諡清獻董公神道之碑（嘉靖稾城縣志9/19下；常山貞石志23/1）</label>
-                            <desc xml:lang="en">Posthumous name essay written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作諡議<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Posthumous name essay written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO115448" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO115448" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>諡忠靖馬合馬沙碑（圭齋文集9/49下）</label>
-                            <desc xml:lang="en">Posthumous name essay written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作諡議<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Posthumous name essay written for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO35269" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO35269" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="A" n="21">
                             <label>永思庵記 / 吾汶稿</label>
-                            <desc xml:lang="en">Buddhist temple stele written for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作佛寺記<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Buddhist temple stele written for<label>Commemorative Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10801" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10815" passive="#BIO10801" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>賀原功少監初度啟（道園學古錄12/12下）</label>
-                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y處收到賀詞 (occasion)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
+                            </desc>
+                            <state when="1342" ana="1">
+                                <label xml:lang="zh-Hant">生日</label>
+                                <label xml:lang="zh-Latn-alalc97">birthday</label>
+                            </state>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28426" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10815" passive="#BIO28426" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>賀歐陽圭齋除翰林承旨（純白齋類稿11/9）</label>
-                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y處收到賀詞 (occasion)<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO35407" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10815" passive="#BIO35407" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>賀歐陽公除翰林學士（此山詩集5/8；8/8）</label>
-                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y處收到賀詞 (occasion)<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Congratulatory note received from<label>Occasional Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10023" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO10023" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元中書左丞…諡文正許先生神道碑（圭齋文集9/1；魯齋遺書13/1下；中州金石考5/5）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10801" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO10801" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故奎章閣侍書學士……虞雍公神道碑（圭齋文集9/23）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO17690" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO17690" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>趙文敏公神道碑（圭齋文集9/9下）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28586" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28586" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>歐陽玄，有元…追封魯郡公許公神道碑銘（水東日記31/2下；中州名賢文表22/16下；安陽縣金石錄11/1；金石萃編未刻稿地/64）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO107703" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO107703" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故翰林學士…貫公神道碑（圭齋文集9/19下）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO108433" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO108433" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>歐陽玄，追封河東郡公傅公神道碑銘（山右石刻叢編36/1）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO114985" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO114985" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>追封趙國公諡忠靖馬合馬沙碑（圭齋文集9/49下）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO27905" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO27905" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故隱士廬陵劉桂隱先生墓碑銘（圭齋文集10/16下；桂隱文集附錄/8下）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28205" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28205" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元贈奉議大夫…鄭府君墓碑銘（圭齋文集10/8）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO102645" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO102645" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>歐陽玄，元故朝散大夫僉太常禮儀院事宋公墓碑（山右石刻叢編39/23下）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO104009" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO104009" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元贈從仕郎吉安路吉水州判官周君潛心墓碑銘（圭齋文集10/5下）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO104729" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO104729" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故徵士段公禮廷墓碑銘（圭齋文集10/13下）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO105718" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO105718" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>歐陽玄，有元贈奉議大夫……殷府君碑（山右石刻叢編34/3）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO109624" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO109624" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>歐陽玄，元故翰林待制朝列大夫致事西昌楊公墓碑銘（書畫彙考18/39下）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO110847" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO110847" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>安成劉氏儒行阡表（圭齋文集11/1）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111002" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111002" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故隱士更齋先生劉公墓碑銘（圭齋文集10/16）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111298" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111298" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故中奉大夫江南諸道行御史臺侍御史劉公墓碑銘（圭齋文集10/1）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111417" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111417" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元贈……從仕郎安成劉聘君墓碑銘（圭齋文集10/10）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111523" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111523" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>元故旌表高年耆德山村先生歐陽公墓碑銘（圭齋文集10/19下）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111528" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111528" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>居士歐陽南谷墓碑銘（圭齋文集10/21下）</label>
-                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作墓表<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Tomb stone (mubiao) for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28022" passive="#BIO10815" key="0506" sortKey="25" name="text-biography" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28022" passive="#BIO10815" key="0506" name="text-biography" source="#BIB9599">
+                        <desc type="P" n="25">
                             <label>大元故翰林學士承旨…歐陽公行狀（危太樸文續集7/3下；圭齋文集附錄/6）</label>
-                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">行狀由Y所作<label>傳記文字</label>
                             </desc>
+                            <desc xml:lang="en">Biographical sketch (xingzhuang) written by<label>Biographical Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO10791" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO10791" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>郎中蘇公畫像贊（圭齋文集15/4下；國朝文類18/15）</label>
-                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作畫贊(畫像記)<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28205" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28205" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>麟鳳二大字贊（圭齋文集15/1下）</label>
-                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作畫贊(畫像記)<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO29001" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO29001" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>靜修先生畫像贊（圭齋文集15/3下；國朝文類18/14）</label>
-                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作畫贊(畫像記)<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO111523" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO111523" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>族兄山村先生像贊（圭齋文集15/3）</label>
-                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作畫贊(畫像記)<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Wrote Portrait eulogy for<label>Commemorative Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO27905" key="0509" sortKey="28" name="text-letters" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO27905" key="0509" name="text-letters" source="#BIB9599">
+                        <desc type="A" n="28">
                             <label>答劉桂隱書（圭齋文集15/9下）</label>
-                            <desc xml:lang="en">Replied to letter from<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">答Y書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Replied to letter from<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28015" key="0509" sortKey="28" name="text-letters" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28015" key="0509" name="text-letters" source="#BIB9599">
+                        <desc type="A" n="28">
                             <label>囘劉申齋先生書（圭齋文集15/9）</label>
-                            <desc xml:lang="en">Replied to letter from<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">答Y書<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Replied to letter from<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10801" passive="#BIO10815" key="0509" sortKey="28" name="text-letters" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO10801" passive="#BIO10815" key="0509" name="text-letters" source="#BIB9599">
+                        <desc type="P" n="28">
                             <label>答原功待制慶初度啟（道園學古錄12/13）</label>
-                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">收到Y的答書<label>書札文字</label>
                             </desc>
+                            <desc xml:lang="en">Was sent a reply by<label>Correspondences</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28543" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28543" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="A" n="29">
                             <label>寄有壬許參政（圭齋文集2/7）</label>
-                            <desc xml:lang="en">Presented literary composition as gift to<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">贈詩、文<label>應酬文字</label>
                             </desc>
+                            <desc xml:lang="en">Presented literary composition as gift to<label>Occasional Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO35271" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Composed Building inscription for<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO35271" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="A" n="21">
                             <desc xml:lang="zh-Hant">為Y之建築物題詠、記、命名<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Composed Building inscription for<label>Commemorative Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO504" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Wrote School stele for<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO504" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="A" n="21">
                             <desc xml:lang="zh-Hant">為Y作學記（書院記）<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Wrote School stele for<label>Commemorative Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO27955" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO27955" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>貞文書院記（圭齋文集5/3下）</label>
-                            <desc xml:lang="en">Wrote School stele for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作學記（書院記）<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote School stele for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO110736" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO110736" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>歐陽玄，趙忠簡公得全書院記（永樂大典5345/21）</label>
-                            <desc xml:lang="en">Wrote School stele for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作學記（書院記）<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote School stele for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO28695" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO28695" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="A" n="23">
                             <label>歐陽玄、賈祥麟等，扈從集跋（扈從集/16）</label>
-                            <desc xml:lang="en">wrote colophon to the writings of<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之詩文作跋<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">wrote colophon to the writings of<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO133955" key="0507" sortKey="26" name="text-discourse" source="#BIB27911">
-                        <desc type="A">
-                            <desc xml:lang="en">evaluated the writings of<label>Explanatory Texts</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO133955" key="0507" name="text-discourse" source="#BIB27911">
+                        <desc type="A" n="26">
                             <desc xml:lang="zh-Hant">評論Y之著作<label>論說文字</label>
                             </desc>
+                            <desc xml:lang="en">evaluated the writings of<label>Explanatory Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO29005" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO29005" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>安先生祠堂記（圭齋文集5/11下；國朝文類31/21下）</label>
-                            <desc xml:lang="en">Wrote living person shrine inscription for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之生祠作記<label>記詠文字</label>
                             </desc>
+                            <desc xml:lang="en">Wrote living person shrine inscription for<label>Commemorative Texts</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO3404" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Wrote Shrine inscription for<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO10815" passive="#BIO3404" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="A" n="21">
                             <desc xml:lang="zh-Hant">為Y作祠記<label>記詠文字</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10815" passive="#BIO8024" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="A">
                             <desc xml:lang="en">Wrote Shrine inscription for<label>Commemorative Texts</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作祠記<label>記詠文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO41857" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO8024" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="A" n="21">
+                            <desc xml:lang="zh-Hant">為Y作祠記<label>記詠文字</label>
+                            </desc>
                             <desc xml:lang="en">Wrote Shrine inscription for<label>Commemorative Texts</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">為Y作祠記<label>記詠文字</label>
-                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO51707" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO41857" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="A" n="21">
+                            <desc xml:lang="zh-Hant">為Y作祠記<label>記詠文字</label>
+                            </desc>
                             <desc xml:lang="en">Wrote Shrine inscription for<label>Commemorative Texts</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10815" passive="#BIO51707" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="A" n="21">
                             <desc xml:lang="zh-Hant">為Y作祠記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Shrine inscription for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10815" passive="#BIO110736" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO10815" passive="#BIO110736" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="A" n="21">
                             <label>趙忠簡公祠堂記（圭齋文集5/9；國朝文類31/23）</label>
-                            <desc xml:lang="en">Wrote Shrine inscription for<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作祠記<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Shrine inscription for<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -1180,8 +1218,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF61131">
@@ -1311,11 +1349,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1315" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

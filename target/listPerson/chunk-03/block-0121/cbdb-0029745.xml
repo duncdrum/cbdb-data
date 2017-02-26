@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29745">
     <idno type="TTS">24002</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>沈</surname>
             <forename>勤增</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Shen</surname>
             <forename>Qinzeng</forename>
         </persName>
@@ -22,9 +21,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29745" passive="#BIO29742" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -34,11 +38,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO29745" passive="#BIO29743" key="0506" sortKey="25" name="text-biography">
-                        <desc type="A">
-                            <desc xml:lang="en">Biographer of<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO29745" passive="#BIO29743" key="0506" name="text-biography">
+                        <desc type="A" n="25">
                             <desc xml:lang="zh-Hant">為Y作傳<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biographer of<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -48,27 +52,21 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="0501" subtype="47" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">school: licentiate</label>
             <label xml:lang="zh-Hant">學校: 生員(庠生)</label>
+            <label xml:lang="en">school: licentiate</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
         </event>
     </listEvent>
-    <residence ref="#PL0" key="1">
-        <state>
-            <desc xml:lang="zh-Hant">籍貫(基本地址)</desc>
-            <desc xml:lang="en">Basic Affiliation</desc>
-        </state>
-    </residence>
     <residence ref="#PL7570" key="4">
         <state>
             <desc xml:lang="zh-Hant">最後所知地</desc>

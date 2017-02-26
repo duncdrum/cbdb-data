@@ -4,7 +4,8 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+declare namespace no="http://none";
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:Generating the taxonomy for office titles requires two parts officeA.xql and officeB.xql. 
 This is due to a potential bug  with the new range index. 
@@ -16,7 +17,7 @@ officeB merges officeA.xml into office.xml.
     for this merge we require a category for missing data in the stored structure.
 :)
 
-declare function local:office ($offices as node()*) as node()* {
+declare function local:office ($offices as node()*, $mode as xs:string?) as item()* {
 
 (:This function transforms OFFICE_CODE data into  tei:categories via  c_office_id. 
 These are then inserted intointo the right postions in the office-tree via $OFFICE_CODE_TYPE_REL by officeB.xql
@@ -25,8 +26,8 @@ These are then inserted intointo the right postions in the office-tree via $OFFI
 (:Wow this is a mess. TODO
 - OFFICE_CATEGORIES is linked with POSTED_TO_OFFICE_DATA so either it becomes tei:event/@type, 
 or if gets its own taxonomy.
-- $OFFICE_CODE_TYPE_REl//c_office_type_type_code ... WTF?
-- clean up {A1D7} from $OFFICE_CODES//c_office_trans
+- $OFFICE_CODE_TYPE_REl//no:c_office_type_type_code ... WTF?
+- clean up {A1D7} from $OFFICE_CODES//no:c_office_trans
 :)
 
 (:
@@ -48,66 +49,71 @@ or if gets its own taxonomy.
  [c_category_4] CHAR(50),                   !
  [c_office_id_old] INTEGER)                 d
 :)
-
-for $office in $offices[. > 0] 
-
-let $type-rel := $global:OFFICE_CODE_TYPE_REL//c_office_id[. = $office]
-let $type := $global:OFFICE_TYPE_TREE//c_office_type_node_id[. = $type-rel/../c_office_tree_id]
-
-return
-    element category{ attribute xml:id {concat('OFF', $office/text())},
-        if (empty($type-rel/../c_office_tree_id) and empty($office/../c_dy))
-        then (attribute n {'00'})
-        else if (empty($type-rel/../c_office_tree_id))
-            then (attribute n {$office/../c_dy/text()})
-        else (attribute n {$type-rel/../c_office_tree_id/text()}),
-    if (empty($office/../c_source) or $office/../c_source[. < 1])
-    then ()
-    else (attribute source {concat('#BIB', $office/../c_source/text())}),
-        element catDesc {
-            if (empty($office/../c_dy))
-            then ()
-            else (element date{ attribute sameAs {concat('#D', $office/../c_dy/text())}}),
-            element roleName { attribute type {'main'},
-                element roleName { attribute xml:lang {'zh-Hant'},
-                    $office/../c_office_chn/text()},
-                    if (empty($office/../c_office_pinyin))
-                    then ()
-                    else (element roleName { attribute xml:lang {'zh-alalc97'},
-                    $office/../c_office_pinyin/text()}),
-                if (empty($office/../c_office_trans) or $office/../c_office_trans/text() = '[Not Yet Translated]')
+let $output := 
+    for $office in $offices[. > 0] 
+    
+    let $type-rel := $global:OFFICE_CODE_TYPE_REL//no:c_office_id[. = $office]
+    let $type := $global:OFFICE_TYPE_TREE//no:c_office_type_node_id[. = $type-rel/../no:c_office_tree_id]
+    
+    return
+        element category{ attribute xml:id {concat('OFF', $office/text())},
+            if (empty($type-rel/../no:c_office_tree_id) and empty($office/../no:c_dy))
+            then (attribute n {'00'})
+            else if (empty($type-rel/../no:c_office_tree_id))
+                then (attribute n {$office/../no:c_dy/text()})
+            else (attribute n {$type-rel/../no:c_office_tree_id/text()}),
+        if (empty($office/../no:c_source) or $office/../no:c_source[. < 1])
+        then ()
+        else (attribute source {concat('#BIB', $office/../no:c_source/text())}),
+            element catDesc {
+                if (empty($office/../no:c_dy))
                 then ()
-                else if (contains($office/../c_office_trans/text(), '(Hucker)'))
-                    then (element roleName {attribute xml:lang {'en'},
-                                attribute resp {'Hucker'},
-                            substring-before($office/../c_office_trans/text(), ' (Hucker)')})
-                    else (element roleName { attribute xml:lang {'en'}, 
-                $office/../c_office_trans/text()}), 
-            if (empty($office/../c_notes))
-            then ()
-            else (element note {$office/../c_notes/text()})
-            },
-            if (empty($office/../c_office_chn_alt) and empty($office/../c_office_trans_alt))
-            then ()
-            else (element roleName { attribute type {'alt'},
-                    if ($office/../c_office_chn_alt)
-                    then (element roleName { attribute xml:lang {'zh-Hant'},
-                            $office/../c_office_chn_alt/text()},
-                        element roleName { attribute xml:lang {'zh-alalc97'},
-                            $office/../c_office_pinyin_alt/text()})
-                    else(),
-                    if ($office/../c_office_trans_alt)
-                    then (element roleName { attribute xml:lang {'en'}, 
-                        $office/../c_office_trans_alt/text()})
-                    else ()}
-                  )
+                else (element date{ attribute sameAs {concat('#D', $office/../no:c_dy/text())}}),
+                element roleName { attribute type {'main'},
+                    element roleName { attribute xml:lang {'zh-Hant'},
+                        $office/../no:c_office_chn/text()},
+                        if (empty($office/../no:c_office_pinyin))
+                        then ()
+                        else (element roleName { attribute xml:lang {'zh-Latn-alalc97'},
+                        $office/../no:c_office_pinyin/text()}),
+                    if (empty($office/../no:c_office_trans) or $office/../no:c_office_trans/text() = '[Not Yet Translated]')
+                    then ()
+                    else if (contains($office/../no:c_office_trans/text(), '(Hucker)'))
+                        then (element roleName {attribute xml:lang {'en'},
+                                    attribute resp {'Hucker'},
+                                substring-before($office/../no:c_office_trans/text(), ' (Hucker)')})
+                        else (element roleName { attribute xml:lang {'en'}, 
+                    $office/../no:c_office_trans/text()}), 
+                if (empty($office/../no:c_notes))
+                then ()
+                else (element note {$office/../no:c_notes/text()})
+                },
+                if (empty($office/../no:c_office_chn_alt) and empty($office/../no:c_office_trans_alt))
+                then ()
+                else (element roleName { attribute type {'alt'},
+                        if ($office/../no:c_office_chn_alt)
+                        then (element roleName { attribute xml:lang {'zh-Hant'},
+                                $office/../no:c_office_chn_alt/text()},
+                            element roleName { attribute xml:lang {'zh-Latn-alalc97'},
+                                $office/../no:c_office_pinyin_alt/text()})
+                        else(),
+                        if ($office/../no:c_office_trans_alt)
+                        then (element roleName { attribute xml:lang {'en'}, 
+                            $office/../no:c_office_trans_alt/text()})
+                        else ()}
+                      )
+            }
         }
-    }
+return 
+    switch($mode)
+        case 'v' return global:validate-fragment($output, 'category')
+        case 'd' return global:validate-fragment($output, 'category')[1]
+    default return $output 
 };
 
 declare function local:nest-children($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*{
 (: This function expects rows from $OFFICE_TYPE_TREE and returns a nested
-tree of office types as tei:category.
+tree of office types as category.
 :)
 
 (:
@@ -123,34 +129,34 @@ tree of office types as tei:category.
     $zh/text()},
     if (empty($en) or $en/text() = '[not yet translated]')
     then ()
-    else (element catDesc { attribute xml:lang {'en'},
+    else (element catDesc {attribute xml:lang {'en'},
     $en/text()}),
-      for $child in $data[c_parent_id = $id]
-      return local:nest-children($data, $child/c_office_type_node_id, 
-        $child/c_office_type_desc_chn, $child/c_office_type_desc)    
+      for $child in $data[no:c_parent_id = $id]
+      return local:nest-children($data, $child/no:c_office_type_node_id, 
+        $child/no:c_office_type_desc_chn, $child/no:c_office_type_desc)    
   }
 };
 
 (: once maxCauseCount errors are fixed the following will suffice for the join:
-let $tree-id := $data/c_office_type_node_id
-let $code := $globalOFFICE_CODE_TYPE_REL//c_office_tree_id[. =  $tree-id/text()]/../c_office_id
+let $tree-id := $data/no:c_office_type_node_id
+let $code := $globalOFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id
 :)
 
-let $data := $global:OFFICE_TYPE_TREE//row
+let $data := $global:OFFICE_TYPE_TREE//no:row
 let $tree := xmldb:store($global:target, $global:office, 
                     <taxonomy xml:id="office">
                         <category n="00">
                             <catDesc xml:lang="en">missing data</catDesc>
-                         </category>
-                    {for $outer in $data[c_parent_id = 0]
-                      return 
-                        local:nest-children($data, $outer/c_office_type_node_id, 
-                            $outer/c_office_type_desc_chn, $outer/c_office_type_desc)}
+                         </category>{                        
+                        for $outer in $data[no:c_parent_id = 0]
+                          return 
+                            local:nest-children($data, $outer/no:c_office_type_node_id, 
+                                $outer/no:c_office_type_desc_chn, $outer/no:c_office_type_desc)}
                     </taxonomy>)
                     
 let $off := xmldb:store($global:target, $global:office-temp, 
-                     <taxonomy xml:id="officeA">                        
-                         {local:office($global:OFFICE_CODES//c_office_id)}                         
+                    <taxonomy xml:id="officeA">                       
+                         {local:office($global:OFFICE_CODES//no:c_office_id, 'v')}                        
                      </taxonomy>)             
 
 

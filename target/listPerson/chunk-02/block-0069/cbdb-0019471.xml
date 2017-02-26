@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO19471" source="#BIB7596" resp="selfbio">
     <idno type="TTS">13751</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>郭</surname>
             <forename>執中</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Guo</surname>
             <forename>Zhizhong</forename>
         </persName>
@@ -23,9 +22,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO19471" passive="#BIO946" key="119" sortKey="9999" name="FBS">
-                        <desc>
-                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄弟;堂兄弟</desc>
+                            <desc xml:lang="en">FBS Father's brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -35,28 +39,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO9999" passive="#BIO19471" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Yuanfu coalition member (元符黨)<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO9999" passive="#BIO19471" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">元符上書入籍者<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Yuanfu coalition member (元符黨)<label>Supportive political association</label>
+                            </desc>
+                            <state when="1133"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1649" passive="#BIO19471" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Disliked or hated by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO1649" passive="#BIO19471" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">為Y所忌/惡<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Disliked or hated by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO1649" passive="#BIO19471" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO1649" passive="#BIO19471" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>累官樞密承旨 建中靖國初應詔言事切直 蔡京籍為元祐黨人 遭擯斥 居同谷二十餘年</label>
-                            <desc xml:lang="en">was harmed by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y陷害<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">was harmed by<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
@@ -66,8 +71,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF2007">
@@ -119,11 +124,11 @@
         </event>
         <event type="0401" subtype="36" when="1103" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

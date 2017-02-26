@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO41116" source="#BIB7596">
     <idno type="TTS">35286</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>李</surname>
             <forename>庭芝</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Li</surname>
             <forename>Tingzhi</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>祥甫</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Xiangfu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Xiangfu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -31,21 +30,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO41116" passive="#BIO41127" key="75" sortKey="-1" name="F" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO41116" passive="#BIO41134" key="111" sortKey="-3" name="M" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">M Mother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">母</desc>
+                            <desc xml:lang="en">M Mother</desc>
+                            <trait type="mourning" subtype="AF">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗姻親</desc>
+                                <desc xml:lang="en">Affines</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO41116" passive="#BIO41140" key="135" sortKey="0" name="W" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,64 +69,64 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO46328" passive="#BIO41116" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO46328" passive="#BIO41116" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="P" n="19">
                             <label>拔李芾於久廢 薦文天祥於列郡 陳李庭芝決不可用 官至兵部侍郎</label>
-                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y彈劾<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Impeached by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO24736" passive="#BIO41116" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO24736" passive="#BIO41116" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="P" n="17">
                             <label>淮陽許諾 至揚州城下 乃大呼曰：李庭芝 男子耳 死毋降也</label>
-                            <desc xml:lang="en">Praised or admired by<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被Y欣賞/器重<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Praised or admired by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO22681" passive="#BIO41116" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO22681" passive="#BIO41116" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">為Y所辟<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO45419" passive="#BIO41116" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO45419" passive="#BIO41116" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO46789" passive="#BIO41116" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO46789" passive="#BIO41116" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="P" n="16">
                             <label>有節槩 補州牙兵 隨制置李庭芝潰圍南赴行在所 追者及之 麾下閧散</label>
-                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">部將為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under his command was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO22681" passive="#BIO41116" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO22681" passive="#BIO41116" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="P" n="15">
                             <label>而智識恆出長老之上 嘉熙末 荊帥孟珙以庭芝權建始縣 期年 民皆知戰守</label>
-                            <desc xml:lang="en">superior was<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">上司為Y<label>官場關係（下屬）</label>
                             </desc>
+                            <desc xml:lang="en">superior was<label>Connection via office (subordinate)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO52859" passive="#BIO41116" key="0404" sortKey="16" name="office-superior" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO52859" passive="#BIO41116" key="0404" name="office-superior" source="#BIB7596">
+                        <desc type="A" n="16">
                             <label>隨州人 初事李庭芝 積功至都統制 咸淳中守新城</label>
-                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">下屬為Y<label>官場關係（上司）</label>
+                            </desc>
+                            <desc xml:lang="en">subordinate was<label>Connection via office (superior)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -378,20 +392,20 @@
         </event>
         <event type="0401" subtype="36" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="07" subtype="107" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">employed as secretary</label>
             <label xml:lang="zh-Hant">辟爲幕僚</label>
+            <label xml:lang="en">employed as secretary</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

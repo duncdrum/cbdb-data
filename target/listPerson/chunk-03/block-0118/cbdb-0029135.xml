@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29135">
     <idno type="TTS">23394</idno>
     <persName type="main">
@@ -7,14 +6,14 @@
             <forename>孔溫窟哇</forename>
             <addName type="choronym">蒙古族</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">Kongwen Kuwa<addName type="choronym">Mongol Tribe</addName>
+        <persName xml:lang="zh-Latn-alalc97">Kongwen Kuwa<addName type="choronym">Mongol Tribe</addName>
         </persName>
     </persName>
     <persName type="original">Kogun Goga</persName>
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">忠宣</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Zhongxuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongxuan</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -23,9 +22,9 @@
     </floruit>
     <trait type="ethnicity" key="131">
         <label>Mongol</label>
-        <desc xml:lang="en">Jalayir</desc>
-        <desc xml:lang="zh-alalc97">zha la er</desc>
         <desc xml:lang="zh-Hant">札剌兒</desc>
+        <desc xml:lang="zh-Latn-alalc97">zha la er</desc>
+        <desc xml:lang="en">Jalayir</desc>
         <note>"C. Atwood note:Jalayir; Jalar is a divergent pronunciation, probably derived from the Kitan pronunciation of the term; ethno-legal category Mongol"</note>
     </trait>
     <note>Kogun Goga [29135] An early retainer of Temuchin, who gave all his horses to the World Conqueror. WDY, 4, pp. 2435-6.</note>
@@ -35,9 +34,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29135" passive="#BIO29136" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,12 +51,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO29135" passive="#BIO29239" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO29135" passive="#BIO29239" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">為Y之門客<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Retainer (客) of<label>Supportive political association</label>
+                            </desc>
+                            <state when="1200"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -61,18 +66,18 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">tribal chieftain</desc>
             <desc xml:lang="zh-Hant">酋長</desc>
+            <desc xml:lang="en">tribal chieftain</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="11" subtype="114" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">surrender when dynasty changes</label>
             <label xml:lang="zh-Hant">易代變節</label>
+            <label xml:lang="en">surrender when dynasty changes</label>
             <desc type="0" subtype="12">
-                <desc xml:lang="en">Surrender</desc>
                 <desc xml:lang="zh-Hant">歸降門</desc>
+                <desc xml:lang="en">Surrender</desc>
             </desc>
         </event>
     </listEvent>

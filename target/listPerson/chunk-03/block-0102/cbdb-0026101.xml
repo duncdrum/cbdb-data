@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO26101" source="#BIB7596" resp="selfbio">
     <idno type="TTS">20366</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>持之</forename>
             <addName type="choronym">始興</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhang</surname>
             <forename>Chizhi</forename>
             <addName type="choronym">Shixing</addName>
@@ -16,13 +15,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">立叔</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Lishu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Lishu</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">屏山</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Pingshan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Pingshan</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -41,21 +40,31 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO26101" passive="#BIO39" key="76" sortKey="21" name="WF">
-                        <desc>
-                            <desc xml:lang="en">WF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">岳父</desc>
+                            <desc xml:lang="en">WF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO26101" passive="#BIO26100" key="48" sortKey="-5" name="FFF">
-                        <desc>
-                            <desc xml:lang="en">FFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO26101" passive="#BIO37530" key="193" sortKey="9999" name="S">
-                        <desc>
-                            <desc xml:lang="en">S (only son)</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">獨子</desc>
+                            <desc xml:lang="en">S (only son)</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -65,29 +74,30 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO11087" passive="#BIO26101" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO11087" passive="#BIO26101" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1233"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO26101" passive="#BIO0" key="0204" sortKey="7" name="scholarly-topic" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO26101" passive="#BIO0" key="0204" name="scholarly-topic" source="#BIB7596">
+                        <desc type="P" n="7">
                             <label>號屏山 建州人 初從李曼卿、蔡幼學授春秋 以學行醇正 擢為建州學錄</label>
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
+                            </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO26101" passive="#BIO10589" key="0204" sortKey="7" name="scholarly-topic" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO26101" passive="#BIO10589" key="0204" name="scholarly-topic" source="#BIB7596">
+                        <desc type="P" n="7">
                             <label>號屏山 建州人 初從李曼卿、蔡幼學授春秋 以學行醇正 擢為建州學錄</label>
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
+                            </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
                             </desc>
                         </desc>
                     </relation>
@@ -97,12 +107,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">scholar of Classics (Spring and Autumn Annals)</desc>
             <desc xml:lang="zh-Hant">經學家—春秋</desc>
+            <desc xml:lang="en">scholar of Classics (Spring and Autumn Annals)</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <residence ref="#PL100181" key="1" source="#BIB7596">

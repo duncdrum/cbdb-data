@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO7139" source="#BIB7596" resp="selfbio">
     <idno type="TTS">3863</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>強</surname>
             <forename>淵明</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Qiang</surname>
             <forename>Yuanming</forename>
         </persName>
@@ -14,25 +13,25 @@
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">文定</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wending</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wending</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">文憲</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenxian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenxian</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">文獻</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenxian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenxian</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">隱季</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yinji</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yinji</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -46,27 +45,42 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO7139" passive="#BIO136" key="125" sortKey="2" name="B+" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">B+  Brother, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">兄</desc>
+                            <desc xml:lang="en">B+  Brother, elder</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO7139" passive="#BIO7072" key="152" sortKey="17" name="WB">
-                        <desc>
-                            <desc xml:lang="en">WB Wife's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">內兄弟;妻兄弟</desc>
+                            <desc xml:lang="en">WB Wife's brother</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO7139" passive="#BIO7138" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO7139" passive="#BIO7362" key="181" sortKey="7" name="DH">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -76,21 +90,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO7139" passive="#BIO1649" key="0405" sortKey="17" name="political-support" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO7139" passive="#BIO1649" key="0405" name="political-support" source="#BIB7596">
+                        <desc type="A" n="17">
                             <label>舉元豐八年進士 累官國子司業 與兄浚明及葉夢得為蔡京死黨 立元祐黨籍 分三等定罪</label>
-                            <desc xml:lang="en">Coalition leader of<label>Supportive political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">黨魁為Y<label>政治奧援</label>
+                            </desc>
+                            <desc xml:lang="en">Coalition leader of<label>Supportive political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO2054 #BIO7139" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO2054 #BIO7139" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>舉元豐八年進士 累官國子司業 與兄浚明及葉夢得為蔡京死黨 立元祐黨籍 分三等定罪</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -100,12 +114,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">society member</desc>
             <desc xml:lang="zh-Hant">結社</desc>
+            <desc xml:lang="en">society member</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF294">
@@ -173,11 +187,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1085" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

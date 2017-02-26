@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO56207" source="#BIB9601">
     <idno type="TTS">50164</idno>
     <persName type="main">
@@ -6,14 +5,14 @@
             <surname>陳</surname>
             <forename>緯度</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Chen</surname>
             <forename>Weidu</forename>
         </persName>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9601">
         <addName xml:lang="zh-Hant">陳光緯</addName>
-        <addName xml:lang="zh-alalc97">Chen Guangwei</addName>
+        <addName xml:lang="zh-Latn-alalc97">Chen Guangwei</addName>
     </persName>
     <sex value="1">m</sex>
     <floruit>
@@ -25,15 +24,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO56207" passive="#BIO56203" key="135" sortKey="0" name="W" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO56207" passive="#BIO56206" key="63" sortKey="22" name="WFF" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">WFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之祖父</desc>
+                            <desc xml:lang="en">WFF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -43,11 +52,11 @@
     <listEvent>
         <event type="0501" subtype="47" sortKey="1" source="#BIB9601">
             <head>entry</head>
-            <label xml:lang="en">school: licentiate</label>
             <label xml:lang="zh-Hant">學校: 生員(庠生)</label>
+            <label xml:lang="en">school: licentiate</label>
             <desc type="1" subtype="25">
-                <desc xml:lang="en">Students in Schools</desc>
                 <desc xml:lang="zh-Hant">學生門</desc>
+                <desc xml:lang="en">Students in Schools</desc>
             </desc>
         </event>
     </listEvent>

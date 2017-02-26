@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO16856" source="#BIB7596" resp="selfbio">
     <idno type="TTS">11142</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>曹</surname>
             <forename>偕</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Cao</surname>
             <forename>Xie</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4">
         <addName>光道</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Guangdao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Guangdao</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -29,22 +28,27 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO16856" passive="#BIO3869" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO16856" passive="#BIO4220" key="164" sortKey="4" name="Z+" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2080</label>
-                            <desc xml:lang="en">Z+</desc>
                             <desc xml:lang="zh-Hant">姊</desc>
+                            <desc xml:lang="en">Z+</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO16856" passive="#BIO16846" key="131" sortKey="9999" name="FBS+">
-                        <desc>
-                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄</desc>
+                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -54,29 +58,38 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO16856" passive="#BIO7059" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO16856" passive="#BIO7059" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>以節俠自喜 累官河陽總管 嘗從梅堯臣學詩 堯臣稱之 為序其詩</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO7059" passive="#BIO16856" key="0504" sortKey="23" name="prefaces">
-                        <desc type="P">
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
+                    <relation active="#BIO7059" passive="#BIO16856" key="0504" name="prefaces">
+                        <desc type="P" n="23">
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
+                            <state when="1068"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO16856" passive="#BIO7059" key="0204" sortKey="7" name="scholarly-topic">
-                        <desc type="P">
-                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation active="#BIO16856" passive="#BIO7059" key="0204" name="scholarly-topic">
+                        <desc type="P" n="7">
                             <desc xml:lang="zh-Hant">從Y學<label>學術主題相近</label>
                             </desc>
+                            <desc xml:lang="en">Studied with<label>Association by Scholarly Topic</label>
+                            </desc>
+                            <state when="1068" type="7">
+                                <desc ana="topic" type="1">
+                                    <desc xml:lang="zh-Hant">詩<label>學科</label>
+                                    </desc>
+                                    <desc xml:lang="en">Poetry<label>Disciplines</label>
+                                    </desc>
+                                </desc>
+                            </state>
                         </desc>
                     </relation>
                 </listRelation>
@@ -85,12 +98,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">consort family</desc>
             <desc xml:lang="zh-Hant">外戚</desc>
+            <desc xml:lang="en">consort family</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF197">

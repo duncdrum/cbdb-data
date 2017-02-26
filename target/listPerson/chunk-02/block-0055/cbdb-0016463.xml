@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO16463" source="#BIB7596" resp="selfbio">
     <idno type="TTS">10749</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>融</forename>
             <addName type="choronym">沛國</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhu</surname>
             <forename>Rong</forename>
             <addName type="choronym">Peiguo</addName>
@@ -16,7 +15,7 @@
     <persName type="alias" key="AKA4">
         <addName>叔晦</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Shuhui</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shuhui</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,9 +34,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO16463" passive="#BIO16462" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,27 +51,28 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO8051" passive="#BIO16463" key="0503" sortKey="22" name="epitaphs">
-                        <desc type="P">
+                    <relation active="#BIO8051" passive="#BIO16463" key="0503" name="epitaphs">
+                        <desc type="P" n="22">
+                            <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
                             <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
+                            <state when="1064"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO8510" passive="#BIO16463" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO8510" passive="#BIO16463" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
-                            </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10258" passive="#BIO16463" key="0502" sortKey="21" name="commemorative" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
-                            </desc>
+                    <relation active="#BIO10258" passive="#BIO16463" key="0502" name="commemorative" source="#BIB7596">
+                        <desc type="P" n="21">
                             <desc xml:lang="zh-Hant">祠記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Shrine inscription written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -77,22 +82,22 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">failed exams literatus</desc>
             <desc xml:lang="zh-Hant">落第士人</desc>
+            <desc xml:lang="en">failed exams literatus</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
     </socecStatus>
     <listEvent>
         <event type="15" subtype="33" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: failed jinshi or zhuke exams</label>
             <label xml:lang="zh-Hant">科舉: 舉進士、諸科不第</label>
+            <label xml:lang="en">examination: failed jinshi or zhuke exams</label>
             <desc type="0" subtype="16">
-                <desc xml:lang="en">Failed Pursuit of Office</desc>
                 <desc xml:lang="zh-Hant">求官不得門</desc>
+                <desc xml:lang="en">Failed Pursuit of Office</desc>
             </desc>
         </event>
     </listEvent>

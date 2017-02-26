@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO109035" source="#BIB9599" resp="selfbio">
     <idno type="TTS">102652</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>馮</surname>
             <forename>仲德</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Feng</surname>
             <forename>Zhongde</forename>
         </persName>
@@ -22,10 +21,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO109035" passive="#BIO108993" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>仲德父</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -35,12 +39,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO24523" passive="#BIO109035" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO24523" passive="#BIO109035" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="P" n="21">
                             <label>朝請大夫……馮君先塋碑銘（石田文集13/2下）</label>
-                            <desc xml:lang="en">Ancestral stele or records written by<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">世系碑記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -141,11 +145,11 @@
     <listEvent>
         <event type="02" subtype="64" when="1263" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">rank or office by inheritance</label>
             <label xml:lang="zh-Hant">世襲</label>
+            <label xml:lang="en">rank or office by inheritance</label>
             <desc type="0" subtype="3">
-                <desc xml:lang="en">Kinship</desc>
                 <desc xml:lang="zh-Hant">血親門</desc>
+                <desc xml:lang="en">Kinship</desc>
             </desc>
         </event>
     </listEvent>

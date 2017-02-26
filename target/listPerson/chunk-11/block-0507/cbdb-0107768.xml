@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO107768" source="#BIB9599" resp="selfbio">
     <idno type="TTS">101385</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>郭</surname>
             <forename>筠</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Guo</surname>
             <forename>Yun</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">伯川</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Bochuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Bochuan</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -31,10 +30,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO107768" passive="#BIO107769" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>筠父</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -44,21 +48,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO27895" passive="#BIO107768" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO27895" passive="#BIO107768" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>故昭文館大學士大司農郭公神道碑銘（中庵集16/19）</label>
-                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">神道碑由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Funerary stele written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28490" passive="#BIO107768" key="0504" sortKey="23" name="prefaces" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28490" passive="#BIO107768" key="0504" name="prefaces" source="#BIB9599">
+                        <desc type="P" n="23">
                             <label>題郭僉省愛菊卷（養蒙文集7/214）</label>
-                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">詩文跋由Y所作<label>序跋文字</label>
+                            </desc>
+                            <desc xml:lang="en">colophon to writings was composed by<label>Prefaces/Postfaces</label>
                             </desc>
                         </desc>
                     </relation>

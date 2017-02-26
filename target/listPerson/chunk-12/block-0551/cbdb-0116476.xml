@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO116476" source="#BIB9599" resp="selfbio">
     <idno type="TTS">110093</idno>
     <persName type="main">
@@ -6,19 +5,19 @@
             <surname/>
             <forename>贍思</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">Shansi</persName>
+        <persName xml:lang="zh-Latn-alalc97">Shansi</persName>
     </persName>
     <persName type="original">Samsu</persName>
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">文孝</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenxiao</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenxiao</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">得之</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Dezhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Dezhi</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,10 +34,15 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO116476" passive="#BIO115327" key="62" sortKey="-4" name="FF" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>贍思祖</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -48,12 +52,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO116476" passive="#BIO116052" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO116476" passive="#BIO116052" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="A" n="22">
                             <label>贍思，有元甘肅等處行中書省平章政事榮祿公神道碑銘（常山貞石志21/1）</label>
-                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y作神道碑<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Wrote Funerary stele for<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -103,11 +107,11 @@
     <listEvent>
         <event type="07" subtype="14" when="1330" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">imperial summons</label>
             <label xml:lang="zh-Hant">徵辟</label>
+            <label xml:lang="en">imperial summons</label>
             <desc type="0" subtype="8">
-                <desc xml:lang="en">Recruitment</desc>
                 <desc xml:lang="zh-Hant">徵召門</desc>
+                <desc xml:lang="en">Recruitment</desc>
             </desc>
         </event>
     </listEvent>

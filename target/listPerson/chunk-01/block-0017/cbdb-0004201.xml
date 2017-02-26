@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO4201" source="#BIB7596" resp="selfbio">
     <idno type="TTS">3283</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>恬</forename>
             <addName type="choronym">魯國</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zeng</surname>
             <forename>Tian</forename>
             <addName type="choronym">Luguo</addName>
@@ -16,7 +15,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">天隱</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Tianyin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tianyin</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -31,21 +30,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO4201" passive="#BIO3900" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO4201" passive="#BIO8136" key="48" sortKey="-5" name="FFF" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">FFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO4201" passive="#BIO21680" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -55,45 +69,48 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO4201" passive="#BIO2022" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">followed<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO4201" passive="#BIO2022" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">從Y遊<label>師生關係</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO4201" passive="#BIO7045" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
                             <desc xml:lang="en">followed<label>Teacher-Student</label>
                             </desc>
-                            <desc xml:lang="zh-Hant">從Y遊<label>師生關係</label>
-                            </desc>
+                            <state when="1117"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO4201" passive="#BIO8008" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="A">
-                            <desc xml:lang="en">Refused office in administration of<label>Oppositional political association</label>
+                    <relation active="#BIO4201" passive="#BIO7045" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
+                            <desc xml:lang="zh-Hant">從Y遊<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">followed<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1117"/>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO4201" passive="#BIO8008" key="0407" name="political-opposition">
+                        <desc type="A" n="19">
                             <desc xml:lang="zh-Hant">拒絕在Y主政的政府中任職<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Refused office in administration of<label>Oppositional political association</label>
+                            </desc>
+                            <state when="1117"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO4201" passive="#BIO8008" key="0407" sortKey="19" name="political-opposition" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO4201" passive="#BIO8008" key="0407" name="political-opposition" source="#BIB7596">
+                        <desc type="A" n="19">
                             <label>為存心養性之學 紹興中仕至大宗正寺丞 秦檜當國 恬自守不屈 求外祠</label>
-                            <desc xml:lang="en">Refused office in administration of<label>Oppositional political association</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">拒絕在Y主政的政府中任職<label>政治對抗</label>
+                            </desc>
+                            <desc xml:lang="en">Refused office in administration of<label>Oppositional political association</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO11664" passive="#BIO4201" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO11664" passive="#BIO4201" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="P" n="6">
                             <label>世稱上蔡先生 有論語解 又有上蔡語錄．則曾恬、胡安國所錄語</label>
-                            <desc xml:lang="en">Scholarly works edited by<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">編輯Y的學術作品<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Scholarly works edited by<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -103,8 +120,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF783">

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO38988" source="#BIB7596" resp="selfbio">
     <idno type="TTS">33213</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>王</surname>
             <forename>萬</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wang</surname>
             <forename>Wan</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">淡齋</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Danzhai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Danzhai</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">萬里</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Wanli</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wanli</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -38,23 +37,23 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO38988" passive="#BIO4001" key="173" sortKey="20" name="WZH" source="#BIB2286">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>魏了翁：娶同邑趙氏，贈安人；繼資中楊氏，與予之元配兄弟也，今封安人。[二子]述、遵狀其事來乞銘，萬里吾徒也，義不可辭。</label>
-                            <desc xml:lang="en">WZH</desc>
                             <desc xml:lang="zh-Hant">連襟;妻姊妹之夫</desc>
+                            <desc xml:lang="en">WZH</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO38988" passive="#BIO43810" key="182" sortKey="5" name="S1" source="#BIB2286">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>二子一女（端平二年萬葬時，女尚幼）</label>
-                            <desc xml:lang="en">S1, Son, first</desc>
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO38988" passive="#BIO43811" key="183" sortKey="5" name="S2" source="#BIB2286">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -64,19 +63,19 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO4001" passive="#BIO38988" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO38988" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO4001" passive="#BIO38988" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO4001" passive="#BIO38988" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -301,11 +300,11 @@
     <listEvent>
         <event type="0401" subtype="168" when="1210" sortKey="2" source="#BIB2286">
             <head>entry</head>
-            <label xml:lang="en">examination: quasi-departmental examination in Sichuan</label>
             <label xml:lang="zh-Hant">科舉: 四川類省試</label>
+            <label xml:lang="en">examination: quasi-departmental examination in Sichuan</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="rank">1</note>
             <note>嘉定三年四川類省試第一。</note>
@@ -329,13 +328,6 @@
             <desc xml:lang="zh-Hant">八旗清代</desc>
             <desc xml:lang="en">Eight Banner Qing Dynasty</desc>
         </state>
-    </residence>
-    <residence ref="#PL0" key="9" n="999" from="1235" source="#BIB2286">
-        <state type="natal">
-            <desc xml:lang="zh-Hant">葬地</desc>
-            <desc xml:lang="en">Burial Address</desc>
-        </state>
-        <date calendar="#chinTrad" period="#R552"/>
     </residence>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

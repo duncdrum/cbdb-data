@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO21214" source="#BIB7596" resp="selfbio">
     <idno type="TTS">15484</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>魏</surname>
             <forename>野</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wei</surname>
             <forename>Ye</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">仲先</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhongxian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongxian</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">草堂居士</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Caotang jushi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Caotang jushi</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -39,15 +38,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO21214" passive="#BIO21213" key="181" sortKey="7" name="DH">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO21214" passive="#BIO21215" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -57,65 +66,65 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO808 #BIO21214" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO808 #BIO21214" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
                             <label>河中河東人 少師种放 與魏野友善 以進士起家 累遷右諫議大夫</label>
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO18360 #BIO21214" key="0301" sortKey="12" name="friend">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO18360 #BIO21214" key="0301" name="friend">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO46755 #BIO21214" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO46755 #BIO21214" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
                             <label>壽光人 師事种放 與吳質、魏野、楊朴、宋澥為友 性高潔 為文奇澀</label>
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO48299" passive="#BIO21214" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO48299" passive="#BIO21214" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="P" n="5">
                             <label>字希顏 陜人 學詩於處士魏野 潘閬深重之 年未四十而卒</label>
-                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">學生為Y<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student was<label>Teacher-Student</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO808" passive="#BIO21214" key="0504" sortKey="23" name="prefaces" source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO808" passive="#BIO21214" key="0504" name="prefaces" source="#BIB7596">
+                        <desc type="P" n="23">
                             <label>鉅鹿東觀集序 / 鉅鹿東觀集</label>
-                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">書序由Y所作<label>序跋文字</label>
                             </desc>
+                            <desc xml:lang="en">Preface of book by<label>Prefaces/Postfaces</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO39194" passive="#BIO21214" key="0207" sortKey="10" name="artistic-affil." source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO39194" passive="#BIO21214" key="0207" name="artistic-affil." source="#BIB7596">
+                        <desc type="P" n="10">
                             <label>大中祥符中知閩清縣 多善政 魏野有寄贈桃林尉史溫詩 極稱之</label>
-                            <desc xml:lang="en">Poetry known or praised by<label>Literary and Artistic Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">詩作為Y所稱道<label>文學藝術交往</label>
                             </desc>
+                            <desc xml:lang="en">Poetry known or praised by<label>Literary and Artistic Affiliations</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO21214" passive="#BIO39194" key="0510" sortKey="29" name="text-occasional" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO21214" passive="#BIO39194" key="0510" name="text-occasional" source="#BIB7596">
+                        <desc type="A" n="29">
                             <label>魏野有寄贈桃林尉史溫詩，極稱之。</label>
-                            <desc xml:lang="en">Presented literary composition as gift to<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">贈詩、文<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Presented literary composition as gift to<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -125,16 +134,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">excelled in particular musical instruments</desc>
             <desc xml:lang="zh-Hant">精於某種樂器</desc>
+            <desc xml:lang="en">excelled in particular musical instruments</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">literati</desc>
             <desc xml:lang="zh-Hant">士人</desc>
+            <desc xml:lang="en">literati</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">chose not to seek office</desc>
             <desc xml:lang="zh-Hant">不求仕</desc>
+            <desc xml:lang="en">chose not to seek office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF999">

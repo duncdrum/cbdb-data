@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO38268" source="#BIB7596">
     <idno type="TTS">32505</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>某</surname>
             <forename>氏（王柟母）</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Mou</surname>
             <forename>Shi(Mother of Wang nan)</forename>
         </persName>
@@ -22,9 +21,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO38268" passive="#BIO17888" key="180" sortKey="5" name="S" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -34,11 +38,11 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO12066" passive="#BIO38268" key="0505" sortKey="24" name="text-ritual" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
-                            </desc>
+                    <relation active="#BIO12066" passive="#BIO38268" key="0505" name="text-ritual" source="#BIB7596">
+                        <desc type="P" n="24">
                             <desc xml:lang="zh-Hant">祭文由Y所作<label>禮儀文字</label>
+                            </desc>
+                            <desc xml:lang="en">Sacrificial prayer written by<label>Ritual Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -48,8 +52,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">outer noblewoman</desc>
             <desc xml:lang="zh-Hant">[外命婦]</desc>
+            <desc xml:lang="en">outer noblewoman</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF6071">
@@ -62,7 +66,7 @@
         </state>
     </socecStatus>
     <linkGrp>
-        <ptr target="3024"/>
+        <ptr target="mqww:3024"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

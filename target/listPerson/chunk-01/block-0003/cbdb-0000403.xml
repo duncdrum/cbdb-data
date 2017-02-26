@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO403" source="#BIB7596" resp="selfbio">
     <idno type="TTS">402</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>趙</surname>
             <forename>暘</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Zhao</surname>
             <forename>Yang(2)</forename>
         </persName>
@@ -14,12 +13,12 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">乂若</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yiruo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yiruo</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA1">
         <addName>叉若</addName>
-        <addName xml:lang="zh-alalc97">Charuo</addName>
+        <addName xml:lang="zh-Latn-alalc97">Charuo</addName>
     </persName>
     <sex value="1">m</sex>
     <floruit>
@@ -32,15 +31,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO403" passive="#BIO25929" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO403" passive="#BIO25930" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -50,37 +59,40 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO1327" passive="#BIO403" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO1327" passive="#BIO403" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1130"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO403" passive="#BIO13192" key="0202" sortKey="5" name="teacher-student" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO403" passive="#BIO13192" key="0202" name="teacher-student" source="#BIB7596">
+                        <desc type="A" n="5">
                             <label>著經辨四十九篇 弟子百餘人 趙暘、胡銓、馮獬皆師之 建炎四年十月以疾卒 年六十七</label>
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO403" passive="#BIO13192" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO403" passive="#BIO13192" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之弟子<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Disciple (dizi) of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1130"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO403" passive="#BIO7128" key="0405" sortKey="17" name="political-support">
-                        <desc type="A">
-                            <desc xml:lang="en">Purged for association with<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO403" passive="#BIO7128" key="0405" name="political-support">
+                        <desc type="A" n="17">
                             <desc xml:lang="zh-Hant">因與Y的交往受牽連<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Purged for association with<label>Supportive political association</label>
+                            </desc>
+                            <state when="1130"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -89,8 +101,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF2243">
@@ -129,11 +141,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1094" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

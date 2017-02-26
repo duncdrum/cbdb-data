@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO34177" source="#BIB9602">
     <idno type="TTS">28430</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>萬</surname>
             <forename>斯備</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wan</surname>
             <forename>Sibei</forename>
         </persName>
@@ -14,34 +13,34 @@
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">又庵</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Youan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Youan</addName>
         <term>Studio name, Style name</term>
         <note>參見《清代名人傳略》頁571.</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">允誠</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Yuncheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yuncheng</addName>
         <term>Courtesy name</term>
         <note>參見《清代名人傳略》頁571.</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">公擇</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Gongze</addName>
+        <addName xml:lang="zh-Latn-alalc97">Gongze</addName>
         <term>Courtesy name</term>
         <note>參見《清代樸學大師列傳》頁417.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">深省堂</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Shenxingtang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shenxingtang</addName>
         <term>Studio name, Style name</term>
         <note>參見《清人室名別稱字號索引》頁1564.</note>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9602">
         <addName xml:lang="zh-Hant">斯傋</addName>
-        <addName xml:lang="zh-alalc97">Sijiang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Sijiang</addName>
         <note>參見《明遺民錄》頁589.</note>
     </persName>
     <sex value="1">m</sex>
@@ -55,9 +54,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO34177" passive="#BIO34161" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -67,12 +71,13 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO34177" passive="#BIO30713" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO34177" passive="#BIO30713" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1695"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -81,24 +86,24 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">calligrapher</desc>
             <desc xml:lang="zh-Hant">書法家</desc>
+            <desc xml:lang="en">calligrapher</desc>
         </state>
         <state type="status" from="1695" to="1695">
-            <desc xml:lang="en">military</desc>
             <desc xml:lang="zh-Hant">[武官]</desc>
+            <desc xml:lang="en">military</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">poet</desc>
             <desc xml:lang="zh-Hant">詩人</desc>
+            <desc xml:lang="en">poet</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">seal cutter</desc>
             <desc xml:lang="zh-Hant">篆刻家</desc>
+            <desc xml:lang="en">seal cutter</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">yinju (or yinde)</desc>
             <desc xml:lang="zh-Hant">[隱居（有隱德）]</desc>
+            <desc xml:lang="en">yinju (or yinde)</desc>
         </state>
     </socecStatus>
     <residence ref="#PL7628" key="1" source="#BIB9602">
@@ -109,7 +114,7 @@
         <note>浙江省-寧波府-鄞縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="9503"/>
+        <ptr target="ttsmq:9503"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

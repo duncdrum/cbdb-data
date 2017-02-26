@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO58985" source="#BIB9602">
     <idno type="TTS">52885</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>李</surname>
             <forename>紱</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Li</surname>
             <forename>Fu</forename>
         </persName>
@@ -14,38 +13,38 @@
     <persName type="alias" key="AKA6">
         <addName>文穆</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenmu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenmu</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">巨來</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Julai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Julai</addName>
         <term>Courtesy name</term>
         <note>參見《清國史館傳包》。</note>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9602">
         <addName xml:lang="zh-Hant">巨洲</addName>
-        <addName xml:lang="zh-alalc97">Juzhou</addName>
+        <addName xml:lang="zh-Latn-alalc97">Juzhou</addName>
         <note>參見《清人室名別稱字號索引》頁1022.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">紫藤軒</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Zitengxuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zitengxuan</addName>
         <term>Studio name, Style name</term>
         <note>參見《清人室名別稱字號索引》頁1022.</note>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">穆堂</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Mutang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Mutang</addName>
         <term>Studio name, Style name</term>
         <note>參見《清史館傳稿》。</note>
     </persName>
     <persName type="alias" key="AKA1" source="#BIB9602">
         <addName xml:lang="zh-Hant">穆堂先生</addName>
-        <addName xml:lang="zh-alalc97">Mutangxiansheng</addName>
+        <addName xml:lang="zh-Latn-alalc97">Mutangxiansheng</addName>
         <note>參見《碑傳集》。</note>
     </persName>
     <sex value="1">m</sex>
@@ -66,9 +65,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO58985" passive="#BIO69613" key="251" sortKey="8" name="SD">
-                        <desc>
-                            <desc xml:lang="en">SD Son's daughter</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫女</desc>
+                            <desc xml:lang="en">SD Son's daughter</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -78,22 +82,22 @@
     <listEvent>
         <event type="0401" subtype="39" when="1708" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <label xml:lang="zh-Hant">科舉: 鄉貢舉人</label>
+            <label xml:lang="en">examination: juren (prefect/provincial graduates)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note type="rank">第一名</note>
             <note>康熙47年江西第一名舉人</note>
         </event>
         <event type="0401" subtype="165" when="1709" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>康熙48年進士</note>
         </event>
@@ -106,7 +110,7 @@
         <note>江西省-撫州府-臨川縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="2267"/>
+        <ptr target="ttsmq:2267"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO28726" source="#BIB9599" resp="selfbio">
     <idno type="TTS">22985</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>王</surname>
             <forename>天鐸</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wang</surname>
             <forename>Tianduo</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA5" source="#BIB9599">
         <addName xml:lang="zh-Hant">[n/a]</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Siyuanzi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Siyuanzi</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9599">
         <addName xml:lang="zh-Hant">思淵子</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Siyuanzi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Siyuanzi</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">振之</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhenzhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhenzhi</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -44,57 +43,92 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO28726" passive="#BIO28617" key="182" sortKey="5" name="S1">
-                        <desc>
-                            <desc xml:lang="en">S1, Son, first</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28727" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28730" key="183" sortKey="5" name="S2">
-                        <desc>
-                            <desc xml:lang="en">S2</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28731" key="135" sortKey="0" name="W">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28732" key="63" sortKey="22" name="WFF">
-                        <desc>
-                            <desc xml:lang="en">WFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻之祖父</desc>
+                            <desc xml:lang="en">WFF</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">無服</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28733" key="181" sortKey="7" name="DH">
-                        <desc>
-                            <desc xml:lang="en">DH Daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女婿</desc>
+                            <desc xml:lang="en">DH Daughter's husband</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">緦麻</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28734" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28735" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO28726" passive="#BIO28736" key="243" sortKey="8" name="SS">
-                        <desc>
-                            <desc xml:lang="en">SS Son's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫</desc>
+                            <desc xml:lang="en">SS Son's son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -104,210 +138,210 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28726" passive="#BIO28603" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO28603" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO28855" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO28855" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO28857" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO28857" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO29236" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO29236" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO35368" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO35368" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO100270" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO100270" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO100608" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO100608" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO101253" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO101253" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO101803" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO101803" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO102042" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO102042" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO102963" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO102963" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO103722" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO103722" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO103820" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO103820" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO103896" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO103896" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO105426" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO105426" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO105681" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO105681" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO105747" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO105747" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO107199" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO107199" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO107396" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO107396" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO109356" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO109356" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO109857" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO109857" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO109868" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO109868" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO28726" passive="#BIO110797" key="0901" sortKey="35" name="family" source="#BIB9599">
-                        <desc type="A">
+                    <relation active="#BIO28726" passive="#BIO110797" key="0901" name="family" source="#BIB9599">
+                        <desc type="A" n="35">
                             <label>碑陰先友記 為父王天鐸而作（秋澗大全集59/6下）</label>
-                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之世交父執<label>家庭關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">Family friend to<label>Family (General)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -317,8 +351,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF61216">

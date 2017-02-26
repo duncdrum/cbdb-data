@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO45901" source="#BIB7596">
     <idno type="TTS">39970</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>王</surname>
             <forename>定國</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wang</surname>
             <forename>Dingguo</forename>
         </persName>
@@ -21,9 +20,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO45901" passive="#BIO45802" key="177" sortKey="9999" name="BS" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">BS Brother's son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -33,21 +37,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO44357 #BIO45901" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO44357 #BIO45901" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
                             <label>能文詞 善辨博 元祐間往來京師與王定國遊 蘇子瞻見而奇之 稱其詩有謫仙風采</label>
-                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">與Y遊<label>朋友關係（籠統）</label>
+                            </desc>
+                            <desc xml:lang="en">proceeded with (friendship)<label>Friendship(General)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO45901" passive="#BIO40612" key="0207" sortKey="10" name="artistic-affil." source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO45901" passive="#BIO40612" key="0207" name="artistic-affil." source="#BIB7596">
+                        <desc type="A" n="10">
                             <label>隨吳郡王渡江居臨安 工畫花鳥 師李安忠 亦學二崔筆法 傅色輕淺</label>
-                            <desc xml:lang="en">painted in style of<label>Literary and Artistic Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">畫風師法Y<label>文學藝術交往</label>
+                            </desc>
+                            <desc xml:lang="en">painted in style of<label>Literary and Artistic Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -57,8 +61,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">painter</desc>
             <desc xml:lang="zh-Hant">畫家</desc>
+            <desc xml:lang="en">painter</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF486">
@@ -73,11 +77,11 @@
     <listEvent>
         <event type="08" subtype="101" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">recommendation</label>
             <label xml:lang="zh-Hant">薦舉 (保任)</label>
+            <label xml:lang="en">recommendation</label>
             <desc type="0" subtype="9">
-                <desc xml:lang="en">Recommendation</desc>
                 <desc xml:lang="zh-Hant">薦舉門</desc>
+                <desc xml:lang="en">Recommendation</desc>
             </desc>
         </event>
     </listEvent>

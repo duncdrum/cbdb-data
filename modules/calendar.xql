@@ -5,19 +5,20 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace no="http://none";
 declare namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
 
-declare namespace output = "http://www.tei-c.org/ns/1.0";
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 declare variable $cal:ZH := doc(concat($global:target, $global:calendar));
-declare variable $cal:path := $cal:ZH/tei:taxonomy/tei:taxonomy/tei:category;
+declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 
 
 (:calendar.xql reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
     and creates a taxonomy element for inculsion in the teiHeader via xi:xinclude.
     The taxonomy consists of two elements one for the sexagenarycycle, 
-    and one nested taxonomy for reign-titles and dynsties.
-    we are dropping the c_sort value for dynasties since sequential sorting
+    and one nested taxonomy for reign-titles and dynasties.
+    We are dropping the c_sort value for dynasties since sequential sorting
     is implicit in the data structure
 :)
 
@@ -27,6 +28,7 @@ declare variable $cal:path := $cal:ZH/tei:taxonomy/tei:taxonomy/tei:category;
  - DYNASTIES contains both translations and transliterations:
      e.g. 'NanBei Chao' but 'Later Shu (10 states)'  
    more normalization *yay*
+ - make 10states a @type ?  
 :)
 
 
@@ -62,7 +64,7 @@ declare function cal:custo-date-point (
 (:This function takes chinese calendar date points ending in *_dy, *_gz, *_nh.
 It returns a single tei:date element using att.datable.custom. 
 
-The normalized format takes DYNASTY//c_sort which is specific to CBDB,  
+The normalized format takes DYNASTY//no:c_sort which is specific to CBDB,  
 followed by the sequence of reigns determined by their position in cal_ZH.xml
 followed by the Year number.D(\d*)-R(\d*)-(\d*)
 :)
@@ -70,23 +72,23 @@ followed by the Year number.D(\d*)-R(\d*)-(\d*)
 (:TODO
 - getting to a somehwhat noramlized useful representation ofChinese Reign dates is tricky.
     inconsinsten pinyin for Nianhao creates ambigous and ugly dates.
-- handle //c_dy[. = 0] stuff
+- handle //no:c_dy[. = 0] stuff
 - add @period with #d42 #R123
 - find a way to prevent empty attributes more and better logic FTW
 - If only a dynasty is known lets hear it,
 the others are dropped since only a year or nianhao is of little information value. 
 :)
 
-let $dy := $global:DYNASTIES//c_dy[. = $dynasty/text()]
-let $motto := count($cal:path/tei:category[@xml:id = concat('R', $reign/text())]/preceding-sibling::tei:category) +1
+let $dy := $global:DYNASTIES//no:c_dy[. = $dynasty/text()]
+let $motto := count($cal:path/category[@xml:id = concat('R', $reign/text())]/preceding-sibling::category) +1
 
         
-let $date-norm := string-join((concat('D', $dy/../c_sort), concat('R',$motto), concat('Y', $year)),'-')
+let $date-norm := string-join((concat('D', $dy/../no:c_sort), concat('R',$motto), concat('Y', $year)),'-')
         
 
 
-let $date-orig := string-join(($dy/../c_dynasty_chn, 
-                    $global:NIAN_HAO//c_nianhao_id[. = $reign/text()]/../c_nianhao_chn,
+let $date-orig := string-join(($dy/../no:c_dynasty_chn, 
+                    $global:NIAN_HAO//no:c_nianhao_id[. = $reign/text()]/../no:c_nianhao_chn,
                     concat($year, '年')),'-')
 
 
@@ -121,24 +123,24 @@ declare function cal:custo-date-range (
 (:This function takes chinese calendar date ranges ending in *_dy, *_gz, *_nh.
 It returns a single tei:date element using att.datable.custom. :)
 
-let $DS := $global:DYNASTIES//c_dy[. = $dy-start/text()]
-let $DE := $global:DYNASTIES//c_dy[. = $dy-end/text()]
+let $DS := $global:DYNASTIES//no:c_dy[. = $dy-start/text()]
+let $DE := $global:DYNASTIES//no:c_dy[. = $dy-end/text()]
 
-let $RS := count($cal:path/tei:category[@xml:id = concat('R',  $reg-start/text())]/preceding-sibling::tei:category) +1
-let $RE := count($cal:path/tei:category[@xml:id = concat('R',  $reg-end/text())]/preceding-sibling::tei:category) +1
+let $RS := count($cal:path/category[@xml:id = concat('R',  $reg-start/text())]/preceding-sibling::category) +1
+let $RE := count($cal:path/category[@xml:id = concat('R',  $reg-end/text())]/preceding-sibling::category) +1
 
         
-let $start-norm := string-join((concat('D', $DS/../c_sort), concat('R',$RS), concat('Y', $year-start)),'-')
-let $end-norm := string-join((concat('D', $DE/../c_sort), concat('R',$RE), concat('Y', $year-end)),'-')       
+let $start-norm := string-join((concat('D', $DS/../no:c_sort), concat('R',$RS), concat('Y', $year-start)),'-')
+let $end-norm := string-join((concat('D', $DE/../no:c_sort), concat('R',$RE), concat('Y', $year-end)),'-')       
 
 
                   
-let $start-orig := string-join(($DS/../c_dynasty_chn, 
-                    $global:NIAN_HAO//c_nianhao_id[. = $reg-start/text()]/../c_nianhao_chn,
+let $start-orig := string-join(($DS/../no:c_dynasty_chn, 
+                    $global:NIAN_HAO//no:c_nianhao_id[. = $reg-start/text()]/../no:c_nianhao_chn,
                     concat($year-start, '年')),'-')  
                     
-let $end-orig := string-join(($DE/../c_dynasty_chn, 
-                    $global:NIAN_HAO//c_nianhao_id[. = $reg-end/text()]/../c_nianhao_chn,
+let $end-orig := string-join(($DE/../no:c_dynasty_chn, 
+                    $global:NIAN_HAO//no:c_nianhao_id[. = $reg-end/text()]/../no:c_nianhao_chn,
                     concat($year-end, '年')),'-')                 
                     
 (:$type 
@@ -250,62 +252,72 @@ cal:ganzhi(-0247, 'zh') -> 乙卯 = 246BC founding of Qing
             
 };
 
-declare function cal:sexagenary ($ganzhi as node()*) as node() {
+declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as item()* {
 <taxonomy xml:id="sexagenary"> 
-{ 
-for $gz in $ganzhi
-return         
-    <category xml:id="{concat('S', $gz/c_ganzhi_code/text())}">
-        <catDesc xml:lang="zh-Hant">{$gz/c_ganzhi_chn/text()}</catDesc>
-        <catDesc xml:lang="zh-alalc97">{$gz/c_ganzhi_py/text()}</catDesc>
-    </category>
-            }
+{let $output := 
+    for $gz in $ganzhi
+    return         
+        <category xml:id="{concat('S', $gz/no:c_ganzhi_code/text())}">
+            <catDesc xml:lang="zh-Hant">{$gz/no:c_ganzhi_chn/text()}</catDesc>
+            <catDesc xml:lang="zh-Latn-alalc97">{$gz/no:c_ganzhi_py/text()}</catDesc>
+        </category>
+return 
+    switch($mode)
+        case 'v' return global:validate-fragment($output, 'category')
+        case 'd' return global:validate-fragment($output, 'category')[1]
+    default return $output        
+}
+
 </taxonomy>
 };
 
-declare function cal:dynasties ($dynasties as node()*) as node() {
+declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as item()* {
 <taxonomy xml:id="reign">
-    {
-    for $dy in $dynasties
-    let $dy_id := $dy/c_dy
-    where $dy/c_dy > '0'
-    return                
-        <category xml:id="{concat('D', $dy/c_dy/text())}">
-            <catDesc>
-                <date from="{cal:isodate($dy/c_start)}" to="{cal:isodate($dy/c_end)}"/>
-        </catDesc>
-        <catDesc xml:lang="zh-Hant">{$dy/c_dynasty_chn/text()}</catDesc>
-        <catDesc xml:lang="en">{$dy/c_dynasty/text()}</catDesc>
-        {
-        for $nh in $global:NIAN_HAO//row 
-        where $nh/c_dy = $dy_id
-        return
-            if ($nh/c_nianhao_pin != '')
-            then (<category xml:id="{concat('R' , $nh/c_nianhao_id/text())}">
-                        <catDesc>
-                            <date from="{cal:isodate($nh/c_firstyear)}" to="{cal:isodate($nh/c_lastyear)}"/>
-                        </catDesc>
-                        <catDesc xml:lang="zh-Hant">{$nh/c_nianhao_chn/text()}</catDesc>
-                        <catDesc xml:lang="zh-alalc97">{$nh/c_nianhao_pin/text()}</catDesc>
-                   </category>) 
-            else (<category xml:id="{concat('R' , $nh/c_nianhao_id/text())}">
-                        <catDesc>
-                            <date from="{cal:isodate($nh/c_firstyear)}" to="{cal:isodate($nh/c_lastyear)}"/>                    
-                        </catDesc>
-                        <catDesc xml:lang="zh-Hant">{$nh/c_nianhao_chn/text()}</catDesc>
-                    </category>)                           
+    {let $output := 
+        for $dy in $dynasties
+        let $dy_id := $dy/no:c_dy
+        where $dy/no:c_dy > '0'
+        return                
+            <category xml:id="{concat('D', $dy_id/text())}">
+                <catDesc>
+                    <date from="{cal:isodate($dy/no:c_start)}" to="{cal:isodate($dy/no:c_end)}"/>
+            </catDesc>
+            <catDesc xml:lang="zh-Hant">{$dy/no:c_dynasty_chn/text()}</catDesc>
+            <catDesc xml:lang="en">{$dy/no:c_dynasty/text()}</catDesc>
+            {
+            for $nh in $global:NIAN_HAO//no:row 
+            where $nh/no:c_dy = $dy_id
+            return
+                if ($nh/no:c_nianhao_pin != '')
+                then (<category xml:id="{concat('R' , $nh/no:c_nianhao_id/text())}">
+                            <catDesc>
+                                <date from="{cal:isodate($nh/no:c_firstyear)}" to="{cal:isodate($nh/no:c_lastyear)}"/>
+                            </catDesc>
+                            <catDesc xml:lang="zh-Hant">{$nh/no:c_nianhao_chn/text()}</catDesc>
+                            <catDesc xml:lang="zh-Latn-alalc97">{$nh/no:c_nianhao_pin/text()}</catDesc>
+                       </category>) 
+                else (<category xml:id="{concat('R' , $nh/no:c_nianhao_id/text())}">
+                            <catDesc>
+                                <date from="{cal:isodate($nh/no:c_firstyear)}" to="{cal:isodate($nh/no:c_lastyear)}"/>                    
+                            </catDesc>
+                            <catDesc xml:lang="zh-Hant">{$nh/no:c_nianhao_chn/text()}</catDesc>
+                        </category>)                           
+            }
+            </category>
+return 
+    switch($mode)
+        case 'v' return global:validate-fragment($output, 'category')
+        case 'd' return global:validate-fragment($output, 'category')[1]
+    default return $output     
         }
-        </category>
-    }
 </taxonomy>
 };
 
 xmldb:store($global:target, $global:calendar, 
-    <taxonomy xml:id="cal_ZH">                
-        {cal:sexagenary($global:GANZHI_CODES//row)}
-        {cal:dynasties($global:DYNASTIES//row)}
-    </taxonomy>
-)
+    <taxonomy xml:id="cal_ZH">{                
+            cal:sexagenary($global:GANZHI_CODES//no:row, 'v'),
+            cal:dynasties($global:DYNASTIES//no:row, 'v')}
+    </taxonomy>)
 
             
 

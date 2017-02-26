@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO65414" source="#BIB9602">
     <idno type="TTS">59262</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>季</surname>
             <forename>學錦</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ji</surname>
             <forename>Xuejin</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">絅齋</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Jiongzhai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jiongzhai</addName>
         <term>Courtesy name</term>
         <note>參見《清秘述聞三種》頁494.</note>
     </persName>
@@ -32,27 +31,47 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO65414" passive="#BIO54669" key="251" sortKey="8" name="SD" source="#BIB13755">
-                        <desc>
-                            <desc xml:lang="en">SD Son's daughter</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">孫女</desc>
+                            <desc xml:lang="en">SD Son's daughter</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO65414" passive="#BIO70361" key="135" sortKey="0" name="W" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">W Wife</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO65414" passive="#BIO118100" key="176" sortKey="6" name="D" source="#BIB9601">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO65414" passive="#BIO118101" key="176" sortKey="6" name="D" source="#BIB9601" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">女兒</desc>
+                            <desc xml:lang="en">D</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,11 +81,11 @@
     <listEvent>
         <event type="0401" subtype="165" when="1769" sortKey="1" source="#BIB9602">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (regular)</label>
             <label xml:lang="zh-Hant">科舉: 正奏名進士</label>
+            <label xml:lang="en">examination: jinshi (regular)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
             <note>乾隆34年進士</note>
         </event>
@@ -79,7 +98,7 @@
         <note>江蘇-蘇州府-昭文縣(中央研究院人名權威資料)。</note>
     </residence>
     <linkGrp>
-        <ptr target="8839"/>
+        <ptr target="ttsmq:8839"/>
     </linkGrp>
     <note type="created" target="#load">
         <date when="2010-03-11"/>

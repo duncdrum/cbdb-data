@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO25175" source="#BIB7596" resp="selfbio">
     <idno type="TTS">19440</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>孫</surname>
             <forename>道夫</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Sun</surname>
             <forename>Daofu</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4">
         <addName>太沖</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Taichong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Taichong</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5">
         <addName>水晶燈籠</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Shuijing Denglong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shuijing Denglong</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -40,28 +39,29 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO211" passive="#BIO25175" key="0406" sortKey="18" name="sponsorship">
-                        <desc type="P">
-                            <desc xml:lang="en">Recommended for decree exam by<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO211" passive="#BIO25175" key="0406" name="sponsorship">
+                        <desc type="P" n="18">
                             <desc xml:lang="zh-Hant">被Y推薦參加制科考試<label>薦舉保任</label>
                             </desc>
+                            <desc xml:lang="en">Recommended for decree exam by<label>Recommendation and sponsorship</label>
+                            </desc>
+                            <state when="1160"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO1448" passive="#BIO25175" key="0407" sortKey="19" name="political-opposition">
-                        <desc type="P">
-                            <desc xml:lang="en">Disliked or hated by<label>Oppositional political association</label>
-                            </desc>
+                    <relation active="#BIO1448" passive="#BIO25175" key="0407" name="political-opposition">
+                        <desc type="P" n="19">
                             <desc xml:lang="zh-Hant">為Y所忌/惡<label>政治對抗</label>
                             </desc>
+                            <desc xml:lang="en">Disliked or hated by<label>Oppositional political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO10598" passive="#BIO25175" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO10598" passive="#BIO25175" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -71,8 +71,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF510">
@@ -129,20 +129,20 @@
     <listEvent>
         <event type="0403" subtype="28" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: decree exams (general)</label>
             <label xml:lang="zh-Hant">科舉: 制舉 (籠統)</label>
+            <label xml:lang="en">examination: decree exams (general)</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
         <event type="08" subtype="101" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">recommendation</label>
             <label xml:lang="zh-Hant">薦舉 (保任)</label>
+            <label xml:lang="en">recommendation</label>
             <desc type="0" subtype="9">
-                <desc xml:lang="en">Recommendation</desc>
                 <desc xml:lang="zh-Hant">薦舉門</desc>
+                <desc xml:lang="en">Recommendation</desc>
             </desc>
         </event>
     </listEvent>

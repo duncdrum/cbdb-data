@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO100729" source="#BIB9599" resp="selfbio">
     <idno type="TTS">94346</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>王</surname>
             <forename>相</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Wang</surname>
             <forename>Xiang</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA5" source="#BIB9599">
         <addName xml:lang="zh-Hant">玉宇</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Yuyu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yuyu</addName>
         <term>Studio name, Style name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">吾素</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Wusu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wusu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -37,23 +36,33 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO100729" passive="#BIO101150" key="130" sortKey="9999" name="FBS-" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從弟</desc>
+                            <desc xml:lang="en">FBS– Father's brother's son, younger</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO100729" passive="#BIO101155" key="177" sortKey="9999" name="BS" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>相從子</label>
-                            <desc xml:lang="en">BS Brother's son</desc>
                             <desc xml:lang="zh-Hant">從子;姪子</desc>
+                            <desc xml:lang="en">BS Brother's son</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO100729" passive="#BIO111536" key="135" sortKey="0" name="W" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>王相妻</label>
-                            <desc xml:lang="en">W Wife</desc>
                             <desc xml:lang="zh-Hant">妻子</desc>
+                            <desc xml:lang="en">W Wife</desc>
+                            <trait type="mourning" subtype="W">
+                                <label xml:lang="zh-Hant">齊衰杖期(父母在不杖)</label>
+                                <desc xml:lang="zh-Hant">妻服</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Wife</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -63,12 +72,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28545" passive="#BIO100729" key="0503" sortKey="22" name="epitaphs" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28545" passive="#BIO100729" key="0503" name="epitaphs" source="#BIB9599">
+                        <desc type="P" n="22">
                             <label>翰林修撰兼國子編修國子博士王吾素先生墓表（劉坦齋文集11/1）</label>
-                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">墓表由Y所作<label>墓誌文字</label>
+                            </desc>
+                            <desc xml:lang="en">Tomb stone (mubiao) written by<label>Epitaphs</label>
                             </desc>
                         </desc>
                     </relation>
@@ -129,11 +138,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1321" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

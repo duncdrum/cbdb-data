@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO37783" source="#BIB7596" resp="selfbio">
     <idno type="TTS">32029</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>丁</surname>
             <forename>錟</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ding</surname>
             <forename>Tan</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">仲熊</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhongxiong</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongxiong</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">瓮天</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Wengtian</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wengtian</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -33,15 +32,25 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO37783" passive="#BIO37774" key="180" sortKey="5" name="S" source="#BIB7596">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO37783" passive="#BIO37987" key="180" sortKey="5" name="S" source="#BIB7596" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -51,28 +60,28 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation mutual="#BIO3632 #BIO37783" key="0301" sortKey="12" name="friend" source="#BIB7596">
-                        <desc type="M">
-                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
-                            </desc>
+                    <relation mutual="#BIO3632 #BIO37783" key="0301" name="friend" source="#BIB7596">
+                        <desc type="M" n="12">
                             <desc xml:lang="zh-Hant">友<label>朋友關係（籠統）</label>
                             </desc>
+                            <desc xml:lang="en">Friend of<label>Friendship(General)</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO3257 #BIO37783" key="0204" sortKey="7" name="scholarly-topic" source="#BIB7596">
-                        <desc type="M">
-                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
-                            </desc>
+                    <relation mutual="#BIO3257 #BIO37783" key="0204" name="scholarly-topic" source="#BIB7596">
+                        <desc type="M" n="7">
                             <desc xml:lang="zh-Hant">論學<label>學術主題相近</label>
                             </desc>
+                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO3257 #BIO37783" key="0204" sortKey="7" name="scholarly-topic" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO3257 #BIO37783" key="0204" name="scholarly-topic" source="#BIB7596">
+                        <desc type="M" n="7">
                             <label>領淳熙、慶元、嘉定三舉 官曲江縣主簿 朱熹知南康軍 聘掌白鹿書院不就 時與往復論學</label>
-                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">論學<label>學術主題相近</label>
+                            </desc>
+                            <desc xml:lang="en">Discussed scholarship with<label>Association by Scholarly Topic</label>
                             </desc>
                         </desc>
                     </relation>
@@ -82,8 +91,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
             <desc xml:lang="zh-Hant">理學家</desc>
+            <desc xml:lang="en">Neo-Confucian thinker (lixue)</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF124">

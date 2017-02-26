@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO12542" source="#BIB7596" resp="selfbio">
     <idno type="TTS">6842</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>林</surname>
             <forename>子沖</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Lin</surname>
             <forename>Zichong</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">通卿</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Tongqing</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tongqing</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">雲岫居士</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Yunxiu jushi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Yunxiu jushi</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,21 +34,36 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO12542" passive="#BIO1156" key="79" sortKey="9999" name="FB">
-                        <desc>
-                            <desc xml:lang="en">FB Father's brother</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從父;伯叔父</desc>
+                            <desc xml:lang="en">FB Father's brother</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">期年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO12542" passive="#BIO12870" key="180" sortKey="5" name="S">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO12542" passive="#BIO20186" key="180" sortKey="5" name="S" type="auto-generated">
-                        <desc>
-                            <desc xml:lang="en">S Son</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,54 +73,54 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO7197" passive="#BIO12542" key="0405" sortKey="17" name="political-support">
-                        <desc type="P">
-                            <desc xml:lang="en">Praised or admired by<label>Supportive political association</label>
-                            </desc>
+                    <relation active="#BIO7197" passive="#BIO12542" key="0405" name="political-support">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">被Y欣賞/器重<label>政治奧援</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO10566" passive="#BIO12542" key="0405" sortKey="17" name="political-support">
-                        <desc type="P">
                             <desc xml:lang="en">Praised or admired by<label>Supportive political association</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO10566" passive="#BIO12542" key="0405" name="political-support">
+                        <desc type="P" n="17">
                             <desc xml:lang="zh-Hant">被Y欣賞/器重<label>政治奧援</label>
                             </desc>
+                            <desc xml:lang="en">Praised or admired by<label>Supportive political association</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO12542" passive="#BIO7197" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO12542" passive="#BIO7197" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="A" n="6">
                             <label>補缺訂訛 書成 周必大、楊萬里皆稱其精密 調將樂丞 丁外艱</label>
-                            <desc xml:lang="en">Praised scholarship of<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">其學得到Y之讚揚<label>學術交往</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO12542" passive="#BIO10566" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="A">
-                            <label>補缺訂訛 書成 周必大、楊萬里皆稱其精密 調將樂丞 丁外艱</label>
                             <desc xml:lang="en">Praised scholarship of<label>Intellectual Affiliations</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO12542" passive="#BIO10566" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="A" n="6">
+                            <label>補缺訂訛 書成 周必大、楊萬里皆稱其精密 調將樂丞 丁外艱</label>
                             <desc xml:lang="zh-Hant">其學得到Y之讚揚<label>學術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Praised scholarship of<label>Intellectual Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO42370 #BIO12542" key="0203" sortKey="6" name="intellectual-affil." source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO42370 #BIO12542" key="0203" name="intellectual-affil." source="#BIB7596">
+                        <desc type="M" n="6">
                             <label>登淳熙進士第 初為南豐簿 郡守陳岐 延修二陳禮樂書 子沖隨文釋義</label>
-                            <desc xml:lang="en">Co-authored book with<label>Intellectual Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">合撰(編)著作<label>學術交往</label>
                             </desc>
+                            <desc xml:lang="en">Co-authored book with<label>Intellectual Affiliations</label>
+                            </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO42370" passive="#BIO12542" key="0207" sortKey="10" name="artistic-affil.">
-                        <desc type="A">
-                            <desc xml:lang="en">Poetry edited by<label>Literary and Artistic Affiliations</label>
-                            </desc>
+                    <relation active="#BIO42370" passive="#BIO12542" key="0207" name="artistic-affil.">
+                        <desc type="A" n="10">
                             <desc xml:lang="zh-Hant">編輯Y之詩文<label>文學藝術交往</label>
+                            </desc>
+                            <desc xml:lang="en">Poetry edited by<label>Literary and Artistic Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
@@ -116,16 +130,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">local literatus / gentry</desc>
             <desc xml:lang="zh-Hant">地方士人/鄉紳</desc>
+            <desc xml:lang="en">local literatus / gentry</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">respected by locality</desc>
             <desc xml:lang="zh-Hant">為邑里所重</desc>
+            <desc xml:lang="en">respected by locality</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF841">
@@ -163,11 +177,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1193" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

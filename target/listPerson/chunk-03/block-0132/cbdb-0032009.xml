@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO32009" source="#BIB24309">
     <idno type="TTS">26264</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>馬</surname>
             <forename>懷素</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Ma</surname>
             <forename>Huaisu</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA6" source="#BIB24309">
         <addName xml:lang="zh-Hant">文</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wen</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wen</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB24309">
         <addName xml:lang="zh-Hant">貞規</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Zhengui</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhengui</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB24309">
         <addName xml:lang="zh-Hant">惟白</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Weibai</addName>
+        <addName xml:lang="zh-Latn-alalc97">Weibai</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -48,38 +47,63 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO32009" passive="#BIO151374" key="39" sortKey="-6" name="FFFF" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=1650</label>
-                            <desc xml:lang="en">FFFF</desc>
                             <desc xml:lang="zh-Hant">高祖;四世祖</desc>
+                            <desc xml:lang="en">FFFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰三月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO32009" passive="#BIO151375" key="48" sortKey="-5" name="FFF" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=1650</label>
-                            <desc xml:lang="en">FFF</desc>
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO32009" passive="#BIO151376" key="62" sortKey="-4" name="FF" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=1650</label>
-                            <desc xml:lang="en">FF</desc>
                             <desc xml:lang="zh-Hant">祖父</desc>
+                            <desc xml:lang="en">FF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰不杖期</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO32009" passive="#BIO151377" key="75" sortKey="-1" name="F" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=1650</label>
-                            <desc xml:lang="en">F Father</desc>
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO32009" passive="#BIO151378" key="180" sortKey="5" name="S" source="#BIB32038">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>YP NewEpitaphID=1650</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -88,12 +112,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF11099">
@@ -279,29 +303,29 @@
     <listEvent>
         <event type="0401" subtype="36" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0403" subtype="231" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">Decree examination: xiao lian</label>
             <label xml:lang="zh-Hant">科舉制舉: 孝廉</label>
+            <label xml:lang="en">Decree examination: xiao lian</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
         <event type="0403" subtype="277" sortKey="1" source="#BIB24309">
             <head>entry</head>
-            <label xml:lang="en">Decree examination: wen xue you shan ke</label>
             <label xml:lang="zh-Hant">科舉制舉: 文學優贍科</label>
+            <label xml:lang="en">Decree examination: wen xue you shan ke</label>
             <desc type="1" subtype="21">
-                <desc xml:lang="en">Decree Examination</desc>
                 <desc xml:lang="zh-Hant">制舉</desc>
+                <desc xml:lang="en">Decree Examination</desc>
             </desc>
         </event>
     </listEvent>
@@ -353,7 +377,7 @@
         <note>河南之毓財里第</note>
     </residence>
     <linkGrp>
-        <ptr target="77"/>
+        <ptr target="idtf:77"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

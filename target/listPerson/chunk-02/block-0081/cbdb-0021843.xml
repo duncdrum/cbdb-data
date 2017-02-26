@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO21843" source="#BIB7596" resp="selfbio">
     <idno type="TTS">16113</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>董</surname>
             <forename>槐</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Dong</surname>
             <forename>Hui</forename>
         </persName>
@@ -14,19 +13,19 @@
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">文清</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wenqing</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wenqing</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">庭植</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Tingzhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Tingzhi</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB7596">
         <addName xml:lang="zh-Hant">榘堂</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Jutang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Jutang</addName>
         <term>Studio name, Style name</term>
     </persName>
     <sex value="1">m</sex>
@@ -41,9 +40,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO21843" passive="#BIO21842" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -53,55 +57,56 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO21843" passive="#BIO11288" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="A">
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
+                    <relation active="#BIO21843" passive="#BIO11288" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="A" n="18">
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
+                            </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO21843" passive="#BIO49654" key="0406" sortKey="18" name="sponsorship" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO21843" passive="#BIO49654" key="0406" name="sponsorship" source="#BIB7596">
+                        <desc type="A" n="18">
                             <label>忤史嵩之 罷職退居十有五年 董槐為相 力薦於朝 改尚書郎官、知瑞州</label>
-                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">推薦<label>薦舉保任</label>
+                            </desc>
+                            <desc xml:lang="en">Recommended<label>Recommendation and sponsorship</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO21843" passive="#BIO10555" key="0202" sortKey="5" name="teacher-student">
-                        <desc type="A">
-                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
-                            </desc>
+                    <relation active="#BIO21843" passive="#BIO10555" key="0202" name="teacher-student">
+                        <desc type="A" n="5">
                             <desc xml:lang="zh-Hant">為Y之學生<label>師生關係</label>
                             </desc>
+                            <desc xml:lang="en">Student of<label>Teacher-Student</label>
+                            </desc>
+                            <state when="1256"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO21843" passive="#BIO50861" key="0207" sortKey="10" name="artistic-affil." source="#BIB7596">
-                        <desc type="P">
+                    <relation active="#BIO21843" passive="#BIO50861" key="0207" name="artistic-affil." source="#BIB7596">
+                        <desc type="P" n="10">
                             <label>年五十八 歷官所至有聲 尤為董槐所知</label>
-                            <desc xml:lang="en">Menren associated with<label>Literary and Artistic Affiliations</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">稱道Y之文章、學問<label>文學藝術交往</label>
                             </desc>
-                        </desc>
-                    </relation>
-                    <relation active="#BIO11328" passive="#BIO21843" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
-                            <label>(Assoc count=1)</label>
-                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
-                            </desc>
-                            <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            <desc xml:lang="en">Menren associated with<label>Literary and Artistic Affiliations</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO11328" passive="#BIO21843" key="0509" sortKey="28" name="text-letters" source="#BIB27134">
-                        <desc type="P">
+                    <relation active="#BIO11328" passive="#BIO21843" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
                             <label>(Assoc count=1)</label>
+                            <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
                             <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
+                        </desc>
+                    </relation>
+                    <relation active="#BIO11328" passive="#BIO21843" key="0509" name="text-letters" source="#BIB27134">
+                        <desc type="P" n="28">
+                            <label>(Assoc count=1)</label>
                             <desc xml:lang="zh-Hant">被致書由Y<label>書札文字</label>
+                            </desc>
+                            <desc xml:lang="en">Was sent  letter by<label>Correspondences</label>
                             </desc>
                         </desc>
                     </relation>
@@ -111,12 +116,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office:state council</desc>
             <desc xml:lang="zh-Hant">[宰執]</desc>
+            <desc xml:lang="en">office:state council</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF81">
@@ -545,11 +550,11 @@
     <listEvent>
         <event type="0401" subtype="36" when="1214" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

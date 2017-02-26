@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO117344" source="#BIB9599" resp="selfbio">
     <idno type="TTS">110961</idno>
     <persName type="main">
@@ -6,13 +5,13 @@
             <surname/>
             <forename>兀良合台</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">Wulianghetai</persName>
+        <persName xml:lang="zh-Latn-alalc97">Wulianghetai</persName>
     </persName>
     <persName type="original">Ulanqatai</persName>
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">武毅</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wuyi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wuyi</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -28,16 +27,26 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO117344" passive="#BIO113568" key="180" sortKey="5" name="S" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>兀良合台子</label>
-                            <desc xml:lang="en">S Son</desc>
                             <desc xml:lang="zh-Hant">子</desc>
+                            <desc xml:lang="en">S Son</desc>
+                            <trait type="mourning" subtype="H">
+                                <label xml:lang="zh-Hant">期年(長子眾子同)</label>
+                                <desc xml:lang="zh-Hant">夫族</desc>
+                                <desc xml:lang="en">Patrilateral Kin of Husband</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO117344" passive="#BIO116749" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -47,12 +56,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO28617" passive="#BIO117344" key="0502" sortKey="21" name="commemorative" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO28617" passive="#BIO117344" key="0502" name="commemorative" source="#BIB9599">
+                        <desc type="P" n="21">
                             <label>大元光祿大夫平章政事兀良氏先廟碑銘（秋澗大全集50/1）</label>
-                            <desc xml:lang="en">Ancestral stele or records written by<label>Commemorative Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">世系碑記由Y所作<label>記詠文字</label>
+                            </desc>
+                            <desc xml:lang="en">Ancestral stele or records written by<label>Commemorative Texts</label>
                             </desc>
                         </desc>
                     </relation>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO111374" source="#BIB9599" resp="selfbio">
     <idno type="TTS">104991</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>劉</surname>
             <forename>復亨</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Liu</surname>
             <forename>Fuheng</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA6" source="#BIB9599">
         <addName xml:lang="zh-Hant">武宣</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Wuxuan</addName>
+        <addName xml:lang="zh-Latn-alalc97">Wuxuan</addName>
         <term>Posthumous Name</term>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9599">
         <addName xml:lang="zh-Hant">誠之</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Chengzhi</addName>
+        <addName xml:lang="zh-Latn-alalc97">Chengzhi</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,30 +34,35 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO111374" passive="#BIO110892" key="182" sortKey="5" name="S1" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>復亨長子</label>
-                            <desc xml:lang="en">S1, Son, first</desc>
                             <desc xml:lang="zh-Hant">長子; 第一子</desc>
+                            <desc xml:lang="en">S1, Son, first</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO111374" passive="#BIO110922" key="185" sortKey="5" name="S4" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>復亨第四子</label>
-                            <desc xml:lang="en">S4</desc>
                             <desc xml:lang="zh-Hant">四子</desc>
+                            <desc xml:lang="en">S4</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO111374" passive="#BIO110936" key="75" sortKey="-1" name="F" source="#BIB9599">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO111374" passive="#BIO111053" key="183" sortKey="5" name="S2" source="#BIB9599">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>復亨次子</label>
-                            <desc xml:lang="en">S2</desc>
                             <desc xml:lang="zh-Hant">次子</desc>
+                            <desc xml:lang="en">S2</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -68,12 +72,12 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO111374" passive="#BIO29279" key="0510" sortKey="29" name="text-occasional" source="#BIB9599">
-                        <desc type="P">
+                    <relation active="#BIO111374" passive="#BIO29279" key="0510" name="text-occasional" source="#BIB9599">
+                        <desc type="P" n="29">
                             <label>送門人劉復亨征蜀（湛然居士文集14/21）（案：此在太宗時）</label>
-                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">臨別得到Y所作贈言(送別詩、序)<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Departure note received from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -134,11 +138,11 @@
     <listEvent>
         <event type="02" subtype="64" sortKey="1" source="#BIB9599">
             <head>entry</head>
-            <label xml:lang="en">rank or office by inheritance</label>
             <label xml:lang="zh-Hant">世襲</label>
+            <label xml:lang="en">rank or office by inheritance</label>
             <desc type="0" subtype="3">
-                <desc xml:lang="en">Kinship</desc>
                 <desc xml:lang="zh-Hant">血親門</desc>
+                <desc xml:lang="en">Kinship</desc>
             </desc>
         </event>
     </listEvent>

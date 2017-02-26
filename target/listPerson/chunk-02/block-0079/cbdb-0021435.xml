@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO21435" source="#BIB7596" resp="selfbio">
     <idno type="TTS">15705</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>孫</surname>
             <forename>宗鑑</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Sun</surname>
             <forename>Zongjian</forename>
         </persName>
@@ -14,7 +13,7 @@
     <persName type="alias" key="AKA4" source="#BIB7596">
         <addName xml:lang="zh-Hant">少魏</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Shaowei</addName>
+        <addName xml:lang="zh-Latn-alalc97">Shaowei</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -35,27 +34,32 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO21435" passive="#BIO590" key="332" sortKey="7" name="D1H">
-                        <desc>
-                            <desc xml:lang="en">D1H First daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">長女婿</desc>
+                            <desc xml:lang="en">D1H First daughter's husband</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO21435" passive="#BIO21438" key="75" sortKey="-1" name="F">
-                        <desc>
-                            <desc xml:lang="en">F Father</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">父</desc>
+                            <desc xml:lang="en">F Father</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">斬衰三年</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO21435" passive="#BIO37082" key="197" sortKey="200" name="DH%">
-                        <desc>
-                            <desc xml:lang="en">DH%  Betrothed of D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">得許娶其女</desc>
+                            <desc xml:lang="en">DH%  Betrothed of D</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO21435" passive="#BIO37083" key="197" sortKey="200" name="DH%">
-                        <desc>
-                            <desc xml:lang="en">DH%  Betrothed of D</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">得許娶其女</desc>
+                            <desc xml:lang="en">DH%  Betrothed of D</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -65,20 +69,22 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO582" passive="#BIO21435" key="0404" sortKey="16" name="office-superior">
-                        <desc type="P">
-                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
-                            </desc>
+                    <relation active="#BIO582" passive="#BIO21435" key="0404" name="office-superior">
+                        <desc type="P" n="16">
                             <desc xml:lang="zh-Hant">為Y所辟<label>官場關係（上司）</label>
                             </desc>
+                            <desc xml:lang="en">Directly recruited (bi, zoubi) by<label>Connection via office (superior)</label>
+                            </desc>
+                            <state when="1123"/>
                         </desc>
                     </relation>
-                    <relation active="#BIO8062" passive="#BIO21435" key="0503" sortKey="22" name="epitaphs" source="#BIB7596">
-                        <desc type="P">
-                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
-                            </desc>
+                    <relation active="#BIO8062" passive="#BIO21435" key="0503" name="epitaphs" source="#BIB7596">
+                        <desc type="P" n="22">
                             <desc xml:lang="zh-Hant">墓誌銘由Y所作<label>墓誌文字</label>
                             </desc>
+                            <desc xml:lang="en">Epitaph written by<label>Epitaphs</label>
+                            </desc>
+                            <state when="1123"/>
                         </desc>
                     </relation>
                 </listRelation>
@@ -87,8 +93,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">civil office</desc>
             <desc xml:lang="zh-Hant">[為官者：文]</desc>
+            <desc xml:lang="en">civil office</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF155">
@@ -233,20 +239,20 @@
     <listEvent>
         <event type="0401" subtype="36" when="1080" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: jinshi (general)</label>
             <label xml:lang="zh-Hant">科舉: 進士(籠統)</label>
+            <label xml:lang="en">examination: jinshi (general)</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
         <event type="0401" subtype="130" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="en">examination: literary exams</label>
             <label xml:lang="zh-Hant">科舉: 詞科</label>
+            <label xml:lang="en">examination: literary exams</label>
             <desc type="1" subtype="17">
-                <desc xml:lang="en">Regular Examination</desc>
                 <desc xml:lang="zh-Hant">正常科舉</desc>
+                <desc xml:lang="en">Regular Examination</desc>
             </desc>
         </event>
     </listEvent>

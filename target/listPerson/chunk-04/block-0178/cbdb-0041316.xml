@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO41316" source="#BIB7596">
     <idno type="TTS">35483</idno>
     <persName type="main">
@@ -6,7 +5,7 @@
             <surname>李</surname>
             <forename>舜舉</forename>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Li</surname>
             <forename>Shunju</forename>
         </persName>
@@ -14,13 +13,13 @@
     <persName type="alias" key="AKA4">
         <addName>公輔</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Gongfu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Gongfu</addName>
         <term>Courtesy name</term>
     </persName>
     <persName type="alias" key="AKA6" source="#BIB7596">
         <addName xml:lang="zh-Hant">忠敏</addName>
         <term>諡號</term>
-        <addName xml:lang="zh-alalc97">Zhongmin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Zhongmin</addName>
         <term>Posthumous Name</term>
     </persName>
     <sex value="1">m</sex>
@@ -34,9 +33,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO41316" passive="#BIO41172" key="48" sortKey="-5" name="FFF">
-                        <desc>
-                            <desc xml:lang="en">FFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -46,21 +50,21 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO41316" passive="#BIO1450" key="0403" sortKey="15" name="office-subordinate" source="#BIB7596">
-                        <desc type="A">
+                    <relation active="#BIO41316" passive="#BIO1450" key="0403" name="office-subordinate" source="#BIB7596">
+                        <desc type="A" n="15">
                             <label>」聞者代珪愧焉 轉嘉州團練使 沈括城永洛 遣舜舉計議 被圍急</label>
-                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">為Y之部將<label>官場關係（下屬）</label>
+                            </desc>
+                            <desc xml:lang="en">Officer under command of<label>Connection via office (subordinate)</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation mutual="#BIO1845 #BIO41316" key="0402" sortKey="14" name="office-equal" source="#BIB7596">
-                        <desc type="M">
+                    <relation mutual="#BIO1845 #BIO41316" key="0402" name="office-equal" source="#BIB7596">
+                        <desc type="M" n="14">
                             <label>舜舉入奏事 退詣中書 王珪迎勞之曰：「朝廷以邊事屬押班 無西顧之憂矣 」舜舉曰：「四郊多壘</label>
-                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
-                            </desc>
                             <desc xml:lang="zh-Hant">同僚<label>官場關係（平級）</label>
+                            </desc>
+                            <desc xml:lang="en">Served in the same bureau with<label>Connection via office (equal)</label>
                             </desc>
                         </desc>
                     </relation>
@@ -70,8 +74,8 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">eunuch</desc>
             <desc xml:lang="zh-Hant">宦官</desc>
+            <desc xml:lang="en">eunuch</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF197">

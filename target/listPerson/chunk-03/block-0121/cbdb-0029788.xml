@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO29788" source="#BIB9602">
     <idno type="TTS">24045</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>光裕</forename>
             <addName type="choronym">穎川</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Chen</surname>
             <forename>Guangyu</forename>
             <addName type="choronym">Yingchuan</addName>
@@ -16,20 +15,20 @@
     <persName type="alias" key="AKA3" source="#BIB27147">
         <addName xml:lang="zh-Hant">光裕</addName>
         <term>别名、曾用名</term>
-        <addName xml:lang="zh-alalc97">guangyu</addName>
+        <addName xml:lang="zh-Latn-alalc97">guangyu</addName>
         <term>Alternate Personal Name, Previously Used Name</term>
     </persName>
     <persName type="alias" key="AKA5" source="#BIB9602">
         <addName xml:lang="zh-Hant">安老堂</addName>
         <term>室名、別號</term>
-        <addName xml:lang="zh-alalc97">Anlaotang</addName>
+        <addName xml:lang="zh-Latn-alalc97">Anlaotang</addName>
         <term>Studio name, Style name</term>
         <note>參見《明史列傳》頁570.</note>
     </persName>
     <persName type="alias" key="AKA4" source="#BIB9602">
         <addName xml:lang="zh-Hant">南賓</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Nanbin</addName>
+        <addName xml:lang="zh-Latn-alalc97">Nanbin</addName>
         <term>Courtesy name</term>
         <note>參見《明史列傳》頁570.</note>
     </persName>
@@ -47,9 +46,14 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO29788" passive="#BIO29776" key="48" sortKey="-5" name="FFF">
-                        <desc>
-                            <desc xml:lang="en">FFF</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">曾祖</desc>
+                            <desc xml:lang="en">FFF</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">齊衰五月</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                 </listRelation>
@@ -59,19 +63,19 @@
             <listPerson>
                 <personGrp role="associates"/>
                 <listRelation type="associations">
-                    <relation active="#BIO30674" passive="#BIO29788" key="0506" sortKey="25" name="text-biography" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
-                            </desc>
+                    <relation active="#BIO30674" passive="#BIO29788" key="0506" name="text-biography" source="#BIB27147">
+                        <desc type="P" n="25">
                             <desc xml:lang="zh-Hant">傳記作者為Y<label>傳記文字</label>
+                            </desc>
+                            <desc xml:lang="en">Biography written by<label>Biographical Texts</label>
                             </desc>
                         </desc>
                     </relation>
-                    <relation active="#BIO29788" passive="#BIO28545" key="0510" sortKey="29" name="text-occasional" source="#BIB27147">
-                        <desc type="P">
-                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
-                            </desc>
+                    <relation active="#BIO29788" passive="#BIO28545" key="0510" name="text-occasional" source="#BIB27147">
+                        <desc type="P" n="29">
                             <desc xml:lang="zh-Hant">收到Y的贈詩、文<label>應酬文字</label>
+                            </desc>
+                            <desc xml:lang="en">Received literary composition as gift from<label>Occasional Texts</label>
                             </desc>
                         </desc>
                     </relation>
@@ -81,16 +85,16 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">Classicist</desc>
             <desc xml:lang="zh-Hant">經學家</desc>
+            <desc xml:lang="en">Classicist</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">skilled at writing</desc>
             <desc xml:lang="zh-Hant">工於文</desc>
+            <desc xml:lang="en">skilled at writing</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">fond of learning</desc>
             <desc xml:lang="zh-Hant">好學</desc>
+            <desc xml:lang="en">fond of learning</desc>
         </state>
     </socecStatus>
     <residence ref="#PL7515" key="4">
@@ -114,7 +118,7 @@
         <note>茶陵人</note>
     </residence>
     <linkGrp>
-        <ptr target="9977"/>
+        <ptr target="ttsmq:9977"/>
     </linkGrp>
     <note type="created" target="#TTS">
         <date when="2007-03-12"/>

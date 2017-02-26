@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <person xmlns="http://www.tei-c.org/ns/1.0" ana="historical" xml:id="BIO927" source="#BIB7596" resp="selfbio">
     <idno type="TTS">925</idno>
     <persName type="main">
@@ -7,7 +6,7 @@
             <forename>遵惠</forename>
             <addName type="choronym">渤海</addName>
         </persName>
-        <persName xml:lang="zh-alalc97">
+        <persName xml:lang="zh-Latn-alalc97">
             <surname>Gao</surname>
             <forename>Zunhui</forename>
             <addName type="choronym">Bohai</addName>
@@ -16,7 +15,7 @@
     <persName type="alias" key="AKA4">
         <addName>子育</addName>
         <term>字</term>
-        <addName xml:lang="zh-alalc97">Ziyu</addName>
+        <addName xml:lang="zh-Latn-alalc97">Ziyu</addName>
         <term>Courtesy name</term>
     </persName>
     <sex value="1">m</sex>
@@ -32,28 +31,38 @@
                 <personGrp role="kin"/>
                 <listRelation type="kinship">
                     <relation active="#BIO927" passive="#BIO9005" key="178" sortKey="9999" name="BDH">
-                        <desc>
-                            <desc xml:lang="en">BDH Brother's daughter's husband</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">姪女之夫</desc>
+                            <desc xml:lang="en">BDH Brother's daughter's husband</desc>
                         </desc>
                     </relation>
                     <relation active="#BIO927" passive="#BIO10744" key="190" sortKey="9999" name="FBSS" source="#BIB2229">
-                        <desc>
+                        <desc type="kin-tie">
                             <label>據宋史列傳CBDB宋史分傳#2081</label>
-                            <desc xml:lang="en">FBSS</desc>
                             <desc xml:lang="zh-Hant">堂姪;從姪</desc>
+                            <desc xml:lang="en">FBSS</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">小功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO927" passive="#BIO11688" key="330" sortKey="9999" name="BD">
-                        <desc>
-                            <desc xml:lang="en">BD1  Brother's daughter</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從女;姪女</desc>
+                            <desc xml:lang="en">BD1  Brother's daughter</desc>
+                            <trait type="mourning" subtype="AG">
+                                <label xml:lang="zh-Hant">在室期年 出嫁大功</label>
+                                <desc xml:lang="zh-Hant">本宗血親</desc>
+                                <desc xml:lang="en">Agnates</desc>
+                            </trait>
                         </desc>
                     </relation>
                     <relation active="#BIO927" passive="#BIO11697" key="131" sortKey="9999" name="FBS+">
-                        <desc>
-                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
+                        <desc type="kin-tie">
                             <desc xml:lang="zh-Hant">從兄</desc>
+                            <desc xml:lang="en">FBS+ Father's brother's son, elder</desc>
                         </desc>
                     </relation>
                 </listRelation>
@@ -62,12 +71,12 @@
     </affiliation>
     <socecStatus>
         <state type="status">
-            <desc xml:lang="en">manager of family affairs</desc>
             <desc xml:lang="zh-Hant">主家事</desc>
+            <desc xml:lang="en">manager of family affairs</desc>
         </state>
         <state type="status">
-            <desc xml:lang="en">office: finance</desc>
             <desc xml:lang="zh-Hant">[財政官員]</desc>
+            <desc xml:lang="en">office: finance</desc>
         </state>
     </socecStatus>
     <socecStatus scheme="#office" code="#OFF155">
@@ -257,16 +266,16 @@
     <listEvent>
         <event type="00" subtype="0" sortKey="1" source="#BIB7596">
             <head>entry</head>
-            <label xml:lang="zh-Hant">未知</label>
+            <label>unkown</label>
             <note>熙寧中試經義中選。</note>
         </event>
         <event type="06" subtype="118" sortKey="1">
             <head>entry</head>
-            <label xml:lang="en">yin privilege: general</label>
             <label xml:lang="zh-Hant">恩蔭(籠統)</label>
+            <label xml:lang="en">yin privilege: general</label>
             <desc type="0" subtype="7">
-                <desc xml:lang="en">Yin Privilege</desc>
                 <desc xml:lang="zh-Hant">恩蔭門</desc>
+                <desc xml:lang="en">Yin Privilege</desc>
             </desc>
         </event>
     </listEvent>
