@@ -45,6 +45,64 @@ return
 };
 (:local:write-chunk-includes(37):)
 
+declare function local:report-asso($item as item()*) as item()* {
+(: create a report of associations to distingiuish passive/active, mutual relations. :)
+
+let $symmetry :=
+    for $symmetric in $ASSOC_CODES//no:row
+    where $symmetric/no:c_assoc_code = $symmetric/no:c_assoc_pair
+    return
+        $symmetric
+    
+let $assymetry := 
+    for $assymetric in $ASSOC_CODES//no:row
+    where $assymetric/no:c_assoc_code != $assymetric/no:c_assoc_pair
+    return
+        $assymetric
+        
+let $bys :=
+(: filters all */by pairs :)
+    for $by in $ASSOC_CODES//no:c_assoc_desc
+    where contains($by/text(), ' by')
+    return 
+        $by
+    
+let $was :=
+(: filter all  was/of pairs:)
+    for $was in $ASSOC_CODES//no:c_assoc_desc
+    where contains($was/text(), ' was')
+    return
+        $was
+        
+let $to :=
+(: filter all from/to pairs :)
+    for $to in $ASSOC_CODES//no:c_assoc_desc
+    where contains($to/text(), ' to')
+    return
+        $to
+    
+let $report := 
+    <report>
+        <total>{count(//no:row)}</total>
+        <unaccounted>{count(//no:row) - (count($assymetry) + count($symmetry))}</unaccounted>
+        <symmetric>
+            <sym_sum>{count($symmetry)}</sym_sum>
+            <rest>{count(//no:row) - count($symmetry)}</rest>
+        </symmetric>
+        <assymetric>
+            <assy_sum>{count($assymetry)}</assy_sum>
+            <assy_by>{count($bys)*2}</assy_by>
+            <rest>{count($assymetry) - count($bys)*2}</rest>
+            <assy_was>{count($was)*2}</assy_was>
+            <rest>{count($assymetry) - count($bys)*2 - count($was)*2}</rest>
+            <assy_to>{count($to)*2}</assy_to>
+        </assymetric>
+    </report> 
+    
+return 
+    $report    
+};
+
 (: !!! WARNING !!! Hands off if you are not sure what you are doing !!!! :)
 declare function local:upgrade-contents($nodes as node()*) as node()* {
 
@@ -65,89 +123,87 @@ return
 (:local:upgrade-contents($global:BIOG_MAIN//no:c_personid[. > 0][. < 2]):)
 
 
+declare function local:new-post ($appointees as node()*) as node()* {
+(:~ biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, 
+APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. 
 
-declare function local:kin ($self as node()*) as node()* {
-    
-(:~ biog:kin  constructs an egocentric network of kinship relations from KING_DATA, KING_CODES< and Kin_Mourning.
-the output's structure should match biog:asso's
+@param $appointees is a c_personid
+@returns socecStatus
+:)
 
-@param $self is a c_personid 
-@returns relation :)
-    
-for $kin in $global:KIN_DATA//no:c_personid[. = $self]
-let $tie := $global:KINSHIP_CODES//no:c_kincode[. = $kin/../no:c_kin_code]
-let $mourning := $global:KIN_Mourning//no:c_kinrel[. = $tie/../no:c_kinrel]
+for $post in $global:POSTED_TO_OFFICE_DATA//no:c_personid[. = $appointees]/../no:c_posting_id
+
+let $addr := $global:POSTED_TO_ADDR_DATA//no:c_posting_id[. = $post]
+let $cat := $global:OFFICE_CATEGORIES//no:c_office_category_id[. = $post/../no:c_office_category_id]
+let $appt := $global:APPOINTMENT_TYPE_CODES//no:c_appt_type_code[. = $post/../no:c_appt_type_code]
+let $assu := $global:ASSUME_OFFICE_CODES//no:c_assume_office_code[. = $post/../no:c_assume_office_code]
+
+order by $post/../no:c_sequence
 
 return
-    element relation {
-            attribute active {concat('#BIO', $kin/../no:c_personid/text())},
-            attribute passive {concat('#BIO', $kin/../no:c_kin_id/text())},
+    element socecStatus{ attribute scheme {'#office'}, 
+        attribute code {concat('#OFF', $post/../no:c_office_id)},
+        
+        element state {attribute type {'posting'},
+        
+            if ($addr/../no:c_addr_id[. = 0])
+            then ()
+            else (attribute ref {concat('#PL', $addr/../no:c_addr_id/text())}),
             
-            if (empty($tie/../no:c_kincode) and empty($tie/../no:c_kinrel))
-            then (attribute name {'unkown'})
-            else (
-                for $n in $tie/../*[. != '0']
-                order by local-name($n)
-                return 
-                    typeswitch ($n)
-                        case element (no:c_kincode) return attribute key {$n/text()}
-                        case element (no:c_pick_sorting) return attribute sortKey{$n/text()}
-                        case element (no:c_kinrel) return attribute name {
-                            if (contains($n/text(), ' ('))
-                            then (substring-before($n/text(), ' ('))
-                            else if (contains($n/text(), 'male)'))
-                                then (replace(replace($n/text(), '\(male\)', '♂'), '\(female\)', '♀'))
-                                else (translate($n/text(), '#', '№'))}
-                        case element (no:c_source) return attribute source {$n/text()}
-                        case element (no:c_autogen_notes) return attribute type {'auto-generated'}
-                      default return (),
-                
-                if (empty($tie/../no:c_kinrel_chn) and empty ($tie/../no:c_kinrel_alt))
-                then ()
-                else (element desc { attribute type {'kin-tie'}, 
-                        
-                        (: jing doesn like note here during validation :)
-                        if ($kin/../no:c_notes)
-                        then (element label {$kin/../no:c_notes/text()})
-                        else (), 
-                        
-                        for $x in $tie/../*
-                        order by local-name($x) descending
-                        return 
-                            typeswitch($x)
-                                case element (no:c_kinrel_chn) return element desc { attribute xml:lang {'zh-Hant'},
-                                    $x/text()}
-                                case element (no:c_kinrel_alt) return element desc { attribute xml:lang {'en'},
-                                    $x/text()}
-                            default return (),                               
-                        
-                        if (empty($mourning))
-                        then ()
-                        else (element trait {
-                                    attribute type {'mourning'},
-                                    attribute subtype {$mourning/../no:c_kintype/text()},
+            for $att in $post/../*[. != '0']
+            order by local-name($att)
+            return
+                typeswitch($att)
+                    case element (no:c_posting_id) return attribute n {$att/text()}
+                    case element (no:c_sequence) return attribute key {$att/text()}
+                    case element (no:c_firstyear) return attribute notBefore {cal:isodate($att)}
+                    case element (no:c_lastyear) return attribute notAfter {cal:isodate($att)}
+                    case element (no:c_source) return attribute source {concat('#BIB', $att/text())}                    
+               default return (),
+         (: Desc:)
+            for $n in $post/../*
+            order by local-name($n)
+            return
+                typeswitch($n)
+                    case element (no:c_appt_type_code) 
+                        return element desc { 
+                                    element label {'appointment'},
+                                    element desc { attribute xml:lang {'zh-Hant'},
+                                        $appt/../no:c_appt_type_desc_chn/text()},
+                                        
+                                if (empty($appt/../no:c_appt_type_desc))
+                                then ()
+                                else (element desc { attribute xml:lang {'en'}, 
+                                    $appt/../no:c_appt_type_desc/text()})}
                                     
-                            for $y in $mourning/../*
-                            order by local-name($y) descending
-                            return
-                                typeswitch($y)
-                                    case element (no:c_mourning_chn) 
-                                        return element label { attribute xml:lang {"zh-Hant"},
-                                            $y/text()}
-                                    case element (no:c_kintype_desc_chn) 
-                                        return element desc { attribute xml:lang {"zh-Hant"},
-                                            $y/text()}        
-                                    case element (no:c_kintype_desc)
-                                        return element desc {attribute xml:lang {"en"},
-                                            $y/text()}
-                                    default return ()                             
-                               })     
-                    })
-                )
+                    case element (no:c_assume_office_code) 
+                        return element desc { element label {'assumes'},
+                                    element desc { attribute xml:lang {'zh-Hant'},
+                                        $assu/../no:c_assume_office_desc_chn/text()}, 
+                                    element desc { attribute xml:lang {'en'}, 
+                                        $assu/../no:c_assume_office_desc/text()}}
+                                        
+                    case element (no:c_notes) return element note {$n/text()}
+                    case element (no:c_office_category_id) 
+                        return if ($cat[. = 0])
+                                then ()
+                                else (element state { attribute type {'office-type'},
+                                    attribute n {$cat/text()}, 
+                                 
+                                 for $x in $cat/../*
+                                 order by local-name($x) descending
+                                 return
+                                     typeswitch ($x)
+                                         case element (no:c_category_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $x/text()}
+                                         case element (no:c_category_desc) return element desc { attribute xml:lang {'en'}, $x/text()}
+                                         case element (no:c_notes) return element note {$x/text()}
+                                     default return ()})
+                default return ()}
         }
 };
 
-let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
+
+let $test := $global:BIOG_MAIN//no:c_personid[. = 45071]
 (:The ids in $erors contained validation errors on 2nd run 
 <ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>
 
@@ -179,10 +235,11 @@ biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 
 for $person in $test
 return
-local:kin($person)
+biog:new-post($person)
 
+(:return $global:POSTED_TO_OFFICE_DATA//no:c_office_category_id[. >0]/../no:c_personid:)
 
-(:for $status in $global:STATUS_DATA//no:c_personid[. = 51]
+(:for $status in lglobal:STATUS_DATA//no:c_personid[. = 51]
 let $code := $global:STATUSlCODES//no:c_status_code[. = $status/../no:c_status_code]
 return
 <full>

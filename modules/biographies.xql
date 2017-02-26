@@ -14,15 +14,13 @@ declare namespace biog= "http://exist-db.org/apps/cbdb-data/biographies";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-
 (:~
  The biographies module transforms biographical data from CBDB. 
  It creates a nested tree of collections (chunks) and subcollections (blocks), 
  in which to store the individual person records. 
  
  @author Duncan Paterson
- @version 0.5
- @
+ @version 0.6
  
 :)
 
@@ -30,9 +28,9 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 (:NAMES:)
 declare function biog:name ($names as node()*, $lang as xs:string?) as node()* {
 (:~
-biog:name transforms extended name parts into annotated @returns tei:persName elements.
+biog:name reads extended name parts and @returns annotated tei:persName elements.
 To avoid duplication biog:name checks if sure-/forname components can be fully identified,
-and returns the resepoctive elements, otherwise a single persName takes a single string value. 
+and returns the respcctive elements, otherwise persName takes a single string value. 
 
 @param $names variations of no:c_name from different tables. 
 @param $lang either:
@@ -127,40 +125,40 @@ return
     then ()
     else (element persName { attribute type {'alias'},          
     
-    for $n in $person/../*[. != '0']
-    order by local-name($n) 
+        for $att in $person/../*[. != '0']
+        order by local-name($att) 
         return 
-            typeswitch ($n)
-                case element (no:c_alt_name_type_code) return attribute key {concat('AKA', $n/text())}
-                case element (no:c_source) return attribute source {concat('#BIB', $n/text())}
+            typeswitch ($att)
+                case element (no:c_alt_name_type_code) return attribute key {concat('AKA', $att/text())}
+                case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
                 default return (),
-            for $n in $person/../* 
-            order by local-name($n) descending
-            return     
-                typeswitch ($n)
-                    case element (no:c_alt_name_chn) return 
-                        if ($code[. > 1])
-                        then (element addName {attribute xml:lang {'zh-Hant'},
-                            $n/text()},
-                            element term {$code/../no:c_name_type_desc_chn/text()})
-                        else (element addName {attribute xml:lang {'zh-Hant'},
-                            $n/text()})    
-                    case element (no:c_alt_name) return 
-                        if ($code[. > 1]) 
-                        then (element addName {attribute xml:lang {'zh-Latn-alalc97'},                        
-                            $n/text()},
-                            element term {$code/../no:c_name_type_desc/text()})
-                        else (element addName {attribute xml:lang {'zh-Latn-alalc97'},                        
-                            $n/text()})
-                   case element (no:c_notes) return element note {$n/text()}
-                 default return ()
-                })       
+                
+        for $n in $person/../* 
+        order by local-name($n) descending
+        return     
+            typeswitch ($n)
+                case element (no:c_alt_name_chn) 
+                    return if ($code[. > 1])
+                            then (element addName {attribute xml:lang {'zh-Hant'},
+                                        $n/text()},
+                                    element term {$code/../no:c_name_type_desc_chn/text()})
+                            else (element addName {attribute xml:lang {'zh-Hant'},
+                                        $n/text()})    
+                case element (no:c_alt_name)
+                    return if ($code[. > 1]) 
+                            then (element addName {attribute xml:lang {'zh-Latn-alalc97'},                        
+                                        $n/text()},
+                                    element term {$code/../no:c_name_type_desc/text()})
+                            else (element addName {attribute xml:lang {'zh-Latn-alalc97'},                        
+                                $n/text()})
+                case element (no:c_notes) return element note {$n/text()}
+            default return ()})       
 };
 
 (:RELATIONS:)
 declare function biog:kin ($self as node()*) as node()* {
-(:~ biog:kin  constructs an egocentric network of kinship relations from KING_DATA, KING_CODES< and Kin_Mourning.
-the output's structure should match biog:asso's
+(:~ biog:kin  constructs an egocentric network of kinship relations from: KING_DATA, KING_CODES and Kin_Mourning.
+The output's structure should match biog:asso's.
 
 @param $self is a c_personid 
 @returns relation
@@ -178,19 +176,19 @@ return
             if (empty($tie/../no:c_kincode) and empty($tie/../no:c_kinrel))
             then (attribute name {'unkown'})
             else (
-                for $n in $tie/../*[. != '0']
-                order by local-name($n)
+                for $att in $tie/../*[. != '0']
+                order by local-name($att)
                 return 
-                    typeswitch ($n)
-                        case element (no:c_kincode) return attribute key {$n/text()}
-                        case element (no:c_pick_sorting) return attribute sortKey{$n/text()}
+                    typeswitch ($att)
+                        case element (no:c_kincode) return attribute key {$att/text()}
+                        case element (no:c_pick_sorting) return attribute sortKey{$att/text()}
                         case element (no:c_kinrel) return attribute name {
-                            if (contains($n/text(), ' ('))
-                            then (substring-before($n/text(), ' ('))
-                            else if (contains($n/text(), 'male)'))
-                                then (replace(replace($n/text(), '\(male\)', '♂'), '\(female\)', '♀'))
-                                else (translate($n/text(), '#', '№'))}
-                        case element (no:c_source) return attribute source {$n/text()}
+                            if (contains($att/text(), ' ('))
+                            then (substring-before($att/text(), ' ('))
+                            else if (contains($att/text(), 'male)'))
+                                then (replace(replace($att/text(), '\(male\)', '♂'), '\(female\)', '♀'))
+                                else (translate($att/text(), '#', '№'))}
+                        case element (no:c_source) return attribute source {$att/text()}
                         case element (no:c_autogen_notes) return attribute type {'auto-generated'}
                       default return (),
                 
@@ -240,15 +238,14 @@ return
 };
 
 declare function biog:asso ($ego as node()*) as node()* {
-    
-(: This function records association data in Tei. It expects a person as input, 
-to generate a list relations. 
+(:~
+biog:asso constructs a network of assoication relations from: ASSOC_DATA, ASSOC_CODES, 
+ASSOC_TYPES, and ASSOC_CODE_TYPE_REL.  
 
-The structure of its output should match the output of biog:kin
+Annotations from: SCHOLARLYTOPIC_CODES, OCCASION_CODES, and LITERARYGENRE_CODES.
 
-ASSOC_CODES contains both symmetrical and assymetrical relations, 
-these are converted into tei:relation/@active || @passive  || @mutual
-the following are still problematic:
+Because TEI declares  active/passsive relations more strcitly then CBDB, the following relations
+remain problematic:
 let $passive := ('Executed at the order of', 'Killed by followers of',
                 'was served by the medical arts of',
                 'Funerary stele written (for a third party) at the request of',
@@ -266,107 +263,12 @@ let $active :=  ('Knew','Tried and found guilty'
        ,'Requested Funerary stele be written by','Requested Tomb stone (mubiao) be written by'
        ,'opposed assertion of emperorship by')
 
+The output's structure should match biog:kin's.
 
+@param $ego is a c_personid 
+@returns listRelation
 :)
 
-(: REPORT
-let $symmetry :=
-    for $symmetric in $ASSOC_CODES//no:row
-    where $symmetric/no:c_assoc_code = $symmetric/no:c_assoc_pair
-    return
-        $symmetric
-    
-let $assymetry := 
-    for $assymetric in $ASSOC_CODES//no:row
-    where $assymetric/no:c_assoc_code != $assymetric/no:c_assoc_pair
-    return
-        $assymetric
-        
-let $bys :=
-(\: filters all */by pairs :\)
-    for $by in $ASSOC_CODES//no:c_assoc_desc
-    where contains($by/text(), ' by')
-    return 
-        $by
-    
-let $was :=
-(\: filter all  was/of pairs:\)
-    for $was in $ASSOC_CODES//no:c_assoc_desc
-    where contains($was/text(), ' was')
-    return
-        $was
-let $to :=
-(\: filter all from/to pairs :\)
-    for $to in $ASSOC_CODES//no:c_assoc_desc
-    where contains($to/text(), ' to')
-    return
-        $to
-    
-let $report := 
-    <report>
-        <total>{count(//no:row)}</total>
-        <unaccounted>{count(//no:row) - (count($assymetry) + count($symmetry))}</unaccounted>
-        <symmetric>
-            <sym_sum>{count($symmetry)}</sym_sum>
-            <rest>{count(//no:row) - count($symmetry)}</rest>
-        </symmetric>
-        <assymetric>
-            <assy_sum>{count($assymetry)}</assy_sum>
-            <assy_by>{count($bys)*2}</assy_by>
-            <rest>{count($assymetry) - count($bys)*2}</rest>
-            <assy_was>{count($was)*2}</assy_was>
-            <rest>{count($assymetry) - count($bys)*2 - count($was)*2}</rest>
-            <assy_to>{count($to)*2}</assy_to>
-        </assymetric>
-    </report> 
-:)
-
-(:
- [tts_sysno] INTEGER,                             d
- [c_assoc_code] INTEGER,                          x
- [c_personid] INTEGER,                            x
- [c_kin_code] INTEGER,                            d
- [c_kin_id] INTEGER,                              x
- [c_assoc_id] INTEGER,                            x
- [c_assoc_kin_code] INTEGER,                     d 
- [c_assoc_kin_id] INTEGER,                       x  
- [c_tertiary_personid] INTEGER,                 x 
- [c_assoc_count] INTEGER,                        d  
- [c_sequence] INTEGER,                            x 
- [c_assoc_year] INTEGER,                          x 
- [c_source] INTEGER,                              x
- [c_pages] CHAR(255),                             d
- [c_notes] CHAR,                                   x
- [c_assoc_nh_code] INTEGER,                         
- [c_assoc_nh_year] INTEGER,                        
- [c_assoc_range] INTEGER,                        !!!
- [c_addr_id] INTEGER,                             x
- [c_litgenre_code] INTEGER,                      x
- [c_occasion_code] INTEGER,                      x
- [c_topic_code] INTEGER,                          x                    
- [c_inst_code] INTEGER,                           x
- [c_inst_name_code] INTEGER,                     d 
- [c_text_title] CHAR(255),                          
- [c_assoc_claimer_id] INTEGER,                      
- [c_assoc_intercalary] BOOLEAN NOT NULL,         
- [c_assoc_month] INTEGER,                           
- [c_assoc_day] INTEGER,                             
- [c_assoc_day_gz] INTEGER,                          
- [c_created_by] CHAR(255),                       d
- [c_created_date] CHAR(255),                     d
- [c_modified_by] CHAR(255),                      d
- [c_modified_date] CHAR(255))                    d
-:)
-
-(:TO DO 
-- consider chal-ZH dates for state
-- c assoc claimer could get a @role somewhere around state
-- litgenre codes are empty?
-:)
-
-    (:count($ASSOC_DATA//no:c_assoc_id[. > 0][. < 500]) = 1726
-whats up with $assoc_codes//no:c_assoc_role_type ?:)
-    
     for $individual in $global:ASSOC_DATA//no:c_personid[. = $ego]
     let $friends := $individual/../no:c_assoc_id
     
@@ -380,6 +282,7 @@ whats up with $assoc_codes//no:c_assoc_role_type ?:)
     
     return        
         element relation {
+        (: determin mutual or active/passive pairing       :)
             if ($code/text() = $code/../no:c_assoc_pair/text())
             then (attribute mutual {concat('#BIO', $friends/text(), ' ', 
                                        concat('#BIO', $individual/text()))})
@@ -416,6 +319,7 @@ whats up with $assoc_codes//no:c_assoc_role_type ?:)
                 if ($individual/../no:c_source[. > 0])
                 then (attribute source {concat('#BIB', $individual/../no:c_source/text())})
                 else (),
+                
         (:     DESC           :)
                 if (empty($code/../no:c_assoc_role_type))
                 then ()
@@ -448,93 +352,94 @@ whats up with $assoc_codes//no:c_assoc_role_type ?:)
                         or $individual/../no:c_topic_code[. > 0] or $individual/../no:c_litgenre_code[. > 0]
                         or $individual/../no:c_tertiary_personid[. > 0] or $individual/../no:c_kin_id[. > 0]
                         or $individual/../no:c_assoc_kin_id[. > 0])
-                     then (   
-                     element state {              
-                     
-                     for $add in $individual/../no:c_addr_id[. > 0] 
-                     for $org in  $individual/../no:c_inst_code[. > 0]                               
-                     return
-                        attribute ref {concat('#PL', $add/text()), concat('#ORG', $org/text())},
-                     
-                     if (empty($individual/../no:c_assoc_year))
-                     then ()
-                     else (attribute when {cal:isodate($individual/../no:c_assoc_year)}),
-                     
-                     if ($individual/../no:c_occasion_code > 0)
-                     then (attribute ana {$individual/../no:c_occasion_code/text()})
-                     else (),
-                     
-                     if ($individual/../no:c_topic_code > 0)
-                     then (attribute type {$individual/../no:c_topic_code/text()})
-                     else (),
-                     
-                     if ($individual/../no:c_litgenre_code > 0)
-                     then (attribute subtype {$individual/../no:c_litgenre_code/text()})
-                     else (),
-                     
-                     if (empty($occcasion) or $occcasion[. = 0])
-                     then ()
-                     else (element label { attribute xml:lang {'zh-Hant'},
-                                $occcasion/../no:c_occasion_desc_chn/text()},
-                            element label { attribute xml:lang {'zh-Latn-alalc97'},
-                                $occcasion/../no:c_occasion_desc/text()}),
-                    (:   desc and desc_chn are reversed in source for type [sic.]   :)
-                     if (empty($scholarly) or $scholarly[. = 0])
-                     then ()
-                     else (element desc {attribute ana {'topic'},
-                                attribute type {$scholarly/../no:c_topic_type_code/text()},
-                                element desc {attribute xml:lang {'zh-Hant'},
-                                    $scholarly/../no:c_topic_desc_chn/text(),
-                                    element label {$scholarly/../no:c_topic_type_desc/text()}},
-                                element desc { attribute xml:lang {'en'},
-                                    $scholarly/../no:c_topic_desc/text(),
-                                    element label {$scholarly/../no:c_topic_type_desc_chn/text()}
-                                    }
-                            }),
-                            
-                     if (empty($genre) or $genre[. = 0])
-                     then ()
-                     else (element desc {attribute ana {'genre'},                                
-                                element label {attribute xml:lang {'zh-Hant'},
-                                $genre/../no:c_lit_genre_desc_chn/text()}, 
-                                element label { attribute xml:lang {'en'}, 
-                                $genre/../no:c_lit_genre_desc/text()}
-                            }),
-                     
-                     let $third := $individual/../no:c_tertiary_personid[. > 0]
-                     let $own-kin := $individual/../no:c_kin_id[. > 0]
-                     let $assoc-kin := $individual/../no:c_assoc_kin_id[. > 0]
-                     
-                     return 
-                        if (empty($third) and empty($own-kin) and empty($assoc-kin))
+                        
+                     then (element state {              
+                        
+                        for $add in $individual/../no:c_addr_id[. > 0] 
+                        for $org in  $individual/../no:c_inst_code[. > 0]                               
+                        return
+                           attribute ref {concat('#PL', $add/text()), concat('#ORG', $org/text())},
+                        
+                        for $att in $individual/../*[. != '0']
+                        order by local-name($att)
+                        return 
+                            typeswitch($att)
+                                case element (no:c_assoc_year) return attribute when {cal:isodate($att)}
+                                case element (no:c_occasion_code) return attribute ana {$att/text()}
+                                case element (no:c_topic_code) return attribute type {$att/text()}
+                                case element (no:c_litgenre_code) return attribute subtype {$att/text()}
+                            default return (),
+                        
+                        if (empty($occcasion) or $occcasion[. = 0])
                         then ()
-                        else (element desc{
-                                for $n in ($third, $own-kin, $assoc-kin)
-                                return
-                                    element persName { attribute role {'mediator'},
-                                        attribute ref {concat('#BIO', $n/text())}
-                                    }
+                        else (element label { attribute xml:lang {'zh-Hant'},
+                                   $occcasion/../no:c_occasion_desc_chn/text()},
+                               element label { attribute xml:lang {'zh-Latn-alalc97'},
+                                   $occcasion/../no:c_occasion_desc/text()}),
+                                   
+                       (:   desc and desc_chn are reversed in source for type [sic.]   :)
+                        if (empty($scholarly) or $scholarly[. = 0])
+                        then ()
+                        else (element desc {attribute ana {'topic'},
+                                   attribute type {$scholarly/../no:c_topic_type_code/text()},
+                                   element desc {attribute xml:lang {'zh-Hant'},
+                                       $scholarly/../no:c_topic_desc_chn/text(),
+                                       element label {$scholarly/../no:c_topic_type_desc/text()}},
+                                   element desc { attribute xml:lang {'en'},
+                                       $scholarly/../no:c_topic_desc/text(),
+                                       element label {$scholarly/../no:c_topic_type_desc_chn/text()}
+                                       }
+                               }),
+                               
+                        if (empty($genre) or $genre[. = 0])
+                        then ()
+                        else (element desc {attribute ana {'genre'},                                
+                                   element label {attribute xml:lang {'zh-Hant'},
+                                    $genre/../no:c_lit_genre_desc_chn/text()}, 
+                                   element label { attribute xml:lang {'en'}, 
+                                    $genre/../no:c_lit_genre_desc/text()}
+                               }),
+                        
+                        let $third := $individual/../no:c_tertiary_personid[. > 0]
+                        let $own-kin := $individual/../no:c_kin_id[. > 0]
+                        let $assoc-kin := $individual/../no:c_assoc_kin_id[. > 0]
+                        
+                        return 
+                           if (empty($third) and empty($own-kin) and empty($assoc-kin))
+                           then ()
+                           else (element desc{
+                                   for $n in ($third, $own-kin, $assoc-kin)
+                                   return
+                                       element persName { attribute role {'mediator'},
+                                           attribute ref {concat('#BIO', $n/text())}
+                                       }})
                         })
-                     })
                      else()
                  })
              )
         }
 };
 
-(:STATUS / STATE:)
+(:GENERAL STATUS / STATE:)
 declare function biog:status ($achievers as node()*) as node()* {
 
+(:~
+biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state.
 
-(:the following lines can be added to the return clause of the $x variable, 
- : once status types are linked to status codes. 
- : This will add label elements which need to be wrapped inside a general desc element.
- : 
- : let $type := $global:STATUS_TYPES//no:c_status_type_code[. =$type-rel/../no:c_status_type_code]
- : let $type-rel := $global:STATUS_CODE_TYPE_REL//no:c_status_code[. = $status/../no:c_status_code]
- : 
- : case element (no:c_status_type_desc_chn) return element label {attribute xml:lang {'zh-Hant'}, $x/text()}
- : case element (no:c_status_type_desc) return element label {attribute xml:lang {'en'}, $x/text()}
+two tables currently don't contain data: STATUS_TYPES, and  STATUS_CODE_TYPE_REL.
+
+Should these tables be updated with a future release, the following lines can be added 
+to the return clause of the $x variable.
+This will add label elements which need to be wrapped inside a general desc element.
+
+let $type := $global:STATUS_TYPES//no:c_status_type_code[. =$type-rel/../no:c_status_type_code]
+let $type-rel := $global:STATUS_CODE_TYPE_REL//no:c_status_code[. = $status/../no:c_status_code]
+ 
+case element (no:c_status_type_desc_chn) return element label {attribute xml:lang {'zh-Hant'}, $x/text()}
+case element (no:c_status_type_desc) return element label {attribute xml:lang {'en'}, $x/text()}
+
+@param $achievers is a c_personid
+@returns state
  :)
 
 for $status in $global:STATUS_DATA//no:c_personid[. = $achievers]
@@ -544,15 +449,15 @@ let $code := $global:STATUS_CODES//no:c_status_code[. = $status/../no:c_status_c
 return 
     if ($status/../no:c_status_code[. > 0]) 
     then (element state { attribute type {'status'},
-          for $n in $status/../*[. != '0']
-          order by local-name($n)
+          for $att in $status/../*[. != '0']
+          order by local-name($att)
           return 
-            typeswitch ($n)
-            case element (no:c_status_code) return attribute subtype {$n/text()}
-                case element (no:c_firstyear) return attribute from {cal:isodate($n/text())}
-                case element (no:c_lastyear) return attribute to {cal:isodate($n/text())}
-                case element (no:c_sequence) return attribute n {$n/text()}
-                case element (no:source) return attribute source {concat('#BIB', $n/text())}                
+            typeswitch ($att)
+            case element (no:c_status_code) return attribute subtype {$att/text()}
+                case element (no:c_firstyear) return attribute from {cal:isodate($att/text())}
+                case element (no:c_lastyear) return attribute to {cal:isodate($att/text())}
+                case element (no:c_sequence) return attribute n {$att/text()}
+                case element (no:source) return attribute source {concat('#BIB', $att/text())}                
             default return (),
             
           for $x in $code/../*
@@ -568,93 +473,65 @@ return
     else ()
 };
 
-(:EVENTS:)
+(:GENERAL EVENTS:)
 declare function biog:event ($participants as node()*) as node()* {
-(: no py or en name for events:)
-
-(:
- [c_personid] INTEGER,                     x
- [c_sequence] INTEGER, 
- [c_event_record_id] INTEGER,             x
- [c_event_code] INTEGER, 
- [c_role] CHAR(50),                         x
- [c_year] INTEGER,                          x
- [c_nh_code] INTEGER, 
- [c_nh_year] INTEGER, 
- [c_yr_range] INTEGER, 
- [c_intercalary] BOOLEAN NOT NULL, 
- [c_month] INTEGER, 
- [c_day] INTEGER, 
- [c_day_ganzhi] INTEGER, 
- [c_addr_id] INTEGER,                       x
- [c_source] INTEGER,                        x
- [c_pages] CHAR(50), 
- [c_event] CHAR,                             x
- [c_notes] CHAR(255),                       x
- [tts_sysno] INTEGER,                       d
- [c_created_by] CHAR(255),                 x
- [c_created_date] CHAR(255),               x 
- [c_modified_by] CHAR(255),                x
- [c_modified_date] CHAR(255))              x
-:)
+(:~
+ biog:event reads EVENTS_DATA, EVENT_CODES, EVENTS_ADDR to generate an event element. 
+ The structure of biog:event is mirrored by biog:entry. 
+ 
+ Currently there are no py or en descriptions in the source data,
+ hence we define a single xml:lang attribute on the parent element. 
+ 
+ @param $participants is a c_personid
+ @returns event
+ 
+ :)
 
 for $event in $global:EVENTS_DATA//no:c_personid[. = $participants]
 let $code := $global:EVENT_CODES//no:c_event_code[. = $event/../no:c_event_code]
 let $event-add := $global:EVENTS_ADDR//no:c_event_record_id[. = $event/../no:c_event_record_id]
+
+return             
+    element event { attribute xml:lang {'zh-Hant'},
+        for $att in $event/../*[. != '0']
+        order by local-name($att)
         return
-             
-                element event { 
-                    if ($event/../no:c_year != 0)
-                    then (attribute when {cal:isodate($event/../no:c_year/text())})
-                    else (),
-                    
-                    if (empty($event-add))
-                    then ()
-                    else (attribute where {concat('#PL', $event-add/../no:c_addr_id/text())}),
-                    
-                    if (empty($event/../no:c_source) or $event/../no:c_source = 0)
-                    then ()
-                    else (attribute source {concat('#BIB', $event/../no:c_source/text())}), 
-                    
-                    if (empty($event/../no:c_event) and empty($event/../no:c_role) and empty($code))
-                    then (element desc {'unkown'})
-                    else  if (empty($event/../no:c_event) and empty($event/../no:c_role) and $code[. > 0])
-                            then (element desc {$code/../no:c_event_name_chn/text()})
-                            else (if ($code[. > 0])
-                                 then (element head {$code/../no:c_event_name_chn/text()})
-                                 else (), 
-                                 
-                                 if (empty($event/../no:c_event)) 
-                                 then ()
-                                 else (element label {$event/../no:c_event/text()}), 
-                                 
-                                 if (empty($event/../no:c_role))
-                                 then ()
-                                 else (element desc {$event/../no:c_role/text()})),
-                    
-                    if (empty($event/../no:c_notes))
-                    then()
-                    else(element note {$event/../no:c_notes/text()})    
-                } 
-             
+            typeswitch($att)
+                case element (no:c_year) return attribute when {cal:isodate($att)}
+                case element (no:c_addr_id) return attribute where {concat('#PL', $att/text())}
+                case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
+                case element (no:c_sequence) return attribute sortKey {$att/text()}
+            default return (),    
+        
+        if (empty($event/../no:c_event) and empty($event/../no:c_role) and empty($code))
+        then (element desc {'unkown'})
+        else if (empty($event/../no:c_event) and empty($event/../no:c_role) and $code[. > 0])
+              then (element desc {$code/../no:c_event_name_chn/text()})
+              else (if ($code[. > 0])
+                    then (element head {$code/../no:c_event_name_chn/text()})
+                    else (), 
+            (:  some funky spaces make the normalization necessary here :)
+                    for $n in $event/../*[. != '0']
+                    order by local-name($n)
+                    return 
+                        typeswitch($n)
+                            case element (no:c_event) return element label {normalize-space($n/text())}
+                            case element (no:c_role) return element desc {normalize-space($n/text())}
+                            case element (no:c_notes) return element note {normalize-space($n/text())}
+                        default return ())
+    }        
 };
 
-(:exam and office related data:)
+(:EXAMINATIONS and OFFICES:)
 declare function biog:entry ($initiates as node()*) as node()* {
-(: biog:entry expects persons from BIOG_MAIN and returns tei:event for entries into social institutions.
-the output of biog:entry should match the structure of biog:event's ouput.
+(:~
+biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES
+into a typed and annotated event. 
+It's output should match the structure of biog:event.
 
-Note about 100 entries are tagede both by 7 specials and other (id =90) hence the filter for 
-count($types) > 1 below. 
-:)
+@param $initiates is a c_personid
+@returns event
 
-(: TODO
-- what does c_exam_field point to A: nothing its a string zh-Hant only
-- see c_personid 914 for dual @type entries
-- c_inst_code only points to '0' no links to org to be written
-
-institutional addressess via biog:inst-add
-switch to tei:education | tei:faith for entry type data
 :)
 
 for $initiate in $global:ENTRY_DATA//no:c_personid[. =$initiates]
@@ -664,79 +541,40 @@ let $type-rel := $global:ENTRY_CODE_TYPE_REL//no:c_entry_code[ . = $initiate/../
 let $type :=  $global:ENTRY_TYPES//no:c_entry_type[. = $type-rel/../no:c_entry_type]
 let $parent-stat := $global:PARENTAL_STATUS_CODES//no:c_parental_status_code[. = $initiate/../no:c_parental_status/text()]
 
-(:
-[tts_sysno] INTEGER, 
- [c_personid] INTEGER,                          x
- [c_entry_code] INTEGER,                        x
- [c_sequence] INTEGER,                          x
- [c_exam_rank] CHAR(255),                       x                       
- [c_kin_code] INTEGER,                          x
- [c_kin_id] INTEGER,                            x
- [c_assoc_code] INTEGER,                        x
- [c_assoc_id] INTEGER,                          x
- [c_year] INTEGER,                              x
- [c_age] INTEGER,                               !
- [c_nianhao_id] INTEGER,                       d
- [c_entry_nh_year] INTEGER,                    d
- [c_entry_range] INTEGER,                      d
- [c_inst_code] INTEGER NOT NULL,             x
- [c_inst_name_code] INTEGER NOT NULL,        d
- [c_exam_field] CHAR(255),                     x
- [c_addr_id] INTEGER,                           x
- [c_parental_status] INTEGER,                 x
- [c_attempt_count] INTEGER,                    x
- [c_source] INTEGER,                            x
- [c_pages] CHAR(255),                           d
- [c_notes] CHAR,                                 x
- [c_posting_notes] CHAR(255),                  !
- [c_created_by] CHAR(255),                      d
- [c_created_date] CHAR(255),                    d
- [c_modified_by] CHAR(255),                     d
- [c_modified_date] CHAR(255),                   d
-:)
 
 return
-    element event{        
-        if (count($type) > 1)
-        then (attribute type {$type[. < 90][1]/text()})
-        else if (empty($type))
-              then (attribute type {'00'})
-              else (attribute type {$type/text()}),
-        
-        if (empty($code/text()))
-        then ()
-        else(attribute subtype {$code/text()}), 
-        
-        if ($initiate/../no:c_inst_code > 0)
-        then (attribute ref {concat('#ORG', $initiate/../no:c_inst_code)})
-        else(),
-        
-        if ($initiate/../no:c_year[. = 0] or empty($initiate/../no:c_year)) 
-        then ()
-        else (attribute when {cal:isodate($initiate/../no:c_year/text())}),
-        
-        if ($initiate/../no:c_addr_id[. = 0] or empty($initiate/../no:c_addr_id))
-        then ()
-        else (attribute where {concat('#PL', $initiate/../no:c_addr_id/text())}),
-        
-        attribute sortKey {$initiate/../no:c_sequence/text()},
+    element event{
+    (: about 100 entries are tagede both by '7 specials' and other (id =90) hence this awkward filter :)
+        for $att in $initiate/../*[. != '0']
+        order by local-name($att)
+        return
+            typeswitch ($att)
+                case element (no:c_entry_type) return if (count($type) > 1)
+                                                            then (attribute type {$type[. < 90][1]/text()})
+                                                            else if (empty($type))
+                                                                  then (attribute type {'00'})
+                                                                  else (attribute type {$att/text()})
+                case element (no:c_entry_code) return attribute subtype {$att/text()}
+                case element (no:c_inst_code) return attribute ref {concat('#ORG', $att/text())}
+                case element (no:c_year) return attribute when {cal:isodate($att)}
+                case element (no:c_addr_id) return attribute where {concat('#PL', $att/text())}
+                case element (no:c_sequence) return attribute sortKey {$att/text()}
+                case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
+            default return (),
         
         for $sponsor in $initiate
         return 
             if ($sponsor/../no:c_kin_id[. > 0] or $sponsor/../no:c_assoc_id[. > 0])
             then (attribute role {concat('#BIO', $sponsor/text())})
-            else (),    
-            
-        if ($initiate/../no:c_source[. = 0] or empty($initiate/../no:c_source))
-        then ()
-        else (attribute source{concat('#BIB', $initiate/../no:c_source/text())}),
+            else (),             
+        
         (: HEAD :)
             element head {'entry'},
+            
         (: LABEL :)
             if ($code[. < 1])
             then (element label {'unkown'})
-            else(
-                element label {attribute xml:lang {'zh-Hant'},
+            else (element label {attribute xml:lang {'zh-Hant'},
                     $code/../no:c_entry_desc_chn/text()},
                 element label {attribute xml:lang{'en'},
                     $code/../no:c_entry_desc/text()}),   
@@ -744,6 +582,7 @@ return
             if ($type[. < 1] or empty($type))
             then ()
             else if (count($type) > 1) 
+            
                   then (element desc { attribute type {$type[. < 90][1]/../no:c_entry_type_level/text()},
                             attribute subtype {$type[. < 90][1]/../no:c_entry_type_sortorder/text()},
                         element desc {attribute xml:lang {'zh-Hant'},
@@ -759,6 +598,7 @@ return
                             else (),
                             
                             $type[. < 90][1]/../no:c_entry_type_desc/text()}})
+                            
                   else (element desc { attribute type {$type/../no:c_entry_type_level/text()},
                             attribute subtype {$type/../no:c_entry_type_sortorder/text()},
                         element desc {attribute xml:lang {'zh-Hant'},
@@ -766,161 +606,104 @@ return
                         element desc {attribute xml:lang{'en'},
                             $type/../no:c_entry_type_desc/text()}}), 
                     
-            if ($initiate/../no:c_exam_field)
-            then (element note{ attribute type {'field'},
-                $initiate/../no:c_exam_field/text()})
-            else (),
-            
-            if ($initiate/../no:c_attempt_count[. > 0]) 
-            then (element note{ attribute type{'attempts'},
-                $initiate/../no:c_attempt_count/text()})
-            else (),
-            
-            if ($initiate/../no:c_exam_rank[. != '0']) 
-            then (element note{ attribute type{'rank'},
-                $initiate/../no:c_exam_rank/text()})
-            else (),  
-            
-            if ($initiate/../no:c_parental_status > 0)
-            then (element note { attribute type {'parental-status'}, 
-                    element trait { attribute type {'parental-status'},
-                        attribute key {$parent-stat/text()},
-                    element label {attribute xml:lang {'zh-Hant'},
-                        $parent-stat/../no:c_parental_status_desc_chn/text()}, 
-                    element label { attribute xml:lang {'zh-Latn-alalc97'},
-                        $parent-stat/../no:c_parental_status_desc/text()}
-                    }
-                  })
-            else (),        
-            
-            if ($initiate/../no:c_notes)
-            then (element note {$initiate/../no:c_notes/text()})
-            else ()
-    }                              
+            for $n in $initiate/../*[. != '0']
+            order by local-name($n)
+            return
+                typeswitch ($n)
+                    case element (no:c_exam_field) return element note { attribute type {'field'}, $n/text()}
+                    case element (no:c_attempt_count) return element note { attribute type {'attempts'}, $n/text()}
+                    case element (no:c_exam_rank) return element note { attribute type {'rank'}, $n/text()}
+                    case element (no:c_notes) return element note {$n/text()}
+                    case element (no:c_parental_status) 
+                        return element note { attribute type {'parental-status'}, 
+                                    element trait {
+                                        attribute type {'parental-status'},
+                                        attribute key {$n/text()},
+                                      element label {attribute xml:lang {'zh-Hant'},
+                                            $parent-stat/../no:c_parental_status_desc_chn/text()}, 
+                                      element label { attribute xml:lang {'zh-Latn-alalc97'},
+                                            $parent-stat/../no:c_parental_status_desc/text()}}}
+                default return ()
+    }                             
 };
 
 declare function biog:new-post ($appointees as node()*) as node()* {
+(:~ biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, 
+APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. 
 
-(: we need to ascertian a few things about dates and POST_DATA here:
-are there any instances where one conatins data that is not isodate or in POSTED_TO_OFFICE_DATA? :)
-
-(: TODO:
-- Turn postings into tei:event
-- check zh and western dates to make sure no dates are missing !!
+@param $appointees is a c_personid
+@returns socecStatus
 :)
-
-(:
- [tts_sysno] INTEGER,                           d
- [c_personid] INTEGER,                          x
- [c_office_id] INTEGER,                         x
- [c_posting_id] INTEGER,                        x
- [c_posting_id_old] INTEGER,                   d
- [c_sequence] INTEGER,                          x
- [c_firstyear] INTEGER,                         x
- [c_fy_nh_code] INTEGER, 
- [c_fy_nh_year] INTEGER, 
- [c_fy_range] INTEGER, 
- [c_lastyear] INTEGER,                          x
- [c_ly_nh_code] INTEGER, 
- [c_ly_nh_year] INTEGER, 
- [c_ly_range] INTEGER, 
- [c_appt_type_code] INTEGER,                   x
- [c_assume_office_code] INTEGER,              x
- [c_inst_code] INTEGER,                         !
- [c_inst_name_code] INTEGER,                    !
- [c_source] INTEGER,                             x
- [c_pages] CHAR(255),                            d
- [c_notes] CHAR,                                  x
- [c_office_id_backup] INTEGER,                  d
- [c_office_category_id] INTEGER,               x
- [c_fy_intercalary] BOOLEAN NOT NULL,           
- [c_fy_month] INTEGER, 
- [c_ly_intercalary] BOOLEAN NOT NULL, 
- [c_ly_month] INTEGER, 
- [c_fy_day] INTEGER, 
- [c_ly_day] INTEGER, 
- [c_fy_day_gz] INTEGER, 
- [c_ly_day_gz] INTEGER, 
- [c_dy] INTEGER, 
- [c_created_by] CHAR(255),                      d
- [c_created_date] CHAR(255),                    d
- [c_modified_by] CHAR(255),                     d
- [c_modified_date] CHAR(255),                   d
-:)
-
 
 for $post in $global:POSTED_TO_OFFICE_DATA//no:c_personid[. = $appointees]/../no:c_posting_id
+
 let $addr := $global:POSTED_TO_ADDR_DATA//no:c_posting_id[. = $post]
 let $cat := $global:OFFICE_CATEGORIES//no:c_office_category_id[. = $post/../no:c_office_category_id]
 let $appt := $global:APPOINTMENT_TYPE_CODES//no:c_appt_type_code[. = $post/../no:c_appt_type_code]
-let $assu := $global:ASSUME_OFFICE_CODES//no:c_assume_office_code[. =$post/../no:c_assume_office_code]
+let $assu := $global:ASSUME_OFFICE_CODES//no:c_assume_office_code[. = $post/../no:c_assume_office_code]
 
 order by $post/../no:c_sequence
+
 return
     element socecStatus{ attribute scheme {'#office'}, 
         attribute code {concat('#OFF', $post/../no:c_office_id)},
-        element state {
-            attribute type {'posting'},
-            attribute n {$post/text()},
-            if (empty($post/../no:c_sequence) or $post/../no:c_sequence = 0)
-            then ()
-            else (attribute key {$post/../no:c_sequence/text()}),        
-            if (empty($post/../no:c_firstyear) or $post/../no:c_firstyear = 0) 
-            then ()
-            else (attribute notBefore {cal:isodate($post/../no:c_firstyear/text())}),
-            if (empty($post/../no:c_lastyear) or $post/../no:c_lastyear = 0) 
-            then ()
-            else (attribute notAfter {cal:isodate($post/../no:c_lastyear/text())}),
-            if (empty($post/../no:c_source) or $post/../no:c_source = 0)
-            then ()
-            else (attribute source {concat('#BIB', $post/../no:c_source/text())}),        
-                           
-           if (empty($post/../no:c_appt_type_code))
-           then ()
-           else (element desc { element label {'appointment'},
-            element desc {attribute xml:lang {'zh-Hant'},
-                $appt/../no:c_appt_type_desc_chn/text()}, 
-            if (empty($appt/../no:c_appt_type_desc))
-            then ()
-            else (element desc {attribute xml:lang {'en'}, 
-                $appt/../no:c_appt_type_desc/text()})
-          }),
-          
-          if (empty($post/../no:c_assume_office_code))
-          then ()
-          else (element desc {element label {'assumes'},
-            element desc {attribute xml:lang {'zh-Hant'},
-                $assu/../no:c_assume_office_desc_chn/text()}, 
-            element desc {attribute xml:lang {'en'}, 
-                $assu/../no:c_assume_office_desc/text()}
-          }),
-          
-          if (empty($post/../no:c_notes))
-          then ()
-          else (element note {$post/../no:c_notes/text()})
-        },
         
-        if ($cat[. < 1] or empty($cat))
-        then ()
-        else (element state { attribute type {'office-type'},
-            if (empty($cat))
+        element state {attribute type {'posting'},
+        
+            if ($addr/../no:c_addr_id[. = 0])
             then ()
-            else (attribute n {$cat/text()}),
+            else (attribute ref {concat('#PL', $addr/../no:c_addr_id/text())}),
             
-            if (empty($cat/../no:c_category_desc_chn))
-            then ()
-            else ( element desc {attribute xml:lang {'zh-Hant'},
-                $cat/../no:c_category_desc_chn/text()}),
-            if (empty($cat/../no:c_category_desc))
-            then ()
-            else ( element desc {attribute xml:lang {'en'},
-                $cat/../no:c_category_desc/text()}),
-                
-        if (empty($cat/../no:c_notes)) 
-        then ()
-        else(<note>{$cat/../no:c_notes/text()}</note>)        
-        })
-    }
+            for $att in $post/../*[. != '0']
+            order by local-name($att)
+            return
+                typeswitch($att)
+                    case element (no:c_posting_id) return attribute n {$att/text()}
+                    case element (no:c_sequence) return attribute key {$att/text()}
+                    case element (no:c_firstyear) return attribute notBefore {cal:isodate($att)}
+                    case element (no:c_lastyear) return attribute notAfter {cal:isodate($att)}
+                    case element (no:c_source) return attribute source {concat('#BIB', $att/text())}                    
+               default return (),
+         (: Desc:)
+            for $n in $post/../*
+            order by local-name($n)
+            return
+                typeswitch($n)
+                    case element (no:c_appt_type_code) 
+                        return element desc { 
+                                    element label {'appointment'},
+                                    element desc { attribute xml:lang {'zh-Hant'},
+                                        $appt/../no:c_appt_type_desc_chn/text()},
+                                        
+                                if (empty($appt/../no:c_appt_type_desc))
+                                then ()
+                                else (element desc { attribute xml:lang {'en'}, 
+                                    $appt/../no:c_appt_type_desc/text()})}
+                                    
+                    case element (no:c_assume_office_code) 
+                        return element desc { element label {'assumes'},
+                                    element desc { attribute xml:lang {'zh-Hant'},
+                                        $assu/../no:c_assume_office_desc_chn/text()}, 
+                                    element desc { attribute xml:lang {'en'}, 
+                                        $assu/../no:c_assume_office_desc/text()}}
+                                        
+                    case element (no:c_notes) return element note {$n/text()}
+                    case element (no:c_office_category_id) 
+                        return if ($cat[. = 0])
+                                then ()
+                                else (element state { attribute type {'office-type'},
+                                    attribute n {$cat/text()}, 
+                                 
+                                 for $x in $cat/../*
+                                 order by local-name($x) descending
+                                 return
+                                     typeswitch ($x)
+                                         case element (no:c_category_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $x/text()}
+                                         case element (no:c_category_desc) return element desc { attribute xml:lang {'en'}, $x/text()}
+                                         case element (no:c_notes) return element note {$x/text()}
+                                     default return ()})
+                default return ()}
+        }
 };
 
 declare function biog:posses ($possessions as node()*) as node()* {
@@ -1531,6 +1314,7 @@ let $output :=
                 if ($person/../no:c_ethnicity_code > 0) 
                 then (<trait type="ethnicity" key="{$ethnicity/../no:c_group_code/text()}">
                         {for $n in $ethnicity/../*
+                        order by local-name($n) descending
                         return
                          typeswitch ($n)
                              case element (no:c_ethno_legal_cat) return element label {$n/text()}
