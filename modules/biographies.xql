@@ -10,7 +10,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
-declare namespace biog= "http://exist-db.org/apps/cbdb-data/biographies";
+declare namespace biog="http://exist-db.org/apps/cbdb-data/biographies";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
@@ -33,7 +33,7 @@ To avoid duplication biog:name checks if sure-/forname components can be fully i
 and returns the respcctive elements, otherwise persName takes a single string value. 
 
 @param $names variations of no:c_name from different tables. 
-@param $lang either:
+@param $lang can take 4 values:
     'py' for pinyin, 'hz' for hanzi, 
     'proper' or 'rm' for names other then Chinese .
 :)
@@ -681,7 +681,8 @@ return
                                     $appt/../no:c_appt_type_desc/text()})}
                                     
                     case element (no:c_assume_office_code) 
-                        return element desc { element label {'assumes'},
+                        return element desc { 
+                                    element label {'assumes'},
                                     element desc { attribute xml:lang {'zh-Hant'},
                                         $assu/../no:c_assume_office_desc_chn/text()}, 
                                     element desc { attribute xml:lang {'en'}, 
@@ -707,90 +708,51 @@ return
 };
 
 declare function biog:posses ($possessions as node()*) as node()* {
-(: This function reads possession data and creates a tei:state[@type = 'possession'] element
+(:~ biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, 
+and MEASURE_CODES. It produces a state element.
 
-So far there are only five entries (18332, 13550, 45279, 45518, 3874) in CBDB, with whole columns as NULL.
+There is barely any data in here so future version will undoubtedly see changes. 
 
+@param $possessions is a c_personid
+@returns state. 
 :)
 
-(:[c_personid] INTEGER,                                 x
- [c_possession_record_id] INTEGER PRIMARY KEY,       x
- [c_sequence] INTEGER,                                  x                                      
- [c_possession_act_code] INTEGER,                       x
- [c_possession_desc] CHAR(50),                          x
- [c_possession_desc_chn] CHAR(50),                      x
- [c_quantity] CHAR(50),                                  x
- [c_measure_code] INTEGER,                               x   
- [c_possession_yr] INTEGER,                             x
- [c_possession_nh_code] INTEGER,                        !
- [c_possession_nh_yr] INTEGER,                          !
- [c_possession_yr_range] INTEGER,                       !
- [c_addr_id] INTEGER,                                     x
- [c_source] INTEGER,                                      x      
- [c_pages] CHAR(50),                                      d
- [c_notes] CHAR,                                           x
- [c_created_by] CHAR(255),                               d
- [c_created_date] CHAR(255),                            d
- [c_modified_by] CHAR(255),                             d
- [c_modified_date] CHAR(255))                           d
- 
- :)
-
 for $stuff in $global:POSSESSION_DATA//no:c_personid[. = $possessions][. > 0]
+
 let $act := $global:POSSESSION_ACT_CODES//no:c_possession_act_code[ . = $stuff/../no:c_possession_act_code]
 let $where := $global:POSSESSION_ADDR//no:c_possession_row_id[. = $stuff/../no:c_possession_row_id]
 let $unit := $global:MEASURE_CODES//no:c_measure_code[. = $stuff/../no:c_measure_code]
 
+order by $stuff/../no:c_sequence
+
 return 
-    element state{ 
-        attribute xml:id {concat('POS', $stuff/../no:c_possession_row_id/text())},
-        attribute type {'possession'}, 
-        switch ($act)
-            case '0' return ()
-            default return attribute subtype {$act/../no:c_possession_act_desc/text()},
+    element state{        
+        attribute type {'possession'},       
             
-(:     in the future the return for $units needs to be tokenized    :)
-        if (empty($stuff/../no:c_measure_code))
-        then ()
-        else ( attribute unit {$unit/../no:c_measure_desc/text()}),
-        
-        if (empty($stuff/../no:c_quantity))
-        then ()
-        else (attribute quantity {$stuff/../no:c_quantity/text()}), 
-        
-        if (empty($stuff/../no:c_sequence))
-        then ()
-        else (attribute n {$stuff/../no:c_sequence/text()}),
-        
-        if (empty($stuff/../no:c_possession_yr))
-        then ()
-        else (attribute when {cal:isodate($stuff/../no:c_possession_yr)}),
-        
-        if (empty($stuff/../no:c_source))
-        then ()
-        else (attribute source {concat('#BIB',$stuff/../no:c_source/text())}),
-        
-(:      Back to normal  :)
+        for $att in $stuff/../*[. != '0']
+        order by local-name($att)
+        return
+            typeswitch($att)
+                case element (no:c_possession_row_id) return attribute xml:id {concat('POS', $att/text())}
+                (:     in the future the return for $units needs to be tokenized    :)
+                case element (no:c_measure_code) return attribute unit {$unit/../no:c_measure_desc/text()}
+                case element (no:c_quantity) return attribute quantity {$att/text()}
+                case element (no:c_sequence) return attribute n {$att/text()}
+                case element (no:c_possession_yr) return attribute when {cal:isodate($att)}
+                case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
+                case element (no:c_possession_act_code) return attribute subtype {$act/../no:c_possession_act_desc/text()}
+            default return (),            
+    (: DESC  :)
         element desc {
-            if (empty($stuff/../no:c_possession_desc_chn))
-            then ()
-            else (element desc {attribute xml:lang {'zh-Hant'},
-                            $stuff/../no:c_possession_desc_chn/text()}),
-                            
-            if (empty($stuff/../no:c_possession_desc))
-            then ()
-            else (element desc {attribute xml:lang {'en'},
-                            $stuff/../no:c_possession_desc/text()}),
-            
-            if (empty($stuff/../no:c_addr_id))
-            then ()
-            else (element placeName { 
-                attribute ref { concat('#PL', $stuff/../no:c_addr_id/text())}})
-                },
-        if (empty($stuff/../no:c_notes)) 
-        then ()
-        else (element note {$stuff/../no:c_notes/text()})
-        
+            for $n in $stuff/../*[. != '0']
+            order by local-name($n) descending
+            return
+                typeswitch($n)
+                    case element (no:c_possession_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
+                    case element (no:c_possession_desc) return element desc { attribute xml:lang {'en'}, $n/text()}
+                    case element (no:c_addr_id) return element placeName { attribute ref { concat('#PL', $n/text())}}
+                    case element (no:c_notes) return element note {$n/text()}
+                default return ()}       
     }
 };
 

@@ -84,5 +84,7 @@ whats up with ``POSTED_TO_ADDR_DATA``?
 
 #### TODO
 * Turn postings into ``tei:event``?
+* check placement of ``@ref`` for ``c_addr_id`` compare possessions
 
 ### biog:posses
+Currently there are only five entries (c_personid: ``18332``, ``13550``, ``45279``, ``45518``, ``3874``)

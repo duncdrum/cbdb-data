@@ -123,87 +123,57 @@ return
 (:local:upgrade-contents($global:BIOG_MAIN//no:c_personid[. > 0][. < 2]):)
 
 
-declare function local:new-post ($appointees as node()*) as node()* {
-(:~ biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, 
-APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. 
+declare function local:posses ($possessions as node()*) as node()* {
+(:~ biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, 
+and MEASURE_CODES. It produces a state element.
 
-@param $appointees is a c_personid
-@returns socecStatus
+There is barely any data in here so future version will undoubtedly see changes. 
+
+@param $possessions is a c_personid
+@returns state. 
 :)
 
-for $post in $global:POSTED_TO_OFFICE_DATA//no:c_personid[. = $appointees]/../no:c_posting_id
+for $stuff in $global:POSSESSION_DATA//no:c_personid[. = $possessions][. > 0]
 
-let $addr := $global:POSTED_TO_ADDR_DATA//no:c_posting_id[. = $post]
-let $cat := $global:OFFICE_CATEGORIES//no:c_office_category_id[. = $post/../no:c_office_category_id]
-let $appt := $global:APPOINTMENT_TYPE_CODES//no:c_appt_type_code[. = $post/../no:c_appt_type_code]
-let $assu := $global:ASSUME_OFFICE_CODES//no:c_assume_office_code[. = $post/../no:c_assume_office_code]
+let $act := $global:POSSESSION_ACT_CODES//no:c_possession_act_code[ . = $stuff/../no:c_possession_act_code]
+let $where := $global:POSSESSION_ADDR//no:c_possession_row_id[. = $stuff/../no:c_possession_row_id]
+let $unit := $global:MEASURE_CODES//no:c_measure_code[. = $stuff/../no:c_measure_code]
 
-order by $post/../no:c_sequence
+order by $stuff/../no:c_sequence
 
-return
-    element socecStatus{ attribute scheme {'#office'}, 
-        attribute code {concat('#OFF', $post/../no:c_office_id)},
-        
-        element state {attribute type {'posting'},
-        
-            if ($addr/../no:c_addr_id[. = 0])
-            then ()
-            else (attribute ref {concat('#PL', $addr/../no:c_addr_id/text())}),
+return 
+    element state{        
+        attribute type {'possession'},       
             
-            for $att in $post/../*[. != '0']
-            order by local-name($att)
-            return
-                typeswitch($att)
-                    case element (no:c_posting_id) return attribute n {$att/text()}
-                    case element (no:c_sequence) return attribute key {$att/text()}
-                    case element (no:c_firstyear) return attribute notBefore {cal:isodate($att)}
-                    case element (no:c_lastyear) return attribute notAfter {cal:isodate($att)}
-                    case element (no:c_source) return attribute source {concat('#BIB', $att/text())}                    
-               default return (),
-         (: Desc:)
-            for $n in $post/../*
-            order by local-name($n)
+        for $att in $stuff/../*[. != '0']
+        order by local-name($att)
+        return
+            typeswitch($att)
+                case element (no:c_possession_row_id) return attribute xml:id {concat('POS', $att/text())}
+                (:     in the future the return for $units needs to be tokenized    :)
+                case element (no:c_measure_code) return attribute unit {$unit/../no:c_measure_desc/text()}
+                case element (no:c_quantity) return attribute quantity {$att/text()}
+                case element (no:c_sequence) return attribute n {$att/text()}
+                case element (no:c_possession_yr) return attribute when {cal:isodate($att)}
+                case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
+                case element (no:c_possession_act_code) return attribute subtype {$act/../no:c_possession_act_desc/text()}
+            default return (),            
+    (: DESC  :)
+        element desc {
+            for $n in $stuff/../*[. != '0']
+            order by local-name($n) descending
             return
                 typeswitch($n)
-                    case element (no:c_appt_type_code) 
-                        return element desc { 
-                                    element label {'appointment'},
-                                    element desc { attribute xml:lang {'zh-Hant'},
-                                        $appt/../no:c_appt_type_desc_chn/text()},
-                                        
-                                if (empty($appt/../no:c_appt_type_desc))
-                                then ()
-                                else (element desc { attribute xml:lang {'en'}, 
-                                    $appt/../no:c_appt_type_desc/text()})}
-                                    
-                    case element (no:c_assume_office_code) 
-                        return element desc { element label {'assumes'},
-                                    element desc { attribute xml:lang {'zh-Hant'},
-                                        $assu/../no:c_assume_office_desc_chn/text()}, 
-                                    element desc { attribute xml:lang {'en'}, 
-                                        $assu/../no:c_assume_office_desc/text()}}
-                                        
+                    case element (no:c_possession_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
+                    case element (no:c_possession_desc) return element desc { attribute xml:lang {'en'}, $n/text()}
+                    case element (no:c_addr_id) return element placeName { attribute ref { concat('#PL', $n/text())}}
                     case element (no:c_notes) return element note {$n/text()}
-                    case element (no:c_office_category_id) 
-                        return if ($cat[. = 0])
-                                then ()
-                                else (element state { attribute type {'office-type'},
-                                    attribute n {$cat/text()}, 
-                                 
-                                 for $x in $cat/../*
-                                 order by local-name($x) descending
-                                 return
-                                     typeswitch ($x)
-                                         case element (no:c_category_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $x/text()}
-                                         case element (no:c_category_desc) return element desc { attribute xml:lang {'en'}, $x/text()}
-                                         case element (no:c_notes) return element note {$x/text()}
-                                     default return ()})
-                default return ()}
-        }
+                default return ()}       
+    }
 };
 
 
-let $test := $global:BIOG_MAIN//no:c_personid[. = 45071]
+let $test := $global:BIOG_MAIN//no:c_personid[. = 3874]
 (:The ids in $erors contained validation errors on 2nd run 
 <ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>
 
@@ -235,7 +205,8 @@ biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 
 for $person in $test
 return
-biog:new-post($person)
+(local:posses($person), 
+biog:posses($person))
 
 (:return $global:POSTED_TO_OFFICE_DATA//no:c_office_category_id[. >0]/../no:c_personid:)
 
