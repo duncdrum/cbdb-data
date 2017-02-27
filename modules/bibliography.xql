@@ -21,7 +21,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
  @author Duncan Paterson
  @version 0.6
  
- @return listBibl
+ @return listBibl.xml
 :)
 
 declare function bib:bibl-dates($dates as node()*, $type as xs:string?) as node()* {

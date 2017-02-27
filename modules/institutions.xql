@@ -14,41 +14,31 @@ declare namespace org = "http://exist-db.org/apps/cbdb-data/institutions";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
-(:local:org does what biographies does for persons for institutions.:)
+(:~
+ This module does what biographies does for persons for institutions.
+
+ @author Duncan Paterson
+ @version 0.6
+ 
+ @return listOrg.xml
+:)
 
 declare function org:org ($institutions as node()*, $mode as xs:string?) as item()* {
-(:This function writes the org / orgName elements to be stored in listOrg.xml.
-altName tables, and address-type tables are empty!!
+(:~ 
+ This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_NAME_CODES, 
+ SOCIAL_INSTITUTION_TYPES,  SOCIAL_INSTITUTION_ALTNAME_DATA, SOCIAL_INSTITUTION_ALTNAME_CODES, 
+ SOCIAL_INSTITUTION_ADDR, and SOCIAL_INSTITUTION_ADDR_TYPES into TEI. 
+ 
+ However, the altName tables, and address-type tables are empty!
+ @param $institutions is a c_inst_code
+ @param $mode can take three efective values:
+ 'v' = validate; preforms a validation of the output before passing it on. 
+ ' ' = normal; runs the transformation without validation.
+ 'd' = debug; this is the slowest of all modes.
+ 
+ @return org 
 :)
 
-(:TODO
-- careful this has a combined primary key between inst_name and inst_code
-- fix datable -custom stuff otherwise ok
-- friggin YEAR_RANGE_CODES are back
-= most of this fields in these tables are empty 
-:)
-
-(:
-[c_inst_name_code] INTEGER,                    d
- [c_inst_code] INTEGER,                         x
- [c_inst_type_code] INTEGER,                   x
- [c_inst_begin_year] INTEGER,                  x
- [c_by_nianhao_code] INTEGER,                  x               
- [c_by_nianhao_year] INTEGER,                  x
- [c_by_year_range] INTEGER,                    d              
- [c_inst_begin_dy] INTEGER,                    x                  
- [c_inst_floruit_dy] INTEGER,                  x                 
- [c_inst_first_known_year] INTEGER,           x          
- [c_inst_end_year] INTEGER,                    x                  
- [c_ey_nianhao_code] INTEGER,                  x                 
- [c_ey_nianhao_year] INTEGER,                  x           
- [c_ey_year_range] INTEGER,                    x                  
- [c_inst_end_dy] INTEGER,                      x              
- [c_inst_last_known_year] INTEGER,           x
- [c_source] INTEGER,                           x
- [c_pages] CHAR(50),                           d
- [c_notes] CHAR,                                x
-:)
 let $output := 
     for $org in $institutions
     

@@ -22,7 +22,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
  @author Duncan Paterson
  @version 0.6
  
- @return person record for each unique c_personid. 
+ @return /listPerson/chunk-XX/block-XXXX/cbdb-XXXXXXX.xml 
 :)
 
 
