@@ -13,22 +13,37 @@ import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "g
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES inot a nested tei:taxonomy.
-the categories appear mostly listBibl.xml
+(:~
+genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into a nested tei:taxonomy.
+these are referenced from listBibl.xml. 
+
+The exact difference between bibliographical category codes, and category types is unclear. 
+This module joins them within on taxonomy and at the level speciefied in the sources. 
+
+ @author Duncan Paterson
+ @version 0.6
+ 
 :)
 
-(:!!!Calling this function overwrites data!!!:)
+(: !!! UPDATING FUNCTION, OVERWRITES DATA !!!:)
 
 declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?)  as item()* {
 
-(:This function transforms $TEXT_BIBLCAT_TYPES inoto nested tei:categoreis.
+(:gen:nest-types transforms TEXT_BIBLCAT_TYPES into nested categories.
+It should be called recursively. 
 
+@param $types row in TEXT_BIBLCAT_TYPES
+@param $type-id is a c_text_cat_type_id
+@param $zh category name in Chinese
+@param $en category name in English
+@param $mode can take three efective values:
+'v' = validate; preforms a validation of the output before passing it on. 
+' ' = normal; runs the transformation without validation.
+'d' = debug; this is the slowest of all modes.
+
+@return nested category[@xml:id ="biblType"].
 :)
 
-(:TODO
--  Q: Is there  any use for $TEXT_BIBLCAT_TYPES_1 and $TEXT_BIBLCAT_TYPES_2? 
-   A: NO!
-:)
 let $output := 
 element category { attribute xml:id {concat('biblType',  $type-id/text())},        
     element catDesc {attribute xml:lang {'zh-Hant'},
@@ -47,7 +62,9 @@ return
     default return $output       
 };
 
-
+(: call recursive function from top level elements. 
+@param $typeTree the nested tree of types stored in the db. 
+:)
 let $types := $global:TEXT_BIBLCAT_TYPES//no:row
 let $typeTree := xmldb:store($global:target, $global:genre, 
                     <taxonomy xml:id="biblCat">
@@ -61,7 +78,9 @@ let $typeTree := xmldb:store($global:target, $global:genre,
                         </category>
                     </taxonomy>)
 
-
+(:~
+inserts the genre categories codes, into the previously generated tree of category types. 
+:)
 for $cat in $global:TEXT_BIBLCAT_CODES//no:c_text_cat_code
 
 let $type-id := $global:TEXT_BIBLCAT_CODE_TYPE_REL//no:c_text_cat_code[ . = $cat]/../no:c_text_cat_type_id
@@ -73,7 +92,7 @@ let $category := element category { attribute xml:id {concat('biblCat',  $cat/te
                         $cat/../no:c_text_cat_pinyin/text()},    
                     element catDesc {attribute xml:lang {'en'},
                         $cat/../no:c_text_cat_desc/text()}}
-
+order by $cat[c_text_cat_sortorder]
 return
  update insert $category into $type/..
  

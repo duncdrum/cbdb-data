@@ -1,7 +1,7 @@
 # xQuery Function Documentation
 
 ## Module: biographies
-
+[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a spreadsheet listing each column used in this conversion.  
 ### biog:kin 
 
 #### 9 basic categories of kinship Source: CBDB Manual p 13f
@@ -88,3 +88,19 @@ whats up with ``POSTED_TO_ADDR_DATA``?
 
 ### biog:posses
 Currently there are only five entries (c_personid: ``18332``, ``13550``, ``45279``, ``45518``, ``3874``)
+
+#### TODO
+* make use of ``@ref="#PL..."`` consistent for all ``state`` elements. 
+
+### biog:pers-add
+
+#### TODO
+* addd ``BIOG_ADDR_CODES//no:c_addr_note`` values to ODD
+
+### biog:inst-add
+There are no dates in the src tables. 
+
+### biog:biog
+
+#### TODO
+* ``c_self_bio`` from ``$source`` is dropped change to attribute when refactoring query syntax?
