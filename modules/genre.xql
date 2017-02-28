@@ -31,8 +31,8 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?)  as item()* {
 
-(:gen:nest-types transforms TEXT_BIBLCAT_TYPES into nested categories.
- It should be called recursively. 
+(:~ 
+ gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories. 
 
  @param $types row in TEXT_BIBLCAT_TYPES
  @param $type-id is a c_text_cat_type_id
@@ -43,7 +43,7 @@ declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as n
  ' ' = normal; runs the transformation without validation.
  'd' = debug; this is the slowest of all modes.
 
- @return nested category[@xml:id ="biblType"].
+ @return nested category[@xml:id ="biblType"]
 :)
 
 let $output := 
@@ -64,7 +64,8 @@ return
     default return $output       
 };
 
-(: call recursive function from top level elements. 
+(:~
+ call recursive function from top level elements. 
  @param $typeTree the nested tree of types stored in the db. 
 :)
 let $types := $global:TEXT_BIBLCAT_TYPES//no:row
@@ -94,7 +95,7 @@ let $category := element category { attribute xml:id {concat('biblCat',  $cat/te
                         $cat/../no:c_text_cat_pinyin/text()},    
                     element catDesc {attribute xml:lang {'en'},
                         $cat/../no:c_text_cat_desc/text()}}
-order by $cat[c_text_cat_sortorder]
+(:order by number($cat/../no:c_text_cat_sortorder):)
 return
  update insert $category into $type/..
  

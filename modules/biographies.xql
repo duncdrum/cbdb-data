@@ -22,7 +22,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
  @author Duncan Paterson
  @version 0.6
  
- @return /listPerson/chunk-XX/block-XXXX/cbdb-XXXXXXX.xml 
+ @return 370k person elements stored individualiy as /listPerson/chunk-XX/block-XXXX/cbdb-XXXXXXX.xml 
 :)
 
 
@@ -689,24 +689,26 @@ return
                                     element desc { attribute xml:lang {'zh-Hant'},
                                         $assu/../no:c_assume_office_desc_chn/text()}, 
                                     element desc { attribute xml:lang {'en'}, 
-                                        $assu/../no:c_assume_office_desc/text()}}
-                                        
+                                        $assu/../no:c_assume_office_desc/text()}}                                        
                     case element (no:c_notes) return element note {$n/text()}
-                    case element (no:c_office_category_id) 
-                        return if ($cat[. = 0])
-                                then ()
-                                else (element state { attribute type {'office-type'},
-                                    attribute n {$cat/text()}, 
-                                 
-                                 for $x in $cat/../*
-                                 order by local-name($x) descending
-                                 return
-                                     typeswitch ($x)
-                                         case element (no:c_category_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $x/text()}
-                                         case element (no:c_category_desc) return element desc { attribute xml:lang {'en'}, $x/text()}
-                                         case element (no:c_notes) return element note {$x/text()}
-                                     default return ()})
-                default return ()}
+                default return ()},
+                
+                if ($cat[. = 0])
+                then ()
+                else (element state { attribute type {'office-type'},
+                    attribute n {$cat/text()}, 
+                    for $x in $cat/../*
+                    order by local-name($x) descending
+                    return
+                        typeswitch ($x)
+                            case element (no:c_category_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $x/text()}
+                            case element (no:c_category_desc) return element desc { attribute xml:lang {'en'}, $x/text()}                            
+                        default return (), 
+                        
+                    if (empty($cat/../no:c_notes))
+                    then ()
+                    else (element note {$cat/../no:c_notes/text()})
+                })
         }
 };
 

@@ -6,9 +6,9 @@ import module namespace functx="http://www.functx.com";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 import module namespace pla="http://exist-db.org/apps/cbdb-data/place" at "place.xql";
-import module namespace biog= "http://exist-db.org/apps/cbdb-data/biographies" at "biographies.xql";
+import module namespace biog="http://exist-db.org/apps/cbdb-data/biographies" at "biographies.xql";
 import module namespace bib="http://exist-db.org/apps/cbdb-data/bibliography" at "bibliography.xql";
-
+import module namespace org="http://exist-db.org/apps/cbdb-data/institutions" at "institutions.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
@@ -16,7 +16,12 @@ declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:Aux.xql contains helper functions mostly for cleaning data and constructing functions.:)
+(:~ 
+this module contains helper function  mostly for cleaning data, testing and constructing other functions.
+
+ @author Duncan Paterson
+ @version 0.6
+:)
 
 
 declare function local:table-variables($f as node()*) as xs:string {
@@ -122,63 +127,11 @@ return
 };
 (:local:upgrade-contents($global:BIOG_MAIN//no:c_personid[. > 0][. < 2]):)
 
-
-declare function local:posses ($possessions as node()*) as node()* {
-(:~ biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, 
-and MEASURE_CODES. It produces a state element.
-
-There is barely any data in here so future version will undoubtedly see changes. 
-
-@param $possessions is a c_personid
-@returns state. 
-:)
-
-for $stuff in $global:POSSESSION_DATA//no:c_personid[. = $possessions][. > 0]
-
-let $act := $global:POSSESSION_ACT_CODES//no:c_possession_act_code[ . = $stuff/../no:c_possession_act_code]
-let $where := $global:POSSESSION_ADDR//no:c_possession_row_id[. = $stuff/../no:c_possession_row_id]
-let $unit := $global:MEASURE_CODES//no:c_measure_code[. = $stuff/../no:c_measure_code]
-
-order by $stuff/../no:c_sequence
-
-return 
-    element state{        
-        attribute type {'possession'},       
-            
-        for $att in $stuff/../*[. != '0']
-        order by local-name($att)
-        return
-            typeswitch($att)
-                case element (no:c_possession_row_id) return attribute xml:id {concat('POS', $att/text())}
-                (:     in the future the return for $units needs to be tokenized    :)
-                case element (no:c_measure_code) return attribute unit {$unit/../no:c_measure_desc/text()}
-                case element (no:c_quantity) return attribute quantity {$att/text()}
-                case element (no:c_sequence) return attribute n {$att/text()}
-                case element (no:c_possession_yr) return attribute when {cal:isodate($att)}
-                case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
-                case element (no:c_possession_act_code) return attribute subtype {$act/../no:c_possession_act_desc/text()}
-            default return (),            
-    (: DESC  :)
-        element desc {
-            for $n in $stuff/../*[. != '0']
-            order by local-name($n) descending
-            return
-                typeswitch($n)
-                    case element (no:c_possession_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
-                    case element (no:c_possession_desc) return element desc { attribute xml:lang {'en'}, $n/text()}
-                    case element (no:c_addr_id) return element placeName { attribute ref { concat('#PL', $n/text())}}
-                    case element (no:c_notes) return element note {$n/text()}
-                default return ()}       
-    }
-};
-
-
-let $test := $global:BIOG_MAIN//no:c_personid[. = 3874]
-(:The ids in $erors contained validation errors on 2nd run 
+(:The ids in $errors contained validation errors on 2nd run 
 <ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>
 
 This fixes those errors (mostly in the source files)
-impossiblke dates in the source files were set via
+impossible dates in the source files were set via
 
 update  value $person/../no:c_by_day with 28
 :)
@@ -203,22 +156,12 @@ biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 :)
 
 
-for $person in $test
+let $test-bio := $global:BIOG_MAIN//no:c_personid[. > 0][. < 2075]
+let $test-bib := $global:TEXT_CODES//no:c_textid[. > 2000][. < 2101]
+let $test-org := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]
+
+for $person in $test-org
 return
-(local:posses($person), 
-biog:posses($person))
+    org:org($person, 'v')
 
-(:return $global:POSTED_TO_OFFICE_DATA//no:c_office_category_id[. >0]/../no:c_personid:)
-
-(:for $status in lglobal:STATUS_DATA//no:c_personid[. = 51]
-let $code := $global:STATUSlCODES//no:c_status_code[. = $status/../no:c_status_code]
-return
-<full>
-{$status/..},
-{$code/..}
-</full>:)
-
-
-(:return
-    $global:BIOG_MAIN//no:c_choronym_code[. = 1]/..[1]:)
             

@@ -173,6 +173,7 @@ data from TEXT_DATA, TEXT_BIBLCAT_CODES, TEXT_TYPE, EXTANT_CODES, and COUNTRY_CO
 ' ' = normal; runs the transformation without validation.
 'd' = debug; this is the slowest of all modes.  
 
+@return listBibl.xml
 :)
 
 let $output := 
@@ -186,7 +187,8 @@ let $output :=
     let $extant := $global:EXTANT_CODES//no:c_extant_code[. = $text/../no:c_extant/text()]
     let $country := $global:COUNTRY_CODES//no:c_country_code[. = $text/../no:c_pub_country/text()]
     let $txtcountry :=  $global:COUNTRY_CODES//no:c_country_code[. = $text/../no:c_text_country/text()]
-
+    
+    order by number($text/../no:c_textid)
     return    
         element bibl { attribute xml:id{concat("BIB", $text/text())},
         if ($type > 0 and $cat > 0)
