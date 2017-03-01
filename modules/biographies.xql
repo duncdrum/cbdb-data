@@ -29,16 +29,16 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 (:NAMES:)
 declare function biog:name ($names as node()*, $lang as xs:string?) as node()* {
 (:~
-biog:name reads extended name parts from BIOG_MAIN.
-To avoid duplication biog:name checks if sure-/forname components can be fully identified,
-and returns the respective elements, otherwise persName takes a single string value. 
+ biog:name reads extended name parts from BIOG_MAIN.
+ To avoid duplication biog:name checks if sure-/forname components can be fully identified,
+ and returns the respective elements, otherwise persName takes a single string value. 
 
-@param $names variations of no:c_name from different tables. 
-@param $lang can take 4 values:
+ @param $names variations of no:c_name from different tables. 
+ @param $lang can take 4 values:
     'py' for pinyin, 'hz' for hanzi, 
     'proper' or 'rm' for names other then Chinese.
 
-@return persName
+ @return persName
 :)
 
 let $choro := $global:CHORONYM_CODES//no:c_choronym_code[. = $names/../no:c_choronym_code]
@@ -115,9 +115,10 @@ return
 }; 
 
 declare function biog:alias ($person as node()*) as node()* {
-(:~ biog:alias outputs aliases, such as pen-names, reign titles, from ALTNAME_DATA, and ALTNAME_CODES. 
-@param $person is a c_personid
-@return persName[@type = "alias"]
+(:~ 
+ biog:alias outputs aliases, such as pen-names, reign titles, from ALTNAME_DATA, and ALTNAME_CODES. 
+ @param $person is a c_personid
+ @return persName[@type = "alias"]
 :)
 
 for $person in $global:ALTNAME_DATA//no:c_personid[. =$person]
@@ -160,11 +161,12 @@ return
 
 (:RELATIONS:)
 declare function biog:kin ($self as node()*) as node()* {
-(:~ biog:kin  constructs an egocentric network of kinship relations from: KING_DATA, KING_CODES and Kin_Mourning.
-The output's structure should match biog:asso's.
+(:~ 
+ biog:kin  constructs an egocentric network of kinship relations from: KING_DATA, KING_CODES and Kin_Mourning.
+ The output's structure should match biog:asso's.
 
-@param $self is a c_personid 
-@return relation
+ @param $self is a c_personid 
+ @return relation
 :)
     
 for $kin in $global:KIN_DATA//no:c_personid[. = $self]
@@ -242,19 +244,19 @@ return
 
 declare function biog:asso ($ego as node()*) as node()* {
 (:~
-biog:asso constructs a network of assoication relations from: ASSOC_DATA, ASSOC_CODES, 
-ASSOC_TYPES, and ASSOC_CODE_TYPE_REL.  
+ biog:asso constructs a network of assoication relations from: ASSOC_DATA, ASSOC_CODES, 
+ ASSOC_TYPES, and ASSOC_CODE_TYPE_REL.  
 
-Annotations from: SCHOLARLYTOPIC_CODES, OCCASION_CODES, and LITERARYGENRE_CODES.
+ Annotations from: SCHOLARLYTOPIC_CODES, OCCASION_CODES, and LITERARYGENRE_CODES.
 
-Because TEI declares  active/passsive relations more strcitly then CBDB, the following relations
-remain problematic:
-let $passive := ('Executed at the order of', 'Killed by followers of',
+ Because TEI declares  active/passsive relations more strcitly then CBDB, the following relations
+ remain problematic:
+ let $passive := ('Executed at the order of', 'Killed by followers of',
                 'was served by the medical arts of',
                 'Funerary stele written (for a third party) at the request of',
                 'Killed by followers of', 'His coalition attacked', 'Was claimed kin with')
                 
-let $active :=  ('Knew','Tried and found guilty'
+ let $active :=  ('Knew','Tried and found guilty'
        ,'Fought against the rebel','Hired to teach in lineage school' 
        ,'proceeded with (friendship)','Defeated in battle'
        ,'Treated with respect','Served as lady-in-waiting' 
@@ -266,10 +268,10 @@ let $active :=  ('Knew','Tried and found guilty'
        ,'Requested Funerary stele be written by','Requested Tomb stone (mubiao) be written by'
        ,'opposed assertion of emperorship by')
 
-The output's structure should match biog:kin's.
+ The output's structure should match biog:kin's.
 
-@param $ego is a c_personid 
-@return relation
+ @param $ego is a c_personid 
+ @return relation
 :)
 
     for $individual in $global:ASSOC_DATA//no:c_personid[. = $ego]
@@ -323,7 +325,7 @@ The output's structure should match biog:kin's.
                 then (attribute source {concat('#BIB', $individual/../no:c_source/text())})
                 else (),
                 
-        (:     DESC           :)
+        (: DESC :)
                 if (empty($code/../no:c_assoc_role_type))
                 then ()
                 else (element desc {
@@ -349,7 +351,7 @@ The output's structure should match biog:kin's.
                          element label {$type/../no:c_assoc_type_desc/text()}
                      },
                     
-            (:      STATE         :)
+            (: STATE :)
                      if ($individual/../no:c_addr_id[. > 0] or $individual/../no:c_inst_code[. > 0]
                         or exists($individual/../no:c_assoc_year) or $individual/../no:c_occasion_code[. > 0]
                         or $individual/../no:c_topic_code[. > 0] or $individual/../no:c_litgenre_code[. > 0]
@@ -380,7 +382,7 @@ The output's structure should match biog:kin's.
                                element label { attribute xml:lang {'zh-Latn-alalc97'},
                                    $occcasion/../no:c_occasion_desc/text()}),
                                    
-                       (:   desc and desc_chn are reversed in source for type [sic.]   :)
+                (:   desc and desc_chn are reversed in source for type [sic.]   :)
                         if (empty($scholarly) or $scholarly[. = 0])
                         then ()
                         else (element desc {attribute ana {'topic'},
@@ -427,23 +429,23 @@ The output's structure should match biog:kin's.
 declare function biog:status ($achievers as node()*) as node()* {
 
 (:~
-biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state.
+ biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state.
 
-two tables currently don't contain data: STATUS_TYPES, and  STATUS_CODE_TYPE_REL.
+ two tables currently don't contain data: STATUS_TYPES, and  STATUS_CODE_TYPE_REL.
 
-Should these tables be updated with a future release, the following lines can be added 
-to the return clause of the $x variable.
-This will add label elements which need to be wrapped inside a general desc element.
+ Should these tables be updated with a future release, the following lines can be added 
+ to the return clause of the $x variable.
+ This will add label elements which need to be wrapped inside a general desc element.
 
-let $type := $global:STATUS_TYPES//no:c_status_type_code[. =$type-rel/../no:c_status_type_code]
-let $type-rel := $global:STATUS_CODE_TYPE_REL//no:c_status_code[. = $status/../no:c_status_code]
+ let $type := $global:STATUS_TYPES//no:c_status_type_code[. =$type-rel/../no:c_status_type_code]
+ let $type-rel := $global:STATUS_CODE_TYPE_REL//no:c_status_code[. = $status/../no:c_status_code]
  
-case element (no:c_status_type_desc_chn) return element label {attribute xml:lang {'zh-Hant'}, $x/text()}
-case element (no:c_status_type_desc) return element label {attribute xml:lang {'en'}, $x/text()}
+ case element (no:c_status_type_desc_chn) return element label {attribute xml:lang {'zh-Hant'}, $x/text()}
+ case element (no:c_status_type_desc) return element label {attribute xml:lang {'en'}, $x/text()}
 
-@param $achievers is a c_personid
-@return state[@type = "status"]
- :)
+ @param $achievers is a c_personid
+ @return state[@type = "status"]
+:)
 
 for $status in $global:STATUS_DATA//no:c_personid[. = $achievers]
 
@@ -487,8 +489,7 @@ declare function biog:event ($participants as node()*) as node()* {
  
  @param $participants is a c_personid
  @return event
- 
- :)
+:)
 
 for $event in $global:EVENTS_DATA//no:c_personid[. = $participants]
 let $code := $global:EVENT_CODES//no:c_event_code[. = $event/../no:c_event_code]
@@ -513,7 +514,7 @@ return
               else (if ($code[. > 0])
                     then (element head {$code/../no:c_event_name_chn/text()})
                     else (), 
-            (:  some funky spaces make the normalization necessary here :)
+            (: some funky spaces make the normalization necessary here :)
                     for $n in $event/../*[. != '0']
                     order by local-name($n)
                     return 
@@ -528,13 +529,12 @@ return
 (:EXAMINATIONS and OFFICES:)
 declare function biog:entry ($initiates as node()*) as node()* {
 (:~
-biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES
-into a typed and annotated event. 
-It's output should match the structure of biog:event.
+ biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES
+ into a typed and annotated event. 
+ It's output should match the structure of biog:event.
 
-@param $initiates is a c_personid
-@return event
-
+ @param $initiates is a c_personid
+ @return event
 :)
 
 for $initiate in $global:ENTRY_DATA//no:c_personid[. =$initiates]
@@ -631,11 +631,12 @@ return
 };
 
 declare function biog:new-post ($appointees as node()*) as node()* {
-(:~ biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, 
-APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. 
+(:~ 
+ biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, 
+ APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. 
 
-@param $appointees is a c_personid
-@return socecStatus[@scheme ="#office"]
+ @param $appointees is a c_personid
+ @return socecStatus[@scheme ="#office"]
 :)
 
 for $post in $global:POSTED_TO_OFFICE_DATA//no:c_personid[. = $appointees]/../no:c_posting_id
@@ -713,13 +714,14 @@ return
 };
 
 declare function biog:posses ($possessions as node()*) as node()* {
-(:~ biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, 
-and MEASURE_CODES. It produces a state element.
+(:~ 
+ biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, 
+ and MEASURE_CODES. It produces a state element.
 
-There is barely any data in here so future version will undoubtedly see changes. 
+ There is barely any data in here so future version will undoubtedly see changes. 
 
-@param $possessions is a c_personid
-@return state[@type="possession"]. 
+ @param $possessions is a c_personid
+ @return state[@type="possession"]. 
 :)
 
 for $stuff in $global:POSSESSION_DATA//no:c_personid[. = $possessions][. > 0]
@@ -739,9 +741,9 @@ return
         return
             typeswitch($att)
                 case element (no:c_possession_row_id) return attribute xml:id {concat('POS', $att/text())}
-                (:     in the future the return for $units needs to be tokenized    :)
+                (:     in the future the return for $units needs to be tokenized  :)
                 case element (no:c_measure_code) return attribute unit {$unit/../no:c_measure_desc/text()}
-                case element (no:c_quantity) return attribute quantity {$att/text()}
+                case element (no:c_quantity) return attribute quantity {number($att/text())}
                 case element (no:c_sequence) return attribute n {$att/text()}
                 case element (no:c_possession_yr) return attribute when {cal:isodate($att)}
                 case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
@@ -756,18 +758,22 @@ return
                     case element (no:c_possession_desc_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
                     case element (no:c_possession_desc) return element desc { attribute xml:lang {'en'}, $n/text()}
                     case element (no:c_addr_id) return element placeName { attribute ref { concat('#PL', $n/text())}}
-                    case element (no:c_notes) return element note {$n/text()}
-                default return ()}       
+                default return (), 
+            
+            if (empty($stuff/../no:c_notes))
+            then ()
+            else (element note { $stuff/../no:c_notes/text() })      
+         }       
     }
 };
 
 (:PLACES:)
 declare function biog:pers-add ($resident as node()*) as node()* {
 (:~
-biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residence. 
+ biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residence. 
 
-@param $resident is a c_personid
-@return residence
+ @param $resident is a c_personid
+ @return residence
 :)
 
 
@@ -852,13 +858,13 @@ return
 
 declare function biog:inst-add ($participant as node()*) as node()* {
 (:~
-biog:inst-add reads the BIOG_INST_DATA, and BIOG_INST_CODES generating an event.
-Time and place data are in @where, and @when-custorm respectively. 
-The main location off institutions is as in listOrg.xml
+ biog:inst-add reads the BIOG_INST_DATA, and BIOG_INST_CODES generating an event.
+ Time and place data are in @where, and @when-custorm respectively. 
+ The main location off institutions is as in listOrg.xml
 
-Currently there are no dates in this table?
-@param $participant is a c_personid
-@return event
+ Currently there are no dates in this table?
+ @param $participant is a c_personid
+ @return event
 :)
 
 for $address in $global:BIOG_INST_DATA//no:c_personid[. = $participant][. > 0]
@@ -918,29 +924,29 @@ return
 
 declare function biog:biog ($persons as node()*, $mode as xs:string?) as item()* {
 (:~
-biog:biog reads the main data table of cbdb: BIOG_MAIN. 
-By calling all previous functions in this module, it performs a large join 
-but it doesn't perform the write operation. In addition to the tables from previous functions,
-it also reads HOUSEHOLD_STATUS_CODES, ETHNICITY_TRIBE_CODES, and BIOG_SOURCE_DATA
-It has three modes to facilitate debugging :
+ biog:biog reads the main data table of cbdb: BIOG_MAIN. 
+ By calling all previous functions in this module, it performs a large join 
+ but it doesn't perform the write operation. In addition to the tables from previous functions,
+ it also reads HOUSEHOLD_STATUS_CODES, ETHNICITY_TRIBE_CODES, and BIOG_SOURCE_DATA
+ It has three modes to facilitate debugging :
 
-debug mode (i.e. calling biog:biog($node, 'd')) does NOT abort
-upon encountering validation errors. This is by far the slowest mode.
+ debug mode (i.e. calling biog:biog($node, 'd')) does NOT abort
+ upon encountering validation errors. This is by far the slowest mode.
 
-validation mode (i.e. calling biog:biog($node, 'v')) is 2-3 times faster,
-but it will abort once it encoutners a validation error.
+ validation mode (i.e. calling biog:biog($node, 'v')) is 2-3 times faster,
+ but it will abort once it encoutners a validation error.
 
-normal (in memory) mode (i.e. calling biog:biog($node, '')).
+ normal (in memory) mode (i.e. calling biog:biog($node, '')).
 
-biog:biog generates a person element for each unique person in BIOG_MAIN.
+ biog:biog generates a person element for each unique person in BIOG_MAIN.
 
-@param $persons is a c_personid
-@param $mode can take three efective values:
-'v' = validate; preforms a validation of the output before passing it on. 
-' ' = normal; runs the transformation without validation.
-'d' = debug; this is the slowest of all modes. 
+ @param $persons is a c_personid
+ @param $mode can take three efective values:
+ 'v' = validate; preforms a validation of the output before passing it on. 
+ ' ' = normal; runs the transformation without validation.
+ 'd' = debug; this is the slowest of all modes. 
 
-@return person[@ana="historical"]
+ @return person[@ana="historical"]
 :)
 
 let $output := 
@@ -1122,7 +1128,7 @@ let $output :=
                         case element (no:c_death_age) return element age {$age/text()}
                     default return (),
                 
-    (:   HOUSEHOLD / ETHNICITY / TRIBE  :)
+    (: HOUSEHOLD / ETHNICITY / TRIBE :)
                 for $ethno in $person/../*[. != '0']
                 return 
                     typeswitch ($ethno)
@@ -1150,7 +1156,8 @@ let $output :=
                                      case element (no:c_notes) return element note {$n/text()}
                                  default return ()                            
                             }
-                       case element (no:c_tribe) return element trait { attribute type {'tribe'}, $ethno/text()}
+                       case element (no:c_tribe) return element trait { attribute type {'tribe'}, 
+                        element label {$ethno/text()}}
     (: NOTES :)
                        case element (no:c_notes) return element note {$ethno/text()}
                     default return (),                    
@@ -1240,37 +1247,37 @@ return
     default return $output
 };
 
-(:Because of the large number (>370k) of individuals
-the write operation of biographies.xql is slighlty more complex. 
-Instead of putting its data into a single file or collection, 
-it creates a single listPerson directory inside the target folder, 
-which is populated by further subdirectories and ultimately the person records. 
+(:~
+ Because of the large number (>370k) of individuals
+ the write operation of biographies.xql is slighlty more complex. 
+ Instead of putting its data into a single file or collection, 
+ it creates a single listPerson directory inside the target folder, 
+ which is populated by further subdirectories and ultimately the person records. 
 
-Currently, cbdbTEI.xml includes links to 37 listPerson files 
-covering chunks of $chunk-size persons each (10k).  
+ Currently, cbdbTEI.xml includes links to 37 listPerson files 
+ covering chunks of $chunk-size persons each (10k).  
 
-"chunk" collections contain a single list.xml file and $block-size (50) subcollectoins. 
-This file contains xi:include statments to 1 listPerson.xml file per "block" subcollection.
-Each block contains a single listPerson.xml file on the same level as the individual
-$ppl-per-block (200) person records .
+ "chunk" collections contain a single list.xml file and $block-size (50) subcollectoins. 
+ This file contains xi:include statments to 1 listPerson.xml file per "block" subcollection.
+ Each block contains a single listPerson.xml file on the same level as the individual
+ $ppl-per-block (200) person records .
 
-@param $test set to c_personid that requires further testing
-@param $full all c_personid sgreater then 0 (unkown)
-@param $count how many c_personids there are
+ @param $test set to c_personid that requires further testing
+ @param $full all c_personid sgreater then 0 (unkown)
+ @param $count how many c_personids there are
 
-@param $chunk-size determines the sum of person records within the top level directories, 
+ @param $chunk-size determines the sum of person records within the top level directories, 
     each contains subdirectories and a single list-X.xml file.
-@param $block-size determines the number of subdirectories per chunk.
-@param $ppl-per-block the number of person records per block
+ @param $block-size determines the number of subdirectories per chunk.
+ @param $ppl-per-block the number of person records per block
 
-@return xmldb:store x3
+ @return xmldb:store x3
     1) creates nested directories listPerson, chunk, and block using the respective parameters.
     2) creates list-X.xml and listPerson.xml files that include xinclude statements
         linking individual person records back to the main tei file. 
     3) populates the previously generated directories with individual person records by calling biog:biog.    
     4) Error reports from falied write attempts, as well as validations errors will be stored in the 
         reporst directory. 
-
 :)
 
 let $test := $global:BIOG_MAIN//no:c_personid[. = 927]
