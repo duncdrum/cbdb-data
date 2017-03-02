@@ -20,6 +20,7 @@ declare variable $global:target := '/db/apps/cbdb-data/target/';
 declare variable $global:report := '/db/apps/cbdb-data/reports/';
 declare variable $global:patch := '/db/apps/cbdb-data/reports/patch';
 declare variable $global:samples := '/db/apps/cbdb-data/samples/';
+declare variable $global:modules := '/db/apps/cbdb-data/modules/';
 
 
 (:THE TEI FILES IN TARGET:)
