@@ -5,7 +5,7 @@ to [eXist-db](http://exist-db.org/exist/apps/homepage/index.html) by converting 
 Currently, the application focuses on the data conversion, and integration of the contents with other TEI tools in exist-db. 
 For a more detailed account please consult the [Documentation](#documentation) below. Future updates will bring the familiar query 
 tools of *CBDB* to the browser along with means for exporting and visualizing the data. 
-Because *CBDB* consists of roughly ~350k records, users are strongly encouraged to use *cbdb in TEI* in combination with an xml database, see [installation](#Installation) below.
+Because *CBDB* consists of roughly ~350k records, users are strongly encouraged to use *cbdb in TEI* in combination with an xml database, see [installation](#installation) below.
 
 The current release ``0.6`` is based on the ``20150202`` version of *CBDB*.
 
