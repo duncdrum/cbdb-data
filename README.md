@@ -1,12 +1,12 @@
 # CBDB in TEI
-*CBDB in TEI* brings the [China Biographical Database](http://projects.iq.harvard.edu/cbdb/home) 
-to [eXist-db](http://exist-db.org/exist/apps/homepage/index.html) by converted into [TEI](http://www.tei-c.org/index.xml).
+*CBDB in TEI* brings the data of the [China Biographical Database](http://projects.iq.harvard.edu/cbdb/home) 
+to [eXist-db](http://exist-db.org/exist/apps/homepage/index.html) by converting it into [TEI](http://www.tei-c.org/index.xml).
 
 Currently, the application focuses on the data conversion, and integration of the contents with other TEI tools in exist-db. 
-For a more detailed account please consult the [Documentation](#Documentation) below. Future updates will bring the familiar query 
+For a more detailed account please consult the [Documentation](#documentation) below. Future updates will bring the familiar query 
 tools of *CBDB* to the browser along with means for exporting and visualizing the data. 
-
 Because *CBDB* consists of roughly ~350k records, users are strongly encouraged to use *cbdb in TEI* in combination with an xml database, see [installation](#Installation) below.
+
 The current release ``0.6`` is based on the ``20150202`` version of *CBDB*.
 
 ## Requirements
@@ -14,10 +14,10 @@ The current release ``0.6`` is based on the ``20150202`` version of *CBDB*.
 * (ant version ``1.10.1`` for compiling from source)
 
 ## Releases
-Releases include in three version:
+Releases have three flavors:
 
-* [regular](#Regular)
-* [full](#Full)  
+* [regular](#regular)
+* [full](#full)  
 * [data-pack](#data-pack)
 
 ### Regular 
@@ -29,7 +29,7 @@ The full version Contains both source and converted files. Also contains indexes
 This version is only of interest to users wishing to experiment with the transformation itself. 
 
 ### Data-pack
-A zip file with just the tei files. 
+A zip file with just the tei files. Only releases with updates to the converted data files include this. 
 
 ### Installation
 1. Download either full or regular ``.xar`` from the [releases](https://github.com/duncdrum/cbdb-data/releases) page. 
@@ -51,5 +51,5 @@ you should see:
 
 
 ## Documentation
-* [TEI encoding guidelines](../doc/encoding-desc.md)
-* [Function documentation](../doc/function-doc.md)
+* [TEI encoding guidelines](doc/encoding-desc.md)
+* [Function documentation](doc/function-doc.md)

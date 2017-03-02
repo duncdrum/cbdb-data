@@ -1,7 +1,10 @@
 # xQuery Function Documentation
+In addition to the information in this document, 
+there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) listing each column used in this conversion.
 
 ## bibliography
-[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a spreadsheet listing each column used in this conversion.  
+This module deals with core bibliographical data from CBDB. It's elements are frequently referenced by ``@soure`` across the whole data set.
+For the genre taxonomy of cbdb see [genre](#genre).
 
 ### bib:bibl-dates
 
@@ -14,14 +17,14 @@ shows range 300, and 301 not to be in use.
 #### TODO
 * ``$TEXT_ROLE_CODES//no:c_role_desc_chn`` is currently dropped from db might go into ODD later
 
-
-## module: genre
+## genre
 Joins the different location for bibliographical genre/ category data in one nested tei taxonomy. 
 ``TEXT_BIBL_CAT_TYPES_1``, and ``TEXT_BIBL_CAT_TYPES_2`` become superflous, 
 since we have a nested tree using ``TEXT_BIBL_CAT_TYPES``, ``TEXT_BIBL_CAT_CODES``, and ``TEXT_BIBL_CAT_CODE_TYPE_REL``.
 
 ## biographies
-[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a spreadsheet listing each column used in this conversion.  
+This module transforms the core person data, as well as their relation data. 
+
 ### biog:kin 
 
 #### 9 basic categories of kinship Source: CBDB Manual p 13f
@@ -126,7 +129,8 @@ There are no dates in the src tables.
 * ``c_self_bio`` from ``$source`` is dropped change to attribute when refactoring query syntax?
 
 ## calendar
-[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a spreadsheet listing each column used in this conversion. 
+The calendar module contains function for conversion between the often ideosyncratic date formats of *CBDB*,
+and for the creation of a taxonomy for Chinese calendar dates. 
 
 #### TODO
 *  friggin YEAR_RANGE_CODES.xml
@@ -174,10 +178,9 @@ cal:ganzhi(-0247, 'zh') -> 乙卯 = 246BC founding of Qing
 
 ## global
 This module holds all the variables and paths used in the app. 
+The list of variable declerations pointing to the imported tables, is generated via [local:table-variables](#local:table-variables) in the ``aux.xql`` module. 
 
-The list of variable decleartions pointing to the imported tables, is generated via ``local:table-variables`` in the ``aux.xql`` module. 
-
-[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a spreadsheet listing each table of CBDB and their use in  cbdbTEI. 
+Functions that need be available globally also go here.   
 
 ### global:create-mod-by
 Processes the created-by and midfied by data found on each table. Only called for main tables. 
@@ -186,7 +189,7 @@ Processes the created-by and midfied by data found on each table. Only called fo
 Helper function called by every write operation, to ease the burden of validating the whole file when working on a specific section.
 
 ## institutions
-[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a spreadsheet listing each column used in this conversion. 
+Create the core organizations included in *CBDB*.
 
 ### org:org
 the ``@role`` for ``org`` elements takes three values ``'academy'``, ``'buddhist'``, ``'daoist'`` . These need to be added to the ODD in chinese translation.
@@ -202,9 +205,6 @@ Office is split over 2 xql files ``officeA.xql`` and ``officeB.xql``.
 This is due to a potential bug with new Range indexes raising a ``maxClauseCount`` error when 
 running the full transformation from inside a single module. 
 Splitting the module into two prevents the error from ocurring.
-
-[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a 
-spreadsheet listing each column used in this conversion. 
 
 ### local:office (officeA)
 
@@ -227,11 +227,11 @@ there are:
 * use: ```for $y allowing empty in $off...``` once exist supports it.
  
 ## place
-[Here](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) is a 
-spreadsheet listing each column used in this conversion. 
+Converts the GIS data of *CBDB*
 
 Currently cbdbTEI.xml does not yet use the more fine-grained possibilities of TEI to express geographic units, 
-such as ``<bloc>``, ``,country>``, ``<district>``, etc. However, better integration with CHGIS via [TGAZ](http://maps.cga.harvard.edu/tgaz/) could void current shortcomings.  
+such as ``<bloc>``, ``,country>``, ``<district>``, etc. 
+However, better integration with CHGIS via [TGAZ](http://maps.cga.harvard.edu/tgaz/) could void current shortcomings.  
 
 ### pla:fix-admin-types
 There are 225 distinct types of adminstrative units in CBDB, however these contain many duplicates due to inconsistent spelling. 
@@ -269,5 +269,5 @@ The following cells are never empty
   add matching attributes to the main entities. 
   
 ### pla:patch-missing-addr
-We need to patch missing places because only a few places only exist in one location in the DB. 
+We need to patch missing places because a few places only exist in one location in the DB. 
 

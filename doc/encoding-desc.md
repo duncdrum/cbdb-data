@@ -1,7 +1,5 @@
 # TEI encoding guidelines
 
-{{TOC}}
-
 ## Introduction
 To facilitate my own needs for semi-automated annotation of historical Chinese documents I encountered either competing authority institutions, or an absence of the kind of reference points that enable linked open data applications. In particular with respect to prosopographical data, the most comprehensive data collection [*China Biographical Database*] (http://projects.iq.harvard.edu/cbdb/home) provided only limited means for retrieving machine readable data. *Cbdb in TEI* is a xml application that follows the [TEI-P5](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html) encoding guidelines. It can be installed and used along other tools that all facilitate xml oriented workflows of academic editing. 
 
