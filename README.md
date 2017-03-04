@@ -1,5 +1,5 @@
 # CBDB in TEI
-*CBDB in TEI* brings the data of the [China Biographical Database](http://projects.iq.harvard.edu/cbdb/home) 
+![icon](icon.png) *CBDB in TEI* brings the data of the [China Biographical Database](http://projects.iq.harvard.edu/cbdb/home) 
 to [eXist-db](http://exist-db.org/exist/apps/homepage/index.html) by converting it into [TEI](http://www.tei-c.org/index.xml).
 
 Currently, the application focuses on the data conversion, and integration of the contents with other TEI tools in exist-db. 
@@ -18,7 +18,7 @@ Releases have three flavors:
 
 * [regular](#regular)
 * [full](#full)  
-* [data-pack](#data-pack)
+* [data pack](#data-pack)
 
 ### Regular 
 This is the default version for most users. It contains the xQuery conversion modules, and the complete TEI files. 
@@ -28,7 +28,7 @@ But not the CBDB's source files, the index configuration is adapted accordingly.
 The full version contains both source and converted files. Also contains indexes on both files. 
 This version is only of interest to users wishing to experiment with the transformation itself. 
 
-### Data-pack
+### Data pack
 A zip file with just the TEI files. Only releases with updates to the converted data files include this. 
 
 ### Installation

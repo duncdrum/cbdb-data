@@ -15,6 +15,19 @@
             * [biblCat](#biblcat)
             * [cal_ZH](#cal_zh)
             * [office](#office)
+    * [profileDesc and revisionDesc](#profiledesc-and-revisiondesc)
+        * [revisionDesc](#revisiondesc) 
+        * [langUsage](#langusage)
+        * [calendarDesc](#calendardesc)    
+* [body](#body)
+    * [person](#person)
+        * [persName](#persname)
+        * [other](#other)
+    * [org](#org)
+    * [place](#place)
+    * [bibl](#bibl)
+    * [Appendix](#appendix)     
+      
 
 
 ## Introduction
@@ -181,7 +194,7 @@ This taxonomy is used to resolve Chinese dates throughout the database. As with 
 
  
 ##### office       
-asda
+The taxonomy for administrative offices consists of nested category whose position corresponds to the location within the bureaucratic hierarchy. The category description of each category contains the name of the office as ``<roleName>``.  There are two possible values for the ``@type`` attribute: ``main``, and ``alt``. The main roleName may contain an additional ``<note>`` element. The category description also includes a date element, to denote  the dynasty in which a certain office was established. 
 
 ```xml
 <taxonomy xml:id="office">
@@ -204,4 +217,399 @@ asda
 </taxonomy>
 ```
                              
- 
+### profileDesc and revisionDesc
+The ``<profileDesc>`` contains two mandatory child elements followed by the ``<revisionDesc>``:
+
+```xml
+<profileDesc>
+    <langUsage>
+        <language ident="…">…</language>
+        …
+    </langUsage>
+    <calendarDesc>
+        <calendar xml:id="chinTrad">
+            <p>…</p>
+        </calendar>
+    </calendarDesc>
+</profileDesc>
+<revisionDesc>
+    <change when="…" who="…">…</change>
+</revisionDesc>
+``` 
+
+### revisionDesc
+The revision description tracks substantial changes to the TEI files, usually coinciding with a major/minor version update to the GitHub repository. The source’s own tracking of modifications is do not belong into this field. Bulk changes should be grouped together into a single ``<change>`` statement. 
+Each change requires a date and a person responsible for the change (``@when``, ``@who``).
+
+#### langUsage
+*CBDB* contains languages other then English and Chinese, however, these are not tagged in a machine readable fashion. Every language occurring in the source must be indicated here, following the ISO 639-1 format, which is referenced via ``@xml:lang``. Once of the advantages of converting *CBDB* into TEI, come from the fact that adding new languages or language variants doesn’t require a major redesign of any relational table structures. Properly indicating Manchu, Mongolian, Tibetan, etc. contents would be of great help for future extensions.
+
+A special note on *CBDB*’s use of pinyin. The use of ``@xml:lang="zh-Latn-alalc97"`` suggests greater regularity then is present in the source. With competing standards for things like word separation, use of diacritics, etc.*CBDB* is not consistently following one set of rules. The above seemed to be the closest rule-set for what is in the data, but I have made no further attempts at normalization. 
+
+#### calendarDesc
+Since, *CBDB in TEI* makes extensive use of custom calendar dates, this prose description of calendar in use is mandatory. 
+
+## body
+Conceptually, the body contains of four list elements, which contain data for the main entities of *CBDB*:
+
+* ``<listPerson>``
+* ``<listOrg>``
+* ``<listPlace>``
+* ``<listBibl>``
+
+Of these four lists, listPerson is special. Because of its size this list is split into 37 chunks, which are further split into smaller units (blocks). For the exact composition see the [function documentation](function-doc.md#biographies). 
+
+### person
+Not only are ``<person>`` elements the most numerous, they can also contain the most child elements in the whole database. 
+
+*CBDB* only contains data on historical persona, hence each element receives a mandatory ``@ana="historical"`` attribute. Each person must have a unique ``@xml:id`` starting with ``BIO``. Further optional attributes are: ``@source`` for references to the text used by *CBDB* to generate the person entry, and ``@resp`` for case where ``selfbio`` was indicated.
+
+For compatibility reasons, the old TTS id of each person is included here, but otherwise omitted throughout the conversion.
+
+```xml
+<person ana="historical" xml:id="BIO" source="#BIB" resp="selfbio">
+…     
+```
+
+#### persName
+
+
+```xml
+… 
+<persName type="main">
+    <persName xml:lang="zh-Hant">
+        <surname>biog:name</surname>
+        <forename>biog:name</forename>
+        <addName type="choronym">biog:name</addName>
+    </persName>
+    <persName xml:lang="zh-Latn-alalc97">
+        <surname>biog:name</surname>
+        <forename>biog:name</forename>
+        <addName type="choronym">biog:name</addName>
+    </persName>
+    <persName type="original">
+        <surname>biog:name</surname>
+        <forename>biog:name</forename>
+    </persName>
+    <persName type="original">biog:name</persName>
+</persName>
+<persName type="alias" key="AKA" source="#BIB">
+    <addName xml:lang="zh-Hant">biog:alias</addName>
+    <term>biog:alias</term>
+    <addName xml:lang="zh-Latn-alalc97">biog:alias</addName>
+    <term>biog:alias</term>
+    <note>biog:alias</note>
+</persName>
+… 
+```
+
+#### age
+
+```xml
+… 
+<birth when="0001-01-01" datingMethod="#chinTrad" when-custom="D-R-Y">
+    <date calendar="#chinTrad" period="#R">biog:biog</date>
+</birth>
+<death when="0001-01-01" datingMethod="#chinTrad" when-custom="D-R-Y">
+    <date calendar="#chinTrad" period="#R">biog:biog</date>
+</death>
+<floruit notBefore="0001" notAfter="0001">
+    <date when="0001" datingMethod="#chinTrad" period="#D">biog:biog</date>
+    <note>biog:biog</note>
+</floruit>
+<age cert="medium">biog:biog</age>
+… 
+```
+
+#### trait
+
+```xml
+… 
+<trait type="household" key="biog:biog">
+    <label xml:lang="zh-Hant">biog:biog</label>
+    <label xml:lang="en">biog:biog</label>
+</trait>
+<trait type="ethnicity" key="biog:biog">
+    <label>biog:biog</label>
+    <desc xml:lang="zh-Hant">biog:biog</desc>
+    <desc xml:lang="zh-Latn-alalc97">biog:biog</desc>
+    <desc xml:lang="en">biog:biog</desc>
+    <note>biog:biog</note>
+</trait>
+<trait type="tribe">
+    <label>biog:biog</label>
+</trait>
+… 
+```
+
+
+#### affiliation
+
+
+```xml
+… 
+<affiliation>
+    <note> <!--I do not like this note wrapper one bit-->
+        <listPerson>
+            <personGrp role="kin"/>
+            <listRelation type="kinship">
+                <relation active="#BIO" passive="#BIO" key="biog:kin" sortKey="biog:kin" name="biog:kin" source="biog:kin" type="auto-generated">
+                    <desc type="kin-tie">
+                        <label>biog:kin</label>
+                        <desc xml:lang="zh-Hant">biog:kin</desc>
+                        <desc xml:lang="en">biog:kin</desc>
+                        <trait type="mourning" subtype="biog:kin">
+                            <label xml:lang="zh-Hant">biog:kin</label>
+                            <desc xml:lang="zh-Hant">biog:kin</desc>
+                            <desc xml:lang="en">biog:kin</desc>
+                        </trait>
+                    </desc>
+                </relation>
+            </listRelation>
+        </listPerson>
+    </note>
+    <note> <!--I do not like this note wrapper one bit-->
+        <listPerson>
+            <personGrp role="associates"/>
+            <listRelation type="associations">
+                <relation mutual="biog:asso" name="biog:asso" key="biog:asso" sortKey="biog:asso" source="#BIB">
+                    <desc type="biog:asso" n="biog:asso">
+                        <label>biog:asso</label>
+                        <desc xml:lang="zh-Hant">biog:asso<label>biog:asso</label>
+                        </desc>
+                        <desc xml:lang="en">biog:asso<label>biog:asso</label>
+                        </desc>
+                        <state ref="#PL #ORG" when="0001" ana="biog:asso" type="biog:asso" subtype="biog:asso">
+                            <label xml:lang="zh-Hant">biog:asso</label>
+                            <label xml:lang="zh-Latn-alalc97">biog:asso</label>
+                            <desc ana="topic">biog:asso</desc>
+                            <desc xml:lang="zh-Hant">biog:asso<label>biog:asso</label>
+                            </desc>
+                            <desc xml:lang="en">biog:asso<label>biog:asso</label>
+                            </desc>
+                        </state>
+                        <desc ana="genre">
+                            <label xml:lang="zh-Hant">biog:asso</label>
+                            <label xml:lang="en">biog:asso</label>
+                        </desc>
+                        <desc>
+                            <persName role="mediator" ref="#BIO"/>
+                        </desc>
+                    </desc>
+                </relation>
+            </listRelation>
+        </listPerson>
+    </note>
+</affiliation>
+… 
+```
+
+#### socecStatus
+
+```xml
+… 
+<socecStatus>
+    <state type="status" subtype="biog:status" from="0001" to="0001" n="biog:status" source="#BIB">
+        <desc xml:lang="zh-Hant">biog:status</desc>
+        <desc xml:lang="en">biog:status</desc>
+    </state>
+</socecStatus>
+<socecStatus scheme="#office" code="#OFF">
+    <state type="posting" ref="#PL" n="biog:new-post" key="biog:new-post" notBefore="0001" notAfter="0001" source="#BIB">
+        <desc>
+            <label>appointment</label>
+            <desc xml:lang="zh-Hant">biog:new-post</desc>
+            <desc xml:lang="en">biog:new-post</desc>
+        </desc>
+        <desc>
+            <label>assumes</label>
+            <desc xml:lang="zh-Hant">biog:new-post</desc>
+            <desc xml:lang="en">biog:new-post</desc>
+        </desc>
+        <note>biog:new-post</note>
+    </state>
+    <state type="office-type" n="biog:new-post">
+        <desc xml:lang="zh-Hant">biog:new-post</desc>
+        <desc xml:lang="en">biog:new-post</desc>
+        <note>biog:new-post</note>
+    </state>
+</socecStatus>
+…
+<state type="possession" xml:id="POS" unit="biog:posses" quantity="1" n="biog:posses" when="0001" source="#BIB" subtype="biog:posses">
+    <desc>
+        <desc xml:lang="zh-Hant">biog:posses</desc>
+        <desc xml:lang="en">biog:posses</desc>
+        <placeName ref="#PL"/>
+    </desc>
+    <note>biog:posses</note>
+</state>
+…  
+```
+
+#### event
+
+
+```xml
+… 
+<listEvent>
+    <event xml:lang="zh-Hant" when="0001" where="#PL" source="#BIB" sortKey="biog:event">
+        <head>biog:event</head>
+        <label>biog:event</label>
+        <desc>biog:event</desc>
+        <note>biog:event</note>
+    </event>
+    <event type="biog:entry" subtype="biog:entry" ref="#ORG" when="0001" where="#PL" sortKey="biog:entry" source="#BIB" role="#BIO">
+        <head>entry</head>
+        <label xml:lang="zh-Hant">biog:entry</label>
+        <label xml:lang="en">biog:entry</label>
+        <desc type="biog:entry" subtype="biog:entry">
+            <desc xml:lang="zh-Hant" ana="七色補官門">biog:entry</desc>
+            <desc xml:lang="en" ana="7specials">biog:entry</desc>
+        </desc>
+        <note type="field">biog:entry</note>
+        <note type="attempts">biog:entry</note>
+        <note type="rank">biog:entry</note>
+        <note>biog:entry</note>
+        <note type="parental-status">
+            <trait type="parental-status" key="biog:entry">
+                <label xml:lang="zh-Hant">biog:entry</label>
+                <label xml:lang="zh-Latn-alalc97">biog:entry</label>
+            </trait>
+        </note>
+    </event>
+</listEvent>
+… 
+<event where="#ORG" key="biog:inst-add" from="0001" to="0001" from-custom="D-R-Y" to-custom="D-R-Y" source="#BIB" datingMethod="#chinTrad">
+    <desc xml:lang="zh-Hant">biog:inst-add</desc>
+    <desc xml:lang="en">biog:inst-add</desc>
+    <note>biog:inst-add</note>
+</event>
+```
+
+#### residence
+
+```xml
+… 
+<residence ref="#PL" key="biog:pers-add" n="biog:pers-add" from="0001-01-01" to="0001-01-01" source="#BIB">
+    <state type="natal">
+        <desc xml:lang="zh-Hant">biog:pers-add</desc>
+        <desc xml:lang="en">biog:pers-add</desc>
+    </state>
+    <date calendar="#chinTrad" period="#R">Y-D</date>
+    <note>biog:pers-add</note>
+</residence>
+… 
+```
+
+
+#### other (idno, sex, linkGrp, note) 
+
+
+```xml
+… 
+<idno type="TTS">biog:biog</idno>
+… 
+<sex value="biog:biog">biog:biog</sex>
+…
+<note>biog:biog</note>
+… 
+<linkGrp>
+    <ptr target="biog:biog"/>
+</linkGrp>
+<note type="created" target="global:create-mod-by">
+    <date when="0001-01-01"/>
+</note>
+<note type="modified" target="global:create-mod-by">
+    <date when="0001-01-01"/>
+</note>
+</person>
+```
+
+### org
+
+```xml
+<org ana="historical" xml:id="ORG" role="org:org" source="#BIB">
+    <orgName type="main">
+        <orgName xml:lang="zh-Hant">org:org</orgName>
+        <orgName xml:lang="zh-Latn-alalc97">org:org</orgName>
+    </orgName>
+    <orgName type="alias">
+        <orgName xml:lang="zh-Hant">org:org</orgName>
+        <orgName xml:lang="zh-Latn-alalc97">org:org</orgName>
+        <date from="0001" to="0001"/>
+        <date calendar="#chinTrad" period="#D">org:org</date>
+    </orgName>
+    <place sameAs="#PL" source="#BIB">
+        <location>
+            <geo>org:org</geo>
+        </location>
+    </place>
+    <note>org:org</note>
+    <note>org:org</note>
+</org>
+```
+
+### place
+
+```xml
+<place xml:id="PL" type="pla:fix-admin-types" source="#BIB">
+    <placeName xml:lang="zh-Hant">pla:nest-places</placeName>
+    <placeName xml:lang="zh-Latn-alalc97">pla:nest-places</placeName>
+    <placeName type="alias">pla:nest-places</placeName>
+    <location from="0001" to="0001">
+        <geo>pla:nest-places</geo>
+    </location>
+    <idno type="CHGIS">pla:nest-places</idno>
+    <note>pla:nest-places</note>
+    <note>pla:nest-places</note>
+</place>
+```
+
+### bibl
+
+```xml
+<bibl xml:id="BIB" type="bib:bib" subtype="bib:bib">
+    <idno type="TTS">bib:bib</idno>
+    <title type="main" xml:lang="zh-Hant">bib:bib</title>
+    <title type="main" xml:lang="zh-Latn-alalc97">bib:bib</title>
+    <title type="alt">bib:bib</title>
+    <title type="translation" xml:lang="en">bib:bib</title>
+    <date type="original" when="0001">
+        <ref target="#R">bib:bib</ref>
+    </date>
+    <date type="published" when="0001">
+        <ref target="#R">bib:bib</ref>
+    </date>
+    <country xml:lang="zh-Hant">bib:bib</country>
+    <country xml:lang="en">bib:bib</country>
+    <pubPlace>
+        <country>bib:bib</country>
+    </pubPlace>
+    <edition>bib:bib</edition>
+    <publisher>bib:bib</publisher>
+    <pubPlace>bib:bib</pubPlace>
+    <state> <!--needs @type-->
+        <ab>bib:bib</ab>
+    </state>
+    <note>bib:bib</note>
+    <bibl>
+        <ref target="#BIB"/>
+        <biblScope unit="page">bib:bib</biblScope>
+    </bibl>
+    <ref target="bib:bib">bib:bib</ref>
+    <note>bib:bib</note>
+    <author>
+        <ptr target="#BIO-bib-roles"/> <!--why not ref?-->
+    </author>
+    <note type="created" target="global:create-mod-by">
+        <date when="0001-01-01"/>
+    </note>
+    <note type="modified" target="global:create-mod-by">
+        <date when="0001-01-01"/>
+    </note>
+</bibl>
+```
+
+## Appendix
+* [full xml template](../templates/tei/cbdbTEI-template.xml)
+* [custom ODD template](../templates/tei/cbdbTEI-odd.xml)

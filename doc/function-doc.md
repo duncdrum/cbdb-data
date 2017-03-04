@@ -1,4 +1,14 @@
 # xQuery Function Documentation
+## Contents
+* [bibliography](#bibliography)
+* [genre](#genre)
+* [biographies](#biographies)
+* [calendar](#calendar)
+* [global](#global)
+* [institutions](#institutions)
+* [office](#office)
+* [place](#place)
+
 In addition to the information in this document, 
 there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) listing each column used in this conversion.
 
@@ -19,7 +29,7 @@ shows range 300, and 301 not to be in use.
 
 ## genre
 Joins the different location for bibliographical genre/ category data in one nested tei taxonomy. 
-``TEXT_BIBL_CAT_TYPES_1``, and ``TEXT_BIBL_CAT_TYPES_2`` become superflous, 
+``TEXT_BIBL_CAT_TYPES_1``, and ``TEXT_BIBL_CAT_TYPES_2`` become superfluous, 
 since we have a nested tree using ``TEXT_BIBL_CAT_TYPES``, ``TEXT_BIBL_CAT_CODES``, and ``TEXT_BIBL_CAT_CODE_TYPE_REL``.
 
 ## biographies
@@ -27,7 +37,8 @@ This module transforms the core person data, as well as their relation data.
 
 ### biog:kin 
 
-#### 9 basic categories of kinship Source: CBDB Manual p 13f
+#### 9 basic categories of kinship 
+The list of categories in the [*The CBDB User’s Guide*](http://projects.iq.harvard.edu/files/cbdb/files/cbdb_users_guide.pdf) p 13f is incomplete. 
 
 none of these is symmetrical hence there is no need for mutuality checks as in biog:asso.
 
@@ -74,7 +85,7 @@ none of these is symmetrical hence there is no need for mutuality checks as in b
 
 
 ### biog:asso
-whats up with ``$assoc_codes//no:c_assoc_role_type`` ?
+Whats up with ``$assoc_codes//no:c_assoc_role_type`` ?
 
 #### TODO 
 * consider ``chal-ZH`` dates for state
@@ -91,17 +102,17 @@ whats up with ``$assoc_codes//no:c_assoc_role_type`` ?
 there is a number of unused cells here mostly because they are empty in the source files.
 
 ### biog:entry
-add institutional addressess via ``biog:inst-add``
+add institutional addresses via ``biog:inst-add``
 
 #### TODO
-* why does ``c_exam_field`` not point to anything?
+* Why does ``c_exam_field`` not point to anything?
 * see c_personid: ``914`` for dual ``@type`` entries
 * ``c_inst_code`` only points to ``0`` no links to org to be written
 * switch to ``tei:education`` | ``tei:faith`` for entry type data
  
 ### biog:new-post
-we need to ascertian a few things about dates and ``POST_DATA`` here:
-are there any instances where one contains data that is not isodate or in ``POSTED_TO_OFFICE_DATA``? 
+We need to ascertain a few things about dates and ``POST_DATA`` here:
+are there any instances where one contains data that is not an iso date or in ``POSTED_TO_OFFICE_DATA``? 
 
 whats up with ``POSTED_TO_ADDR_DATA``?
 
@@ -113,7 +124,7 @@ whats up with ``POSTED_TO_ADDR_DATA``?
 Currently there are only five entries (c_personid: ``18332``, ``13550``, ``45279``, ``45518``, ``3874``)
 
 #### TODO
-* make use of ``@ref="#PL..."`` consistent for all ``state`` elements. 
+* Make use of ``@ref="#PL..."`` consistent for all ``state`` elements. 
 
 ### biog:pers-add
 
@@ -129,7 +140,7 @@ There are no dates in the src tables.
 * ``c_self_bio`` from ``$source`` is dropped change to attribute when refactoring query syntax?
 
 ## calendar
-The calendar module contains function for conversion between the often ideosyncratic date formats of *CBDB*,
+The calendar module contains function for conversion between the often idiosyncratic date formats of *CBDB*,
 and for the creation of a taxonomy for Chinese calendar dates. 
 
 #### TODO
@@ -137,14 +148,14 @@ and for the creation of a taxonomy for Chinese calendar dates.
 * many nianhaos aren't transliterated hence $NH-py
 *  ``DYNASTIES`` contains both translations and transliterations:
      e.g. 'NanBei Chao' but 'Later Shu (10 states) more normalization *yay*
-*  make 10states a ``@type`` ? 
+*  make 10 states a ``@type`` ? 
 
 ### cal:custo-date-point
-tricky with the data at hand, consequently not called by other function whenever possible. 
-long run switch to CCDB date authority since that also covers korean and japanese dates. 
+Tricky with the data at hand, consequently not called by other function whenever possible. 
+long-run switch to CCDB date authority since that also covers Korean and Japanese dates. 
 
 #### TODO
-* getting to a somehwhat noramlized useful representation of Chinese Reign dates is tricky. Inconsinsten pinyin for Nianhao creates ambigous and ugly dates.
+* Getting to a somewhat normalized useful representation of Chinese Reign dates is tricky. Inconsistent pinyin for Nianhao creates ambiguous and ugly dates.
 * handle ``//no:c_dy[. = 0]`` stuff
 * add ``@period`` with ``#d42`` ``#R123``
 * find a way to prevent empty attributes more and better logic FTW
@@ -156,7 +167,7 @@ See cal:custo-date-point
 ### cal:dynasties
 
 ### cal:ganzhi
-Just for fun not used in the transformation. Calculate the ganzhi cycle for a given year (postive and negative), in either pinyin or hanzi.  
+Just for fun not used in the transformation. Calculate the ganzhi cycle for a given year (positive and negative), in either pinyin or hanzi.  
 
 #### TEST
 ```
@@ -178,12 +189,12 @@ cal:ganzhi(-0247, 'zh') -> 乙卯 = 246BC founding of Qing
 
 ## global
 This module holds all the variables and paths used in the app. 
-The list of variable declerations pointing to the imported tables, is generated via [local:table-variables](#local:table-variables) in the ``aux.xql`` module. 
+The list of variable declarations pointing to the imported tables, is generated via [local:table-variables](#local:table-variables) in the ``aux.xql`` module. 
 
 Functions that need be available globally also go here.   
 
 ### global:create-mod-by
-Processes the created-by and midfied by data found on each table. Only called for main tables. 
+Processes the created-by and modified by data found on each table. Only called for main tables. 
 
 ### global:validate-fragment
 Helper function called by every write operation, to ease the burden of validating the whole file when working on a specific section.
@@ -192,11 +203,11 @@ Helper function called by every write operation, to ease the burden of validatin
 Create the core organizations included in *CBDB*.
 
 ### org:org
-the ``@role`` for ``org`` elements takes three values ``'academy'``, ``'buddhist'``, ``'daoist'`` . These need to be added to the ODD in chinese translation.
+the ``@role`` for ``org`` elements takes three values ``'academy'``, ``'buddhist'``, ``'daoist'`` . These need to be added to the ODD in Chinese translation.
 
 #### TODO
 * careful this has a combined primary key between ``inst_name`` and ``inst_code``
-* fix datable -custom stuff otherwise ok
+* fix datable-custom stuff otherwise ok
 * friggin ``YEAR_RANGE_CODES`` are back
 * most of this fields in these tables are empty 
 
@@ -204,7 +215,7 @@ the ``@role`` for ``org`` elements takes three values ``'academy'``, ``'buddhist
 Office is split over 2 xql files ``officeA.xql`` and ``officeB.xql``. 
 This is due to a potential bug with new Range indexes raising a ``maxClauseCount`` error when 
 running the full transformation from inside a single module. 
-Splitting the module into two prevents the error from ocurring.
+Splitting the module into two prevents the error from occurring.
 
 ### local:office (officeA)
 
@@ -234,9 +245,9 @@ such as ``<bloc>``, ``,country>``, ``<district>``, etc.
 However, better integration with CHGIS via [TGAZ](http://maps.cga.harvard.edu/tgaz/) could void current shortcomings.  
 
 ### pla:fix-admin-types
-There are 225 distinct types of adminstrative units in CBDB, however these contain many duplicates due to inconsistent spelling. 
+There are 225 distinct types of administrative units in CBDB, however these contain many duplicates due to inconsistent spelling. 
 Furthermore, white-spaces prevent the existing types from becoming xml attribute values. 
-Hence this function normalises and concats the spelling of admin types without modifing the source. 
+Hence this function normalizes and concats the spelling of admin types without modifying the source. 
 ```
 let $types := 
     distinct-values(($global:ADDR_CODES//no:c_admin_type, $global:ADDRESSES//no:c_admin_type))    
@@ -244,7 +255,7 @@ let $types :=
 The use of whitespace in particular stands in further need of normalization. In the future this information is likely to be pulled from TGAZ. 
 
 ### pla:nest-places
-One consequence of CBDB's entity model is that multiple  and usually overlapping timeseries occur, e.g c_addr_id ``4342`` has:
+One consequence of CBDB's entity model is that multiple  and usually overlapping time-series occur, e.g c_addr_id ``4342`` has:
 
 ```
 <location from="1368" to="1643"/>
