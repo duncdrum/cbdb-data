@@ -33,12 +33,12 @@ This version is only of interest to users wishing to experiment with the transfo
 ### Data pack
 A zip file with just the TEI files. Only releases with updates to the converted data files include this. 
 
-### Installation
+## Installation
 1. Download either full or regular ``.xar`` from the [releases](https://github.com/duncdrum/cbdb-data/releases) page. 
 2.  Go to your running eXist-db and open package manager from the dashboard. 
   1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just downloaded. 
 
-#### Building from source
+### Building from source
 Because of GitHub’s restrictions on file sizes, compiling from source will generate the regular version. 
 
 1. Download, fork or clone this GitHub repository
