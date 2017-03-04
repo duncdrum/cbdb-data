@@ -1,5 +1,5 @@
 # CBDB in TEI
-<img src="icon.png" align="left" width="50%" hspace="10" vspace="6"/>
+<img src="icon.png" align="left" width="35%" hspace="10" vspace="6"/>
 
 *CBDB in TEI* brings the data of the [China Biographical Database](http://projects.iq.harvard.edu/cbdb/home) 
 to [eXist-db](http://exist-db.org/exist/apps/homepage/index.html) by converting it into [TEI](http://www.tei-c.org/index.xml).
