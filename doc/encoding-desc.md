@@ -264,8 +264,6 @@ Not only are ``<person>`` elements the most numerous, they can also contain the 
 
 *CBDB* only contains data on historical persona, hence each element receives a mandatory ``@ana="historical"`` attribute. Each person must have a unique ``@xml:id`` starting with ``BIO``. Further optional attributes are: ``@source`` for references to the text used by *CBDB* to generate the person entry, and ``@resp`` for case where ``selfbio`` was indicated.
 
-For compatibility reasons, the old TTS id of each person is included here, but otherwise omitted throughout the conversion.
-
 ```xml
 <person ana="historical" xml:id="BIO" source="#BIB" resp="selfbio">
 …     
@@ -501,9 +499,8 @@ For compatibility reasons, the old TTS id of each person is included here, but o
 … 
 ```
 
-
 #### other (idno, sex, linkGrp, note) 
-
+For compatibility reasons, the old TTS id of each person is included here, but otherwise omitted throughout the conversion.
 
 ```xml
 … 

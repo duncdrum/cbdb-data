@@ -16,11 +16,7 @@ The current release ``0.6`` is based on the ``20150202`` version of *CBDB*.
 * (ant version ``1.10.1`` for compiling from source)
 
 ## Releases
-Releases have three flavors:
-
-* [regular](#regular)
-* [full](#full)  
-* [data pack](#data-pack)
+Releases have three flavors: [regular](#regular), [full](#full), and [data pack](#data-pack).
 
 ### Regular 
 This is the default version for most users. It contains the xQuery conversion modules, and the complete TEI files. 
