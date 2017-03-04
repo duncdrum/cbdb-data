@@ -1,20 +1,26 @@
 # TEI encoding guidelines
 ## Contents
 * [Introduction](#introduction)
-    * [About this document](#about)
-* [Basic encoding decisions](#basic)
-* [General encoding decisions](#general)
+    * [About this document](#about%20this%20document)
+* [Basic encoding decisions](#basic%20encoding%20decisions)
+* [General encoding decisions](#general%20encoding%20decisions)
     * [Languages](#languages)
     * [Dates](#dates)
 * [Header](#header)
     * [fileDesc](#fileDesc)
     * [encodingDesc](#encodingDesc)
+        * [listPrefixDef](#listPrefixDef)
+        * [charDecl](#charDecl)
+        * [classDesc](#classDesc)
+            * [biblCat](#biblCat)
+            * [cal_ZH](#cal_ZH)
+            * [office](#office)
 
 
 ## Introduction
 To facilitate my own needs for semi-automated annotation of historical Chinese documents I encountered either competing authority institutions, or an absence of the kind of reference points that enable linked open data applications. In particular with respect to prosopographical data, the most comprehensive data collection [*China Biographical Database*](http://projects.iq.harvard.edu/cbdb/home) provided only limited means for retrieving machine readable data. *CBDB in TEI* is a xml application that follows the [TEI-P5](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html) encoding guidelines. It can be installed and used along other tools that all facilitate xml oriented workflows of academic editing. 
 
-Transforming the contents of a relational database  into TEI is very different from transcribing source documents. The primary challenge consists of finding fitting tei-xml elements for every column in *CBDB*’s tables. The other challenge was to write performative transformation scripts that can handle missing data points or errors in the input data, such as an event dated to: ``YYYY-02-30``.
+Transforming the contents of a relational database  into TEI is very different from transcribing source documents. The primary challenge consists of finding fitting tei-xml elements for every column in *CBDB*’s tables. The other challenge was to write performative transformation scripts that can handle missing data points or errors in the input data, such as an event dated to: ``1234-02-30``.
 
 ### About this document
 This document describes the encoding decisions behind *CBDB in TEI*. It is not a replacement of the original TEI documentation, and covers only those elements and attributes that are actually used by the project. The documentation and explanation of the various xQuery programs used in the transformation from SQLite to xml are located in the [function documentation](/function-doc.md). 
@@ -103,8 +109,8 @@ This element has three parts: ``<classDecl>``, ``<charDecl>``, and ``<listPrefix
     </classDecl>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="charDecl.xml" parse="xml"/>
     <listPrefixDef>
-    …        
         <prefixDef ident="idtf" matchPattern="([.]*)" replacementPattern="http://tkb.zinbun.kyoto-u.ac.jp/pers-db/$1"/>
+        …  
     </listPrefixDef>
 </encodingDesc>
 ```
@@ -114,7 +120,7 @@ This element has three parts: ``<classDecl>``, ``<charDecl>``, and ``<listPrefix
 Contains three ``<prefixDef>`` elements capturing data necessary to construct full URI’s stored in *CBDB*’s ``DATABASE_LINK_CODES``, and ``DATABASE_LINK_DATA``. The ttsweb links to Academia Sinica however are broken. 
 
 #### charDecl
-Since historical Chinese data is prone to encounter non standardized Character forms, which are hard to capture in *CBDB*’s native format *CBDB in TEI* includes a place for capturing this data. Irregular characters appearing anywhere in the document should be encoded using the ``<g>`` element. The character Declaration provides a central place to store such variants and to provide a standardized form for searching and processing. 
+Since historical Chinese data often irregular Character variants, which are hard to capture in *CBDB*’s native format, *CBDB in TEI* includes a place for capturing this data. Irregular characters appearing anywhere in the document should be encoded using the ``<g>`` element. The character declaration provides a central place to store such variants and to provide a standardized form for searching and processing. 
 
 Each unique glyph requires an ``@xml:id`` starting with the letters” ```GAI``` (for gaiji). The descriptions of the irregular character in question must follow the guidelines for the use of ideographic description characters of section 18.2 of the [unicode standard](http://www.unicode.org/versions/Unicode9.0.0/ch18.pdf). In addition, descriptions should prioritize visual equivalence over semantic equivalence, e.g.: ``𬇕`` = 
 ``氵⿰万`` not ``水⿰萬`` (see *ibid* Figure 18-8 example 6 p. 691).
