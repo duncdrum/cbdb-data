@@ -4,8 +4,22 @@
     <property name="project.version" value="${package(version)}"/>
     <property name="project.app" value="cbdb-data"/>
     <property name="build.dir" value="build"/>
-    <target name="xar">
+    <target name="xar" depends="xar-full, xar-lite">
         <mkdir dir="${build.dir}"/>
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*"/>
+        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*"/>-->        
+    </target>
+    
+    <target name="xar-full">
+        <ant antfile="build.xml" inheritAll="true" target="full">
+            <property name="full" value="Full"/>
+            <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-full.xar" excludes="${build.dir}/*, /src/xml/*.md"/>
+        </ant>
+    </target>
+    
+    <target name="xar-lite">
+        <ant antfile="build.xml" inheritAll="true" target="lite">
+            <property name="lite" value="Lite"/>
+            <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-lite.xar" excludes="${build.dir}/*, /src/xml/*.xml"/>
+        </ant>
     </target>
 </project>

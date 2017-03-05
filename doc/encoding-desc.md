@@ -108,7 +108,7 @@ Should the [EDTF](http://www.loc.gov/standards/datetime/pre-submission.html) pro
 The following section introduces the elements contained by the ``<teiHeader>`` paying special attention where their contents go beyond the minimal requirements of the TEI guidelines.               
 
 ### fileDesc
-Contains the mandatory information regarding the file itself, and its creator. In addition, and after corresponding with the owners of *CBDB* it includes the [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) 4.0 license statement.
+Contains the mandatory information regarding the file itself, and its creator. In addition, it includes the [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) 4.0 license statement. The ``<respStmt>`` element contains all identifiable contributors and modifiers of *CBDB* that are explicitly mentioned in the ``<body>``.
  
 ### encodingDesc
 This element has three parts: ``<classDecl>``, ``<charDecl>``, and ``<listPrefixDef>``.   Class and character declaration contain xInclude statements pointing to external files, while the list of prefix Definitions is directly created from the data source. 
