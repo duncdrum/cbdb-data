@@ -16,7 +16,7 @@ The current release ``0.6`` is based on the ``20150202`` version of *CBDB*.
 * (ant version ``1.10.1`` for compiling from source)
 
 ## Releases
-Releases have three flavors: [develop](#develop), [full](#full), and [data pack](#data-pack).
+Releases have three flavors: [full](#full), [develop](#develop), and [data pack](#data-pack).
 
 ### Full 
 This is the default version for most users. It contains the xQuery conversion modules, and the complete TEI files. 
@@ -36,15 +36,24 @@ A zip file with just the TEI files.
 
 ### Building from source
 1. Download, fork or clone this GitHub repository
-    1. To compile the develop version from source, you need sidestep GitHubs restrictions on file size by storing your own copy of CBDB's source files as xml in:
-```cbdb-data/src/xml```
+    1. To compile the develop version from source, you need to add your own copy of CBDB's source files as xml in:
+```
+cbdb-data/src/xml
+```
 
 2. IN your CLI, go to the folder you just downloaded:  
-```cd cbdb-data ```
+```
+cd cbdb-data
+```
 
 3. now call ant:
-```ant ``` after a few minutes you should see:
-```BUILD SUCCESSFUL```
+```
+ant
+``` 
+after a few minutes you should see:
+```
+BUILD SUCCESSFUL
+```
 
 4.  Go to your running eXist-db and open package manager from the dashboard. 
   1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just created which is inside the ``/build`` folder.
