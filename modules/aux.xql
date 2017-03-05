@@ -6,9 +6,9 @@ import module namespace functx="http://www.functx.com";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 import module namespace pla="http://exist-db.org/apps/cbdb-data/place" at "place.xql";
-import module namespace biog= "http://exist-db.org/apps/cbdb-data/biographies" at "biographies.xql";
+import module namespace biog="http://exist-db.org/apps/cbdb-data/biographies" at "biographies.xql";
 import module namespace bib="http://exist-db.org/apps/cbdb-data/bibliography" at "bibliography.xql";
-
+import module namespace org="http://exist-db.org/apps/cbdb-data/institutions" at "institutions.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
@@ -16,7 +16,12 @@ declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:Aux.xql contains helper functions mostly for cleaning data and constructing functions.:)
+(:~ 
+this module contains helper function  mostly for cleaning data, testing and constructing other functions.
+
+ @author Duncan Paterson
+ @version 0.6
+:)
 
 
 declare function local:table-variables($f as node()*) as xs:string {
@@ -45,6 +50,64 @@ return
 };
 (:local:write-chunk-includes(37):)
 
+declare function local:report-asso($item as item()*) as item()* {
+(: create a report of associations to distingiuish passive/active, mutual relations. :)
+
+let $symmetry :=
+    for $symmetric in $ASSOC_CODES//no:row
+    where $symmetric/no:c_assoc_code = $symmetric/no:c_assoc_pair
+    return
+        $symmetric
+    
+let $assymetry := 
+    for $assymetric in $ASSOC_CODES//no:row
+    where $assymetric/no:c_assoc_code != $assymetric/no:c_assoc_pair
+    return
+        $assymetric
+        
+let $bys :=
+(: filters all */by pairs :)
+    for $by in $ASSOC_CODES//no:c_assoc_desc
+    where contains($by/text(), ' by')
+    return 
+        $by
+    
+let $was :=
+(: filter all  was/of pairs:)
+    for $was in $ASSOC_CODES//no:c_assoc_desc
+    where contains($was/text(), ' was')
+    return
+        $was
+        
+let $to :=
+(: filter all from/to pairs :)
+    for $to in $ASSOC_CODES//no:c_assoc_desc
+    where contains($to/text(), ' to')
+    return
+        $to
+    
+let $report := 
+    <report>
+        <total>{count(//no:row)}</total>
+        <unaccounted>{count(//no:row) - (count($assymetry) + count($symmetry))}</unaccounted>
+        <symmetric>
+            <sym_sum>{count($symmetry)}</sym_sum>
+            <rest>{count(//no:row) - count($symmetry)}</rest>
+        </symmetric>
+        <assymetric>
+            <assy_sum>{count($assymetry)}</assy_sum>
+            <assy_by>{count($bys)*2}</assy_by>
+            <rest>{count($assymetry) - count($bys)*2}</rest>
+            <assy_was>{count($was)*2}</assy_was>
+            <rest>{count($assymetry) - count($bys)*2 - count($was)*2}</rest>
+            <assy_to>{count($to)*2}</assy_to>
+        </assymetric>
+    </report> 
+    
+return 
+    $report    
+};
+
 (: !!! WARNING !!! Hands off if you are not sure what you are doing !!!! :)
 declare function local:upgrade-contents($nodes as node()*) as node()* {
 
@@ -64,12 +127,16 @@ return
 };
 (:local:upgrade-contents($global:BIOG_MAIN//no:c_personid[. > 0][. < 2]):)
 
+(:The ids in $errors contained validation errors on 2nd run 
+<ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>
 
-(:from biog:biog:)
-let $test := $global:BIOG_MAIN//no:c_personid[. = 198040]
-(:The following records contained validation errors on 2nd run 
-<ref target="https://github.com/duncdrum/cbdb-data/commit/1646a678201ae634dd746c25e34a361b221f3ab0"/>:)
-let $errors := (2074, 8001, 11786, 12353, 12908, 17236, 18663, 20888, 22175, 
+This fixes those errors (mostly in the source files)
+impossible dates in the source files were set via
+
+update  value $person/../no:c_by_day with 28
+:)
+
+(:let $errors := (2074, 8001, 11786, 12353, 12908, 17236, 18663, 20888, 22175, 
 23652, 24130, 24915, 25089, 27474, 37934, 38061, 38248, 38450, 38594, 38825, 
 43665, 44821, 44891, 44894, 45204, 45221, 45399, 45409, 45641, 49513, 50730, 
 139017, 139018, 139042, 139446, 139447, 139503, 139680, 198040, 198892, 
@@ -77,12 +144,6 @@ let $errors := (2074, 8001, 11786, 12353, 12908, 17236, 18663, 20888, 22175,
 203454, 203625, 203845, 203989, 204202, 204270, 204798, 205142, 205345, 
 205770, 206011, 206050, 206715, 206933, 206972, 207151, 207543, 207576, 
 207881)
-
- 
-
-(:return
- $test/..:)
-
 
 
 for $person in $errors
@@ -92,31 +153,15 @@ return
 xmldb:store($global:patch, $file-name, 
 biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 
+:)
 
-(:for $person in $global:BIOG_MAIN//no:c_personid[. = 207881]
+
+let $test-bio := $global:BIOG_MAIN//no:c_personid[. > 0][. < 2075]
+let $test-bib := $global:TEXT_CODES//no:c_textid[. > 2000][. < 2101]
+let $test-org := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]
+
+for $person in $test-org
 return
-update  value $person/../no:c_by_day with 28:)
+    org:org($person, 'v')
 
-(:biog:biog($person, ''):)
-
-
-(:for $person in $global:BIOG_MAIN//no:c_personid[. = 371243]
-let $ethnicity := $global:ETHNICITY_TRIBE_CODES//no:c_ethnicity_code[. = $person/../no:c_ethnicity_code]
-return
-
-if ($person/../no:c_ethnicity_code > 0) 
-then (<trait type="ethnicity" key="{$ethnicity/../no:c_group_code/text()}">
-        {for $n in $ethnicity/../*
-        return
-         typeswitch ($n)
-             case element (no:c_ethno_legal_cat) return element label {$n/text()}
-             case element (no:c_name_chn) return element desc { attribute xml:lang {'zh-Hant'}, $n/text()}
-             case element (no:c_name) return element desc { attribute xml:lang {'zh-Latn-alalc97'}, $n/text()}
-             case element (no:c_romanized) return element desc { attribute xml:lang {'en'}, $n/text()}
-             case element (no:c_notes) return element note {$n/text()}
-         default return ()}
-       </trait>)
-else():)
-            
-            
             

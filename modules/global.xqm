@@ -20,6 +20,7 @@ declare variable $global:target := '/db/apps/cbdb-data/target/';
 declare variable $global:report := '/db/apps/cbdb-data/reports/';
 declare variable $global:patch := '/db/apps/cbdb-data/reports/patch';
 declare variable $global:samples := '/db/apps/cbdb-data/samples/';
+declare variable $global:modules := '/db/apps/cbdb-data/modules/';
 
 
 (:THE TEI FILES IN TARGET:)
@@ -34,8 +35,11 @@ declare variable $global:office-temp := 'officeA.xml';
 declare variable $global:main := 'cbdbTEI.xml';
 declare variable $global:person := 'listPerson';
 
-
 (:THE ORIGINAL TABLES IN SOURCE:)
+
+(:~
+ To generate this list see the local:table-variables function inside the aux module. 
+:)
 declare variable $global:ADDRESSES:= doc(concat($global:src, 'ADDRESSES.xml')); 
 declare variable $global:ADDR_BELONGS_DATA:= doc(concat($global:src, 'ADDR_BELONGS_DATA.xml')); 
 declare variable $global:ADDR_CODES:= doc(concat($global:src, 'ADDR_CODES.xml')); 
@@ -126,12 +130,17 @@ declare variable $global:YEAR_RANGE_CODES:= doc(concat($global:src, 'YEAR_RANGE_
 
 
 declare function global:create-mod-by ($created as node()*, $modified as node()*) as node()*{
-(:this function takes the standardized entries for creation and modification of cbdb entries 
-and translates them into tei:notes.
+(:~ 
+ This function takes the standardized entries for creation and modification of cbdb entries 
+ and translates them into 2 tei:notes.
 
-It expects the c_created_by and c_modified_by as direct input.
-
-This data is distinct from the modifications of the TEI output recorded in the header.:)
+ This data is distinct from the modifications of the TEI output recorded in the header.
+ 
+ @param $created is c_created_by
+ @param $modified is c_modified_by
+ 
+ @return note[@type="created | modified"]
+ :)
 
 for $creator in $created
 return
@@ -151,27 +160,27 @@ return
         
 };
 
-declare function global:validate-fragment($frag as node()*, $loc as xs:string?) as item()* {
+declare function global:validate-fragment ($frag as node()*, $loc as xs:string?) as item()* {
 
-(: This function validates $frag by inserting it into a minimal TEI template. 
+(:~
+ This function validates $frag by inserting it into a minimal TEI template. 
 
-This function cannot guarante that the final document is valid, 
-but it can catch validation errors produced by other function early on.
-This minimizes the number of validations necessary to produce the final output. 
+ This function cannot guarante that the final document is valid, 
+ but it can catch validation errors produced by other function early on.
+ This minimizes the number of validations necessary to produce the final output. 
 
-Currently, $loc accepts the name of the root element returned by the function producing the $frag.
-For $loc use:
-- category
-- charDecl
-- person
-- org
-- bibl
-- place
+ @param $frag the fragment (usually some function's output) to be validated.
+ @param $loc accepts the element name of the root element to be used for validation. 
+ Currently, in use are:
+ - category
+ - charDecl
+ - person
+ - org
+ - bibl
+ - place
 
-For $frag use:
-- biog:biog($global:BIOG_MAIN//no:c_personid[. = 12908], '')
-- bib:bibliography($global:TEXT_CODES//no:c_textid[. = 2031])
-
+ @return if validation succeeds then return the input, otherwise store a copy of the validation report 
+    into the reports directory, including the xml:id of the root element of the processed fragment.   
 :)
 
 let $id := data($frag/@xml:id)
@@ -183,7 +192,7 @@ let $mini :=
             <title>cbdbTEI-mini</title>
          </titleStmt>
          <publicationStmt>
-            <p>testing ouput of individual functions using this mini tei document </p>
+            <p>testing ouput of individual functions using this mini tei document.</p>
          </publicationStmt>
          <sourceDesc>
             <p>cannot replace proper validation of final output</p>

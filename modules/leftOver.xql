@@ -738,3 +738,67 @@ return
         case ('301') return (attribute from {'1082'}, attribute to {'1279'})
         default return attribute when {$date}   
 };
+
+declare function local:nest-places ($data as node()*, $id as node(), $zh as node()?, $py as node()?, $mode as xs:string?) as item()*{
+
+
+    let $belong := $global:ADDR_BELONGS_DATA//no:c_addr_id[. = $id]   
+    let $output :=   
+        element place { 
+            for $att in $id/../*[. != '0']
+            order by local-name($att) 
+            return
+                typeswitch($att)
+                    case element (no:c_addr_id) return attribute xml:id {concat('PL', $id/text())}
+                    case element (no:c_admin_type) return attribute type {pla:fix-admin-types($att)}
+                    case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
+                default return (),
+                
+            for $n in $id/../*
+            order by local-name($n) descending
+            return typeswitch($n) 
+                case element (no:c_name_chn) return element placeName { attribute xml:lang {'zh-Hant'}, $zh/text()}
+                case element (no:c_name) return element placeName { attribute xml:lang {'zh-Latn-alalc97'}, $py/text()}
+                case element (no:c_alt_names) return element placeName { attribute type {'alias'}, $n/text()}
+            default return (),                       
+                     
+            if (empty($id/../no:c_firstyear) and empty($id/../no:c_lastyear) and empty($id/../x_coord))
+            then ()
+            else ( element location {
+                if (empty($id/../no:c_firstyear))
+                then ()
+                else ( attribute from {cal:isodate($id/../no:c_firstyear)}),
+                
+                if (empty($id/../no:c_lastyear))
+                then ()
+                else ( attribute to {cal:isodate($id/../no:c_lastyear)}),
+                    
+                if (empty($id/../no:x_coord) or $id/../no:x_coord[. = 0])
+                then ()
+                else (element geo {concat($id/../no:x_coord/text(), ' ', $id/../no:y_coord/text())})            
+            }),
+                     
+                for $x in $id/../*[. !='0']
+                order by local-name($x)
+                return typeswitch($x)                
+                    case element (no:CHGIS_PT_ID) return element idno { attribute type {'CHGIS'}, $x/text()}
+                    case element (no:c_notes) return element note {$x/text()}               
+                default return (),
+                     
+            if (empty($belong/../no:c_notes)) 
+            then ()
+            else (element note {$belong/../no:c_notes/text()}),             
+            
+            if (exists($data//no:c_belongs_to[. = $id/text()]))
+            then (for $child in $data//no:c_belongs_to[. = $id/text()]
+                   return 
+                        pla:nest-places($data, $child/../no:c_addr_id, $child/../no:c_name_chn, $child/../no:c_name, ''))
+            else ()            
+        }
+return 
+    switch($mode)
+        case 'v' return global:validate-fragment($output, 'place')
+        case 'd' return global:validate-fragment($output, 'place')[1]
+    default return $output       
+       
+};
