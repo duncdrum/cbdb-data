@@ -16,34 +16,36 @@ The current release ``0.6`` is based on the ``20150202`` version of *CBDB*.
 * (ant version ``1.10.1`` for compiling from source)
 
 ## Releases
-Releases have three flavors: [regular](#regular), [full](#full), and [data pack](#data-pack).
+Releases have three flavors: [develop](#develop), [full](#full), and [data pack](#data-pack).
 
-### Regular 
+### Full 
 This is the default version for most users. It contains the xQuery conversion modules, and the complete TEI files. 
 But not the CBDB's source files, the index configuration is adapted accordingly. 
    
-### Full
-The full version contains both source and converted files. Also contains indexes on both files. 
+### Develop
+The develop version has both source and converted files. It also contains indexes for both kind of files. 
 This version is only of interest to users wishing to experiment with the transformation itself. 
 
 ### Data pack
-A zip file with just the TEI files. Only releases with updates to the converted data files include this. 
+A zip file with just the TEI files.  
 
 ## Installation
-1. Download either full or regular ``.xar`` from the [releases](https://github.com/duncdrum/cbdb-data/releases) page. 
+1. Download either "-dev" or "-full" ``.xar`` from the [releases](https://github.com/duncdrum/cbdb-data/releases) page. 
 2.  Go to your running eXist-db and open package manager from the dashboard. 
   1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just downloaded. 
 
 ### Building from source
-Because of GitHub’s restrictions on file sizes, compiling from source will generate the regular version. 
-
 1. Download, fork or clone this GitHub repository
-2. Open the folder you just downloaded in CLI, type:  
-``` cd cbdb-data ```
-3. call ant by typing:
-``` ant ```
-you should see:
+    1. To compile the develop version from source, you need sidestep GitHubs restrictions on file size by storing your own copy of CBDB's source files as xml in:
+```cbdb-data/src/xml```
+
+2. IN your CLI, go to the folder you just downloaded:  
+```cd cbdb-data ```
+
+3. now call ant:
+```ant ``` after a few minutes you should see:
 ```BUILD SUCCESSFUL```
+
 4.  Go to your running eXist-db and open package manager from the dashboard. 
   1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just created which is inside the ``/build`` folder.
 
