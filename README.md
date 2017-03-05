@@ -32,31 +32,15 @@ A zip file with just the TEI files.
 ## Installation
 1. Download either "-dev" or "-full" ``.xar`` from the [releases](https://github.com/duncdrum/cbdb-data/releases) page. 
 2.  Go to your running eXist-db and open package manager from the dashboard. 
-  1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just downloaded. 
+    1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just downloaded. 
 
 ### Building from source
 1. Download, fork or clone this GitHub repository
-    1. To compile the develop version from source, you need to add your own copy of CBDB's source files as xml in:
-```
-cbdb-data/src/xml
-```
-
-2. IN your CLI, go to the folder you just downloaded:  
-```
-cd cbdb-data
-```
-
-3. now call ant:
-```
-ant
-``` 
-after a few minutes you should see:
-```
-BUILD SUCCESSFUL
-```
-
+    1. To compile the develop version from source, you need to add your own copy of CBDB's source files as xml in:``cbdb-data/src/xml``
+2. In your CLI, go to the folder you just downloaded:``cd cbdb-data``
+3. now call ant:``ant`` after a few minutes you should see:``BUILD SUCCESSFUL``
 4.  Go to your running eXist-db and open package manager from the dashboard. 
-  1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just created which is inside the ``/build`` folder.
+    1. Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just created which is inside the ``/build`` folder.
 
 
 ## Documentation
