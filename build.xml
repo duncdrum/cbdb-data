@@ -8,7 +8,7 @@
     <target name="xar">
         <mkdir dir="${build.dir}"/>
         <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-full.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
-        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>
+        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-full.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
+        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>-->
     </target>
 </project>
