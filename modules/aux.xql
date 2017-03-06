@@ -14,13 +14,15 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
+
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:~ 
 this module contains helper function  mostly for cleaning data, testing and constructing other functions.
 
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
 :)
 
 

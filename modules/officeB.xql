@@ -14,7 +14,7 @@ it also cleans up after itself.
 In case of disaster simply regenerate the previous files by running officeA.xql
 
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
  
  @return merges officeA.xml into office.xml, then deletes temp file officeA.xml.
 :)

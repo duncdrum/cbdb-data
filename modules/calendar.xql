@@ -1,12 +1,15 @@
 xquery version "3.0";
+module namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 (:import module namespace functx="http://www.functx.com";:)
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
+
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
-declare namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
+
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
@@ -23,21 +26,31 @@ declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
  is implicit in the data structure.
     
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
  
  @return  cal_ZH.xml
 :)
 
 
 
-declare function cal:isodate ($string as xs:string?)  as xs:string* {
+declare
+    %test:args('0')
+    %test:assertEquals('-0001')
+    
+    %test:args('123')
+    %test:assertEquals('0123')
+
+    %test:args('-123')
+    %test:assertEquals('-0123')
+    
+function cal:isodate ($string as xs:string?)  as xs:string* {
 
 (:~ 
  cal:isodate turns inconsistent gregorian year strings into proper xs:gYear type strings. 
- Consisting of 4 digits, with leading 0s.
- See <ref target="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html"/>. 
+ Consisting of 4 digits, with leading 0s. 
  This means that BCE dates have to be recalculated. Since '0 AD' -> "-0001"
  
+ @see http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html
  @param $string year number in western style counting
  @return gYear style string   
 :)
@@ -316,14 +329,15 @@ declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as i
 </taxonomy>
 };
 
+declare function cal:write($item as item()*) as item()*{
 (:~
-write the taxonomy containing the results of both  cal:sexagenary and cal:dynasties into db.
+write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.
 :)
 xmldb:store($global:target, $global:calendar, 
     <taxonomy xml:id="cal_ZH">{                
             cal:sexagenary($global:GANZHI_CODES//no:row, 'v'),
             cal:dynasties($global:DYNASTIES//no:row, 'v')}
-    </taxonomy>)
+    </taxonomy>)};
 
             
 

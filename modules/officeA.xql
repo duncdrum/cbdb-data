@@ -14,7 +14,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
  Each file stores a taxonmomy for one of two different ways that offices are categorized by CBDB.
     
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
  
  @return office.xml, officeA.xml.
 :)
