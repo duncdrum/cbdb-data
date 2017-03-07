@@ -36,14 +36,14 @@ declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 declare
     %test:args('0')
     %test:assertEquals('-0001')
-    
-    %test:args('123')
-    %test:assertEquals('0123')
 
-    %test:args('-123')
-    %test:assertEquals('-0123')
+    %test:args('123')
+    %test:assertEquals('0123') 
     
-function cal:isodate ($string as xs:string?)  as xs:string* {
+    %test:args('-12')
+    %test:assertEquals('-0012')
+    
+    function cal:isodate ($string as xs:string?)  as xs:string* {
 
 (:~ 
  cal:isodate turns inconsistent gregorian year strings into proper xs:gYear type strings. 
@@ -61,7 +61,11 @@ function cal:isodate ($string as xs:string?)  as xs:string* {
     else (concat (string-join((for $i in (string-length($string) to 3) return '0'),'') , $string))
 };
 
-declare function cal:sqldate ($timestamp as xs:string?)  as xs:string* {
+declare 
+    %test:args('11110101')
+    %test:assertEquals('1111-01-01')
+    
+    function cal:sqldate ($timestamp as xs:string?)  as xs:string* {
 (:~ 
  cal:sqldate converst the timestamp like values from CBDBs RLDBMs and converst them into iso compatible date strings,
  i. e.: gYear-gMonth-gDay
@@ -173,7 +177,22 @@ return
                                     }
 };
 
-declare function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
+declare 
+    %test:args('2036', 'zh')
+    %test:assertEquals('丙辰')
+    
+    %test:args('0004', 'py')
+    %test:assertEquals('jiǎ zǐ')
+    
+    %test:args('0000', 'py')
+    %test:assertEquals("0 AD/CE  … it's complicated")
+    
+    %test:args('-0001', 'zh')
+    %test:assertEquals('庚申')
+    
+    %test:args('-0247', 'zh')
+    %test:assertEquals('乙卯')
+    function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
 (:~
  Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. 
  It assumes gYears for calculating BCE dates. .
@@ -337,7 +356,8 @@ xmldb:store($global:target, $global:calendar,
     <taxonomy xml:id="cal_ZH">{                
             cal:sexagenary($global:GANZHI_CODES//no:row, 'v'),
             cal:dynasties($global:DYNASTIES//no:row, 'v')}
-    </taxonomy>)};
+    </taxonomy>)
+};
 
             
 
