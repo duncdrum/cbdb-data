@@ -9,10 +9,10 @@ For a more detailed account please consult the [Documentation](#documentation) b
 tools of *CBDB* to the browser along with means for exporting and visualizing the data. 
 Because *CBDB* consists of roughly ~350k records, users are strongly encouraged to use *cbdb in TEI* in combination with an xml database, see [installation](#installation) below.
 
-The current release ``0.6`` is based on the ``20150202`` version of *CBDB*.
+The current release ``0.7`` is based on the ``20150202`` version of *CBDB*.
 
 ## Requirements
-* eXist-db version ``2.2 <`` with min. ``2gb`` (!) allocated memory.
+* eXist-db version ``3.0`` or greater with min. ``2gb`` (!) allocated memory.
 * (ant version ``1.10.1`` for compiling from source)
 
 ## Releases

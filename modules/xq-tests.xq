@@ -20,7 +20,7 @@ declare namespace xi="http://www.w3.org/2001/XInclude";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:~
- This module contains unit test and the test runner functions for other xquery modules. 
+ This module contains the test runner functions for other xquery modules. 
  
   @author Duncan Paterson
   @version 0.7
