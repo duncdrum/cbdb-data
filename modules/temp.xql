@@ -35,28 +35,86 @@ declare
  2. we test the matches if they end in nh_code, nh_year, gz_... and filter empties
  3. process the filtered matches to output the normalised date string
  
+:) 
+
+(:
+_range
+_year
+    _yr
+year
+_month
+_day
+_dy
+_nh_year            ---> do nh_year first so that remaining years are easier to catch
+    _nh_yr
+_nh_code
+_day_gz
+    _day_ganzhi
+
+_intercalary
+
+_date (SQL)
+
 :)
+
+(:
+switch ($range)
+    case ('-1') return attribute notAfter {$date}
+    case ('1') return attribute notBefore {$date}
+    case ('2') return (attribute when {$date}, attribute cert {'medium'})
+    case ('300') return (attribute from {'0960'}, attribute to {'1082'})
+    case ('301') return (attribute from {'1082'}, attribute to {'1279'})
+default return attribute when {$date} 
+:)
+
+(: First, we find all the date related nodes from a given row...:)
+for $node in $nodes/../*
+let $name := local-name($node)
+let $suffix := ('_dy', ('_nh_year', '_nh_yr'), '_nh_code', ('_day_gz', '_day_ganzhi'), '_range', ('_year', '_yr', 'year'), '_month', '_day', '_intercalary', '_date')
+
+let $match :=  map:new (    
+        for $n at $pos in $suffix
+        return
+            if (ends-with($name, $n))
+            then (map:entry($name, $pos))
+            else())            
+(: and  apply preprocessing to generate properly formated items to work with.:)
+return
+    switch($match($name))
+        case 1 return 'D'
+        case 2 case 3 return 'Y'
+        case 4 return 'R'
+        case 5 case 6 return 'GZ'
+        case 7 return 'range'
+        case 8 case 9 case 10 return 'YYYY'
+        case 11 return 'MM'
+        case 12 return 'DD'
+        case 13 return 'i'
+        case 14 return 'SQL'        
+    default return ()
     
-    for $node in $nodes/../*
-(:    for $match in $nodes/../*:)
-    
-    
-(:    where contains(local-name($node), local-name($match)):)
-    return
-    
-       if (contains(local-name($node), 'year'))
-       then (local-name($node))
-       else ()
-        
-(:        switch(local-name($node))
-            case 'c_dy' return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:c_sort)
-            case  contains(local-name($node), '_year') return cal:isodate($node)
-        default return ():)
+(: Second, form group of nodes that belong together. 
+If YYYY,  MM and DD tend to have a different $prefix
+If D, R and Y (and GZ) tend to have a different $prefix
+'i' always applies to?
+'range is its own beast'
+:)
+
+
+
+(: then, check if the date is complete, ie. no YYYY-uu-DD.
+    D can come from NH table.:)
+
 
 
 };
 let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
 
-for $n in $test 
+
+for $n in $test
 return
     local:zh-dates($n)
+
+    
+(:    return
+        distinct-values(local-name($all/*)):)

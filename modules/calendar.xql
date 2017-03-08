@@ -229,14 +229,14 @@ declare
             
     
    let $sexagenary_zh :=
-        map:new(
+        map:new (
         for $ganzhi at $pos in $ganzhi_zh
         return
             map:entry($pos, $ganzhi)
                 )
     
     let $sexagenary_py :=
-           map:new(
+           map:new (
            for $ganzhi at $pos in $ganzhi_py
            return
                map:entry($pos, $ganzhi)
