@@ -81,16 +81,22 @@ let $match :=  map:new (
 (: and  apply preprocessing to generate properly formated items to work with.:)
 return
     switch($match($name))
-        case 1 return 'D'
-        case 2 case 3 return 'Y'
-        case 4 return 'R'
+        case 1 return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:sort)
+        case 2 case 3 return $node/text()
+        case 4 return concat('R', count($cal:path/category[@xml:id = concat('R', $node/text())]/preceding-sibling::category) +1)
         case 5 case 6 return 'GZ'
-        case 7 return 'range'
-        case 8 case 9 case 10 return 'YYYY'
-        case 11 return 'MM'
-        case 12 return 'DD'
-        case 13 return 'i'
-        case 14 return 'SQL'        
+        case 7 return 
+            switch($node/text())
+                case ('-1') return attribute notAfter {$node}
+                case ('1') return attribute notBefore {$node}
+                case ('2') return (attribute when {$node}, attribute cert {'medium'})
+                case ('300') return (attribute from {'0960'}, attribute to {'1082'})
+                case ('301') return (attribute from {'1082'}, attribute to {'1279'})
+            default return attribute when {$node} 
+        case 8 case 9 case 10 return cal:isodate($node)
+        case 11 case 12 return functx:pad-integer-to-length($node, 2)         
+        case 13 return  'i'                       
+        case 14 return cal:sqldate($node)       
     default return ()
     
 (: Second, form group of nodes that belong together. 
@@ -112,7 +118,7 @@ let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
 
 
 for $n in $test
-return
+return    
     local:zh-dates($n)
 
     
