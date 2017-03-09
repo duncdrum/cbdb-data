@@ -31,8 +31,9 @@ declare
     function local:zh-dates ($nodes as item()*) as item()* {
     
 (:~ 
- 1. we need to match the nodes that stand in a relation like: c_by_nh_code, c_by_nh_year, c_by_intercalary
- 2. we test the matches if they end in nh_code, nh_year, gz_... and filter empties
+ 1. we test the matches if they end in nh_code, nh_year, gz_... 
+ 1.1 we convert matches to normalizes strings
+ 2. we need to match the nodes that stand in a relation like: c_by_nh_code, c_by_nh_year, c_by_intercalary and filter '0'
  3. process the filtered matches to output the normalised date string
  
 :) 
@@ -67,24 +68,26 @@ switch ($range)
 default return attribute when {$date} 
 :)
 
-(: First, we find all the date related nodes from a given row...:)
 for $node in $nodes/../*
-let $name := local-name($node)
-let $suffix := ('_dy', ('_nh_year', '_nh_yr'), '_nh_code', ('_day_gz', '_day_ganzhi'), '_range', ('_year', '_yr', 'year'), '_month', '_day', '_intercalary', '_date')
 
+let $name := local-name($node)
+
+(: First, we find all the date related nodes from a given row... :)
+let $suffix := ('_dy', ('_nh_year', '_nh_yr'), '_nh_code', ('_day_gz', '_day_ganzhi'), '_range', ('_year', '_yr', 'year'), '_month', '_day', '_intercalary', '_date')    
 let $match :=  map:new (    
-        for $n at $pos in $suffix
-        return
-            if (ends-with($name, $n))
-            then (map:entry($name, $pos))
-            else())            
-(: and  apply preprocessing to generate properly formated items to work with.:)
-return
+    for $m at $pos in $suffix
+    return
+        if (ends-with($name, $m))
+        then (map:entry($name, $pos))
+    else())
+                
+(: and  apply preprocessing to generate properly formated date strings to work with. :)
+let $strings := 
     switch($match($name))
-        case 1 return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:sort)
-        case 2 case 3 return $node/text()
+        case 1 return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:c_sort/text())
+        case 2 case 3 return concat('Y', $node/text)
         case 4 return concat('R', count($cal:path/category[@xml:id = concat('R', $node/text())]/preceding-sibling::category) +1)
-        case 5 case 6 return 'GZ'
+        case 5 case 6 return concat('GZ', $node/text())
         case 7 return 
             switch($node/text())
                 case ('-1') return attribute notAfter {$node}
@@ -93,12 +96,45 @@ return
                 case ('300') return (attribute from {'0960'}, attribute to {'1082'})
                 case ('301') return (attribute from {'1082'}, attribute to {'1279'})
             default return attribute when {$node} 
-        case 8 case 9 case 10 return cal:isodate($node)
+        case 8 case 9 case 10 return 
+            if (ends-with($name, ('_nh_year', '_nh_yr'))) 
+            then (concat('Y', $node/text())) (: should this also be padded? :)
+            else (cal:isodate($node))
         case 11 case 12 return functx:pad-integer-to-length($node, 2)         
-        case 13 return  'i'                       
+        case 13 return  
+            if ($node = 1) 
+            then ('i') 
+            else ()                       
         case 14 return cal:sqldate($node)       
     default return ()
+ 
+(: now we bind the name of the date elements to a prefix :)
+let $prefix :=  map:new (
+    for $part in map:keys($match)   
+    return       
+        for $p at $pos in $suffix       
+        return
+            if (ends-with($name, $p))
+            then (map:entry($name, substring-before($part, $p))) (::)
+            else ()
+       )
+
+(: and merge entries with overlapping  names :)
+
+(:if the namepart before the last '_' occurs more then once then group things together, 
+ otherwise return match:)
+let $grouped := map:get($prefix, $name)
     
+        
+        
+
+for $g in $grouped
+where string-length($g) > 1
+return     
+    if (string-length($g) = 1)
+    then ($name)
+    else (substring-after($g, 'c_'))
+
 (: Second, form group of nodes that belong together. 
 If YYYY,  MM and DD tend to have a different $prefix
 If D, R and Y (and GZ) tend to have a different $prefix
@@ -106,7 +142,10 @@ If D, R and Y (and GZ) tend to have a different $prefix
 'range is its own beast'
 :)
 
-
+(:for $dates in $strings
+(let $prefix := functx:substring-before-match(local-name($strings)
+return
+ local-name($dates):)
 
 (: then, check if the date is complete, ie. no YYYY-uu-DD.
     D can come from NH table.:)
