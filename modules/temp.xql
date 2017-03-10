@@ -108,7 +108,7 @@ let $strings :=
         case 14 return cal:sqldate($node)       
     default return ()
  
-(: now we bind the name of the date elements to a prefix :)
+(: now we bind the name of the date elements to a (long) prefix to not loose ubiquitous 'c_dy' :)
 let $prefix :=  map:new (
     for $part in map:keys($match)   
     return       
@@ -119,21 +119,78 @@ let $prefix :=  map:new (
             else ()
        )
 
+(: then we test :)
+
+
 (: and merge entries with overlapping  names :)
 
 (:if the namepart before the last '_' occurs more then once then group things together, 
  otherwise return match:)
-let $grouped := map:get($prefix, $name)
+ 
+(: to account for special case that c_dy = deathyear, but also = dynasty :)
+let $short := map:new(
+    for $s in $prefix($name)
+    return
+        if ($s ='c')
+        then (map:entry($name, 'c_dy'))
+        else (map:entry($name, substring-after($s, 'c_')))
+) 
+(:let $filter := function ($k, $v) {if (contains($k, $v)) then ( }:)
+
+let $grouped :=  map:new(
+    for $str in $short($name)
+    return
+        if (contains($short($name), substring($str, 1, 2)))
+        then (map:entry($name, substring($str, 1, 2)))
+        else (map:entry($name, $str))
+        )
+
+let $temp := 
+    for $n in $prefix($name)
+    group by $g := $grouped($name)
+    return
+        <date>
+            <name>{$name}</name>
+            <group>{$grouped($name)}</group>
+            <string>{$strings}</string>
+        </date>
     
         
+return 
+    $temp
+    
+(:  <date x="{$name}" y="{$grouped}"> {$strings}</date>:)
         
+(:        map:for-each($short, contains($short($name), $str)):)
+       (: count(index-of($short($name), $str)):)
+(:    for $str in $short($name)
+    return
+        contains($short($name), $str):)
+        
+(:    for $str in $short($name)
+    return
+        if ($short($str) ! contains($short($name), $str)) 
+        then ($short($name) ! count(index-of($str, $short($name))))
+        else():)
 
-for $g in $grouped
-where string-length($g) > 1
-return     
-    if (string-length($g) = 1)
+(:let $classic := 
+    for $g in $grouped
+    return
+        count(index-of($grouped, distinct-values($grouped))):)
+
+
+
+    
+(:for $n in $grouped[. != '']
+group by $str := 
+return
+    if (contains(map:get($prefix, $name), $n))
+    then ($n)
+    else ('aaa'):)
+
+(:    if (string-length($g) = 1)
     then ($name)
-    else (substring-after($g, 'c_'))
+    else (substring-after($g, 'c_')):)
 
 (: Second, form group of nodes that belong together. 
 If YYYY,  MM and DD tend to have a different $prefix

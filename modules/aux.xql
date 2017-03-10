@@ -161,9 +161,10 @@ biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 let $test-bio := $global:BIOG_MAIN//no:c_personid[. > 0][. < 2075]
 let $test-bib := $global:TEXT_CODES//no:c_textid[. > 2000][. < 2101]
 let $test-org := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]
+let $test-seq := ('ab','bc','cd', 'ab', 'a')
 
-for $person in $test-org
+
 return
-    org:org($person, 'v')
+    count(index-of($test-seq, 'ab'))
 
             
