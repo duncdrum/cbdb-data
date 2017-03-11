@@ -27,48 +27,31 @@ Can the function determine when/notBefore/... based on switch
 Should the date element alwys have @when?
 :)
 
+(: TODO
+- shorten the whole sequnce of $startL - $startL - $prefix 
+    - refactor using => and ! syntax
+    - refactor the conditional into a better expression
+
+:)
+
 declare 
     function local:zh-dates ($nodes as item()*) as item()* {
     
 (:~ 
- 1. we test the matches if they end in nh_code, nh_year, gz_... 
- 1.1 we convert matches to normalizes strings
- 2. we need to match the nodes that stand in a relation like: c_by_nh_code, c_by_nh_year, c_by_intercalary and filter '0'
- 3. process the filtered matches to output the normalised date string
+ 1.1 we test source element's suffix to see if it the sequence of date related suffixes
+ 1.2 we prepare normalised strings based on the matched suffixes 
+ 2.1-3 we iterate over the beginning parts until we have map of the prefixes that accounts for irregularities 
+ 3. generate a intermediate lookup xml necessary for grouping 
+ 
+ Applying the filter for '0' in the for-clause is most efficient for the data of CBDB, but could lead to errors with other sources. 
+
+ 
+ 
+ @return the right date attribute with the properly joined and corrrectly normalized string as value
  
 :) 
 
-(:
-_range
-_year
-    _yr
-year
-_month
-_day
-_dy
-_nh_year            ---> do nh_year first so that remaining years are easier to catch
-    _nh_yr
-_nh_code
-_day_gz
-    _day_ganzhi
-
-_intercalary
-
-_date (SQL)
-
-:)
-
-(:
-switch ($range)
-    case ('-1') return attribute notAfter {$date}
-    case ('1') return attribute notBefore {$date}
-    case ('2') return (attribute when {$date}, attribute cert {'medium'})
-    case ('300') return (attribute from {'0960'}, attribute to {'1082'})
-    case ('301') return (attribute from {'1082'}, attribute to {'1279'})
-default return attribute when {$date} 
-:)
-
-for $node in $nodes/../*
+for $node in $nodes/../*[. != '0']
 
 let $name := local-name($node)
 
@@ -120,7 +103,7 @@ let $startL :=  map:new (
             else ()
     )
 
-(: ...to account for special case that in BIOG_MAIN c_dy = deathyear, but everywhere else c_dy = dynasty ...:)
+(: ...to account for special case that in BIOG_MAIN c_dy = deathyear, but everywhere else c_dy = dynasty ... :)
 let $startS := map:new (
     for $s in $startL($name)
     return
@@ -132,7 +115,7 @@ let $startS := map:new (
 let $prefix :=  map:new (
     for $str in $startS($name)
     return
-        if (contains($startS($name), substring($str, 1, 2)))
+        if (contains($startS($name), substring($str, 1, 2))) (: increase to $str, 1, 3, for greater accuracy :)
         then (map:entry($name, substring($str, 1, 2)))
         else (map:entry($name, $str))
     )
@@ -145,103 +128,23 @@ let $lookup :=
             <group>{$prefix($name)}</group>
             <string>{$strings}</string>
         </date>
-
-let $group := distinct-values($lookup//tei:group)
-
-group by $group 
-order by $group
-
-(:let $x := map:new (
-for $n in $name
-    return
-        if (map:contains($prefix, $n))
-        then (map:entry($n, 'blah'))
-        else ()
-):)
-
-return
-
-<result>{
-    if (count($lookup//tei:group) = 1)
-    then (<ab n="{$name}">{$strings}</ab>)
-    else (<ab n="{$name}">{string-join($strings, '-')}</ab>)
-}</result>    
-
-(:
-$lookup//tei:name[. = $name]/../tei:group/text()
-:)
-(:    if (count($lookup//tei:group) = 1)
-    then ($strings)
-    else (string-join($strings, '-')):)
-    
-    
-(:let $grouped:=
-map:new(for $n in map:keys($prefix)
-        return
-        map:entry($name, $group[. =$lookup//tei:name[. = $n]/../tei:group/text()])
-):)
-
-
-(:    for $i in 1 to count($group):)
-    
-(:  <date x="{$name}" y="{$grouped}"> {$strings}</date>:)
         
-(:        map:for-each($short, contains($short($name), $str)):)
-       (: count(index-of($short($name), $str)):)
-(:    for $str in $short($name)
-    return
-        contains($short($name), $str):)
-        
-(:    for $str in $short($name)
-    return
-        if ($short($str) ! contains($short($name), $str)) 
-        then ($short($name) ! count(index-of($str, $short($name))))
-        else():)
-
-(:let $classic := 
-    for $g in $grouped
-    return
-        count(index-of($grouped, distinct-values($grouped))):)
+(: The next line  allows the whole autojoin trickery :)
+group by $group := distinct-values($lookup//tei:group)
 
 
-
-    
-(:for $n in $grouped[. != '']
-group by $str := 
 return
-    if (contains(map:get($prefix, $name), $n))
-    then ($n)
-    else ('aaa'):)
-
-(:    if (string-length($g) = 1)
-    then ($name)
-    else (substring-after($g, 'c_')):)
-
-(: Second, form group of nodes that belong together. 
-If YYYY,  MM and DD tend to have a different $prefix
-If D, R and Y (and GZ) tend to have a different $prefix
-'i' always applies to?
-'range is its own beast'
-:)
-
-(:for $dates in $strings
-(let $prefix := functx:substring-before-match(local-name($strings)
-return
- local-name($dates):)
-
-(: then, check if the date is complete, ie. no YYYY-uu-DD.
-    D can come from NH table.:)
-
-
+    switch(count($lookup//tei:group))
+        case 0 return ()
+        case 1 return <ab n="{$name}">{$strings}</ab> (:element{$name}{$strings}:)
+    default return <ab n="{$name}">{string-join($strings, '-')}</ab>
 
 };
-let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
 
+let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
 
 for $n in $test
 return    
     local:zh-dates($n)
+(:$n/../*:)
 
-    
-(:    return
-        distinct-values(local-name($all/*)):)
