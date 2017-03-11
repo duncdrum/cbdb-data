@@ -79,7 +79,8 @@ let $match :=  map:new (
     return
         if (ends-with($name, $m))
         then (map:entry($name, $pos))
-    else())
+    else()
+    )
                 
 (: and  apply preprocessing to generate properly formated date strings to work with. :)
 let $strings := 
@@ -108,8 +109,8 @@ let $strings :=
         case 14 return cal:sqldate($node)       
     default return ()
  
-(: now we bind the name of the date elements to a (long) prefix to not loose ubiquitous 'c_dy' :)
-let $prefix :=  map:new (
+(: now we bind the name of the date elements to a (long) prefix to not loose ubiquitous 'c_dy'... :)
+let $startL :=  map:new (
     for $part in map:keys($match)   
     return       
         for $p at $pos in $suffix       
@@ -117,47 +118,71 @@ let $prefix :=  map:new (
             if (ends-with($name, $p))
             then (map:entry($name, substring-before($part, $p))) (::)
             else ()
-       )
+    )
 
-(: then we test :)
-
-
-(: and merge entries with overlapping  names :)
-
-(:if the namepart before the last '_' occurs more then once then group things together, 
- otherwise return match:)
- 
-(: to account for special case that c_dy = deathyear, but also = dynasty :)
-let $short := map:new(
-    for $s in $prefix($name)
+(: ...to account for special case that in BIOG_MAIN c_dy = deathyear, but everywhere else c_dy = dynasty ...:)
+let $startS := map:new (
+    for $s in $startL($name)
     return
         if ($s ='c')
         then (map:entry($name, 'c_dy'))
         else (map:entry($name, substring-after($s, 'c_')))
-) 
-(:let $filter := function ($k, $v) {if (contains($k, $v)) then ( }:)
-
-let $grouped :=  map:new(
-    for $str in $short($name)
+    ) 
+(:...finally :)
+let $prefix :=  map:new (
+    for $str in $startS($name)
     return
-        if (contains($short($name), substring($str, 1, 2)))
+        if (contains($startS($name), substring($str, 1, 2)))
         then (map:entry($name, substring($str, 1, 2)))
         else (map:entry($name, $str))
-        )
+    )
 
-let $temp := 
-    for $n in $prefix($name)
-    group by $g := $grouped($name)
+let $lookup := 
+    for $l in $startL($name)
     return
         <date>
             <name>{$name}</name>
-            <group>{$grouped($name)}</group>
+            <group>{$prefix($name)}</group>
             <string>{$strings}</string>
         </date>
+
+let $group := distinct-values($lookup//tei:group)
+
+group by $group 
+order by $group
+
+(:let $x := map:new (
+for $n in $name
+    return
+        if (map:contains($prefix, $n))
+        then (map:entry($n, 'blah'))
+        else ()
+):)
+
+return
+
+<result>{
+    if (count($lookup//tei:group) = 1)
+    then (<ab n="{$name}">{$strings}</ab>)
+    else (<ab n="{$name}">{string-join($strings, '-')}</ab>)
+}</result>    
+
+(:
+$lookup//tei:name[. = $name]/../tei:group/text()
+:)
+(:    if (count($lookup//tei:group) = 1)
+    then ($strings)
+    else (string-join($strings, '-')):)
     
-        
-return 
-    $temp
+    
+(:let $grouped:=
+map:new(for $n in map:keys($prefix)
+        return
+        map:entry($name, $group[. =$lookup//tei:name[. = $n]/../tei:group/text()])
+):)
+
+
+(:    for $i in 1 to count($group):)
     
 (:  <date x="{$name}" y="{$grouped}"> {$strings}</date>:)
         
