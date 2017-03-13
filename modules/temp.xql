@@ -53,7 +53,8 @@ declare
 
 for $node in $nodes/../*[. != '0']
 
-let $name := local-name($node)
+let $name := node-name($node) (: local-name() ? :)
+let $reign := $cal:path/category[@xml:id = concat('R', $node)]
 
 (: First, we find all the date related nodes from a given row... :)
 let $suffix := ('_dy', ('_nh_year', '_nh_yr'), '_nh_code', ('_day_gz', '_day_ganzhi'), '_range', ('_year', '_yr', 'year'), '_month', '_day', '_intercalary', '_date')    
@@ -68,9 +69,10 @@ let $match :=  map:new (
 (: and  apply preprocessing to generate properly formated date strings to work with. :)
 let $strings := 
     switch($match($name))
-        case 1 return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:c_sort/text())
-        case 2 case 3 return concat('Y', $node/text)
-        case 4 return concat('R', count($cal:path/category[@xml:id = concat('R', $node/text())]/preceding-sibling::category) +1)
+        case 1 return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:c_sort)
+        case 2 case 3 return concat('Y', $node)
+        case 4 return concat(data($reign/parent::category/@xml:id), '-',
+            'R', count($reign/preceding-sibling::category) +1)
         case 5 case 6 return concat('GZ', $node/text())
         case 7 return 
             switch($node/text())
@@ -82,7 +84,7 @@ let $strings :=
             default return attribute when {$node} 
         case 8 case 9 case 10 return 
             if (ends-with($name, ('_nh_year', '_nh_yr'))) 
-            then (concat('Y', $node/text())) (: should this also be padded? :)
+            then (concat('Y', $node)) (: should this also be padded? :)
             else (cal:isodate($node))
         case 11 case 12 return functx:pad-integer-to-length($node, 2)         
         case 13 return  
@@ -115,7 +117,7 @@ let $startS := map:new (
 let $prefix :=  map:new (
     for $str in $startS($name)
     return
-        if (contains($startS($name), substring($str, 1, 2))) (: increase to $str, 1, 3, for greater accuracy :)
+        if (contains($startS($name), substring($str, 1, 2))) (: increase to substring($str, 1, 3) for greater accuracy :)
         then (map:entry($name, substring($str, 1, 2)))
         else (map:entry($name, $str))
     )
@@ -130,11 +132,11 @@ let $lookup :=
         </date>
         
 (: The next line  allows the whole autojoin trickery :)
-group by $group := distinct-values($lookup//tei:group)
+group by $group := distinct-values($lookup//group)
 
 
 return
-    switch(count($lookup//tei:group))
+    switch(count($lookup//group))
         case 0 return ()
         case 1 return <ab n="{$name}">{$strings}</ab> (:element{$name}{$strings}:)
     default return <ab n="{$name}">{string-join($strings, '-')}</ab>
