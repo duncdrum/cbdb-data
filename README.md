@@ -1,6 +1,6 @@
 # CBDB in TEI
 [![AUR](https://img.shields.io/badge/license-GPLv3.0-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/)
-[![GitHub release](https://img.shields.io/badge/release-0.6-green.svg)](https://github.com/duncdrum/cbdb-data/_latestVersion)
+[![GitHub release](https://img.shields.io/badge/release-0.6-green.svg)](https://github.com/duncdrum/cbdb-data/releases/latest)
 
 <img src="icon.png" align="left" width="25%"/>
 
