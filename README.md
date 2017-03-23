@@ -1,4 +1,7 @@
 # CBDB in TEI
+[![AUR](https://img.shields.io/aur/license/yaourt.svg)](https://choosealicense.com/licenses/gpl-3.0/)
+[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/duncdrum/cbdb-data/tree/master)
+
 <img src="icon.png" align="left" width="25%"/>
 
 *CBDB in TEI* brings the data of the [China Biographical Database](http://projects.iq.harvard.edu/cbdb/home) 
@@ -46,3 +49,7 @@ A zip file with just the TEI files.
 ## Documentation
 * [TEI encoding guidelines](doc/encoding-desc.md)
 * [Function documentation](doc/function-doc.md)
+ 
+## License 
+The content of this project itself is licensed under the Attribution-NonCommercial-ShareAlike 4.0 license, 
+and the underlying source code used to format and display that content is licensed under the GNU GPLv3 license.
