@@ -1,4 +1,5 @@
 xquery version "3.0";
+module namespace biog="http://exist-db.org/apps/cbdb-data/biographies";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace functx="http://www.functx.com";
@@ -10,8 +11,6 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
-declare namespace biog="http://exist-db.org/apps/cbdb-data/biographies";
-
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:~
@@ -20,7 +19,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
  in which to store the individual person records. 
  
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
  
  @return 370k person elements stored individualiy as /listPerson/chunk-XX/block-XXXX/cbdb-XXXXXXX.xml 
 :)
@@ -1280,6 +1279,7 @@ return
         reporst directory. 
 :)
 
+declare function biog:write ($item as item()*) as item()* {
 let $test := $global:BIOG_MAIN//no:c_personid[. = 927]
 let $full := $global:BIOG_MAIN//no:c_personid[. > 0]
 let $count := count($full)
@@ -1329,5 +1329,5 @@ return
                     
     catch * {xmldb:store($collection, 'error.xml', 
              <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}
-
+};
 

@@ -1,23 +1,21 @@
 xquery version "3.0";
+module namespace org="http://exist-db.org/apps/cbdb-data/institutions";
 
 import module namespace xmldb = "http://exist-db.org/xquery/xmldb";
-(:import module namespace functx = "http://www.functx.com";:)
-
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
+(:import module namespace functx = "http://www.functx.com";:)
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
-declare namespace org="http://exist-db.org/apps/cbdb-data/institutions";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
-
 
 (:~
  This module does what biographies does for persons for institutions.
 
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
  
  @return listOrg.xml
 :)
@@ -154,6 +152,7 @@ return
     default return $output 
 };
 
+declare function org:write($item as item()*) as item()* {
 let $test := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]
 let $full := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0]
 
@@ -163,3 +162,4 @@ xmldb:store($global:target, $global:institution,
     <listOrg>
         {org:org($full, 'v')}
     </listOrg>) 
+};

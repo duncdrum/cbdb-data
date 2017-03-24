@@ -1,19 +1,19 @@
 xquery version "3.0";
-
-(:~
- : A set of helper functions and variables called by other modules.
- :)
 module namespace global="http://exist-db.org/apps/cbdb-data/global";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 (:import module namespace functx="http://www.functx.com";:)
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
-declare namespace global="http://exist-db.org/apps/cbdb-data/global";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
+
+(:~
+ : A set of helper functions and variables called by other modules.
+ :)
 
 declare variable $global:src := '/db/apps/cbdb-data/src/xml/';
 declare variable $global:target := '/db/apps/cbdb-data/target/';

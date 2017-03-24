@@ -14,13 +14,15 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
+
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:~ 
 this module contains helper function  mostly for cleaning data, testing and constructing other functions.
 
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
 :)
 
 
@@ -159,9 +161,10 @@ biog:biog($global:BIOG_MAIN//no:c_personid[. = $person], ''))
 let $test-bio := $global:BIOG_MAIN//no:c_personid[. > 0][. < 2075]
 let $test-bib := $global:TEXT_CODES//no:c_textid[. > 2000][. < 2101]
 let $test-org := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]
+let $test-seq := ('ab','bc','cd', 'ab', 'a')
 
-for $person in $test-org
+
 return
-    org:org($person, 'v')
+    count(index-of($test-seq, 'ab'))
 
             

@@ -1,16 +1,14 @@
 xquery version "3.0";
+module namespace gen="http://exist-db.org/apps/cbdb-data/genre";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
+import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 (:import module namespace functx="http://www.functx.com";:)
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
-declare namespace gen="http://exist-db.org/apps/cbdb-data/genre";
 
 declare namespace output = "http://www.tei-c.org/ns/1.0";
-
-import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
-
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (:~
@@ -21,7 +19,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
  This module joins them within on taxonomy and at the level speciefied in the sources. 
 
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
  
  @return biblCat.xml
  
@@ -64,6 +62,7 @@ return
     default return $output       
 };
 
+declare function gen:write($item as item()*) as item() {
 (:~
  call recursive function from top level elements. 
  @param $typeTree the nested tree of types stored in the db. 
@@ -84,6 +83,7 @@ let $typeTree := xmldb:store($global:target, $global:genre,
 (:~
  inserts the genre categories codes, into the previously generated tree of category types. 
 :)
+
 for $cat in $global:TEXT_BIBLCAT_CODES//no:c_text_cat_code
 
 let $type-id := $global:TEXT_BIBLCAT_CODE_TYPE_REL//no:c_text_cat_code[ . = $cat]/../no:c_text_cat_type_id
@@ -98,7 +98,7 @@ let $category := element category { attribute xml:id {concat('biblCat',  $cat/te
 (:order by number($cat/../no:c_text_cat_sortorder):)
 return
  update insert $category into $type/..
- 
+}; 
 
 
 

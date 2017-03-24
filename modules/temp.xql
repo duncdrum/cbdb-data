@@ -1,4 +1,4 @@
-xquery version "3.0";
+xquery version "3.1";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace functx="http://www.functx.com";
@@ -21,290 +21,132 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 :)
 
 (:
-'biog:kin'
-'biog:name'
-'biog:alias'
-'biog:asso'
-'biog:status'
-'biog:event'
-'biog:entry'
-'biog:new-post'
-'biog:posses'
-'biog:pers-add'
-'biog:inst-add'
-'biog:biog'
+How little input can we give this to still function, and how much do i need to make it usable in any cases where there are dates. 
+What is the best form for the output date element, or string to be used in values
+Can the function determine when/notBefore/... based on switch
+Should the date element alwys have @when?
 :)
 
-element person {
-    attribute ana {'historical'},               
-    attribute xml:id {'BIO'},
-    attribute source{'#BIB'},
-    attribute resp {'selfbio'},
-    element idno { attribute type {'TTS'}, 'biog:biog'}, 
-    element persName { attribute type {'main'},
-        element persName { attribute xml:lang {'zh-Hant'}, 
-            element surname {'biog:name'},
-            element forename {'biog:name'},
-            element addName { attribute type {'choronym'}, 'biog:name'}
-        },
-        element persName { attribute xml:lang {'zh-Latn-alalc97'}, 
-            element surname {'biog:name'},
-            element forename {'biog:name'},
-            element addName { attribute type {'choronym'}, 'biog:name'}
-        },
-        element persName { attribute type {'original'}, 
-            element surname {'biog:name'},
-            element forename {'biog:name'}
-        },
-        element persName { attribute type {'original'}, 'biog:name'}           
-    },
-    element persName { attribute type {'alias'},          
-        attribute key {'AKA'},
-        attribute source {'#BIB'},
-        element addName {attribute xml:lang {'zh-Hant'}, 'biog:alias'},
-            element term {'biog:alias'},    
-        element addName {attribute xml:lang {'zh-Latn-alalc97'}, 'biog:alias'},
-            element term {'biog:alias'},
-        element note {'biog:alias'}},  
-    element sex { attribute value {'biog:biog'}, 'biog:biog'},
-    element birth {attribute when {'YYYY-MM_DD'},
-        attribute datingMethod {'#chinTrad'}, 
-        attribute when-custom {'D-R-Y'},
-    element date { attribute calendar {'#chinTrad'},
-        attribute period {'#R'}, 'biog:biog'}
-    },
-    element death {attribute when {'YYYY-MM_DD'},
-        attribute datingMethod {'#chinTrad'}, 
-        attribute when-custom {'D-R-Y'},
-    element date { attribute calendar {'#chinTrad'},
-        attribute period {'#R'}, 'biog:biog'}
-    },
-    element floruit { attribute notBefore {'cal:isodate'}, 
-        attribute notAfter {'cal:isodate'},     
-    element date { attribute when {'cal:isodate'},  
-        attribute datingMethod {'#chinTrad'}, 
-        attribute period {'#D'}, 'biog:biog'}, 
-        element note {'biog:biog'}                                
-    },                
-    element age { attribute cert {'medium'}, 'biog:biog'},
-    element trait { attribute type {'household'},
-        attribute key {'biog:biog'},
-        element label { attribute xml:lang {'zh-Hant'}, 'biog:biog'},
-        element label { attribute xml:lang {'en'}, 'biog:biog'}
-   },
-    element trait { attribute type {'ethnicity'}, 
-        attribute key {'biog:biog'}, 
-    element label {'biog:biog'},
-    element desc { attribute xml:lang {'zh-Hant'}, 'biog:biog'},
-    element desc { attribute xml:lang {'zh-Latn-alalc97'}, 'biog:biog'},
-    element desc { attribute xml:lang {'en'}, 'biog:biog'},
-    element note {'biog:biog'}
-    },
-    element trait { attribute type {'tribe'}, 'biog:biog'},
-    element note {'biog:biog'},                   
-    element affiliation {
-        element note {
-            element listPerson {
-                element personGrp { attribute role {'kin'}},
-                element listRelation { attribute type {'kinship'},
-                    element relation { attribute active {'#BIO'},
-                        attribute passive {'#BIO'},
-                        attribute key {'biog:kin'},
-                        attribute sortKey{'biog:kin'},
-                        attribute name {'biog:kin'},
-                        attribute source {'biog:kin'},
-                        attribute type {'auto-generated'},
-                        element desc { attribute type {'kin-tie'}, 
-                            element label {'biog:kin'}, 
-                            element desc { attribute xml:lang {'zh-Hant'},'biog:kin'},
-                            element desc { attribute xml:lang {'en'},'biog:kin'},                               
-                            element trait { attribute type {'mourning'},
-                                attribute subtype {'biog:kin'},
-                                element label { attribute xml:lang {'zh-Hant'},'biog:kin'},
-                                element desc { attribute xml:lang {'zh-Hant'},'biog:kin'},        
-                                element desc {attribute xml:lang {'en'},'biog:kin'}
-                                }     
-                            }
-                        }                        
-                    }
-                }
-            },
-        element note {
-            element listPerson {
-                element personGrp { attribute role {'associates'}},
-                    element listRelation { attribute type {'associations'},
-                        element relation { attribute mutual {'biog:asso'},
-                        attribute name {'biog:asso'},
-                        attribute key {'biog:asso'},
-                        attribute sortKey {'biog:asso'},
-                        attribute source {'#BIB'},
-                    element desc { attribute type {'biog:asso'},
-                        attribute n {'biog:asso'},
-                        element label {'biog:asso'},
-                        element desc { attribute xml:lang {"zh-Hant"}, 'biog:asso',
-                            element label {'biog:asso'}
-                        },
-                        element desc { attribute xml:lang {"en"}, 'biog:asso',
-                            element label {'biog:asso'}
-                        },
-                    element state { attribute ref {'#PL #ORG'},
-                        attribute when {'cal:isodate'},
-                        attribute ana {'biog:asso'},
-                        attribute type {'biog:asso'},
-                        attribute subtype {'biog:asso'},
-                        element label { attribute xml:lang {'zh-Hant'}, 'biog:asso'},
-                        element label { attribute xml:lang {'zh-Latn-alalc97'}, 'biog:asso'},
-                        element desc {attribute ana {'topic'}, 'biog:asso'},
-                        element desc {attribute xml:lang {'zh-Hant'},'biog:asso',
-                            element label {'biog:asso'}},
-                        element desc { attribute xml:lang {'en'},'biog:asso',
-                            element label {'biog:asso'}}
-                     },
-                     element desc { attribute ana {'genre'},                                
-                        element label {attribute xml:lang {'zh-Hant'}, 'biog:asso'}, 
-                        element label { attribute xml:lang {'en'}, 'biog:asso'}
-                     },
-                     element desc {
-                        element persName { attribute role {'mediator'},
-                            attribute ref {'#BIO'}}
-                     }
-                     }                     
-                 }
-        }
-                    }
-                }
-            },
-    element socecStatus {
-        element state { attribute type {'status'},
-            attribute subtype {'biog:status'},
-            attribute from {'cal:isodate'},
-            attribute to {'cal:isodate'},
-            attribute n {'biog:status'},
-            attribute source {'#BIB'},
-            element desc { attribute xml:lang {'zh-Hant'}, 'biog:status'},
-            element desc { attribute xml:lang {'en'}, 'biog:status'}
-        }
-    },
-    element socecStatus{ attribute scheme {'#office'}, 
-        attribute code {'#OFF'},
-        element state { attribute type {'posting'},
-            attribute ref {'#PL'},
-            attribute n {'biog:new-post'},
-            attribute key {'biog:new-post'},
-            attribute notBefore {'cal:isodate'},
-            attribute notAfter {'cal:isodate'},
-            attribute source {'#BIB'},
-            element desc {
-                element label {'appointment'},
-                element desc { attribute xml:lang {'zh-Hant'},'biog:new-post'},
-                element desc { attribute xml:lang {'en'}, 'biog:new-post'}
-            },
-            element desc {
-                element label {'assumes'},
-                element desc { attribute xml:lang {'zh-Hant'}, 'biog:new-post'}, 
-                element desc { attribute xml:lang {'en'}, 'biog:new-post'}},                                        
-                element note {'biog:new-post'}
-            },
-            element state { attribute type {'office-type'},
-                attribute n {'biog:new-post'},
-            element desc { attribute xml:lang {'zh-Hant'}, 'biog:new-post'},
-            element desc { attribute xml:lang {'en'}, 'biog:new-post'}, 
-            element note {'biog:new-post'}
-            }
-    },
-    element listEvent {
-        element event { attribute xml:lang {'zh-Hant'},
-            attribute when {'cal:isodate'},
-            attribute where {'#PL'},
-            attribute source {'#BIB'},
-            attribute sortKey {'biog:event'},    
-            element desc {'biog:event'},
-                element head {'biog:event'}, 
-                element label {'biog:event'},
-                element desc {'biog:event'},
-                element note {'biog:event'}
-        },
-        element event { attribute type {'biog:entry'},
-            attribute subtype {'biog:entry'},
-            attribute ref {'#ORG'},
-            attribute when {'cal:isodate'},
-            attribute where {'#PL'},
-            attribute sortKey {'biog:entry'},
-            attribute source {'#BIB'},
-            attribute role {'#BIO'},             
-            element head {'entry'},
-            element label { attribute xml:lang {'zh-Hant'}, 'biog:entry'},
-            element label { attribute xml:lang{'en'}, 'biog:entry'},   
-            element desc { attribute type {'biog:entry'},
-                attribute subtype {'biog:entry'},
-                element desc { attribute xml:lang {'zh-Hant'},
-                    attribute ana {'七色補官門'}, 'biog:entry'},
-                element desc { attribute xml:lang{'en'},
-                    attribute ana {'7specials'},'biog:entry'}
-             },
-             element note { attribute type {'field'}, 'biog:entry'},
-             element note { attribute type {'attempts'}, 'biog:entry'},
-             element note { attribute type {'rank'}, 'biog:entry'},
-             element note {'biog:entry'},
-             element note { attribute type {'parental-status'}, 
-                element trait { attribute type {'parental-status'},
-                    attribute key {'biog:entry'},
-                     element label {attribute xml:lang {'zh-Hant'},'biog:entry'}, 
-                     element label { attribute xml:lang {'zh-Latn-alalc97'},'biog:entry'}
-                }
-             }
-             }                      
-    },
-    element state { attribute type {'possession'},       
-        attribute xml:id {'POS'},
-        attribute unit {'biog:posses'},
-        attribute quantity {'biog:posses'},
-        attribute n {'biog:posses'},
-        attribute when {'cal:isodate'},
-        attribute source {'#BIB'},
-        attribute subtype {'biog:posses'},
-        element desc {
-            element desc { attribute xml:lang {'zh-Hant'}, 'biog:posses'},
-            element desc { attribute xml:lang {'en'}, 'biog:posses'},
-            element placeName { attribute ref { '#PL'}},
-            element note {'biog:posses'}
-        }       
-    }, 
-    element residence { attribute ref {'#PL'},
-        attribute key {'biog:pers-add'},
-        attribute n {'biog:pers-add'},
-        attribute from {'YYYY-MM-DD'},
-        attribute to {'YYYY-MM-DD'},
-        attribute source {'#BIB'},
-        element state { attribute type {'natal'},
-            element desc { attribute xml:lang {'zh-Hant'}, 'biog:pers-add'},
-            element desc {attribute xml:lang {'en'}, 'biog:pers-add'}
-        },
-        element date { attribute calendar {'#chinTrad'},
-            attribute period {'#R'},'Y-D'},
-        element note {'biog:pers-add'}
-    }, 
-    element event { attribute where {'#ORG'},
-        attribute key {'biog:inst-add'},
-        attribute from {'cal:isodate'},
-        attribute to {'cal:isodate'},
-        attribute from-custom { 'D-R-Y'},
-        attribute to-custom {'D-R-Y'},
-        attribute source {'#BIB'},
-        attribute datingMethod {'#chinTrad'},          
-        element desc { attribute xml:lang {'zh-Hant'},'biog:inst-add'},
-        element desc {attribute xml:lang {'en'},'biog:inst-add'},       
-        element note {'biog:inst-add'}
-    },
-    element linkGrp {
-        element ptr { attribute target {'biog:biog'}}                                
-    },
-    element note { attribute  type{"created"}, 
-        attribute target{"global:create-mod-by"},
-        element date {attribute when {"cal:sqldate"}
-    }},
-    element note { attribute  type{"modified"}, 
-        attribute target{"global:create-mod-by"},
-        element date {attribute when {"cal:sqldate"}
-    }}
-}
+(: TODO
+- shorten the whole sequnce of $startL - $startL - $prefix 
+    - refactor using => and ! syntax
+    - refactor the conditional into a better expression
+
+:)
+
+declare 
+    function local:zh-dates ($nodes as item()*) as item()* {
+    
+(:~ 
+ 1.1 we test source element's suffix to see if it the sequence of date related suffixes
+ 1.2 we prepare normalised strings based on the matched suffixes 
+ 2.1-3 we iterate over the beginning parts until we have map of the prefixes that accounts for irregularities 
+ 3. generate a intermediate lookup xml necessary for grouping 
+ 
+ Applying the filter for '0' in the for-clause is most efficient for the data of CBDB, but could lead to errors with other sources. 
+
+ 
+ 
+ @return the right date attribute with the properly joined and corrrectly normalized string as value
+ 
+:) 
+
+for $node in $nodes/../*[. != '0']
+
+let $name := node-name($node) (: local-name() ? :)
+let $reign := $cal:path/category[@xml:id = concat('R', $node)]
+
+(: First, we find all the date related nodes from a given row... :)
+let $suffix := ('_dy', ('_nh_year', '_nh_yr'), '_nh_code', ('_day_gz', '_day_ganzhi'), '_range', ('_year', '_yr', 'year'), '_month', '_day', '_intercalary', '_date')    
+let $match :=  map:new (    
+    for $m at $pos in $suffix
+    return
+        if (ends-with($name, $m))
+        then (map:entry($name, $pos))
+    else()
+    )
+                
+(: and  apply preprocessing to generate properly formated date strings to work with. :)
+let $strings := 
+    switch($match($name))
+        case 1 return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:c_sort)
+        case 2 case 3 return concat('Y', $node)
+        case 4 return concat(data($reign/parent::category/@xml:id), '-',
+            'R', count($reign/preceding-sibling::category) +1)
+        case 5 case 6 return concat('GZ', $node/text())
+        case 7 return 
+            switch($node/text())
+                case ('-1') return attribute notAfter {$node}
+                case ('1') return attribute notBefore {$node}
+                case ('2') return (attribute when {$node}, attribute cert {'medium'})
+                case ('300') return (attribute from {'0960'}, attribute to {'1082'})
+                case ('301') return (attribute from {'1082'}, attribute to {'1279'})
+            default return attribute when {$node} 
+        case 8 case 9 case 10 return 
+            if (ends-with($name, ('_nh_year', '_nh_yr'))) 
+            then (concat('Y', $node)) (: should this also be padded? :)
+            else (cal:isodate($node))
+        case 11 case 12 return functx:pad-integer-to-length($node, 2)         
+        case 13 return  
+            if ($node = 1) 
+            then ('i') 
+            else ()                       
+        case 14 return cal:sqldate($node)       
+    default return ()
+ 
+(: now we bind the name of the date elements to a (long) prefix to not loose ubiquitous 'c_dy'... :)
+let $startL :=  map:new (
+    for $part in map:keys($match)   
+    return       
+        for $p at $pos in $suffix       
+        return
+            if (ends-with($name, $p))
+            then (map:entry($name, substring-before($part, $p))) (::)
+            else ()
+    )
+
+(: ...to account for special case that in BIOG_MAIN c_dy = deathyear, but everywhere else c_dy = dynasty ... :)
+let $startS := map:new (
+    for $s in $startL($name)
+    return
+        if ($s ='c')
+        then (map:entry($name, 'c_dy'))
+        else (map:entry($name, substring-after($s, 'c_')))
+    ) 
+(:...finally :)
+let $prefix :=  map:new (
+    for $str in $startS($name)
+    return
+        if (contains($startS($name), substring($str, 1, 2))) (: increase to substring($str, 1, 3) for greater accuracy :)
+        then (map:entry($name, substring($str, 1, 2)))
+        else (map:entry($name, $str))
+    )
+
+let $lookup := 
+    for $l in $startL($name)
+    return
+        <date>
+            <name>{$name}</name>
+            <group>{$prefix($name)}</group>
+            <string>{$strings}</string>
+        </date>
+        
+(: The next line  allows the whole autojoin trickery :)
+group by $group := distinct-values($lookup//group)
+
+
+return
+    switch(count($lookup//group))
+        case 0 return ()
+        case 1 return <ab n="{$name}">{$strings}</ab> (:element{$name}{$strings}:)
+    default return <ab n="{$name}">{string-join($strings, '-')}</ab>
+
+};
+
+let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
+
+for $n in $test
+return    
+    local:zh-dates($n)
+(:$n/../*:)
+

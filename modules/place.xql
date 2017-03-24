@@ -1,18 +1,15 @@
 xquery version "3.0";
+module namespace pla="http://exist-db.org/apps/cbdb-data/place";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
-(:import module namespace functx="http://www.functx.com";:)
-
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
+(:import module namespace functx="http://www.functx.com";:)
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 
-declare namespace pla="http://exist-db.org/apps/cbdb-data/place";
-
 declare default element namespace "http://www.tei-c.org/ns/1.0";
-
 
 (:~
  place.xql reads the various basic entities for location type information 
@@ -21,7 +18,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
   'place' is TEI's 'geo'.
 
  @author Duncan Paterson
- @version 0.6
+ @version 0.7
  
  @return listPlace.xml
 :)
@@ -212,6 +209,7 @@ declare function pla:patch-missing-addr ($data as node()*) as node()*{
                 
 }; 
 
+declare function pla:write ($item as item()*) as item()* {
 let $data := <no:root>{
     for $n in $global:ADDR_CODES//no:row
      
@@ -237,7 +235,7 @@ xmldb:store($global:target, $global:place,
     return
         pla:nest-places($data, $place, $place/../no:c_name_chn, $place/../no:c_name, '')}
 </listPlace>)
-
+};
 
 (:~ then uncomment and run the following :)
 (:pla:patch-missing-addr($global:ADDRESSES//no:row):)
