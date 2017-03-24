@@ -128,16 +128,17 @@ declare function cal:custo-date-range (
     $year-start as xs:string*, $year-end as xs:string*, 
     $type as xs:string?) as node()*{
 
-(:This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point.
+(:~ 
+ This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point.
 
-It determines the machting end-points automatically when provided a starting point for a date range. 
+ It determines the machting end-points automatically when provided a starting point for a date range. 
 
-@param $dy-start the sort number of the starting dynasty.
-@param $reg-start the sequence of the starting reign period 1st = 1, 2nd = 2, etc. 
-@param $year-start the ordinal year of the starting reign period 1st = 1, 2nd = 2, etc.
-@param $type has two options 'uRange' for uncertainty, default to certain ranges. 
+ @param $dy-start the sort number of the starting dynasty.
+ @param $reg-start the sequence of the starting reign period 1st = 1, 2nd = 2, etc. 
+ @param $year-start the ordinal year of the starting reign period 1st = 1, 2nd = 2, etc.
+ @param $type has two options 'uRange' for uncertainty, default to certain ranges. 
 
-@return <date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>
+ @return <date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>
 :)
 
 let $DS := $global:DYNASTIES//no:c_dy[. = $dy-start/text()]
@@ -244,24 +245,24 @@ declare
                    
     return
         switch ($lang)
-        case 'zh'
-            return     
-                if  ($year > 3)  then ($sexagenary_zh((($year -3) mod 60)))
-                    else if ($year = 3)  then ($sexagenary_zh(60))
-                    else if ($year = 2)  then ($sexagenary_zh(59))
-                    else if ($year = 1)  then ($sexagenary_zh(58))
-                    else if ($year = -1)  then ($sexagenary_zh(57))
-                    else if ($year < -1)  then ($sexagenary_zh((60 - (($year * -1) +1) mod 60)))        
-                else "0年 …太複雜"
-        case 'py'
-            return     
-                if  ($year > 3)  then ($sexagenary_py((($year -3) mod 60)))
-                    else if ($year = 3)  then ($sexagenary_py(60))
-                    else if ($year = 2)  then ($sexagenary_py(59))
-                    else if ($year = 1)  then ($sexagenary_py(58))
-                    else if ($year = -1)  then ($sexagenary_py(57))
-                    else if ($year < -1)  then ($sexagenary_py((60 - (($year * -1) +1) mod 60)))        
-                else "0 AD/CE  … it's complicated"
+            case 'zh'
+                return     
+                    if  ($year > 3)  then ($sexagenary_zh((($year -3) mod 60)))
+                        else if ($year = 3)  then ($sexagenary_zh(60))
+                        else if ($year = 2)  then ($sexagenary_zh(59))
+                        else if ($year = 1)  then ($sexagenary_zh(58))
+                        else if ($year = -1)  then ($sexagenary_zh(57))
+                        else if ($year < -1)  then ($sexagenary_zh((60 - (($year * -1) +1) mod 60)))        
+                    else "0年 …太複雜"
+            case 'py'
+                return     
+                    if  ($year > 3)  then ($sexagenary_py((($year -3) mod 60)))
+                        else if ($year = 3)  then ($sexagenary_py(60))
+                        else if ($year = 2)  then ($sexagenary_py(59))
+                        else if ($year = 1)  then ($sexagenary_py(58))
+                        else if ($year = -1)  then ($sexagenary_py(57))
+                        else if ($year < -1)  then ($sexagenary_py((60 - (($year * -1) +1) mod 60)))        
+                    else "0 AD/CE  … it's complicated"
         default return "please specify either 'py' or 'zh'"    
             
 };
@@ -350,7 +351,7 @@ declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as i
 
 declare function cal:write($item as item()*) as item()*{
 (:~
-write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.
+ write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.
 :)
 xmldb:store($global:target, $global:calendar, 
     <taxonomy xml:id="cal_ZH">{                
