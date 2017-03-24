@@ -1,15 +1,15 @@
 # xQuery Function Documentation
 ## Contents
-* [bibliography](#bibliography)
-* [genre](#genre)
-* [biographies](#biographies)
-* [calendar](#calendar)
-* [global](#global)
-* [institutions](#institutions)
-* [office](#office)
-* [place](#place)
+*   [bibliography](#bibliography)
+*   [genre](#genre)
+*   [biographies](#biographies)
+*   [calendar](#calendar)
+*   [global](#global)
+*   [institutions](#institutions)
+*   [office](#office)
+*   [place](#place)
 
-In addition to the information in this document, 
+In addition to the information in this document,
 there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) listing each column used in this conversion.
 
 ## bibliography
@@ -25,77 +25,77 @@ For the genre taxonomy of cbdb see [genre](#genre).
 shows range 300, and 301 not to be in use.
 
 #### TODO
-* ``$TEXT_ROLE_CODES//no:c_role_desc_chn`` is currently dropped from db might go into ODD later
+*   ``$TEXT_ROLE_CODES//no:c_role_desc_chn`` is currently dropped from db might go into ODD later
 
 ## genre
-Joins the different location for bibliographical genre/ category data in one nested tei taxonomy. 
-``TEXT_BIBL_CAT_TYPES_1``, and ``TEXT_BIBL_CAT_TYPES_2`` become superfluous, 
+Joins the different location for bibliographical genre/ category data in one nested tei taxonomy.
+``TEXT_BIBL_CAT_TYPES_1``, and ``TEXT_BIBL_CAT_TYPES_2`` become superfluous,
 since we have a nested tree using ``TEXT_BIBL_CAT_TYPES``, ``TEXT_BIBL_CAT_CODES``, and ``TEXT_BIBL_CAT_CODE_TYPE_REL``.
 
 ## biographies
-This module transforms the core person data, as well as their relation data. 
+This module transforms the core person data, as well as their relation data.
 
-### biog:kin 
+### biog:kin
 
-#### 9 basic categories of kinship 
-The list of categories in the [*The CBDB User’s Guide*](http://projects.iq.harvard.edu/files/cbdb/files/cbdb_users_guide.pdf) p 13f is incomplete. 
+#### 9 basic categories of kinship
+The list of categories in the [*The CBDB User’s Guide*](http://projects.iq.harvard.edu/files/cbdb/files/cbdb_users_guide.pdf) p 13f is incomplete.
 
 none of these is symmetrical hence there is no need for mutuality checks as in biog:asso.
 
-* ``'e'`` Ego (the person whose kinship is being explored) 
-* ``'F'`` Father
-* ``'M'`` Mother
-* ``'B'`` Brother
-* ``'Z'`` Sister
-* ``'S'`` Son
-* ``'D'`` Daughter
-* ``'H'`` Husband
-* ``'W'`` Wife
-* ``'C'`` Concubine
+*   ``'e'`` Ego (the person whose kinship is being explored)
+*   ``'F'`` Father
+*   ``'M'`` Mother
+*   ``'B'`` Brother
+*   ``'Z'`` Sister
+*   ``'S'`` Son
+*   ``'D'`` Daughter
+*   ``'H'`` Husband
+*   ``'W'`` Wife
+*   ``'C'`` Concubine
 
-* ``'+'`` Older (e.g. older brother B+, 兄)
-* ``'-'`` Younger (e.g. younger sister 妹)
-* ``'*'`` Adopted heir (as in S*, adopted son)
-* ``'°'`` Adopted
-* ``'!'`` Bastard
-* ``'^'`` Step- (as in S^ step-son)
-* ``'½'``  half- (as in Z½ , half-sister)
-* ``'~'`` Nominal (as in M~ , legitimate wife as nominal mother to children of concubine)
-* ``'%'`` Promised husband or wife (marriage not completed at time of record)
-* ``'y'`` Youngest (e.g., Sy is the youngest known son)
-* ``'1'`` Numbers distinguish sequence (e.g., S1, S2 for first and second sons; W1, W2 for the first and the successor wives)
-* ``'n'`` precise generation unknown
-* ``'G-#'``, ``'G+#'`` lineal ancestor (–) or descendant (+) of # generation №
-* ``'G-n'``, ``'G+n'``, ``'Gn'`` lineal kin of an unknown earlier generation (G-n), or unknown later generation (G+n), or unknown generation (Gn)
-* ``'G-#B'``, ``'BG+#'`` a brother of a lineal ancestor of # generation; a brother’s lineal descendant of # generation
-* ``'K'``, ``'K-#'``, ``'K+#'``, ``'Kn'`` Lineage kin, of the same, earlier (–), later (+) or unknown (n) generation. CBDB uses “lineage kin” for cases where kinship is attested but the exact relationship is not known. Lineage kin are presumably not lineal (direct descent) kin.
-* ``'K–'``, ``'K+'`` Lineage kin of the same generation, younger (-) or elder (+).
-* ``'P'``, ``'P-#'``, ``'P+#'``, ``'Pn'`` Kin related via father’s sisters or mother’s siblings, of the same, earlier (–), later (+) or unknown (n) generation. Signified by the term biao (表) in Chinese. (CBDB uses these codes only when the exact relationship is not known). 
-* ``'P–'``, ``'P+'`` Kin related via father's sisters or mother's siblings, of the same generation, younger (-) or elder (+).
-* ``'A'`` Affine/Affinal kin, kin by marriage
+*   ``'+'`` Older (e.g. older brother B+, 兄)
+*   ``'-'`` Younger (e.g. younger sister 妹)
+*   ``'*'`` Adopted heir (as in S*, adopted son)
+*   ``'°'`` Adopted
+*   ``'!'`` Bastard
+*   ``'^'`` Step- (as in S^ step-son)
+*   ``'½'``  half- (as in Z½ , half-sister)
+*   ``'~'`` Nominal (as in M~ , legitimate wife as nominal mother to children of concubine)
+*   ``'%'`` Promised husband or wife (marriage not completed at time of record)
+*   ``'y'`` Youngest (e.g., Sy is the youngest known son)
+*   ``'1'`` Numbers distinguish sequence (e.g., S1, S2 for first and second sons; W1, W2 for the first and the successor wives)
+*   ``'n'`` precise generation unknown
+*   ``'G-#'``, ``'G+#'`` lineal ancestor (–) or descendant (+) of # generation №
+*   ``'G-n'``, ``'G+n'``, ``'Gn'`` lineal kin of an unknown earlier generation (G-n), or unknown later generation (G+n), or unknown generation (Gn)
+*   ``'G-#B'``, ``'BG+#'`` a brother of a lineal ancestor of # generation; a brother’s lineal descendant of # generation
+*   ``'K'``, ``'K-#'``, ``'K+#'``, ``'Kn'`` Lineage kin, of the same, earlier (–), later (+) or unknown (n) generation. CBDB uses “lineage kin” for cases where kinship is attested but the exact relationship is not known. Lineage kin are presumably not lineal (direct descent) kin.
+*   ``'K–'``, ``'K+'`` Lineage kin of the same generation, younger (-) or elder (+).
+*   ``'P'``, ``'P-#'``, ``'P+#'``, ``'Pn'`` Kin related via father’s sisters or mother’s siblings, of the same, earlier (–), later (+) or unknown (n) generation. Signified by the term biao (表) in Chinese. (CBDB uses these codes only when the exact relationship is not known).
+*   ``'P–'``, ``'P+'`` Kin related via father's sisters or mother's siblings, of the same generation, younger (-) or elder (+).
+*   ``'A'`` Affine/Affinal kin, kin by marriage
 
 #### NOT Documented
-* ``'(male)'`` -> ♂
-* ``'(female)'`` -> ♀
-* ``'©'`` -> of concubine
-* ``'(claimed)'`` -> 
-* ``'(eldest surviving son)'`` -> 
-* ``'(only ...)'`` ->
-* ``'(apical)'`` ->
+*   ``'(male)'`` -> ♂
+*   ``'(female)'`` -> ♀
+*   ``'©'`` -> of concubine
+*   ``'(claimed)'`` ->
+*   ``'(eldest surviving son)'`` ->
+*   ``'(only ...)'`` ->
+*   ``'(apical)'`` ->
 
 
 ### biog:asso
 Whats up with ``$assoc_codes//no:c_assoc_role_type`` ?
 
-#### TODO 
-* consider ``chal-ZH`` dates for state
-* ``c_assoc_claimer_id`` could get a ``@role`` somewhere around state
-* ``c_assoc_range`` currently dropped.
+#### TODO
+*   consider ``chal-ZH`` dates for state
+*   ``c_assoc_claimer_id`` could get a ``@role`` somewhere around state
+*   ``c_assoc_range`` currently dropped.
 
 ### biog:status
 
 #### TODO
-* ``c_notes``, and ``c_supplement`` from ``STATUS_DATA`` are currently dropped. 
+*   ``c_notes``, and ``c_supplement`` from ``STATUS_DATA`` are currently dropped.
 
 ### biog:event
 
@@ -105,61 +105,61 @@ there is a number of unused cells here mostly because they are empty in the sour
 add institutional addresses via ``biog:inst-add``
 
 #### TODO
-* Why does ``c_exam_field`` not point to anything?
-* see c_personid: ``914`` for dual ``@type`` entries
-* ``c_inst_code`` only points to ``0`` no links to org to be written
-* switch to ``tei:education`` | ``tei:faith`` for entry type data
- 
+*   Why does ``c_exam_field`` not point to anything?
+*   see c_personid: ``914`` for dual ``@type`` entries
+*   ``c_inst_code`` only points to ``0`` no links to org to be written
+*   switch to ``tei:education`` | ``tei:faith`` for entry type data
+
 ### biog:new-post
 We need to ascertain a few things about dates and ``POST_DATA`` here:
-are there any instances where one contains data that is not an iso date or in ``POSTED_TO_OFFICE_DATA``? 
+are there any instances where one contains data that is not an iso date or in ``POSTED_TO_OFFICE_DATA``?
 
 whats up with ``POSTED_TO_ADDR_DATA``?
 
 #### TODO
-* Turn postings into ``tei:event``?
-* check placement of ``@ref`` for ``c_addr_id`` compare possessions
+*   Turn postings into ``tei:event``?
+*   check placement of ``@ref`` for ``c_addr_id`` compare possessions
 
 ### biog:posses
 Currently there are only five entries (c_personid: ``18332``, ``13550``, ``45279``, ``45518``, ``3874``)
 
 #### TODO
-* Make use of ``@ref="#PL..."`` consistent for all ``state`` elements. 
+*   Make use of ``@ref="#PL..."`` consistent for all ``state`` elements.
 
 ### biog:pers-add
 
 #### TODO
-* addd ``BIOG_ADDR_CODES//no:c_addr_note`` values to ODD
+*   addd ``BIOG_ADDR_CODES//no:c_addr_note`` values to ODD
 
 ### biog:inst-add
-There are no dates in the src tables. 
+There are no dates in the src tables.
 
 ### biog:biog
 
 #### TODO
-* ``c_self_bio`` from ``$source`` is dropped change to attribute when refactoring query syntax?
+*   ``c_self_bio`` from ``$source`` is dropped change to attribute when refactoring query syntax?
 
 ## calendar
 The calendar module contains function for conversion between the often idiosyncratic date formats of *CBDB*,
-and for the creation of a taxonomy for Chinese calendar dates. 
+and for the creation of a taxonomy for Chinese calendar dates.
 
 #### TODO
-*  friggin YEAR_RANGE_CODES.xml
-* many nianhaos aren't transliterated hence $NH-py
-*  ``DYNASTIES`` contains both translations and transliterations:
+*   friggin YEAR_RANGE_CODES.xml
+*   many nianhaos aren't transliterated hence $NH-py
+*   ``DYNASTIES`` contains both translations and transliterations:
      e.g. 'NanBei Chao' but 'Later Shu (10 states) more normalization *yay*
-*  make 10 states a ``@type`` ? 
+*   make 10 states a ``@type`` ?
 
 ### cal:custo-date-point
-Tricky with the data at hand, consequently not called by other function whenever possible. 
-long-run switch to CCDB date authority since that also covers Korean and Japanese dates. 
+Tricky with the data at hand, consequently not called by other function whenever possible.
+long-run switch to CCDB date authority since that also covers Korean and Japanese dates.
 
 #### TODO
-* Getting to a somewhat normalized useful representation of Chinese Reign dates is tricky. Inconsistent pinyin for Nianhao creates ambiguous and ugly dates.
-* handle ``//no:c_dy[. = 0]`` stuff
-* add ``@period`` with ``#d42`` ``#R123``
-* find a way to prevent empty attributes more and better logic FTW
-* If only a dynasty is known lets hear it, the others are dropped since only a year or nianhao is of little information value. 
+*   Getting to a somewhat normalized useful representation of Chinese Reign dates is tricky. Inconsistent pinyin for Nianhao creates ambiguous and ugly dates.
+*   handle ``//no:c_dy[. = 0]`` stuff
+*   add ``@period`` with ``#d42`` ``#R123``
+*   find a way to prevent empty attributes more and better logic FTW
+*   If only a dynasty is known lets hear it, the others are dropped since only a year or nianhao is of little information value.
 
 ### cal:custo-date-range
 See cal:custo-date-point
@@ -176,7 +176,7 @@ cal:ganzhi(1981, 'zh') -> 辛酉
 cal:ganzhi(1967, 'zh') -> 丁未
 cal:ganzhi(0004, 'zh') -> 甲子
 cal:ganzhi(0001, 'zh') -> 壬戌
-cal:ganzhi(0000, 'zh') -> no such gYear 
+cal:ganzhi(0000, 'zh') -> no such gYear
 cal:ganzhi(-0001, 'zh') -> 庚申
 cal:ganzhi(-0247, 'zh') -> 乙卯 = 246BC founding of Qing
 ```
@@ -188,13 +188,13 @@ cal:ganzhi(-0247, 'zh') -> 乙卯 = 246BC founding of Qing
 ### cal:sqldate
 
 ## global
-This module holds all the variables and paths used in the app. 
-The list of variable declarations pointing to the imported tables, is generated via [local:table-variables](#local:table-variables) in the ``aux.xql`` module. 
+This module holds all the variables and paths used in the app.
+The list of variable declarations pointing to the imported tables, is generated via [local:table-variables](#local:table-variables) in the ``aux.xql`` module.
 
 Functions that need be available globally also go here.   
 
 ### global:create-mod-by
-Processes the created-by and modified by data found on each table. Only called for main tables. 
+Processes the created-by and modified by data found on each table. Only called for main tables.
 
 ### global:validate-fragment
 Helper function called by every write operation, to ease the burden of validating the whole file when working on a specific section.
@@ -206,22 +206,22 @@ Create the core organizations included in *CBDB*.
 the ``@role`` for ``org`` elements takes three values ``'academy'``, ``'buddhist'``, ``'daoist'`` . These need to be added to the ODD in Chinese translation.
 
 #### TODO
-* careful this has a combined primary key between ``inst_name`` and ``inst_code``
-* fix datable-custom stuff otherwise ok
-* friggin ``YEAR_RANGE_CODES`` are back
-* most of this fields in these tables are empty 
+*   careful this has a combined primary key between ``inst_name`` and ``inst_code``
+*   fix datable-custom stuff otherwise ok
+*   friggin ``YEAR_RANGE_CODES`` are back
+*   most of this fields in these tables are empty
 
 ## office
-Office is split over 2 xql files ``officeA.xql`` and ``officeB.xql``. 
-This is due to a potential bug with new Range indexes raising a ``maxClauseCount`` error when 
-running the full transformation from inside a single module. 
+Office is split over 2 xql files ``officeA.xql`` and ``officeB.xql``.
+This is due to a potential bug with new Range indexes raising a ``maxClauseCount`` error when
+running the full transformation from inside a single module.
 Splitting the module into two prevents the error from occurring.
 
 ### local:office (officeA)
 
 #### TODO
 
-* figure out what the heck ``$OFFICE_CODE_TYPE_REl//no:c_office_type_type_code`` wants to be?
+*   figure out what the heck ``$OFFICE_CODE_TYPE_REl//no:c_office_type_type_code`` wants to be?
 
 
 ### local:nest-children (officeA)
@@ -229,44 +229,44 @@ Splitting the module into two prevents the error from occurring.
 ### local:merge-officeTree (officeB)
 there are:
 28623 offices in office.xml
- 1384 are not matched via OFFICE_CODE_TYPE_REL but have dynasty 
+ 1384 are not matched via OFFICE_CODE_TYPE_REL but have dynasty
   514 are missing even dynastic affiliations
 
 
 #### TODO
-* fix missing links aka [@n = '']
-* use: ```for $y allowing empty in $off...``` once exist supports it.
- 
+*   fix missing links aka ``@n = ''``
+*   use: ```for $y allowing empty in $off...``` once exist supports it.
+
 ## place
 Converts the GIS data of *CBDB*
 
-Currently cbdbTEI.xml does not yet use the more fine-grained possibilities of TEI to express geographic units, 
-such as ``<bloc>``, ``,country>``, ``<district>``, etc. 
+Currently cbdbTEI.xml does not yet use the more fine-grained possibilities of TEI to express geographic units,
+such as ``<bloc>``, ``,country>``, ``<district>``, etc.
 However, better integration with CHGIS via [TGAZ](http://maps.cga.harvard.edu/tgaz/) could void current shortcomings.  
 
 ### pla:fix-admin-types
-There are 225 distinct types of administrative units in CBDB, however these contain many duplicates due to inconsistent spelling. 
-Furthermore, white-spaces prevent the existing types from becoming xml attribute values. 
-Hence this function normalizes and concats the spelling of admin types without modifying the source. 
+There are 225 distinct types of administrative units in CBDB, however these contain many duplicates due to inconsistent spelling.
+Furthermore, white-spaces prevent the existing types from becoming xml attribute values.
+Hence this function normalizes and concats the spelling of admin types without modifying the source.
 ```
-let $types := 
+let $types :=
     distinct-values(($global:ADDR_CODES//no:c_admin_type, $global:ADDRESSES//no:c_admin_type))    
 ```
-The use of whitespace in particular stands in further need of normalization. In the future this information is likely to be pulled from TGAZ. 
+The use of whitespace in particular stands in further need of normalization. In the future this information is likely to be pulled from TGAZ.
 
 ### pla:nest-places
 One consequence of CBDB's entity model is that multiple  and usually overlapping time-series occur, e.g c_addr_id ``4342`` has:
 
-```
+```xml
 <location from="1368" to="1643"/>
 <location from="1522" to="1522"/>
 <location from="1544" to="1544">
 ```
 
-cbdbTEI uses min/max of the distinct values to captures the data that is actually there 
+cbdbTEI uses min/max of the distinct values to captures the data that is actually there
 (to be replaced by CHGIS soon). This approach cannot capture the (theoretical) case where
 
-```                        
+```xml                      
 <location from="1368" to="1443"/>
 <location from="1522" to="1622"/>
 ```
@@ -276,9 +276,8 @@ The following cells are never empty
 ```($ADDRESSES//no:c_admin_type, no:c_firstyear, no:c_lastyear)```
 
 #### TODO
-* currently only patched places refer to their main entries via @corresp,
-  add matching attributes to the main entities. 
-  
-### pla:patch-missing-addr
-We need to patch missing places because a few places only exist in one location in the DB. 
+*   currently only patched places refer to their main entries via @corresp,
+  add matching attributes to the main entities.
 
+### pla:patch-missing-addr
+We need to patch missing places because a few places only exist in one location in the DB.
