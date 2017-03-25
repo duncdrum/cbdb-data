@@ -16,7 +16,7 @@ Because *CBDB* consists of roughly ~350k records, users are strongly encouraged 
 
 
 ## Requirements
-* eXist-db version ``3.0`` or greater with min. ``2gb`` (!) allocated memory.
+* eXist-db version ``2.2`` or greater with min. ``2gb`` (!) allocated memory.
 * (ant version ``1.10.1`` for compiling from source)
 
 
