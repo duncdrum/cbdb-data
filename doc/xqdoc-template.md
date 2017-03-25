@@ -5,7 +5,7 @@ default.xqy
 [view code](../modules/default.xqy)
 
 ```xml
-
+<root>test</root>
 ```
 ## Library Modules
 xqdoc/xqdoc-display
@@ -28,7 +28,7 @@ This main module controls the presentation of the home page for xqDoc. The home 
 ## Variables
 ### $app:var1
 ```xml
-
+<root>test</root>
 ```
 explain
 
@@ -40,18 +40,18 @@ blah | blah
 ## Function Summary
 [xqDoc-main](#Function)
 
-## Function Detail
+### Function Detail
 [xqDoc-main](#Function)  
 [view code](../modules/default.xqy)
 
-### Parameters:
+#### Parameters:
 *   *$var1* - explained - as xs:type
 *   *$var2* - explained - as xs:type
 
-### Return:
+#### Return:
 *   ``stuff``
 
-### External Functions that are used by this Function
+#### External Functions that are used by this Function
 Module URI|Function Name  
 :----|:----
 ``http://marklogic.com/xdmp``|add-response-header  
