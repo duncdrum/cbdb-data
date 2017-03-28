@@ -1,23 +1,36 @@
 <module uri="http://exist-db.org/apps/cbdb-data/calendar" prefix="cal" location="/db/apps/cbdb-data/modules/calendar.xql">
+    <description> 
+        The calendar module reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
+        and creates a taxonomy element for inclusion in the teiHeader.
+        The taxonomy consists of two elements one for the sexagenary cycle, 
+        and one nested taxonomy for reign-titles and dynasties.
+        We are dropping the c_sort value for dynasties since sequential sorting
+        is implicit in the data structure.
+        
+    </description>
+    <author> Duncan Paterson
+    </author>
+    <version> 0.7
+        
+    </version>
     <variable name="cal:ZH"/>
     <variable name="cal:path"/>
     <function name="cal:custo-date-point" module="http://exist-db.org/apps/cbdb-data/calendar">
         <argument type="node()" cardinality="zero or more" var="dynasty">the sort number of the dynasty.</argument>
         <argument type="node()" cardinality="zero or more" var="reign">the sequence of the reign period 1st = 1, 2nd = 2, etc.</argument>
         <argument type="xs:string" cardinality="zero or more" var="year">the ordinal year of the reign period 1st = 1, 2nd = 2, etc.</argument>
-        <argument type="xs:string" cardinality="zero or one" var="type">can process 5 kinds of date-point :
-            'Start' / 'End' preceded by 'u' for uncertainty         
-            defaults to 'when'.</argument>
-        <returns type="node()" cardinality="zero or more"> &lt;date datingMethod="#chinTrad" calendar="#chinTrad"&gt;input string&lt;/date&gt;
+        <argument type="xs:string" cardinality="zero or one" var="type">can process 5 kinds of date-point:  
+            *   'Start' , 'End' preceded by 'u' for uncertainty, defaults to 'when'.</argument>
+        <returns type="node()" cardinality="zero or more"> ``&lt;date datingMethod="#chinTrad" calendar="#chinTrad"&gt;input string&lt;/date&gt;``
         </returns>
         <description> 
-            cal:custo-date-point takes Chinese calendar date strings (colums ending in *_dy, *_gz, *_nh) .
-            It returns a single tei:date element using att.datable.custom. 
+            cal:custo-date-point takes Chinese calendar date strings (columns ending in ``*_dy``, ``*_gz``, ``*_nh``) .
+            It returns a single ``tei:date`` element using ``att.datable.custom``. 
             cal:custo-date-range does the same but for date ranges. 
             
-            The normalized format takes DYNASTY//no:c_sort which is specific to CBDB,  
+            The normalized format takes ``DYNASTY//no:c_sort`` which is specific to CBDB,  
             followed by the sequence of reigns determined by their position in cal_ZH.xml
-            followed by the Year number.D(\d*)-R(\d*)-(\d*)
+            followed by the Year number: ``D(\d*)-R(\d*)-(\d*)``
             
         </description>
     </function>
@@ -29,28 +42,27 @@
         <argument type="xs:string" cardinality="zero or more" var="year-start">the ordinal year of the starting reign period 1st = 1, 2nd = 2, etc.</argument>
         <argument type="xs:string" cardinality="zero or more" var="year-end"/>
         <argument type="xs:string" cardinality="zero or one" var="type">has two options 'uRange' for uncertainty, default to certain ranges.</argument>
-        <returns type="node()" cardinality="zero or more"> &lt;date datingMethod="#chinTrad" calendar="#chinTrad"&gt;input string&lt;/date&gt;
+        <returns type="node()" cardinality="zero or more"> ``&lt;date datingMethod="#chinTrad" calendar="#chinTrad"&gt;input string&lt;/date&gt;``
         </returns>
         <description> 
             This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point.
             
-            It determines the machting end-points automatically when provided a starting point for a date range. 
+            It determines the matching end-points automatically when provided a starting point for a date range. 
             
         </description>
     </function>
     <function name="cal:dynasties" module="http://exist-db.org/apps/cbdb-data/calendar">
         <argument type="node()" cardinality="zero or more" var="dynasties">c_dy</argument>
-        <argument type="xs:string" cardinality="zero or one" var="mode">can take three efective values:
-            'v' = validate; preforms a validation of the output before passing it on. 
-            ' ' = normal; runs the transformation without validation.
-            'd' = debug; this is the slowest of all modes.</argument>
-        <returns type="item()" cardinality="zero or more"> taxonomy[</returns>
+        <argument type="xs:string" cardinality="zero or one" var="mode">can take three effective values:
+            *   'v' = validate; preforms a validation of the output before passing it on. 
+            *   ' ' = normal; runs the transformation without validation.
+            *   'd' = debug; this is the slowest of all modes.</argument>
+        <returns type="item()" cardinality="zero or more"> ``&lt;taxonomy xml:id="reign"&gt;...&lt;/taxonomy&gt;``
+        </returns>
         <description>
-            cal:dynasties convets DYNASTIES, and NIANHAO data into categories. 
+            cal:dynasties converts DYNASTIES, and NIANHAO data into categories. 
             
         </description>
-        <xml>id="reign"]
-        </xml>
         <calls>
             <function name="global:validate-fragment" module="http://exist-db.org/apps/cbdb-data/global" arity="2"/>
         </calls>
@@ -58,8 +70,7 @@
     <function name="cal:ganzhi" module="http://exist-db.org/apps/cbdb-data/calendar">
         <argument type="xs:integer" cardinality="exactly one" var="year">gYear compatible string.</argument>
         <argument type="xs:string" cardinality="zero or one" var="lang">is either hanzi = 'zh', or pinyin ='py' for output.</argument>
-        <returns type="xs:string" cardinality="zero or more"> ganzhi cycle as string. 
-            
+        <returns type="xs:string" cardinality="zero or more"> ganzhi cycle as string in either hanzi or pinyin. 
         </returns>
         <annotation name="test:args" namespace="http://exist-db.org/xquery/xqsuite">
             <value>2036</value>
@@ -98,7 +109,7 @@
         </annotation>
         <description>
             Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. 
-            It assumes gYears for calculating BCE dates. .
+            It assumes gYears for calculating BCE dates.
             
         </description>
     </function>
@@ -135,23 +146,22 @@
     </function>
     <function name="cal:sexagenary" module="http://exist-db.org/apps/cbdb-data/calendar">
         <argument type="node()" cardinality="zero or more" var="ganzhi">c_ganzhi_code</argument>
-        <argument type="xs:string" cardinality="zero or one" var="mode">can take three efective values:
-            'v' = validate; preforms a validation of the output before passing it on. 
-            ' ' = normal; runs the transformation without validation.
-            'd' = debug; this is the slowest of all modes.</argument>
-        <returns type="item()" cardinality="zero or more"> taxonomy[</returns>
+        <argument type="xs:string" cardinality="zero or one" var="mode">can take three effective values:
+            *   'v' = validate; preforms a validation of the output before passing it on. 
+            *   ' ' = normal; runs the transformation without validation.
+            *   'd' = debug; this is the slowest of all modes.</argument>
+        <returns type="item()" cardinality="zero or more"> ``&lt;taxonomy xml:id="sexagenary"&gt;...&lt;/taxonomy&gt;``
+        </returns>
         <description>
-            cal:sexagenary convets GANZHI data into categories. 
+            cal:sexagenary converts GANZHI data into categories. 
             
         </description>
-        <xml>id="sexagenary"]
-        </xml>
         <calls>
             <function name="global:validate-fragment" module="http://exist-db.org/apps/cbdb-data/global" arity="2"/>
         </calls>
     </function>
     <function name="cal:sqldate" module="http://exist-db.org/apps/cbdb-data/calendar">
-        <argument type="xs:string" cardinality="zero or one" var="timestamp">collectino for strings for western style full date</argument>
+        <argument type="xs:string" cardinality="zero or one" var="timestamp">collection for strings for western style full date</argument>
         <returns type="xs:string" cardinality="zero or more"> string in the format: YYYY-MM-DD
         </returns>
         <annotation name="test:args" namespace="http://exist-db.org/xquery/xqsuite">
@@ -161,20 +171,9 @@
             <value>1111-01-01</value>
         </annotation>
         <description> 
-            cal:sqldate converst the timestamp like values from CBDBs RLDBMs and converst them into iso compatible date strings,
+            cal:sqldate converts the timestamp like values from CBDBs RLDBMs and converts them into iso compatible date strings,
             i. e.: gYear-gMonth-gDay
             
         </description>
-    </function>
-    <function name="cal:write" module="http://exist-db.org/apps/cbdb-data/calendar">
-        <argument type="item()" cardinality="zero or more" var="item"/>
-        <returns type="item()" cardinality="zero or more"/>
-        <description>
-            write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.
-        </description>
-        <calls>
-            <function name="cal:sexagenary" module="http://exist-db.org/apps/cbdb-data/calendar" arity="2"/>
-            <function name="cal:dynasties" module="http://exist-db.org/apps/cbdb-data/calendar" arity="2"/>
-        </calls>
     </function>
 </module>

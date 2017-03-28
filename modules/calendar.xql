@@ -18,17 +18,17 @@ declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 
 
 (:~ 
- The calendar module reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
- and creates a taxonomy element for inculsion in the teiHeader.
- The taxonomy consists of two elements one for the sexagenary cycle, 
- and one nested taxonomy for reign-titles and dynasties.
- We are dropping the c_sort value for dynasties since sequential sorting
- is implicit in the data structure.
-    
- @author Duncan Paterson
- @version 0.7
- 
- @return  cal_ZH.xml
+: The calendar module reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
+: and creates a taxonomy element for inculsion in the teiHeader.
+: The taxonomy consists of two elements one for the sexagenary cycle, 
+: and one nested taxonomy for reign-titles and dynasties.
+: We are dropping the c_sort value for dynasties since sequential sorting
+: is implicit in the data structure.
+:    
+: @author Duncan Paterson
+: @version 0.7
+: 
+: @return  cal_ZH.xml
 :)
 
 
@@ -46,13 +46,13 @@ declare
     function cal:isodate ($string as xs:string?)  as xs:string* {
 
 (:~ 
- cal:isodate turns inconsistent gregorian year strings into proper xs:gYear type strings. 
- Consisting of 4 digits, with leading 0s. 
- This means that BCE dates have to be recalculated. Since '0 AD' -> "-0001"
- 
- @see http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html
- @param $string year number in western style counting
- @return gYear style string   
+: cal:isodate turns inconsistent gregorian year strings into proper xs:gYear type strings. 
+: Consisting of 4 digits, with leading 0s. 
+: This means that BCE dates have to be recalculated. Since '0 AD' -> "-0001"
+: 
+: @see http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html
+: @param $string year number in western style counting
+: @return gYear style string   
 :)
         
     if (empty($string)) then ()
@@ -67,11 +67,11 @@ declare
     
     function cal:sqldate ($timestamp as xs:string?)  as xs:string* {
 (:~ 
- cal:sqldate converst the timestamp like values from CBDBs RLDBMs and converst them into iso compatible date strings,
- i. e.: gYear-gMonth-gDay
- 
- @param $timestamp collectino for strings for western style full date
- @return string in the format: YYYY-MM-DD
+: cal:sqldate converts the timestamp like values from CBDBs RLDBMs and converts them into iso compatible date strings,
+: i. e.: gYear-gMonth-gDay
+: 
+: @param $timestamp collection for strings for western style full date
+: @return string in the format: YYYY-MM-DD
 :)
 concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
 };
@@ -83,23 +83,22 @@ declare function cal:custo-date-point (
     $type as xs:string?) as node()*{
 
 (:~ 
- cal:custo-date-point takes Chinese calendar date strings (colums ending in *_dy, *_gz, *_nh) .
- It returns a single tei:date element using att.datable.custom. 
- cal:custo-date-range does the same but for date ranges. 
-
- The normalized format takes DYNASTY//no:c_sort which is specific to CBDB,  
- followed by the sequence of reigns determined by their position in cal_ZH.xml
- followed by the Year number.D(\d*)-R(\d*)-(\d*)
-
- @param $dynasty the sort number of the dynasty.
- @param $reign the sequence of the reign period 1st = 1, 2nd = 2, etc. 
- @param $year the ordinal year of the reign period 1st = 1, 2nd = 2, etc.
- @param $type can process 5 kinds of date-point :
-         'Start' / 'End' preceded by 'u' for uncertainty         
-         defaults to 'when'.
-    
- @return <date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>
- :)
+: cal:custo-date-point takes Chinese calendar date strings (columns ending in ``*_dy``, ``*_gz``, ``*_nh``) .
+: It returns a single ``tei:date`` element using ``att.datable.custom``. 
+: cal:custo-date-range does the same but for date ranges. 
+: 
+: The normalized format takes ``DYNASTY//no:c_sort`` which is specific to CBDB,  
+: followed by the sequence of reigns determined by their position in cal_ZH.xml
+: followed by the Year number: ``D(\d*)-R(\d*)-(\d*)``
+: 
+: @param $dynasty the sort number of the dynasty.
+: @param $reign the sequence of the reign period 1st = 1, 2nd = 2, etc. 
+: @param $year the ordinal year of the reign period 1st = 1, 2nd = 2, etc.
+: @param $type can process 5 kinds of date-point:  
+:    *   'Start' , 'End' preceded by 'u' for uncertainty, defaults to 'when'.
+:    
+: @return ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
+:)
 let $dy := $global:DYNASTIES//no:c_dy[. = $dynasty/text()]
 let $motto := count($cal:path/category[@xml:id = concat('R', $reign/text())]/preceding-sibling::category) + 1
         
@@ -129,16 +128,16 @@ declare function cal:custo-date-range (
     $type as xs:string?) as node()*{
 
 (:~ 
- This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point.
+: This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point.
+:
+: It determines the matching end-points automatically when provided a starting point for a date range. 
+: 
+: @param $dy-start the sort number of the starting dynasty.
+: @param $reg-start the sequence of the starting reign period 1st = 1, 2nd = 2, etc. 
+: @param $year-start the ordinal year of the starting reign period 1st = 1, 2nd = 2, etc.
+: @param $type has two options 'uRange' for uncertainty, default to certain ranges. 
 
- It determines the machting end-points automatically when provided a starting point for a date range. 
-
- @param $dy-start the sort number of the starting dynasty.
- @param $reg-start the sequence of the starting reign period 1st = 1, 2nd = 2, etc. 
- @param $year-start the ordinal year of the starting reign period 1st = 1, 2nd = 2, etc.
- @param $type has two options 'uRange' for uncertainty, default to certain ranges. 
-
- @return <date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>
+: @return ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
 :)
 
 let $DS := $global:DYNASTIES//no:c_dy[. = $dy-start/text()]
@@ -195,15 +194,14 @@ declare
     %test:assertEquals('乙卯')
     function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
 (:~
- Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. 
- It assumes gYears for calculating BCE dates. .
-
- @param $year gYear compatible string. 
- @param $lang is either hanzi = 'zh', or pinyin ='py' for output. 
- 
- @return ganzhi cycle as string. 
-
- :)
+: Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. 
+: It assumes gYears for calculating BCE dates.
+: 
+: @param $year gYear compatible string. 
+: @param $lang is either hanzi = 'zh', or pinyin ='py' for output. 
+: 
+: @return ganzhi cycle as string in either hanzi or pinyin. 
+:)
     let $ganzhi_zh := 
         for $step in (1 to 60)
         
@@ -269,15 +267,15 @@ declare
 
 declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as item()* {
 (:~
- cal:sexagenary convets GANZHI data into categories. 
- 
- @param $ganzhi c_ganzhi_code
- @param $mode can take three efective values:
- 'v' = validate; preforms a validation of the output before passing it on. 
- ' ' = normal; runs the transformation without validation.
- 'd' = debug; this is the slowest of all modes.
-
- @return taxonomy[@xml:id="sexagenary"]
+: cal:sexagenary converts GANZHI data into categories. 
+: 
+: @param $ganzhi c_ganzhi_code
+: @param $mode can take three effective values:
+:    *   'v' = validate; preforms a validation of the output before passing it on. 
+:    *   ' ' = normal; runs the transformation without validation.
+:    *   'd' = debug; this is the slowest of all modes.
+: 
+: @return ``<taxonomy xml:id="sexagenary">...</taxonomy>``
 :)
 <taxonomy xml:id="sexagenary">{
     let $output := 
@@ -298,15 +296,15 @@ declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as ite
 
 declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as item()* {
 (:~
- cal:dynasties convets DYNASTIES, and NIANHAO data into categories. 
- 
- @param $dynasties c_dy
- @param $mode can take three efective values:
- 'v' = validate; preforms a validation of the output before passing it on. 
- ' ' = normal; runs the transformation without validation.
- 'd' = debug; this is the slowest of all modes.
-
- @return taxonomy[@xml:id="reign"]
+: cal:dynasties converts DYNASTIES, and NIANHAO data into categories. 
+: 
+: @param $dynasties c_dy
+: @param $mode can take three effective values:
+:    *   'v' = validate; preforms a validation of the output before passing it on. 
+:    *   ' ' = normal; runs the transformation without validation.
+:    *   'd' = debug; this is the slowest of all modes.
+: 
+: @return ``<taxonomy xml:id="reign">...</taxonomy>``
 :)
 <taxonomy xml:id="reign">{
     let $output :=     
@@ -349,9 +347,9 @@ declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as i
 </taxonomy>
 };
 
-declare function cal:write($item as item()*) as item()*{
+declare %private function cal:write($item as item()*) as item()*{
 (:~
- write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.
+: write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.
 :)
 xmldb:store($global:target, $global:calendar, 
     <taxonomy xml:id="cal_ZH">{                

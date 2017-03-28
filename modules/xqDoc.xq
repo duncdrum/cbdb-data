@@ -1,5 +1,6 @@
 xquery version "3.1";
 import module namespace app="http://exist-db.org/apps/cbdb-data/templates" at "app.xql";
+import module namespace docs="http://exist-db.org/xquery/docs" at "/db/apps/fundocs/modules/scan.xql";
 
 declare namespace xqdoc="http://www.xqdoc.org/1.0";
 
@@ -12,13 +13,20 @@ for $n in $nodes
 return
     switch(local-name($n))
        (: case "module" return concat('## Module Uri', '&#xa;','[', data($doc/@uri), '](', data($doc/@location), ')', '&#xa;'):)
-        case "variable" return concat('*$', data($n/@name), '* | ')
+        case "variable" return concat('*   *$', data($n/@name), '* - *missing description*')
         case "xxx" return concat('*   ', $n, '&#xa;')
-        case "function" return concat('```xml', '&#xa;', 'declare function ', data($n/@name),  '&#xa;', '```', '&#xa;')
-        case "argument" return concat('#### Parameters:', '&#xa;', '*   ','$', data($n/@var), ' - ', $n/text(), '&#xa;')
-        case "returns" return concat('#### Returns:', '&#xa;', '*   ', $n/string(), '&#xa;') 
-        case "description" return concat('### Function Detail:', '&#xa;', '*   ', $n/string(), '&#xa;') 
-        case "calls" return concat('#### External Functions that are used by this Function', '&#xa;', '*   ', $n/text(),'&#xa;') 
+        case "function" return concat('```xQuery', '&#xa;', 'declare function ', data($n/@name),  
+             "(" || string-join(
+             for $param in $n/argument
+             return
+                 "$" || $param/@var/string()  || " as " || $param/@type/string() || docs:cardinality($param/@cardinality),
+             ", ") || ")" || " as " || $n/returns/@type/string() || docs:cardinality($n/returns/@cardinality) || '&#xa;', '```', '&#xa;')
+        case "argument" return concat('*   ','$', data($n/@var), ' - ', $n/text(), '&#xa;')
+        case "returns" return concat('*   ', normalize-space($n/string()), '&#xa;') 
+        case "description" return concat(normalize-space($n/string()), '&#xa;') 
+        case "calls" return for $c in $n/function
+            return
+                concat('<',data($c/@module), '>','|[', data($c/@name),'](#',data($c/@name), ')') 
         case "annotation" return () 
         case "value" return () 
         case "xml" return () 
@@ -29,7 +37,7 @@ return
         case "signature" return $n/text() 
         case "deprecated" return concat('*   Depreceated:', $n/text(), '&#xa;') 
         case "see" return concat('[see](', $n/text(), ')&#xa;') 
-    default return (local:switch-report($n))
+    default return ()
 };    
 
 (:let $sample := inspect:inspect-module-uri(xs:anyURI("/db/apps/cbdb-data/doc/xqdoc-display.xqy")):)
@@ -54,26 +62,56 @@ return
             local:switch-report($doc/see))
     else (),
     
-(: Module Variables (as table) misses variable descriptions:)
+(: Variables :)
     if ($doc/variable)
-    then (concat('## Variables:&#xa;',':----|:----'),
-            local:switch-report($doc/variable)
-    (: Missing from spec :)
-            , 
-            concat('### Internal Functions that reference this Variable', '&#xa;',
-                '*Module URI* | *Function Name*', '&#xa;', ':----|:----'), 
-                local:switch-report($doc/xxx)
-                )
-    else (), 
+    then (concat('## Variables:','&#xa;'))
+    else (),
     
+(: the table for variable calls is currently empty see    :)
+    for $v in $doc/variable
+        return
+            (local:switch-report($v),
+            
+            if ($v/calls)
+            then (concat('### Internal Functions that reference this Variable', '&#xa;', 
+                        '*Module URI*|*Function Name*',  '&#xa;', ':----|:----'), 
+                    local:switch-report($v/calls))
+            else()),
+            
 (:  Functions :)
     if ($doc/function)
-    then (concat('## Function Summary', '&#xa;')
-            local:switch-report($doc/function),
+    then (concat('&#xa;','## Function Summary', '&#xa;'))
+    else (),
+    
+    for $f in $doc/function
+    return
+    (concat('### ', data($f/@name)),
+    
+    local:switch-report($f),
+    
+    if ($f/description)
+    then (concat('### Function Detail:', '&#xa;'), 
+            local:switch-report($f/description))
+    else (),
+    
+    if ($f/argument)
+    then (concat('#### Parameters:', '&#xa;'),
+            local:switch-report($f/argument))
+    else (),
+    
+    if ($f/returns)
+    then (concat('#### Returns:', '&#xa;'),
+            local:switch-report($f/returns))
+    else(),
             
-    
-    
-    )
+    if ($f/calls)
+    then (concat('#### External Functions that are used by this Function', '&#xa;', 
+                '*Module URI*|*Function Name*',  '&#xa;', ':----|:----'), 
+            local:switch-report($f/calls))
+    else())
+)
+
 (:    $sample:)
+(:$doc:)
 
 
