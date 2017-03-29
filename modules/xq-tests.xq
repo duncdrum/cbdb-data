@@ -1,5 +1,14 @@
 xquery version "3.1";
 
+(:~
+: This module contains the test runner functions for other xquery modules. 
+: 
+:  @author Duncan Paterson
+:  @version 0.7
+:  
+:  @see http://exist-db.org/exist/apps/doc/xqsuite.xml?q=test&field=all&id=D1.2.8#D1.2.8
+:)
+
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace functx="http://www.functx.com";
 
@@ -18,15 +27,6 @@ declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
-
-(:~
- This module contains the test runner functions for other xquery modules. 
- 
-  @author Duncan Paterson
-  @version 0.7
-  
-  @see http://exist-db.org/exist/apps/doc/xqsuite.xml?q=test&field=all&id=D1.2.8#D1.2.8
-:)
 
 let $modules := (xs:anyURI(concat($global:modules, 'calendar.xql')))
 

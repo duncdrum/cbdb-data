@@ -1,25 +1,8 @@
 xquery version "3.0";
-module namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
-
-import module namespace xmldb="http://exist-db.org/xquery/xmldb";
-(:import module namespace functx="http://www.functx.com";:)
-import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
-
-declare namespace test="http://exist-db.org/xquery/xqsuite";
-
-declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace no="http://none";
-
-
-declare default element namespace "http://www.tei-c.org/ns/1.0";
-
-declare variable $cal:ZH := doc(concat($global:target, $global:calendar));
-declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
-
 
 (:~ 
 : The calendar module reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
-: and creates a taxonomy element for inculsion in the teiHeader.
+: and creates a taxonomy element for inclusion in the teiHeader.
 : The taxonomy consists of two elements one for the sexagenary cycle, 
 : and one nested taxonomy for reign-titles and dynasties.
 : We are dropping the c_sort value for dynasties since sequential sorting
@@ -28,9 +11,23 @@ declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 : @author Duncan Paterson
 : @version 0.7
 : 
-: @return  cal_ZH.xml
-:)
+: @return  cal_ZH.xml:)
 
+module namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
+
+(:import module namespace functx="http://www.functx.com";:)
+import module namespace xmldb="http://exist-db.org/xquery/xmldb";
+import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
+
+declare namespace test="http://exist-db.org/xquery/xqsuite";
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace no="http://none";
+
+declare default element namespace "http://www.tei-c.org/ns/1.0";
+
+
+declare variable $cal:ZH := doc(concat($global:target, $global:calendar));
+declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 
 
 declare
@@ -46,14 +43,13 @@ declare
     function cal:isodate ($string as xs:string?)  as xs:string* {
 
 (:~ 
-: cal:isodate turns inconsistent gregorian year strings into proper xs:gYear type strings. 
+: cal:isodate turns inconsistent Gregorian year strings into proper xs:gYear type strings. 
 : Consisting of 4 digits, with leading 0s. 
 : This means that BCE dates have to be recalculated. Since '0 AD' -> "-0001"
 : 
 : @see http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.datable.w3c.html
 : @param $string year number in western style counting
-: @return gYear style string   
-:)
+: @return gYear style string:)
         
     if (empty($string)) then ()
     else if (number($string) eq 0) then ('-0001')
@@ -68,11 +64,10 @@ declare
     function cal:sqldate ($timestamp as xs:string?)  as xs:string* {
 (:~ 
 : cal:sqldate converts the timestamp like values from CBDBs RLDBMs and converts them into iso compatible date strings,
-: i. e.: gYear-gMonth-gDay
+: i. e.: YYYY-MM-DD
 : 
 : @param $timestamp collection for strings for western style full date
-: @return string in the format: YYYY-MM-DD
-:)
+: @return string in the format: YYYY-MM-DD:)
 concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
 };
 
@@ -97,8 +92,7 @@ declare function cal:custo-date-point (
 : @param $type can process 5 kinds of date-point:  
 :    *   'Start' , 'End' preceded by 'u' for uncertainty, defaults to 'when'.
 :    
-: @return ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
-:)
+: @return ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``:)
 let $dy := $global:DYNASTIES//no:c_dy[. = $dynasty/text()]
 let $motto := count($cal:path/category[@xml:id = concat('R', $reign/text())]/preceding-sibling::category) + 1
         
@@ -137,8 +131,7 @@ declare function cal:custo-date-range (
 : @param $year-start the ordinal year of the starting reign period 1st = 1, 2nd = 2, etc.
 : @param $type has two options 'uRange' for uncertainty, default to certain ranges. 
 
-: @return ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
-:)
+: @return ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``:)
 
 let $DS := $global:DYNASTIES//no:c_dy[. = $dy-start/text()]
 let $DE := $global:DYNASTIES//no:c_dy[. = $dy-end/text()]
@@ -200,8 +193,7 @@ declare
 : @param $year gYear compatible string. 
 : @param $lang is either hanzi = 'zh', or pinyin ='py' for output. 
 : 
-: @return ganzhi cycle as string in either hanzi or pinyin. 
-:)
+: @return ganzhi cycle as string in either hanzi or pinyin.:)
     let $ganzhi_zh := 
         for $step in (1 to 60)
         
@@ -275,8 +267,7 @@ declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as ite
 :    *   ' ' = normal; runs the transformation without validation.
 :    *   'd' = debug; this is the slowest of all modes.
 : 
-: @return ``<taxonomy xml:id="sexagenary">...</taxonomy>``
-:)
+: @return ``<taxonomy xml:id="sexagenary">...</taxonomy>``:)
 <taxonomy xml:id="sexagenary">{
     let $output := 
         for $gz in $ganzhi
@@ -304,8 +295,7 @@ declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as i
 :    *   ' ' = normal; runs the transformation without validation.
 :    *   'd' = debug; this is the slowest of all modes.
 : 
-: @return ``<taxonomy xml:id="reign">...</taxonomy>``
-:)
+: @return ``<taxonomy xml:id="reign">...</taxonomy>``:)
 <taxonomy xml:id="reign">{
     let $output :=     
         for $dy in $dynasties
@@ -349,8 +339,7 @@ declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as i
 
 declare %private function cal:write($item as item()*) as item()*{
 (:~
-: write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.
-:)
+: write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.:)
 xmldb:store($global:target, $global:calendar, 
     <taxonomy xml:id="cal_ZH">{                
             cal:sexagenary($global:GANZHI_CODES//no:row, 'v'),
