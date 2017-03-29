@@ -6,8 +6,7 @@ xquery version "3.1";
 :  @author Duncan Paterson
 :  @version 0.7
 :  
-:  @see http://exist-db.org/exist/apps/doc/xqsuite.xml?q=test&field=all&id=D1.2.8#D1.2.8
-:)
+:  @see http://exist-db.org/exist/apps/doc/xqsuite.xml?q=test&field=all&id=D1.2.8#D1.2.8:)
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace functx="http://www.functx.com";

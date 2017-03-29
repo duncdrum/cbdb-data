@@ -24,6 +24,14 @@ declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
+declare %private function local:write-docs-md ($uri as xs:anyURI) as item()* {
+
+(: Needs work :)
+let $filename := "doc-test.md"
+return
+    xmldb:store ($global:doc, $filename, util:expand($uri), text/plain)
+};
+
 declare %private function local:table-variables($f as node()*) as xs:string {
 
 (:~ 
@@ -166,6 +174,7 @@ let $test-seq := ('ab','bc','cd', 'ab', 'a')
 
 
 return
-    count(index-of($test-seq, 'ab'))
+(:    count(index-of($test-seq, 'ab')):)
+local:write-docs-md(xs:anyURI('db/apps/cbdb-data/xqDoc.xq'))
 
             
