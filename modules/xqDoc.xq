@@ -6,11 +6,7 @@ xquery version "3.1";
 : @author Duncan Paterson
 : @version 0.7
 : 
-: @return  func-doc.md:)
-
-(:
-: TODO:
-: Find a good way of making clickable links that work on GitHub and standalone:)
+: @return  func-doc as gitHub flavored markdown. :)
 
 import module namespace app="http://exist-db.org/apps/cbdb-data/templates" at "app.xql";
 import module namespace docs="http://exist-db.org/xquery/docs" at "/db/apps/fundocs/modules/scan.xql";
@@ -25,7 +21,7 @@ declare variable $modules := (xs:anyURI($global:modules || "app.xql"),
     xs:anyURI($global:modules || "genre.xql"),
     xs:anyURI($global:modules || "global.xqm"),
     xs:anyURI($global:modules || "institutions.xql"),
-    xs:anyURI($global:modules || "officeA.xql"),
+    xs:anyURI($global:modules || "office.xql"),
     xs:anyURI($global:modules || "place.xql"));
     
 declare variable $docs := $modules ! inspect:inspect-module(.);
