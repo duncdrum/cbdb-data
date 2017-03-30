@@ -2,18 +2,18 @@
 In addition to the information in this document, there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) listing each column used in this conversion.
 
 ## Contents
-*   [app](#module:-app)
-*   [bibliography](#module:-bibliography)
-*   [biographies](#module:-biographies)
-*   [calendar](#module:-calendar)
-*   [genre](#module:-genre)
-*   [global](#module:-global)
-*   [institutions](#module:-institutions)
-*   [officeA](#module:-officeA)
-*   [place](#module:-place)
+*   [app](#app-module)
+*   [bibliography](#bibliography-module)
+*   [biographies](#biographies-module)
+*   [calendar](#calendar-module)
+*   [genre](#genre-module)
+*   [global](#global-module)
+*   [institutions](#institutions-module)
+*   [officeA](#officeA-module)
+*   [place](#place-module)
 
 
-## Module: app
+## app Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/templates](/db/apps/cbdb-data/modules/app.xql)
 
 ## Module Description
@@ -28,18 +28,18 @@ In addition to the information in this document, there is a [spreadsheet](https:
 declare function app:test($node as node(), $model as map) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 This is a sample templating function. It will be called by the templating module if it encounters an HTML element with an attribute: data-template="app:test" or class="app:test" (deprecated). The function has to take 2 default parameters. Additional parameters are automatically mapped to any matching request or function parameter.
 
-#### Parameters:
+#### Parameters
 *   $node - the HTML node with the attribute which triggered this call
 *   $model - a map containing arbitrary data - used to pass information between template calls.
 
-#### Returns:
+#### Returns
 *  
 
 
-## Module: bibliography
+## bibliography Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/bibliography](/db/apps/cbdb-data/modules/bibliography.xql)
 
 ## Module Description
@@ -56,14 +56,14 @@ The bibliography module transforms core bibliographic data from CBDB into TEI. I
 declare function bib:bibl-dates($dates as node()*, $type as xs:string?) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 bib:bibl-dates reads the two principle date references in TEXT_CODE: original and published. This function resolves the relations of these dates expecting a valid no:c_textid. It returns both english and Chinese dates, referring to chal_ZH.xml.
 
-#### Parameters:
+#### Parameters
 *   $dates - is a c_textid
 *   $type - can take either 'ori' for original, or 'pub' for published dates.
 
-#### Returns:
+#### Returns
 *   date normalizes the distinction between 'during' and "around" to "when"
 
 ### bib:bibliography
@@ -71,43 +71,43 @@ bib:bibl-dates reads the two principle date references in TEXT_CODE: original an
 declare function bib:bibliography($texts as node()*, $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 This function reads the entities in TEXT_CODES ``sic`` and generates corresponding bibl elements, joining data from TEXT_DATA, TEXT_BIBLCAT_CODES, TEXT_TYPE, EXTANT_CODES, and COUNTRY_CODES.
 
-#### Parameters:
+#### Parameters
 *   $texts - is a c_textid
 *   $mode - can take three effective values:
     *   'v' = validate; preforms a validation of the output before passing it on.
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest of all modes.
 
-#### Returns:
+#### Returns
 *   ``<bibl id="BIB...">...</bib>``
 
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-<http://exist-db.org/apps/cbdb-data/bibliography>|[bib:roles](#bib:roles)
+<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
 <http://exist-db.org/apps/cbdb-data/bibliography>|[bib:bibl-dates](#bib:bibl-dates)
 <http://exist-db.org/apps/cbdb-data/global>|[global:create-mod-by](#global:create-mod-by)
-<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
+<http://exist-db.org/apps/cbdb-data/bibliography>|[bib:roles](#bib:roles)
 
 ### bib:roles
 ```xQuery
 declare function bib:roles($roles as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 bib:roles reads c_role_id from TEXT_DATA, and TEXT_ROLE_CODES to transform into matching TEI elements. It simplifies ``c_role_id[. = 11] 'work included in'`` to ``contributor`` and drops the Chinese terms. These could be added back in later via a ODD.
 
-#### Parameters:
+#### Parameters
 *   $roles - is a c_role_id
 
-#### Returns:
+#### Returns
 *   author, editor, or publisher with pointers to listPerson.
 
 
-## Module: biographies
+## biographies Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/biographies](/db/apps/cbdb-data/modules/biographies.xql)
 
 ## Module Description
@@ -122,13 +122,13 @@ The biographies module transforms biographical data from CBDB. It creates a nest
 declare function biog:alias($person as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:alias outputs aliases, such as pen-names, reign titles, from ALTNAME_DATA, and ALTNAME_CODES.
 
-#### Parameters:
+#### Parameters
 *   $person - is a c_personid
 
-#### Returns:
+#### Returns
 *   ``<persName type = "alias">...<person>``
 
 ### biog:asso
@@ -136,13 +136,13 @@ biog:alias outputs aliases, such as pen-names, reign titles, from ALTNAME_DATA, 
 declare function biog:asso($ego as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:asso constructs a network of association relations from: ASSOC_DATA, ASSOC_CODES, ASSOC_TYPES, and ASSOC_CODE_TYPE_REL. Annotations from: SCHOLARLYTOPIC_CODES, OCCASION_CODES, and LITERARYGENRE_CODES. The output's structure should match biog:kin's.
 
-#### Parameters:
+#### Parameters
 *   $ego - is a c_personid
 
-#### Returns:
+#### Returns
 *   relation
 
 #### External Functions that are used by this Function
@@ -155,50 +155,50 @@ biog:asso constructs a network of association relations from: ASSOC_DATA, ASSOC_
 declare function biog:biog($persons as node()*, $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:biog reads the main data table of cbdb: BIOG_MAIN. By calling all previous functions in this module, it performs a large join but it doesn't perform the write operation. In addition to the tables from previous functions, it also reads HOUSEHOLD_STATUS_CODES, ETHNICITY_TRIBE_CODES, and BIOG_SOURCE_DATA. biog:biog generates a person element for each unique person in BIOG_MAIN.
 
-#### Parameters:
+#### Parameters
 *   $persons - is a c_personid
 *   $mode - can take three effective values:
     *   'v' = validate; preforms a validation of the output, aborts on validation errors.
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest, does NOT abort upon encountering validation errors..
 
-#### Returns:
+#### Returns
 *   ``<person ana="historical">...</person>``
 
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:asso](#biog:asso)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:alias](#biog:alias)
-<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
 <http://exist-db.org/apps/cbdb-data/biographies>|[biog:status](#biog:status)
+<http://exist-db.org/apps/cbdb-data/global>|[global:create-mod-by](#global:create-mod-by)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:alias](#biog:alias)
 <http://www.functx.com>|[functx:pad-integer-to-length](#functx:pad-integer-to-length)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:new-post](#biog:new-post)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:inst-add](#biog:inst-add)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:name](#biog:name)
 <http://exist-db.org/apps/cbdb-data/biographies>|[biog:entry](#biog:entry)
 <http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:posses](#biog:posses)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:name](#biog:name)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:kin](#biog:kin)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:pers-add](#biog:pers-add)
-<http://exist-db.org/apps/cbdb-data/global>|[global:create-mod-by](#global:create-mod-by)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:asso](#biog:asso)
 <http://exist-db.org/apps/cbdb-data/biographies>|[biog:event](#biog:event)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:inst-add](#biog:inst-add)
+<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:new-post](#biog:new-post)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:kin](#biog:kin)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:posses](#biog:posses)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:pers-add](#biog:pers-add)
 
 ### biog:entry
 ```xQuery
 declare function biog:entry($initiates as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES into a typed and annotated event. It's output should match the structure of biog:event.
 
-#### Parameters:
+#### Parameters
 *   $initiates - is a c_personid
 
-#### Returns:
+#### Returns
 *   event
 
 #### External Functions that are used by this Function
@@ -211,13 +211,13 @@ biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL,
 declare function biog:event($participants as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:event reads EVENTS_DATA, EVENT_CODES, EVENTS_ADDR to generate an event element. The structure of biog:event is mirrored by biog:entry. Currently there are no py or en descriptions in the source data, hence we define a single xml:lang attribute on the parent element.
 
-#### Parameters:
+#### Parameters
 *   $participants - is a c_personid
 
-#### Returns:
+#### Returns
 *   event
 
 #### External Functions that are used by this Function
@@ -230,13 +230,13 @@ biog:event reads EVENTS_DATA, EVENT_CODES, EVENTS_ADDR to generate an event elem
 declare function biog:inst-add($participant as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:inst-add reads the BIOG_INST_DATA, and BIOG_INST_CODES generating an event. Time and place data are in ``where``, and ``when-custorm`` respectively. The main location off institutions is as in listOrg.xml Currently there are no dates in this table?
 
-#### Parameters:
+#### Parameters
 *   $participant - is a c_personid
 
-#### Returns:
+#### Returns
 *   event
 
 #### External Functions that are used by this Function
@@ -249,13 +249,13 @@ biog:inst-add reads the BIOG_INST_DATA, and BIOG_INST_CODES generating an event.
 declare function biog:kin($self as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:kin constructs an egocentric network of kinship relations from: KING_DATA, KING_CODES and Kin_Mourning. The output's structure should match biog:asso's.
 
-#### Parameters:
+#### Parameters
 *   $self - is a c_personid
 
-#### Returns:
+#### Returns
 *   relation
 
 ### biog:name
@@ -263,10 +263,10 @@ biog:kin constructs an egocentric network of kinship relations from: KING_DATA, 
 declare function biog:name($names as node()*, $lang as xs:string?) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:name reads extended name parts from BIOG_MAIN. To avoid duplication biog:name checks if sure-/forename components can be fully identified, and returns the respective elements, otherwise persName takes a single string value.
 
-#### Parameters:
+#### Parameters
 *   $names - variations of no:c_name from different tables.
 *   $lang - can take 4 values:
     *   'py' for pinyin,
@@ -274,7 +274,7 @@ biog:name reads extended name parts from BIOG_MAIN. To avoid duplication biog:na
     *   'proper', or
     *   'rm' for names other then Chinese.
 
-#### Returns:
+#### Returns
 *   persName
 
 ### biog:new-post
@@ -282,13 +282,13 @@ biog:name reads extended name parts from BIOG_MAIN. To avoid duplication biog:na
 declare function biog:new-post($appointees as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy.
 
-#### Parameters:
+#### Parameters
 *   $appointees - is a c_personid
 
-#### Returns:
+#### Returns
 *   ``<socecStatus scheme="#office">...</socecStatus>``
 
 #### External Functions that are used by this Function
@@ -301,13 +301,13 @@ biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIE
 declare function biog:pers-add($resident as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residence.
 
-#### Parameters:
+#### Parameters
 *   $resident - is a c_personid
 
-#### Returns:
+#### Returns
 *   residence
 
 #### External Functions that are used by this Function
@@ -321,13 +321,13 @@ biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residenc
 declare function biog:posses($possessions as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, and MEASURE_CODES. It produces a state element. There is barely any data in here so future version will undoubtedly see changes.
 
-#### Parameters:
+#### Parameters
 *   $possessions - is a c_personid
 
-#### Returns:
+#### Returns
 *   ``<state type="possession">...</state>``
 
 #### External Functions that are used by this Function
@@ -340,13 +340,13 @@ biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, and M
 declare function biog:status($achievers as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state. two tables currently don't contain data: STATUS_TYPES, and STATUS_CODE_TYPE_REL.
 
-#### Parameters:
+#### Parameters
 *   $achievers - is a c_personid
 
-#### Returns:
+#### Returns
 *   ``<state type = "status">...</state>``
 
 #### External Functions that are used by this Function
@@ -359,13 +359,13 @@ biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state. 
 declare function biog:write($item as item()*) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 Because of the large number (>370k) of individuals the write operation of biographies.xql is slightly more complex. Instead of putting its data into a single file or collection, it creates a single listPerson directory inside the target folder, which is populated by further subdirectories and ultimately the person records. Currently, cbdbTEI.xml includes links to 37 listPerson files covering chunks of $chunk-size persons each (10k). "chunk" collections contain a single list.xml file and $block-size (50) sub-collections. This file contains xInclude statements to 1 listPerson.xml file per "block" sub-collection. Each block contains a single listPerson.xml file on the same level as the individual $ppl-per-block (200) person records .
 
-#### Parameters:
+#### Parameters
 *   $item -
 
-#### Returns:
+#### Returns
 *   Files and Folders for person data:
     *   Directories:
         *   creates nested directories listPerson, chunk, and block using the respective parameters.
@@ -377,12 +377,12 @@ Because of the large number (>370k) of individuals the write operation of biogra
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:biog](#biog:biog)
-<http://www.functx.com>|[functx:substring-after-last](#functx:substring-after-last)
 <http://www.functx.com>|[functx:pad-integer-to-length](#functx:pad-integer-to-length)
+<http://www.functx.com>|[functx:substring-after-last](#functx:substring-after-last)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:biog](#biog:biog)
 
 
-## Module: calendar
+## calendar Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/calendar](/db/apps/cbdb-data/modules/calendar.xql)
 
 ## Module Description
@@ -390,7 +390,7 @@ The calendar module reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) a
 *   Author: Duncan Paterson
 *   Version: 0.7
 
-## Variables:
+## Variables
 *   *$cal:ZH* - *missing description*
 *   *$cal:path* - *missing description*
 
@@ -401,17 +401,17 @@ The calendar module reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) a
 declare function cal:custo-date-point($dynasty as node()*, $reign as node()*, $year as xs:string*, $type as xs:string?) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 cal:custo-date-point takes Chinese calendar date strings (columns ending in ``*_dy``, ``*_gz``, ``*_nh``) . It returns a single ``tei:date`` element using ``att.datable.custom``. cal:custo-date-range does the same but for date ranges. The normalized format takes ``DYNASTY//no:c_sort`` which is specific to CBDB, followed by the sequence of reigns determined by their position in cal_ZH.xml followed by the Year number: ``D(\d*)-R(\d*)-(\d*)``
 
-#### Parameters:
+#### Parameters
 *   $dynasty - the sort number of the dynasty.
 *   $reign - the sequence of the reign period 1st = 1, 2nd = 2, etc.
 *   $year - the ordinal year of the reign period 1st = 1, 2nd = 2, etc.
 *   $type - can process 5 kinds of date-point:  
     *   'Start' , 'End' preceded by 'u' for uncertainty, defaults to 'when'.
 
-#### Returns:
+#### Returns
 *   ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
 
 ### cal:custo-date-range
@@ -419,10 +419,10 @@ cal:custo-date-point takes Chinese calendar date strings (columns ending in ``*_
 declare function cal:custo-date-range($dy-start as node()*, $dy-end as node()*, $reg-start as node()*, $reg-end as node()*, $year-start as xs:string*, $year-end as xs:string*, $type as xs:string?) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point. It determines the matching end-points automatically when provided a starting point for a date range.
 
-#### Parameters:
+#### Parameters
 *   $dy-start - the sort number of the starting dynasty.
 *   $dy-end -
 *   $reg-start - the sequence of the starting reign period 1st = 1, 2nd = 2, etc.
@@ -431,7 +431,7 @@ This function takes Chinese calendar date ranges. It's the companion to cal:cust
 *   $year-end -
 *   $type - has two options 'uRange' for uncertainty, default to certain ranges.
 
-#### Returns:
+#### Returns
 *   ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
 
 ### cal:dynasties
@@ -439,17 +439,17 @@ This function takes Chinese calendar date ranges. It's the companion to cal:cust
 declare function cal:dynasties($dynasties as node()*, $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 cal:dynasties converts DYNASTIES, and NIANHAO data into categories.
 
-#### Parameters:
+#### Parameters
 *   $dynasties - c_dy
 *   $mode - can take three effective values:
     *   'v' = validate; preforms a validation of the output before passing it on.
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest of all modes.
 
-#### Returns:
+#### Returns
 *   ``<taxonomy xml:id="reign">...</taxonomy>``
 
 #### External Functions that are used by this Function
@@ -462,14 +462,14 @@ cal:dynasties converts DYNASTIES, and NIANHAO data into categories.
 declare function cal:ganzhi($year as xs:integer, $lang as xs:string?) as xs:string*
 ```
 
-### Function Detail:
+### Function Detail
 Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. It assumes gYears for calculating BCE dates.
 
-#### Parameters:
+#### Parameters
 *   $year - gYear compatible string.
 *   $lang - is either hanzi = 'zh', or pinyin ='py' for output.
 
-#### Returns:
+#### Returns
 *   ganzhi cycle as string in either hanzi or pinyin.
 
 ### cal:isodate
@@ -477,13 +477,13 @@ Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. It assume
 declare function cal:isodate($string as xs:string?) as xs:string*
 ```
 
-### Function Detail:
+### Function Detail
 cal:isodate turns inconsistent Gregorian year strings into proper xs:gYear type strings. Consisting of 4 digits, with leading 0s. This means that BCE dates have to be recalculated. Since '0 AD' -> "-0001"
 
-#### Parameters:
+#### Parameters
 *   $string - year number in western style counting
 
-#### Returns:
+#### Returns
 *   gYear style string
 
 ### cal:sexagenary
@@ -491,17 +491,17 @@ cal:isodate turns inconsistent Gregorian year strings into proper xs:gYear type 
 declare function cal:sexagenary($ganzhi as node()*, $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 cal:sexagenary converts GANZHI data into categories.
 
-#### Parameters:
+#### Parameters
 *   $ganzhi - c_ganzhi_code
 *   $mode - can take three effective values:
     *   'v' = validate; preforms a validation of the output before passing it on.
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest of all modes.
 
-#### Returns:
+#### Returns
 *   ``<taxonomy xml:id="sexagenary">...</taxonomy>``
 
 #### External Functions that are used by this Function
@@ -514,17 +514,17 @@ cal:sexagenary converts GANZHI data into categories.
 declare function cal:sqldate($timestamp as xs:string?) as xs:string*
 ```
 
-### Function Detail:
+### Function Detail
 cal:sqldate converts the timestamp like values from CBDBs RLDBMs and converts them into iso compatible date strings, i. e.: YYYY-MM-DD
 
-#### Parameters:
+#### Parameters
 *   $timestamp - collection for strings for western style full date
 
-#### Returns:
+#### Returns
 *   string in the format: YYYY-MM-DD
 
 
-## Module: genre
+## genre Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/genre](/db/apps/cbdb-data/modules/genre.xql)
 
 ## Module Description
@@ -539,10 +539,10 @@ genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into a nested tei
 declare function gen:nest-types($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories.
 
-#### Parameters:
+#### Parameters
 *   $types - row in TEXT_BIBLCAT_TYPES
 *   $type-id - is a c_text_cat_type_id
 *   $zh - category name in Chinese
@@ -552,7 +552,7 @@ gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories.
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest of all modes.
 
-#### Returns:
+#### Returns
 *   nested <category xml:id="biblType">...</category>``
 
 #### External Functions that are used by this Function
@@ -566,13 +566,13 @@ gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories.
 declare function gen:write($item as item()*) as item()
 ```
 
-### Function Detail:
+### Function Detail
 inserts the genre categories codes, into the previously generated tree of category types.
 
-#### Parameters:
+#### Parameters
 *   $item -
 
-#### Returns:
+#### Returns
 *  
 
 #### External Functions that are used by this Function
@@ -581,7 +581,7 @@ inserts the genre categories codes, into the previously generated tree of catego
 <http://exist-db.org/apps/cbdb-data/genre>|[gen:nest-types](#gen:nest-types)
 
 
-## Module: global
+## global Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/global](/db/apps/cbdb-data/modules/global.xqm)
 
 ## Module Description
@@ -589,7 +589,7 @@ A set of helper functions and variables called by other modules.
 *   Author: Duncan Paterson
 *   Version: 0.7
 
-## Variables:
+## Variables
 *   *$global:ADDRESSES* - *missing description*
 *   *$global:ADDR_BELONGS_DATA* - *missing description*
 *   *$global:ADDR_CODES* - *missing description*
@@ -702,14 +702,14 @@ A set of helper functions and variables called by other modules.
 declare function global:create-mod-by($created as node()*, $modified as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 This function takes the standardized entries for creation and modification of cbdb entries and translates them into 2 tei:notes. This data is distinct from the modifications of the TEI output recorded in the header.
 
-#### Parameters:
+#### Parameters
 *   $created - is c_created_by
 *   $modified - is c_modified_by
 
-#### Returns:
+#### Returns
 *   <note type="created | modified">...</note>
 
 #### External Functions that are used by this Function
@@ -722,10 +722,10 @@ This function takes the standardized entries for creation and modification of cb
 declare function global:validate-fragment($frag as node()*, $loc as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 This function validates $frag by inserting it into a minimal TEI template. This function cannot guarantee that the final document is valid, but it can catch validation errors produced by other function early on. This minimizes the number of validations necessary to produce the final output.
 
-#### Parameters:
+#### Parameters
 *   $frag - the fragment (usually some function's output) to be validated.
 *   $loc - accepts the following element names as root to be used for validation:
     *   category
@@ -735,12 +735,12 @@ This function validates $frag by inserting it into a minimal TEI template. This 
     *   bibl
     *   place
 
-#### Returns:
+#### Returns
 *   if validation succeeds then return the input, otherwise store a copy of the validation report
  into the reports directory, including the ``xml:id`` of the root element of the processed fragment.
 
 
-## Module: institutions
+## institutions Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/institutions](/db/apps/cbdb-data/modules/institutions.xql)
 
 ## Module Description
@@ -755,29 +755,29 @@ This module does what biographies does for persons for institutions.
 declare function org:org($institutions as node()*, $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_NAME_CODES, SOCIAL_INSTITUTION_TYPES, SOCIAL_INSTITUTION_ALTNAME_DATA, SOCIAL_INSTITUTION_ALTNAME_CODES, SOCIAL_INSTITUTION_ADDR, and SOCIAL_INSTITUTION_ADDR_TYPES into TEI. However, the altName tables, and address-type tables are empty!
 
-#### Parameters:
+#### Parameters
 *   $institutions - is a c_inst_code
 *   $mode - can take three effective values:
     *   'v' = validate; preforms a validation of the output before passing it on.
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest of all modes.
 
-#### Returns:
+#### Returns
 *   org
 
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-<http://exist-db.org/apps/cbdb-data/calendar>|[cal:custo-date-point](#cal:custo-date-point)
 <http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
-<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
+<http://exist-db.org/apps/cbdb-data/calendar>|[cal:custo-date-point](#cal:custo-date-point)
 <http://exist-db.org/apps/cbdb-data/calendar>|[cal:custo-date-range](#cal:custo-date-range)
+<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
 
 
-## Module: officeA
+## officeA Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/officeA](/db/apps/cbdb-data/modules/officeA.xql)
 
 ## Module Description
@@ -792,16 +792,16 @@ To generating the taxonomy for office titles we need two query files officeA.xql
 declare function off:nest-children($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 off:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categories.
 
-#### Parameters:
+#### Parameters
 *   $data - row in OFFICE_TYPE_TREE
 *   $id - is a c_office_type_node_id
 *   $zh - category name in Chinese
 *   $en - category name in English
 
-#### Returns:
+#### Returns
 *   nested ``<category n ="...">...</category>``
 
 #### External Functions that are used by this Function
@@ -814,17 +814,17 @@ off:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categorie
 declare function off:office($offices as node()*, $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 off:office transforms OFFICE_CODES, OFFICE_CODE_TYPE_REL, and OFFICE_TYPE_TREE data into categories elements.
 
-#### Parameters:
+#### Parameters
 *   $offices - is a c_office_id
 *   $mode - can take three effective values:
     *   'v' = validate; preforms a validation of the output before passing it on.
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest of all modes.
 
-#### Returns:
+#### Returns
 *   ``<category xml:id="OFF...">...</category>``
 
 #### External Functions that are used by this Function
@@ -833,7 +833,7 @@ off:office transforms OFFICE_CODES, OFFICE_CODE_TYPE_REL, and OFFICE_TYPE_TREE d
 <http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
 
 
-## Module: place
+## place Module
 *   *Module Uri:* [http://exist-db.org/apps/cbdb-data/place](/db/apps/cbdb-data/modules/place.xql)
 
 ## Module Description
@@ -848,13 +848,13 @@ place.xql reads the various basic entities for location type information and cre
 declare function pla:fix-admin-types($adminType as xs:string?) as xs:string*
 ```
 
-### Function Detail:
+### Function Detail
 normalize adminType so they can become attribute values.
 
-#### Parameters:
+#### Parameters
 *   $adminType - is a c_admin_type
 
-#### Returns:
+#### Returns
 *   normalized and deduped string
 
 ### pla:nest-places
@@ -862,10 +862,10 @@ normalize adminType so they can become attribute values.
 declare function pla:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?, $mode as xs:string?) as item()*
 ```
 
-### Function Detail:
+### Function Detail
 pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONGS_DATA parent, to generate place elements. This leaves duplicate id between here and ADDRESSES. Where multiple identical c_addr_id's are present, we use the one covering the largest admin level.
 
-#### Parameters:
+#### Parameters
 *   $data - is ADDR_CODES row elements
 *   $id - is a c_addr_id
 *   $zh - placeName in Chinese
@@ -875,15 +875,15 @@ pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONG
     *   ' ' = normal; runs the transformation without validation.
     *   'd' = debug; this is the slowest of all modes.
 
-#### Returns:
+#### Returns
 *   nested ``<place xml:id="PL...">...</place>
 
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
-<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
 <http://exist-db.org/apps/cbdb-data/place>|[pla:fix-admin-types](#pla:fix-admin-types)
+<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
+<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
 <http://exist-db.org/apps/cbdb-data/place>|[pla:nest-places](#pla:nest-places)
 
 ### pla:patch-missing-addr
@@ -891,11 +891,11 @@ pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONG
 declare function pla:patch-missing-addr($data as node()*) as node()*
 ```
 
-### Function Detail:
+### Function Detail
 pla:patch-missing-addr makes sure that every c_addr_id from CBDB is present in listPlace.xml . It does so by inserting empty places present in ADDRESSES but not ADDR_CODES, using a
 
-#### Parameters:
+#### Parameters
 *   $data - row elements from ADDRESSES table.
 
-#### Returns:
+#### Returns
 *   place
