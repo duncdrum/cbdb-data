@@ -2,15 +2,15 @@
 In addition to the information in this document, there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) listing each column used in this conversion.
 
 ## Contents
-*   [app](#module:_app)
-*   [bibliography](#module:_bibliography)
-*   [biographies](#module:_biographies)
-*   [calendar](#module:_calendar)
-*   [genre](#module:_genre)
-*   [global](#module:_global)
-*   [institutions](#module:_institutions)
-*   [officeA](#module:_officeA)
-*   [place](#module:_place)
+*   [app](#module:-app)
+*   [bibliography](#module:-bibliography)
+*   [biographies](#module:-biographies)
+*   [calendar](#module:-calendar)
+*   [genre](#module:-genre)
+*   [global](#module:-global)
+*   [institutions](#module:-institutions)
+*   [officeA](#module:-officeA)
+*   [place](#module:-place)
 
 
 ## Module: app
@@ -88,9 +88,9 @@ This function reads the entities in TEXT_CODES ``sic`` and generates correspondi
 *Module URI*|*Function Name*
 :----|:----
 <http://exist-db.org/apps/cbdb-data/bibliography>|[bib:roles](#bib:roles)
-<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
 <http://exist-db.org/apps/cbdb-data/bibliography>|[bib:bibl-dates](#bib:bibl-dates)
 <http://exist-db.org/apps/cbdb-data/global>|[global:create-mod-by](#global:create-mod-by)
+<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
 
 ### bib:roles
 ```xQuery
@@ -171,20 +171,20 @@ biog:biog reads the main data table of cbdb: BIOG_MAIN. By calling all previous 
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:asso](#biog:asso)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:alias](#biog:alias)
+<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:status](#biog:status)
+<http://www.functx.com>|[functx:pad-integer-to-length](#functx:pad-integer-to-length)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:new-post](#biog:new-post)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:entry](#biog:entry)
+<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:posses](#biog:posses)
 <http://exist-db.org/apps/cbdb-data/biographies>|[biog:name](#biog:name)
 <http://exist-db.org/apps/cbdb-data/biographies>|[biog:kin](#biog:kin)
-<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:asso](#biog:asso)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:posses](#biog:posses)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:event](#biog:event)
 <http://exist-db.org/apps/cbdb-data/biographies>|[biog:pers-add](#biog:pers-add)
-<http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
-<http://www.functx.com>|[functx:pad-integer-to-length](#functx:pad-integer-to-length)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:entry](#biog:entry)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:status](#biog:status)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:alias](#biog:alias)
 <http://exist-db.org/apps/cbdb-data/global>|[global:create-mod-by](#global:create-mod-by)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:new-post](#biog:new-post)
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:event](#biog:event)
 <http://exist-db.org/apps/cbdb-data/biographies>|[biog:inst-add](#biog:inst-add)
 
 ### biog:entry
@@ -377,9 +377,9 @@ Because of the large number (>370k) of individuals the write operation of biogra
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
+<http://exist-db.org/apps/cbdb-data/biographies>|[biog:biog](#biog:biog)
 <http://www.functx.com>|[functx:substring-after-last](#functx:substring-after-last)
 <http://www.functx.com>|[functx:pad-integer-to-length](#functx:pad-integer-to-length)
-<http://exist-db.org/apps/cbdb-data/biographies>|[biog:biog](#biog:biog)
 
 
 ## Module: calendar
@@ -771,10 +771,10 @@ This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-<http://exist-db.org/apps/cbdb-data/calendar>|[cal:custo-date-range](#cal:custo-date-range)
-<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
 <http://exist-db.org/apps/cbdb-data/calendar>|[cal:custo-date-point](#cal:custo-date-point)
+<http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
 <http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
+<http://exist-db.org/apps/cbdb-data/calendar>|[cal:custo-date-range](#cal:custo-date-range)
 
 
 ## Module: officeA
@@ -881,10 +881,10 @@ pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONG
 #### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-<http://exist-db.org/apps/cbdb-data/place>|[pla:fix-admin-types](#pla:fix-admin-types)
 <http://exist-db.org/apps/cbdb-data/calendar>|[cal:isodate](#cal:isodate)
-<http://exist-db.org/apps/cbdb-data/place>|[pla:nest-places](#pla:nest-places)
 <http://exist-db.org/apps/cbdb-data/global>|[global:validate-fragment](#global:validate-fragment)
+<http://exist-db.org/apps/cbdb-data/place>|[pla:fix-admin-types](#pla:fix-admin-types)
+<http://exist-db.org/apps/cbdb-data/place>|[pla:nest-places](#pla:nest-places)
 
 ### pla:patch-missing-addr
 ```xQuery
