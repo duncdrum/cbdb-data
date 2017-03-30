@@ -1,16 +1,21 @@
 xquery version "3.0";
 
 (:~ 
-: The calendar module reads the calendar aux tables (GANZHI, DYNASTIES, NIANHAO) 
-: and creates a taxonomy element for inclusion in the teiHeader.
+: The calendar module reads the calendar data from GANZHI, DYNASTIES, and NIANHAO to 
+: create a taxonomy element for inclusion in the teiHeader.
 : The taxonomy consists of two elements one for the sexagenary cycle, 
 : and one nested taxonomy for reign-titles and dynasties.
 : We are dropping the c_sort value for dynasties since sequential sorting
 : is implicit in the data structure.
+:
+: There are some inconsistencies with how *CBDB* processes Chinese dates, in the long
+: run using an external authority could solve these problems. 
 :    
 : @author Duncan Paterson
 : @version 0.7
 : 
+: @see http://authority.ddbc.edu.tw
+:
 : @return  cal_ZH.xml:)
 
 module namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
@@ -68,6 +73,7 @@ declare
 : 
 : @param $timestamp collection for strings for western style full date
 : @return string in the format: YYYY-MM-DD:)
+
 concat(substring($timestamp, 1, 4), '-', substring($timestamp, 5, 2), '-', substring($timestamp, 7, 2)) 
 };
 
@@ -93,6 +99,7 @@ declare function cal:custo-date-point (
 :    *   'Start' , 'End' preceded by 'u' for uncertainty, defaults to 'when'.
 :    
 : @return ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``:)
+
 let $dy := $global:DYNASTIES//no:c_dy[. = $dynasty/text()]
 let $motto := count($cal:path/category[@xml:id = concat('R', $reign/text())]/preceding-sibling::category) + 1
         
@@ -194,6 +201,7 @@ declare
 : @param $lang is either hanzi = 'zh', or pinyin ='py' for output. 
 : 
 : @return ganzhi cycle as string in either hanzi or pinyin.:)
+
     let $ganzhi_zh := 
         for $step in (1 to 60)
         
@@ -268,6 +276,7 @@ declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as ite
 :    *   'd' = debug; this is the slowest of all modes.
 : 
 : @return ``<taxonomy xml:id="sexagenary">...</taxonomy>``:)
+
 <taxonomy xml:id="sexagenary">{
     let $output := 
         for $gz in $ganzhi
@@ -296,6 +305,7 @@ declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as i
 :    *   'd' = debug; this is the slowest of all modes.
 : 
 : @return ``<taxonomy xml:id="reign">...</taxonomy>``:)
+
 <taxonomy xml:id="reign">{
     let $output :=     
         for $dy in $dynasties
@@ -340,13 +350,10 @@ declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as i
 declare %private function cal:write($item as item()*) as item()*{
 (:~
 : write the taxonomy containing the results of both cal:sexagenary and cal:dynasties into db.:)
+
 xmldb:store($global:target, $global:calendar, 
     <taxonomy xml:id="cal_ZH">{                
             cal:sexagenary($global:GANZHI_CODES//no:row, 'v'),
             cal:dynasties($global:DYNASTIES//no:row, 'v')}
     </taxonomy>)
 };
-
-            
-
-        

@@ -23,6 +23,8 @@ declare variable $global:report := '/db/apps/cbdb-data/reports/';
 declare variable $global:patch := '/db/apps/cbdb-data/reports/patch/';
 declare variable $global:samples := '/db/apps/cbdb-data/samples/';
 declare variable $global:modules := '/db/apps/cbdb-data/modules/';
+declare variable $global:doc := '/db/apps/cbdb-data/doc/';
+
 (:THE TEI FILES IN TARGET:)
 declare variable $global:genre := 'biblCat.xml';
 declare variable $global:calendar := 'cal_ZH.xml';
@@ -131,12 +133,12 @@ declare variable $global:YEAR_RANGE_CODES:= doc(concat($global:src, 'YEAR_RANGE_
 declare function global:create-mod-by ($created as node()*, $modified as node()*) as node()*{
 (:~ 
 : This function takes the standardized entries for creation and modification of cbdb entries 
-: and translates them into 2 tei:notes.
+: and translates them into note elements.
 :
 : This data is distinct from the modifications of the TEI output recorded in the header.
 : 
-: @param $created is c_created_by
-: @param $modified is c_modified_by
+: @param $created is ``c_created_by``
+: @param $modified is ``c_modified_by``
 : 
 : @return <note type="created | modified">...</note>:)
 

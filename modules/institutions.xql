@@ -27,14 +27,17 @@ declare function org:org ($institutions as node()*, $mode as xs:string?) as item
 : SOCIAL_INSTITUTION_TYPES,  SOCIAL_INSTITUTION_ALTNAME_DATA, SOCIAL_INSTITUTION_ALTNAME_CODES, 
 : SOCIAL_INSTITUTION_ADDR, and SOCIAL_INSTITUTION_ADDR_TYPES into TEI. 
 :
+: For now there are only three ``role`` attribute values: academy, buddhist, and daoist. 
+:
 : However, the altName tables, and address-type tables are empty!
-: @param $institutions is a c_inst_code
+:
+: @param $institutions is a ``c_inst_code``
 : @param $mode can take three effective values:
 :    *   'v' = validate; preforms a validation of the output before passing it on. 
 :    *   ' ' = normal; runs the transformation without validation.
 :    *   'd' = debug; this is the slowest of all modes.
 :
-: @return org:)
+: @return ``<org>...</org>``:)
 
 let $output := 
     for $org in $institutions

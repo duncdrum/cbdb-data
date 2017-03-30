@@ -1,8 +1,8 @@
 xquery version "3.0";
 (:~ 
-: To generating the taxonomy for office titles we need two query files officeA.xql and officeB.xql. 
+: To generating the taxonomy for office titles we need two query files office.xql and officeB.xql. 
 : 
-: officeA creates two files which will be merged by officeB.
+: office creates two files which will be merged by officeB.
 : Each file stores a taxonomy for one of two different ways that offices are categorized by CBDB.
 :    
 : @author Duncan Paterson
@@ -10,7 +10,7 @@ xquery version "3.0";
 : 
 : @return office.xml, officeA.xml.:)
 
-module namespace off="http://exist-db.org/apps/cbdb-data/officeA";
+module namespace off="http://exist-db.org/apps/cbdb-data/office";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
@@ -19,11 +19,12 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
+
 declare function off:office ($offices as node()*, $mode as xs:string?) as item()* {
 (:~
 : off:office transforms OFFICE_CODES, OFFICE_CODE_TYPE_REL, and OFFICE_TYPE_TREE data into categories elements.
 : 
-: @param $offices is a c_office_id
+: @param $offices is a ``c_office_id``
 : @param $mode can take three effective values:
 :    *   'v' = validate; preforms a validation of the output before passing it on. 
 :    *   ' ' = normal; runs the transformation without validation.
@@ -103,7 +104,7 @@ declare function off:nest-children ($data as node()*, $id as node(), $zh as node
 off:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categories.
 
 @param $data row in OFFICE_TYPE_TREE
-: @param $id is a c_office_type_node_id
+: @param $id is a ``c_office_type_node_id``
 : @param $zh category name in Chinese
 : @param $en category name in English
 : @param $mode can take three effective values:

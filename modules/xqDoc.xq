@@ -62,7 +62,7 @@ return
         case "calls" return 
             for $c in $n/function
             return
-                '<' || data($c/@module) || '>' || '|[' || data($c/@name) || '](#' || data($c/@name) || ')'
+                '``' || data($c/@module) || '``' || '|[' || data($c/@name) || '](#' || substring-after(data($c/@name), ':') || ')'
         case "annotation" return ()
         case "value" return () 
         case "xml" return ()
@@ -84,25 +84,26 @@ return
 :
 : @return func-doc.md:)
 
-(:H1 Heading:)
+(:  H1 Heading  :)
     ('# Function Documentation' || '&#xa;' || 
     $preface || '&#xa;' ||
     '&#xa;' ||'## Contents',
     
+(:  ToC  :)
     for $toc in $docs
     let $toc-short := substring-before(substring-after(data($toc//@location), $global:modules), '.')
     return 
-        ('*   [' || $toc-short || '](#module:_' || $toc-short || ')'), '&#xa;',
+        ('*   [' || $toc-short || '](#' || $toc-short || '-module)'), '&#xa;',
 
     
     for $doc in $docs
     let $module-short := substring-before(substring-after(data($doc//@location), $global:modules), '.')
     return
-        ('## Module: ' || $module-short,
+        ('## ' || $module-short ||' Module',
         local:report-transform($doc[.]),
         
         if ($doc/description)
-        then ('&#xa;' || '## Module Description',
+        then ('&#xa;' || '### Module Description',
                 local:report-transform($doc/description),
                 local:report-transform($doc/author),
                 local:report-transform($doc/version),
@@ -111,9 +112,9 @@ return
                 local:report-transform($doc/see))
         else (),
     
-    (: Variables :)
+(:  Variables  :)
         if ($doc/variable)
-        then ('&#xa;' || '## Variables:')
+        then ('&#xa;' || '### Variables')
         else (),
     
     (: the table for variable calls is currently empty see    :)
@@ -122,41 +123,48 @@ return
                 (local:report-transform($v),
     
                 if ($v/calls)
-                then ('&#xa;' || '### Internal Functions that reference this Variable' || '&#xa;' ||
+                then ('&#xa;' || '#### Internal Functions that reference this Variable' || '&#xa;' ||
                       '*Module URI*|*Function Name*' || '&#xa;'|| ':----|:----' ,
                         for $c in $v/calls 
                         return
                             local:report-transform($c))
                 else()),
     
-    (:  Functions :)
+(:  Functions :)
         if ($doc/function)
-        then ('&#xa;' || '## Function Summary')
+        then ('&#xa;' || '### Function Summary')
         else (),
+        
+        if (count($doc/function) < 3)
+        then ()
+        else ('#### Contents' || '&#xa;',
+            for $c in $doc/function
+            return
+                '*   [' || data($c/@name) || '](#' || substring-after(data($c/@name), ':') || ')'),
     
         for $f in $doc/function
         return
-        ('&#xa;' || '### ' || data($f/@name),
+        ('&#xa;' || '#### ' || substring-after(data($f/@name), ':'),
     
         local:report-transform($f),
     
         if ($f/description)
-        then ('&#xa;' || '### Function Detail:',
+        then ('&#xa;' || '##### Function Detail',
                 local:report-transform($f/description))
         else (),
     
         if ($f/argument)
-        then ('&#xa;' || '#### Parameters:',
+        then ('&#xa;' || '##### Parameters',
                 local:report-transform($f/argument))
         else (),
     
         if ($f/returns)
-        then ('&#xa;' || '#### Returns:',
+        then ('&#xa;' || '##### Returns',
                 local:report-transform($f/returns))
         else(),
     
         if ($f/calls)
-        then ('&#xa;' || '#### External Functions that are used by this Function' || '&#xa;' ||
+        then ('&#xa;' || '##### External Functions that are used by this Function' || '&#xa;' ||
               '*Module URI*|*Function Name*' || '&#xa;' || ':----|:----',
                 for $c in $f/calls 
                 return

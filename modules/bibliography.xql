@@ -141,12 +141,16 @@ return
 declare function bib:roles ($roles as node()*)  as node()* {
 (:~ 
 : bib:roles reads c_role_id from TEXT_DATA, and TEXT_ROLE_CODES to transform into matching TEI elements.
-: It simplifies ``c_role_id[. = 11] 'work included in'`` to ``contributor`` and drops the Chinese terms.
-: These could be added back in later via a ODD.
+: It simplifies ``c_role_id[. = 11] 'work included in'`` to ``contributor``.
+: it currently drops the Chinese terms from ``$TEXT_ROLE_CODES//no:c_role_desc_chn`.
+: These could be added back in later via a ODD. 
 : 
 : @param $roles is a c_role_id
 :
 : @return author, editor, or publisher with pointers to listPerson.:)
+
+(:distinct-values(($TEXT_CODES//no:c_pub_range_code, $TEXT_CODES//no:c_range_code)) 
+: shows range 300, and 301 not to be in use.:)
 
 for $role in $roles
 let $code :=  $global:TEXT_ROLE_CODES//no:c_role_id[. = $role]

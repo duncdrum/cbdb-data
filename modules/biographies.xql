@@ -1,9 +1,8 @@
 xquery version "3.0";
 
 (:~
-: The biographies module transforms biographical data from CBDB. 
-: It creates a nested tree of collections (chunks) and sub-collections (blocks), 
-: in which to store the individual person records. 
+: The biographies module transforms core person, and relationship data from CBDB in TEI. 
+: The data is stored inside a nested heirarchy of collections  and sub-collections linked by xInclude statements. 
 : 
 : @author Duncan Paterson
 : @version 0.7
@@ -17,6 +16,7 @@ import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare namespace xi="http://www.w3.org/2001/XInclude";
@@ -31,14 +31,14 @@ declare function biog:name ($names as node()*, $lang as xs:string?) as node()* {
 : To avoid duplication biog:name checks if sure-/forename components can be fully identified,
 : and returns the respective elements, otherwise persName takes a single string value. 
 :
-: @param $names variations of no:c_name from different tables. 
+: @param $names variations of ``c_name`` from different tables. 
 : @param $lang can take 4 values:
 :    *   'py' for pinyin, 
 :    *   'hz' for hanzi, 
 :    *   'proper', or 
 :    *   'rm' for names other then Chinese.
 :
-: @return persName:)
+: @return ``<persName>...</persName>``:)
 
 let $choro := $global:CHORONYM_CODES//no:c_choronym_code[. = $names/../no:c_choronym_code]
 
@@ -116,7 +116,8 @@ return
 declare function biog:alias ($person as node()*) as node()* {
 (:~ 
 : biog:alias outputs aliases, such as pen-names, reign titles, from ALTNAME_DATA, and ALTNAME_CODES. 
-: @param $person is a c_personid
+:
+: @param $person is a ``c_personid``
 : @return ``<persName type = "alias">...<person>``:)
 
 for $person in $global:ALTNAME_DATA//no:c_personid[. =$person]
@@ -163,8 +164,21 @@ declare function biog:kin ($self as node()*) as node()* {
 : biog:kin  constructs an egocentric network of kinship relations from: KING_DATA, KING_CODES and Kin_Mourning.
 : The output's structure should match biog:asso's.
 :
-: @param $self is a c_personid 
-: @return relation:)
+: The list on page 13f of the *CBDB User's Guide* is incomplete. ``$tie`` includes values not mentioned in the documentation.
+:
+: @param $self is a ``c_personid`` 
+: @param $tie undocumented values:
+:    *   ``(male)`` -> ``♂``
+:    *   ``(female)`` -> ``♀``
+:    *   ``©`` -> ``of concubine``
+:    *   ``(claimed)`` ->
+:    *   ``(eldest surviving son)`` ->
+:    *   ``(only ...)`` ->
+:    *   ``(apical)`` ->
+: @see #asso
+: @see http://projects.iq.harvard.edu/files/cbdb/files/cbdb_users_guide.pdf
+:
+: @return ``<relation>...</relation>``:)
     
 for $kin in $global:KIN_DATA//no:c_personid[. = $self]
 let $tie := $global:KINSHIP_CODES//no:c_kincode[. = $kin/../no:c_kin_code]
@@ -242,14 +256,15 @@ return
 declare function biog:asso ($ego as node()*) as node()* {
 (:~
 : biog:asso constructs a network of association relations from: ASSOC_DATA, ASSOC_CODES, 
-: ASSOC_TYPES, and ASSOC_CODE_TYPE_REL.  
+: ASSOC_TYPES, and ASSOC_CODE_TYPE_REL. The distance measured by ``c_assoc_range`` is dropped.  
 :
 : Annotations from: SCHOLARLYTOPIC_CODES, OCCASION_CODES, and LITERARYGENRE_CODES.
 :
 : The output's structure should match biog:kin's.
 :
-: @param $ego is a c_personid 
-: @return relation:)
+: @param $ego is a ``c_personid``
+: @see #kin
+: @return ``<relation>...</relation>``:)
 
 (:
 : Because TEI declares  active/passive relations more strictly then CBDB, the following relations
@@ -428,9 +443,11 @@ declare function biog:status ($achievers as node()*) as node()* {
 (:~
 : biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state.
 :
-: two tables currently don't contain data: STATUS_TYPES, and  STATUS_CODE_TYPE_REL.
+: Two tables are currently empty: STATUS_TYPES, and  STATUS_CODE_TYPE_REL.
 :
-: @param $achievers is a c_personid
+: This function drops ``c_notes``, and ``c_supplement`` from ``STATUS_DATA``.
+: @param $achievers is a ``c_personid``
+:
 : @return ``<state type = "status">...</state>``:)
 
 (:
@@ -482,11 +499,13 @@ declare function biog:event ($participants as node()*) as node()* {
 : biog:event reads EVENTS_DATA, EVENT_CODES, EVENTS_ADDR to generate an event element. 
 : The structure of biog:event is mirrored by biog:entry. 
 : 
-: Currently there are no py or en descriptions in the source data,
+: Currently, there are no 'py' or 'en' descriptions in the source data,
 : hence we define a single xml:lang attribute on the parent element. 
 : 
-: @param $participants is a c_personid
-: @return event:)
+: @param $participants is a ``c_personid``
+: @see #entry
+:
+: @return ``<event>...</event>``:)
 
 for $event in $global:EVENTS_DATA//no:c_personid[. = $participants]
 let $code := $global:EVENT_CODES//no:c_event_code[. = $event/../no:c_event_code]
@@ -524,14 +543,21 @@ return
 };
 
 (:EXAMINATIONS and OFFICES:)
-declare function biog:entry ($initiates as node()*) as node()* {
+declare 
+    %test:args('$global:BIOG_MAIN//noc_personid [. = 914]')
+    %test:pending
+    function biog:entry ($initiates as node()*) as node()* {
 (:~
 : biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES
-: into a typed and annotated event. 
+: into a typed and annotated event. Currently, ``c_inst_code``, and ``c_exam_field`` are empty.
 : It's output should match the structure of biog:event.
 :
-: @param $initiates is a c_personid
-: @return event:)
+: @param $initiates is a ``c_personid``
+: @see #event
+:
+: @return ``<event>...</event>``:)
+
+
 
 for $initiate in $global:ENTRY_DATA//no:c_personid[. =$initiates]
 
@@ -630,8 +656,10 @@ declare function biog:new-post ($appointees as node()*) as node()* {
 (:~ 
 : biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, 
 : APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. 
+: The precise role of POSTED_TO_ADDR_DATA is somewhat unclear. 
 :
-: @param $appointees is a c_personid
+: @param $appointees is a ``c_personid``
+:
 : @return ``<socecStatus scheme="#office">...</socecStatus>``:)
 
 for $post in $global:POSTED_TO_OFFICE_DATA//no:c_personid[. = $appointees]/../no:c_posting_id
@@ -715,7 +743,8 @@ declare function biog:posses ($possessions as node()*) as node()* {
 :
 : There is barely any data in here so future version will undoubtedly see changes. 
 :
-: @param $possessions is a c_personid
+: @param $possessions is a ``c_personid``
+:
 : @return ``<state type="possession">...</state>``:)
 
 for $stuff in $global:POSSESSION_DATA//no:c_personid[. = $possessions][. > 0]
@@ -765,8 +794,8 @@ return
 declare function biog:pers-add ($resident as node()*) as node()* {
 (:~
 : biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residence. 
-:
-: @param $resident is a c_personid
+: BIOG_ADDR_CODES//no:c_addr_note would be a good addition to the ODD.
+: @param $resident is a ``c_personid``:
 : @return residence:)
 
 
@@ -853,11 +882,14 @@ declare function biog:inst-add ($participant as node()*) as node()* {
 (:~
 : biog:inst-add reads the BIOG_INST_DATA, and BIOG_INST_CODES generating an event.
 : Time and place data are in ``where``, and ``when-custorm`` respectively. 
-: The main location off institutions is as in listOrg.xml
+: The main location of institutions is as in listOrg.xml
 :
 : Currently there are no dates in this table?
-: @param $participant is a c_personid
-: @return event:)
+:
+: @param $participant is a ``c_personid``
+: @see #org
+:
+: @return ``<event>...</event>``:)
 
 for $address in $global:BIOG_INST_DATA//no:c_personid[. = $participant][. > 0]
 let $code := $global:BIOG_INST_CODES//no:c_bi_role_code[. = $address/../no:c_bi_role_code]
@@ -923,7 +955,7 @@ declare function biog:biog ($persons as node()*, $mode as xs:string?) as item()*
 :
 : biog:biog generates a person element for each unique person in BIOG_MAIN.
 :
-: @param $persons is a c_personid
+: @param $persons is a ``c_personid``
 : @param $mode can take three effective values:
 :    *   'v' = validate; preforms a validation of the output, aborts on validation errors. 
 :    *   ' ' = normal; runs the transformation without validation.

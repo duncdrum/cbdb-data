@@ -1,6 +1,6 @@
 xquery version "3.0";
 (:~
-: genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into a nested tei:taxonomy.
+: genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into nested taxonomy elements.
 : these are referenced from listBibl.xml. 
 :
 : The exact difference between bibliographical category codes, and category types is unclear. 
@@ -32,7 +32,7 @@ declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as n
 : gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories. 
 :
 : @param $types row in TEXT_BIBLCAT_TYPES
-: @param $type-id is a c_text_cat_type_id
+: @param $type-id is a ``c_text_cat_type_id``
 : @param $zh category name in Chinese
 : @param $en category name in English
 : @param $mode can take three effective values:
