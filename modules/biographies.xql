@@ -796,7 +796,7 @@ declare function biog:pers-add ($resident as node()*) as node()* {
 : biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residence. 
 : BIOG_ADDR_CODES//no:c_addr_note would be a good addition to the ODD.
 : @param $resident is a ``c_personid``:
-: @return residence:)
+: @return ``<residence>...</residence>``:)
 
 
 for $address in $global:BIOG_ADDR_DATA//no:c_personid[. = $resident][. > 0]

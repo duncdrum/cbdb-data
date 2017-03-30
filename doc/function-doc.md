@@ -92,10 +92,10 @@ This function reads the entities in TEXT_CODES ``sic`` and generates correspondi
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
-``http://exist-db.org/apps/cbdb-data/bibliography``|[bib:bibl-dates](#bibl-dates)
 ``http://exist-db.org/apps/cbdb-data/global``|[global:create-mod-by](#create-mod-by)
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
 ``http://exist-db.org/apps/cbdb-data/bibliography``|[bib:roles](#roles)
+``http://exist-db.org/apps/cbdb-data/bibliography``|[bib:bibl-dates](#bibl-dates)
 
 #### roles
 ```xQuery
@@ -191,21 +191,21 @@ biog:biog reads the main data table of cbdb: BIOG_MAIN. By calling all previous 
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:name](#name)
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:alias](#alias)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:pers-add](#pers-add)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+``http://exist-db.org/apps/cbdb-data/global``|[global:create-mod-by](#create-mod-by)
 ``http://exist-db.org/apps/cbdb-data/biographies``|[biog:posses](#posses)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:entry](#entry)
 ``http://exist-db.org/apps/cbdb-data/biographies``|[biog:event](#event)
 ``http://exist-db.org/apps/cbdb-data/biographies``|[biog:inst-add](#inst-add)
-``http://exist-db.org/apps/cbdb-data/global``|[global:create-mod-by](#create-mod-by)
-``http://exist-db.org/apps/cbdb-data/biographies``|[biog:name](#name)
-``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
-``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
-``http://exist-db.org/apps/cbdb-data/biographies``|[biog:entry](#entry)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:asso](#asso)
 ``http://exist-db.org/apps/cbdb-data/biographies``|[biog:new-post](#new-post)
-``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
-``http://exist-db.org/apps/cbdb-data/biographies``|[biog:alias](#alias)
 ``http://exist-db.org/apps/cbdb-data/biographies``|[biog:kin](#kin)
 ``http://exist-db.org/apps/cbdb-data/biographies``|[biog:status](#status)
-``http://exist-db.org/apps/cbdb-data/biographies``|[biog:asso](#asso)
-``http://exist-db.org/apps/cbdb-data/biographies``|[biog:pers-add](#pers-add)
 
 #### entry
 ```xQuery
@@ -328,13 +328,13 @@ biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residenc
 *   $resident - is a ``c_personid``:
 
 ##### Returns
-*   residence
+*   ``<residence>...</residence>``
 
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
 ``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
 
 #### posses
 ```xQuery
@@ -397,9 +397,9 @@ Because of the large number (>370k) of individuals the write operation of biogra
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
-``http://www.functx.com``|[functx:substring-after-last](#substring-after-last)
 ``http://exist-db.org/apps/cbdb-data/biographies``|[biog:biog](#biog)
+``http://www.functx.com``|[functx:substring-after-last](#substring-after-last)
+``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
 
 
 ## calendar Module
@@ -584,31 +584,12 @@ gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories.
     *   'd' = debug; this is the slowest of all modes.
 
 ##### Returns
-*   nested <category xml:id="biblType">...</category>``
+*   nested ``<category xml:id="biblType">...</category>``
 
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
 ``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
-``http://exist-db.org/apps/cbdb-data/genre``|[gen:nest-types](#nest-types)
-
-#### write
-```xQuery
-declare function gen:write($item as item()*) as item()
-```
-
-##### Function Detail
-inserts the genre categories codes, into the previously generated tree of category types.
-
-##### Parameters
-*   $item -
-
-##### Returns
-*  
-
-##### External Functions that are used by this Function
-*Module URI*|*Function Name*
-:----|:----
 ``http://exist-db.org/apps/cbdb-data/genre``|[gen:nest-types](#nest-types)
 
 
@@ -741,7 +722,7 @@ This function takes the standardized entries for creation and modification of cb
 *   $modified - is ``c_modified_by``
 
 ##### Returns
-*   <note type="created | modified">...</note>
+*   ``<note type="created | modified">...</note>``
 
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
@@ -802,9 +783,9 @@ This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
-``http://exist-db.org/apps/cbdb-data/calendar``|[cal:custo-date-range](#custo-date-range)
 ``http://exist-db.org/apps/cbdb-data/calendar``|[cal:custo-date-point](#custo-date-point)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:custo-date-range](#custo-date-range)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
 ``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
 
 
@@ -914,15 +895,15 @@ pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONG
     *   'd' = debug; this is the slowest of all modes.
 
 ##### Returns
-*   nested ``<place xml:id="PL...">...</place>
+*   nested ``<place xml:id="PL...">...</place>``
 
 ##### External Functions that are used by this Function
 *Module URI*|*Function Name*
 :----|:----
-``http://exist-db.org/apps/cbdb-data/place``|[pla:nest-places](#nest-places)
 ``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
-``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
 ``http://exist-db.org/apps/cbdb-data/place``|[pla:fix-admin-types](#fix-admin-types)
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+``http://exist-db.org/apps/cbdb-data/place``|[pla:nest-places](#nest-places)
 
 #### patch-missing-addr
 ```xQuery

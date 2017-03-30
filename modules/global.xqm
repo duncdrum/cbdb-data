@@ -140,7 +140,7 @@ declare function global:create-mod-by ($created as node()*, $modified as node()*
 : @param $created is ``c_created_by``
 : @param $modified is ``c_modified_by``
 : 
-: @return <note type="created | modified">...</note>:)
+: @return ``<note type="created | modified">...</note>``:)
 
 for $creator in $created
 return

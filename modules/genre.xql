@@ -40,7 +40,7 @@ declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as n
 :    *   ' ' = normal; runs the transformation without validation.
 :    *   'd' = debug; this is the slowest of all modes.
 :
-: @return nested <category xml:id="biblType">...</category>``:)
+: @return nested ``<category xml:id="biblType">...</category>``:)
 
 let $output := 
 element category { attribute xml:id {concat('biblType',  $type-id/text())},        
@@ -60,7 +60,7 @@ return
     default return $output       
 };
 
-declare function gen:write($item as item()*) as item() {
+declare %private function gen:write($item as item()*) as item() {
 (:~
 : call recursive function from top level elements. 
 : @param $typeTree the nested tree of types stored in the db.:)

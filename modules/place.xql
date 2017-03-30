@@ -108,7 +108,7 @@ declare
 :    *   ' ' = normal; runs the transformation without validation.
 :    *   'd' = debug; this is the slowest of all modes.
 :
-: @return nested ``<place xml:id="PL...">...</place>:)
+: @return nested ``<place xml:id="PL...">...</place>``:)
 
 (:
 <location from="1368" to="1643"/>
