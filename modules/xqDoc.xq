@@ -10,7 +10,7 @@ xquery version "3.1";
 
 (:
 : TODO:
-: Find a good way of making clickable links that work on GitHub and standanlone:)
+: Find a good way of making clickable links that work on GitHub and standalone:)
 
 import module namespace app="http://exist-db.org/apps/cbdb-data/templates" at "app.xql";
 import module namespace docs="http://exist-db.org/xquery/docs" at "/db/apps/fundocs/modules/scan.xql";
@@ -27,6 +27,12 @@ declare variable $modules := (xs:anyURI($global:modules || "app.xql"),
     xs:anyURI($global:modules || "institutions.xql"),
     xs:anyURI($global:modules || "officeA.xql"),
     xs:anyURI($global:modules || "place.xql"));
+    
+declare variable $docs := $modules ! inspect:inspect-module(.);
+
+declare variable $preface := normalize-space('In addition to the information in this document,
+there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing)
+listing each column used in this conversion.');
 
 declare function local:report-transform ($nodes as node()*) as item()* {
 (:~ 
@@ -40,7 +46,7 @@ declare function local:report-transform ($nodes as node()*) as item()* {
 for $n in $nodes
 return
     switch(local-name($n))
-       (: case "module" return concat('## Module Uri', '&#xa;','[', data($doc/@uri), '](', data($doc/@location), ')', '&#xa;'):)
+        case "module" return concat('*   *Module Uri:* ', '[', data($n/@uri), '](', data($n/@location), ')')
         case "variable" return '*   *$' || data($n/@name) || '* - *missing description*'
         case "xxx" return '*   ' || $n || '&#xa;'
         case "function" return '```xQuery' || '&#xa;' || 'declare function ' || data($n/@name) || 
@@ -75,20 +81,26 @@ return
 : Read the xqDoc annotation of a module and stores a markdown version in the doc folder.
 :
 : @param $modules the xQuery modules containing the annotation. 
-: @param $filename the name of the documentation file.
 :
 : @return func-doc.md:)
 
 (:H1 Heading:)
-    ('# Function Documentation' || '&#xa;',
-
-(:TOC goes here:)
-    let $docs := $modules ! inspect:inspect-module(.)
-    for $doc in $docs
-    return
-        ('## Module URI&#xa;' || '[' || data($doc/@uri) || '](' || data($doc/@location) || ')',
+    ('# Function Documentation' || '&#xa;' || 
+    $preface || '&#xa;' ||
+    '&#xa;' ||'## Contents',
     
-        (: !! These are not captured by inspect needs PR !! :)
+    for $toc in $docs
+    let $toc-short := substring-before(substring-after(data($toc//@location), $global:modules), '.')
+    return 
+        ('*   [' || $toc-short || '](#module:_' || $toc-short || ')'), '&#xa;',
+
+    
+    for $doc in $docs
+    let $module-short := substring-before(substring-after(data($doc//@location), $global:modules), '.')
+    return
+        ('## Module: ' || $module-short,
+        local:report-transform($doc[.]),
+        
         if ($doc/description)
         then ('&#xa;' || '## Module Description',
                 local:report-transform($doc/description),
