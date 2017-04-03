@@ -14,7 +14,7 @@ xquery version "3.0";
 : @author Duncan Paterson
 : @version 0.7
 : 
-: @see http://authority.ddbc.edu.tw
+: @see http://authority.dila.edu.tw/time/
 :
 : @return  cal_ZH.xml:)
 
@@ -30,22 +30,17 @@ declare namespace no="http://none";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-
+(:~
+:  the path to tei taxonomy file.:)
 declare variable $cal:ZH := doc(concat($global:target, $global:calendar));
 declare variable $cal:path := $cal:ZH/taxonomy/taxonomy/category;
 
 
 declare
-    %test:args('0')
-    %test:assertEquals('-0001')
-
-    %test:args('123')
-    %test:assertEquals('0123') 
-    
-    %test:args('-12')
-    %test:assertEquals('-0012')
-    
-    function cal:isodate ($string as xs:string?)  as xs:string* {
+    %test:args('0') %test:assertEquals('-0001')
+    %test:args('123') %test:assertEquals('0123')    
+    %test:args('-12') %test:assertEquals('-0012')    
+function cal:isodate ($string as xs:string?)  as xs:string* {
 
 (:~ 
 : cal:isodate turns inconsistent Gregorian year strings into proper xs:gYear type strings. 
@@ -63,10 +58,8 @@ declare
 };
 
 declare 
-    %test:args('11110101')
-    %test:assertEquals('1111-01-01')
-    
-    function cal:sqldate ($timestamp as xs:string?)  as xs:string* {
+    %test:args('11110101') %test:assertEquals('1111-01-01')
+function cal:sqldate ($timestamp as xs:string?)  as xs:string* {
 (:~ 
 : cal:sqldate converts the timestamp like values from CBDBs RLDBMs and converts them into iso compatible date strings,
 : i. e.: YYYY-MM-DD
@@ -178,21 +171,12 @@ return
 };
 
 declare 
-    %test:args('2036', 'zh')
-    %test:assertEquals('丙辰')
-    
-    %test:args('0004', 'py')
-    %test:assertEquals('jiǎ zǐ')
-    
-    %test:args('0000', 'py')
-    %test:assertEquals("0 AD/CE  … it's complicated")
-    
-    %test:args('-0001', 'zh')
-    %test:assertEquals('庚申')
-    
-    %test:args('-0247', 'zh')
-    %test:assertEquals('乙卯')
-    function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
+    %test:args('2036', 'zh') %test:assertEquals('丙辰')   
+    %test:args('0004', 'py') %test:assertEquals('jiǎ zǐ')    
+    %test:args('0000', 'py') %test:assertEquals("0 AD/CE  … it's complicated")    
+    %test:args('-0001', 'zh') %test:assertEquals('庚申')    
+    %test:args('-0247', 'zh') %test:assertEquals('乙卯')
+function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
 (:~
 : Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. 
 : It assumes gYears for calculating BCE dates.
