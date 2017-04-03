@@ -521,7 +521,9 @@ return
                 case element (no:c_addr_id) return attribute where {concat('#PL', $att/text())}
                 case element (no:c_source) return attribute source {concat('#BIB', $att/text())}
                 case element (no:c_sequence) return attribute sortKey {$att/text()}
-            default return (),    
+            default return (),
+        
+        attribute type{'general'},
         
         if (empty($event/../no:c_event) and empty($event/../no:c_role) and empty($code))
         then (element desc {'unkown'})
@@ -1200,12 +1202,18 @@ let $output :=
                                 })
                         }),
     (: SOCECSTATUS :)
-                if (empty($status)) 
+                if (empty($status) and empty($possession)) 
                 then ()
                 else(<socecStatus>
                         {if ($status) 
                         then (biog:status($person))
-                        else ()}
+                        else (),
+                        
+             (: POSSESSION :)
+                         if ($posssession) 
+                         then (biog:posses($person))
+                         else ()                        
+                        }
                      </socecStatus>),
                 
                 if (empty($post))
@@ -1229,10 +1237,6 @@ let $output :=
                         else (biog:inst-add($person))
                         }
                     </listEvent>),
-    (: POSSESSION :)
-                if (empty($posssession)) 
-                then ()
-                else (biog:posses($person)), 
     (: ADDRESS :)
                 if (empty($bio-add))
                 then ()

@@ -205,6 +205,14 @@
                             <desc xml:lang="zh-Hant">biog:status</desc>
                             <desc xml:lang="en">biog:status</desc>
                         </state>
+                        <state type="possession" xml:id="POS" unit="biog:posses" quantity="1" n="biog:posses" when="0001" source="#BIB" subtype="biog:posses">
+                            <desc>
+                                <desc xml:lang="zh-Hant">biog:posses</desc>
+                                <desc xml:lang="en">biog:posses</desc>
+                                <placeName ref="#PL"/>
+                            </desc>
+                            <note>biog:posses</note>
+                        </state>
                     </socecStatus>
                     <socecStatus scheme="#office" code="#OFF">
                         <state type="posting" ref="#PL" n="biog:new-post" key="biog:new-post" notBefore="0001" notAfter="0001" source="#BIB">
@@ -224,10 +232,10 @@
                             <desc xml:lang="zh-Hant">biog:new-post</desc>
                             <desc xml:lang="en">biog:new-post</desc>
                             <note>biog:new-post</note>
-                        </state>
+                        </state>                        
                     </socecStatus>
                     <listEvent>
-                        <event xml:lang="zh-Hant" when="0001" where="#PL" source="#BIB" sortKey="biog:event">
+                        <event xml:lang="zh-Hant" when="0001" where="#PL" source="#BIB" sortKey="biog:event" type="general">
                             <head>biog:event</head>
                             <label>biog:event</label>
                             <desc>biog:event</desc>
@@ -252,15 +260,12 @@
                                 </trait>
                             </note>
                         </event>
-                    </listEvent>
-                    <state type="possession" xml:id="POS" unit="biog:posses" quantity="1" n="biog:posses" when="0001" source="#BIB" subtype="biog:posses">
-                        <desc>
-                            <desc xml:lang="zh-Hant">biog:posses</desc>
-                            <desc xml:lang="en">biog:posses</desc>
-                            <placeName ref="#PL"/>
-                        </desc>
-                        <note>biog:posses</note>
-                    </state>
+                        <event where="#ORG" key="biog:inst-add" from="0001" to="0001" from-custom="D-R-Y" to-custom="D-R-Y" source="#BIB" datingMethod="#chinTrad">
+                            <desc xml:lang="zh-Hant">biog:inst-add</desc>
+                            <desc xml:lang="en">biog:inst-add</desc>
+                            <note>biog:inst-add</note>
+                        </event>
+                    </listEvent>                    
                     <residence ref="#PL" key="biog:pers-add" n="biog:pers-add" from="0001-01-01" to="0001-01-01" source="#BIB">
                         <state type="natal">
                             <desc xml:lang="zh-Hant">biog:pers-add</desc>
@@ -268,12 +273,7 @@
                         </state>
                         <date calendar="#chinTrad" period="#R">Y-D</date>
                         <note>biog:pers-add</note>
-                    </residence>
-                    <event where="#ORG" key="biog:inst-add" from="0001" to="0001" from-custom="D-R-Y" to-custom="D-R-Y" source="#BIB" datingMethod="#chinTrad">
-                        <desc xml:lang="zh-Hant">biog:inst-add</desc>
-                        <desc xml:lang="en">biog:inst-add</desc>
-                        <note>biog:inst-add</note>
-                    </event>
+                    </residence>                    
                     <linkGrp>
                         <ptr target="biog:biog"/>
                     </linkGrp>
