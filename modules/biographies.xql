@@ -543,10 +543,10 @@ return
 };
 
 (:EXAMINATIONS and OFFICES:)
-declare 
-    %test:args('$global:BIOG_MAIN//noc_personid [. = 914]')
-    %test:pending
-    function biog:entry ($initiates as node()*) as node()* {
+declare   
+    %test:args("$initiates", '$global:BIOG_MAIN//no:c_personid[. = 914]')
+    %test:assertXPath('//event[type =16]/../event[type = 13]')
+    function biog:entry ($initiates as node()?) as node()* {
 (:~
 : biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES
 : into a typed and annotated event. Currently, ``c_inst_code``, and ``c_exam_field`` are empty.
@@ -1218,12 +1218,16 @@ let $output :=
                 else (<listEvent>
                         {if ($event)
                         then (biog:event($person))
-                        else ()
-                        }
-                        {if ($entry)
+                        else (),
+                        
+                        if ($entry)
                         then (biog:entry($person))
-                        else ()
-                        }                      
+                        else (),
+                        
+                        if (empty($bio-inst))
+                        then ()
+                        else (biog:inst-add($person))
+                        }
                     </listEvent>),
     (: POSSESSION :)
                 if (empty($posssession)) 
@@ -1232,11 +1236,8 @@ let $output :=
     (: ADDRESS :)
                 if (empty($bio-add))
                 then ()
-                else (biog:pers-add($person)), 
-                
-                if (empty($bio-inst))
-                then ()
-                else (biog:inst-add($person)),
+                else (biog:pers-add($person)),                 
+               
     (: LINKS :)                
                 if (empty($person/../no:TTSMQ_db_ID) and empty($person/../no:MQWWLink) and empty($person/../no:KyotoLink))
                 then ()
