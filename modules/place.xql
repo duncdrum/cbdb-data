@@ -30,8 +30,8 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
 declare 
-    %test:args("aaa")
-    %test:assertEquals("unkown")
+    %test:args("Aaa")
+    %test:assertEquals("aaa")
 function pla:fix-admin-types ($adminType as xs:string?)  as xs:string* {
 (:~
 : There are 225 distinct types of administrative units in CBDB, 

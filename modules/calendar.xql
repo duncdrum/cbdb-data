@@ -1,7 +1,7 @@
 xquery version "3.0";
 
 (:~ 
-: The calendar module reads the calendar data from GANZHI, DYNASTIES, and NIANHAO to 
+: The calendar module reads the calendar data from ``GANZHI``, ``DYNASTIES``, and ``NIANHAO`` to 
 : create a taxonomy element for inclusion in the teiHeader.
 : The taxonomy consists of two elements one for the sexagenary cycle, 
 : and one nested taxonomy for reign-titles and dynasties.
@@ -122,7 +122,7 @@ declare function cal:custo-date-range (
     $type as xs:string?) as node()*{
 
 (:~ 
-: This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point.
+: This function takes Chinese calendar date ranges. It's the companion to [cal:custo-date-point](#custo-date-point).
 :
 : It determines the matching end-points automatically when provided a starting point for a date range. 
 : 
@@ -178,7 +178,7 @@ declare
     %test:args('-0247', 'zh') %test:assertEquals('乙卯')
 function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
 (:~
-: Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. 
+: Just for fun: ``cal:ganzhi`` calculates the ganzhi cycle for a given year. 
 : It assumes gYears for calculating BCE dates.
 : 
 : @param $year gYear compatible string. 
@@ -251,9 +251,9 @@ function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
 
 declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as item()* {
 (:~
-: cal:sexagenary converts GANZHI data into categories. 
+: cal:sexagenary converts ``GANZHI`` data into categories. 
 : 
-: @param $ganzhi c_ganzhi_code
+: @param $ganzhi ``c_ganzhi_code``
 : @param $mode can take three effective values:
 :    *   'v' = validate; preforms a validation of the output before passing it on. 
 :    *   ' ' = normal; runs the transformation without validation.
@@ -278,11 +278,13 @@ declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as ite
 </taxonomy>
 };
 
-declare function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as item()* {
+declare 
+    %test:pending("validation as test")
+function cal:dynasties ($dynasties as node()*, $mode as xs:string?) as item()* {
 (:~
 : cal:dynasties converts DYNASTIES, and NIANHAO data into categories. 
 : 
-: @param $dynasties c_dy
+: @param $dynasties ``c_dy``
 : @param $mode can take three effective values:
 :    *   'v' = validate; preforms a validation of the output before passing it on. 
 :    *   ' ' = normal; runs the transformation without validation.
