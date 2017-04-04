@@ -29,7 +29,10 @@ declare namespace no="http://none";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
-declare function pla:fix-admin-types ($adminType as xs:string?)  as xs:string* {
+declare 
+    %test:args("aaa")
+    %test:assertEquals("unkown")
+function pla:fix-admin-types ($adminType as xs:string?)  as xs:string* {
 (:~
 : There are 225 distinct types of administrative units in CBDB, 
 : however these contain many duplicates due to inconsistent spelling. 
@@ -87,8 +90,7 @@ for $low in distinct-values($lower)
 
 
 declare 
-    %test:arg('$global:ADDR_CODES//no:c_addr_id[. = 4342]')
-    %test:pending
+    %test:pending('$global:ADDR_CODES//no:c_addr_id[. = 4342]')
     function pla:nest-places ($data as node()*, $id as node(), $zh as node()?, $py as node()?, $mode as xs:string?) as item()*{
 
 (:~  

@@ -25,7 +25,7 @@ declare namespace no="http://none";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
-declare function local:merge-officeTree ($tree as node()*, $off as node()*) as node()* {
+declare %private function local:merge-officeTree ($tree as node()*, $off as node()*) as node()* {
 (: !!! WARNING local:merge-officeTree PERMANENTLY CHANGES DATA !!! :)
 
 for $x in $tree, 

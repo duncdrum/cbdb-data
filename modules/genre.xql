@@ -17,6 +17,7 @@ module namespace gen="http://exist-db.org/apps/cbdb-data/genre";
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 
@@ -26,7 +27,9 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 (: !!! UPDATING FUNCTION, OVERWRITES DATA !!!:)
 
-declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?)  as item()* {
+declare 
+    %test:pending("fragment")
+function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?)  as item()* {
 
 (:~ 
 : gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories. 

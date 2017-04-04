@@ -25,7 +25,10 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
 (:NAMES:)
-declare function biog:name ($names as node()*, $lang as xs:string?) as node()* {
+declare 
+    %test:pending("fragment")    
+    %test:assertExists("$result/persName/forename")    
+function biog:name ($names as node()*, $lang as xs:string?) as node()* {
 (:~
 : biog:name reads extended name parts from BIOG_MAIN.
 : To avoid duplication biog:name checks if sure-/forename components can be fully identified,
@@ -113,7 +116,10 @@ return
         default return ()
 }; 
 
-declare function biog:alias ($person as node()*) as node()* {
+declare 
+    %test:pending("fragment")
+    %test:assertEquals("xxx")
+function biog:alias ($person as node()*) as node()* {
 (:~ 
 : biog:alias outputs aliases, such as pen-names, reign titles, from ALTNAME_DATA, and ALTNAME_CODES. 
 :
@@ -159,7 +165,10 @@ return
 };
 
 (:RELATIONS:)
-declare function biog:kin ($self as node()*) as node()* {
+declare 
+    %test:pending("fragment")
+    %test:assertXPath("$result/relation/@name")
+function biog:kin ($self as node()*) as node()* {
 (:~ 
 : biog:kin  constructs an egocentric network of kinship relations from: KING_DATA, KING_CODES and Kin_Mourning.
 : The output's structure should match biog:asso's.
@@ -253,7 +262,10 @@ return
         }
 };
 
-declare function biog:asso ($ego as node()*) as node()* {
+declare 
+    %test:pending("compare with biog:kin")
+    %test:assertEquals("?")
+function biog:asso ($ego as node()*) as node()* {
 (:~
 : biog:asso constructs a network of association relations from: ASSOC_DATA, ASSOC_CODES, 
 : ASSOC_TYPES, and ASSOC_CODE_TYPE_REL. The distance measured by ``c_assoc_range`` is dropped.  
@@ -438,7 +450,10 @@ declare function biog:asso ($ego as node()*) as node()* {
 };
 
 (:GENERAL STATUS / STATE:)
-declare function biog:status ($achievers as node()*) as node()* {
+declare 
+    %test:pending("not essential right now")
+    %test:assertEmpty("$result//label")
+function biog:status ($achievers as node()*) as node()* {
 
 (:~
 : biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state.
@@ -494,7 +509,10 @@ return
 };
 
 (:GENERAL EVENTS:)
-declare function biog:event ($participants as node()*) as node()* {
+declare 
+    %test:pending("easy")
+    %test:assertXPath("$result//@type[. = 'general']")
+function biog:event ($participants as node()*) as node()* {
 (:~
 : biog:event reads EVENTS_DATA, EVENT_CODES, EVENTS_ADDR to generate an event element. 
 : The structure of biog:event is mirrored by biog:entry. 
@@ -546,8 +564,8 @@ return
 
 (:EXAMINATIONS and OFFICES:)
 declare   
-    %test:args("$initiates", '$global:BIOG_MAIN//no:c_personid[. = 914]')
-    %test:assertXPath('//event[type =16]/../event[type = 13]')
+    %test:pending("needs fragment $global:BIOG_MAIN//no:c_personid[. = 914]")
+    %test:assertXPath('$result//event[type =16]/../event[type = 13]')
     function biog:entry ($initiates as node()?) as node()* {
 (:~
 : biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES
@@ -654,7 +672,9 @@ return
     }                             
 };
 
-declare function biog:new-post ($appointees as node()*) as node()* {
+declare 
+    %test:pending("fragment")
+function biog:new-post ($appointees as node()*) as node()* {
 (:~ 
 : biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, 
 : APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. 
@@ -738,7 +758,9 @@ return
         }
 };
 
-declare function biog:posses ($possessions as node()*) as node()* {
+declare 
+    %test:pending("fragment")
+function biog:posses ($possessions as node()*) as node()* {
 (:~ 
 : biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, 
 : and MEASURE_CODES. It produces a state element.
@@ -793,7 +815,9 @@ return
 };
 
 (:PLACES:)
-declare function biog:pers-add ($resident as node()*) as node()* {
+declare 
+    %test:pending("fragment")
+function biog:pers-add ($resident as node()*) as node()* {
 (:~
 : biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residence. 
 : BIOG_ADDR_CODES//no:c_addr_note would be a good addition to the ODD.
@@ -880,7 +904,9 @@ return
     }
 };
 
-declare function biog:inst-add ($participant as node()*) as node()* {
+declare 
+    %test:pending("fragment")
+function biog:inst-add ($participant as node()*) as node()* {
 (:~
 : biog:inst-add reads the BIOG_INST_DATA, and BIOG_INST_CODES generating an event.
 : Time and place data are in ``where``, and ``when-custorm`` respectively. 
@@ -948,7 +974,9 @@ return
     }
 };
 
-declare function biog:biog ($persons as node()*, $mode as xs:string?) as item()* {
+declare 
+    %test:pending("validation as test")
+function biog:biog ($persons as node()*, $mode as xs:string?) as item()* {
 (:~
 : biog:biog reads the main data table of cbdb: BIOG_MAIN. 
 : By calling all previous functions in this module, it performs a large join 

@@ -15,12 +15,15 @@ module namespace off="http://exist-db.org/apps/cbdb-data/office";
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
-declare function off:office ($offices as node()*, $mode as xs:string?) as item()* {
+declare 
+    %test:pending("validation as test")
+function off:office ($offices as node()*, $mode as xs:string?) as item()* {
 (:~
 : off:office transforms OFFICE_CODES, OFFICE_CODE_TYPE_REL, and OFFICE_TYPE_TREE data into categories elements.
 : 

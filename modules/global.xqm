@@ -130,7 +130,9 @@ declare variable $global:TablesFieldsChanges:= doc(concat($global:src, 'TablesFi
 declare variable $global:YEAR_RANGE_CODES:= doc(concat($global:src, 'YEAR_RANGE_CODES.xml'));
 
 
-declare function global:create-mod-by ($created as node()*, $modified as node()*) as node()*{
+declare 
+    %test:pending("fragment")
+function global:create-mod-by ($created as node()*, $modified as node()*) as node()*{
 (:~ 
 : This function takes the standardized entries for creation and modification of cbdb entries 
 : and translates them into note elements.

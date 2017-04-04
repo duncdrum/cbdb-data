@@ -15,13 +15,16 @@ import module namespace xmldb = "http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
-declare function org:org ($institutions as node()*, $mode as xs:string?) as item()* {
+declare 
+    %test:pending("validation as test")
+function org:org ($institutions as node()*, $mode as xs:string?) as item()* {
 (:~ 
 : This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_NAME_CODES, 
 : SOCIAL_INSTITUTION_TYPES,  SOCIAL_INSTITUTION_ALTNAME_DATA, SOCIAL_INSTITUTION_ALTNAME_CODES, 

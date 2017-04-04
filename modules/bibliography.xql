@@ -25,7 +25,9 @@ declare namespace no="http://none";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 
-declare function bib:bibl-dates($dates as node()*, $type as xs:string?) as node()* {
+declare 
+    %test:pending("fragment")
+function bib:bibl-dates($dates as node()*, $type as xs:string?) as node()* {
 (:~ 
 : bib:bibl-dates reads the two principle date references in TEXT_CODE: original and published.
 : This function resolves the relations of these dates expecting a valid no:c_textid.
@@ -138,7 +140,9 @@ return
 
 };
 
-declare function bib:roles ($roles as node()*)  as node()* {
+declare 
+    %test:pending("fragment")
+function bib:roles ($roles as node()*)  as node()* {
 (:~ 
 : bib:roles reads c_role_id from TEXT_DATA, and TEXT_ROLE_CODES to transform into matching TEI elements.
 : It simplifies ``c_role_id[. = 11] 'work included in'`` to ``contributor``.
@@ -147,7 +151,7 @@ declare function bib:roles ($roles as node()*)  as node()* {
 : 
 : @param $roles is a c_role_id
 :
-: @return author, editor, or publisher with pointers to listPerson.:)
+: @return author, editor, or publisher with references to listPerson.:)
 
 (:distinct-values(($TEXT_CODES//no:c_pub_range_code, $TEXT_CODES//no:c_range_code)) 
 : shows range 300, and 301 not to be in use.:)
@@ -166,7 +170,9 @@ return
     default return <editor role="{$code/../no:c_role_desc}" ref="{concat('#BIO', $bio-id)}"/>
 };
 
-declare function bib:bibliography ($texts as node()*, $mode as xs:string?) as item()*{
+declare 
+    %test:pending("validation as test")
+function bib:bibliography ($texts as node()*, $mode as xs:string?) as item()*{
 (:~
 : This function reads the entities in TEXT_CODES ``sic`` and generates corresponding bibl elements, joining
 : data from TEXT_DATA, TEXT_BIBLCAT_CODES, TEXT_TYPE, EXTANT_CODES, and COUNTRY_CODES. 
