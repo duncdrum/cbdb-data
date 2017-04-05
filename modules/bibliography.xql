@@ -43,7 +43,7 @@ let $original :=
     let $orig-year := $date/../no:c_text_year
     let $orig-nian := $date/../no:c_text_nh_code/text()
     let $orig-hao := $date/../no:c_text_nh_year/text()
-    let $orig-era := $date/../no:c_period/text()    
+    let $orig-dy := $date/../no:c_period/text()    
     
     let $orig-range := $global:YEAR_RANGE_CODES//no:c_range_code[. = $date/../no:c_text_range_code/text()]
     
@@ -53,7 +53,7 @@ let $original :=
         switch ($orig-range)
             case '-1' 
                 return <date type="original" notAfter="{cal:isodate ($orig-year)}">
-                        {$orig-era}
+                        {$orig-dy}
                             {if ($orig-nian = 0 or empty($orig-nian))
                              then ()
                              else(<ref target="{concat("#R", $orig-nian)}">
@@ -63,7 +63,7 @@ let $original :=
                          </date>                    
             case '1' 
                 return <date type="original" notBefore="{cal:isodate ($orig-year)}">
-                        {$orig-era}
+                        {$orig-dy}
                             {if ($orig-nian = 0 or empty($orig-nian))
                              then ()
                              else(<ref target="{concat("#R", $orig-nian)}">
@@ -73,7 +73,7 @@ let $original :=
                         </date>
              default return 
                         <date type="original" when="{cal:isodate ($orig-year)}">
-                            {$orig-era}
+                            {$orig-dy}
                             {if ($orig-nian = 0 or empty($orig-nian))
                             then ()
                             else(<ref target="{concat("#R", $orig-nian)}">
@@ -89,7 +89,7 @@ let $published :=
     let $pub-nian := $date/../no:c_pub_nh_code/text()
     let $pub-hao := $date/../no:c_pub_nh_year/text()
     
-    let $pub-era := $date/../no:c_pub_dy
+    let $pub-dy := $date/../no:c_pub_dy
     
     let $pub-range := $global:YEAR_RANGE_CODES//no:c_range_code[. = $date/../no:c_pub_range_code/text()]
     where $pub-year[. != 0]
@@ -98,8 +98,8 @@ let $published :=
         switch ($pub-range)
             case '-1' 
                 return <date type="published" notAfter="{cal:isodate ($pub-year)}">
-                        {if ($pub-era[. = 0]) then ()
-                        else(<ref target="{concat("#D", $pub-era)}"/>)
+                        {if ($pub-dy[. = 0]) then ()
+                        else(<ref target="{concat("#D", $pub-dy)}"/>)
                         }
                             {if ($pub-nian = 0 or empty($pub-nian))
                              then ()
@@ -110,8 +110,8 @@ let $published :=
                          </date>                    
             case '1' 
                 return <date type="published" notBefore="{cal:isodate ($pub-year)}">
-                        {if ($pub-era[. = 0]) then ()
-                        else(<ref target="{concat("#D", $pub-era)}"/>)
+                        {if ($pub-dy[. = 0]) then ()
+                        else(<ref target="{concat("#D", $pub-dy)}"/>)
                         }
                             {if ($pub-nian = 0 or empty($pub-nian))
                              then ()
@@ -122,8 +122,8 @@ let $published :=
                         </date>
              default return 
                         <date type="published" when="{cal:isodate ($pub-year)}">
-                            {if ($pub-era[. = 0]) then ()
-                            else(<ref target="{concat("#D", $pub-era)}"/>)
+                            {if ($pub-dy[. = 0]) then ()
+                            else(<ref target="{concat("#D", $pub-dy)}"/>)
                             }
                             {if ($pub-nian = 0 or empty($pub-nian))
                             then ()
