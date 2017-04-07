@@ -1004,7 +1004,7 @@ let $output :=
     let $kin := $global:KIN_DATA//no:c_personid[. = $person]
     let $status := $global:STATUS_DATA//no:c_personid[. = $person]
     let $post := $global:POSTED_TO_OFFICE_DATA//no:c_personid[. = $person]
-    let $posssession := $global:POSSESSION_DATA//no:c_personid[. = $person]
+    let $possession := $global:POSSESSION_DATA//no:c_personid[. = $person]
     
     let $event := $global:EVENTS_DATA//no:c_personid[. = $person]
     let $entry := $global:ENTRY_DATA//no:c_personid[. = $person]
@@ -1238,7 +1238,7 @@ let $output :=
                         else (),
                         
              (: POSSESSION :)
-                         if ($posssession) 
+                         if ($possession) 
                          then (biog:posses($person))
                          else ()                        
                         }

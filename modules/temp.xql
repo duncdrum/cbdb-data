@@ -75,7 +75,7 @@ let $strings :=
     switch($match($name))
         case 1 return concat('D', $global:DYNASTIES//no:c_dy[. = $node]/../no:c_sort)
         case 2 case 3 return concat('Y', $node)
-        case 4 return concat(data($reign/parent::category/@xml:id), '-',
+        case 4 return concat("D", $global:DYNASTIES//no:c_dy[. = substring-after(data($reign/parent::category/@xml:id), 'D')]/../no:c_sort, '-',
             'R', count($reign/preceding-sibling::category) +1)
         case 5 case 6 return concat('GZ', $node/text())
         case 7 return           (:this case needs a break:)
@@ -151,48 +151,58 @@ declare
     %test:pending("get combined strings to work via contains and tokenize")
 function local:new-date($node as node(), $att-name as xs:string)  as item()* {
 
-(:Ok all of this horrible code is necessary because of c_dy double meaning, we now get c_dy and c_dy_nh_year, but not c_dy_nh_code
-maybe I should just focus on always calling the shortes timespan coumn since this should work out. :)
+(:All of this razzmatazz is necessary because of ``c_dy``'s double meaning.
+We now get ``c_dy`` and ``c_dy_nh_code``, but not c_dy_nh_year, which is good
+since we ll be calling longest timespan column and that  works. 
+
+:)
 
 let $look := local:zh-dates($node)
+let $code := $node/text()
+let $reign := $global:NIAN_HAO//no:c_nianhao_id[. = $code]
+let $dynasty := $global:DYNASTIES//no:c_dy[. = $code]
+
 
 for $n in $look//ab
-where ends-with(data($n/@n), local-name($node))
-return 
-    if (starts-with($n/string(), "D"))
-    then (attribute datingMethod {'#chinTrad'}, attribute {xs:QName($att-name)} {$n})
-    else (attribute {xs:QName($att-name)} {$n})
-        
-(:where contains(local-name($n), $look//@n)
+(:This makes sure we can match against attributes with multiple values:)
+let $seq := tokenize($n/@n, "\s")
+where $seq[1][. = local-name($node)]
 return
-    if ($n/@n[. = local-name($node)])
-    then ( 
-        if (starts-with($n/string(), "D"))
-        then (attribute datingMethod {'#chinTrad'}, attribute {xs:QName($att-name)} {$n})
-        else (attribute {xs:QName($att-name)} {$n})
-    )
-    else (
-       
-    ):)
-
-(:let $match := '^' || $n/@n || '$':)
-    
-(:
-for $n in $look//ab
-where $n/@n[. = local-name($node)]
-return
+    (:Every Western dates start with a numeral, all Chinese dates start with 'D' now.:)
     if (starts-with($n/string(), "D"))
-    then (attribute datingMethod {'#chinTrad'}, attribute {xs:QName($att-name)} {$n})
-    else (attribute {xs:QName($att-name)} {$n}):)
+    then (attribute datingMethod {'#chinTrad'}, attribute {xs:QName($att-name)} {$n}, 
+        element date { attribute calendar {'#chinTrad'}, 
+            if (contains($n, 'R'))
+            then (attribute period {'#R' || $code}, $reign/../no:c_dynasty_chn || $reign/../no:c_nianhao_chn || substring-after($n, 'Y'))
+            else (attribute period {'#D' || $code}, $dynasty/../no:c_dynasty_chn/text()) 
+        })
+    else (attribute {xs:QName($att-name)} {$n})        
 };
 
-(:Every western date starst witha numeral, all Chinese dates start with 'D' now.:)
+
 let $test := $global:BIOG_MAIN//no:c_personid[. = 1]
 
-for $n in $test/../no:c_dy
-return  
-    element date {local:new-date($n, 'when')}
-(:local:zh-dates($n):)
-(:$n/../*:)
+(:
+c_dy_nh_code
+c_dy_nh_year
+:)
+
+return
+    <root>
+        <old>{biog:biog($test, "")//floruit}</old>
+        <new>
+            <floruit>{for $n in $test/../*[. != '0']
+                    return
+                        typeswitch($n)
+                            case element (no:c_index_year)  return local:new-date($n, 'when')
+                            case element (no:c_fl_latest_year)  return local:new-date($n, 'notAfter')
+                            case element (no:c_fl_earliest_year)  return local:new-date($n, 'notBefore')
+                            case element (no:c_dy) return local:new-date($n, 'when-custom')
+                        default return ()
+            }</floruit> 
+        </new>
+        
+    </root>
+
 
 

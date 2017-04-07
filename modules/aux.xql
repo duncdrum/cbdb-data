@@ -123,7 +123,7 @@ declare %private function local:upgrade-contents($nodes as node()*) as node()* {
 
 (:~
 : This function performs an inplace update off all person records. 
-: It expects $global:BIOG_MAIN//no:c_personid s. 
+: It expects ``$global:BIOG_MAIN//no:c_personid ``s. 
 : It is handy for patching large number of records. 
 : Using the structural index in the return clause is crucial for performance.
 :)
