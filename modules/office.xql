@@ -14,6 +14,7 @@ module namespace off="http://exist-db.org/apps/cbdb-data/office";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
+import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
 declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -91,8 +92,7 @@ let $output :=
                 
                 if (empty($office/../no:c_dy))
                 then ()
-                else (element date { attribute calendar {'#chinTrad'}, attribute period {concat('#D', $office/../no:c_dy/text())},  
-                            $global:DYNASTIES//no:c_dy[. = $office/../no:c_dy]/../no:c_dynasty_chn/text()})                
+                else (cal:new-date($office/../no:c_dy, 'when-custom')[@calendar])              
             }
         }
 return 
