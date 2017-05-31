@@ -179,13 +179,14 @@ function biog:kin ($self as node()*) as node()* {
 : @param $tie undocumented values:
 :    *   ``(male)`` -> ``♂``
 :    *   ``(female)`` -> ``♀``
-:    *   ``©`` -> ``of concubine``
+:    *   ``©`` -> ``of concubine`` alt ``⚯``?
 :    *   ``(claimed)`` ->
 :    *   ``(eldest surviving son)`` ->
 :    *   ``(only ...)`` ->
 :    *   ``(apical)`` ->
 : @see #asso
 : @see http://projects.iq.harvard.edu/files/cbdb/files/cbdb_users_guide.pdf
+: @see http://www.unicode.org/L2/L2003/03364-n2663-gender-rev.pdf
 :
 : @return ``<relation>...</relation>``:)
     
