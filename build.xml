@@ -11,13 +11,13 @@
     <!-- 
         Development Version  
      -->
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>
+<!--        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>-->
         
    <!--  
         GitHub Release  
     -->
-        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
-        <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-test.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
+        <!--<zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
         <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>-->
     </target>
 </project>
