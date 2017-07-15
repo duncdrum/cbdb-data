@@ -11,14 +11,14 @@
         <!-- 
         Development Version includes source files
         -->
-        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>-->
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>
 
         <!--  
         Official Release for uploading on Github
         -->
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
+        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
         <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
-        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>
+        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>-->
 
         <!--  
         DEBUG Version for faster testing
