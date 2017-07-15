@@ -22,7 +22,7 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 this module contains helper function  mostly for cleaning data, testing and constructing other functions.
 
  @author Duncan Paterson
- @version 0.7
+ @version 0.7.1
 :)
 
 
