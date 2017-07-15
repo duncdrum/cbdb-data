@@ -8,17 +8,23 @@
     <property name="build.dir" value="build"/>
     <target name="xar">
         <mkdir dir="${build.dir}"/>
-    <!-- 
-        Development Version  
+        <!-- 
+        Development Version includes source files
      -->
-<!--        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>-->
-        
-   <!--  
-        GitHub Release  
+        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>-->
+
+        <!--  
+        Official Release for uploading on Github
     -->
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-test.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
-        <!--<zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
+        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
+        <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
         <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>-->
+
+        <!--  
+        DEBUG Version for faster testing
+    -->
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-debug.xar"
+            excludes="${build.dir}/*, src/xml/*.xml, target/listPerson/**"
+            includes="target/listPerson/chunk-01/**"/>
     </target>
 </project>
-
