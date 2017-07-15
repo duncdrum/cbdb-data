@@ -16,15 +16,15 @@
         <!--  
         Official Release for uploading on Github
         -->
-        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
         <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
-        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>-->
+        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>
 
         <!--  
         DEBUG Version for faster testing
         -->
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-debug.xar"
+        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-debug.xar"
             excludes="${build.dir}/*, src/xml/*.xml, **/chunk-0?/**, **/chunk-1?/**, **/chunk-2?/**">            
-        </zip>
+        </zip>-->
     </target>
 </project>

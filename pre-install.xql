@@ -1,6 +1,7 @@
-xquery version "1.0";
+xquery version "3.0";
 
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
+import module namespace file = "http://exist-db.org/xquery/file" at "java:org.exist.xquery.modules.file.FileModule";
 
 (: The following external variables are set by the repo:deploy function :)
 
@@ -10,6 +11,8 @@ declare variable $home external;
 declare variable $dir external;
 (: the target collection into which the app is deployed :)
 declare variable $target external;
+(: the path to the exist-db installation :)
+declare variable $exist_home as xs:string := system:get-exist-home();
 
 declare function local:mkcol-recursive($collection, $components) {
     if (exists($components)) then
@@ -27,6 +30,27 @@ declare function local:mkcol($collection, $path) {
     local:mkcol-recursive($collection, tokenize($path, "/"))
 };
 
-(: store the collection configuration :)
-local:mkcol("/db/system/config", $target),
-xdb:store-files-from-pattern(concat("/system/config", $target), $dir, "*.xconf")
+declare function local:check-cache-size($path as xs:string?) as xs:boolean {
+    if (file:is-readable($path || "/conf.xml"))
+    then
+        (
+        let $doc := fn:parse-xml(file:read($path || "/conf.xml"))
+        return
+            if (number(substring-before($doc//exist/db-connection/@cacheSize/string(), "M"))  > 500)
+            then (fn:true())
+            else (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:cache-low'), 'Your configured cacheSize is too low')))
+    else(fn:true())
+};
+
+declare function local:check-mem-size($memory as xs:integer) as xs:boolean {
+    if ($memory > 2000000000)                     
+    then (fn:true())
+    else (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:memory-low'), 'Your configured -xmx memory is too low'))
+};
+
+if (local:check-mem-size(system:get-memory-max()) and local:check-cache-size($exist_home))
+then (
+    (: store the collection configuration :)
+    local:mkcol("/db/system/config", $target),
+    xdb:store-files-from-pattern(concat("/db/system/config", $target), $dir, "*.xconf"))
+else (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:pre-crash'), 'An unknown error occured during pre-install'))
