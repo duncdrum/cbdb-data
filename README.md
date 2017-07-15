@@ -16,8 +16,9 @@ Because *CBDB* consists of roughly ~350k records, users are strongly encouraged 
 
 
 ## Requirements
-* eXist-db version ``2.2`` or greater with min. ``2gb`` (!) allocated memory.
-* (ant version ``1.10.1`` for compiling from source)
+*   eXist-db version ``2.2`` or greater with min. ``2gb`` (!) allocated memory.
+*   There are over 350k xml files in this app, so a larger then default collection cache is recommended.
+*   (ant version ``1.10.1`` for compiling from source)
 
 
 ## Releases
