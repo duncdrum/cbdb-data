@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-import module namespace xdb="http://exist-db.org/xquery/xmldb";
+import module namespace xdb = "http://exist-db.org/xquery/xmldb";
 import module namespace file = "http://exist-db.org/xquery/file" at "java:org.exist.xquery.modules.file.FileModule";
 
 (: The following external variables are set by the repo:deploy function :)
@@ -24,10 +24,11 @@ declare variable $cache-req := 500;
 declare function local:mkcol-recursive($collection, $components) {
     if (exists($components)) then
         let $newColl := concat($collection, "/", $components[1])
-        return (
+        return
+            (
             xdb:create-collection($collection, $components[1]),
             local:mkcol-recursive($newColl, subsequence($components, 2))
-        )
+            )
     else
         ()
 };
@@ -44,22 +45,29 @@ declare function local:check-cache-size($path as xs:string) as xs:boolean {
         (
         let $doc := fn:parse-xml(file:read($path || "/conf.xml"))
         return
-            if (number(substring-before($doc//exist/db-connection/@cacheSize/string(), "M"))  > $cache-req)
-            then (fn:true())
-            else (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:cache-low'), 'Your configured cacheSize is too low')))
-    else(fn:true())
+            if (number(substring-before($doc//exist/db-connection/@cacheSize/string(), "M")) > $cache-req)
+            then
+                (fn:true())
+            else
+                (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:cache-low'), 'Your configured cacheSize is too low')))
+    else
+        (fn:true())
 };
 
 (: Helper function to check the instance's memory. :)
 declare function local:check-mem-size($memory as xs:integer) as xs:boolean {
-    if ($memory > $mem-req)                     
-    then (fn:true())
-    else (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:memory-low'), 'Your configured -xmx memory is too low'))
+    if ($memory > $mem-req)
+    then
+        (fn:true())
+    else
+        (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:memory-low'), 'Your configured -xmx memory is too low'))
 };
 
 if (local:check-mem-size($mem-max) and local:check-cache-size($exist_home))
-then (
+then
+    (
     (: store the collection configuration :)
     local:mkcol("/db/system/config", $target),
     xdb:store-files-from-pattern(concat("/db/system/config", $target), $dir, "*.xconf"))
-else (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:pre-crash'), 'An unknown error occured during pre-install'))
+else
+    (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:pre-crash'), 'An unknown error occured during pre-install'))
