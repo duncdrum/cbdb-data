@@ -49,7 +49,7 @@ declare function local:check-cache-size($path as xs:string) as xs:boolean {
             then
                 (fn:true())
             else
-                (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:cache-low'), 'Your configured cacheSize is too low')))
+                (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:cache-low'), 'The cacheSize is too low')))
     else
         (fn:true())
 };
@@ -60,8 +60,9 @@ declare function local:check-mem-size($memory as xs:integer) as xs:boolean {
     then
         (fn:true())
     else
-        (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:memory-low'), 'Your configured -xmx memory is too low'))
+        (fn:error(fn:QName('https://github.com/duncdrum/cbdb-data', 'err:memory-low'), 'The  memory is too low'))
 };
+
 
 if (local:check-mem-size($mem-max) and local:check-cache-size($exist_home))
 then
