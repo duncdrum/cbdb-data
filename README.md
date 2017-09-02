@@ -34,11 +34,11 @@ But not the CBDB's source files.
 
 ### Source
 A zip file that contains a cleaned up (fixing illegal unicode characters) export of CBDB as xml.
-The root element of each file is ```<root xmlns="http://none">```, each table-row is wrapped inside a ```<row>``` element.
+The root element of each file is ``<root xmlns="http://none">``, each table-row is wrapped inside a ``<row>`` element.
 
 The files are in a dummy namespace for easier processing.
 Each file is named after the original table, e.g.:
-```BIOG_MAIN``` becomes ```BIOG_MAIN.xml``` etc. .
+``BIOG_MAIN`` becomes ``BIOG_MAIN.xml`` etc. .
 
 ### Data
 A zip file with just the TEI files. See the encoding [guidelines](doc/encoding-desc.md) for details.
@@ -50,12 +50,12 @@ A zip file with just the TEI files. See the encoding [guidelines](doc/encoding-d
 
 ### Building from source
 1.  Download, fork or clone this GitHub repository
-    1.  There are different build targets in ```build.xml``` un-/comment the one that best suits your needs, or simply build all and pick later.
+    1.  There are different build targets in ``build.xml`` un-/comment the one that best suits your needs, or simply build all and pick later.
 2.  In your CLI, go to the folder you just downloaded:``cd cbdb-data``
 3.  now call ant:``ant`` after a few minutes you should see:``BUILD SUCCESSFUL``
 4.  Go to your running eXist-db and open package manager from the dashboard.
     1.  Click on the "add package" symbol in the upper left corner and select the ``.xar`` file you just created which is inside the ``/build`` folder.
-5.  Simultaneous installs of multiple ```.xar``` will fail.  
+5.  Simultaneous installs of multiple ``.xar`` will fail.  
 
 
 ## Documentation
