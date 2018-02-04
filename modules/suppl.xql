@@ -18,6 +18,7 @@ declare namespace test="http://exist-db.org/xquery/xqsuite";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
+
 (:~
 this module contains helper function  mostly for cleaning data, testing and constructing other functions.
  @author Duncan Paterson
@@ -37,6 +38,7 @@ return
 };
 
 declare function local:write-chunk-includes($num as xs:integer?) as item()*{
+
 (:This function inserts xinclude statements into the main TEI file for each chunk's list.xml file.
 As such $ipad, $num, and the return string depend on the main write operation in biographies.xql.
 :)
@@ -66,6 +68,7 @@ let $assymetry :=
     return
         $assymetric
 
+
 let $bys :=
 (: filters all */by pairs :)
     for $by in $ASSOC_CODES//no:c_assoc_desc
@@ -73,12 +76,14 @@ let $bys :=
     return
         $by
 
+
 let $was :=
 (: filter all  was/of pairs:)
     for $was in $ASSOC_CODES//no:c_assoc_desc
     where contains($was/text(), ' was')
     return
         $was
+
 
 let $to :=
 (: filter all from/to pairs :)
@@ -88,6 +93,7 @@ let $to :=
         $to
 
 let $report :=
+
     <report>
         <total>{count(//no:row)}</total>
         <unaccounted>{count(//no:row) - (count($assymetry) + count($symmetry))}</unaccounted>

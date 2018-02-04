@@ -20,6 +20,7 @@ Because *CBDB* consists of roughly ~350k records, users are strongly encouraged 
 *   (ant version `1.10.1` for compiling from source)
 
 
+
 ## Releases
 GitHub Releases consists of three files: [App](#application), [source](#source), and [data](#data).
 
@@ -65,6 +66,7 @@ ant
   ```   
 
 If you see `BUILD SUCCESSFUL` ant has generated a `cbdb-data-0.0.7.xar` file in the `build/` folder. To install it, follow the instructions [above](#installation).
+
 
 
 ## Documentation
