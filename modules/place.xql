@@ -1,36 +1,46 @@
 xquery version "3.0";
+
+(:~
+: place.xql reads the various basic entities for location type information 
+: and creates a listPlace element for inclusion in the body element via xInclude.
+: to avoid confusion 'addresses' type data in *CBDB* is 'place' data in TEI, whereas CBDB's
+: 'place' is TEI's 'geo'.
+: 
+: This data should soon be replaced with data from *China Historical GIS*
+: 
+: @author Duncan Paterson
+: @version 0.7
+:
+: @see http://maps.cga.harvard.edu/tgaz/
+: 
+: @return listPlace.xml:)
+
 module namespace pla="http://exist-db.org/apps/cbdb-data/place";
 
+(:import module namespace functx="http://www.functx.com";:)
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
-(:import module namespace functx="http://www.functx.com";:)
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
+
+declare 
+    %test:args("Aaa")
+    %test:assertEquals("aaa")
+function pla:fix-admin-types ($adminType as xs:string?)  as xs:string* {
 (:~
- place.xql reads the various basic entities for location type information 
-    and creates a listPlace element for inclusion in the body element via xi:xinclude.
-  to avoid confusion 'addresses' type data in CBDB is 'place' data in TEI, whereas CBDB's
-  'place' is TEI's 'geo'.
-
- @author Duncan Paterson
- @version 0.7
- 
- @return listPlace.xml
-:)
-
-declare function pla:fix-admin-types ($adminType as xs:string?)  as xs:string* {
-(:~
- normalize adminType so they can become attribute values.
-
- @param $adminType is a c_admin_type
- @return normalized and deduped string
-
-:)
+: There are 225 distinct types of administrative units in CBDB, 
+: however these contain many duplicates due to inconsistent spelling. 
+: Furthermore, white-spaces prevent the existing types from becoming xml attribute values. 
+: Hence this function normalizes and concats the spelling of admin types without modifying the source.
+:
+: @param $adminType is a ``c_admin_type``
+: @return normalized and deduped string:)
 
 (:make everything lower case:)
 let $lower := 
@@ -79,24 +89,33 @@ for $low in distinct-values($lower)
 };
 
 
-declare function pla:nest-places ($data as node()*, $id as node(), $zh as node()?, $py as node()?, $mode as xs:string?) as item()*{
+declare 
+    %test:pending('$global:ADDR_CODES//no:c_addr_id[. = 4342]')
+    function pla:nest-places ($data as node()*, $id as node(), $zh as node()?, $py as node()?, $mode as xs:string?) as item()*{
 
 (:~  
- pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONGS_DATA parent, to generate place elements.                                            
+: pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONGS_DATA parent, to generate place elements.                                            
+:
+: This leaves duplicate ids between here and ADDRESSES.
+: Where multiple identical c_addr_id's are present, we use the one covering the largest admin level.
+:
+: All cases of overlapping dates for location data can actually be resolved to min/max.
+:
+: @param $data is ADDR_CODES row elements
+: @param $id is a ``c_addr_id``
+: @param $zh placeName in Chinese
+: @param $en placeName in English
+: @param $mode can take three effective values:
+:    *   'v' = validate; preforms a validation of the output before passing it on. 
+:    *   ' ' = normal; runs the transformation without validation.
+:    *   'd' = debug; this is the slowest of all modes.
+:
+: @return nested ``<place xml:id="PL...">...</place>``:)
 
- This leaves duplicate id between here and ADDRESSES.
- Where multiple identical c_addr_id's are present, we use the one covering the largest admin level.
-
- @param $data is ADDR_CODES row elements
- @param $id is a c_addr_id
- @param $zh placeName in Chinese
- @param $en placeName in English
- @param $mode can take three efective values:
- 'v' = validate; preforms a validation of the output before passing it on. 
- ' ' = normal; runs the transformation without validation.
- 'd' = debug; this is the slowest of all modes.
-
- @return nested place[@xml:id ="PLxxx"]
+(:
+<location from="1368" to="1643"/>
+<location from="1522" to="1522"/>
+<location from="1544" to="1544"> --> <location from ="1368' to="1622"/>
 :)
 
     let $belong := $global:ADDR_BELONGS_DATA//no:c_addr_id[. = $id]   
@@ -170,16 +189,16 @@ return
 declare function pla:patch-missing-addr ($data as node()*) as node()*{
     
 (:~ 
- pla:patch-missing-addr makes sure that every c_addr_id from CBDB is present in listPlace.xml .
+: pla:patch-missing-addr makes sure that every c_addr_id from CBDB is present in listPlace.xml .
+:
+: It does so by inserting empty places present in ADDRESSES but not ADDR_CODES, using a @corresp attribute, 
+: or complete place elements where no correspondence can be established.
+:
+: places are inserted at the highest discernable level of hierarchy. 
+: 
+: @param $data row elements from ADDRESSES table.
+: @return ``<place>...</place>``:)
 
- It does so by inserting empty places present in ADDRESSES but not ADDR_CODES, using a @corresp attribute, 
- or complete place elements where no correspondence can be established.
-
- places are inserted at the highest discernable level of hierarchy. 
- 
- @param $data row elemeents from ADDRESSES table.
- @return place
-:)
     for $n in $data
     let $corresp := min(data($global:ADDR_CODES//no:c_name_chn[. = $n/no:c_name_chn]/../no:c_addr_id))
     let $branch := if ($global:ADDR_CODES//no:c_addr_id[. = $n/no:belongs1_ID])
@@ -209,7 +228,7 @@ declare function pla:patch-missing-addr ($data as node()*) as node()*{
                 
 }; 
 
-declare function pla:write ($item as item()*) as item()* {
+declare %private function pla:write ($item as item()*) as item()* {
 let $data := <no:root>{
     for $n in $global:ADDR_CODES//no:row
      

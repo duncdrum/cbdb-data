@@ -1,8 +1,13 @@
 xquery version "3.0";
+(:~
+: A set of helper functions and variables called by other modules.
+: @author Duncan Paterson
+: @version 0.7:)
+
 module namespace global="http://exist-db.org/apps/cbdb-data/global";
 
-import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 (:import module namespace functx="http://www.functx.com";:)
+import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
 declare namespace test="http://exist-db.org/xquery/xqsuite";
@@ -11,17 +16,14 @@ declare namespace no="http://none";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:~
- : A set of helper functions and variables called by other modules.
- :)
 
 declare variable $global:src := '/db/apps/cbdb-data/src/xml/';
 declare variable $global:target := '/db/apps/cbdb-data/target/';
 declare variable $global:report := '/db/apps/cbdb-data/reports/';
-declare variable $global:patch := '/db/apps/cbdb-data/reports/patch';
+declare variable $global:patch := '/db/apps/cbdb-data/reports/patch/';
 declare variable $global:samples := '/db/apps/cbdb-data/samples/';
 declare variable $global:modules := '/db/apps/cbdb-data/modules/';
-
+declare variable $global:doc := '/db/apps/cbdb-data/doc/';
 
 (:THE TEI FILES IN TARGET:)
 declare variable $global:genre := 'biblCat.xml';
@@ -38,8 +40,7 @@ declare variable $global:person := 'listPerson';
 (:THE ORIGINAL TABLES IN SOURCE:)
 
 (:~
- To generate this list see the local:table-variables function inside the aux module. 
-:)
+: To generate this list see the local:table-variables function inside the aux module.:)
 declare variable $global:ADDRESSES:= doc(concat($global:src, 'ADDRESSES.xml')); 
 declare variable $global:ADDR_BELONGS_DATA:= doc(concat($global:src, 'ADDR_BELONGS_DATA.xml')); 
 declare variable $global:ADDR_CODES:= doc(concat($global:src, 'ADDR_CODES.xml')); 
@@ -129,18 +130,19 @@ declare variable $global:TablesFieldsChanges:= doc(concat($global:src, 'TablesFi
 declare variable $global:YEAR_RANGE_CODES:= doc(concat($global:src, 'YEAR_RANGE_CODES.xml'));
 
 
-declare function global:create-mod-by ($created as node()*, $modified as node()*) as node()*{
+declare 
+    %test:pending("fragment")
+function global:create-mod-by ($created as node()*, $modified as node()*) as node()*{
 (:~ 
- This function takes the standardized entries for creation and modification of cbdb entries 
- and translates them into 2 tei:notes.
-
- This data is distinct from the modifications of the TEI output recorded in the header.
- 
- @param $created is c_created_by
- @param $modified is c_modified_by
- 
- @return note[@type="created | modified"]
- :)
+: This function takes the standardized entries for creation and modification of cbdb entries 
+: and translates them into note elements.
+:
+: This data is distinct from the modifications of the TEI output recorded in the header.
+: 
+: @param $created is ``c_created_by``
+: @param $modified is ``c_modified_by``
+: 
+: @return ``<note type="created | modified">...</note>``:)
 
 for $creator in $created
 return
@@ -163,25 +165,23 @@ return
 declare function global:validate-fragment ($frag as node()*, $loc as xs:string?) as item()* {
 
 (:~
- This function validates $frag by inserting it into a minimal TEI template. 
-
- This function cannot guarante that the final document is valid, 
- but it can catch validation errors produced by other function early on.
- This minimizes the number of validations necessary to produce the final output. 
-
- @param $frag the fragment (usually some function's output) to be validated.
- @param $loc accepts the element name of the root element to be used for validation. 
- Currently, in use are:
- - category
- - charDecl
- - person
- - org
- - bibl
- - place
-
- @return if validation succeeds then return the input, otherwise store a copy of the validation report 
-    into the reports directory, including the xml:id of the root element of the processed fragment.   
-:)
+: This function validates $frag by inserting it into a minimal TEI template. 
+:
+: This function cannot guarantee that the final document is valid, 
+: but it can catch validation errors produced by other function early on.
+: This minimizes the number of validations necessary to produce the final output. 
+:
+: @param $frag the fragment (usually some function's output) to be validated.
+: @param $loc accepts the following element names as root to be used for validation: 
+:    *   category
+:    *   charDecl
+:    *   person
+:    *   org
+:    *   bibl
+:    *   place
+:
+: @return if validation succeeds then return the input, otherwise store a copy of the validation report 
+: into the reports directory, including the ``xml:id`` of the root element of the processed fragment.:)
 
 let $id := data($frag/@xml:id)
 let $mini := 

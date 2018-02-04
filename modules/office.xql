@@ -1,36 +1,40 @@
 xquery version "3.0";
+(:~ 
+: To generating the taxonomy for office titles we need two query files office.xql and officeB.xql. 
+: 
+: office creates two files which will be merged by officeB.
+: Each file stores a taxonomy for one of two different ways that offices are categorized by CBDB.
+:    
+: @author Duncan Paterson
+: @version 0.7
+: 
+: @return office.xml, officeA.xml.:)
+
+module namespace off="http://exist-db.org/apps/cbdb-data/office";
 
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
+import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:~ 
- To generating the taxonomy for office titles we need two query files officeA.xql and officeB.xql. 
- 
- officeA creates two files which will be merged by officeB.
- Each file stores a taxonmomy for one of two different ways that offices are categorized by CBDB.
-    
- @author Duncan Paterson
- @version 0.7
- 
- @return office.xml, officeA.xml.
-:)
 
-declare function local:office ($offices as node()*, $mode as xs:string?) as item()* {
+declare 
+    %test:pending("validation as test")
+function off:office ($offices as node()*, $mode as xs:string?) as item()* {
 (:~
- local:office transforms OFFICE_CODES, OFFICE_CODE_TYPE_REL, and OFFICE_TYPE_TREE data into categories elements.
- 
- @param $offices is a c_office_id
- @param $mode can take three efective values:
- 'v' = validate; preforms a validation of the output before passing it on. 
- ' ' = normal; runs the transformation without validation.
- 'd' = debug; this is the slowest of all modes.
-
- @return category[@xml:id ="OFFxxx"]
-:)
+: off:office transforms OFFICE_CODES, OFFICE_CODE_TYPE_REL, and OFFICE_TYPE_TREE data into categories elements.
+: 
+: @param $offices is a ``c_office_id``
+: @param $mode can take three effective values:
+:    *   'v' = validate; preforms a validation of the output before passing it on. 
+:    *   ' ' = normal; runs the transformation without validation.
+:    *   'd' = debug; this is the slowest of all modes.
+: 
+: @return ``<category xml:id="OFF...">...</category>``:)
 
 let $output := 
     for $office in $offices[. > 0] 
@@ -88,8 +92,7 @@ let $output :=
                 
                 if (empty($office/../no:c_dy))
                 then ()
-                else (element date { attribute calendar {'#chinTrad'}, attribute period {concat('#D', $office/../no:c_dy/text())},  
-                            $global:DYNASTIES//no:c_dy[. = $office/../no:c_dy]/../no:c_dynasty_chn/text()})                
+                else (cal:new-date($office/../no:c_dy, 'when-custom')[@calendar])              
             }
         }
 return 
@@ -99,21 +102,20 @@ return
     default return $output 
 };
 
-declare function local:nest-children ($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*{
+declare function off:nest-children ($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*{
 (:~
-local:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categories.
+off:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categories.
 
 @param $data row in OFFICE_TYPE_TREE
- @param $id is a c_office_type_node_id
- @param $zh category name in Chinese
- @param $en category name in English
- @param $mode can take three efective values:
- 'v' = validate; preforms a validation of the output before passing it on. 
- ' ' = normal; runs the transformation without validation.
- 'd' = debug; this is the slowest of all modes.
-
- @return nested category[n ="xxx"]
-:)
+: @param $id is a ``c_office_type_node_id``
+: @param $zh category name in Chinese
+: @param $en category name in English
+: @param $mode can take three effective values:
+:    *   'v' = validate; preforms a validation of the output before passing it on. 
+:    *   ' ' = normal; runs the transformation without validation.
+:    *   'd' = debug; this is the slowest of all modes.
+: 
+: @return nested ``<category n ="...">...</category>``:)
 
   element category { attribute n {$id},
     element catDesc { attribute xml:lang {'zh-Hant'},
@@ -125,16 +127,16 @@ local:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categor
         $en/text()}),
         
         for $child in $data[no:c_parent_id = $id]
-        return local:nest-children($data, $child/no:c_office_type_node_id, 
+        return off:nest-children($data, $child/no:c_office_type_node_id, 
             $child/no:c_office_type_desc_chn, $child/no:c_office_type_desc)    
         }
 };
 
-(: once maxCauseCount errors are fixed the following will suffice for the join:
-let $tree-id := $data/no:c_office_type_node_id
-let $code := $globalOFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id
-:)
-
+(:~
+: once maxCauseCount errors are fixed the following will suffice for the join:
+: let $tree-id := $data/no:c_office_type_node_id
+: let $code := $globalOFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id:)
+declare %private function off:office-write ($data as item()*) as item()* {
 let $data := $global:OFFICE_TYPE_TREE//no:row
 let $tree := xmldb:store($global:target, $global:office, 
                     <taxonomy xml:id="office">
@@ -143,18 +145,17 @@ let $tree := xmldb:store($global:target, $global:office,
                          </category>{                        
                         for $outer in $data[no:c_parent_id = 0]
                           return 
-                            local:nest-children($data, $outer/no:c_office_type_node_id, 
+                            off:nest-children($data, $outer/no:c_office_type_node_id, 
                                 $outer/no:c_office_type_desc_chn, $outer/no:c_office_type_desc)}
                     </taxonomy>)
                     
 let $off := xmldb:store($global:target, $global:office-temp, 
                     <taxonomy xml:id="officeA">                       
-                         {local:office($global:OFFICE_CODES//no:c_office_id, 'v')}                        
+                         {off:office($global:OFFICE_CODES//no:c_office_id, 'v')}                        
                      </taxonomy>)             
-
-
 
 return
  ($tree, $off)
+};
 
 

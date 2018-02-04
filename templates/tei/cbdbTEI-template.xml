@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
@@ -7,14 +6,20 @@
                 <title>CBDB in TEI - enconding template</title>
                 <author xml:id="DP">Duncan Paterson</author>
                 <respStmt>
+                    <resp>Editors</resp>
                     <persName xml:id="ABD">
                         <persName>ah be ze</persName>
                         <affiliation>AU</affiliation>
-                    </persName>
+                    </persName>                    
                 </respStmt>
             </titleStmt>
             <publicationStmt>
-                <availability>
+                <authority>
+                    <orgName>Fairbank Center for Chinese Studies at Harvard University</orgName>
+                    <orgName>Institute of History and Philology of Academia Sinica</orgName>
+                    <orgName>Center for Research on Ancient Chinese History at Peking University</orgName>
+                </authority>
+                <availability status="restricted">
                     <licence target="https://creativecommons.org/licenses/by-sa/4.0/">cc-by-sa 4.0</licence>
                 </availability>
             </publicationStmt>
@@ -51,17 +56,17 @@
                     <category xml:id="OFF" n="local:office" source="#BIB">
                         <catDesc>
                             <roleName type="main">
-                                <roleName xml:lang="zh-Hant">local:office</roleName>
-                                <roleName xml:lang="zh-Latn-alalc97">local:office</roleName>
-                                <roleName xml:lang="en">local:office</roleName>
-                                <note>local:office</note>
+                                <roleName xml:lang="zh-Hant">off:office</roleName>
+                                <roleName xml:lang="zh-Latn-alalc97">off:office</roleName>
+                                <roleName xml:lang="en">off:office</roleName>
+                                <note>off:office</note>
                             </roleName>
                             <roleName type="alt">
-                                <roleName xml:lang="zh-Hant">local:office</roleName>
-                                <roleName xml:lang="zh-Latn-alalc97">local:office</roleName>
-                                <roleName xml:lang="en">local:office</roleName>
+                                <roleName xml:lang="zh-Hant">off:office</roleName>
+                                <roleName xml:lang="zh-Latn-alalc97">off:office</roleName>
+                                <roleName xml:lang="en">off:office</roleName>
                             </roleName>
-                            <date calendar="#chinTrad" period="#D">local:office</date>
+                            <date calendar="#chinTrad" period="#D">off:office</date>
                         </catDesc>
                     </category>
                 </taxonomy>
@@ -206,6 +211,14 @@
                             <desc xml:lang="zh-Hant">biog:status</desc>
                             <desc xml:lang="en">biog:status</desc>
                         </state>
+                        <state type="possession" xml:id="POS" unit="biog:posses" quantity="1" n="biog:posses" when="0001" source="#BIB" subtype="biog:posses">
+                            <desc>
+                                <desc xml:lang="zh-Hant">biog:posses</desc>
+                                <desc xml:lang="en">biog:posses</desc>
+                                <placeName ref="#PL"/>
+                            </desc>
+                            <note>biog:posses</note>
+                        </state>
                     </socecStatus>
                     <socecStatus scheme="#office" code="#OFF">
                         <state type="posting" ref="#PL" n="biog:new-post" key="biog:new-post" notBefore="0001" notAfter="0001" source="#BIB">
@@ -225,10 +238,10 @@
                             <desc xml:lang="zh-Hant">biog:new-post</desc>
                             <desc xml:lang="en">biog:new-post</desc>
                             <note>biog:new-post</note>
-                        </state>
+                        </state>                        
                     </socecStatus>
                     <listEvent>
-                        <event xml:lang="zh-Hant" when="0001" where="#PL" source="#BIB" sortKey="biog:event">
+                        <event xml:lang="zh-Hant" when="0001" where="#PL" source="#BIB" sortKey="biog:event" type="general">
                             <head>biog:event</head>
                             <label>biog:event</label>
                             <desc>biog:event</desc>
@@ -253,15 +266,12 @@
                                 </trait>
                             </note>
                         </event>
-                    </listEvent>
-                    <state type="possession" xml:id="POS" unit="biog:posses" quantity="1" n="biog:posses" when="0001" source="#BIB" subtype="biog:posses">
-                        <desc>
-                            <desc xml:lang="zh-Hant">biog:posses</desc>
-                            <desc xml:lang="en">biog:posses</desc>
-                            <placeName ref="#PL"/>
-                        </desc>
-                        <note>biog:posses</note>
-                    </state>
+                        <event where="#ORG" key="biog:inst-add" from="0001" to="0001" from-custom="D-R-Y" to-custom="D-R-Y" source="#BIB" datingMethod="#chinTrad">
+                            <desc xml:lang="zh-Hant">biog:inst-add</desc>
+                            <desc xml:lang="en">biog:inst-add</desc>
+                            <note>biog:inst-add</note>
+                        </event>
+                    </listEvent>                    
                     <residence ref="#PL" key="biog:pers-add" n="biog:pers-add" from="0001-01-01" to="0001-01-01" source="#BIB">
                         <state type="natal">
                             <desc xml:lang="zh-Hant">biog:pers-add</desc>
@@ -269,12 +279,7 @@
                         </state>
                         <date calendar="#chinTrad" period="#R">Y-D</date>
                         <note>biog:pers-add</note>
-                    </residence>
-                    <event where="#ORG" key="biog:inst-add" from="0001" to="0001" from-custom="D-R-Y" to-custom="D-R-Y" source="#BIB" datingMethod="#chinTrad">
-                        <desc xml:lang="zh-Hant">biog:inst-add</desc>
-                        <desc xml:lang="en">biog:inst-add</desc>
-                        <note>biog:inst-add</note>
-                    </event>
+                    </residence>                    
                     <linkGrp>
                         <ptr target="biog:biog"/>
                     </linkGrp>
@@ -351,9 +356,7 @@
                     </bibl>
                     <ref target="bib:bib">bib:bib</ref>
                     <note>bib:bib</note>
-                    <author>
-                        <ptr target="#BIO-bib-roles"/> <!--why not ref?-->
-                    </author>
+                    <author ref="#BIO-bib-roles"/>
                     <note type="created" target="global:create-mod-by">
                         <date when="0001-01-01"/>
                     </note>

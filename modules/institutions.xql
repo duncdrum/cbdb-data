@@ -1,40 +1,46 @@
 xquery version "3.0";
+
+(:~
+: This module does what biographies does for persons for institutions.
+:
+: @author Duncan Paterson
+: @version 0.7
+:
+: @return listOrg.xml:)
+
 module namespace org="http://exist-db.org/apps/cbdb-data/institutions";
 
+(:import module namespace functx = "http://www.functx.com";:)
 import module namespace xmldb = "http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace cal="http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
-(:import module namespace functx = "http://www.functx.com";:)
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:~
- This module does what biographies does for persons for institutions.
 
- @author Duncan Paterson
- @version 0.7
- 
- @return listOrg.xml
-:)
-
-declare function org:org ($institutions as node()*, $mode as xs:string?) as item()* {
+declare 
+    %test:pending("validation as test")
+function org:org ($institutions as node()*, $mode as xs:string?) as item()* {
 (:~ 
- This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_NAME_CODES, 
- SOCIAL_INSTITUTION_TYPES,  SOCIAL_INSTITUTION_ALTNAME_DATA, SOCIAL_INSTITUTION_ALTNAME_CODES, 
- SOCIAL_INSTITUTION_ADDR, and SOCIAL_INSTITUTION_ADDR_TYPES into TEI. 
- 
- However, the altName tables, and address-type tables are empty!
- @param $institutions is a c_inst_code
- @param $mode can take three efective values:
- 'v' = validate; preforms a validation of the output before passing it on. 
- ' ' = normal; runs the transformation without validation.
- 'd' = debug; this is the slowest of all modes.
- 
- @return org 
-:)
+: This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_NAME_CODES, 
+: SOCIAL_INSTITUTION_TYPES,  SOCIAL_INSTITUTION_ALTNAME_DATA, SOCIAL_INSTITUTION_ALTNAME_CODES, 
+: SOCIAL_INSTITUTION_ADDR, and SOCIAL_INSTITUTION_ADDR_TYPES into TEI. 
+:
+: For now there are only three ``role`` attribute values: academy, buddhist, and daoist. 
+:
+: However, the altName tables, and address-type tables are empty!
+:
+: @param $institutions is a ``c_inst_code``
+: @param $mode can take three effective values:
+:    *   'v' = validate; preforms a validation of the output before passing it on. 
+:    *   ' ' = normal; runs the transformation without validation.
+:    *   'd' = debug; this is the slowest of all modes.
+:
+: @return ``<org>...</org>``:)
 
 let $output := 
     for $org in $institutions
@@ -152,7 +158,7 @@ return
     default return $output 
 };
 
-declare function org:write($item as item()*) as item()* {
+declare %private function org:write($item as item()*) as item()* {
 let $test := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0][. < 500]
 let $full := $global:SOCIAL_INSTITUTION_CODES//no:c_inst_code[. > 0]
 

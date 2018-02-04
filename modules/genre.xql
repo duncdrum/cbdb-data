@@ -1,48 +1,49 @@
 xquery version "3.0";
+(:~
+: genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into nested taxonomy elements.
+: these are referenced from listBibl.xml. 
+:
+: The exact difference between bibliographical category codes, and category types is unclear. 
+: This module joins them within on taxonomy and at the level speciefied in the sources. 
+:
+: @author Duncan Paterson
+: @version 0.7
+: 
+: @return biblCat.xml:)
+
 module namespace gen="http://exist-db.org/apps/cbdb-data/genre";
 
+(:import module namespace functx="http://www.functx.com";:)
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
-(:import module namespace functx="http://www.functx.com";:)
 
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace no="http://none";
 
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:~
- genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into a nested tei:taxonomy.
- these are referenced from listBibl.xml. 
-
- The exact difference between bibliographical category codes, and category types is unclear. 
- This module joins them within on taxonomy and at the level speciefied in the sources. 
-
- @author Duncan Paterson
- @version 0.7
- 
- @return biblCat.xml
- 
-:)
 
 (: !!! UPDATING FUNCTION, OVERWRITES DATA !!!:)
 
-declare function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?)  as item()* {
+declare 
+    %test:pending("fragment")
+function gen:nest-types ($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?)  as item()* {
 
 (:~ 
- gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories. 
-
- @param $types row in TEXT_BIBLCAT_TYPES
- @param $type-id is a c_text_cat_type_id
- @param $zh category name in Chinese
- @param $en category name in English
- @param $mode can take three efective values:
- 'v' = validate; preforms a validation of the output before passing it on. 
- ' ' = normal; runs the transformation without validation.
- 'd' = debug; this is the slowest of all modes.
-
- @return nested category[@xml:id ="biblType"]
-:)
+: gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories. 
+:
+: @param $types row in TEXT_BIBLCAT_TYPES
+: @param $type-id is a ``c_text_cat_type_id``
+: @param $zh category name in Chinese
+: @param $en category name in English
+: @param $mode can take three effective values:
+:    *   'v' = validate; preforms a validation of the output before passing it on. 
+:    *   ' ' = normal; runs the transformation without validation.
+:    *   'd' = debug; this is the slowest of all modes.
+:
+: @return nested ``<category xml:id="biblType">...</category>``:)
 
 let $output := 
 element category { attribute xml:id {concat('biblType',  $type-id/text())},        
@@ -62,11 +63,10 @@ return
     default return $output       
 };
 
-declare function gen:write($item as item()*) as item() {
+declare %private function gen:write($item as item()*) as item() {
 (:~
- call recursive function from top level elements. 
- @param $typeTree the nested tree of types stored in the db. 
-:)
+: call recursive function from top level elements. 
+: @param $typeTree the nested tree of types stored in the db.:)
 let $types := $global:TEXT_BIBLCAT_TYPES//no:row
 let $typeTree := xmldb:store($global:target, $global:genre, 
                     <taxonomy xml:id="biblCat">
@@ -81,8 +81,7 @@ let $typeTree := xmldb:store($global:target, $global:genre,
                     </taxonomy>)
 
 (:~
- inserts the genre categories codes, into the previously generated tree of category types. 
-:)
+: inserts the genre categories codes, into the previously generated tree of category types.:)
 
 for $cat in $global:TEXT_BIBLCAT_CODES//no:c_text_cat_code
 

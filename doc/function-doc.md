@@ -1,284 +1,920 @@
-# xQuery Function Documentation
+# Function Documentation
+In addition to the information in this document, there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) listing each column used in this conversion.
+
 ## Contents
-* [bibliography](#bibliography)
-* [genre](#genre)
-* [biographies](#biographies)
-* [calendar](#calendar)
-* [global](#global)
-* [institutions](#institutions)
-* [office](#office)
-* [place](#place)
-
-In addition to the information in this document, 
-there is a [spreadsheet](https://docs.google.com/spreadsheets/d/15CtYfxx4_LsmLUBDm5MPfZ4StWGlpCTWMyUMR1tPHjM/edit?usp=sharing) listing each column used in this conversion.
-
-## bibliography
-This module deals with core bibliographical data from CBDB. It's elements are frequently referenced by ``@soure`` across the whole data set.
-For the genre taxonomy of cbdb see [genre](#genre).
-
-### bib:bibl-dates
-
-### bib:bibliography
-
-### bib:roles
-``distinct-values($TEXT_CODES//no:c_pub_range_code), distinct-values($TEXT_CODES//no:c_range_code))``
-shows range 300, and 301 not to be in use.
-
-#### TODO
-* ``$TEXT_ROLE_CODES//no:c_role_desc_chn`` is currently dropped from db might go into ODD later
-
-## genre
-Joins the different location for bibliographical genre/ category data in one nested tei taxonomy. 
-``TEXT_BIBL_CAT_TYPES_1``, and ``TEXT_BIBL_CAT_TYPES_2`` become superfluous, 
-since we have a nested tree using ``TEXT_BIBL_CAT_TYPES``, ``TEXT_BIBL_CAT_CODES``, and ``TEXT_BIBL_CAT_CODE_TYPE_REL``.
-
-## biographies
-This module transforms the core person data, as well as their relation data. 
-
-### biog:kin 
-
-#### 9 basic categories of kinship 
-The list of categories in the [*The CBDB User’s Guide*](http://projects.iq.harvard.edu/files/cbdb/files/cbdb_users_guide.pdf) p 13f is incomplete. 
-
-none of these is symmetrical hence there is no need for mutuality checks as in biog:asso.
-
-* ``'e'`` Ego (the person whose kinship is being explored) 
-* ``'F'`` Father
-* ``'M'`` Mother
-* ``'B'`` Brother
-* ``'Z'`` Sister
-* ``'S'`` Son
-* ``'D'`` Daughter
-* ``'H'`` Husband
-* ``'W'`` Wife
-* ``'C'`` Concubine
-
-* ``'+'`` Older (e.g. older brother B+, 兄)
-* ``'-'`` Younger (e.g. younger sister 妹)
-* ``'*'`` Adopted heir (as in S*, adopted son)
-* ``'°'`` Adopted
-* ``'!'`` Bastard
-* ``'^'`` Step- (as in S^ step-son)
-* ``'½'``  half- (as in Z½ , half-sister)
-* ``'~'`` Nominal (as in M~ , legitimate wife as nominal mother to children of concubine)
-* ``'%'`` Promised husband or wife (marriage not completed at time of record)
-* ``'y'`` Youngest (e.g., Sy is the youngest known son)
-* ``'1'`` Numbers distinguish sequence (e.g., S1, S2 for first and second sons; W1, W2 for the first and the successor wives)
-* ``'n'`` precise generation unknown
-* ``'G-#'``, ``'G+#'`` lineal ancestor (–) or descendant (+) of # generation №
-* ``'G-n'``, ``'G+n'``, ``'Gn'`` lineal kin of an unknown earlier generation (G-n), or unknown later generation (G+n), or unknown generation (Gn)
-* ``'G-#B'``, ``'BG+#'`` a brother of a lineal ancestor of # generation; a brother’s lineal descendant of # generation
-* ``'K'``, ``'K-#'``, ``'K+#'``, ``'Kn'`` Lineage kin, of the same, earlier (–), later (+) or unknown (n) generation. CBDB uses “lineage kin” for cases where kinship is attested but the exact relationship is not known. Lineage kin are presumably not lineal (direct descent) kin.
-* ``'K–'``, ``'K+'`` Lineage kin of the same generation, younger (-) or elder (+).
-* ``'P'``, ``'P-#'``, ``'P+#'``, ``'Pn'`` Kin related via father’s sisters or mother’s siblings, of the same, earlier (–), later (+) or unknown (n) generation. Signified by the term biao (表) in Chinese. (CBDB uses these codes only when the exact relationship is not known). 
-* ``'P–'``, ``'P+'`` Kin related via father's sisters or mother's siblings, of the same generation, younger (-) or elder (+).
-* ``'A'`` Affine/Affinal kin, kin by marriage
-
-#### NOT Documented
-* ``'(male)'`` -> ♂
-* ``'(female)'`` -> ♀
-* ``'©'`` -> of concubine
-* ``'(claimed)'`` -> 
-* ``'(eldest surviving son)'`` -> 
-* ``'(only ...)'`` ->
-* ``'(apical)'`` ->
+*   [app](#app-module)
+*   [bibliography](#bibliography-module)
+*   [biographies](#biographies-module)
+*   [calendar](#calendar-module)
+*   [genre](#genre-module)
+*   [global](#global-module)
+*   [institutions](#institutions-module)
+*   [office](#office-module)
+*   [place](#place-module)
 
 
-### biog:asso
-Whats up with ``$assoc_codes//no:c_assoc_role_type`` ?
+## app Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/templates](/db/apps/cbdb-data/modules/app.xql)
 
-#### TODO 
-* consider ``chal-ZH`` dates for state
-* ``c_assoc_claimer_id`` could get a ``@role`` somewhere around state
-* ``c_assoc_range`` currently dropped.
+### Module Description
 
-### biog:status
+*   Author: Duncan Paterson
+*   Version: 0.7
 
-#### TODO
-* ``c_notes``, and ``c_supplement`` from ``STATUS_DATA`` are currently dropped. 
+### Function Summary
 
-### biog:event
-
-there is a number of unused cells here mostly because they are empty in the source files.
-
-### biog:entry
-add institutional addresses via ``biog:inst-add``
-
-#### TODO
-* Why does ``c_exam_field`` not point to anything?
-* see c_personid: ``914`` for dual ``@type`` entries
-* ``c_inst_code`` only points to ``0`` no links to org to be written
-* switch to ``tei:education`` | ``tei:faith`` for entry type data
- 
-### biog:new-post
-We need to ascertain a few things about dates and ``POST_DATA`` here:
-are there any instances where one contains data that is not an iso date or in ``POSTED_TO_OFFICE_DATA``? 
-
-whats up with ``POSTED_TO_ADDR_DATA``?
-
-#### TODO
-* Turn postings into ``tei:event``?
-* check placement of ``@ref`` for ``c_addr_id`` compare possessions
-
-### biog:posses
-Currently there are only five entries (c_personid: ``18332``, ``13550``, ``45279``, ``45518``, ``3874``)
-
-#### TODO
-* Make use of ``@ref="#PL..."`` consistent for all ``state`` elements. 
-
-### biog:pers-add
-
-#### TODO
-* addd ``BIOG_ADDR_CODES//no:c_addr_note`` values to ODD
-
-### biog:inst-add
-There are no dates in the src tables. 
-
-### biog:biog
-
-#### TODO
-* ``c_self_bio`` from ``$source`` is dropped change to attribute when refactoring query syntax?
-
-## calendar
-The calendar module contains function for conversion between the often idiosyncratic date formats of *CBDB*,
-and for the creation of a taxonomy for Chinese calendar dates. 
-
-#### TODO
-*  friggin YEAR_RANGE_CODES.xml
-* many nianhaos aren't transliterated hence $NH-py
-*  ``DYNASTIES`` contains both translations and transliterations:
-     e.g. 'NanBei Chao' but 'Later Shu (10 states) more normalization *yay*
-*  make 10 states a ``@type`` ? 
-
-### cal:custo-date-point
-Tricky with the data at hand, consequently not called by other function whenever possible. 
-long-run switch to CCDB date authority since that also covers Korean and Japanese dates. 
-
-#### TODO
-* Getting to a somewhat normalized useful representation of Chinese Reign dates is tricky. Inconsistent pinyin for Nianhao creates ambiguous and ugly dates.
-* handle ``//no:c_dy[. = 0]`` stuff
-* add ``@period`` with ``#d42`` ``#R123``
-* find a way to prevent empty attributes more and better logic FTW
-* If only a dynasty is known lets hear it, the others are dropped since only a year or nianhao is of little information value. 
-
-### cal:custo-date-range
-See cal:custo-date-point
-
-### cal:dynasties
-
-### cal:ganzhi
-Just for fun not used in the transformation. Calculate the ganzhi cycle for a given year (positive and negative), in either pinyin or hanzi.  
-
-#### TEST
-```
-cal:ganzhi(2036, 'zh') -> 丙辰
-cal:ganzhi(1981, 'zh') -> 辛酉
-cal:ganzhi(1967, 'zh') -> 丁未
-cal:ganzhi(0004, 'zh') -> 甲子
-cal:ganzhi(0001, 'zh') -> 壬戌
-cal:ganzhi(0000, 'zh') -> no such gYear 
-cal:ganzhi(-0001, 'zh') -> 庚申
-cal:ganzhi(-0247, 'zh') -> 乙卯 = 246BC founding of Qing
+#### test
+```xQuery
+declare function app:test($node as node(), $model as map) as item()*
 ```
 
-### cal:isodate
+##### Function Detail
+This is a sample templating function. It will be called by the templating module if it encounters an HTML element with an attribute: data-template="app:test" or class="app:test" (deprecated). The function has to take 2 default parameters. Additional parameters are automatically mapped to any matching request or function parameter.
 
-### cal:sexagenary
+##### Parameters
+*   $node - the HTML node with the attribute which triggered this call
+*   $model - a map containing arbitrary data - used to pass information between template calls.
 
-### cal:sqldate
-
-## global
-This module holds all the variables and paths used in the app. 
-The list of variable declarations pointing to the imported tables, is generated via [local:table-variables](#local:table-variables) in the ``aux.xql`` module. 
-
-Functions that need be available globally also go here.   
-
-### global:create-mod-by
-Processes the created-by and modified by data found on each table. Only called for main tables. 
-
-### global:validate-fragment
-Helper function called by every write operation, to ease the burden of validating the whole file when working on a specific section.
-
-## institutions
-Create the core organizations included in *CBDB*.
-
-### org:org
-the ``@role`` for ``org`` elements takes three values ``'academy'``, ``'buddhist'``, ``'daoist'`` . These need to be added to the ODD in Chinese translation.
-
-#### TODO
-* careful this has a combined primary key between ``inst_name`` and ``inst_code``
-* fix datable-custom stuff otherwise ok
-* friggin ``YEAR_RANGE_CODES`` are back
-* most of this fields in these tables are empty 
-
-## office
-Office is split over 2 xql files ``officeA.xql`` and ``officeB.xql``. 
-This is due to a potential bug with new Range indexes raising a ``maxClauseCount`` error when 
-running the full transformation from inside a single module. 
-Splitting the module into two prevents the error from occurring.
-
-### local:office (officeA)
-
-#### TODO
-
-* figure out what the heck ``$OFFICE_CODE_TYPE_REl//no:c_office_type_type_code`` wants to be?
+##### Returns
+*  
 
 
-### local:nest-children (officeA)
+## bibliography Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/bibliography](/db/apps/cbdb-data/modules/bibliography.xql)
 
-### local:merge-officeTree (officeB)
-there are:
-28623 offices in office.xml
- 1384 are not matched via OFFICE_CODE_TYPE_REL but have dynasty 
-  514 are missing even dynastic affiliations
+### Module Description
+The bibliography module transforms core bibliographic data from CBDB into TEI. It's output references the taxonomy generated by the genre module. It's elements are frequently referenced by source attributes across the whole data set.
+*   Author: Duncan Paterson
+*   Version: 0.7
+*   [see](#genre)
 
 
-#### TODO
-* fix missing links aka [@n = '']
-* use: ```for $y allowing empty in $off...``` once exist supports it.
- 
-## place
-Converts the GIS data of *CBDB*
+### Function Summary
+#### Contents
 
-Currently cbdbTEI.xml does not yet use the more fine-grained possibilities of TEI to express geographic units, 
-such as ``<bloc>``, ``,country>``, ``<district>``, etc. 
-However, better integration with CHGIS via [TGAZ](http://maps.cga.harvard.edu/tgaz/) could void current shortcomings.  
+*   [bib:bibl-dates](#bibl-dates)
+*   [bib:bibliography](#bibliography)
+*   [bib:roles](#roles)
 
-### pla:fix-admin-types
-There are 225 distinct types of administrative units in CBDB, however these contain many duplicates due to inconsistent spelling. 
-Furthermore, white-spaces prevent the existing types from becoming xml attribute values. 
-Hence this function normalizes and concats the spelling of admin types without modifying the source. 
-```
-let $types := 
-    distinct-values(($global:ADDR_CODES//no:c_admin_type, $global:ADDRESSES//no:c_admin_type))    
-```
-The use of whitespace in particular stands in further need of normalization. In the future this information is likely to be pulled from TGAZ. 
-
-### pla:nest-places
-One consequence of CBDB's entity model is that multiple  and usually overlapping time-series occur, e.g c_addr_id ``4342`` has:
-
-```
-<location from="1368" to="1643"/>
-<location from="1522" to="1522"/>
-<location from="1544" to="1544">
+#### bibl-dates
+```xQuery
+declare function bib:bibl-dates($dates as node()*, $type as xs:string?) as node()*
 ```
 
-cbdbTEI uses min/max of the distinct values to captures the data that is actually there 
-(to be replaced by CHGIS soon). This approach cannot capture the (theoretical) case where
+##### Function Detail
+bib:bibl-dates reads the two principle date references in TEXT_CODE: original and published. This function resolves the relations of these dates expecting a valid no:c_textid. It returns both english and Chinese dates, referring to chal_ZH.xml.
 
-```                        
-<location from="1368" to="1443"/>
-<location from="1522" to="1622"/>
+##### Parameters
+*   $dates - is a c_textid
+*   $type - can take either 'ori' for original, or 'pub' for published dates.
+
+##### Returns
+*   date normalizes the distinction between 'during' and "around" to "when"
+
+#### bibliography
+```xQuery
+declare function bib:bibliography($texts as node()*, $mode as xs:string?) as item()*
 ```
-which could NOT be merged as ```<location from ="1368' to="1622"/>```
 
-The following cells are never empty
-```($ADDRESSES//no:c_admin_type, no:c_firstyear, no:c_lastyear)```
+##### Function Detail
+This function reads the entities in TEXT_CODES ``sic`` and generates corresponding bibl elements, joining data from TEXT_DATA, TEXT_BIBLCAT_CODES, TEXT_TYPE, EXTANT_CODES, and COUNTRY_CODES.
 
-#### TODO
-* currently only patched places refer to their main entries via @corresp,
-  add matching attributes to the main entities. 
-  
-### pla:patch-missing-addr
-We need to patch missing places because a few places only exist in one location in the DB. 
+##### Parameters
+*   $texts - is a c_textid
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output before passing it on.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest of all modes.
 
+##### Returns
+*   ``<bibl id="BIB...">...</bib>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/global``|[global:create-mod-by](#create-mod-by)
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+``http://exist-db.org/apps/cbdb-data/bibliography``|[bib:roles](#roles)
+``http://exist-db.org/apps/cbdb-data/bibliography``|[bib:bibl-dates](#bibl-dates)
+
+#### roles
+```xQuery
+declare function bib:roles($roles as node()*) as node()*
+```
+
+##### Function Detail
+bib:roles reads c_role_id from TEXT_DATA, and TEXT_ROLE_CODES to transform into matching TEI elements. It simplifies ``c_role_id[. = 11] 'work included in'`` to ``contributor``. it currently drops the Chinese terms from ``$TEXT_ROLE_CODES//no:c_role_desc_chn`. These could be added back in later via a ODD.
+
+##### Parameters
+*   $roles - is a c_role_id
+
+##### Returns
+*   author, editor, or publisher with pointers to listPerson.
+
+
+## biographies Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/biographies](/db/apps/cbdb-data/modules/biographies.xql)
+
+### Module Description
+The biographies module transforms core person, and relationship data from CBDB in TEI. The data is stored inside a nested heirarchy of collections and sub-collections linked by xInclude statements.
+*   Author: Duncan Paterson
+*   Version: 0.7
+
+### Function Summary
+#### Contents
+
+*   [biog:alias](#alias)
+*   [biog:asso](#asso)
+*   [biog:biog](#biog)
+*   [biog:entry](#entry)
+*   [biog:event](#event)
+*   [biog:inst-add](#inst-add)
+*   [biog:kin](#kin)
+*   [biog:name](#name)
+*   [biog:new-post](#new-post)
+*   [biog:pers-add](#pers-add)
+*   [biog:posses](#posses)
+*   [biog:status](#status)
+*   [biog:write](#write)
+
+#### alias
+```xQuery
+declare function biog:alias($person as node()*) as node()*
+```
+
+##### Function Detail
+biog:alias outputs aliases, such as pen-names, reign titles, from ALTNAME_DATA, and ALTNAME_CODES.
+
+##### Parameters
+*   $person - is a ``c_personid``
+
+##### Returns
+*   ``<persName type = "alias">...<person>``
+
+#### asso
+```xQuery
+declare function biog:asso($ego as node()*) as node()*
+```
+
+##### Function Detail
+biog:asso constructs a network of association relations from: ASSOC_DATA, ASSOC_CODES, ASSOC_TYPES, and ASSOC_CODE_TYPE_REL. The distance measured by ``c_assoc_range`` is dropped. Annotations from: SCHOLARLYTOPIC_CODES, OCCASION_CODES, and LITERARYGENRE_CODES. The output's structure should match biog:kin's.
+
+##### Parameters
+*   $ego - is a ``c_personid``
+
+##### Returns
+*   ``<relation>...</relation>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### biog
+```xQuery
+declare function biog:biog($persons as node()*, $mode as xs:string?) as item()*
+```
+
+##### Function Detail
+biog:biog reads the main data table of cbdb: BIOG_MAIN. By calling all previous functions in this module, it performs a large join but it doesn't perform the write operation. In addition to the tables from previous functions, it also reads HOUSEHOLD_STATUS_CODES, ETHNICITY_TRIBE_CODES, and BIOG_SOURCE_DATA. biog:biog generates a person element for each unique person in BIOG_MAIN.
+
+##### Parameters
+*   $persons - is a ``c_personid``
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output, aborts on validation errors.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest, does NOT abort upon encountering validation errors..
+
+##### Returns
+*   ``<person ana="historical">...</person>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:name](#name)
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:alias](#alias)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:pers-add](#pers-add)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+``http://exist-db.org/apps/cbdb-data/global``|[global:create-mod-by](#create-mod-by)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:posses](#posses)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:entry](#entry)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:event](#event)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:inst-add](#inst-add)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:asso](#asso)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:new-post](#new-post)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:kin](#kin)
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:status](#status)
+
+#### entry
+```xQuery
+declare function biog:entry($initiates as node()*) as node()*
+```
+
+##### Function Detail
+biog:entry transforms ENTRY_DATA, ENTRY_CODES, ENTRY_TYPES, ENTRY_CODE_TYPE_REL, and PARENTAL_STATUS_CODES into a typed and annotated event. Currently, ``c_inst_code``, and ``c_exam_field`` are empty. It's output should match the structure of biog:event.
+
+##### Parameters
+*   $initiates - is a ``c_personid``
+
+##### Returns
+*   ``<event>...</event>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### event
+```xQuery
+declare function biog:event($participants as node()*) as node()*
+```
+
+##### Function Detail
+biog:event reads EVENTS_DATA, EVENT_CODES, EVENTS_ADDR to generate an event element. The structure of biog:event is mirrored by biog:entry. Currently, there are no 'py' or 'en' descriptions in the source data, hence we define a single xml:lang attribute on the parent element.
+
+##### Parameters
+*   $participants - is a ``c_personid``
+
+##### Returns
+*   ``<event>...</event>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### inst-add
+```xQuery
+declare function biog:inst-add($participant as node()*) as node()*
+```
+
+##### Function Detail
+biog:inst-add reads the BIOG_INST_DATA, and BIOG_INST_CODES generating an event. Time and place data are in ``where``, and ``when-custorm`` respectively. The main location of institutions is as in listOrg.xml Currently there are no dates in this table?
+
+##### Parameters
+*   $participant - is a ``c_personid``
+
+##### Returns
+*   ``<event>...</event>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### kin
+```xQuery
+declare function biog:kin($self as node()*) as node()*
+```
+
+##### Function Detail
+biog:kin constructs an egocentric network of kinship relations from: KING_DATA, KING_CODES and Kin_Mourning. The output's structure should match biog:asso's. The list on page 13f of the *CBDB User's Guide* is incomplete. ``$tie`` includes values not mentioned in the documentation.
+
+##### Parameters
+*   $self - is a ``c_personid``
+
+##### Returns
+*   ``<relation>...</relation>``
+
+#### name
+```xQuery
+declare function biog:name($names as node()*, $lang as xs:string?) as node()*
+```
+
+##### Function Detail
+biog:name reads extended name parts from BIOG_MAIN. To avoid duplication biog:name checks if sure-/forename components can be fully identified, and returns the respective elements, otherwise persName takes a single string value.
+
+##### Parameters
+*   $names - variations of ``c_name`` from different tables.
+*   $lang - can take 4 values:
+    *   'py' for pinyin,
+    *   'hz' for hanzi,
+    *   'proper', or
+    *   'rm' for names other then Chinese.
+
+##### Returns
+*   ``<persName>...</persName>``
+
+#### new-post
+```xQuery
+declare function biog:new-post($appointees as node()*) as node()*
+```
+
+##### Function Detail
+biog:new-post reads POSTED_TO_OFFICE_DATA, POSTED_TO_ADDR_DATA, OFFICE_CATEGORIES, APPOINTMENT_TYPE_CODES, and ASSUME_OFFICE_CODES to generate socecStatus pointing to the office taxonomy. The precise role of POSTED_TO_ADDR_DATA is somewhat unclear.
+
+##### Parameters
+*   $appointees - is a ``c_personid``
+
+##### Returns
+*   ``<socecStatus scheme="#office">...</socecStatus>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### pers-add
+```xQuery
+declare function biog:pers-add($resident as node()*) as node()*
+```
+
+##### Function Detail
+biog:pers-add reads the BIOG_ADDR_DATA, and BIOG_ADDR_CODES to generate residence. BIOG_ADDR_CODES//no:c_addr_note would be a good addition to the ODD.
+
+##### Parameters
+*   $resident - is a ``c_personid``:
+
+##### Returns
+*   ``<residence>...</residence>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### posses
+```xQuery
+declare function biog:posses($possessions as node()*) as node()*
+```
+
+##### Function Detail
+biog:possess reads POSSESSION_DATA, POSSESSION_ACT_CODES, POSSESSION_ADDR, and MEASURE_CODES. It produces a state element. There is barely any data in here so future version will undoubtedly see changes.
+
+##### Parameters
+*   $possessions - is a ``c_personid``
+
+##### Returns
+*   ``<state type="possession">...</state>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### status
+```xQuery
+declare function biog:status($achievers as node()*) as node()*
+```
+
+##### Function Detail
+biog:status reads STATUS_DATA, and STATUS_CODES and transforms them into state. Two tables are currently empty: STATUS_TYPES, and STATUS_CODE_TYPE_REL. This function drops ``c_notes``, and ``c_supplement`` from ``STATUS_DATA``.
+
+##### Parameters
+*   $achievers - is a ``c_personid``
+
+##### Returns
+*   ``<state type = "status">...</state>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+
+#### write
+```xQuery
+declare function biog:write($item as item()*) as item()*
+```
+
+##### Function Detail
+Because of the large number (>370k) of individuals the write operation of biographies.xql is slightly more complex. Instead of putting its data into a single file or collection, it creates a single listPerson directory inside the target folder, which is populated by further subdirectories and ultimately the person records. Currently, cbdbTEI.xml includes links to 37 listPerson files covering chunks of $chunk-size persons each (10k). "chunk" collections contain a single list.xml file and $block-size (50) sub-collections. This file contains xInclude statements to 1 listPerson.xml file per "block" sub-collection. Each block contains a single listPerson.xml file on the same level as the individual $ppl-per-block (200) person records .
+
+##### Parameters
+*   $item -
+
+##### Returns
+*   Files and Folders for person data:
+    *   Directories:
+        *   creates nested directories listPerson, chunk, and block using the respective parameters.
+    *   Files:
+        *   creates list-X.xml and listPerson.xml files that include xInclude statements linking individual person records back to the main tei file.
+        *   populates the previously generated directories with individual person records by calling biog:biog.    
+        *   Error reports from failed write attempts, as well as validations errors will be stored in the reports directory.
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/biographies``|[biog:biog](#biog)
+``http://www.functx.com``|[functx:substring-after-last](#substring-after-last)
+``http://www.functx.com``|[functx:pad-integer-to-length](#pad-integer-to-length)
+
+
+## calendar Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/calendar](/db/apps/cbdb-data/modules/calendar.xql)
+
+### Module Description
+The calendar module reads the calendar data from GANZHI, DYNASTIES, and NIANHAO to create a taxonomy element for inclusion in the teiHeader. The taxonomy consists of two elements one for the sexagenary cycle, and one nested taxonomy for reign-titles and dynasties. We are dropping the c_sort value for dynasties since sequential sorting is implicit in the data structure. There are some inconsistencies with how *CBDB* processes Chinese dates, in the long run using an external authority could solve these problems.
+*   Author: Duncan Paterson
+*   Version: 0.7
+*   [see](http://authority.ddbc.edu.tw)
+
+
+### Variables
+*   *$cal:ZH* - *missing description*
+*   *$cal:path* - *missing description*
+
+### Function Summary
+#### Contents
+
+*   [cal:custo-date-point](#custo-date-point)
+*   [cal:custo-date-range](#custo-date-range)
+*   [cal:dynasties](#dynasties)
+*   [cal:ganzhi](#ganzhi)
+*   [cal:isodate](#isodate)
+*   [cal:sexagenary](#sexagenary)
+*   [cal:sqldate](#sqldate)
+
+#### custo-date-point
+```xQuery
+declare function cal:custo-date-point($dynasty as node()*, $reign as node()*, $year as xs:string*, $type as xs:string?) as node()*
+```
+
+##### Function Detail
+cal:custo-date-point takes Chinese calendar date strings (columns ending in ``*_dy``, ``*_gz``, ``*_nh``) . It returns a single ``tei:date`` element using ``att.datable.custom``. cal:custo-date-range does the same but for date ranges. The normalized format takes ``DYNASTY//no:c_sort`` which is specific to CBDB, followed by the sequence of reigns determined by their position in cal_ZH.xml followed by the Year number: ``D(\d*)-R(\d*)-(\d*)``
+
+##### Parameters
+*   $dynasty - the sort number of the dynasty.
+*   $reign - the sequence of the reign period 1st = 1, 2nd = 2, etc.
+*   $year - the ordinal year of the reign period 1st = 1, 2nd = 2, etc.
+*   $type - can process 5 kinds of date-point:  
+    *   'Start' , 'End' preceded by 'u' for uncertainty, defaults to 'when'.
+
+##### Returns
+*   ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
+
+#### custo-date-range
+```xQuery
+declare function cal:custo-date-range($dy-start as node()*, $dy-end as node()*, $reg-start as node()*, $reg-end as node()*, $year-start as xs:string*, $year-end as xs:string*, $type as xs:string?) as node()*
+```
+
+##### Function Detail
+This function takes Chinese calendar date ranges. It's the companion to cal:custo-date-point. It determines the matching end-points automatically when provided a starting point for a date range.
+
+##### Parameters
+*   $dy-start - the sort number of the starting dynasty.
+*   $dy-end -
+*   $reg-start - the sequence of the starting reign period 1st = 1, 2nd = 2, etc.
+*   $reg-end -
+*   $year-start - the ordinal year of the starting reign period 1st = 1, 2nd = 2, etc.
+*   $year-end -
+*   $type - has two options 'uRange' for uncertainty, default to certain ranges.
+
+##### Returns
+*   ``<date datingMethod="#chinTrad" calendar="#chinTrad">input string</date>``
+
+#### dynasties
+```xQuery
+declare function cal:dynasties($dynasties as node()*, $mode as xs:string?) as item()*
+```
+
+##### Function Detail
+cal:dynasties converts DYNASTIES, and NIANHAO data into categories.
+
+##### Parameters
+*   $dynasties - c_dy
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output before passing it on.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest of all modes.
+
+##### Returns
+*   ``<taxonomy xml:id="reign">...</taxonomy>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+
+#### ganzhi
+```xQuery
+declare function cal:ganzhi($year as xs:integer, $lang as xs:string?) as xs:string*
+```
+
+##### Function Detail
+Just for fun: cal:ganzhi calculates the ganzhi cycle for a given year. It assumes gYears for calculating BCE dates.
+
+##### Parameters
+*   $year - gYear compatible string.
+*   $lang - is either hanzi = 'zh', or pinyin ='py' for output.
+
+##### Returns
+*   ganzhi cycle as string in either hanzi or pinyin.
+
+#### isodate
+```xQuery
+declare function cal:isodate($string as xs:string?) as xs:string*
+```
+
+##### Function Detail
+cal:isodate turns inconsistent Gregorian year strings into proper xs:gYear type strings. Consisting of 4 digits, with leading 0s. This means that BCE dates have to be recalculated. Since '0 AD' -> "-0001"
+
+##### Parameters
+*   $string - year number in western style counting
+
+##### Returns
+*   gYear style string
+
+#### sexagenary
+```xQuery
+declare function cal:sexagenary($ganzhi as node()*, $mode as xs:string?) as item()*
+```
+
+##### Function Detail
+cal:sexagenary converts GANZHI data into categories.
+
+##### Parameters
+*   $ganzhi - c_ganzhi_code
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output before passing it on.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest of all modes.
+
+##### Returns
+*   ``<taxonomy xml:id="sexagenary">...</taxonomy>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+
+#### sqldate
+```xQuery
+declare function cal:sqldate($timestamp as xs:string?) as xs:string*
+```
+
+##### Function Detail
+cal:sqldate converts the timestamp like values from CBDBs RLDBMs and converts them into iso compatible date strings, i. e.: YYYY-MM-DD
+
+##### Parameters
+*   $timestamp - collection for strings for western style full date
+
+##### Returns
+*   string in the format: YYYY-MM-DD
+
+
+## genre Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/genre](/db/apps/cbdb-data/modules/genre.xql)
+
+### Module Description
+genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into nested taxonomy elements. these are referenced from listBibl.xml. The exact difference between bibliographical category codes, and category types is unclear. This module joins them within on taxonomy and at the level speciefied in the sources.
+*   Author: Duncan Paterson
+*   Version: 0.7
+
+### Function Summary
+
+#### nest-types
+```xQuery
+declare function gen:nest-types($types as node()*, $type-id as node(), $zh as node(), $en as node(), $mode as xs:string?) as item()*
+```
+
+##### Function Detail
+gen:nest-types recursively transforms TEXT_BIBLCAT_TYPES into nested categories.
+
+##### Parameters
+*   $types - row in TEXT_BIBLCAT_TYPES
+*   $type-id - is a ``c_text_cat_type_id``
+*   $zh - category name in Chinese
+*   $en - category name in English
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output before passing it on.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest of all modes.
+
+##### Returns
+*   nested ``<category xml:id="biblType">...</category>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+``http://exist-db.org/apps/cbdb-data/genre``|[gen:nest-types](#nest-types)
+
+
+## global Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/global](/db/apps/cbdb-data/modules/global.xqm)
+
+### Module Description
+A set of helper functions and variables called by other modules.
+*   Author: Duncan Paterson
+*   Version: 0.7
+
+### Variables
+*   *$global:ADDRESSES* - *missing description*
+*   *$global:ADDR_BELONGS_DATA* - *missing description*
+*   *$global:ADDR_CODES* - *missing description*
+*   *$global:ADDR_PLACE_DATA* - *missing description*
+*   *$global:ADDR_XY* - *missing description*
+*   *$global:ALTNAME_CODES* - *missing description*
+*   *$global:ALTNAME_DATA* - *missing description*
+*   *$global:APPOINTMENT_TYPE_CODES* - *missing description*
+*   *$global:ASSOC_CODES* - *missing description*
+*   *$global:ASSOC_CODE_TYPE_REL* - *missing description*
+*   *$global:ASSOC_DATA* - *missing description*
+*   *$global:ASSOC_TYPES* - *missing description*
+*   *$global:ASSUME_OFFICE_CODES* - *missing description*
+*   *$global:BIOG_ADDR_CODES* - *missing description*
+*   *$global:BIOG_ADDR_DATA* - *missing description*
+*   *$global:BIOG_INST_CODES* - *missing description*
+*   *$global:BIOG_INST_DATA* - *missing description*
+*   *$global:BIOG_MAIN* - *missing description*
+*   *$global:BIOG_SOURCE_DATA* - *missing description*
+*   *$global:CHORONYM_CODES* - *missing description*
+*   *$global:COUNTRY_CODES* - *missing description*
+*   *$global:CopyMissingTables* - *missing description*
+*   *$global:CopyTables* - *missing description*
+*   *$global:DATABASE_LINK_CODES* - *missing description*
+*   *$global:DATABASE_LINK_DATA* - *missing description*
+*   *$global:DYNASTIES* - *missing description*
+*   *$global:ENTRY_CODES* - *missing description*
+*   *$global:ENTRY_CODE_TYPE_REL* - *missing description*
+*   *$global:ENTRY_DATA* - *missing description*
+*   *$global:ENTRY_TYPES* - *missing description*
+*   *$global:ETHNICITY_TRIBE_CODES* - *missing description*
+*   *$global:EVENTS_ADDR* - *missing description*
+*   *$global:EVENTS_DATA* - *missing description*
+*   *$global:EVENT_CODES* - *missing description*
+*   *$global:EXTANT_CODES* - *missing description*
+*   *$global:FIX_AUTHORS* - *missing description*
+*   *$global:FormLabels* - *missing description*
+*   *$global:GANZHI_CODES* - *missing description*
+*   *$global:HOUSEHOLD_STATUS_CODES* - *missing description*
+*   *$global:KINSHIP_CODES* - *missing description*
+*   *$global:KIN_DATA* - *missing description*
+*   *$global:KIN_MOURNING_STEPS* - *missing description*
+*   *$global:KIN_Mourning* - *missing description*
+*   *$global:LITERARYGENRE_CODES* - *missing description*
+*   *$global:MEASURE_CODES* - *missing description*
+*   *$global:NIAN_HAO* - *missing description*
+*   *$global:NameAutoCorrectSaveFailures* - *missing description*
+*   *$global:OCCASION_CODES* - *missing description*
+*   *$global:OFFICE_CATEGORIES* - *missing description*
+*   *$global:OFFICE_CODES* - *missing description*
+*   *$global:OFFICE_CODES_CONVERSION* - *missing description*
+*   *$global:OFFICE_CODE_TYPE_REL* - *missing description*
+*   *$global:OFFICE_TYPE_TREE* - *missing description*
+*   *$global:PARENTAL_STATUS_CODES* - *missing description*
+*   *$global:PLACE_CODES* - *missing description*
+*   *$global:POSSESSION_ACT_CODES* - *missing description*
+*   *$global:POSSESSION_ADDR* - *missing description*
+*   *$global:POSSESSION_DATA* - *missing description*
+*   *$global:POSTED_TO_ADDR_DATA* - *missing description*
+*   *$global:POSTED_TO_OFFICE_DATA* - *missing description*
+*   *$global:POSTING_DATA* - *missing description*
+*   *$global:PasteErrors* - *missing description*
+*   *$global:SCHOLARLYTOPIC_CODES* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_ADDR* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_ADDR_TYPES* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_ALTNAME_CODES* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_ALTNAME_DATA* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_CODES* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_CODES_CONVERSION* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_NAME_CODES* - *missing description*
+*   *$global:SOCIAL_INSTITUTION_TYPES* - *missing description*
+*   *$global:STATUS_CODES* - *missing description*
+*   *$global:STATUS_CODE_TYPE_REL* - *missing description*
+*   *$global:STATUS_DATA* - *missing description*
+*   *$global:STATUS_TYPES* - *missing description*
+*   *$global:TEXT_BIBLCAT_CODES* - *missing description*
+*   *$global:TEXT_BIBLCAT_CODE_TYPE_REL* - *missing description*
+*   *$global:TEXT_BIBLCAT_TYPES* - *missing description*
+*   *$global:TEXT_BIBLCAT_TYPES_1* - *missing description*
+*   *$global:TEXT_BIBLCAT_TYPES_2* - *missing description*
+*   *$global:TEXT_CODES* - *missing description*
+*   *$global:TEXT_DATA* - *missing description*
+*   *$global:TEXT_ROLE_CODES* - *missing description*
+*   *$global:TEXT_TYPE* - *missing description*
+*   *$global:TablesFields* - *missing description*
+*   *$global:TablesFieldsChanges* - *missing description*
+*   *$global:YEAR_RANGE_CODES* - *missing description*
+*   *$global:bibliography* - *missing description*
+*   *$global:calendar* - *missing description*
+*   *$global:doc* - *missing description*
+*   *$global:gaiji* - *missing description*
+*   *$global:genre* - *missing description*
+*   *$global:institution* - *missing description*
+*   *$global:main* - *missing description*
+*   *$global:modules* - *missing description*
+*   *$global:office* - *missing description*
+*   *$global:office-temp* - *missing description*
+*   *$global:patch* - *missing description*
+*   *$global:person* - *missing description*
+*   *$global:place* - *missing description*
+*   *$global:report* - *missing description*
+*   *$global:samples* - *missing description*
+*   *$global:src* - *missing description*
+*   *$global:target* - *missing description*
+
+### Function Summary
+
+#### create-mod-by
+```xQuery
+declare function global:create-mod-by($created as node()*, $modified as node()*) as node()*
+```
+
+##### Function Detail
+This function takes the standardized entries for creation and modification of cbdb entries and translates them into note elements. This data is distinct from the modifications of the TEI output recorded in the header.
+
+##### Parameters
+*   $created - is ``c_created_by``
+*   $modified - is ``c_modified_by``
+
+##### Returns
+*   ``<note type="created | modified">...</note>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:sqldate](#sqldate)
+
+#### validate-fragment
+```xQuery
+declare function global:validate-fragment($frag as node()*, $loc as xs:string?) as item()*
+```
+
+##### Function Detail
+This function validates $frag by inserting it into a minimal TEI template. This function cannot guarantee that the final document is valid, but it can catch validation errors produced by other function early on. This minimizes the number of validations necessary to produce the final output.
+
+##### Parameters
+*   $frag - the fragment (usually some function's output) to be validated.
+*   $loc - accepts the following element names as root to be used for validation:
+    *   category
+    *   charDecl
+    *   person
+    *   org
+    *   bibl
+    *   place
+
+##### Returns
+*   if validation succeeds then return the input, otherwise store a copy of the validation report
+ into the reports directory, including the ``xml:id`` of the root element of the processed fragment.
+
+
+## institutions Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/institutions](/db/apps/cbdb-data/modules/institutions.xql)
+
+### Module Description
+This module does what biographies does for persons for institutions.
+*   Author: Duncan Paterson
+*   Version: 0.7
+
+### Function Summary
+
+#### org
+```xQuery
+declare function org:org($institutions as node()*, $mode as xs:string?) as item()*
+```
+
+##### Function Detail
+This function transforms data from SOCIAL_INSTITUTION_CODES, SOCIAL_INSTITUTION_NAME_CODES, SOCIAL_INSTITUTION_TYPES, SOCIAL_INSTITUTION_ALTNAME_DATA, SOCIAL_INSTITUTION_ALTNAME_CODES, SOCIAL_INSTITUTION_ADDR, and SOCIAL_INSTITUTION_ADDR_TYPES into TEI. For now there are only three ``role`` attribute values: academy, buddhist, and daoist. However, the altName tables, and address-type tables are empty!
+
+##### Parameters
+*   $institutions - is a ``c_inst_code``
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output before passing it on.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest of all modes.
+
+##### Returns
+*   ``<org>...</org>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:custo-date-point](#custo-date-point)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:custo-date-range](#custo-date-range)
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+
+
+## office Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/office](/db/apps/cbdb-data/modules/office.xql)
+
+### Module Description
+To generating the taxonomy for office titles we need two query files office.xql and officeB.xql. office creates two files which will be merged by officeB. Each file stores a taxonomy for one of two different ways that offices are categorized by CBDB.
+*   Author: Duncan Paterson
+*   Version: 0.7
+
+### Function Summary
+
+#### nest-children
+```xQuery
+declare function off:nest-children($data as node()*, $id as node(), $zh as node(), $en as node()) as node()*
+```
+
+##### Function Detail
+off:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categories.
+
+##### Parameters
+*   $data - row in OFFICE_TYPE_TREE
+*   $id - is a ``c_office_type_node_id``
+*   $zh - category name in Chinese
+*   $en - category name in English
+
+##### Returns
+*   nested ``<category n ="...">...</category>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/office``|[off:nest-children](#nest-children)
+
+#### office
+```xQuery
+declare function off:office($offices as node()*, $mode as xs:string?) as item()*
+```
+
+##### Function Detail
+off:office transforms OFFICE_CODES, OFFICE_CODE_TYPE_REL, and OFFICE_TYPE_TREE data into categories elements.
+
+##### Parameters
+*   $offices - is a ``c_office_id``
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output before passing it on.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest of all modes.
+
+##### Returns
+*   ``<category xml:id="OFF...">...</category>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+
+
+## place Module
+*   *Module Uri:* [http://exist-db.org/apps/cbdb-data/place](/db/apps/cbdb-data/modules/place.xql)
+
+### Module Description
+place.xql reads the various basic entities for location type information and creates a listPlace element for inclusion in the body element via xInclude. to avoid confusion 'addresses' type data in *CBDB* is 'place' data in TEI, whereas CBDB's 'place' is TEI's 'geo'. This data should soon be replaced with data from *China Historical GIS*
+*   Author: Duncan Paterson
+*   Version: 0.7
+*   [see](http://maps.cga.harvard.edu/tgaz/)
+
+
+### Function Summary
+#### Contents
+
+*   [pla:fix-admin-types](#fix-admin-types)
+*   [pla:nest-places](#nest-places)
+*   [pla:patch-missing-addr](#patch-missing-addr)
+
+#### fix-admin-types
+```xQuery
+declare function pla:fix-admin-types($adminType as xs:string?) as xs:string*
+```
+
+##### Function Detail
+There are 225 distinct types of administrative units in CBDB, however these contain many duplicates due to inconsistent spelling. Furthermore, white-spaces prevent the existing types from becoming xml attribute values. Hence this function normalizes and concats the spelling of admin types without modifying the source.
+
+##### Parameters
+*   $adminType - is a ``c_admin_type``
+
+##### Returns
+*   normalized and deduped string
+
+#### nest-places
+```xQuery
+declare function pla:nest-places($data as node()*, $id as node(), $zh as node()?, $py as node()?, $mode as xs:string?) as item()*
+```
+
+##### Function Detail
+pla:nest-places recursively reads rows from ADDR_CODES and the first ADDR_BELONGS_DATA parent, to generate place elements. This leaves duplicate ids between here and ADDRESSES. Where multiple identical c_addr_id's are present, we use the one covering the largest admin level. All cases of overlapping dates for location data can actually be resolved to min/max.
+
+##### Parameters
+*   $data - is ADDR_CODES row elements
+*   $id - is a ``c_addr_id``
+*   $zh - placeName in Chinese
+*   $py -
+*   $mode - can take three effective values:
+    *   'v' = validate; preforms a validation of the output before passing it on.
+    *   ' ' = normal; runs the transformation without validation.
+    *   'd' = debug; this is the slowest of all modes.
+
+##### Returns
+*   nested ``<place xml:id="PL...">...</place>``
+
+##### External Functions that are used by this Function
+*Module URI*|*Function Name*
+:----|:----
+``http://exist-db.org/apps/cbdb-data/calendar``|[cal:isodate](#isodate)
+``http://exist-db.org/apps/cbdb-data/place``|[pla:fix-admin-types](#fix-admin-types)
+``http://exist-db.org/apps/cbdb-data/global``|[global:validate-fragment](#validate-fragment)
+``http://exist-db.org/apps/cbdb-data/place``|[pla:nest-places](#nest-places)
+
+#### patch-missing-addr
+```xQuery
+declare function pla:patch-missing-addr($data as node()*) as node()*
+```
+
+##### Function Detail
+pla:patch-missing-addr makes sure that every c_addr_id from CBDB is present in listPlace.xml . It does so by inserting empty places present in ADDRESSES but not ADDR_CODES, using a
+
+##### Parameters
+*   $data - row elements from ADDRESSES table.
+
+##### Returns
+*   ``<place>...</place>``

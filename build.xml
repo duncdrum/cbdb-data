@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="xar" name="cbdb-data">
+<project default="all" name="cbdb-data">
     <xmlproperty file="expath-pkg.xml"/>
     <property name="project.version" value="${package(version)}"/>
     <property name="project.app" value="cbdb-data"/>
     <property name="teiTitle" value="cbdbTEI"/>
     <property name="cbdbVersion" value="20150202"/>
     <property name="build.dir" value="build"/>
-    <target name="xar">
-        <mkdir dir="${build.dir}"/>        
-        <!-- 
-        Development Version includes source files
-        -->
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>
-
-        <!--  
-        Official Release for uploading on Github
-        -->
-        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
-        <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
-        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>-->
-
-        <!--  
-        DEBUG Version for faster testing
-        -->
-        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-debug.xar"
-            excludes="${build.dir}/*, src/xml/*.xml, **/chunk-0?/**, **/chunk-1?/**, **/chunk-2?/**">            
-        </zip>-->
+    <target name="init" description="create build directory">
+      <tstamp/>
+      <mkdir dir="${build.dir}"/>
+    </target>
+    <!-- Dev build (includes everything) -->
+    <target name="dev" depends="init" description="compile all source files">
+      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr"/>
+    </target>
+    <!-- Github Release  -->
+    <target name="deploy" depends="init" description="compile release build">
+      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr"/>
+    </target>
+    <target name="src" depends="init" description="source files in xml">
+      <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
+    </target>
+    <target name="tei" depends="init" description="just the TEI files">
+      <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>
+    </target>
+    <target name="all" depends="dev, deploy, src, tei">
+      <tstamp/>
     </target>
 </project>
