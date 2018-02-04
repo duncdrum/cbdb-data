@@ -1,8 +1,8 @@
 # CBDB in TEI
 [![AUR](https://img.shields.io/badge/license-GPLv3.0-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/)
 [![GitHub release](https://img.shields.io/badge/release-0.6.3-green.svg)](https://github.com/duncdrum/cbdb-data/releases/latest)
-[![CBDB version](https://img.shields.io/badge/CBDB-20170829-red.svg)](https://hu-my.sharepoint.com/personal/hongsuwang_fas_harvard_edu/_layouts/15/guestaccess.aspx?guestaccesstoken=3E8k6iahdJx2Ew6k%2BAeKHDuP4DSSFzbpy02BbfjXhKs%3D&docid=09fda1531e3214410a18eb2aece0b003f)
-[![TEI version](https://img.shields.io/badge/TEI_P5-3.1.0-yellow.svg)](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html)
+[![CBDB version](https://img.shields.io/badge/CBDB-20170829-red.svg)](https://hu-my.sharepoint.com/personal/hongsuwang_fas_harvard_edu/_layouts/15/guestaccess.aspx?docid=071bf0245ea5c4c3c97951bb738ea822e&authkey=AWfhgK-UsDgwE2goQs6BIKk)
+[![TEI version](https://img.shields.io/badge/TEI_P5-3.3.0-yellow.svg)](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html)
 
 <img src="icon.png" align="left" width="25%"/>
 
@@ -16,7 +16,7 @@ Because *CBDB* consists of roughly ~350k records, users are strongly encouraged 
 
 
 ## Requirements
-*   eXist-db version `3.0` or greater with min. `2gb` (!) allocated memory.
+*   eXist-db version `3.6.1` or greater with min. `2gb` (!) allocated memory.
 *   (ant version `1.10.1` for compiling from source)
 
 
