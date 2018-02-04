@@ -8,17 +8,16 @@
     <property name="build.dir" value="build"/>
     <target name="xar">
         <mkdir dir="${build.dir}"/>
-    <!-- 
-        Development Version  
+    <!--
+        Development Version
      -->
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md"/>
-        
-   <!--   
-        GitHub Release  
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr"/>
+
+   <!--
+        GitHub Release
     -->
-        <!--<zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml"/>
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr"/>
         <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
-        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>-->
+        <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>
     </target>
 </project>
-
