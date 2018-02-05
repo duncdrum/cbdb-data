@@ -40,7 +40,7 @@ declare variable $global:person := 'listPerson';
 (:THE ORIGINAL TABLES IN SOURCE:)
 
 (:~
-: To generate this list see the local:table-variables function inside the aux module.:)
+: To generate this list see the local:table-variables function inside the suppl module.:)
 declare variable $global:ADDRESSES:= doc(concat($global:src, 'ADDRESSES.xml')); 
 declare variable $global:ADDR_BELONGS_DATA:= doc(concat($global:src, 'ADDR_BELONGS_DATA.xml')); 
 declare variable $global:ADDR_CODES:= doc(concat($global:src, 'ADDR_CODES.xml')); 

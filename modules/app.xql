@@ -10,6 +10,7 @@ import module namespace config="http://exist-db.org/apps/cbdb-data/config" at "c
 import module namespace docs="http://exist-db.org/xquery/docs" at "/db/apps/fundocs/modules/scan.xql";
 import module namespace inspect="http://exist-db.org/xquery/inspection" at "java:org.exist.xquery.functions.inspect.InspectionModule";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
+import module namespace util="http://exist-db.org/xquery/util";
 
 declare namespace xqdoc="http://www.xqdoc.org/1.0";
 
@@ -27,5 +28,21 @@ declare function app:test($node as node(), $model as map(*)) {
         function was triggered by the data-template attribute <code>data-template="app:test"</code>.</p>
 };
 
+(:~ 
+ : construct a variable declaration for each file in the source collection.
+ :
+ : @param $files collection path
+ :)
+declare 
+    %private
+    function app:table-variables($path as xs:string?) as xs:string* {
 
+(:construct a variable declaration for each file in the collection:)
+for $files in collection($path)
+let $name := util:document-name($files)
+let $var := substring-before($name, ".")
+order by $name
 
+return
+     'declare variable' || ' $config:' || $var || ' := doc($config:src-data' || " || '" || $name || "');"
+};
