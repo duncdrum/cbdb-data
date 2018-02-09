@@ -39,6 +39,7 @@ declare variable $config:expath-descriptor := doc(concat($config:app-root, "/exp
 
 declare variable $config:src-data := $config:app-root || "/src/xml/";
 declare variable $config:target-data := $config:app-root || "/target/";
+declare variable $config:target-aemni := $config:app-root || "/data/";
 
 declare variable $config:report := $config:app-root || "/reports/";
 declare variable $config:patch := $config:app-root || "/reports/patch/";
