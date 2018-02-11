@@ -12,11 +12,11 @@
     </target>
     <!-- Dev build (includes everything) -->
     <target name="dev" depends="init" description="compile all source files">
-      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr"/>
+      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr, *.pdf"/>
     </target>
     <!-- Github Release  -->
     <target name="deploy" depends="init" description="compile release build">
-      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr"/>
+      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml, .existdb.json, .yo-rc.json, README.md, **/.git*/**, .DS_Store, *.xpr, *.pdf"/>
     </target>
     <target name="src" depends="init" description="source files in xml">
       <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
