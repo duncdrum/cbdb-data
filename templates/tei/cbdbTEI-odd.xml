@@ -28,25 +28,327 @@
                 <moduleRef key="gaiji"/>
                 <moduleRef key="certainty"/>
                 <moduleRef key="namesdates"/>
-                <elementSpec ident="idno" mode="change">
+                <elementSpec ident="addName" mode="change">
                     <attList>
-                        <attDef ident="type" usage="req" mode="change">
-                            <gloss>You must indicate the type of ID</gloss>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>addName should have type attribute</gloss>
                             <datatype>
                                 <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
                             </datatype>
-                            <valList type="closed" mode="replace">
-                                <valItem ident="TTS">
-                                    <gloss>old TTS idno</gloss>
+                            <valList>
+                                <valItem ident="choronym">
+                                    <gloss>combination of place name and clan name</gloss>
                                 </valItem>
-                                <valItem ident="CBDB">
-                                    <gloss>CBDB c_personid</gloss>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="availability" mode="change">
+                    <attList>
+                        <attDef ident="status" usage="rec" mode="change">
+                            <gloss>availability should have status attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="restricted">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="bibl" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>bibl should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="bib:bib">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>                    
+                        <attDef ident="subtype" usage="rec" mode="change">
+                            <gloss>bibl should have subtype attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="bib:bib">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="category" mode="change">
+                    <attList>
+                        <attDef ident="n" usage="rec" mode="change">
+                            <gloss>category should have n attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="local:office">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="date" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>date should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="original">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="published">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="desc" mode="change">
+                    <attList>
+                        <attDef ident="ana" usage="rec" mode="change">
+                            <gloss>desc should have ana attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="topic">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="genre">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="七色補官門">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="7specials">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>desc should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="kin-tie">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:asso">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:entry">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>                    
+                        <attDef ident="subtype" usage="rec" mode="change">
+                            <gloss>desc should have subtype attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:entry">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="n" usage="rec" mode="change">
+                            <gloss>desc should have n attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:asso">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="event" mode="change">
+                    <attList>
+                        <attDef ident="role" usage="rec" mode="change">
+                            <gloss>event should have role attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="#BIO">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>event should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="general">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:entry">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="subtype" usage="rec" mode="change">
+                            <gloss>event should have subtype attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:entry">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="idno" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>idno should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="TTS">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="CHGIS">
+                                    <gloss>machine generated</gloss>
                                 </valItem>
                                 <valItem ident="VIAF">
-                                    <gloss>VIAF ID</gloss>
+                                    <gloss>machine generated</gloss>
                                 </valItem>
                                 <valItem ident="UUID">
-                                    <gloss>UUID (main ID of cbdb in TEI)</gloss>
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="listRelation" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>listRelation should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="kinship">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="associations">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="mapping" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>mapping should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="Unicode">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="standard">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="note" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>note should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="field">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="attempts">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="rank">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="parental-status">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="created">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="modified">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="org" mode="change">
+                    <attList>
+                        <attDef ident="ana" usage="rec" mode="change">
+                            <gloss>org should have ana attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="historical">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="role" usage="rec" mode="change">
+                            <gloss>org should have role attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="org:org">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="orgName" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>orgName should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="main">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="alias">
+                                    <gloss>machine generated</gloss>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -54,38 +356,321 @@
                 </elementSpec>
                 <elementSpec ident="persName" mode="change">
                     <attList>
-                        <attDef ident="type" usage="req" mode="change">
-                            <gloss>You must indicate the type of of personal Names</gloss>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>persName should have type attribute</gloss>
                             <datatype>
                                 <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
                             </datatype>
-                            <valList type="closed" mode="replace">
+                            <valList>
+                                <valItem ident="main">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
                                 <valItem ident="original">
-                                    <gloss>the name as it appears in BIOG_MAIN</gloss>
+                                    <gloss>machine generated</gloss>
                                 </valItem>
                                 <valItem ident="alias">
-                                    <gloss>alternative names, futher devided by subtypes</gloss>
+                                    <gloss>machine generated</gloss>
                                 </valItem>
                             </valList>
                         </attDef>
-                    </attList>
-                </elementSpec>
-                <elementSpec ident="addName" mode="change">
-                    <attList>
-                        <attDef ident="type" usage="req" mode="change">
-                            <gloss>You must indicate the type of addName</gloss>
+                        <attDef ident="role" usage="rec" mode="change">
+                            <gloss>persName should have role attribute</gloss>
                             <datatype>
                                 <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
                             </datatype>
-                            <valList type="open" mode="replace">
-                                <valItem ident="choronym">
-                                    <gloss>the place+surname used to identify medieval clans</gloss>
+                            <valList>
+                                <valItem ident="mediator">
+                                    <gloss>machine generated</gloss>
                                 </valItem>
                             </valList>
                         </attDef>
                     </attList>
                 </elementSpec>
-<!--  I should add the 15 altname types from ALTNAME_CODE as possible values for @subtype -->
+                <elementSpec ident="person" mode="change">
+                    <attList>
+                        <attDef ident="ana" usage="rec" mode="change">
+                            <gloss>person should have ana attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="historical">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="resp" usage="rec" mode="change">
+                            <gloss>person should have resp attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="selfbio">
+                                    <gloss>Tracks whatever c_self_bio tracks in CBDB</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="personGrp" mode="change">
+                    <attList>
+                        <attDef ident="role" usage="rec" mode="change">
+                            <gloss>personGrp should have role attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="kin">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="associates">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="place" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>place should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="pla:fix-admin-types">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="placeName" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>placeName should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="alias">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="relation" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>relation should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="auto-generated">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="name" usage="rec" mode="change">
+                            <gloss>relation should have name attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:kin">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:asso">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="residence" mode="change">
+                    <attList>
+                        <attDef ident="n" usage="rec" mode="change">
+                            <gloss>residence should have n attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:pers-add">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="roleName" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>roleName should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="main">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="alt">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="sex" mode="change">
+                    <attList>
+                        <attDef ident="value" usage="req" mode="change">
+                            <gloss>sex should have value attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:biog">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="state" mode="change">
+                    <attList>
+                        <attDef ident="ana" usage="rec" mode="change">
+                            <gloss>state should have ana attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:asso">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="n" usage="rec" mode="change">
+                            <gloss>state should have n attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:status">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:posses">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:new-post">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>state should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:asso">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="status">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="possession">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="posting">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="office-type">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="natal">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="subtype" usage="rec" mode="change">
+                            <gloss>state should have subtype attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:asso">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:status">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="biog:posses">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="title" mode="change">
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>title should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="main">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="alt">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="translation">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="trait" mode="change">                    
+                    <attList>
+                        <attDef ident="type" usage="rec" mode="change">
+                            <gloss>trait should have type attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="household">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="ethnicity">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="tribe">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="mourning">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                                <valItem ident="parental-status">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="subtype" usage="rec" mode="change">
+                            <gloss>trait should have subtype attribute</gloss>
+                            <datatype>
+                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                            </datatype>
+                            <valList>
+                                <valItem ident="biog:kin">
+                                    <gloss>machine generated</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
             </schemaSpec>
         </body>
     </text>
