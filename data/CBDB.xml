@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>cbdbTEI-mini</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>testing ouput of individual functions using this mini tei document.</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>cannot replace proper validation of final output</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <classDecl>
+                <taxonomy>
+                    <category>
+                        <catDesc>some category</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+            <charDecl>
+                <glyph>
+                    <mapping>⿸虍⿻夂丷⿱目</mapping>
+                </glyph>
+            </charDecl>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <listPerson>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-01/list.xml" xpointer="BIO2" parse="xml"/>
+<!--                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xpointer(.//person)" parse="xml"/>-->
+            </listPerson>
+            <listOrg/>
+            <listPlace/>
+            <listBibl/>
+            <listRelation/>
+            <p>some text here {data($frag)}</p>            
+        </body>
+    </text>
+</TEI>

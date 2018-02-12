@@ -46,3 +46,72 @@ order by $name
 return
      'declare variable' || ' $config:' || $var || ' := doc($config:src-data' || " || '" || $name || "');"
 };
+
+declare function app:validate-fragment ($frag as node()*, $loc as xs:string?) as item()* {
+
+(:~
+: This function validates $frag by inserting it into a minimal TEI template. 
+:
+: This function cannot guarantee that the final document is valid, 
+: but it can catch validation errors produced by other function early on.
+: This minimizes the number of validations necessary to produce the final output. 
+:
+: @param $frag the fragment (usually some function's output) to be validated.
+: @param $loc accepts the following element names as root to be used for validation: 
+:    *   category
+:    *   charDecl
+:    *   person
+:    *   org
+:    *   bibl
+:    *   place
+:
+: @return if validation succeeds then return the input, otherwise store a copy of the validation report 
+: into the reports directory, including the ``xml:id`` of the root element of the processed fragment.:)
+
+let $id := data($frag/@xml:id)
+let $mini := 
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>cbdbTEI-mini</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>testing ouput of individual functions using this mini tei document.</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>cannot replace proper validation of final output</p>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <classDecl>
+            {if ($loc = 'category')
+             then (<taxonomy>{$frag}</taxonomy>)
+             else (<taxonomy><category><catDesc>some category</catDesc></category></taxonomy>)}
+         </classDecl>
+            {if ($loc = 'charDecl')
+            then ($frag)
+            else (<charDecl><glyph><mapping>⿸虍⿻夂丷⿱目</mapping></glyph></charDecl>)}        
+      </encodingDesc>
+  </teiHeader>
+  <text>
+      <body>       
+         {
+         switch ($loc)
+         case 'person' return <listPerson ana="chunk"><listPerson ana="block">{$frag}</listPerson></listPerson>
+         case 'org' return <listOrg>{$frag}</listOrg>
+         case 'place' return <listPlace>{$frag}</listPlace>
+         case 'bibl' return <listBibl>{$frag}</listBibl>
+         default return (<p>some text here {data($frag)}</p>)
+         }         
+      </body>
+  </text>
+</TEI>
+
+return 
+    if (validation:jing($mini, doc('../templates/tei/tei_all.rng')) = true())
+    then ($frag)
+    else (($frag, 
+          xmldb:store($global:report,  concat('report-',$id,'.xml'),
+          validation:jing-report($mini, doc('../templates/tei/tei_all.rng')))))
+};

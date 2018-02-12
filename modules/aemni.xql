@@ -1,7 +1,7 @@
 xquery version "3.1";
 
 (:~
-: Temporary working module.
+: aemni working module.
 : Replace local with name of target module
 :
 : @author Duncan Paterson
@@ -20,8 +20,6 @@ declare namespace no = "http://none";
 declare namespace xi = "http://www.w3.org/2001/XInclude";
 declare namespace odd = "http://exist-db.org/apps/cbdb-data/odd";
 declare namespace rng = "http://relaxng.org/ns/structure/1.0";
-
-
 
 (:~
 : Because of the large number (>370k) of individuals
@@ -56,7 +54,65 @@ declare namespace rng = "http://relaxng.org/ns/structure/1.0";
 :        *   Error reports from failed write attempts, as well as validations errors will be stored in the reports directory.:)
 
 
-declare function local:write-and-split ($src-id as item()*, 
+(:5k item per chunk, 250 items per block, 20 blocks per chunk:)
+
+declare function local:pad($num as xs:integer) as xs:integer {
+string-length($num) +2
+};
+
+declare function local:find-last-dir ($i as xs:positiveInteger, $j as xs:positiveInteger){
+
+if ($i mod $j = 0)
+then ($i idiv $j )
+else ($i idiv $j + 1)
+
+};
+
+declare function local:write-scaffold ($items as item()*, 
+    $l1-name as xs:string,
+    $l2-num as xs:positiveInteger, 
+    $l3-item-num as xs:positiveInteger) as item()* {
+    
+let $count := count($items)
+let $l2-count := local:find-last-dir($count, $l2-num)
+let $block := local:find-last-dir($l2-count, $l3-item-num)
+
+let $l1:= xmldb:create-collection($config:target-aemni,$l1-name)
+
+
+for $i in 1 to local:find-last-dir($count, $l2-num)   
+let $l2 := xmldb:create-collection($l1,
+    'chunk-' || functx:pad-integer-to-length($i, local:pad($l2-num)))    
+
+for $j in subsequence($items, ($i - 1 )* $block, $block)
+return     
+    xmldb:create-collection($l2, 
+    'block-' || functx:pad-integer-to-length($j, local:pad($block)))
+
+  
+};
+
+
+(:replace for loops for intermediate file swith call to xmldb:xcollection:)
+
+
+declare function local:write-data ($item as item()*, $transform as function(*), $item-num as xs:integer) {
+
+for $individual at $pos in subsequence($items, ($pos - 1) * $item-num, $item-num)
+let $person := $transform($individual, 'n') 
+let $id := data($person/@xml:id)
+let $id-num := substring-after($id, 'BIO')
+
+let $file-name := 
+    'cbdb-' || functx:pad-integer-to-length($id-num, local:pad($id-num)) || '.xml'
+return
+    try {xmldb:store($collection, $file-name, $person)}
+                    
+    catch * {xmldb:store($collection, 'error.xml', 
+             <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}
+};
+
+(:declare function local:write-and-split ($src-id as item()*, 
     $tei-name as xs:string, 
     $tei-list as xs:string, 
     $chunk-size as xs:integer, 
@@ -65,7 +121,7 @@ declare function local:write-and-split ($src-id as item()*,
     $transform as function) as item()* {
     
 let $count := count($src-id)
-(:switch to proper target :)
+(\:switch to proper target :\)
 let $dir := $config:target-aemni || $tei-list
 let $inter-file := $tei-list || '.xml'
 
@@ -110,10 +166,22 @@ return
                     
     catch * {xmldb:store($collection, 'error.xml', 
              <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}
-};
+};:)
 
-let $test := $global:BIOG_MAIN//no:c_personid[. = 927]
-let $full := $global:BIOG_MAIN//no:c_personid[. > 0]
+let $test := element root {
+    for $i in 1 to 500
+    return
+        element item {attribute xml:id {'i' || $i}, 
+        $i}
+}
+let $full := count($config:BIOG_MAIN//no:c_personid[. > 0])
 
+(:for $item in subsequence($test//item, $j * :)
 return
-    local:write-and-split($test, 'person', 'listPerson', 10000,50,200)
+
+(:    functx:pad-integer-to-length(33 idiv 5, 3):)
+(:local:find-last-dir(15,5):)
+ local:write-scaffold($test//item, 'test', 15, 5)
+(:$full:)
+(:local:pad(3):)
+(:    local:write-and-split($test, 'person', 'listPerson', 10000,50,200):)
