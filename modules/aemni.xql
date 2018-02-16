@@ -56,40 +56,59 @@ declare namespace rng = "http://relaxng.org/ns/structure/1.0";
 
 (:5k item per chunk, 250 items per block, 20 blocks per chunk:)
 
-declare function local:pad($num as xs:integer) as xs:integer {
-string-length($num) +2
+declare function local:pad ($num as xs:integer*) as xs:integer {
+let $max := max ($num) cast as xs:string
+return
+    string-length ($max) +1
 };
 
-declare function local:find-last-dir ($i as xs:positiveInteger, $j as xs:positiveInteger){
-
-if ($i mod $j = 0)
-then ($i idiv $j )
-else ($i idiv $j + 1)
+declare 
+    %test:args(10,5) %test:assertEquals(2)
+    %test:args(10,4) %test:assertEquals(3)
+    %test:args(2,100) %test:assertEquals(1)
+function local:find-last-dir ($i as xs:positiveInteger, $j as xs:positiveInteger){
+if ($i < $j)
+then (1)
+else if ($i mod $j = 0)
+    then ($i div $j)
+    else ($i idiv $j + 1)
 
 };
 
 declare function local:write-scaffold ($items as item()*, 
     $l1-name as xs:string,
-    $l2-num as xs:positiveInteger, 
-    $l3-item-num as xs:positiveInteger) as item()* {
+    $items-per-l2 as xs:positiveInteger, 
+    $items-per-l3 as xs:positiveInteger) as item()* {
+    
+(:<root>
+    <l2>There are {$count} items in {$count div $items-per-l2} chunks, each chunk has {$items-per-l2} items.</l2>
+    <l3>There are {$count} items in {$count div $items-per-l3} blocks, each block has {$items-per-l3} items.</l3>
+    <chunks pad="{local:pad($count idiv $items-per-l2)}">
+        Actual: {local:find-last-dir ($count, $items-per-l2)}</chunks>
+    <blocks pad="{local:pad($count idiv $items-per-l3)}">
+        Actual: {local:find-last-dir ($count,  $items-per-l3)}, blocks per chunk: {local:find-last-dir ($items-per-l2 , $items-per-l3)}.</blocks>
+    <test>{$count mod $items-per-l3}</test>
+    <test>{$count > $items-per-l2 and $items-per-l2 > $items-per-l3}</test>
+    <test>{not($items-per-l3 * local:find-last-dir ($count,  $items-per-l3) <= $count)}</test>
+</root>:)    
     
 let $count := count($items)
-let $l2-count := local:find-last-dir($count, $l2-num)
-let $block := local:find-last-dir($l2-count, $l3-item-num)
+let $l2-count := local:find-last-dir ($count, $items-per-l2)
+let $l3-count := local:find-last-dir ($count,  $items-per-l3)
+let $l3-sum := local:find-last-dir ($items-per-l2 , $items-per-l3)
 
-let $l1:= xmldb:create-collection($config:target-aemni,$l1-name)
+let $l1:= xmldb:create-collection ($config:target-aemni,$l1-name)
 
 
-for $i in 1 to local:find-last-dir($count, $l2-num)   
-let $l2 := xmldb:create-collection($l1,
-    'chunk-' || functx:pad-integer-to-length($i, local:pad($l2-num)))    
+for $i in 1 to local:find-last-dir ($count, $items-per-l2)   
+let $l2 := xmldb:create-collection ($l1,
+    'chunk-' || functx:pad-integer-to-length($i, local:pad($count idiv $items-per-l2)))    
 
-for $j in subsequence($items, ($i - 1 )* $block, $block)
+for $j in subsequence ($items,($i - 1)* $l3-sum, $l3-sum + 1)
 return     
     xmldb:create-collection($l2, 
-    'block-' || functx:pad-integer-to-length($j, local:pad($block)))
+    'block-' || functx:pad-integer-to-length ($j, local:pad($count idiv $items-per-l3)))
 
-  
 };
 
 
@@ -176,12 +195,26 @@ let $test := element root {
 }
 let $full := count($config:BIOG_MAIN//no:c_personid[. > 0])
 
+let $count := count($test//item)
+let $items-per-l2 := 75
+let  $items-per-l3 := 12
+
 (:for $item in subsequence($test//item, $j * :)
 return
 
-(:    functx:pad-integer-to-length(33 idiv 5, 3):)
-(:local:find-last-dir(15,5):)
- local:write-scaffold($test//item, 'test', 15, 5)
-(:$full:)
-(:local:pad(3):)
+( 
+local:write-scaffold($test//item, 'test', $items-per-l2, $items-per-l3), 
+<root>
+    <l2>There are {$count} items in {$count div $items-per-l2} chunks, each chunk has {$items-per-l2} items.</l2>
+    <l3>There are {$count} items in {$count div $items-per-l3} blocks, each block has {$items-per-l3} items.</l3>
+    <chunks pad="{local:pad($count idiv $items-per-l2)}">
+        Actual: {local:find-last-dir ($count, $items-per-l2)}</chunks>
+    <blocks pad="{local:pad($count idiv $items-per-l3)}">
+        Actual: {local:find-last-dir ($count,  $items-per-l3)}, blocks per chunk: {local:find-last-dir ($items-per-l2 , $items-per-l3)}.</blocks>
+    <test>{$count mod $items-per-l3}</test>
+    <test>{$count > $items-per-l2 and $items-per-l2 > $items-per-l3}</test>
+    <test>{not($items-per-l3 * local:find-last-dir ($count,  $items-per-l3) <= $count)}</test>
+</root>)
+
+
 (:    local:write-and-split($test, 'person', 'listPerson', 10000,50,200):)
