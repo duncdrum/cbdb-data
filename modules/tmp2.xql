@@ -28,14 +28,88 @@ declare variable $path := collection($config:app-root || '/src/');
 declare variable $model := $path/model/.;
 declare variable $tmpl := doc('/db/apps/cbdb-data/templates/tei/cbdbTEI-template.xml');
 
-
-element result {
-let $test := element root {
-    for $i in 1 to 4
+(:~ 
+ : determine the required padding length for a sequence of ints
+ : @param $num onn or more integers
+ : @return integer
+ :)
+declare function local:pad($num as xs:integer*) as xs:integer {
+    let $max := max($num) cast as xs:string
     return
-        element item {$i}
+        string-length($max) + 1
+};
+
+
+(:~ 
+ : called by scaffolding to calculate the number of directories
+ : @param $i the number of items
+ : @param $j the size of the grouping
+ : @return the required number of folders to store the items in the desired groups
+ :)
+declare
+%test:args(10, 5) %test:assertEquals(2)
+%test:args(10, 4) %test:assertEquals(3)
+%test:args(2, 100) %test:assertEquals(1)
+function local:find-last-dir($i as xs:positiveInteger, $j as xs:positiveInteger) as xs:integer {
+    if ($i mod $j = 0)
+    then
+        ($i div $j)
+    else
+        ($i idiv $j + 1)
+};
+
+let $test := element root {
+    for $i in 1 to 500
+    return
+        element item {
+            attribute xml:id {'i' || $i},
+            $i
+        }
 }
 
-for $item in $test//item[position() = (. to 3)]
+let $count := count($test//item)
+let $collection := 'recurse'
+
+let $items-per-l2 := 75
+let $items-per-l3 := 12
+
+(: Make folders :)
+
+let $parent := function ($col-name as xs:string) {
+let $col-path := $config:target-aemni || $col-name
 return
-   $item }
+    if (exists(collection($col-path)))
+    then
+        ($col-path)
+    else
+        (xmldb:create-collection($config:target-aemni, $col-name))
+}
+
+let $chunks := function ($n as xs:positiveInteger) {
+    for $i in 1 to local:find-last-dir($count, $n)
+    return
+        xmldb:create-collection($parent($collection),
+        'chunk-' || functx:pad-integer-to-length($i, local:pad($count idiv $n)))
+}
+
+
+let $blocks := function ($n as xs:positiveInteger, $f as function(*)) {
+    $n,
+    if ($n eq 0)
+    then
+        ($collection)
+    else
+        ($f($n - 1, $f))
+}
+
+(: write doc into new collections :)
+let $store-doc := function ($items as item()*) as item() {
+    for $item in $items
+    return
+        <data>{$item}</data>
+}
+
+(:for $item in $test//item[position() = (. to 3)]:)
+for $n at $pos in $test//item
+return
+   local:pad($pos)

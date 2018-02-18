@@ -21,200 +21,81 @@ declare namespace xi = "http://www.w3.org/2001/XInclude";
 declare namespace odd = "http://exist-db.org/apps/cbdb-data/odd";
 declare namespace rng = "http://relaxng.org/ns/structure/1.0";
 
-(:~
-: Because of the large number (>370k) of individuals
-: the write operation of biographies.xql is slightly more complex. 
-: Instead of putting its data into a single file or collection, 
-: it creates a single listPerson directory inside the target folder, 
-: which is populated by further subdirectories and ultimately the person records. 
-:
-: Currently, cbdbTEI.xml includes links to 37 listPerson files 
-: covering chunks of $chunk-size persons each (10k).  
-:
-: "chunk" collections contain a single list.xml file and $block-size (50) sub-collections. 
-: This file contains xInclude statements to 1 listPerson.xml file per "block" sub-collection.
-: Each block contains a single listPerson.xml file on the same level as the individual
-: $ppl-per-block (200) person records .
-
-: @param $test set to c_personid that requires further testing
-: @param $src-id all c_personid sgreater then 0 (unkown)
-: @param $count how many c_personids there are
-
-: @param $chunk-size determines the sum of person records within the top level directories, 
-:    each contains subdirectories and a single list-X.xml file.
-: @param $block-size determines the number of subdirectories per chunk.
-: @param $ppl-per-block the number of person records per block
-:
-: @return Files and Folders for person data:
-:    *   Directories:
-:        *   creates nested directories listPerson, chunk, and block using the respective parameters.
-:    *   Files:
-:        *   creates list-X.xml and listPerson.xml files that include xInclude statements linking individual person records back to the main tei file. 
-:        *   populates the previously generated directories with individual person records by calling biog:biog.    
-:        *   Error reports from failed write attempts, as well as validations errors will be stored in the reports directory.:)
-
-
-(:5k item per chunk, 250 items per block, 20 blocks per chunk:)
-
-declare function local:pad ($num as xs:integer*) as xs:integer {
-let $max := max ($num) cast as xs:string
-return
-    string-length ($max) +1
-};
-
-declare 
-    %test:args(10,5) %test:assertEquals(2)
-    %test:args(10,4) %test:assertEquals(3)
-    %test:args(2,100) %test:assertEquals(1)
-function local:find-last-dir ($i as xs:positiveInteger, $j as xs:positiveInteger){
-if ($i < $j)
-then (1)
-else if ($i mod $j = 0)
-    then ($i div $j)
-    else ($i idiv $j + 1)
-
-};
-
-declare function local:write-scaffold ($items as item()*, 
-    $l1-name as xs:string,
-    $items-per-l2 as xs:positiveInteger, 
-    $items-per-l3 as xs:positiveInteger) as item()* {
-    
-(:<root>
-    <l2>There are {$count} items in {$count div $items-per-l2} chunks, each chunk has {$items-per-l2} items.</l2>
-    <l3>There are {$count} items in {$count div $items-per-l3} blocks, each block has {$items-per-l3} items.</l3>
-    <chunks pad="{local:pad($count idiv $items-per-l2)}">
-        Actual: {local:find-last-dir ($count, $items-per-l2)}</chunks>
-    <blocks pad="{local:pad($count idiv $items-per-l3)}">
-        Actual: {local:find-last-dir ($count,  $items-per-l3)}, blocks per chunk: {local:find-last-dir ($items-per-l2 , $items-per-l3)}.</blocks>
-    <test>{$count mod $items-per-l3}</test>
-    <test>{$count > $items-per-l2 and $items-per-l2 > $items-per-l3}</test>
-    <test>{not($items-per-l3 * local:find-last-dir ($count,  $items-per-l3) <= $count)}</test>
-</root>:)    
-    
-let $count := count($items)
-let $l2-count := local:find-last-dir ($count, $items-per-l2)
-let $l3-count := local:find-last-dir ($count,  $items-per-l3)
-let $l3-sum := local:find-last-dir ($items-per-l2 , $items-per-l3)
-
-let $l1:= xmldb:create-collection ($config:target-aemni,$l1-name)
-
-
-for $i in 1 to local:find-last-dir ($count, $items-per-l2)   
-let $l2 := xmldb:create-collection ($l1,
-    'chunk-' || functx:pad-integer-to-length($i, local:pad($count idiv $items-per-l2)))    
-
-for $j in subsequence ($items,($i - 1)* $l3-sum, $l3-sum + 1)
-return     
-    xmldb:create-collection($l2, 
-    'block-' || functx:pad-integer-to-length ($j, local:pad($count idiv $items-per-l3)))
-
-};
-
-
-(:replace for loops for intermediate file swith call to xmldb:xcollection:)
-
-
-declare function local:write-data ($item as item()*, $transform as function(*), $item-num as xs:integer) {
-
-for $individual at $pos in subsequence($items, ($pos - 1) * $item-num, $item-num)
-let $person := $transform($individual, 'n') 
-let $id := data($person/@xml:id)
-let $id-num := substring-after($id, 'BIO')
-
-let $file-name := 
-    'cbdb-' || functx:pad-integer-to-length($id-num, local:pad($id-num)) || '.xml'
-return
-    try {xmldb:store($collection, $file-name, $person)}
-                    
-    catch * {xmldb:store($collection, 'error.xml', 
-             <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}
-};
-
-(:declare function local:write-and-split ($src-id as item()*, 
-    $tei-name as xs:string, 
-    $tei-list as xs:string, 
-    $chunk-size as xs:integer, 
-    $block-size as xs:integer, 
-    $el-p-block as xs:integer, 
-    $transform as function) as item()* {
-    
-let $count := count($src-id)
-(\:switch to proper target :\)
-let $dir := $config:target-aemni || $tei-list
-let $inter-file := $tei-list || '.xml'
-
-for $i in 1 to $count idiv $chunk-size + 1 
-let $chunk := xmldb:create-collection($dir, 
-    'chunk-' || functx:pad-integer-to-length($i, 2))
-  
-
-for $j in subsequence($src-id, ($i - 1) * $block-size, $block-size)
-let $collection := xmldb:create-collection($chunk, 
-    'block-' || functx:pad-integer-to-length($j, 4))    
-    
-
-for $individual in subsequence($src-id, ($j - 1) * $el-p-block, $el-p-block)
-let $person := $transform($individual, 'n') 
-let $file-name := 
-    'cbdb-' || functx:pad-integer-to-length(substring-after(data($person/@xml:id), 'BIO'), 7) || '.xml'
-
-return 
-    try {(xmldb:store($collection, $file-name, $person), 
-
-         xmldb:store($collection, $inter-file, 
-            <listPerson>{
-                    for $files in collection($collection)
-                    let $n := functx:substring-after-last(base-uri($files), '/')
-                    where $n != $inter-file
-                    order by $n
-                    return 
-                        <xi:include href="{$n}" parse="xml"/>}
-                    </listPerson>), 
-            
-        xmldb:store($chunk, concat('list-', $i, '.xml'), 
-            <listPerson>{                
-                    for $lists in collection($chunk)
-                    let $m := functx:substring-after-last(base-uri($lists), '/') 
-                    where $m  = $inter-file
-                    order by base-uri($lists)
-                    return
-                        <xi:include href="{substring-after(base-uri($lists), 
-                            concat('/chunk-', functx:pad-integer-to-length($i, 2), '/'))}" xpointer="{data($person/@xml:id)}" parse="xml"/>}
-                    </listPerson>))}
-                    
-    catch * {xmldb:store($collection, 'error.xml', 
-             <error>Caught error {$err:code}: {$err:description}.  Data: {$err:value}.</error>)}
-};:)
-
-let $test := element root {
-    for $i in 1 to 500
+declare variable $test := element root {
+    for $i in 1 to 50
     return
-        element item {attribute xml:id {'i' || $i}, 
-        $i}
-}
-let $full := count($config:BIOG_MAIN//no:c_personid[. > 0])
+        element item {
+            attribute xml:id {'i' || $i},
+            $i
+        }
+};
 
-let $count := count($test//item)
-let $items-per-l2 := 75
-let  $items-per-l3 := 12
+(:~ 
+ : determine the required padding length for a sequence of ints
+ : @param $num onn or more integers
+ : @return integer
+ :)
+declare function local:pad($num as xs:integer*) as xs:integer {
+    let $max := max($num) cast as xs:string
+    return
+        string-length($max) + 1
+};
 
-(:for $item in subsequence($test//item, $j * :)
+declare function local:transform($items as item()*, $validation as xs:string) as item()* {
+    <TEI>
+        <body>
+            <text>{
+                    typeswitch ($items)
+                        case element(item)
+                            return
+                                <person>{$items/text()}</person>
+                        default
+                            return
+                                ()
+                }
+            </text>
+        </body>
+    </TEI>
+};
+
+(:~ 
+ : This function ensures that individual records 
+ : are written to a three deep nested collection hierarchy.
+ : TODO switch to xml:id ? 
+ : TODO test function call
+ : TODO let $info := util:log('info', 'Successfully created ' || $sum || ' nested collections for ' || $count ||
+    ' items. ' || $l2-count || ' chunks contain ' || $l3-sum || ' blocks each.')
+ :
+ : @param $nodes the items to be transformed
+ : @param $parent-name of the top level directory name e.g. listPerson, listPlace, …
+ : @param $items-per-chunk number of records per l2 collection (chunk)
+ : @param $items-per-block number of records per l3 collection (block)
+ : @param $f the transformation function that generates TEI
+ :
+ : @return individual records stored in dynamically generated collection tree 
+ :)
+declare function local:write-and-split ($nodes as item()*,
+$parent-name as xs:string, 
+$items-per-chunk as xs:positiveInteger, 
+$items-per-block as xs:positiveInteger,
+$transform as function(*)) as item()* {
+
+let $count := count($nodes)
+let $chunk-pad := local:pad($count idiv $items-per-chunk)
+let $block-pad := local:pad($count idiv $items-per-block)
+let $file-pad := local:pad($count)
+
+for $n at $pos in $nodes
+(: +1 avoids '/chunk-00' paths :)
+let $chunk-name := $parent-name || '/chunk-' || functx:pad-integer-to-length($pos idiv $items-per-chunk + 1, $chunk-pad)
+let $block-name := $chunk-name || '/block-' || functx:pad-integer-to-length($pos idiv $items-per-block + 1, $block-pad)
+
+order by $pos
+        
+let $file-name := 'item-' || functx:pad-integer-to-length($pos, $file-pad) || '.xml'
 return
-
-( 
-local:write-scaffold($test//item, 'test', $items-per-l2, $items-per-l3), 
-<root>
-    <l2>There are {$count} items in {$count div $items-per-l2} chunks, each chunk has {$items-per-l2} items.</l2>
-    <l3>There are {$count} items in {$count div $items-per-l3} blocks, each block has {$items-per-l3} items.</l3>
-    <chunks pad="{local:pad($count idiv $items-per-l2)}">
-        Actual: {local:find-last-dir ($count, $items-per-l2)}</chunks>
-    <blocks pad="{local:pad($count idiv $items-per-l3)}">
-        Actual: {local:find-last-dir ($count,  $items-per-l3)}, blocks per chunk: {local:find-last-dir ($items-per-l2 , $items-per-l3)}.</blocks>
-    <test>{$count mod $items-per-l3}</test>
-    <test>{$count > $items-per-l2 and $items-per-l2 > $items-per-l3}</test>
-    <test>{not($items-per-l3 * local:find-last-dir ($count,  $items-per-l3) <= $count)}</test>
-</root>)
+    xmldb:store(xmldb:create-collection($config:target-aemni, $block-name), $file-name, $transform($n))
+};    
 
 
-(:    local:write-and-split($test, 'person', 'listPerson', 10000,50,200):)
+    local:write-and-split($test//item, 'tada', 25, 3, local:transform#1)
