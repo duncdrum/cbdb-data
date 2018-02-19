@@ -100,6 +100,6 @@ return
     xmldb:store(xmldb:create-collection($config:target-aemni, $block-name), $file-name, $transform($n))
 };    
 
-
-    local:write-and-split($test//item, 'tada', 25, 3, local:transform#1)
+ceiling(75 div 15)
+(:    local:write-and-split($test//item, 'tada', 25, 3, local:transform#1):)
     

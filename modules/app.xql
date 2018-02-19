@@ -28,16 +28,17 @@ declare function app:test($node as node(), $model as map(*)) {
         function was triggered by the data-template attribute <code>data-template="app:test"</code>.</p>
 };
 
-(:~ 
- : construct a variable declaration for each file in the source collection.
- :
- : @param $files collection path
- :)
+
 declare 
     %private
     function app:table-variables($path as xs:string?) as xs:string* {
 
-(:construct a variable declaration for each file in the collection:)
+(:~ 
+ : construct a variable declaration for each file in the source collection.
+ :
+ : @param $path collection path as string
+ :)
+ 
 for $files in collection($path)
 let $name := util:document-name($files)
 let $var := substring-before($name, ".")
@@ -50,23 +51,25 @@ return
 declare function app:validate-fragment ($frag as node()*, $loc as xs:string?) as item()* {
 
 (:~
-: This function validates $frag by inserting it into a minimal TEI template. 
-:
-: This function cannot guarantee that the final document is valid, 
-: but it can catch validation errors produced by other function early on.
-: This minimizes the number of validations necessary to produce the final output. 
-:
-: @param $frag the fragment (usually some function's output) to be validated.
-: @param $loc accepts the following element names as root to be used for validation: 
-:    *   category
-:    *   charDecl
-:    *   person
-:    *   org
-:    *   bibl
-:    *   place
-:
-: @return if validation succeeds then return the input, otherwise store a copy of the validation report 
-: into the reports directory, including the ``xml:id`` of the root element of the processed fragment.:)
+ : This function validates $frag by inserting it into a minimal TEI template. 
+ :
+ : This function cannot guarantee that the final document is valid, 
+ : but it can catch validation errors produced by other function early on.
+ : This minimizes the number of validations necessary to produce the final output. 
+ : 
+ : TODO: add listRelation, and 
+ :
+ : @param $frag the fragment (usually some function's output) to be validated.
+ : @param $loc accepts the following element names as root to be used for validation: 
+ :    *   category
+ :    *   charDecl
+ :    *   person
+ :    *   org
+ :    *   bibl
+ :    *   place
+ :
+ : @return if validation succeeds then return the input, otherwise store a copy of the validation report 
+ : into the reports directory, including the ``xml:id`` of the root element of the processed fragment.:)
 
 let $id := data($frag/@xml:id)
 let $mini := 
@@ -115,3 +118,80 @@ return
           xmldb:store($global:report,  concat('report-',$id,'.xml'),
           validation:jing-report($mini, doc('../templates/tei/tei_all.rng')))))
 };
+
+
+declare function app:pad($num as xs:integer*) as xs:integer {
+
+(:~ 
+ : determine the required padding length for a sequence of ints for human friendly display
+ : @param $num onn or more integers
+ : @return integer
+ :)
+
+    let $max := max($num) cast as xs:string
+    return
+        string-length($max)
+};
+
+declare function app:transform($items as item()*, $validation as xs:string) as item()* {
+    <TEI>
+        <body>
+            <text>{
+                    typeswitch ($items)
+                        case element(item)
+                            return
+                                <person>{$items/text()}</person>
+                        default
+                            return
+                                ()
+                }
+            </text>
+        </body>
+    </TEI>
+};
+
+
+declare function app:write-and-split ($nodes as item()*,
+$parent-name as xs:string, 
+$items-per-chunk as xs:positiveInteger, 
+$items-per-block as xs:positiveInteger,
+$transform as function(*)) as item()* {
+
+(:~ 
+ : This function ensures that individual records 
+ : are written to a three deep nested collection hierarchy.
+ : TODO switch to xml:id ? 
+ :
+ : local:write-and-split($test//item, 'listPerson', 75, 15, local:transform#2)
+ :
+ : @param $nodes the items to be transformed
+ : @param $parent-name of the top level directory name e.g. listPerson, listPlace, …
+ : @param $items-per-chunk number of records per l2 collection (chunk)
+ : @param $items-per-block number of records per l3 collection (block)
+ : @param $f the transformation function that generates TEI
+ :
+ : @return individual records stored in dynamically generated collection tree 
+ :)
+
+let $count := count($nodes)
+let $chunk-pad := app:pad($count idiv $items-per-chunk)
+let $block-pad := app:pad($count idiv $items-per-block)
+let $file-pad := app:pad($count)
+let $sum := ceiling($count div $items-per-chunk + $count div $items-per-block)
+
+(: Write a note to log :)
+let $info := util:log('info', 'Successfully created ' || $sum || ' nested collections for ' || 
+    $count || ' items. ' || ceiling($count div $items-per-chunk) || ' chunks contain ' ||
+    ceiling($items-per-chunk div $items-per-block) || ' blocks each.')
+
+for $n at $pos in $nodes
+(: +1 avoids '/chunk-00' paths :)
+let $chunk-name := $parent-name || '/chunk-' || functx:pad-integer-to-length($pos idiv $items-per-chunk + 1, $chunk-pad)
+let $block-name := $chunk-name || '/block-' || functx:pad-integer-to-length($pos idiv $items-per-block + 1, $block-pad)
+
+order by $pos
+        
+let $file-name := 'item-' || functx:pad-integer-to-length($pos, $file-pad) || '.xml'
+return
+    xmldb:store(xmldb:create-collection($config:target-aemni, $block-name), $file-name, $transform($n, 'n'))
+};    

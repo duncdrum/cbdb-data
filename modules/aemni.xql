@@ -22,7 +22,7 @@ declare namespace odd = "http://exist-db.org/apps/cbdb-data/odd";
 declare namespace rng = "http://relaxng.org/ns/structure/1.0";
 
 declare variable $test := element root {
-    for $i in 1 to 50
+    for $i in 1 to 500
     return
         element item {
             attribute xml:id {'i' || $i},
@@ -31,14 +31,14 @@ declare variable $test := element root {
 };
 
 (:~ 
- : determine the required padding length for a sequence of ints
+ : determine the required padding length for a sequence of ints for human friendly display
  : @param $num onn or more integers
  : @return integer
  :)
 declare function local:pad($num as xs:integer*) as xs:integer {
     let $max := max($num) cast as xs:string
     return
-        string-length($max) + 1
+        string-length($max)
 };
 
 declare function local:transform($items as item()*, $validation as xs:string) as item()* {
@@ -62,9 +62,6 @@ declare function local:transform($items as item()*, $validation as xs:string) as
  : This function ensures that individual records 
  : are written to a three deep nested collection hierarchy.
  : TODO switch to xml:id ? 
- : TODO test function call
- : TODO let $info := util:log('info', 'Successfully created ' || $sum || ' nested collections for ' || $count ||
-    ' items. ' || $l2-count || ' chunks contain ' || $l3-sum || ' blocks each.')
  :
  : @param $nodes the items to be transformed
  : @param $parent-name of the top level directory name e.g. listPerson, listPlace, …
@@ -80,10 +77,17 @@ $items-per-chunk as xs:positiveInteger,
 $items-per-block as xs:positiveInteger,
 $transform as function(*)) as item()* {
 
+
 let $count := count($nodes)
 let $chunk-pad := local:pad($count idiv $items-per-chunk)
 let $block-pad := local:pad($count idiv $items-per-block)
 let $file-pad := local:pad($count)
+let $sum := ceiling($count div $items-per-chunk + $count div $items-per-block)
+
+(: Write a note to log :)
+let $info := util:log('info', 'Successfully created ' || $sum || ' nested collections for ' || 
+    $count || ' items. ' || ceiling($count div $items-per-chunk) || ' chunks contain ' ||
+    ceiling($items-per-chunk div $items-per-block) || ' blocks each.')
 
 for $n at $pos in $nodes
 (: +1 avoids '/chunk-00' paths :)
@@ -94,8 +98,8 @@ order by $pos
         
 let $file-name := 'item-' || functx:pad-integer-to-length($pos, $file-pad) || '.xml'
 return
-    xmldb:store(xmldb:create-collection($config:target-aemni, $block-name), $file-name, $transform($n))
+    xmldb:store(xmldb:create-collection($config:target-aemni, $block-name), $file-name, $transform($n, 'n'))
 };    
 
 
-    local:write-and-split($test//item, 'tada', 25, 3, local:transform#1)
+    local:write-and-split($test//item, 'listPerson', 75, 15, local:transform#2)
