@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc xml:id="fileDesc">
+            <titleStmt>
+                <title>CBDB in TEI</title>
+                <author xml:id="DP">Duncan Paterson</author>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="respStmt.xml" fallback="db/apps/cddb-data/data/respStmt.xml" parse="xml"/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>
+                    <orgName>Fairbank Center for Chinese Studies at Harvard University</orgName>
+                    <orgName>Institute of History and Philology of Academia Sinica</orgName>
+                    <orgName>Center for Research on Ancient Chinese History at Peking
+                        University</orgName>
+                </authority>
+                <availability>
+                    <licence target="https://creativecommons.org/licenses/by-nc-sa/4.0/">cc-by-nc-sa
+                        4.0</licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Formalising known entites from <ref target="https://projects.iq.harvard.edu/cbdb/home">China Biographical
+                        Database</ref> version 20170829.</p>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc xml:id="profileDesc">
+            <langUsage>                
+                <language ident="zh-Hant">Chinese traditional characters</language>
+                <language ident="zh-Latn-alalc97">pinyin transliteration of Chinese characters without tonal diacrits</language>
+                <language ident="en">English</language>
+            </langUsage>
+            <calendarDesc>
+                <calendar xml:id="chinTrad">
+                    <p>Two taxonomies capture the traditional chinese calendar. 
+                        The first encodes the sexagenary cycle (干支 = stems-and-branches) which can denote eras, months, or days.
+                        The second is a nested taxonomy for dynastic periods, and their reigns.                         
+                        For automatic conversions between Gregorian and East Asian calendars see:  
+                        <ref target="http://authority.ddbc.edu.tw/time/">Buddhist Studies Time Authority Databases</ref>
+                    </p>
+                </calendar>
+            </calendarDesc>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2018-02-20" who="#DP">update sources and refactored structure</change>
+            <change when="2016-12-12" who="#DP">intial draft</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <p/> 
+        </body>
+    </text>
+</TEI>

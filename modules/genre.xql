@@ -4,7 +4,7 @@ xquery version "3.0";
 : these are referenced from listBibl.xml. 
 :
 : The exact difference between bibliographical category codes, and category types is unclear. 
-: This module joins them within on taxonomy and at the level speciefied in the sources. 
+: This module joins them within one taxonomy and at the level speciefied in the sources. 
 :
 : @author Duncan Paterson
 : @version 0.7
@@ -73,8 +73,8 @@ let $typeTree := xmldb:store($global:target, $global:genre,
                         <category xml:id="biblType01">
                             <catDesc xml:lang="zh-Hant">{$types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc_chn/text()}</catDesc>
                             <catDesc xml:lang="en">{$types/no:c_text_cat_type_id[. = '01']/../no:c_text_cat_type_desc/text()}</catDesc>       
-                            {for $outer in $types[c_text_cat_type_parent_id = '01']
-                            order by $outer[c_text_cat_type_sortorder]
+                            {for $outer in $types[no:c_text_cat_type_parent_id = '01']
+                            order by $outer[no:c_text_cat_type_sortorder]
                             return
                                 gen:nest-types($types, $outer/no:c_text_cat_type_id ,$outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc, '')}
                         </category>

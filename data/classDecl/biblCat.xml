@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>CBDB's genre classification</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Part of CBDB in TEI</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>born digital</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <classDecl>
+                <taxonomy xml:id="biblCat">
+                    <category xml:id="biblType01">
+                        <catDesc xml:lang="zh-Hant">古書原文</catDesc>
+                        <catDesc xml:lang="en">Chinese Primary Texts</catDesc>
+                        <category xml:id="biblType01100">
+                            <catDesc xml:lang="zh-Hant">著作（籠統）</catDesc>
+                            <catDesc xml:lang="en">Genres (General)</catDesc>
+                            <category xml:id="biblType0110000">
+                                <catDesc xml:lang="zh-Hant">著作（籠統）</catDesc>
+                                <catDesc xml:lang="en">Genres (General)</catDesc>
+                                <category xml:id="biblCat0">
+                                    <catDesc xml:lang="zh-Hant">未知</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">unknown</catDesc>
+                                    <catDesc xml:lang="en">unknown</catDesc>
+                                </category>
+                            </category>
+                        </category>
+                        <category xml:id="biblType01101">
+                            <catDesc xml:lang="zh-Hant">經部</catDesc>
+                            <catDesc xml:lang="en">Classics</catDesc>
+                            <category xml:id="biblType0110100">
+                                <catDesc xml:lang="zh-Hant">經部（籠統）</catDesc>
+                                <catDesc xml:lang="en">Classics (General)</catDesc>
+                                <category xml:id="biblCat17">
+                                    <catDesc xml:lang="zh-Hant">群經總義/經解</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">qun jing zong yi / jing jie</catDesc>
+                                    <catDesc xml:lang="en">General Interpretation of Classics</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110101">
+                                <catDesc xml:lang="zh-Hant">易類</catDesc>
+                                <catDesc xml:lang="en">Book of Change</catDesc>
+                                <category xml:id="biblCat18">
+                                    <catDesc xml:lang="zh-Hant">易</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Yi</catDesc>
+                                    <catDesc xml:lang="en">Book of Change</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110102">
+                                <catDesc xml:lang="zh-Hant">尚書類</catDesc>
+                                <catDesc xml:lang="en">Book of Documents</catDesc>
+                                <category xml:id="biblCat19">
+                                    <catDesc xml:lang="zh-Hant">書</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Shu</catDesc>
+                                    <catDesc xml:lang="en">Book of Documents</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110103">
+                                <catDesc xml:lang="zh-Hant">詩經類</catDesc>
+                                <catDesc xml:lang="en">Book of Odes</catDesc>
+                                <category xml:id="biblCat20">
+                                    <catDesc xml:lang="zh-Hant">詩</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Shi</catDesc>
+                                    <catDesc xml:lang="en">Book of Odes</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110104">
+                                <catDesc xml:lang="zh-Hant">禮類</catDesc>
+                                <catDesc xml:lang="en">Rites</catDesc>
+                                <category xml:id="biblCat21">
+                                    <catDesc xml:lang="zh-Hant">禮 (籠統)</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Li (long tong)</catDesc>
+                                    <catDesc xml:lang="en">Rital Classics and associated works</catDesc>
+                                </category>
+                                <category xml:id="biblCat22">
+                                    <catDesc xml:lang="zh-Hant">周禮</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhou li</catDesc>
+                                    <catDesc xml:lang="en">Rites of Zhou</catDesc>
+                                </category>
+                                <category xml:id="biblCat23">
+                                    <catDesc xml:lang="zh-Hant">儀禮</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Yi li</catDesc>
+                                    <catDesc xml:lang="en">Ceremonial Rites</catDesc>
+                                </category>
+                                <category xml:id="biblCat24">
+                                    <catDesc xml:lang="zh-Hant">禮記</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Li ji</catDesc>
+                                    <catDesc xml:lang="en">Record of Rites</catDesc>
+                                </category>
+                                <category xml:id="biblCat25">
+                                    <catDesc xml:lang="zh-Hant">大戴禮記</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Da dai li ji</catDesc>
+                                    <catDesc xml:lang="en">Greater Dai Record of Rites</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110105">
+                                <catDesc xml:lang="zh-Hant">樂類</catDesc>
+                                <catDesc xml:lang="en">Music</catDesc>
+                                <category xml:id="biblCat26">
+                                    <catDesc xml:lang="zh-Hant">樂</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Yue</catDesc>
+                                    <catDesc xml:lang="en">Music</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110106">
+                                <catDesc xml:lang="zh-Hant">春秋類</catDesc>
+                                <catDesc xml:lang="en">Spring and Autumn Annals</catDesc>
+                                <category xml:id="biblCat27">
+                                    <catDesc xml:lang="zh-Hant">春秋 (籠統)</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Chun qiu (long tong)</catDesc>
+                                    <catDesc xml:lang="en">Spring and Autumn Annals and associated works</catDesc>
+                                </category>
+                                <category xml:id="biblCat28">
+                                    <catDesc xml:lang="zh-Hant">春秋左傳</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Chun qiu zuo zhuan</catDesc>
+                                    <catDesc xml:lang="en">Spring and Autumn Annals: Zuo Commentary</catDesc>
+                                </category>
+                                <category xml:id="biblCat29">
+                                    <catDesc xml:lang="zh-Hant">春秋公羊傳</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Chun qiu gong yang zhuan</catDesc>
+                                    <catDesc xml:lang="en">Spring and Autumn Annals: Gongyang Commentary</catDesc>
+                                </category>
+                                <category xml:id="biblCat30">
+                                    <catDesc xml:lang="zh-Hant">春秋穀梁傳</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Chun qiu gu liang zhuan</catDesc>
+                                    <catDesc xml:lang="en">Spring and Autumn Annals: Guliang Commentary</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110107">
+                                <catDesc xml:lang="zh-Hant">四書類</catDesc>
+                                <catDesc xml:lang="en">Four Books</catDesc>
+                                <category xml:id="biblCat31">
+                                    <catDesc xml:lang="zh-Hant">四書合刻總義</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">si shu he ke zong yi</catDesc>
+                                    <catDesc xml:lang="en">General Interpretation of Four Books</catDesc>
+                                </category>
+                                <category xml:id="biblCat32">
+                                    <catDesc xml:lang="zh-Hant">大學</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Da xue</catDesc>
+                                    <catDesc xml:lang="en">Great Learning</catDesc>
+                                </category>
+                                <category xml:id="biblCat33">
+                                    <catDesc xml:lang="zh-Hant">中庸</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhong yong</catDesc>
+                                    <catDesc xml:lang="en">Doctrine of the Mean</catDesc>
+                                </category>
+                                <category xml:id="biblCat34">
+                                    <catDesc xml:lang="zh-Hant">論語</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Lun yu</catDesc>
+                                    <catDesc xml:lang="en">Analects</catDesc>
+                                </category>
+                                <category xml:id="biblCat35">
+                                    <catDesc xml:lang="zh-Hant">孟子</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Meng zi</catDesc>
+                                    <catDesc xml:lang="en">Mencius</catDesc>
+                                </category>
+                                <category xml:id="biblCat81">
+                                    <catDesc xml:lang="zh-Hant">四書（籠統）</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Si shu (long tong)</catDesc>
+                                    <catDesc xml:lang="en">Four Books and associated works</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110108">
+                                <catDesc xml:lang="zh-Hant">孝經類</catDesc>
+                                <catDesc xml:lang="en">Classics of Filial Piety</catDesc>
+                                <category xml:id="biblCat36">
+                                    <catDesc xml:lang="zh-Hant">孝經</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Xiao jing</catDesc>
+                                    <catDesc xml:lang="en">Classics of Filial Piety</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110109">
+                                <catDesc xml:lang="zh-Hant">爾雅類</catDesc>
+                                <catDesc xml:lang="en">Er Ya</catDesc>
+                                <category xml:id="biblCat82">
+                                    <catDesc xml:lang="zh-Hant">爾雅</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Er ya</catDesc>
+                                    <catDesc xml:lang="en">Er Ya</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110110">
+                                <catDesc xml:lang="zh-Hant">小學類</catDesc>
+                                <catDesc xml:lang="en">Philology</catDesc>
+                                <category xml:id="biblCat38">
+                                    <catDesc xml:lang="zh-Hant">小學</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xiao xue</catDesc>
+                                    <catDesc xml:lang="en">Philology</catDesc>
+                                </category>
+                                <category xml:id="biblCat83">
+                                    <catDesc xml:lang="zh-Hant">小學：說文</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xiao xue: shuo wen</catDesc>
+                                    <catDesc xml:lang="en"/>
+                                </category>
+                                <category xml:id="biblCat84">
+                                    <catDesc xml:lang="zh-Hant">小學：字書</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xiao xue: zi shu</catDesc>
+                                    <catDesc xml:lang="en"/>
+                                </category>
+                                <category xml:id="biblCat85">
+                                    <catDesc xml:lang="zh-Hant">小學：音韻</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xiao xue: yin yun</catDesc>
+                                    <catDesc xml:lang="en">Philology: phonology</catDesc>
+                                </category>
+                                <category xml:id="biblCat86">
+                                    <catDesc xml:lang="zh-Hant">小學：訓詁</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xiao xue: xun gu</catDesc>
+                                    <catDesc xml:lang="en">Philology: Semantics</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110111">
+                                <catDesc xml:lang="zh-Hant">讖緯類</catDesc>
+                                <catDesc xml:lang="en">Apocrypha</catDesc>
+                                <category xml:id="biblCat39">
+                                    <catDesc xml:lang="zh-Hant">讖緯</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">chen wei</catDesc>
+                                    <catDesc xml:lang="en">Apocrypha</catDesc>
+                                </category>
+                            </category>
+                        </category>
+                        <category xml:id="biblType01102">
+                            <catDesc xml:lang="zh-Hant">史部</catDesc>
+                            <catDesc xml:lang="en">History</catDesc>
+                            <category xml:id="biblType0110200">
+                                <catDesc xml:lang="zh-Hant">史部（籠統）</catDesc>
+                                <catDesc xml:lang="en">History (General)</catDesc>
+                            </category>
+                            <category xml:id="biblType0110201">
+                                <catDesc xml:lang="zh-Hant">正史類</catDesc>
+                                <catDesc xml:lang="en">Official Histories</catDesc>
+                                <category xml:id="biblCat40">
+                                    <catDesc xml:lang="zh-Hant">正史</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shi</catDesc>
+                                    <catDesc xml:lang="en">Official Histories</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110202">
+                                <catDesc xml:lang="zh-Hant">別史類</catDesc>
+                                <catDesc xml:lang="en">Unofficial Histories</catDesc>
+                                <category xml:id="biblCat43">
+                                    <catDesc xml:lang="zh-Hant">别史</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">bie shi</catDesc>
+                                    <catDesc xml:lang="en">Unofficial Histories</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110203">
+                                <catDesc xml:lang="zh-Hant">編年類</catDesc>
+                                <catDesc xml:lang="en">Chronicles</catDesc>
+                                <category xml:id="biblCat41">
+                                    <catDesc xml:lang="zh-Hant">編年</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">bian nian</catDesc>
+                                    <catDesc xml:lang="en">Chronicles</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110204">
+                                <catDesc xml:lang="zh-Hant">紀事本末類</catDesc>
+                                <catDesc xml:lang="en">Chronologies of Events</catDesc>
+                                <category xml:id="biblCat42">
+                                    <catDesc xml:lang="zh-Hant">紀事本末</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">ji shi ben mo</catDesc>
+                                    <catDesc xml:lang="en">Chronologies of Events</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110205">
+                                <catDesc xml:lang="zh-Hant">雜史類</catDesc>
+                                <catDesc xml:lang="en">Historical Miscellanies</catDesc>
+                                <category xml:id="biblCat2">
+                                    <catDesc xml:lang="zh-Hant">雜史</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">za shi</catDesc>
+                                    <catDesc xml:lang="en">Historical Miscellanies</catDesc>
+                                </category>
+                                <category xml:id="biblCat87">
+                                    <catDesc xml:lang="zh-Hant">雜史：事實</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">za shi: shi shi</catDesc>
+                                </category>
+                                <category xml:id="biblCat88">
+                                    <catDesc xml:lang="zh-Hant">雜史：瑣記</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">za shi: suo ji</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110206">
+                                <catDesc xml:lang="zh-Hant">載記類</catDesc>
+                                <catDesc xml:lang="en">History of Local Regimes</catDesc>
+                                <category xml:id="biblCat45">
+                                    <catDesc xml:lang="zh-Hant">載記/霸史</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zai ji / ba shi</catDesc>
+                                    <catDesc xml:lang="en">History of Local Regimes</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110207">
+                                <catDesc xml:lang="zh-Hant">史表類</catDesc>
+                                <catDesc xml:lang="en">Tables of Hisory</catDesc>
+                                <category xml:id="biblCat46">
+                                    <catDesc xml:lang="zh-Hant">史表</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi biao</catDesc>
+                                    <catDesc xml:lang="en">Historical Tables</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110208">
+                                <catDesc xml:lang="zh-Hant">史鈔類</catDesc>
+                                <catDesc xml:lang="en">Abridgements of History</catDesc>
+                                <category xml:id="biblCat47">
+                                    <catDesc xml:lang="zh-Hant">史鈔</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi chao</catDesc>
+                                    <catDesc xml:lang="en">Selections from histories</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110209">
+                                <catDesc xml:lang="zh-Hant">史評類</catDesc>
+                                <catDesc xml:lang="en">Criticism of History</catDesc>
+                                <category xml:id="biblCat48">
+                                    <catDesc xml:lang="zh-Hant">史評</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi ping</catDesc>
+                                    <catDesc xml:lang="en">Criticism of History</catDesc>
+                                </category>
+                                <category xml:id="biblCat99">
+                                    <catDesc xml:lang="zh-Hant">史評：義法</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi ping: yi fa</catDesc>
+                                </category>
+                                <category xml:id="biblCat100">
+                                    <catDesc xml:lang="zh-Hant">史評：議論</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi ping: yi lun</catDesc>
+                                </category>
+                                <category xml:id="biblCat101">
+                                    <catDesc xml:lang="zh-Hant">史評：考訂</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi ping: kao ding</catDesc>
+                                </category>
+                                <category xml:id="biblCat102">
+                                    <catDesc xml:lang="zh-Hant">史評：詠史</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi ping: yong shi</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110210">
+                                <catDesc xml:lang="zh-Hant">傳記類</catDesc>
+                                <catDesc xml:lang="en">Biographies</catDesc>
+                                <category xml:id="biblCat8">
+                                    <catDesc xml:lang="zh-Hant">專傳合傳</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhuan zhuan he zhuan</catDesc>
+                                    <catDesc xml:lang="en">Biographies</catDesc>
+                                </category>
+                                <category xml:id="biblCat9">
+                                    <catDesc xml:lang="zh-Hant">年譜</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nian pu</catDesc>
+                                    <catDesc xml:lang="en">Chronological Biographies</catDesc>
+                                </category>
+                                <category xml:id="biblCat14">
+                                    <catDesc xml:lang="zh-Hant">譜牒/譜錄</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">pu die / pu lu</catDesc>
+                                    <catDesc xml:lang="en">Genealogies</catDesc>
+                                </category>
+                                <category xml:id="biblCat15">
+                                    <catDesc xml:lang="zh-Hant">日記雜錄</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">ri ji za lu</catDesc>
+                                    <catDesc xml:lang="en">Diaries</catDesc>
+                                </category>
+                                <category xml:id="biblCat139">
+                                    <catDesc xml:lang="zh-Hant">傳記（籠統）</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhuan ji (long tong)</catDesc>
+                                    <catDesc xml:lang="en">Biographies</catDesc>
+                                </category>
+                                <category xml:id="biblCat140">
+                                    <catDesc xml:lang="zh-Hant">傳記：合傳/通錄</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhuan ji: he zhuan / tong lu</catDesc>
+                                </category>
+                                <category xml:id="biblCat141">
+                                    <catDesc xml:lang="zh-Hant">傳記：雜傳</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhuan ji: za zhuan</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110211">
+                                <catDesc xml:lang="zh-Hant">政書類</catDesc>
+                                <catDesc xml:lang="en">State Documents</catDesc>
+                                <category xml:id="biblCat11">
+                                    <catDesc xml:lang="zh-Hant">詔令奏議</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhao ling zou yi</catDesc>
+                                    <catDesc xml:lang="en">Edicts and Memorials</catDesc>
+                                </category>
+                                <category xml:id="biblCat49">
+                                    <catDesc xml:lang="zh-Hant">政書</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu</catDesc>
+                                    <catDesc xml:lang="en">State Documents</catDesc>
+                                </category>
+                                <category xml:id="biblCat50">
+                                    <catDesc xml:lang="zh-Hant">職官</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhi guan</catDesc>
+                                    <catDesc xml:lang="en">Institutions</catDesc>
+                                </category>
+                                <category xml:id="biblCat79">
+                                    <catDesc xml:lang="zh-Hant">儀注</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">yi zhu</catDesc>
+                                    <catDesc xml:lang="en">Ceremonial Specifications</catDesc>
+                                </category>
+                                <category xml:id="biblCat80">
+                                    <catDesc xml:lang="zh-Hant">刑法</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xing fa</catDesc>
+                                    <catDesc xml:lang="en">Law and Punishments</catDesc>
+                                </category>
+                                <category xml:id="biblCat103">
+                                    <catDesc xml:lang="zh-Hant">政書：通制</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: tong zhi</catDesc>
+                                </category>
+                                <category xml:id="biblCat104">
+                                    <catDesc xml:lang="zh-Hant">政書：邦計</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: bang ji</catDesc>
+                                </category>
+                                <category xml:id="biblCat105">
+                                    <catDesc xml:lang="zh-Hant">政書：邦交</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: bang jiao</catDesc>
+                                </category>
+                                <category xml:id="biblCat106">
+                                    <catDesc xml:lang="zh-Hant">政書：軍政</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: jun zheng</catDesc>
+                                </category>
+                                <category xml:id="biblCat107">
+                                    <catDesc xml:lang="zh-Hant">政書：考工</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: kao gong</catDesc>
+                                </category>
+                                <category xml:id="biblCat108">
+                                    <catDesc xml:lang="zh-Hant">政書：掌故瑣記</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: zhang gu suo ji</catDesc>
+                                </category>
+                                <category xml:id="biblCat109">
+                                    <catDesc xml:lang="zh-Hant">政書：詔令</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: zhao ling</catDesc>
+                                </category>
+                                <category xml:id="biblCat110">
+                                    <catDesc xml:lang="zh-Hant">政書：公牘</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zheng shu: gong du</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110212">
+                                <catDesc xml:lang="zh-Hant">時令類</catDesc>
+                                <catDesc xml:lang="en">Seasons</catDesc>
+                                <category xml:id="biblCat51">
+                                    <catDesc xml:lang="zh-Hant">時令</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi ling</catDesc>
+                                    <catDesc xml:lang="en">Seasonal regulations</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110213">
+                                <catDesc xml:lang="zh-Hant">地理類</catDesc>
+                                <catDesc xml:lang="en">Geography</catDesc>
+                                <category xml:id="biblCat3">
+                                    <catDesc xml:lang="zh-Hant">方志總志</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">fang zhi zong zhi</catDesc>
+                                    <catDesc xml:lang="en">Local Histories</catDesc>
+                                </category>
+                                <category xml:id="biblCat4">
+                                    <catDesc xml:lang="zh-Hant">雜志</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">za zhi</catDesc>
+                                    <catDesc xml:lang="en">Local History Miscellanies</catDesc>
+                                </category>
+                                <category xml:id="biblCat5">
+                                    <catDesc xml:lang="zh-Hant">專志</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhuan zhi</catDesc>
+                                    <catDesc xml:lang="en">Local History Topics</catDesc>
+                                </category>
+                                <category xml:id="biblCat13">
+                                    <catDesc xml:lang="zh-Hant">遊記</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">you ji</catDesc>
+                                    <catDesc xml:lang="en">Travel Diaries</catDesc>
+                                </category>
+                                <category xml:id="biblCat52">
+                                    <catDesc xml:lang="zh-Hant">山水</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shan shui</catDesc>
+                                    <catDesc xml:lang="en">Mountains and Rivers</catDesc>
+                                </category>
+                                <category xml:id="biblCat53">
+                                    <catDesc xml:lang="zh-Hant">中外雜紀</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zhong wai zai ji</catDesc>
+                                    <catDesc xml:lang="en">Miscellanies at Home and Abroad</catDesc>
+                                </category>
+                                <category xml:id="biblCat117">
+                                    <catDesc xml:lang="zh-Hant">地理（籠統）</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">di li (long tong)</catDesc>
+                                    <catDesc xml:lang="en">Geographies</catDesc>
+                                </category>
+                                <category xml:id="biblCat118">
+                                    <catDesc xml:lang="zh-Hant">地理：總志</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">di li: zong zhi</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110214">
+                                <catDesc xml:lang="zh-Hant">目錄類</catDesc>
+                                <catDesc xml:lang="en">Catalogues</catDesc>
+                                <category xml:id="biblCat54">
+                                    <catDesc xml:lang="zh-Hant">目錄</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mu lu</catDesc>
+                                    <catDesc xml:lang="en">Catalogues</catDesc>
+                                </category>
+                                <category xml:id="biblCat111">
+                                    <catDesc xml:lang="zh-Hant">目錄：通論</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mu lu: tong lun</catDesc>
+                                </category>
+                                <category xml:id="biblCat112">
+                                    <catDesc xml:lang="zh-Hant">目錄：總錄</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mu lu: zong lu</catDesc>
+                                </category>
+                                <category xml:id="biblCat113">
+                                    <catDesc xml:lang="zh-Hant">目錄：書志</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mu lu: shu zhi</catDesc>
+                                </category>
+                                <category xml:id="biblCat114">
+                                    <catDesc xml:lang="zh-Hant">目錄：專錄</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mu lu: zhuan lu</catDesc>
+                                </category>
+                                <category xml:id="biblCat115">
+                                    <catDesc xml:lang="zh-Hant">目錄：版刻</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mu lu: ban ke</catDesc>
+                                </category>
+                                <category xml:id="biblCat116">
+                                    <catDesc xml:lang="zh-Hant">目錄：索引</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mu lu: suo yin</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110215">
+                                <catDesc xml:lang="zh-Hant">金石類</catDesc>
+                                <catDesc xml:lang="en">Stele Inscriptions</catDesc>
+                                <category xml:id="biblCat6">
+                                    <catDesc xml:lang="zh-Hant">金石</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi</catDesc>
+                                    <catDesc xml:lang="en">Stele Inscriptions</catDesc>
+                                </category>
+                                <category xml:id="biblCat89">
+                                    <catDesc xml:lang="zh-Hant">金石：總志</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: zong zhi</catDesc>
+                                </category>
+                                <category xml:id="biblCat90">
+                                    <catDesc xml:lang="zh-Hant">金石：金屬</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: jin shu</catDesc>
+                                </category>
+                                <category xml:id="biblCat91">
+                                    <catDesc xml:lang="zh-Hant">金石：錢幣</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: qian bi</catDesc>
+                                </category>
+                                <category xml:id="biblCat92">
+                                    <catDesc xml:lang="zh-Hant">金石：璽印</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: xi yin</catDesc>
+                                </category>
+                                <category xml:id="biblCat93">
+                                    <catDesc xml:lang="zh-Hant">金石：石</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: shi</catDesc>
+                                </category>
+                                <category xml:id="biblCat94">
+                                    <catDesc xml:lang="zh-Hant">金石：玉</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: yu</catDesc>
+                                </category>
+                                <category xml:id="biblCat95">
+                                    <catDesc xml:lang="zh-Hant">金石：甲骨</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: jia gu</catDesc>
+                                </category>
+                                <category xml:id="biblCat96">
+                                    <catDesc xml:lang="zh-Hant">金石：匋</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: tao</catDesc>
+                                </category>
+                                <category xml:id="biblCat97">
+                                    <catDesc xml:lang="zh-Hant">金石：竹木</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: zhu mu</catDesc>
+                                </category>
+                                <category xml:id="biblCat98">
+                                    <catDesc xml:lang="zh-Hant">金石：郡邑</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jin shi: jun yi</catDesc>
+                                </category>
+                            </category>
+                        </category>
+                        <category xml:id="biblType01103">
+                            <catDesc xml:lang="zh-Hant">子部</catDesc>
+                            <catDesc xml:lang="en">Master</catDesc>
+                            <category xml:id="biblType0110300">
+                                <catDesc xml:lang="zh-Hant">子部（籠統）</catDesc>
+                                <catDesc xml:lang="en">Masters (General)</catDesc>
+                            </category>
+                            <category xml:id="biblType0110301">
+                                <catDesc xml:lang="zh-Hant">周秦諸子類</catDesc>
+                                <catDesc xml:lang="en">Masters in Zhou and Qin Dynasties</catDesc>
+                                <category xml:id="biblCat55">
+                                    <catDesc xml:lang="zh-Hant">周秦諸子總論</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhou Qin zhu zi zong lun</catDesc>
+                                    <catDesc xml:lang="en">General Discussions on Masters in Zhou and Qin Dynasties</catDesc>
+                                </category>
+                                <category xml:id="biblCat59">
+                                    <catDesc xml:lang="zh-Hant">法家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">fa jia</catDesc>
+                                    <catDesc xml:lang="en">Legalists</catDesc>
+                                </category>
+                                <category xml:id="biblCat60">
+                                    <catDesc xml:lang="zh-Hant">名家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">ming jia</catDesc>
+                                    <catDesc xml:lang="en">School of Names</catDesc>
+                                </category>
+                                <category xml:id="biblCat61">
+                                    <catDesc xml:lang="zh-Hant">墨家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">mo jia</catDesc>
+                                    <catDesc xml:lang="en">Moists</catDesc>
+                                </category>
+                                <category xml:id="biblCat62">
+                                    <catDesc xml:lang="zh-Hant">縱橫家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zong heng jia</catDesc>
+                                    <catDesc xml:lang="en">Rhetoricians</catDesc>
+                                </category>
+                                <category xml:id="biblCat63">
+                                    <catDesc xml:lang="zh-Hant">農家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong jia</catDesc>
+                                    <catDesc xml:lang="en">Agriculture</catDesc>
+                                </category>
+                                <category xml:id="biblCat119">
+                                    <catDesc xml:lang="zh-Hant">周秦諸子（籠統）</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhou Qin zhu zi (long tong)</catDesc>
+                                </category>
+                                <category xml:id="biblCat120">
+                                    <catDesc xml:lang="zh-Hant">周秦諸子：儒家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhou Qin zhu zi: ru jia</catDesc>
+                                </category>
+                                <category xml:id="biblCat121">
+                                    <catDesc xml:lang="zh-Hant">周秦諸子：道家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhou Qin zhu zi: dao jia</catDesc>
+                                </category>
+                                <category xml:id="biblCat122">
+                                    <catDesc xml:lang="zh-Hant">周秦諸子：雜家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhou Qin zhu zi: za jia</catDesc>
+                                </category>
+                                <category xml:id="biblCat123">
+                                    <catDesc xml:lang="zh-Hant">周秦諸子：小說家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">Zhou Qin zhu zi: xiao shuo jia</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110302">
+                                <catDesc xml:lang="zh-Hant">儒學類</catDesc>
+                                <catDesc xml:lang="en">Confucianism</catDesc>
+                                <category xml:id="biblCat10">
+                                    <catDesc xml:lang="zh-Hant">禮教</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">li jiao</catDesc>
+                                    <catDesc xml:lang="en">Confucianism: Rituals and Instructions</catDesc>
+                                </category>
+                                <category xml:id="biblCat56">
+                                    <catDesc xml:lang="zh-Hant">性理</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xing li</catDesc>
+                                    <catDesc xml:lang="en">Confucianism: Nature and Principle</catDesc>
+                                </category>
+                                <category xml:id="biblCat57">
+                                    <catDesc xml:lang="zh-Hant">經濟</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">jing ji</catDesc>
+                                    <catDesc xml:lang="en">Confucianism: Statecraft</catDesc>
+                                </category>
+                                <category xml:id="biblCat126">
+                                    <catDesc xml:lang="zh-Hant">儒學/儒家（籠統）</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">ru xue / ru jia (long tong)</catDesc>
+                                    <catDesc xml:lang="en">Confucians</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110303">
+                                <catDesc xml:lang="zh-Hant">兵書類</catDesc>
+                                <catDesc xml:lang="en">Military Books</catDesc>
+                                <category xml:id="biblCat58">
+                                    <catDesc xml:lang="zh-Hant">兵書/兵家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">bing shu / bing jia</catDesc>
+                                    <catDesc xml:lang="en">Military</catDesc>
+                                </category>
+                                <category xml:id="biblCat124">
+                                    <catDesc xml:lang="zh-Hant">兵書：兵法</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">bing shu: bing fa</catDesc>
+                                </category>
+                                <category xml:id="biblCat125">
+                                    <catDesc xml:lang="zh-Hant">兵書：技巧</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">bing shu: ji qiao</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110304">
+                                <catDesc xml:lang="zh-Hant">農書類</catDesc>
+                                <catDesc xml:lang="en">Agricultural Books</catDesc>
+                                <category xml:id="biblCat127">
+                                    <catDesc xml:lang="zh-Hant">農書（籠統）</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu (long tong)</catDesc>
+                                </category>
+                                <category xml:id="biblCat128">
+                                    <catDesc xml:lang="zh-Hant">農書：總論</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: zong lun</catDesc>
+                                </category>
+                                <category xml:id="biblCat130">
+                                    <catDesc xml:lang="zh-Hant">農書：耕作土壤</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: geng zuo tu rang</catDesc>
+                                </category>
+                                <category xml:id="biblCat131">
+                                    <catDesc xml:lang="zh-Hant">農書：農具</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: nong ju</catDesc>
+                                </category>
+                                <category xml:id="biblCat132">
+                                    <catDesc xml:lang="zh-Hant">農書：災害防治</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: za hai fang zhi</catDesc>
+                                </category>
+                                <category xml:id="biblCat133">
+                                    <catDesc xml:lang="zh-Hant">農書：作物</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: zuo wu</catDesc>
+                                </category>
+                                <category xml:id="biblCat134">
+                                    <catDesc xml:lang="zh-Hant">農書：蠶桑</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: can sang</catDesc>
+                                </category>
+                                <category xml:id="biblCat135">
+                                    <catDesc xml:lang="zh-Hant">農書：園藝</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: yuan yi</catDesc>
+                                </category>
+                                <category xml:id="biblCat136">
+                                    <catDesc xml:lang="zh-Hant">農書：畜牧</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: xu mu</catDesc>
+                                </category>
+                                <category xml:id="biblCat137">
+                                    <catDesc xml:lang="zh-Hant">農書：水産</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: shui chan</catDesc>
+                                </category>
+                                <category xml:id="biblCat138">
+                                    <catDesc xml:lang="zh-Hant">農書：生物</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">nong shu: sheng wu</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110305">
+                                <catDesc xml:lang="zh-Hant">工藝類</catDesc>
+                                <catDesc xml:lang="en">Craftsmanship</catDesc>
+                                <category xml:id="biblCat64">
+                                    <catDesc xml:lang="zh-Hant">工藝</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">gong yi</catDesc>
+                                    <catDesc xml:lang="en">Craftsmanship</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110306">
+                                <catDesc xml:lang="zh-Hant">醫學類</catDesc>
+                                <catDesc xml:lang="en">Medicine</catDesc>
+                                <category xml:id="biblCat65">
+                                    <catDesc xml:lang="zh-Hant">醫家/醫書</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">yi jia / yi shu</catDesc>
+                                    <catDesc xml:lang="en">Medicine</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110307">
+                                <catDesc xml:lang="zh-Hant">天文算法類</catDesc>
+                                <catDesc xml:lang="en">Astronomy</catDesc>
+                                <category xml:id="biblCat66">
+                                    <catDesc xml:lang="zh-Hant">天文</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">tian wen</catDesc>
+                                    <catDesc xml:lang="en">Astronomy</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110308">
+                                <catDesc xml:lang="zh-Hant">術數類</catDesc>
+                                <catDesc xml:lang="en">Arts of Divination</catDesc>
+                                <category xml:id="biblCat67">
+                                    <catDesc xml:lang="zh-Hant">術數</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shu shu</catDesc>
+                                    <catDesc xml:lang="en">Arts of Divination</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110309">
+                                <catDesc xml:lang="zh-Hant">藝術類</catDesc>
+                                <catDesc xml:lang="en">Arts</catDesc>
+                                <category xml:id="biblCat68">
+                                    <catDesc xml:lang="zh-Hant">藝術</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">yi shu</catDesc>
+                                    <catDesc xml:lang="en">Arts</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110310">
+                                <catDesc xml:lang="zh-Hant">雜學類</catDesc>
+                                <catDesc xml:lang="en">Miscellaneous Treatises</catDesc>
+                                <category xml:id="biblCat69">
+                                    <catDesc xml:lang="zh-Hant">雜學</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">za xue</catDesc>
+                                    <catDesc xml:lang="en">Miscellaneous Treatises</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110311">
+                                <catDesc xml:lang="zh-Hant">典故類</catDesc>
+                                <catDesc xml:lang="en">Precedents</catDesc>
+                                <category xml:id="biblCat70">
+                                    <catDesc xml:lang="zh-Hant">典故/故事</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">dian gu</catDesc>
+                                    <catDesc xml:lang="en">Precedents</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110312">
+                                <catDesc xml:lang="zh-Hant">小說類</catDesc>
+                                <catDesc xml:lang="en">Anecdotes</catDesc>
+                                <category xml:id="biblCat71">
+                                    <catDesc xml:lang="zh-Hant">小說</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">xiao shuo</catDesc>
+                                    <catDesc xml:lang="en">Anecdotes</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110313">
+                                <catDesc xml:lang="zh-Hant">宗教類</catDesc>
+                                <catDesc xml:lang="en">Religion</catDesc>
+                                <category xml:id="biblCat72">
+                                    <catDesc xml:lang="zh-Hant">道教/道家</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">dao jiao / dao jia</catDesc>
+                                    <catDesc xml:lang="en">Daoists</catDesc>
+                                </category>
+                                <category xml:id="biblCat73">
+                                    <catDesc xml:lang="zh-Hant">佛教/釋氏</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">fo jiao / Shi shi</catDesc>
+                                    <catDesc xml:lang="en">Buddhists</catDesc>
+                                </category>
+                                <category xml:id="biblCat74">
+                                    <catDesc xml:lang="zh-Hant">其他宗教</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">qi ta zong jiao</catDesc>
+                                    <catDesc xml:lang="en">Other Religions</catDesc>
+                                </category>
+                                <category xml:id="biblCat142">
+                                    <catDesc xml:lang="zh-Hant">宗教（籠統）</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zong jiao (long tong)</catDesc>
+                                </category>
+                            </category>
+                            <category xml:id="biblType0110314">
+                                <catDesc xml:lang="zh-Hant">叢書類</catDesc>
+                                <catDesc xml:lang="en">Collections</catDesc>
+                                <category xml:id="biblCat7">
+                                    <catDesc xml:lang="zh-Hant">叢書</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">cong shu</catDesc>
+                                    <catDesc xml:lang="en">Collections</catDesc>
+                                </category>
+                            </category>
+                        </category>
+                        <category xml:id="biblType01104">
+                            <catDesc xml:lang="zh-Hant">集部</catDesc>
+                            <catDesc xml:lang="en">Collections</catDesc>
+                            <category xml:id="biblType0110400">
+                                <catDesc xml:lang="zh-Hant">集部（籠統）</catDesc>
+                                <catDesc xml:lang="en">Collections (General)</catDesc>
+                                <category xml:id="biblCat1">
+                                    <catDesc xml:lang="zh-Hant">别集</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">bie ji</catDesc>
+                                    <catDesc xml:lang="en">Individual Literary Collections</catDesc>
+                                </category>
+                                <category xml:id="biblCat75">
+                                    <catDesc xml:lang="zh-Hant">楚辭</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">chu ci</catDesc>
+                                    <catDesc xml:lang="en">Chu Ci</catDesc>
+                                </category>
+                                <category xml:id="biblCat76">
+                                    <catDesc xml:lang="zh-Hant">總集</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">zong ji</catDesc>
+                                    <catDesc xml:lang="en">General Literary Collections</catDesc>
+                                </category>
+                                <category xml:id="biblCat77">
+                                    <catDesc xml:lang="zh-Hant">詩文評</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">shi wen ping</catDesc>
+                                    <catDesc xml:lang="en">Literary History</catDesc>
+                                </category>
+                                <category xml:id="biblCat78">
+                                    <catDesc xml:lang="zh-Hant">詞曲</catDesc>
+                                    <catDesc xml:lang="zh-Latn-alalc97">ci qu</catDesc>
+                                    <catDesc xml:lang="en">Lyrics</catDesc>
+                                </category>
+                            </category>
+                        </category>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <p/>
+        </body>
+    </text>
+</TEI>

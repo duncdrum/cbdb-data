@@ -16,7 +16,7 @@ declare namespace no="http://none";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-
+(: PATH EXPRESSIONS :)
 declare variable $global:src := '/db/apps/cbdb-data/src/xml/';
 declare variable $global:target := '/db/apps/cbdb-data/target/';
 declare variable $global:report := '/db/apps/cbdb-data/reports/';

@@ -12,7 +12,7 @@ xquery version "3.0";
 : run using an external authority could solve these problems. 
 :    
 : @author Duncan Paterson
-: @version 0.7
+: @version 0.8.0
 : 
 : @see http://authority.dila.edu.tw/time/
 :
@@ -20,7 +20,6 @@ xquery version "3.0";
 
 module namespace cal="http://exist-db.org/apps/cbdb-data/calendar";
 
-(:import module namespace functx="http://www.functx.com";:)
 import module namespace xmldb="http://exist-db.org/xquery/xmldb";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 
@@ -40,7 +39,7 @@ declare
     %test:args('0') %test:assertEquals('-0001')
     %test:args('123') %test:assertEquals('0123')    
     %test:args('-12') %test:assertEquals('-0012')    
-function cal:isodate ($string as xs:string?)  as xs:string* {
+function cal:isodate ($string as xs:string?)  as xs:gYear* {
 
 (:~ 
 : cal:isodate turns inconsistent Gregorian year strings into proper xs:gYear type strings. 
@@ -52,9 +51,10 @@ function cal:isodate ($string as xs:string?)  as xs:string* {
 : @return gYear style string:)
         
     if (empty($string)) then ()
-    else if (number($string) eq 0) then ('-0001')
-    else if (starts-with($string, "-")) then (concat('-',(concat (string-join((for $i in (string-length(substring($string,2)) to 3) return '0'),'') , substring($string,2)))))
-    else (concat (string-join((for $i in (string-length($string) to 3) return '0'),'') , $string))
+    else if (number($string) eq 0) then ('-0001' cast as xs:gYear)
+    else if (starts-with($string, "-")) 
+            then (concat('-',(concat (string-join((for $i in (string-length(substring($string,2)) to 3) return '0'),'') , substring($string,2)))) cast as xs:gYear)
+    else (concat (string-join((for $i in (string-length($string) to 3) return '0'),'') , $string) cast as xs:gYear)
 };
 
 declare 
@@ -248,6 +248,8 @@ function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
         default return "please specify either 'py' or 'zh'"    
             
 };
+
+(: DELETE BELOW :)
 
 declare function cal:sexagenary ($ganzhi as node()*, $mode as xs:string?) as item()* {
 (:~

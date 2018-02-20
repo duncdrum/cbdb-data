@@ -1,7 +1,7 @@
 xquery version "3.1";
 (:~ 
  : @author Duncan Paterson
- : @version 0.7:)
+ : @version 0.8.0:)
  
 module namespace app="http://exist-db.org/apps/cbdb-data/templates";
 
@@ -11,6 +11,8 @@ import module namespace docs="http://exist-db.org/xquery/docs" at "/db/apps/fund
 import module namespace inspect="http://exist-db.org/xquery/inspection" at "java:org.exist.xquery.functions.inspect.InspectionModule";
 import module namespace global="http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 import module namespace util="http://exist-db.org/xquery/util";
+import module namespace functx = "http://www.functx.com";
+import module namespace xmldb = "http://exist-db.org/xquery/xmldb";
 
 declare namespace xqdoc="http://www.xqdoc.org/1.0";
 

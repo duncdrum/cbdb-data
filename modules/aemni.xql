@@ -7,12 +7,14 @@ xquery version "3.1";
 : @author Duncan Paterson
 : @version 0.8.0
 :)
+
 import module namespace functx = "http://www.functx.com";
 import module namespace xmldb = "http://exist-db.org/xquery/xmldb";
 (:import module namespace global = "http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 :)
 import module namespace cal = "http://exist-db.org/apps/cbdb-data/calendar" at "calendar.xql";
 import module namespace config = "http://exist-db.org/apps/cbdb-data/config" at "config.xqm";
+import module namespace sparql = "http://exist-db.org/xquery/sparql" at "java:org.exist.xquery.modules.rdf.SparqlModule";
 
 declare namespace test = "http://exist-db.org/xquery/xqsuite";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
@@ -20,6 +22,9 @@ declare namespace no = "http://none";
 declare namespace xi = "http://www.w3.org/2001/XInclude";
 declare namespace odd = "http://exist-db.org/apps/cbdb-data/odd";
 declare namespace rng = "http://relaxng.org/ns/structure/1.0";
+
+declare namespace output = "http://www.tei-c.org/ns/1.0";
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 declare variable $test := element root {
     for $i in 1 to 500
@@ -58,48 +63,55 @@ declare function local:transform($items as item()*, $validation as xs:string) as
     </TEI>
 };
 
+declare
+(:%test:args(<root xmlns="http://none">
+    <row>
+        <c_text_cat_type_id>01</c_text_cat_type_id>
+        <c_text_cat_type_desc>Chinese Primary Texts</c_text_cat_type_desc>
+        <c_text_cat_type_desc_chn>古書原文</c_text_cat_type_desc_chn>
+    </row>
+    </root>)):)
+function local:nest-types($types as node()*, $type-id as node(), $zh as node(), $en as node()) as element(category)* {
+    
 (:~ 
- : This function ensures that individual records 
- : are written to a three deep nested collection hierarchy.
- : TODO switch to xml:id ? 
+ : taxo:nest-types recursively transforms 'TEXT_BIBLCAT_TYPES' into nested categories. 
  :
- : @param $nodes the items to be transformed
- : @param $parent-name of the top level directory name e.g. listPerson, listPlace, …
- : @param $items-per-chunk number of records per l2 collection (chunk)
- : @param $items-per-block number of records per l3 collection (block)
- : @param $f the transformation function that generates TEI
+ : @param $types **row** in TEXT_BIBLCAT_TYPES
+ : @param $type-id is a `c_text_cat_type_id`
+ : @param $zh category name in Chinese
+ : @param $en category name in English
  :
- : @return individual records stored in dynamically generated collection tree 
- :)
-declare function local:write-and-split ($nodes as item()*,
-$parent-name as xs:string, 
-$items-per-chunk as xs:positiveInteger, 
-$items-per-block as xs:positiveInteger,
-$transform as function(*)) as item()* {
-
-
-let $count := count($nodes)
-let $chunk-pad := local:pad($count idiv $items-per-chunk)
-let $block-pad := local:pad($count idiv $items-per-block)
-let $file-pad := local:pad($count)
-let $sum := ceiling($count div $items-per-chunk + $count div $items-per-block)
-
-(: Write a note to log :)
-let $info := util:log('info', 'Successfully created ' || $sum || ' nested collections for ' || 
-    $count || ' items. ' || ceiling($count div $items-per-chunk) || ' chunks contain ' ||
-    ceiling($items-per-chunk div $items-per-block) || ' blocks each.')
-
-for $n at $pos in $nodes
-(: +1 avoids '/chunk-00' paths :)
-let $chunk-name := $parent-name || '/chunk-' || functx:pad-integer-to-length($pos idiv $items-per-chunk + 1, $chunk-pad)
-let $block-name := $chunk-name || '/block-' || functx:pad-integer-to-length($pos idiv $items-per-block + 1, $block-pad)
-
-order by $pos
+ : @return nested `<category xml:id="biblType">...</category>`:)
+    
+    
+    element category {
+        attribute xml:id {concat('biblType', $type-id)},
+        element catDesc {
+            attribute xml:lang {'zh-Hant'},
+            normalize-space($zh)
+        },
+        element catDesc {
+            attribute xml:lang {'en'},
+            normalize-space($en)
+        },
         
-let $file-name := 'item-' || functx:pad-integer-to-length($pos, $file-pad) || '.xml'
+        for $child in $types[no:c_text_cat_type_parent_id = $type-id]
+        order by $child[no:c_text_cat_type_sortorder]
+        return
+            local:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)
+    }
+
+};
+let $test := <root xmlns="http://none">
+    <row>
+        <c_text_cat_type_id>01</c_text_cat_type_id>
+        <c_text_cat_type_desc>Chinese Primary Texts</c_text_cat_type_desc>
+        <c_text_cat_type_desc_chn>古書原文</c_text_cat_type_desc_chn>
+    </row>
+    </root>
+let $date := '-0140'
+
 return
-    xmldb:store(xmldb:create-collection($config:target-aemni, $block-name), $file-name, $transform($n, 'n'))
-};    
+    $date cast as xs:gYear
 
-
-    local:write-and-split($test//item, 'listPerson', 75, 15, local:transform#2)
+(:local:nest-types($test//no:row, $test//no:c_text_cat_type_id, $test//no:c_text_cat_type_desc_chn, $test//no:c_text_cat_type_desc):)

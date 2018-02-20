@@ -1,15 +1,16 @@
 xquery version "3.1";
 
 (:~
-: Temporary working module.
-: Replace local with name of target module
-:
-: @author Duncan Paterson
-: @version 0.8.0
-:)
+ : Temporary working module.
+ : Replace local with name of target module
+ :
+ : @author Duncan Paterson
+ : @version 0.8.0
+ :)
 import module namespace functx = "http://www.functx.com";
 import module namespace xmldb = "http://exist-db.org/xquery/xmldb";
-import module namespace dbutil = "http://exist-db.org/xquery/dbutil"; 
+import module namespace dbutil = "http://exist-db.org/xquery/dbutil";
+import module namespace sparql = "http://exist-db.org/xquery/sparql" at "java:org.exist.xquery.modules.rdf.SparqlModule";
 
 (:import module namespace global = "http://exist-db.org/apps/cbdb-data/global" at "global.xqm";
 :)
@@ -24,82 +25,161 @@ declare namespace odd = "http://exist-db.org/apps/cbdb-data/odd";
 declare namespace rng = "http://relaxng.org/ns/structure/1.0";
 
 
-declare variable $test := element root {
-    for $i in 1 to 50
-    return
-        element item {
-            attribute xml:id {'i' || $i},
-            $i
-        }
-};
+declare namespace output = "http://www.tei-c.org/ns/1.0";
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-(:~ 
- : determine the required padding length for a sequence of ints
- : @param $num onn or more integers
- : @return integer
- :)
-declare function local:pad($num as xs:integer*) as xs:integer {
-    let $max := max($num) cast as xs:string
-    return
-        string-length($max) + 1
-};
+declare variable $target-calendar := xmldb:create-collection($config:target-aemni, 'calendar');
 
-declare function local:transform($items as item()*, $validation as xs:string) as item()* {
+declare function local:sexagenary($ganzhi as node()*) as item()* {
+    (:~
+ : local:sexagenary converts `GANZHI` data into categories. 
+ : 
+ : @param $ganzhi `c_ganzhi_code`
+ : 
+ : @return `<taxonomy xml:id="sexagenary">...</taxonomy>`:)
     <TEI>
-        <body>
-            <text>{
-                    typeswitch ($items)
-                        case element(item)
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>Sexagenary Calendar</title>
+                </titleStmt>
+                <publicationStmt>
+                    <p>Part of CBDB in TEI</p>
+                </publicationStmt>
+                <sourceDesc>
+                    <p>born digital</p>
+                </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                <classDecl>
+                    <taxonomy
+                        xml:id="sexagenary">{
+                            for $gz in $ganzhi/no:c_ganzhi_code[. ne '0']
                             return
-                                <person>{$items/text()}</person>
-                        default
-                            return
-                                ()
-                }
-            </text>
-        </body>
+                                <category
+                                    xml:id="{concat('S', $gz/../no:c_ganzhi_code)}">
+                                    <catDesc
+                                        xml:lang="zh-Hant">{normalize-space($gz/../no:c_ganzhi_chn)}</catDesc>
+                                    <catDesc
+                                        xml:lang="zh-Latn-alalc97">{normalize-space($gz/../no:c_ganzhi_py)}</catDesc>
+                                </category>
+                        }
+                    </taxonomy>
+                </classDecl>
+            </encodingDesc>
+        </teiHeader>
+        <text>
+            <body>
+                <p/>
+            </body>
+        </text>
     </TEI>
 };
 
-(:~ 
- : This function ensures that individual records 
- : are written to a three deep nested collection hierarchy.
- : TODO switch to xml:id ? 
- : TODO test function call
- : TODO let $info := util:log('info', 'Successfully created ' || $sum || ' nested collections for ' || $count ||
-    ' items. ' || $l2-count || ' chunks contain ' || $l3-sum || ' blocks each.')
+declare
+%test:pending("validation as test")
+function local:dynasties($dynasties as node()*, $nianhao as node()*) as item()* {
+    (:~
+ : local:dynasties converts `DYNASTIES`, and `NIANHAO` data into categories. 
+ : 
+ : @param $dynasties `c_dy`
  :
- : @param $nodes the items to be transformed
- : @param $parent-name of the top level directory name e.g. listPerson, listPlace, …
- : @param $items-per-chunk number of records per l2 collection (chunk)
- : @param $items-per-block number of records per l3 collection (block)
- : @param $f the transformation function that generates TEI
- :
- : @return individual records stored in dynamically generated collection tree 
- :)
-declare function local:write-and-split ($nodes as item()*,
-$parent-name as xs:string, 
-$items-per-chunk as xs:positiveInteger, 
-$items-per-block as xs:positiveInteger,
-$transform as function(*)) as item()* {
-
-let $count := count($nodes)
-let $chunk-pad := local:pad($count idiv $items-per-chunk)
-let $block-pad := local:pad($count idiv $items-per-block)
-let $file-pad := local:pad($count)
-
-for $n at $pos in $nodes
-(: +1 avoids '/chunk-00' paths :)
-let $chunk-name := $parent-name || '/chunk-' || functx:pad-integer-to-length($pos idiv $items-per-chunk + 1, $chunk-pad)
-let $block-name := $chunk-name || '/block-' || functx:pad-integer-to-length($pos idiv $items-per-block + 1, $block-pad)
-
-order by $pos
-        
-let $file-name := 'item-' || functx:pad-integer-to-length($pos, $file-pad) || '.xml'
-return
-    xmldb:store(xmldb:create-collection($config:target-aemni, $block-name), $file-name, $transform($n))
-};    
-
-ceiling(75 div 15)
-(:    local:write-and-split($test//item, 'tada', 25, 3, local:transform#1):)
+ : @return `<taxonomy xml:id="reign">...</taxonomy>` :)
     
+    <TEI>
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>Chinese Dynastyc Reign Calendar</title>
+                </titleStmt>
+                <publicationStmt>
+                    <p>Part of CBDB in TEI</p>
+                </publicationStmt>
+                <sourceDesc>
+                    <p>born digital</p>
+                </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                <classDecl>
+                    <taxonomy
+                        xml:id="reign">{
+                            for $dy in $dynasties/no:c_dy[. > '0']
+                            let $dy_id := $dy/../no:c_dy
+                            return
+                                <category
+                                    xml:id="{concat('D', $dy_id)}">
+                                    <catDesc>
+                                        <date
+                                            from="{cal:isodate($dy/../no:c_start)}"
+                                            to="{cal:isodate($dy/../no:c_end)}"/>
+                                    </catDesc>
+                                    <catDesc
+                                        xml:lang="zh-Hant">{normalize-space($dy/../no:c_dynasty_chn)}</catDesc>
+                                    <catDesc
+                                        xml:lang="en">{normalize-space($dy/../no:c_dynasty)}</catDesc>
+                                    {
+                                        for $nh in $nianhao/no:c_dy[. = $dy_id]
+                                        (:                            where $nh/no:c_dy = $dy_id:)
+                                        return
+                                            if ($nh/../no:c_nianhao_pin != '')
+                                            then
+                                                (<category
+                                                    xml:id="{concat('R', $nh/../no:c_nianhao_id)}">
+                                                    <catDesc>
+                                                        <date
+                                                            from="{cal:isodate($nh/../no:c_firstyear)}"
+                                                            to="{cal:isodate($nh/../no:c_lastyear)}"/>
+                                                    </catDesc>
+                                                    <catDesc
+                                                        xml:lang="zh-Hant">{normalize-space($nh/../no:c_nianhao_chn)}</catDesc>
+                                                    <catDesc
+                                                        xml:lang="zh-Latn-alalc97">{normalize-space($nh/../no:c_nianhao_pin)}</catDesc>
+                                                </category>)
+                                            else
+                                                (<category
+                                                    xml:id="{concat('R', $nh/../no:c_nianhao_id)}">
+                                                    <catDesc>
+                                                        <date
+                                                            from="{cal:isodate($nh/../no:c_firstyear)}"
+                                                            to="{cal:isodate($nh/../no:c_lastyear)}"/>
+                                                    </catDesc>
+                                                    <catDesc
+                                                        xml:lang="zh-Hant">{normalize-space($nh/../no:c_nianhao_chn)}</catDesc>
+                                                </category>)
+                                    }
+                                </category>
+                        }
+                    </taxonomy>
+                </classDecl>
+            </encodingDesc>
+        </teiHeader>
+        <text>
+            <body>
+                <p/>
+            </body>
+        </text>
+    </TEI>
+};
+
+declare %private function local:write-calendar($sexa as item()*, $dyna as item()*, $nian as item()*) as item()* {
+(:~
+ : write the taxonomy containing the results of both local:sexagenary and cal:dynasties into db. :)
+    
+    (xmldb:store($config:target-calendar, $config:sexagen, local:sexagenary($sexa)),
+    xmldb:store($config:target-calendar, $config:calendar, local:dynasties($dyna, $nian)))
+
+};
+
+declare %test:assertTrue function local:validate-sexagenary() {
+    validation:jing(doc($config:target-calendar || $config:genre), $config:tei_all)
+};
+
+declare %test:assertTrue function local:validate-dynasties() {
+    validation:jing(doc($config:target-calendar || $config:calendar), $config:tei_all)
+};
+
+(: TIMING 0.8s :)
+
+(:local:write-calendar($config:GANZHI_CODES//no:row, $config:DYNASTIES//no:row, $config:NIAN_HAO//no:row):)
+
+validation:jing(doc($config:target-calendar || $config:calendar), $config:tei_all)

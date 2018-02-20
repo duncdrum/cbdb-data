@@ -50,14 +50,14 @@ declare function odd:transform (
     $src-el as xs:string*, 
     $src-gloss as xs:string*) as item()* {
 (:~
-: odd:transform the distinct values of the source-tables into odd:attDef
-: 
-:
-: @param $odd-el the tei element name
-: @param $odd-at the tei attribute to modified typically 'type' or 'sub-type'
-: @param $src-el the cdbd element that contains the unique values
-: @param $src-gloss the cbdb element that contains gloss for $src-el, if any. 
-:)
+ : odd:transform the distinct values of the source-tables into odd:attDef
+ : 
+ :
+ : @param $odd-el the tei element name
+ : @param $odd-at the tei attribute to modified typically 'type' or 'sub-type'
+ : @param $src-el the cdbd element that contains the unique values
+ : @param $src-gloss the cbdb element that contains gloss for $src-el, if any. 
+ :)
 
 
 element elementSpec { attribute ident {$odd-el},

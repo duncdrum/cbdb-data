@@ -37,19 +37,24 @@ declare variable $config:app-root :=
 declare variable $config:repo-descriptor := doc(concat($config:app-root, "/repo.xml"))/repo:meta;
 declare variable $config:expath-descriptor := doc(concat($config:app-root, "/expath-pkg.xml"))/expath:package;
 
+(: APP PATH EXPRESSIONS :)
 declare variable $config:src-data := $config:app-root || "/src/xml/";
 declare variable $config:target-data := $config:app-root || "/target/";
 declare variable $config:target-aemni := $config:app-root || "/data/";
+declare variable $config:target-classdecl := $config:target-aemni || "classDecl/";
+declare variable $config:target-calendar := $config:target-aemni || "calendar/";
 
 declare variable $config:report := $config:app-root || "/reports/";
 declare variable $config:patch := $config:app-root || "/reports/patch/";
 declare variable $config:samples := $config:app-root || "/samples/";
 declare variable $config:modules := $config:app-root || "/modules/";
 declare variable $config:doc := $config:app-root || "/doc/";
+declare variable $config:templates := $config:app-root || "/templates/tei/";
 
 (:THE TEI FILES IN TARGET:)
 declare variable $config:genre := 'biblCat.xml';
-declare variable $config:calendar := 'cal_ZH.xml';
+declare variable $config:calendar := 'dyna_cal.xml';
+declare variable $config:sexagen := 'sexa_cal.xml';
 declare variable $config:gaiji := 'charDecl.xml';
 declare variable $config:bibliography := 'listBibl.xml';
 declare variable $config:institution := 'listOrg.xml';
@@ -58,6 +63,8 @@ declare variable $config:office := 'office.xml';
 declare variable $config:office-temp := 'officeA.xml';
 declare variable $config:main := 'cbdbTEI.xml';
 declare variable $config:person := 'listPerson';
+declare variable $config:tei_all := doc($config:templates || 'tei_all.rng');
+declare variable $config:cbdb-odd := 'cbdbTEI.xml';
 
 (:CBDB source tables :)
 declare variable $config:ADDRESSES := doc($config:src-data || 'ADDRESSES.xml');
