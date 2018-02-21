@@ -22,6 +22,8 @@ declare namespace no = "http://none";
 declare namespace xi = "http://www.w3.org/2001/XInclude";
 declare namespace odd = "http://exist-db.org/apps/cbdb-data/odd";
 declare namespace rng = "http://relaxng.org/ns/structure/1.0";
+declare namespace rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+declare namespace sr = "http://www.w3.org/2005/sparql-results#";
 
 declare namespace output = "http://www.tei-c.org/ns/1.0";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
@@ -102,16 +104,16 @@ function local:nest-types($types as node()*, $type-id as node(), $zh as node(), 
     }
 
 };
-let $test := <root xmlns="http://none">
-    <row>
-        <c_text_cat_type_id>01</c_text_cat_type_id>
-        <c_text_cat_type_desc>Chinese Primary Texts</c_text_cat_type_desc>
-        <c_text_cat_type_desc_chn>古書原文</c_text_cat_type_desc_chn>
-    </row>
-    </root>
-let $date := '-0140'
+let $dy-sparql := ("PREFIX wdt: <http://www.wikidata.org/prop/direct/> 
+                PREFIX wd: <http://www.wikidata.org/entity/> 
+                PREFIX wikibase: <http://wikiba.se/ontology#> 
+                PREFIX bd: <http://www.bigdata.com/rdf#> 
+                SELECT ?item ?itemLabel 
+                WHERE { ?item wdt:P31 wd:Q836688.
+                SERVICE wikibase:label { bd:serviceParam wikibase:language '[AUTO_LANGUAGE],zh'. }
+}")
 
 return
-    $date cast as xs:gYear
+    sparql:query($dy-sparql)
 
 (:local:nest-types($test//no:row, $test//no:c_text_cat_type_id, $test//no:c_text_cat_type_desc_chn, $test//no:c_text_cat_type_desc):)

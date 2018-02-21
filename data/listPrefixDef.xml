@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Prefixes for External References</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Part of CBDB in TEI</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>born digital</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <listPrefixDef xml:id="listPrefixDef">
+                <!--   TTSMQ links are broken [DP]  -->
+                <prefixDef ident="ttsmq" matchPattern="([.]*)" replacementPattern="http://archive.ihp.sinica.edu.tw/ttsweb/html_name/$1"/>
+                <prefixDef ident="mqww" matchPattern="([.]*)" replacementPattern="http://digital.library.mcgill.ca/mingqing/search/details-poet.php?poetID=$1&amp;showbio=1&amp;showanth=1&amp;showshihuaon=1&amp;language=eng"/>
+                <prefixDef ident="idtf" matchPattern="([.]*)" replacementPattern="http://tkb.zinbun.kyoto-u.ac.jp/pers-db/$1"/>
+                <prefixDef ident="wd" matchPattern="([.]*)" replacementPattern="http://www.wikidata.org/entity/$1"/>
+            </listPrefixDef>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <p/>
+        </body>
+    </text>
+</TEI>

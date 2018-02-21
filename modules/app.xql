@@ -53,6 +53,7 @@ return
 declare function app:validate-fragment ($frag as node()*, $loc as xs:string?) as item()* {
 
 (:~
+ : TODO to be removed
  : This function validates $frag by inserting it into a minimal TEI template. 
  :
  : This function cannot guarantee that the final document is valid, 

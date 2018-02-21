@@ -802,3 +802,112 @@ return
     default return $output       
        
 };
+
+let $dynasties := $config:DYNASTIES//no:row
+let $hits :=
+
+<hits>{
+        for $dy in $dynasties/no:c_dy[. > '0']/../*
+        return
+            typeswitch ($dy)
+                case element(no:c_dynasty_chn)
+                    return
+                        if ($wd-sparql//sr:literal[@xml:lang = 'zh'][. = $dy || '朝'] ne '')
+                        then
+                            (<best
+                                n="{$dy/../no:c_dy}">{
+                                    $dy || ' is ' ||
+                                    substring-after($wd-sparql//sr:literal[@xml:lang = 'zh'][. = $dy || '朝']/../..//sr:uri, '/entity/') ||
+                                    ' aka ' || $wd-sparql//sr:literal[@xml:lang = 'zh'][. = $dy || '朝']/text()
+                                }</best>)
+                        else
+                            if ($wd-sparql//sr:literal[@xml:lang = 'zh'][. = $dy])
+                            then
+                                (<better
+                                    n="{$dy/../no:c_dy}">{
+                                        $dy || ' is ' ||
+                                        substring-after($wd-sparql//sr:literal[@xml:lang = 'zh'][. = $dy]/../..//sr:uri, '/entity/') ||
+                                        ' aka ' || $wd-sparql//sr:literal[@xml:lang = 'zh'][. = $dy]/text()
+                                    }</better>)
+                            else
+                                if ($wd-sparql//sr:literal[@xml:lang = 'zh'][contains(., $dy)])
+                                then
+                                    (<good
+                                        n="{$dy/../no:c_dy}">{
+                                            $dy || ' should be ' ||
+                                            substring-after($wd-sparql//sr:literal[@xml:lang = 'zh'][contains(., $dy)]/../..//sr:uri, '/entity/') ||
+                                            ' aka ' || $wd-sparql//sr:literal[@xml:lang = 'zh'][contains(., $dy)]
+                                        }</good>)
+                                else
+                                    ()
+                case element(no:c_dynasty)
+                    return
+                        for $wd in $wd-sparql//sr:literal[@xml:lang = 'en']
+                        return
+                            if (lower-case($dy) || ' dynasty' eq lower-case($wd))
+                            then
+                                (<best_en
+                                    n="{$dy/../no:c_dy}">{
+                                        $dy/text() || ' is ' ||
+                                        substring-after($wd/../..//sr:uri, '/entity/') ||
+                                        ' aka ' || $wd/text()
+                                    }</best_en>)
+                            else
+                                if (lower-case($dy) eq lower-case($wd))
+                                then
+                                    (<better_en
+                                        n="{$dy/../no:c_dy}">{
+                                            $dy/text() || ' is ' ||
+                                            substring-after($wd/../..//sr:uri, '/entity/') ||
+                                            ' aka ' || $wd/text()
+                                        }</better_en>)
+                                else
+                                    if (contains(tokenize(lower-case($wd), '\s'), lower-case($dy)))
+                                    then
+                                        (<good_en
+                                            n="{$dy/../no:c_dy}">{
+                                                $dy/text() || ' should be ' ||
+                                                substring-after($wd/../..//sr:uri, '/entity/') ||
+                                                ' aka ' || $wd/text()
+                                            }</good_en>)
+                                    else
+                                        ()
+                default
+                    return
+                        ()
+    }
+</hits>
+let $sorted :=
+<sorted>{
+        for $h in $hits/*
+            order by local-name($h)
+        return
+            $h
+    }</sorted>
+    
+let $map := map
+ {5: 'wd#Q7405', 
+6: 'wd#Q9683',
+15: 'wd#Q7462',
+16: 'wd#Q4958', 
+17: 'wd#Q5066', 
+18: 'wd#Q7313', 
+19: 'wd#Q9903',
+20: 'wd#Q8733', 
+25: 'wd#Q1147037', 
+27: 'wd#Q306928',
+43: 'wd#Q7183', 
+71: 'wd#Q169705', 
+77: 'wd#Q35216'}    
+
+let $look := for $n in $sorted/*
+    order by number($n/@n)
+return
+distinct-values(
+    <map>
+        <id>{data($n/@n)}</id>
+        <wb>{functx:get-matches($n/text(), 'Q[\d]+')}</wb>
+    </map>)
+    
+return 
+$sorted
