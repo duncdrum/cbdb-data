@@ -1,6 +1,7 @@
 xquery version "3.1";
 (:~
  : This module generates the taxonomies for the teiHeader's classDecl element. 
+ : This is an updating module, which will overwrite existing data. 
  : All taxonomy entries should be referenced by their full URL from the indivial body lists. 
  : 
  :
@@ -32,6 +33,7 @@ declare variable $target-calendar := xmldb:create-collection($config:target-aemn
 declare variable $target-office := xmldb:create-collection($config:target-aemni, 'office');
 
 (:~
+ : GENRE TAXONOMY
  : taxo:write-biblCat combines `TEXT_BIBLCAT_CODES` and `TEXT_BIBLCAT_TYPES` into nested taxonomy elements.
  : It ommits `TEXT_BIBL_CAT_TYPES_1` which does not seem to serve a purpose. :
  : The classification scheme seems to be based on the outdated Harvard–Yenching Classification. 
@@ -54,9 +56,10 @@ declare function taxo:nest-types($types as node()*, $type-id as node(), $zh as n
     
     (:~ 
  : taxo:nest-types recursively transforms `TEXT_BIBLCAT_TYPES` into nested categories. 
+ : TODO make nest functio suffienceitly abstract to make do with just one.
  :
- : @param $types **row** in `TEXT_BIBLCAT_TYPES`
- : @param $type-id is a `c_text_cat_type_id`
+ : @param $types **row** in `*_TYPES`
+ : @param $type-id is a `*_type_id`
  : @param $zh category name in Chinese
  : @param $en category name in English
  :
@@ -172,7 +175,8 @@ declare %test:assertTrue function taxo:validate-biblCat() {
 };
 
 declare function taxo:sexagenary($ganzhi as node()*) as item()* {
-    (:~
+(:~
+ : CALENDAR TAXONOMY
  : taxo:sexagenary converts `GANZHI` data into categories. 
  : 
  : @param $ganzhi rows from `GANZHI_CODES` filtering 'unkown'
@@ -327,7 +331,7 @@ declare function taxo:dynasties($dynasties as node()*, $nianhao as node()*) as i
 };
 
 declare %private function taxo:write-calendar($sexa as item()*, $dyna as item()*, $nian as item()*) as item()* {
-    (:~
+(:~
  : write the taxonomies containing the results of both taxo:sexagenary and cal:dynasties into db. 
  : TODO think about splitting each dynasty into its own file
  :)
@@ -344,6 +348,8 @@ declare %test:assertTrue function taxo:validate-sexagenary() {
 declare %test:assertTrue function taxo:validate-dynasties() {
     validation:jing(doc($config:target-calendar || $config:calendar), $config:tei_all)
 };
+
+
 
 (: TIMING 0.8s :)(: TIMING: 1.4s:)
 (
