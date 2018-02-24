@@ -1,47 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="all" name="cbdb-data">
-  <xmlproperty file="expath-pkg.xml"/>
-  <property name="project.version" value="${package(version)}"/>
-  <property name="project.app" value="cbdb-data"/>
-  <property name="teiTitle" value="cbdbTEI"/>
-  <property name="cbdbVersion" value="20170829"/>
-  <property name="build.dir" value="build"/>
-  <available file=".git" type="dir" property="git.present"/>
-
-  <target name="git.revision" description="Store git revision in ${repository.version}" if="git.present">
-    <exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
-      <arg value="describe"/>
-      <arg value="--tags"/>
-      <arg value="--always"/>
-      <arg value="HEAD"/>
-    </exec>
-    <condition property="repository.version" value="${git.revision}" else="unknown">
-      <and>
-        <isset property="git.revision"/>
-        <length string="${git.revision}" trim="yes" length="0" when="greater"/>
-      </and>
-    </condition>
-  </target>
-
-  <target name="init" depends="git.revision" description="create build directory">
-    <tstamp/>
-    <mkdir dir="${build.dir}"/>
-  </target>
-  <!-- Dev build (includes everything) -->
-  <target name="dev" depends="init" description="compile all source files">
-    <zip basedir="." destfile="${build.dir}/${project.app}-${git.revision}-dev.xar" excludes="${build.dir}/*, src/xml/*.md, .existdb.json, .yo-rc.json, **/.git*/**, .DS_Store, *.xpr, *.pdf"/>
-  </target>
-  <!-- Github Release -->
-  <target name="deploy" depends="init" description="compile release build">
-    <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml, .existdb.json, .yo-rc.json, **/.git*/**, .DS_Store, *.xpr, *.pdf"/>
-  </target>
-  <target name="src" depends="init" description="source files in xml">
-    <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
-  </target>
-  <target name="tei" depends="init" description="just the TEI files">
-    <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>
-  </target>
-  <target name="all" depends="dev, deploy, src, tei">
-    <tstamp/>
-  </target>
+    <xmlproperty file="expath-pkg.xml"/>
+    <property name="project.version" value="${package(version)}"/>
+    <property name="project.app" value="cbdb-data"/>
+    <property name="teiTitle" value="cbdbTEI"/>
+    <property name="cbdbVersion" value="20170829"/>
+    <property name="build.dir" value="build"/>
+    <target name="init" description="create build directory">
+      <tstamp/>
+      <mkdir dir="${build.dir}"/>
+    </target>
+    <!-- Dev build (includes everything) -->
+    <target name="dev" depends="init" description="compile all source files">
+      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}-dev.xar" excludes="${build.dir}/*, src/xml/*.md, .existdb.json, .yo-rc.json, **/.git*/**, .DS_Store, *.xpr, *.pdf"/>
+    </target>
+    <!-- Github Release  -->
+    <target name="deploy" depends="init" description="compile release build">
+      <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*, src/xml/*.xml, .existdb.json, .yo-rc.json, **/.git*/**, .DS_Store, *.xpr, *.pdf"/>
+    </target>
+    <target name="src" depends="init" description="source files in xml">
+      <zip basedir="." destfile="${build.dir}/${cbdbVersion}-src.zip" includes="src/xml/*.xml"/>
+    </target>
+    <target name="tei" depends="init" description="just the TEI files">
+      <zip basedir="." destfile="${build.dir}/${teiTitle}-${project.version}.zip" includes="target/**"/>
+    </target>
+    <target name="all" depends="dev, deploy, src, tei">
+      <tstamp/>
+    </target>
 </project>

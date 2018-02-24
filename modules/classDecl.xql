@@ -51,6 +51,44 @@ declare variable $target-office := xmldb:create-collection($config:target-aemni,
  : @see [new CLC](http://library.hkbu.edu.hk/about/class-chi.html)
  :
  : @return biblCat.xml:)
+ 
+ declare %private function taxo:taxonomy-wrap($id as xs:string, $title as xs:string, $f as function(*), $arg as item()*) as element(TEI) {
+    (:~
+ : Wrapper function to ensure each taxo is stored as a valid TEI document.
+ : $param $id the xml:id of the taxonomy
+ : $param $title title line in header for taxonomy
+ : $param $f the transform function 
+ : $arg the $argument (mostly no:row element) for the called tranform function.
+ : 
+ : @return taconomy wrapped in minimal tei header. 
+:)
+    <TEI>
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>{$title}</title>
+                </titleStmt>
+                <publicationStmt>
+                    <p>Part of CBDB in TEI</p>
+                </publicationStmt>
+                <sourceDesc>
+                    <p>born digital</p>
+                </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                <classDecl>
+                    <taxonomy
+                        xml:id="{$id}">{$f($arg)}</taxonomy>
+                </classDecl>
+            </encodingDesc>
+        </teiHeader>
+        <text>
+            <body>
+                <p/>
+            </body>
+        </text>
+    </TEI>
+};
 
 declare function taxo:nest-types($types as node()*, $type-id as node(), $zh as node(), $en as node()) as element(category)* {
     
@@ -183,46 +221,18 @@ declare function taxo:sexagenary($ganzhi as node()*) as item()* {
  : 
  : @return `<taxonomy xml:id="sexagenary">...</taxonomy>`:)
  
-    <TEI>
-        <teiHeader>
-            <fileDesc>
-                <titleStmt>
-                    <title>Sexagenary Calendar</title>
-                </titleStmt>
-                <publicationStmt>
-                    <p>Part of CBDB in TEI</p>
-                </publicationStmt>
-                <sourceDesc>
-                    <p>born digital</p>
-                </sourceDesc>
-            </fileDesc>
-            <encodingDesc>
-                <classDecl>
-                    <taxonomy
-                        xml:id="sexagenary">{
-                            for $gz in $ganzhi/no:c_ganzhi_code[. ne '0']
-                            return
-                                <category
-                                    xml:id="{concat('S', $gz/../no:c_ganzhi_code)}">
-                                    <catDesc
-                                        xml:lang="zh-Hant">{normalize-space($gz/../no:c_ganzhi_chn)}</catDesc>
-                                    <catDesc
-                                        xml:lang="zh-Latn-alalc97">{normalize-space($gz/../no:c_ganzhi_py)}</catDesc>
-                                </category>
-                        }
-                    </taxonomy>
-                </classDecl>
-            </encodingDesc>
-        </teiHeader>
-        <text>
-            <body>
-                <p/>
-            </body>
-        </text>
-    </TEI>
+     for $gz in $ganzhi/no:c_ganzhi_code[. ne '0']
+    return
+        <category
+            xml:id="{concat('S', $gz/../no:c_ganzhi_code)}">
+            <catDesc
+                xml:lang="zh-Hant">{normalize-space($gz/../no:c_ganzhi_chn)}</catDesc>
+            <catDesc
+                xml:lang="zh-Latn-alalc97">{normalize-space($gz/../no:c_ganzhi_py)}</catDesc>
+        </category>
 };
 
-declare function taxo:dynasties($dynasties as node()*, $nianhao as node()*) as item()* {
+declare function taxo:dynasties($dynasties as node()*) as item()* {
     (:~
  : taxo:dynasties converts `DYNASTIES`, and `NIANHAO` data into categories. 
  : The sparql part is awaiting a bug fix and therefore incomplete. 
@@ -234,6 +244,7 @@ declare function taxo:dynasties($dynasties as node()*, $nianhao as node()*) as i
  : #see http://tinyurl.com/y7mdp2lt
  : @return `<taxonomy xml:id="reign">...</taxonomy>` :)
     
+    let $nianhao := $config:NIAN_HAO//no:row
     let $map := map
     {
         5: 'wd:Q7405',
@@ -251,93 +262,68 @@ declare function taxo:dynasties($dynasties as node()*, $nianhao as node()*) as i
         77: 'wd:Q35216'
     }
     
+for $dy in $dynasties/no:c_dy[. > '0']
+    let $dy-id := $dy/../no:c_dy
+    (:    let $nianhao := $config:NIAN_HAO//no:row:)
+    
     return
-        
-        <TEI>
-            <teiHeader>
-                <fileDesc>
-                    <titleStmt>
-                        <title>Chinese Dynastyc Reign Calendar</title>
-                    </titleStmt>
-                    <publicationStmt>
-                        <p>Part of CBDB in TEI</p>
-                    </publicationStmt>
-                    <sourceDesc>
-                        <p>born digital</p>
-                    </sourceDesc>
-                </fileDesc>
-                <encodingDesc>
-                    <classDecl>
-                        <taxonomy
-                            xml:id="reign">{
-                                for $dy in $dynasties/no:c_dy[. > '0']
-                                let $dy-id := $dy/../no:c_dy
-                                return
-                                    element category {
-                                        attribute xml:id {'D' || $dy-id},
-                                        if (map:contains($map, $dy-id))
-                                        then
-                                            (attribute source {$map($dy-id)})
-                                        else
-                                            (),
-                                        element catDesc {
-                                            element date {
-                                                attribute from {cal:isodate($dy/../no:c_start)},
-                                                attribute to {cal:isodate($dy/../no:c_end)}
-                                            }
-                                        },
-                                        element catDesc {
-                                            attribute xml:lang {'zh-Hant'},
-                                            normalize-space($dy/../no:c_dynasty_chn)
-                                        },
-                                        element catDesc {
-                                            attribute xml:lang {'en'},
-                                            normalize-space($dy/../no:c_dynasty)
-                                            },
-                                            for $nh in $nianhao/no:c_dy[. = $dy-id]
-                                            return
-                                                element category {
-                                                    attribute xml:id {'R' || $nh/../no:c_nianhao_id},
-                                                    element catDesc {
-                                                        element date {
-                                                            attribute from {cal:isodate($nh/../no:c_firstyear)},
-                                                            attribute to {cal:isodate($nh/../no:c_lastyear)}
-                                                        }
-                                                    },
-                                                    element catDesc {
-                                                        attribute xml:lang {'zh-Hant'},
-                                                        normalize-space($nh/../no:c_nianhao_chn)
-                                                    },
-                                                    if ($nh/../no:c_nianhao_pin != '')
-                                                    then
-                                                        (element catDesc {
-                                                            attribute xml:lang {'zh-Latn-alalc97'},
-                                                            normalize-space($nh/../no:c_nianhao_pin)
-                                                        })
-                                                    else
-                                                        ()
-                                                }
-                                    }                            
-                        }</taxonomy>
-                    </classDecl>
-                </encodingDesc>
-            </teiHeader>
-            <text>
-                <body>
-                    <p/>
-                </body>
-            </text>
-        </TEI>
+        element category {
+            attribute xml:id {'D' || $dy-id},
+            if (map:contains($map, $dy-id))
+            then
+                (attribute source {$map($dy-id)})
+            else
+                (),
+            element catDesc {
+                element date {
+                    attribute from {cal:isodate($dy/../no:c_start)},
+                    attribute to {cal:isodate($dy/../no:c_end)}
+                }
+            },
+            element catDesc {
+                attribute xml:lang {'zh-Hant'},
+                normalize-space($dy/../no:c_dynasty_chn)
+            },
+            element catDesc {
+                attribute xml:lang {'en'},
+                normalize-space($dy/../no:c_dynasty)
+            },
+            for $nh in $nianhao/no:c_dy[. = $dy-id]
+            return
+                element category {
+                    attribute xml:id {'R' || $nh/../no:c_nianhao_id},
+                    element catDesc {
+                        element date {
+                            attribute from {cal:isodate($nh/../no:c_firstyear)},
+                            attribute to {cal:isodate($nh/../no:c_lastyear)}
+                        }
+                    },
+                    element catDesc {
+                        attribute xml:lang {'zh-Hant'},
+                        normalize-space($nh/../no:c_nianhao_chn)
+                    },
+                    if ($nh/../no:c_nianhao_pin != '')
+                    then
+                        (element catDesc {
+                            attribute xml:lang {'zh-Latn-alalc97'},
+                            normalize-space($nh/../no:c_nianhao_pin)
+                        })
+                    else
+                        ()
+                }            
+        }
 };
 
-declare %private function taxo:write-calendar($sexa as item()*, $dyna as item()*, $nian as item()*) as item()* {
+declare %private function taxo:write-calendar($sexa as item()*, $dyna as item()*) as item()* {
 (:~
  : write the taxonomies containing the results of both taxo:sexagenary and cal:dynasties into db. 
  : TODO think about splitting each dynasty into its own file
  :)
     
-    (xmldb:store($config:target-calendar, $config:sexagen, taxo:sexagenary($sexa)),
-    xmldb:store($config:target-calendar, $config:calendar, taxo:dynasties($dyna, $nian)))
+    (xmldb:store($config:target-calendar, $config:sexagen, 
+        taxo:taxonomy-wrap('sexagenary', 'Sexagenary Calendar', local:sexagenary#1, $config:GANZHI_CODES//no:row)),
+    xmldb:store($config:target-calendar, $config:calendar, 
+        taxo:taxonomy-wrap('reign', 'Chinese Dynastyc Reign Calendar', local:dynasties#1, $config:DYNASTIES//no:row)))
 
 };
 
@@ -353,6 +339,6 @@ declare %test:assertTrue function taxo:validate-dynasties() {
 
 (: TIMING 0.8s :)(: TIMING: 1.4s:)
 (
-taxo:write-calendar($config:GANZHI_CODES//no:row, $config:DYNASTIES//no:row, $config:NIAN_HAO//no:row),
+taxo:write-calendar($config:GANZHI_CODES//no:row, $config:DYNASTIES//no:row),
 taxo:write-biblCat($config:TEXT_BIBLCAT_CODES//no:c_text_cat_code, $config:TEXT_BIBLCAT_TYPES//no:row)
 )
