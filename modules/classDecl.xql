@@ -32,35 +32,31 @@ declare variable $target-classDecl := xmldb:create-collection($config:target-aem
 declare variable $target-calendar := xmldb:create-collection($config:target-aemni, 'calendar');
 declare variable $target-office := xmldb:create-collection($config:target-aemni, 'office');
 
+
 (:~
- : GENRE TAXONOMY
- : taxo:write-biblCat combines `TEXT_BIBLCAT_CODES` and `TEXT_BIBLCAT_TYPES` into nested taxonomy elements.
- : It ommits `TEXT_BIBL_CAT_TYPES_1` which does not seem to serve a purpose. :
- : The classification scheme seems to be based on the outdated Harvard–Yenching Classification. 
- :
- : TODO replace CBDB classification scheme with either CLC or LCC
- : TODO there are duplicates in the sources, between types and codes that could be streamlined.
- :
- : The exact difference between bibliographical category codes, and category types is unclear. 
- : This module joins them within one taxonomy and at the level specified in the source files. 
- :
- :
- : @see [harvard-Yenching CC](https://en.wikipedia.org/wiki/Harvard–Yenching_Classification#0100_to_0999_Chinese_Classics)
- : @see [CLC](http://clc.nlc.cn)
- : @see [LCC](https://www.loc.gov/catdir/cpso/lcc.html)
- : @see [new CLC](http://library.hkbu.edu.hk/about/class-chi.html)
- :
- : @return biblCat.xml:)
- 
- declare %private function taxo:taxonomy-wrap($id as xs:string, $title as xs:string, $f as function(*), $arg as item()*) as element(TEI) {
+ : This module generates taxonomies for the class declaration.
+ : The private functions in the first section are shared among different transformations.
+ : There are dedicated sections for calendrical, genre, and offices taxonomies
+ : There are dedicated function that perform validation of the generated output, 
+ : to be called by the xqsuite. 
+ : Lastly there is a single write function that will OVERWRITE EXISTING DATA, 
+:)
+
+(: GENERAL :)
+
+declare %public function taxo:taxonomy-wrap($id as xs:string, $title as xs:string, $f as function(*), $args as array(*)) as element(TEI) {
     (:~
  : Wrapper function to ensure each taxo is stored as a valid TEI document.
+ : All write functions will call this wrapper. Modifications of the tei scaffold occur here. 
+ :
+ : a bug in Saxon prevent me from using <xi:include  href="../fileDesc.xml" fallback ="db/apps/cbdb-data/data/fileDesc.xml" xpointer="fileDesc" parse="xml"/>
+ :
  : $param $id the xml:id of the taxonomy
- : $param $title title line in header for taxonomy
- : $param $f the transform function 
- : $arg the $argument (mostly no:row element) for the called tranform function.
+ : $param $title title-line in header for taxonomy
+ : $param $f the transform function from within this module.
+ : $args the array of arguments used by the tranform function.
  : 
- : @return taconomy wrapped in minimal tei header. 
+ : @return taxonomy wrapped in minimal tei scaffold. 
 :)
     <TEI>
         <teiHeader>
@@ -78,7 +74,7 @@ declare variable $target-office := xmldb:create-collection($config:target-aemni,
             <encodingDesc>
                 <classDecl>
                     <taxonomy
-                        xml:id="{$id}">{$f($arg)}</taxonomy>
+                        xml:id="{$id}">{apply($f, $args)}</taxonomy>
                 </classDecl>
             </encodingDesc>
         </teiHeader>
@@ -90,138 +86,119 @@ declare variable $target-office := xmldb:create-collection($config:target-aemni,
     </TEI>
 };
 
-declare function taxo:nest-types($types as node()*, $type-id as node(), $zh as node(), $en as node()) as element(category)* {
+declare %public function taxo:nest-categories($rows as node()*, $id as node()*, $id-prefix as xs:string) as element(category)* {
     
-    (:~ 
- : taxo:nest-types recursively transforms `TEXT_BIBLCAT_TYPES` into nested categories. 
- : TODO make nest functio suffienceitly abstract to make do with just one.
- :
- : @param $types **row** in `*_TYPES`
- : @param $type-id is a `*_type_id`
- : @param $zh category name in Chinese
- : @param $en category name in English
- :
- : @return nested `<category xml:id="biblType">...</category>`:)
-    
-    
-    element category {
-        attribute xml:id {concat('biblType', $type-id)},
-        element catDesc {
-            attribute xml:lang {'zh-Hant'},
-            normalize-space($zh)
-        },
-        element catDesc {
-            attribute xml:lang {'en'},
-            normalize-space($en)
-        },
-        
-        for $child in $types[no:c_text_cat_type_parent_id = $type-id]
-            order by $child[no:c_text_cat_type_sortorder]
-        return
-            taxo:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)
-    }
-
-};
-
-declare %private function taxo:write-biblCat($items as item()*, $types as item()*) as item()* {
     (:~
- : calls taxo:nest-types recursively  from top level elements.
- : Executing the write will return an empty sequence. 
- : This is misleading, the correct data should have been written regardless.
+ : recursive function for creating nested categories. 
+ : Determines the langue of `catDesc` based on  element name in source file. 
+ : Used for office and genre categories: `TEXT_BIBLCAT_TYPES`, 
+ :`TEXT_BIBLCAT_CODES`, and …  
  :
- : @param $items `TEXT_BIBLCAT_CODES` to be inserted into nested types
- : @param $types `TEXT_BIBLCAT_TYPES`
+ : @param $rows **row** from `*_TYPES` table
+ : @param $id the id child element of the row.
+ : @param $id-prefix the string prefix of the output id attributes values
  :
- : a bug in Saxon prevent me from using <xi:include  href="../fileDesc.xml" fallback ="db/apps/cbdb-data/data/fileDesc.xml" xpointer="fileDesc" parse="xml"/>
- :
- : @returns $typeTree the nested tree of types stored in the db with inserted codes :)
-    let $match := $types/no:c_text_cat_type_id[. = '01']
-    let $typeTree := xmldb:store($config:target-classdecl, $config:genre,
-    <TEI>
-        <teiHeader>
-            <fileDesc>
-                <titleStmt>
-                    <title>CBDB's genre classification</title>
-                </titleStmt>
-                <publicationStmt>
-                    <p>Part of CBDB in TEI</p>
-                </publicationStmt>
-                <sourceDesc>
-                    <p>born digital</p>
-                </sourceDesc>
-            </fileDesc>
-            <encodingDesc>
-                <classDecl>
-                    <taxonomy
-                        xml:id="biblCat">
-                        <category
-                            xml:id="biblType01">
-                            <catDesc
-                                xml:lang="zh-Hant">{normalize-space($match/../no:c_text_cat_type_desc_chn)}</catDesc>
-                            <catDesc
-                                xml:lang="en">{normalize-space($match/../no:c_text_cat_type_desc)}</catDesc>
-                            {
-                                for $outer in $types[no:c_text_cat_type_parent_id = '01']
-                                    order by $outer[no:c_text_cat_type_sortorder]
-                                return
-                                    taxo:nest-types($types, $outer/no:c_text_cat_type_id, $outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc)
-                            }
-                        </category>
-                    </taxonomy>
-                </classDecl>
-            </encodingDesc>
-        </teiHeader>
-        <text>
-            <body>
-                <p/>
-            </body>
-        </text>
-    </TEI>)
+ : returns nested category elements:)
     
-    (: inserts the genre categories codes, into the previously generated tree of category types :)
+    let $zh := $id/../*[ends-with(local-name(.), '_desc_chn')]
+    let $en := $id/../*[ends-with(local-name(.), '_desc')]
+    let $py := $id/../*[ends-with(local-name(.), '_pinyin')]
+    let $sort := $id/../*[ends-with(local-name(.), '_sortorder')]
     
-    for $cat in $items
+    let $parent := $rows/*[ends-with(local-name(.), '_parent_id')]
+        
+        
+        
+        order by number($sort)
     
-    let $type-id := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:c_text_cat_code[. = $cat]/../no:c_text_cat_type_id
-    let $type := doc($typeTree)//category/@xml:id[. = concat('biblType', $type-id)]
-    let $category := element category {
-        attribute xml:id {concat('biblCat', $cat)},
-        element catDesc {
-            attribute xml:lang {'zh-Hant'},
-            normalize-space($cat/../no:c_text_cat_desc_chn)
-        },
-        element catDesc {
-            attribute xml:lang {'zh-Latn-alalc97'},
-            normalize-space($cat/../no:c_text_cat_pinyin)
-        },
-        if ($cat/../no:c_text_cat_desc/text() eq $cat/../no:c_text_cat_desc_chn/text())
-        then
-            ()
-        else
-            (element catDesc {
-                attribute xml:lang {'en'},
-                normalize-space($cat/../no:c_text_cat_desc)
-            })
-    }
-        order by number($cat/../no:c_text_cat_sortorder)
     return
-        update insert $category into $type/..
+        element category {
+            attribute xml:id {$id-prefix || $id},
+            element catDesc {
+                attribute xml:lang {'zh-Hant'},
+                normalize-space($zh)
+            },
+            
+            if (empty($py)) then
+                ()
+            else
+                (
+                element catDesc {
+                    attribute xml:lang {'zh-Latn-alalc97'},
+                    normalize-space($py)
+                }),
+            
+            if (($en eq $zh) or ($en eq '[not yet translated]')) then
+                ()
+            else
+                (
+                element catDesc {
+                    attribute xml:lang {'en'},
+                    normalize-space($en)
+                }),
+            (:  TODO: these hard coded references need to become dynamic :)
+            let $categ := $config:TEXT_BIBLCAT_CODES//no:row
+            let $cat-type-rel := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:row
+            let $matches := $categ/no:c_text_cat_code[. = $cat-type-rel/no:c_text_cat_type_id[. = $id]/../no:c_text_cat_code]/..
+            
+            for $match in $matches
+            return
+                taxo:nest-categories($matches, $match/*[1], 'biblCat'),
+            
+            if (exists($parent[. eq $id]))
+            then
+                (for $child in $parent[. eq $id]/..
+                return
+                    taxo:nest-categories($rows, $child/*[1], $id-prefix))
+            else
+                ()
+        }
 };
 
-declare %test:assertTrue function taxo:validate-biblCat() {
-    validation:jing(doc($config:target-classdecl || $config:genre), $config:tei_all)
+(: GENRE TAXONOMY :)
+
+declare %private function taxo:write-biblCat($rows as item()*) as item()* {
+    (:~
+ : taxo:write-biblCat combines `TEXT_BIBLCAT_CODES` and `TEXT_BIBLCAT_TYPES` into nested taxonomy elements.
+ : It ommits `TEXT_BIBL_CAT_TYPES_1` which does not seem to serve a purpose. :
+ : The classification scheme seems to be based on the outdated Harvard–Yenching Classification. 
+ :
+ : TODO replace CBDB classification scheme with either CLC or LCC
+ : TODO there are duplicates in the sources, between types and codes that could be streamlined.
+ :
+ : The exact difference between bibliographical category codes, and category types is unclear. 
+ : This module joins them within one taxonomy and at the level specified in the source files. 
+ :
+ : @see [harvard-Yenching CC](https://en.wikipedia.org/wiki/Harvard–Yenching_Classification#0100_to_0999_Chinese_Classics)
+ : @see [CLC](http://clc.nlc.cn)
+ : @see [LCC](https://www.loc.gov/catdir/cpso/lcc.html)
+ : @see [new CLC](http://library.hkbu.edu.hk/about/class-chi.html)
+ :
+ : @param $rows `TEXT_BIBLCAT_TYPES` 
+ :
+ : @return biblCat.xml :)
+    
+    let $bibl-tree := for $n in $rows[1]
+    return
+        taxo:taxonomy-wrap('biblCat', "CBDB's genre classification", taxo:nest-categories#3, [$rows, $n/no:c_text_cat_type_id, 'biblType'])
+    return
+        xmldb:store($config:target-classdecl, $config:genre, $bibl-tree)
+
 };
 
-declare function taxo:sexagenary($ganzhi as node()*) as item()* {
-(:~
+(: CALENDAR TAXONOMIES :)
+
+declare %public function taxo:sexagenary($ganzhi as node()*) as item()* {
+    (:~
  : CALENDAR TAXONOMY
  : taxo:sexagenary converts `GANZHI` data into categories. 
  : 
  : @param $ganzhi rows from `GANZHI_CODES` filtering 'unkown'
  : 
- : @return `<taxonomy xml:id="sexagenary">...</taxonomy>`:)
- 
-     for $gz in $ganzhi/no:c_ganzhi_code[. ne '0']
+ : @return `<taxonomy xml:id="sexagenary">...</taxonomy>`
+ :)
+    
+    for $gz in $ganzhi/no:c_ganzhi_code[. ne '0']
     return
         <category
             xml:id="{concat('S', $gz/../no:c_ganzhi_code)}">
@@ -232,7 +209,7 @@ declare function taxo:sexagenary($ganzhi as node()*) as item()* {
         </category>
 };
 
-declare function taxo:dynasties($dynasties as node()*) as item()* {
+declare %public function taxo:dynasties($dynasties as node()*) as item()* {
     (:~
  : taxo:dynasties converts `DYNASTIES`, and `NIANHAO` data into categories. 
  : The sparql part is awaiting a bug fix and therefore incomplete. 
@@ -242,7 +219,10 @@ declare function taxo:dynasties($dynasties as node()*) as item()* {
  : @param $nianhao row from `NIAN_HAO`
  :
  : #see http://tinyurl.com/y7mdp2lt
- : @return `<taxonomy xml:id="reign">...</taxonomy>` :)
+ : @see http://authority.dila.edu.tw/time/
+ :
+ : @return `<taxonomy xml:id="reign">...</taxonomy>`
+ :)
     
     let $nianhao := $config:NIAN_HAO//no:row
     let $map := map
@@ -262,7 +242,7 @@ declare function taxo:dynasties($dynasties as node()*) as item()* {
         77: 'wd:Q35216'
     }
     
-for $dy in $dynasties/no:c_dy[. > '0']
+    for $dy in $dynasties/no:c_dy[. > '0']
     let $dy-id := $dy/../no:c_dy
     (:    let $nianhao := $config:NIAN_HAO//no:row:)
     
@@ -310,21 +290,29 @@ for $dy in $dynasties/no:c_dy[. > '0']
                         })
                     else
                         ()
-                }            
+                }
         }
 };
 
 declare %private function taxo:write-calendar($sexa as item()*, $dyna as item()*) as item()* {
-(:~
+    (:~
  : write the taxonomies containing the results of both taxo:sexagenary and cal:dynasties into db. 
  : TODO think about splitting each dynasty into its own file
  :)
     
-    (xmldb:store($config:target-calendar, $config:sexagen, 
-        taxo:taxonomy-wrap('sexagenary', 'Sexagenary Calendar', local:sexagenary#1, $config:GANZHI_CODES//no:row)),
-    xmldb:store($config:target-calendar, $config:calendar, 
-        taxo:taxonomy-wrap('reign', 'Chinese Dynastyc Reign Calendar', local:dynasties#1, $config:DYNASTIES//no:row)))
+    (xmldb:store($config:target-calendar, $config:sexagen,
+    taxo:taxonomy-wrap('sexagenary', 'Sexagenary Calendar', taxo:sexagenary#1, [$config:GANZHI_CODES//no:row])),
+    xmldb:store($config:target-calendar, $config:calendar,
+    taxo:taxonomy-wrap('reign', 'Chinese Dynastyc Reign Calendar', taxo:dynasties#1, [$config:DYNASTIES//no:row])))
 
+};
+
+(: OFFICE TAXONOMIES :)
+
+(: VALIDATION :)
+
+declare %test:assertTrue function taxo:validate-biblCat() {
+    validation:jing(doc($config:target-classdecl || $config:genre), $config:tei_all)
 };
 
 declare %test:assertTrue function taxo:validate-sexagenary() {
@@ -337,8 +325,8 @@ declare %test:assertTrue function taxo:validate-dynasties() {
 
 
 
-(: TIMING 0.8s :)(: TIMING: 1.4s:)
+(: TIMING 2.2s :)
 (
 taxo:write-calendar($config:GANZHI_CODES//no:row, $config:DYNASTIES//no:row),
-taxo:write-biblCat($config:TEXT_BIBLCAT_CODES//no:c_text_cat_code, $config:TEXT_BIBLCAT_TYPES//no:row)
+taxo:write-biblCat($config:TEXT_BIBLCAT_TYPES//no:row)
 )

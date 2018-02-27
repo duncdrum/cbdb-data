@@ -178,7 +178,7 @@ declare
     %test:args('-0247', 'zh') %test:assertEquals('乙卯')
 function cal:ganzhi ($year as xs:integer, $lang as xs:string?)  as xs:string* {
 (:~
-: Just for fun: ``cal:ganzhi`` calculates the ganzhi cycle for a given year. 
+: Just for fun: `cal:ganzhi` calculates the ganzhi cycle for a given year. 
 : It assumes gYears for calculating BCE dates.
 : 
 : @param $year gYear compatible string. 

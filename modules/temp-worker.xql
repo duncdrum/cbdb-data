@@ -33,7 +33,7 @@ declare variable $target-calendar := xmldb:create-collection($config:target-aemn
 declare variable $wd-sparql := doc($config:app-root || "/src/sparql/multi-dy.xml");
 
 
-declare %private function local:taxonomy-wrap($id as xs:string, $title as xs:string, $f as function(*), $arg as item()*) as element(TEI) {
+declare %private function local:taxonomy-wrap($id as xs:string, $title as xs:string, $f as function(*), $args as array(*)) as element(TEI) {
     (:~
  : Fix Higher-order function syntax so that this works with any arity.
  : then fix classDecl to use wrap instead of two fragments.
@@ -54,7 +54,7 @@ declare %private function local:taxonomy-wrap($id as xs:string, $title as xs:str
             <encodingDesc>
                 <classDecl>
                     <taxonomy
-                        xml:id="{$id}">{$f($arg)}</taxonomy>
+                        xml:id="{$id}">{apply($f, $args)}</taxonomy>
                 </classDecl>
             </encodingDesc>
         </teiHeader>
@@ -66,135 +66,75 @@ declare %private function local:taxonomy-wrap($id as xs:string, $title as xs:str
     </TEI>
 };
 
-declare function local:nest-types($types as node()*, $type-id as node(), $zh as node(), $en as node()) as element(category)* {
-    
-    (:~ 
- : local:nest-types recursively transforms `TEXT_BIBLCAT_TYPES` into nested categories. 
- : TODO make nest functio suffienceitly abstract to make do with just one.
- :
- : @param $types **row** in `*_TYPES`
- : @param $type-id is a `*_type_id`
- : @param $zh category name in Chinese
- : @param $en category name in English
- :
- : @return nested `<category xml:id="biblType">...</category>`:)
-    
-    
-    element category {
-        attribute xml:id {concat('biblType', $type-id)},
-        element catDesc {
-            attribute xml:lang {'zh-Hant'},
-            normalize-space($zh)
-        },
-        element catDesc {
-            attribute xml:lang {'en'},
-            normalize-space($en)
-        },
-        
-        for $child in $types[no:c_text_cat_type_parent_id = $type-id]
-            order by $child[no:c_text_cat_type_sortorder]
-        return
-            local:nest-types($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)
-    }
 
-};
+declare %public function local:nest-categories($rows as node()*, $id as node()*, $id-prefix as xs:string) as element(category)* {
 
-declare %private function local:write-biblCat($items as item()*, $types as item()*) as item()* {
-    (:~
- : calls local:nest-types recursively  from top level elements.
- : Executing the write will return an empty sequence. 
- : This is misleading, the correct data should have been written regardless.
+(:~
+ : recursive function for creating nested categories. 
+ : Determines the langue of `catDesc` based on  element name in source file. 
+ : Used for office and genre categories: `TEXT_BIBLCAT_TYPES`, 
+ :`TEXT_BIBLCAT_CODES`, and …  
  :
- : @param $items `TEXT_BIBLCAT_CODES` to be inserted into nested types
- : @param $types `TEXT_BIBLCAT_TYPES`
+ : @param $rows **row** from `*_TYPES` table
+ : @param $id the id child element of the row.
+ : @param $id-prefix the string prefix of the output id attributes values
  :
- : a bug in Saxon prevent me from using <xi:include  href="../fileDesc.xml" fallback ="db/apps/cbdb-data/data/fileDesc.xml" xpointer="fileDesc" parse="xml"/>
- :
- : @returns $typeTree the nested tree of types stored in the db with inserted codes :)
-    let $match := $types/no:c_text_cat_type_id[. = '01']
-    let $typeTree := xmldb:store($config:target-classdecl, $config:genre,
-    <TEI>
-        <teiHeader>
-            <fileDesc>
-                <titleStmt>
-                    <title>CBDB's genre classification</title>
-                </titleStmt>
-                <publicationStmt>
-                    <p>Part of CBDB in TEI</p>
-                </publicationStmt>
-                <sourceDesc>
-                    <p>born digital</p>
-                </sourceDesc>
-            </fileDesc>
-            <encodingDesc>
-                <classDecl>
-                    <taxonomy
-                        xml:id="biblCat">
-                        <category
-                            xml:id="biblType01">
-                            <catDesc
-                                xml:lang="zh-Hant">{normalize-space($match/../no:c_text_cat_type_desc_chn)}</catDesc>
-                            <catDesc
-                                xml:lang="en">{normalize-space($match/../no:c_text_cat_type_desc)}</catDesc>
-                            {
-                                for $outer in $types[no:c_text_cat_type_parent_id = '01']
-                                    order by $outer[no:c_text_cat_type_sortorder]
-                                return
-                                    local:nest-types($types, $outer/no:c_text_cat_type_id, $outer/no:c_text_cat_type_desc_chn, $outer/no:c_text_cat_type_desc)
-                            }
-                        </category>
-                    </taxonomy>
-                </classDecl>
-            </encodingDesc>
-        </teiHeader>
-        <text>
-            <body>
-                <p/>
-            </body>
-        </text>
-    </TEI>)
-    
-    (: inserts the genre categories codes, into the previously generated tree of category types :)
-    
-    for $cat in $items
-    
-    let $type-id := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:c_text_cat_code[. = $cat]/../no:c_text_cat_type_id
-    let $type := doc($typeTree)//category/@xml:id[. = concat('biblType', $type-id)]
-    let $category := element category {
-        attribute xml:id {concat('biblCat', $cat)},
-        element catDesc {
-            attribute xml:lang {'zh-Hant'},
-            normalize-space($cat/../no:c_text_cat_desc_chn)
-        },
-        element catDesc {
-            attribute xml:lang {'zh-Latn-alalc97'},
-            normalize-space($cat/../no:c_text_cat_pinyin)
-        },
-        if ($cat/../no:c_text_cat_desc/text() eq $cat/../no:c_text_cat_desc_chn/text())
-        then
-            ()
-        else
-            (element catDesc {
+ : returns nested category elements:)
+ 
+let $zh := $id/../*[ends-with(local-name(.), '_desc_chn')]
+let $en := $id/../*[ends-with(local-name(.), '_desc')]
+let $py := $id/../*[ends-with(local-name(.), '_pinyin')]
+let $sort := $id/../*[ends-with(local-name(.), '_sortorder')]
+
+let $parent := $rows/*[ends-with(local-name(.), '_parent_id')]
+
+
+
+order by number($sort)
+
+return
+   element category {
+            attribute xml:id {$id-prefix || $id},
+            element catDesc {
+                attribute xml:lang {'zh-Hant'},
+                    normalize-space($zh)
+            },
+            
+            if (empty($py)) then ()
+            else (
+            element catDesc {
+                attribute xml:lang {'zh-Latn-alalc97'},
+                    normalize-space($py)
+            }),
+            
+            if (($en eq $zh) or ($en eq '[not yet translated]')) then ()
+            else (
+            element catDesc {
                 attribute xml:lang {'en'},
-                normalize-space($cat/../no:c_text_cat_desc)
-            })
-    }
-        order by number($cat/../no:c_text_cat_sortorder)
-    return
-        update insert $category into $type/..
+                    normalize-space($en)
+            }),
+        (:  TODO: these hard coded references need to become dynamic :)
+            let $categ := $config:TEXT_BIBLCAT_CODES//no:row
+            let $cat-type-rel := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:row
+            let $matches := $categ/no:c_text_cat_code[. = $cat-type-rel/no:c_text_cat_type_id[. = $id]/../no:c_text_cat_code]/..
+            
+            for $match in $matches
+            return
+                local:nest-categories($matches, $match/*[1],  'biblCat'),
+                
+            if (exists($parent[. eq $id]))
+            then ( for $child in $parent[. eq $id]/..           
+            return
+                local:nest-categories($rows, $child/*[1], $id-prefix))
+            else ()
+        }
 };
 
 
 
-declare %test:assertTrue function local:validate-dynasties() {
-    validation:jing(doc($config:target-calendar || $config:calendar), $config:tei_all)
+
+declare %test:assertTrue function local:validate-biblCat() {
+    validation:jing(doc($config:target-classdecl || $config:genre), $config:tei_all)
 };
 
-(: TIMING 0.8s :)
-(:
-let $dynasties := $config:DYNASTIES//no:row:)
 
-local:taxonomy-wrap('reign', 'Chinese Dynastyc Reign Calendar', local:dynasties#1, $config:DYNASTIES//no:row)
-(:local:taxonomy-wrap('sexagenary', 'Sexagenary Calendar', local:sexagenary#1, $config:GANZHI_CODES//no:row):)
-
-(:validation:jing-report(doc($config:target-calendar || $config:calendar), $config:tei_all):)

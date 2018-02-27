@@ -1,5 +1,6 @@
 xquery version "3.0";
 (:~
+: !!! DEPRECATED since ÆMNI !!!
 : genre.xql combines $TEXT_BIBLCAT_CODES and $TEXT_BIBLCAT_TYPES into nested taxonomy elements.
 : these are referenced from listBibl.xml. 
 :
