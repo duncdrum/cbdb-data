@@ -40,9 +40,11 @@ declare variable $config:expath-descriptor := doc(concat($config:app-root, "/exp
 (: APP PATH EXPRESSIONS :)
 declare variable $config:src-data := $config:app-root || "/src/xml/";
 declare variable $config:target-data := $config:app-root || "/target/";
+
 declare variable $config:target-aemni := $config:app-root || "/data/";
 declare variable $config:target-classdecl := $config:target-aemni || "classDecl/";
-declare variable $config:target-calendar := $config:target-aemni || "calendar/";
+declare variable $config:target-calendar := $config:target-classdecl || "calendar/";
+declare variable $config:target-office := $config:target-classdecl || "office/";
 
 declare variable $config:report := $config:app-root || "/reports/";
 declare variable $config:patch := $config:app-root || "/reports/patch/";

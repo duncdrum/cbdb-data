@@ -44,7 +44,7 @@ let $output :=
     
     return
         element category{ attribute xml:id {concat('OFF', $office/text())},
-    (: We need an value for missing data for the merge to be successfull :)
+    (: We need a value for missing data for the merge to be successfull :)
             if (empty($type-rel/../no:c_office_tree_id) and empty($office/../no:c_dy))
             then (attribute n {'00'})
             else if (empty($type-rel/../no:c_office_tree_id))
@@ -133,9 +133,9 @@ off:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categorie
 };
 
 (:~
-: once maxCauseCount errors are fixed the following will suffice for the join:
+: once maxClauseCount errors are fixed the following will suffice for the join:
 : let $tree-id := $data/no:c_office_type_node_id
-: let $code := $globalOFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id:)
+: let $code := $global:OFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id:)
 declare %private function off:office-write ($data as item()*) as item()* {
 let $data := $global:OFFICE_TYPE_TREE//no:row
 let $tree := xmldb:store($global:target, $global:office, 

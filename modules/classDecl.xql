@@ -9,8 +9,9 @@ xquery version "3.1";
  : @version 0.8.0
  : 
  : @return data/classDecl/biblCat.xml
- : @return data/classDecl/
- : @return data/classDecl/
+ : @return data/classDecl/calendar/dyna_cal.xml
+ : @return data/classDecl/calendar/sexa_cal.xml
+ : @return data/classDecl/office/office-*.xml
  :)
 
 import module namespace xmldb = "http://exist-db.org/xquery/xmldb";
@@ -29,8 +30,8 @@ declare namespace output = "http://www.tei-c.org/ns/1.0";
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
 declare variable $target-classDecl := xmldb:create-collection($config:target-aemni, 'classDecl');
-declare variable $target-calendar := xmldb:create-collection($config:target-aemni, 'calendar');
-declare variable $target-office := xmldb:create-collection($config:target-aemni, 'office');
+declare variable $target-calendar := xmldb:create-collection($config:target-classdecl, 'calendar');
+declare variable $target-office := xmldb:create-collection($config:target-classdecl, 'office');
 
 
 (:~
@@ -301,9 +302,9 @@ declare %private function taxo:write-calendar($sexa as item()*, $dyna as item()*
  :)
     
     (xmldb:store($config:target-calendar, $config:sexagen,
-    taxo:taxonomy-wrap('sexagenary', 'Sexagenary Calendar', taxo:sexagenary#1, [$config:GANZHI_CODES//no:row])),
+    taxo:taxonomy-wrap('sexagenary', 'Sexagenary Calendar', taxo:sexagenary#1, [$sexa])),
     xmldb:store($config:target-calendar, $config:calendar,
-    taxo:taxonomy-wrap('reign', 'Chinese Dynastyc Reign Calendar', taxo:dynasties#1, [$config:DYNASTIES//no:row])))
+    taxo:taxonomy-wrap('reign', 'Chinese Dynastyc Reign Calendar', taxo:dynasties#1, [$dyna])))
 
 };
 
@@ -316,7 +317,7 @@ declare %test:assertTrue function taxo:validate-biblCat() {
 };
 
 declare %test:assertTrue function taxo:validate-sexagenary() {
-    validation:jing(doc($config:target-calendar || $config:genre), $config:tei_all)
+    validation:jing(doc($config:target-calendar || $config:sexagen), $config:tei_all)
 };
 
 declare %test:assertTrue function taxo:validate-dynasties() {

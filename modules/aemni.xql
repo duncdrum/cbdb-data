@@ -37,115 +37,169 @@ declare variable $test := element root {
         }
 };
 
-declare function local:office ($offices as node()*) as item()* {
-(:~
-: local:office transforms `OFFICE_CODES`, `OFFICE_CODE_TYPE_REL`, and `OFFICE_TYPE_TREE`
-: data into nested categories elements.
-: 
-: @param $offices is a ``c_office_id``
-: 
-: @return ``<category xml:id="OFF...">...</category>``:)
-
-
-    for $office in $offices[. > 0] 
+declare %public function local:nest-categories($rows as node()*, $id as node()*, $id-prefix as xs:string) as element(category)* {
     
-    let $type-rel := $config:OFFICE_CODE_TYPE_REL//no:c_office_id[. = $office]
-    let $type := $config:OFFICE_TYPE_TREE//no:c_office_type_node_id[. = $type-rel/../no:c_office_tree_id]
+    (:~
+ : recursive function for creating nested categories. 
+ : Determines the langue of `catDesc` based on  element name in source file,
+ : omitting missing information.
+ : 
+ : `TEXT_BIBLCAT_TYPES` and `OFFICE_TYPE_TREE` contain higher level groupings
+ : `TEXT_BIBLCAT_CODES`, and `OFFICE_CODES` contain subdivisions. 
+ : should this query result in a maxCauseCount error (1676) you ll need to 
+ : increase this in a custom build of `lucene-core-4.10.4.jar`.
+ :
+ : @see https://sourceforge.net/p/exist/mailman/message/24540933/
+ :
+ : @param $rows **row** from `*_TYPES` table
+ : @param $id the id child element of the row.
+ : @param $id-prefix the string prefix of the output id attributes values
+ : @param $codes the rows of the `*_CODES* table
+ : @param $rel the rows of the types-2-codes relationship table
+ :
+ : returns nested category elements:)
+    
+    let $zh := $id/../*[ends-with(local-name(.), '_chn')]
+    let $py := $id/../*[ends-with(local-name(.), '_pinyin')]
+    let $en := $id/../*[ends-with(local-name(.), ('_desc', '_trans'))]
+    
+    let $zh-alt := $id/../*[ends-with(local-name(.), '_chn_alt')]
+    let $py-alt := $id/../*[ends-with(local-name(.), '_pinyin_alt')]
+    let $en-alt := $id/../*[ends-with(local-name(.), '_trans_alt')]
+    
+    let $sort := $id/../*[ends-with(local-name(.), '_sortorder')]
+    let $parent := $rows/*[ends-with(local-name(.), '_parent_id')]
+        
+        
+        
+        order by number($sort)
     
     return
-        element category{ attribute xml:id {concat('OFF', $office/text())},
-    (: We need an value for missing data for the merge to be successfull :)
-            if (empty($type-rel/../no:c_office_tree_id) and empty($office/../no:c_dy))
-            then (attribute n {'00'})
-            else if (empty($type-rel/../no:c_office_tree_id))
-                then (attribute n {$office/../no:c_dy/text()})
-                else (attribute n {$type-rel/../no:c_office_tree_id/text()}),
-            
-        if (empty($office/../no:c_source) or $office/../no:c_source[. < 1])
-        then ()
-        else (attribute source {concat('#BIB', $office/../no:c_source/text())}),
-    (: catDesc:)
+        element category {
+            attribute xml:id {$id-prefix || $id},
+            (: the main category:)
             element catDesc {
-                 element roleName { attribute type {'main'}, 
-                    for $n in $office/../*
-                    order by local-name($n) 
+                attribute xml:lang {'zh-Hant'},
+                normalize-space($zh)
+            },
+            
+            if (empty($py)) then
+                ()
+            else
+                (element catDesc {
+                    attribute xml:lang {'zh-Latn-alalc97'},
+                    normalize-space($py)
+                }),
+            
+            if (lower-case($en) = ($zh, '[not yet translated]', '')) then
+                ()
+            else
+                if (ends-with($en, '(Hucker)'))
+                then
+                    (element catDesc {
+                        attribute xml:lang {'en'},
+                        attribute resp {'Hucker'}, normalize-space(substring-before($en, ' (Hucker)'))
+                    })
+                else
+                    (element catDesc {
+                        attribute xml:lang {'en'},
+                        normalize-space($en)
+                    }),
+            (: alternative desriptions :)
+            let $seq := ($zh-alt, $py-alt, $en-alt)
+            for $alt in $seq
+            let $lang := switch (index-of($seq, $alt))
+                case 1
                     return
-                        typeswitch($n)
-                            case element (no:c_office_chn) return element roleName { attribute xml:lang {'zh-Hant'}, $n/text()}
-                            case element (no:c_office_pinyin) return element roleName { attribute xml:lang {'zh-Latn-alalc97'}, $n/text()}
-                            case element (no:c_office_trans) return 
-                                if ($n/text() = '[Not Yet Translated]')
-                                then ()
-                                else if (contains($n/text(), '(Hucker)'))
-                                    then (element roleName { attribute xml:lang {'en'},
-                                             attribute resp {'Hucker'},  substring-before($n/text(), ' (Hucker)')})
-                                    else (element roleName { attribute xml:lang {'en'},
-                                             $n/text()})                                             
-                        default return (), 
-    (: looks odd at start of element :)
-                        if (empty($office/../no:c_notes))
-                        then ()
-                        else (element note {$office/../no:c_notes/text()})
-                        },
-                        
-                if (empty($office/../no:c_office_chn_alt) and empty($office/../no:c_office_trans_alt))
-                then ()
-                else (element roleName { attribute type {'alt'},        
-                    for $off in $office/../*[. != '0']
-                    order by local-name($off) 
+                        'zh-Hant'
+                case 2
                     return
-                        typeswitch($off)                        
-                            case element (no:c_office_chn_alt) return element roleName { attribute xml:lang {'zh-Hant'}, $off/text()}
-                            case element (no:c_office_pinyin_alt) return element roleName { attribute xml:lang {'zh-Latn-alalc97'}, $off/text()}
-                            case element (no:c_office_trans_alt) return element roleName { attribute xml:lang {'en'}, $off/text()}                        
-                        default return ()}), 
-                
-                if (empty($office/../no:c_dy))
-                then ()
-                else (cal:new-date($office/../no:c_dy, 'when-custom')[@calendar])              
-            }
-        }
-};
-
-declare function local:nest-children ($types as node()*, $id as node(), $zh as node(), $en as node()) element(category)*{
-(:~
-: local:nest-children recursively transforms $OFFICE_TYPE_TREE into nested categories.
-: 
- : @param $types **row** in `TEXT_BIBLCAT_TYPES`
- : @param $type-id is a `c_text_cat_type_id`
- : @param $zh category name in Chinese
- : @param $en category name in English
-: 
-: 
-: @return nested ``<category n ="...">...</category>``:)
-
-let $initial := 
-    switch($types)
-    case 'TEXT_BIBLCAT_TYPES' return 'biblType'
-    case 'OFFICE_TYPE_TREE' return 'offType'
-    default return ('someType')
-    
-return
-  element category {
-        attribute xml:id { $initial || $type-id },
-        element catDesc {
-            attribute xml:lang {'zh-Hant'},
-            normalize-space($zh)
-        },
-        if (empty($en) or $en eq '[not yet translated]') 
-        then ()
-        else (element catDesc { attribute xml:lang {'en'},
-            normalize-space($en)
-        }),
-        
-        for $child in $types[no:c_text_cat_type_parent_id = $type-id]
-            order by $child[no:c_text_cat_type_sortorder]
+                        'zh-Latn-alalc97'
+                default return
+                    'en'
         return
-            taxo:nest-biblCat($types, $child/no:c_text_cat_type_id, $child/no:c_text_cat_type_desc_chn, $child/no:c_text_cat_type_desc)
+            if (empty($alt)) then
+                ()
+            else
+                (for $n at $p in tokenize($alt, ';')
+                    order by $p
+                return
+                    if ($n eq '') then
+                        ()
+                    else
+                        (
+                        element catDesc {
+                            attribute ana {'alt'},
+                            attribute n {$p},
+                            attribute xml:lang {$lang},
+                            normalize-space($n)
+                        })),
+        
+        (:  TODO: these hard coded references need to become dynamic :)
+        if (substring-before(util:document-name($rows[1]), '_TYPE') eq 'OFFICE')
+        then
+            (
+            let $codes := $config:OFFICE_CODES//no:row
+            let $type-rel := $config:OFFICE_CODE_TYPE_REL//no:row
+            (: this is a hack :)
+            let $matches := 
+                if (count($type-rel/no:c_office_tree_id[. = $id]) > 1) 
+                then
+                    ( $codes/no:c_office_id[. = $type-rel/no:c_office_tree_id[. = $id][2]/../no:c_office_id]/..)
+                else 
+                    ($codes/no:c_office_id[. = $type-rel/no:c_office_tree_id[. = $id]/../no:c_office_id]/..)
+               
+            
+            for $match in $matches
+            return                
+                (: the first child is always the key id column  except for offices there it is the second:)
+                local:nest-categories($matches, $match/*[2], $id-prefix)
+            )
+        else
+            (
+            let $codes := $config:TEXT_BIBLCAT_CODES//no:row
+            let $type-rel := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:row
+            let $matches := $codes/no:c_text_cat_code[. = $type-rel/no:c_text_cat_type_id[. = $id]/../no:c_text_cat_code]/..
+            
+            for $match in $matches
+            return
+                (: the first child is always the key id column :)
+                local:nest-categories($matches, $match/*[1], $id-prefix)
+            ),
+        
+        if (exists($parent[. eq $id]))
+        then
+            (for $child in $parent[. eq $id]/..
+            return
+                local:nest-categories($rows, $child/*[1], $id-prefix))
+        else
+            ()
     }
 };
 
-(:~
-: once maxCauseCount errors are fixed the following will suffice for the join:
-: let $tree-id := $data/no:c_office_type_node_id
-: let $code := $globalOFFICE_CODE_TYPE_REL//no:c_office_tree_id[. =  $tree-id/text()]/../no:c_office_id:)
+let $offices := $config:OFFICE_TYPE_TREE//no:row
+(:let $codes := $config:OFFICE_CODES//no:row
+let $type-rel := $config:OFFICE_CODE_TYPE_REL//no:row
+
+
+for $match in $offices
+let $id := $match/*[1][. = '06']
+let $off-id := $type-rel/no:c_office_tree_id[. =  $id]/../no:c_office_id
+let $off := $codes/no:c_office_id[. =$off-id]/..
+let $matches := $codes/no:c_office_id[. = $type-rel/no:c_office_tree_id[. = $id]/../no:c_office_id]/..
+return
+   <result>{ 
+$matches   }</result>:)
+
+(:for $n in $offices/no:c_parent_id[. = 0]/..:)
+for $n in $offices[1]
+return
+    local:nest-categories($offices, $n/no:c_office_type_node_id, 'OFF')
+   
+
+(:let $seq := (1, 2, 3, 1, 1 )
+for $n in $seq    
+return
+ if (count($n) > 1)
+ then ($n)
+ else ():)
