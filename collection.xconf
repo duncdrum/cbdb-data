@@ -3,8 +3,11 @@
     <index xmlns:no="http://none" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
         <!-- Lucene -->
         <lucene>
+            <text qname="no:c_office_id"/>
+            <text qname="no:c_office_tree_id"/>
             <text qname="no:c_notes"/>
             <text qname="no:c_event"/>
+            <text qname="tei:category"/>
         </lucene>
         <range>
     <!-- TEI -->
@@ -32,7 +35,8 @@
             <create qname="@ref" type="xs:string"/>
             <create qname="@target" type="xs:string"/>
             <create qname="@sameAs" type="xs:string"/>
-
+            <create qname="@xml:id" type="xs:string"/>
+            
             <!-- numerical -->
             <create qname="tei:date" type="xs:string"/>
             <create qname="@when" type="xs:string"/>
@@ -80,6 +84,7 @@
             <create qname="no:c_text_cat_code" type="xs:integer"/>
 
             <!--relationships -->
+            <create qname="no:c_parent_id" type="xs:integer"/>
             <create qname="no:c_kin_id" type="xs:integer"/>
             <create qname="no:c_kin_code" type="xs:integer"/>
             <create qname="no:c_kincode" type="xs:integer"/>
@@ -99,6 +104,7 @@
             <create qname="no:c_inst_type_code" type="xs:integer"/>
             <create qname="no:c_office_id" type="xs:integer"/>
             <create qname="no:c_office_type_id" type="xs:integer"/>
+            <create qname="no:c_office_type_node_id" type="xs:integer"/>            
             <create qname="no:c_office_tree_id" type="xs:integer"/>
             <create qname="no:c_posting_id" type="xs:integer"/>
             <create qname="no:c_office_chn" type="xs:string"/>
@@ -129,7 +135,7 @@
             <create qname="no:c_parental_status_code" type="xs:integer"/>
             <create qname="no:c_lit_genre_code" type="xs:integer"/>
             <create qname="no:c_possession_act_code" type="xs:integer"/>
-            <create qname="no:c_topic_code" type="xs:integer"/>
+            <create qname="no:c_topic_code" type="xs:integer"/>              
         </range>
     </index>
 </collection>

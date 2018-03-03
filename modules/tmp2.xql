@@ -28,4 +28,40 @@ declare variable $path := collection($config:app-root || '/src/');
 declare variable $model := $path/model/.;
 declare variable $tmpl := doc('/db/apps/cbdb-data/templates/tei/cbdbTEI-template.xml');
 
+let $offices := $config:OFFICE_TYPE_TREE//no:row
+let $codes := $config:TEXT_BIBLCAT_CODES//no:row
+let $type-rel := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:row
 
+
+(: There are three files with problematic IDs :)
+let $office-06 := doc($config:target-office || 'office-06.xml')
+let $office-15 := doc($config:target-office || 'office-15.xml')
+let $office-18 := doc($config:target-office || 'office-18.xml')
+
+(: There  is a bug with the updating extension in 4.0.0 once fixed run this:)
+
+for $n at $p in $office-06//*
+let $data := data($n/@xml:id)
+
+
+order by $data
+return
+   (: check if there are multilpe IDs :)
+   if (count($office-06//*[@xml:id = $data]) = 1)
+   (: unique ids are britney, leave em alone :)
+   then ()            
+   (: see if the dupe is a top level child :)
+   else if (data($n/../../tei:category/@xml:id)[1] = 'OFF06')
+            then (<delete n="{$p}" at="{data($n/../../tei:category/@xml:id)[1]}">{$n}</delete>)
+            else (<keep n="{$p}" at="{data($n/../../tei:category/@xml:id)[2]}">{$office-06//*[@xml:id = $data][2]}</keep>)
+    
+(:
+if (data($n/../../tei:category/@xml:id)[1] = 'OFF06')
+then (update delete $n)
+else ()
+
+if (data($n/../../tei:category/@xml:id)[1] != 'OFF06')
+then ()
+else (update replacee $n with <category sameAs="{concat('#', data($n/../../tei:category/@xml:id)[2])}">)
+:)
+  

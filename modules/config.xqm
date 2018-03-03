@@ -161,7 +161,16 @@ declare variable $config:tmpBM_NIY := doc($config:src-data || 'tmpBM_NIY.xml');
 declare variable $config:tmpBM_NIY_finished := doc($config:src-data || 'tmpBM_NIY_finished.xml');
 declare variable $config:tmpIndexYear := doc($config:src-data || 'tmpIndexYear.xml');
 
-
+(:~ Lucene query option for large queries the risk maxClauseCount errors 
+ : @see [exist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?q=lucene&field=all&id=D1.4.6#D1.4.10.20)
+:)
+declare variable $config:query-options :=
+    <options>
+        <default-operator>and</default-operator>
+        <phrase-slop>0</phrase-slop>
+        <leading-wildcard>no</leading-wildcard>
+        <filter-rewrite>yes</filter-rewrite>
+    </options>;
 (:~
  : Resolve the given path using the current application context.
  : If the app resides in the file system,

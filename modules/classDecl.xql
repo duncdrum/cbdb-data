@@ -324,10 +324,21 @@ declare %test:assertTrue function taxo:validate-dynasties() {
     validation:jing(doc($config:target-calendar || $config:calendar), $config:tei_all)
 };
 
+declare %test:assertTrue function taxo:validate-office() {
+(: there are duplicate xml:id not coaught by validation ??
+these are related to left right offices create a fix-up function ? :)
+
+for $docs in collection($config:target-office)
+let $name := util:document-name($docs)
+return
+    validation:jing(doc($config:target-office || $name), $config:tei_all)
+};
+
 
 
 (: TIMING 2.2s :)
 (
 taxo:write-calendar($config:GANZHI_CODES//no:row, $config:DYNASTIES//no:row),
-taxo:write-biblCat($config:TEXT_BIBLCAT_TYPES//no:row)
+taxo:write-biblCat($config:TEXT_BIBLCAT_TYPES//no:row), 
+taxo:write-office($config:OFFICE_TYPE_TREE//no:row)
 )

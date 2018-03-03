@@ -90,16 +90,16 @@ declare %public function local:nest-categories($rows as node()*, $id as node()*,
  :
  : returns nested category elements:)
     
-    let $zh := $id/../*[ends-with(local-name(.), '_chn')]
-    let $py := $id/../*[ends-with(local-name(.), '_pinyin')]
-    let $en := $id/../*[ends-with(local-name(.), ('_desc', '_trans'))]
+    let $zh := $id/../*[ends-with(name(.), '_chn')]
+    let $py := $id/../*[ends-with(name(.), '_pinyin')]
+    let $en := $id/../*[ends-with(name(.), ('_desc', '_trans'))]
     
-    let $zh-alt := $id/../*[ends-with(local-name(.), '_chn_alt')]
-    let $py-alt := $id/../*[ends-with(local-name(.), '_pinyin_alt')]
-    let $en-alt := $id/../*[ends-with(local-name(.), '_trans_alt')]
+    let $zh-alt := $id/../*[ends-with(name(.), '_chn_alt')]
+    let $py-alt := $id/../*[ends-with(name(.), '_pinyin_alt')]
+    let $en-alt := $id/../*[ends-with(name(.), '_trans_alt')]
     
-    let $sort := $id/../*[ends-with(local-name(.), '_sortorder')]
-    let $parent := $rows/*[ends-with(local-name(.), '_parent_id')]
+    let $sort := $id/../*[ends-with(name(.), '_sortorder')]
+    let $parent := $rows/*[ends-with(name(.), '_parent_id')]
         
     order by number($sort)
     
@@ -265,10 +265,7 @@ return
 
     
 (:    validation:jing(doc(util:document-name($docs)), $config:tei_all):)
-let $offices := $config:OFFICE_TYPE_TREE//no:row
 
-for $n in $offices[1]
-return
     local:write-office($config:OFFICE_TYPE_TREE//no:row)
 
 (:let $codes := $config:OFFICE_CODES//no:row
