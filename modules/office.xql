@@ -1,5 +1,6 @@
 xquery version "3.0";
 (:~ 
+: !!! DEPRECATED since ÆMNI !!!
 : To generating the taxonomy for office titles we need two query files office.xql and officeB.xql. 
 : 
 : office creates two files which will be merged by officeB.

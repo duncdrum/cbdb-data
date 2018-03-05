@@ -167,10 +167,8 @@ declare %public function local:nest-categories($rows as node()*, $id as node()*,
                         })),
         
             (:~
-            : There are 5907 ids appearing in two locations (4 tang ids appear more then twice (11037, 11039, 11042, 11045) )
-            : The first appearance generally assigns an office to a dynsastic period, which is superflous. 
-            : This code below returns the more meaningfull second occurrence.
-            : To fix the 4 ids with more then two locations in the org tree there is a separate fix-up function. 
+            : There are 5907 ids appearing in multiple locations 
+            : @see local:fixup-office
             :)
         if (substring-before(util:document-name($rows[1]), '_TYPE') eq 'OFFICE')
         then
@@ -212,18 +210,18 @@ declare %public function local:nest-categories($rows as node()*, $id as node()*,
 
 declare %public function local:write-office($offices as item()*) as item()* {
 (:
-make sure that links from main files switch to full URI s (Hucker?)          [?]
+make sure that links from main files switch to full URI s (Hucker?)         [?]
 and fix in main transforms                                                        [ ]
 no note if contents equal 'alt'                                                  [ ]
-lucene as has better way to avoid maxClauseCount error ?                     [ ]
-add ana=main to main entries? edit ODD no more type here                     [ ]
-dedupe _type >> _code hack 11037                                                [x]   
-$type-rel has 2 instances of same ID see 11039 fix?                           [ ]
-much nicer find out what happened to 阿餐                                       [ ]
+find better way to avoid maxClauseCount error ?                                [x]
+add ana=main to main entries? edit ODD no more type here                      [ ]
+dedupe _type >> _code hack 11037                                                 [x]   
+$type-rel has 2 instances of same ID see 11039 fix?                           [x]
+much nicer find out what happened to 阿餐                                       [x]
 fix old n="00" codes                                                              [ ]
 add test that compares count($src//rows) with count($data//category)       [ ]
 see old inline comments
-create a fix-up function that is called by write and sorts this mess as best it can [ ]
+create a fix-up function that is called by write and sorts this mess as best it can [x]
 :)
 let $count := count($offices/no:c_parent_id[. = 0])
 
@@ -234,8 +232,7 @@ let $report := <data top="{$count}">
             <id pos="{$position}">{$n/text()}</id>
         }
         </data>
- 
-(:
+ (:
 <data top="6">
     <id pos="1">06</id>
     <id pos="391">15</id>

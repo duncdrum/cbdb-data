@@ -1,5 +1,6 @@
 xquery version "3.0";
 (:~
+: !!! DEPRECATED since ÆMNI !!!
 : officeB joins the nodes from the two intermediary files written by office-a.
 : it also cleans up after itself. The reason for the split was a bug in eXist-db which raised a
 : ``maxClauseCount`` error. 

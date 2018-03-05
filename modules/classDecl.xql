@@ -91,30 +91,42 @@ declare %public function taxo:nest-categories($rows as node()*, $id as node()*, 
     
     (:~
  : recursive function for creating nested categories. 
- : Determines the langue of `catDesc` based on  element name in source file. 
- : Used for office and genre categories: `TEXT_BIBLCAT_TYPES`, 
- :`TEXT_BIBLCAT_CODES`, and …  
+ : Determines the langue of `catDesc` based on  element name in source file,
+ : omitting missing information.
+ : 
+ : `TEXT_BIBLCAT_TYPES` and `OFFICE_TYPE_TREE` contain higher level groupings
+ : `TEXT_BIBLCAT_CODES`, and `OFFICE_CODES` contain subdivisions. 
+ : should this query result in a maxCauseCount error (1676) you ll need to 
+ : increase this in a custom build of `lucene-core-4.10.4.jar`. Or use ft:query option
+ :
+ : @see [exist-db mailing list](https://sourceforge.net/p/exist/mailman/message/24540933/)
+ : @see [exist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?q=lucene&field=all&id=D1.4.6#D1.4.10.20)
  :
  : @param $rows **row** from `*_TYPES` table
  : @param $id the id child element of the row.
  : @param $id-prefix the string prefix of the output id attributes values
+ : @param $codes the rows of the `*_CODES* table
+ : @param $rel the rows of the types-2-codes relationship table
  :
  : returns nested category elements:)
     
-    let $zh := $id/../*[ends-with(local-name(.), '_desc_chn')]
-    let $en := $id/../*[ends-with(local-name(.), '_desc')]
-    let $py := $id/../*[ends-with(local-name(.), '_pinyin')]
-    let $sort := $id/../*[ends-with(local-name(.), '_sortorder')]
+    let $zh := $id/../*[ends-with(name(.), '_chn')]
+    let $py := $id/../*[ends-with(name(.), '_pinyin')]
+    let $en := $id/../*[ends-with(name(.), ('_desc', '_trans'))]
     
-    let $parent := $rows/*[ends-with(local-name(.), '_parent_id')]
+    let $zh-alt := $id/../*[ends-with(name(.), '_chn_alt')]
+    let $py-alt := $id/../*[ends-with(name(.), '_pinyin_alt')]
+    let $en-alt := $id/../*[ends-with(name(.), '_trans_alt')]
+    
+    let $sort := $id/../*[ends-with(name(.), '_sortorder')]
+    let $parent := $rows/*[ends-with(name(.), '_parent_id')]
         
-        
-        
-        order by number($sort)
+    order by number($sort)
     
     return
         element category {
             attribute xml:id {$id-prefix || $id},
+            (: the main category:)
             element catDesc {
                 attribute xml:lang {'zh-Hant'},
                 normalize-space($zh)
@@ -123,37 +135,97 @@ declare %public function taxo:nest-categories($rows as node()*, $id as node()*, 
             if (empty($py)) then
                 ()
             else
-                (
-                element catDesc {
+                (element catDesc {
                     attribute xml:lang {'zh-Latn-alalc97'},
                     normalize-space($py)
                 }),
-            
-            if (($en eq $zh) or ($en eq '[not yet translated]')) then
+                
+            (: prevent empty or meaningless elements :)            
+            if (lower-case($en) = ($zh, '[not yet translated]', '', '/')) then
                 ()
             else
-                (
-                element catDesc {
-                    attribute xml:lang {'en'},
-                    normalize-space($en)
-                }),
-            (:  TODO: these hard coded references need to become dynamic :)
-            let $categ := $config:TEXT_BIBLCAT_CODES//no:row
-            let $cat-type-rel := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:row
-            let $matches := $categ/no:c_text_cat_code[. = $cat-type-rel/no:c_text_cat_type_id[. = $id]/../no:c_text_cat_code]/..
+                if (ends-with($en, '(Hucker)'))
+                then
+                    (element catDesc {
+                        attribute xml:lang {'en'},
+                        attribute resp {'Hucker'}, normalize-space(substring-before($en, ' (Hucker)'))
+                    })
+                else
+                    (element catDesc {
+                        attribute xml:lang {'en'},
+                        normalize-space($en)
+                    }),
+            (: alternative desriptions :)
+            let $seq := ($zh-alt, $py-alt, $en-alt)
+            for $alt in $seq
+            let $lang := switch (index-of($seq, $alt))
+                case 1
+                    return
+                        'zh-Hant'
+                case 2
+                    return
+                        'zh-Latn-alalc97'
+                default return
+                    'en'
+        return
+            if (empty($alt)) then
+                ()
+            else
+                (for $n at $p in tokenize($alt, ';')
+                    order by $p
+                return
+                (: skip entries ending with semicolon :)
+                    if ($n eq '') then
+                        ()
+                    else
+                        (
+                        element catDesc {
+                            attribute ana {'alt'},
+                            attribute n {$p},
+                            attribute xml:lang {$lang},
+                            normalize-space($n)
+                        })),
+        
+            (:~
+            : There are 5907 ids appearing in multiple locations 
+            : @see taxo:fixup-office
+            :)
+        if (substring-before(util:document-name($rows[1]), '_TYPE') eq 'OFFICE')
+        then
+            (
+            let $codes := $config:OFFICE_CODES//no:row
+            let $type-rel := $config:OFFICE_CODE_TYPE_REL//no:row
+            let $option := <option><filter-rewrite>yes</filter-rewrite></option>
+            let $query := <term>{$id}</term>
+
+            let $matches := $codes/no:c_office_id[. = $type-rel/no:c_office_tree_id[. = $id]/../no:c_office_id]/..
+               
+            
+            for $match in $matches
+            return                
+                (: the first child is always the key id column  except for offices there it is the second:)
+                taxo:nest-categories($matches, $match/*[2], $id-prefix)
+            )
+        else
+            (
+            let $codes := $config:TEXT_BIBLCAT_CODES//no:row
+            let $type-rel := $config:TEXT_BIBLCAT_CODE_TYPE_REL//no:row
+            let $matches := $codes/no:c_text_cat_code[. = $type-rel/no:c_text_cat_type_id[. = $id]/../no:c_text_cat_code]/..
             
             for $match in $matches
             return
-                taxo:nest-categories($matches, $match/*[1], 'biblCat'),
-            
-            if (exists($parent[. eq $id]))
-            then
-                (for $child in $parent[. eq $id]/..
-                return
-                    taxo:nest-categories($rows, $child/*[1], $id-prefix))
-            else
-                ()
-        }
+                (: the first child is always the key id column :)
+                taxo:nest-categories($matches, $match/*[1], $id-prefix)
+            ),
+        
+        if (exists($parent[. eq $id]))
+        then
+            (for $child in $parent[. eq $id]/..
+            return
+                taxo:nest-categories($rows, $child/*[1], $id-prefix))
+        else
+            ()
+    }
 };
 
 (: GENRE TAXONOMY :)
@@ -309,7 +381,122 @@ declare %private function taxo:write-calendar($sexa as item()*, $dyna as item()*
 };
 
 (: OFFICE TAXONOMIES :)
+declare %public function taxo:write-office($offices as item()*) as item()* {
+(:~
+ : not much has happened in the last update to the structural problems.
+ : To keep avoiding maXClauseCount errors on unmodified exist-db installations
+ : this performs three seaparat write operations, instead of just processing all
+ : offices in one go. 
+ : Lastly, there is a fixup function that needs to run on the initial ouput. 
+ :
+ : @see taxo:fixup-offices
+ :) 
+ 
+(: no note if contents equal 'alt'                                               [ ]
+add ana=main to main entries? edit ODD no more type here                      [ ]
+fix old n="00" codes                                                               [ ]
+add test that compares count($src//rows) with count($data//category)       [ ]
+see old inline comments
+create a fix-up function that is called by write and sorts this mess as best it can [x]
+:)
+let $count := count($offices/no:c_parent_id[. = 0])
 
+let $report := <data top="{$count}">
+        {for $n in $offices/no:c_parent_id[. = 0]/../no:c_office_type_node_id
+        let $position := index-of($offices//no:c_office_type_node_id, $n)
+        return
+            <id pos="{$position}">{$n/text()}</id>
+        }
+        </data>
+ (:
+<data top="6">
+    <id pos="1">06</id>
+    <id pos="391">15</id>
+    <id pos="550">16</id>
+    <id pos="1016">18</id>
+    <id pos="2011">19</id>
+    <id pos="2012">20</id>
+</data>
+:)
+
+(:
+for $n in $offices/no:c_parent_id[. = 0]/..
+let $prefix := 'office-' || $n/no:c_office_type_node_id
+return 
+    xmldb:store($config:target-office, $prefix || '.xml',
+    taxo:taxonomy-wrap($prefix, 'Taxonomy of Imperial Bureaucracy', taxo:nest-categories#3, [$offices, $n/no:c_office_type_node_id, 'OFF']))
+    :)
+
+(for $n in $offices[1]
+let $prefix := 'office-' || $n/no:c_office_type_node_id
+return 
+    xmldb:store($config:target-office, $prefix || '.xml',
+    taxo:taxonomy-wrap($prefix, 'Taxonomy of Imperial Bureaucracy', taxo:nest-categories#3, [$offices, $n/no:c_office_type_node_id, 'OFF'])),
+
+for $n in $offices[391]
+let $prefix := 'office-' || $n/no:c_office_type_node_id
+return 
+    xmldb:store($config:target-office, $prefix || '.xml',
+    taxo:taxonomy-wrap($prefix, 'Taxonomy of Imperial Bureaucracy', taxo:nest-categories#3, [$offices, $n/no:c_office_type_node_id, 'OFF'])),
+
+for $n in $offices[550]
+let $prefix := 'office-' || $n/no:c_office_type_node_id
+return 
+    xmldb:store($config:target-office, $prefix || '.xml',
+    taxo:taxonomy-wrap($prefix, 'Taxonomy of Imperial Bureaucracy', taxo:nest-categories#3, [$offices, $n/no:c_office_type_node_id, 'OFF'])),
+
+for $n in $offices[1016]
+let $prefix := 'office-' || $n/no:c_office_type_node_id
+return 
+    xmldb:store($config:target-office, $prefix || '.xml',
+    taxo:taxonomy-wrap($prefix, 'Taxonomy of Imperial Bureaucracy', taxo:nest-categories#3, [$offices, $n/no:c_office_type_node_id, 'OFF'])),
+
+for $n in $offices[2011]
+let $prefix := 'office-' || $n/no:c_office_type_node_id
+return 
+    xmldb:store($config:target-office, $prefix || '.xml',
+    taxo:taxonomy-wrap($prefix, 'Taxonomy of Imperial Bureaucracy', taxo:nest-categories#3, [$offices, $n/no:c_office_type_node_id, 'OFF'])),
+
+for $n in $offices[2012]
+let $prefix := 'office-' || $n/no:c_office_type_node_id
+return 
+    xmldb:store($config:target-office, $prefix || '.xml',
+    taxo:taxonomy-wrap($prefix, 'Taxonomy of Imperial Bureaucracy', taxo:nest-categories#3, [$offices, $n/no:c_office_type_node_id, 'OFF']))    
+)
+};
+
+declare %private %updating function taxo:fixup-offices () {
+(:~
+ : There are 5907 ids appearing in two locations (4 tang ids appear more then twice (11037, 11039, 11042, 11045) )
+ : The first appearance generally assigns an office to a dynsastic period, which is superflous. 
+ : This code below returns the more meaningfull second occurrence.There are three files with problematic IDs :)
+ 
+let $office-06 := doc($config:target-office || 'office-06.xml')
+let $office-15 := doc($config:target-office || 'office-15.xml')
+let $office-18 := doc($config:target-office || 'office-18.xml')
+
+(: There  is a bug with the updating extension in 4.0.0 once fixed run this:)
+
+for $n at $p in $office-06//*
+let $data := data($n/@xml:id)
+
+let $report := 
+   if (count($office-06//*[@xml:id = $data]) = 1)
+   then ()            
+
+   else if (data($n/../../tei:category/@xml:id)[1] = 'OFF06')
+            then (<delete n="{$p}" at="{data($n/../../tei:category/@xml:id)[1]}">{$n}</delete>)
+            else (<keep n="{$p}" at="{data($n/../../tei:category/@xml:id)[2]}">{$office-06//*[@xml:id = $data][2]}</keep>) 
+return
+    (: check if there are multilpe IDs :)
+   if (count($office-06//*[@xml:id = $data]) = 1)
+   (: unique ids are britney, leave em alone :)
+   then ()
+   (: see if the dupe is a top level child :)
+   else if (data($n/../../tei:category/@xml:id)[1] = 'OFF06')
+        then (update delete $n)
+        else (update replace $n with <category sameAs="{concat('#', data($n/../../tei:category/@xml:id)[1])}"/>)
+};  
 (: VALIDATION :)
 
 declare %test:assertTrue function taxo:validate-biblCat() {
@@ -336,7 +523,7 @@ return
 
 
 
-(: TIMING 2.2s :)
+(: TIMING 202.2s :)
 (
 taxo:write-calendar($config:GANZHI_CODES//no:row, $config:DYNASTIES//no:row),
 taxo:write-biblCat($config:TEXT_BIBLCAT_TYPES//no:row), 
