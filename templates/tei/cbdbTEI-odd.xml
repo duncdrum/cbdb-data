@@ -30,10 +30,11 @@
                 <moduleRef key="namesdates"/>
                 <elementSpec ident="addName" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>addName should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="choronym">
@@ -45,10 +46,11 @@
                 </elementSpec>
                 <elementSpec ident="availability" mode="change">
                     <attList>
-                        <attDef ident="status" usage="rec" mode="change">
+                        <attDef ident="status" mode="change" usage="rec">
                             <gloss>availability should have status attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="restricted">
@@ -60,21 +62,23 @@
                 </elementSpec>
                 <elementSpec ident="bibl" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>bibl should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="bib:bib">
                                     <gloss>machine generated</gloss>
                                 </valItem>
                             </valList>
-                        </attDef>                    
-                        <attDef ident="subtype" usage="rec" mode="change">
+                        </attDef>
+                        <attDef ident="subtype" mode="change" usage="rec">
                             <gloss>bibl should have subtype attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="bib:bib">
@@ -86,10 +90,11 @@
                 </elementSpec>
                 <elementSpec ident="category" mode="change">
                     <attList>
-                        <attDef ident="n" usage="rec" mode="change">
+                        <attDef ident="n" mode="change" usage="rec">
                             <gloss>category should have n attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="local:office">
@@ -101,10 +106,11 @@
                 </elementSpec>
                 <elementSpec ident="date" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>date should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="original">
@@ -119,10 +125,11 @@
                 </elementSpec>
                 <elementSpec ident="desc" mode="change">
                     <attList>
-                        <attDef ident="ana" usage="rec" mode="change">
+                        <attDef ident="ana" mode="change" usage="rec">
                             <gloss>desc should have ana attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="topic">
@@ -139,10 +146,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>desc should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="kin-tie">
@@ -155,11 +163,12 @@
                                     <gloss>machine generated</gloss>
                                 </valItem>
                             </valList>
-                        </attDef>                    
-                        <attDef ident="subtype" usage="rec" mode="change">
+                        </attDef>
+                        <attDef ident="subtype" mode="change" usage="rec">
                             <gloss>desc should have subtype attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:entry">
@@ -167,10 +176,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="n" usage="rec" mode="change">
+                        <attDef ident="n" mode="change" usage="rec">
                             <gloss>desc should have n attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:asso">
@@ -182,10 +192,11 @@
                 </elementSpec>
                 <elementSpec ident="event" mode="change">
                     <attList>
-                        <attDef ident="role" usage="rec" mode="change">
+                        <attDef ident="role" mode="change" usage="rec">
                             <gloss>event should have role attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="#BIO">
@@ -193,10 +204,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>event should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="general">
@@ -207,10 +219,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" usage="rec" mode="change">
+                        <attDef ident="subtype" mode="change" usage="rec">
                             <gloss>event should have subtype attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:entry">
@@ -222,10 +235,11 @@
                 </elementSpec>
                 <elementSpec ident="idno" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>idno should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="TTS">
@@ -246,10 +260,11 @@
                 </elementSpec>
                 <elementSpec ident="listRelation" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>listRelation should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="kinship">
@@ -264,10 +279,11 @@
                 </elementSpec>
                 <elementSpec ident="mapping" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>mapping should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="Unicode">
@@ -282,10 +298,11 @@
                 </elementSpec>
                 <elementSpec ident="note" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>note should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="field">
@@ -312,10 +329,11 @@
                 </elementSpec>
                 <elementSpec ident="org" mode="change">
                     <attList>
-                        <attDef ident="ana" usage="rec" mode="change">
+                        <attDef ident="ana" mode="change" usage="rec">
                             <gloss>org should have ana attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="historical">
@@ -323,10 +341,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="role" usage="rec" mode="change">
+                        <attDef ident="role" mode="change" usage="rec">
                             <gloss>org should have role attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="org:org">
@@ -338,10 +357,11 @@
                 </elementSpec>
                 <elementSpec ident="orgName" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>orgName should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="main">
@@ -356,10 +376,11 @@
                 </elementSpec>
                 <elementSpec ident="persName" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>persName should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="main">
@@ -373,10 +394,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="role" usage="rec" mode="change">
+                        <attDef ident="role" mode="change" usage="rec">
                             <gloss>persName should have role attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="mediator">
@@ -388,10 +410,11 @@
                 </elementSpec>
                 <elementSpec ident="person" mode="change">
                     <attList>
-                        <attDef ident="ana" usage="rec" mode="change">
+                        <attDef ident="ana" mode="change" usage="rec">
                             <gloss>person should have ana attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="historical">
@@ -399,10 +422,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="resp" usage="rec" mode="change">
+                        <attDef ident="resp" mode="change" usage="rec">
                             <gloss>person should have resp attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="selfbio">
@@ -414,10 +438,11 @@
                 </elementSpec>
                 <elementSpec ident="personGrp" mode="change">
                     <attList>
-                        <attDef ident="role" usage="rec" mode="change">
+                        <attDef ident="role" mode="change" usage="rec">
                             <gloss>personGrp should have role attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="kin">
@@ -432,10 +457,11 @@
                 </elementSpec>
                 <elementSpec ident="place" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>place should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="pla:fix-admin-types">
@@ -447,10 +473,11 @@
                 </elementSpec>
                 <elementSpec ident="placeName" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>placeName should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="alias">
@@ -462,10 +489,11 @@
                 </elementSpec>
                 <elementSpec ident="relation" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>relation should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="auto-generated">
@@ -473,10 +501,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="name" usage="rec" mode="change">
+                        <attDef ident="name" mode="change" usage="rec">
                             <gloss>relation should have name attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:kin">
@@ -491,10 +520,11 @@
                 </elementSpec>
                 <elementSpec ident="residence" mode="change">
                     <attList>
-                        <attDef ident="n" usage="rec" mode="change">
+                        <attDef ident="n" mode="change" usage="rec">
                             <gloss>residence should have n attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:pers-add">
@@ -506,10 +536,11 @@
                 </elementSpec>
                 <elementSpec ident="roleName" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>roleName should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="main">
@@ -524,10 +555,11 @@
                 </elementSpec>
                 <elementSpec ident="sex" mode="change">
                     <attList>
-                        <attDef ident="value" usage="req" mode="change">
+                        <attDef ident="value" mode="change" usage="req">
                             <gloss>sex should have value attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:biog">
@@ -539,10 +571,11 @@
                 </elementSpec>
                 <elementSpec ident="state" mode="change">
                     <attList>
-                        <attDef ident="ana" usage="rec" mode="change">
+                        <attDef ident="ana" mode="change" usage="rec">
                             <gloss>state should have ana attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:asso">
@@ -550,10 +583,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="n" usage="rec" mode="change">
+                        <attDef ident="n" mode="change" usage="rec">
                             <gloss>state should have n attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:status">
@@ -567,10 +601,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>state should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:asso">
@@ -593,10 +628,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" usage="rec" mode="change">
+                        <attDef ident="subtype" mode="change" usage="rec">
                             <gloss>state should have subtype attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:asso">
@@ -614,10 +650,11 @@
                 </elementSpec>
                 <elementSpec ident="title" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>title should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="main">
@@ -633,12 +670,13 @@
                         </attDef>
                     </attList>
                 </elementSpec>
-                <elementSpec ident="trait" mode="change">                    
+                <elementSpec ident="trait" mode="change">
                     <attList>
-                        <attDef ident="type" usage="rec" mode="change">
+                        <attDef ident="type" mode="change" usage="rec">
                             <gloss>trait should have type attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="household">
@@ -658,10 +696,11 @@
                                 </valItem>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" usage="rec" mode="change">
+                        <attDef ident="subtype" mode="change" usage="rec">
                             <gloss>trait should have subtype attribute</gloss>
                             <datatype>
-                                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="datatype.Code"/>
+                                <rng:ref name="datatype.Code"
+                                    xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList>
                                 <valItem ident="biog:kin">
