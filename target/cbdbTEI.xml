@@ -1,109 +1,108 @@
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
-    <teiHeader>
-        <fileDesc>
-            <titleStmt>
-                <title>CBDB in TEI</title>
-                <author xml:id="DP">Duncan Paterson</author>
-                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="respStmt.xml" parse="xml"/>
-            </titleStmt>
-            <publicationStmt>
-                <authority>
-                    <orgName>Fairbank Center for Chinese Studies at Harvard University</orgName>
-                    <orgName>Institute of History and Philology of Academia Sinica</orgName>
-                    <orgName>Center for Research on Ancient Chinese History at Peking University</orgName>
-                </authority>
-                <availability>
-                    <licence target="https://creativecommons.org/licenses/by-nc-sa/4.0/">cc-by-nc-sa 4.0</licence>
-                </availability>
-            </publicationStmt>
-            <sourceDesc>
-                <p>Formalising known entites from 
-               <ref target="http://projects.iq.harvard.edu/cbdb/home">China Biographical Database</ref> 
-               version 20150202.</p>
-            </sourceDesc>
-        </fileDesc>
-        <encodingDesc>
-            <classDecl>
-                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="biblCat.xml" parse="xml"/>
-                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cal_ZH.xml" parse="xml"/>
-                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="office.xml" parse="xml"/>
-            </classDecl>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="charDecl.xml" parse="xml"/>
-            <listPrefixDef>
-                <!--   TTSMQ links are broken [DP]  -->
-                <prefixDef ident="ttsmq" matchPattern="([.]*)" replacementPattern="http://archive.ihp.sinica.edu.tw/ttsweb/html_name/$1"/>
-                <prefixDef ident="mqww" matchPattern="([.]*)" replacementPattern="http://digital.library.mcgill.ca/mingqing/search/details-poet.php?poetID=$1&amp;showbio=1&amp;showanth=1&amp;showshihuaon=1&amp;language=eng"/>
-                <prefixDef ident="idtf" matchPattern="([.]*)" replacementPattern="http://tkb.zinbun.kyoto-u.ac.jp/pers-db/$1"/>
-            </listPrefixDef>
-        </encodingDesc>
-        <profileDesc>
-            <langUsage>                
-                <language ident="zh-Hant">Chinese traditional characters</language>
-                <language ident="zh-Latn-alalc97">pinyin transliteration of Chinese characters without tonal diacrits</language>
-                <language ident="en">English</language>
-            </langUsage>
-            <calendarDesc>
-                <calendar xml:id="chinTrad">
-                    <p>Two taxonomies capture the traditional chinese calendar. 
-                        The first encodes the sexagenary cycle (干支 = stems-and-branches) which can denote eras, months, or days.
-                        The second is a nested taxonomy for dynastic periods, and their reigns.                         
-                        For automatic conversions between Gregorian and East Asian calendars see:  
-                  <ref target="http://authority.ddbc.edu.tw/time/">Buddhist Studies Time Authority Databases</ref>
-                    </p>
-                </calendar>
-            </calendarDesc>
-        </profileDesc>
-        <revisionDesc>
-            <change when="2016-12-12" who="#DP">intial draft</change>
-        </revisionDesc>
-    </teiHeader>
-    <text>
-        <body>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-01/list-1.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-02/list-2.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-03/list-3.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-04/list-4.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-05/list-5.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-06/list-6.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-07/list-7.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-08/list-8.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-09/list-9.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-10/list-10.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-11/list-11.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-12/list-12.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-13/list-13.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-14/list-14.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-15/list-15.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-16/list-16.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-17/list-17.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-18/list-18.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-19/list-19.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-20/list-20.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-21/list-21.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-22/list-22.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-23/list-23.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-24/list-24.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-25/list-25.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-26/list-26.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-27/list-27.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-28/list-28.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-29/list-29.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-30/list-30.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-31/list-31.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-32/list-32.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-33/list-33.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-34/list-34.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-35/list-35.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-36/list-36.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPerson/chunk-37/list-37.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listOrg.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listPlace.xml" parse="xml"/>
-            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="listBibl.xml" parse="xml"/>
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>CBDB in TEI</title>
+        <author xml:id="DP">Duncan Paterson</author>
+        <xi:include href="respStmt.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </titleStmt>
+      <publicationStmt>
+        <authority>
+          <orgName>Fairbank Center for Chinese Studies at Harvard University</orgName>
+          <orgName>Institute of History and Philology of Academia Sinica</orgName>
+          <orgName>Center for Research on Ancient Chinese History at Peking University</orgName>
+        </authority>
+        <availability>
+          <licence target="https://creativecommons.org/licenses/by-nc-sa/4.0/">cc-by-nc-sa 4.0</licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Formalising known entites from
+          <ref target="http://projects.iq.harvard.edu/cbdb/home">China Biographical Database</ref>
+          version 20150202.</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <classDecl>
+        <xi:include href="biblCat.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="cal_ZH.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="office.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </classDecl>
+      <xi:include href="charDecl.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <listPrefixDef>
+        <!-- TTSMQ links are broken [DP] -->
+        <prefixDef ident="ttsmq" matchPattern="([.]*)" replacementPattern="http://archive.ihp.sinica.edu.tw/ttsweb/html_name/$1"/>
+        <prefixDef ident="mqww" matchPattern="([.]*)" replacementPattern="http://digital.library.mcgill.ca/mingqing/search/details-poet.php?poetID=$1&amp;showbio=1&amp;showanth=1&amp;showshihuaon=1&amp;language=eng"/>
+        <prefixDef ident="idtf" matchPattern="([.]*)" replacementPattern="http://tkb.zinbun.kyoto-u.ac.jp/pers-db/$1"/>
+      </listPrefixDef>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="zh-Hant">Chinese traditional characters</language>
+        <language ident="zh-Latn-alalc97">pinyin transliteration of Chinese characters without tonal diacrits</language>
+        <language ident="en">English</language>
+      </langUsage>
+      <calendarDesc>
+        <calendar xml:id="chinTrad">
+          <p>Two taxonomies capture the traditional chinese calendar. The first encodes the sexagenary cycle (干支 = stems-and-branches) which can denote eras, months, or days. The second is a nested taxonomy for dynastic periods, and their reigns. For automatic
+            conversions between Gregorian and East Asian calendars see:
+            <ref target="http://authority.ddbc.edu.tw/time/">Buddhist Studies Time Authority Databases</ref>
+          </p>
+        </calendar>
+      </calendarDesc>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2016-12-12" who="#DP">intial draft</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <xi:include href="listPerson/chunk-01/list-1.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-02/list-2.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-03/list-3.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-04/list-4.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-05/list-5.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-06/list-6.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-07/list-7.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-08/list-8.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-09/list-9.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-10/list-10.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-11/list-11.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-12/list-12.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-13/list-13.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-14/list-14.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-15/list-15.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-16/list-16.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-17/list-17.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-18/list-18.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-19/list-19.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-20/list-20.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-21/list-21.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-22/list-22.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-23/list-23.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-24/list-24.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-25/list-25.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-26/list-26.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-27/list-27.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-28/list-28.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-29/list-29.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-30/list-30.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-31/list-31.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-32/list-32.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-33/list-33.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-34/list-34.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-35/list-35.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-36/list-36.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPerson/chunk-37/list-37.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listOrg.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listPlace.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xi:include href="listBibl.xml" parse="xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
-            <!--TEST FILES CONTAIN NO ACTUAL DATA-->
-<!--            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../samples/test.xml" parse="xml"/>-->
-<!--            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../samples/listPerson.xml" parse="xml"/>-->
-        </body>
-    </text>
+      <!--TEST FILES CONTAIN NO ACTUAL DATA-->
+      <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../samples/test.xml" parse="xml"/>-->
+      <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../samples/listPerson.xml" parse="xml"/>-->
+    </body>
+  </text>
 </TEI>
